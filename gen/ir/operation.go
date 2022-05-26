@@ -72,8 +72,7 @@ type Request struct {
 	Spec     *openapi.RequestBody
 }
 
-func (r Request) FormParameters() (params []Parameter) {
-	ct := ContentTypeFormURLEncoded
+func (r Request) FormParameters(ct ContentType) (params []Parameter) {
 	t, ok := r.Contents[ct]
 	if !ok {
 		panic(ct)
@@ -102,6 +101,8 @@ const (
 	ContentTypeJSON ContentType = "application/json"
 	// ContentTypeFormURLEncoded is ContentType for URL-encoded form.
 	ContentTypeFormURLEncoded ContentType = "application/x-www-form-urlencoded"
+	// ContentTypeMultipart is ContentType for multipart form.
+	ContentTypeMultipart ContentType = "multipart/form-data"
 	// ContentTypeOctetStream is ContentType for binary.
 	ContentTypeOctetStream ContentType = "application/octet-stream"
 )
@@ -110,7 +111,9 @@ func (t ContentType) String() string { return string(t) }
 
 func (t ContentType) JSON() bool { return t == ContentTypeJSON }
 
-func (t ContentType) FormURLEncode() bool { return t == ContentTypeFormURLEncoded }
+func (t ContentType) FormURLEncoded() bool { return t == ContentTypeFormURLEncoded }
+
+func (t ContentType) MultipartForm() bool { return t == ContentTypeMultipart }
 
 func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }
 

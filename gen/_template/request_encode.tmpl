@@ -5,16 +5,23 @@
 
 {{- range $op := $.Operations }}{{ if $op.Request }}
 {{- range $contentType, $type := $op.Request.Contents }}
-func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.Go }}, span trace.Span) (data {{ $contentType.EncodedDataTypeGo }}, err error) {
+func encode{{ $op.Name }}Request{{ $contentType.Name }}(
+	req {{ $op.Request.Type.Go }},
+	span trace.Span,
+) (
+	data {{ $contentType.EncodedDataTypeGo }},
+	{{ if $contentType.MultipartForm }}contentType string,{{- end }}
+	rerr error,
+) {
 	{{- if $type.IsStream }}
 		return req, nil
 	{{- else if $contentType.JSON }}
 		e := jx.GetEncoder()
 		{{ template "json/enc" elem $type "req" }}
 		return e, nil
-	{{- else if $contentType.FormURLEncode }}
+	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
 		q := uri.NewQueryEncoder()
-		{{- range $param := $op.Request.FormParameters }}
+		{{- range $param := $op.Request.FormParameters $contentType }}
 		{
 			// Encode {{ quote $param.Spec.Name }} form field.
 			cfg := uri.QueryParameterEncodingConfig{
@@ -26,12 +33,29 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.
 			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 				{{- template "uri/encode" elem $param.Type (printf "req.%s" $param.Name) }}
 			}); err != nil {
-				return data, errors.Wrap(err, "encode query")
+				return data, {{ if $contentType.MultipartForm }}"",{{- end }}errors.Wrap(err, "encode query")
 			}
 		}
 		{{- end }}
-		e := strings.NewReader(q.Values().Encode())
-		return e, nil
+		{{- if $contentType.FormURLEncoded }}
+			e := strings.NewReader(q.Values().Encode())
+			return e, nil
+		{{- else if $contentType.MultipartForm }}
+			e := new(bytes.Buffer)
+			w := multipart.NewWriter(e)
+			defer func() {
+				cerr := w.Close()
+				if rerr == nil {
+					rerr = cerr
+				}
+			}()
+			if err := q.WriteMultipart(w); err != nil {
+				return e, "", errors.Wrap(err, "write multipart")
+			}
+			return e, w.FormDataContentType(), nil
+		{{- else }}
+            {{- errorf "%s encoder not implemented" $contentType }}
+		{{- end }}
 	{{- else }}
 		{{- errorf "%s encoder not implemented" $contentType }}
 	{{- end }}

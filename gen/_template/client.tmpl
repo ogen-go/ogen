@@ -107,13 +107,16 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- if eq $requestsLength 1 }}
 	{{- range $contentType, $type := $op.Request.Contents }}
 		contentType = {{ quote $contentType }}
-		buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		buf, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
 		if err != nil {
 			return res, err
 		}
 		{{- if $contentType.JSON }}
 		defer jx.PutEncoder(buf)
 		reqBody = bytes.NewReader(buf.Bytes())
+		{{- else if $contentType.MultipartForm }}
+		contentType = ct
+		reqBody = buf
 		{{- else }}
 		reqBody = buf
 		{{- end }}
@@ -124,13 +127,16 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- range $contentType, $type := $op.Request.Contents }}
 	case *{{ $type.Go }}:
 		contentType = {{ quote $contentType }}
-		buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		buf, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
 		if err != nil {
 			return res, err
 		}
 		{{- if $contentType.JSON }}
 		defer jx.PutEncoder(buf)
 		reqBody = bytes.NewReader(buf.Bytes())
+		{{- else if $contentType.MultipartForm }}
+		contentType = ct
+		reqBody = buf
 		{{- else }}
 		reqBody = buf
 		{{- end }}

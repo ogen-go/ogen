@@ -49,6 +49,67 @@ func filterMostSpecific(contents map[string]*openapi.MediaType) error {
 	return nil
 }
 
+func (g *Generator) generateFormContent(
+	ctx *genctx,
+	typeName string,
+	media *openapi.MediaType,
+	cb func(f *ir.Field) error,
+) (*ir.Type, error) {
+	if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
+		return nil, &ErrNotImplemented{"complex form schema"}
+	}
+
+	t, err := g.generateSchema(ctx, typeName, media.Schema)
+	if err != nil {
+		return nil, errors.Wrap(err, "generate schema")
+	}
+	if !t.IsStruct() {
+		return nil, errors.Wrapf(&ErrNotImplemented{"complex form schema"}, "%s", t.Kind)
+	}
+
+	for _, f := range t.Fields {
+		tag := f.Tag.JSON
+
+		spec := &openapi.Parameter{
+			Name:     tag,
+			Schema:   f.Spec.Schema,
+			In:       openapi.LocationQuery,
+			Style:    openapi.QueryStyleForm,
+			Explode:  true,
+			Required: f.Spec.Required,
+		}
+
+		if err := func() error {
+			if e, ok := media.Encoding[tag]; ok {
+				spec.Style = e.Style
+				spec.Explode = e.Explode
+				if e.ContentType != "" {
+					return &ErrNotImplemented{"parameter content-type"}
+				}
+			}
+
+			if err := cb(f); err != nil {
+				return err
+			}
+
+			if err := isSupportedParamStyle(spec); err != nil {
+				return err
+			}
+
+			if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
+				return err
+			}
+
+			return nil
+		}(); err != nil {
+			return nil, errors.Wrapf(err, "form parameter %q", tag)
+		}
+
+		f.Tag.Form = spec
+	}
+	return t, nil
+}
+
 func (g *Generator) generateContents(
 	ctx *genctx,
 	name string,
@@ -99,58 +160,30 @@ func (g *Generator) generateContents(
 				return nil
 
 			case "application/x-www-form-urlencoded":
-				if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
-					return &ErrNotImplemented{"complex urlencoded schema"}
-				}
-
-				t, err := g.generateSchema(ctx, typeName, media.Schema)
-				if err != nil {
-					return errors.Wrap(err, "generate schema")
-				}
-				if !t.IsStruct() {
-					return errors.Wrapf(&ErrNotImplemented{"urlencoded schema type"}, "%s", t.Kind)
-				}
-
-				for _, f := range t.Fields {
-					tag := f.Tag.JSON
-					f.Tag.JSON = ""
-
-					var (
-						style   = openapi.QueryStyleForm
-						explode = true
-					)
-					if e, ok := media.Encoding[tag]; ok {
-						style = e.Style
-						explode = e.Explode
-					}
-					spec := &openapi.Parameter{
-						Name:     tag,
-						Schema:   f.Spec.Schema,
-						In:       openapi.LocationQuery,
-						Style:    style,
-						Explode:  explode,
-						Required: f.Spec.Required,
-					}
-
+				t, err := g.generateFormContent(ctx, typeName, media, func(f *ir.Field) error {
 					f.Type.AddFeature("uri")
-					if err := func() error {
-						if err := isSupportedParamStyle(spec); err != nil {
-							return err
-						}
-
-						if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
-							return err
-						}
-
-						return nil
-					}(); err != nil {
-						return errors.Wrapf(err, "form parameter %q", tag)
-					}
-
-					f.Tag.Form = spec
+					return nil
+				})
+				if err != nil {
+					return err
 				}
 
 				result[ir.ContentTypeFormURLEncoded] = t
+				return nil
+
+			case "multipart/form-data":
+				t, err := g.generateFormContent(ctx, typeName, media, func(f *ir.Field) error {
+					if isBinary(f.Type.Schema) {
+						return &ErrNotImplemented{"multipart file"}
+					}
+					f.Type.AddFeature("uri")
+					return nil
+				})
+				if err != nil {
+					return err
+				}
+
+				result[ir.ContentTypeMultipart] = t
 				return nil
 
 			case "application/octet-stream":
