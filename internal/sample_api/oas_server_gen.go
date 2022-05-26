@@ -43,7 +43,7 @@ type Handler interface {
 	// FoobarPut implements  operation.
 	//
 	// PUT /foobar
-	FoobarPut(ctx context.Context) (FoobarPutDef, error)
+	FoobarPut(ctx context.Context) (FoobarPutDefStatusCode, error)
 	// GetHeader implements getHeader operation.
 	//
 	// Test for header param.
@@ -111,11 +111,11 @@ type Handler interface {
 	// PetUpdateNameAliasPost implements  operation.
 	//
 	// POST /pet/updateNameAlias
-	PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (PetUpdateNameAliasPostDef, error)
+	PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (PetUpdateNameAliasPostDefStatusCode, error)
 	// PetUpdateNamePost implements  operation.
 	//
 	// POST /pet/updateName
-	PetUpdateNamePost(ctx context.Context, req OptString) (PetUpdateNamePostDef, error)
+	PetUpdateNamePost(ctx context.Context, req OptString) (PetUpdateNamePostDefStatusCode, error)
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
 	//
 	// Uploads pet avatar by id.
@@ -133,7 +133,7 @@ type Handler interface {
 	// ResponseWithHeadersTest implements responseWithHeadersTest operation.
 	//
 	// GET /responseWithHeadersTest
-	ResponseWithHeadersTest(ctx context.Context) (ResponseWithHeadersTestFound, error)
+	ResponseWithHeadersTest(ctx context.Context) (ResponseWithHeadersTestFoundHeaders, error)
 	// SecurityTest implements securityTest operation.
 	//
 	// GET /securityTest

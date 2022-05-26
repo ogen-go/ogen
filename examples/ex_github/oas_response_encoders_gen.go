@@ -303,7 +303,7 @@ func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 	return nil
 
 }
-func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFoundHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
@@ -328,7 +328,7 @@ func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound
 	return nil
 
 }
-func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFoundHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
@@ -353,7 +353,7 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownload
 	return nil
 
 }
-func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFoundHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
@@ -10544,7 +10544,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 
-	case *OrgsCheckMembershipForUserFound:
+	case *OrgsCheckMembershipForUserFoundHeaders:
 		w.WriteHeader(302)
 		span.SetStatus(codes.Ok, http.StatusText(302))
 		// Encoding response headers.
@@ -11336,7 +11336,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		}
 		return nil
 
-	case *OrgsListMembersFound:
+	case *OrgsListMembersFoundHeaders:
 		w.WriteHeader(302)
 		span.SetStatus(codes.Ok, http.StatusText(302))
 		// Encoding response headers.
@@ -18590,7 +18590,7 @@ func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerab
 	return nil
 
 }
-func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFoundHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
@@ -18615,7 +18615,7 @@ func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArch
 	return nil
 
 }
-func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFoundHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.

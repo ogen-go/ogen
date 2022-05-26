@@ -2257,7 +2257,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res ActionsDownloadArtifactFound, err error) {
+func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res ActionsDownloadArtifactFoundHeaders, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-artifact"),
@@ -2367,7 +2367,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
+func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res ActionsDownloadJobLogsForWorkflowRunFoundHeaders, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
@@ -2463,7 +2463,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 // the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res ActionsDownloadWorkflowRunLogsFound, err error) {
+func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res ActionsDownloadWorkflowRunLogsFoundHeaders, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-workflow-run-logs"),
@@ -49096,7 +49096,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
-func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res ReposDownloadTarballArchiveFound, err error) {
+func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res ReposDownloadTarballArchiveFoundHeaders, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-tarball-archive"),
@@ -49190,7 +49190,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
-func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res ReposDownloadZipballArchiveFound, err error) {
+func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res ReposDownloadZipballArchiveFoundHeaders, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-zipball-archive"),

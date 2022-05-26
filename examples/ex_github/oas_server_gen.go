@@ -407,7 +407,7 @@ type Handler interface {
 	// GitHub Apps must have the `actions:read` permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (ActionsDownloadArtifactFound, error)
+	ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (ActionsDownloadArtifactFoundHeaders, error)
 	// ActionsDownloadJobLogsForWorkflowRun implements actions/download-job-logs-for-workflow-run operation.
 	//
 	// Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires
@@ -419,7 +419,7 @@ type Handler interface {
 	// have the `actions:read` permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (ActionsDownloadJobLogsForWorkflowRunFound, error)
+	ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (ActionsDownloadJobLogsForWorkflowRunFoundHeaders, error)
 	// ActionsDownloadWorkflowRunLogs implements actions/download-workflow-run-logs operation.
 	//
 	// Gets a redirect URL to download an archive of log files for a workflow run. This link expires
@@ -431,7 +431,7 @@ type Handler interface {
 	// the `actions:read` permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (ActionsDownloadWorkflowRunLogsFound, error)
+	ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (ActionsDownloadWorkflowRunLogsFoundHeaders, error)
 	// ActionsEnableSelectedRepositoryGithubActionsOrganization implements actions/enable-selected-repository-github-actions-organization operation.
 	//
 	// Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an
@@ -5186,7 +5186,7 @@ type Handler interface {
 	// **Note**: For private repositories, these links are temporary and expire after five minutes.
 	//
 	// GET /repos/{owner}/{repo}/tarball/{ref}
-	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (ReposDownloadTarballArchiveFound, error)
+	ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (ReposDownloadTarballArchiveFoundHeaders, error)
 	// ReposDownloadZipballArchive implements repos/download-zipball-archive operation.
 	//
 	// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the
@@ -5197,7 +5197,7 @@ type Handler interface {
 	// **Note**: For private repositories, these links are temporary and expire after five minutes.
 	//
 	// GET /repos/{owner}/{repo}/zipball/{ref}
-	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (ReposDownloadZipballArchiveFound, error)
+	ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (ReposDownloadZipballArchiveFoundHeaders, error)
 	// ReposEnableAutomatedSecurityFixes implements repos/enable-automated-security-fixes operation.
 	//
 	// Enables automated security fixes for a repository. The authenticated user must have admin access

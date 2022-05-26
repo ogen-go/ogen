@@ -212,10 +212,10 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 		}
 	}
 }
-func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDef, err error) {
+func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		return FoobarPutDef{
+		return FoobarPutDefStatusCode{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
@@ -652,18 +652,18 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDef, err error) {
+func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNameAliasPostDef{
+		return PetUpdateNameAliasPostDefStatusCode{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
 }
-func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDef, err error) {
+func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNamePostDef{
+		return PetUpdateNamePostDefStatusCode{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
@@ -769,10 +769,10 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeResponseWithHeadersTestResponse(resp *http.Response, span trace.Span) (res ResponseWithHeadersTestFound, err error) {
+func decodeResponseWithHeadersTestResponse(resp *http.Response, span trace.Span) (res ResponseWithHeadersTestFoundHeaders, err error) {
 	switch resp.StatusCode {
 	case 302:
-		var wrapper ResponseWithHeadersTestFound
+		var wrapper ResponseWithHeadersTestFoundHeaders
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
