@@ -23,7 +23,7 @@ type Handler interface {
 	// Headers200 implements headers200 operation.
 	//
 	// GET /headers200
-	Headers200(ctx context.Context) (Headers200OKHeaders, error)
+	Headers200(ctx context.Context) (Headers200OK, error)
 	// HeadersCombined implements headersCombined operation.
 	//
 	// GET /headersCombined
@@ -31,7 +31,7 @@ type Handler interface {
 	// HeadersDefault implements headersDefault operation.
 	//
 	// GET /headersDefault
-	HeadersDefault(ctx context.Context) (HeadersDefaultDefStatusCodeWithHeaders, error)
+	HeadersDefault(ctx context.Context) (HeadersDefaultDef, error)
 	// MultipleGenericResponses implements multipleGenericResponses operation.
 	//
 	// GET /multipleGenericResponses

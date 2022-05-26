@@ -59,7 +59,7 @@ func (UnimplementedHandler) FoobarPost(ctx context.Context, req OptPet) (r Fooba
 // FoobarPut implements  operation.
 //
 // PUT /foobar
-func (UnimplementedHandler) FoobarPut(ctx context.Context) (r FoobarPutDefStatusCode, _ error) {
+func (UnimplementedHandler) FoobarPut(ctx context.Context) (r FoobarPutDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -166,14 +166,14 @@ func (UnimplementedHandler) PetNameByID(ctx context.Context, params PetNameByIDP
 // PetUpdateNameAliasPost implements  operation.
 //
 // POST /pet/updateNameAlias
-func (UnimplementedHandler) PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (r PetUpdateNameAliasPostDefStatusCode, _ error) {
+func (UnimplementedHandler) PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (r PetUpdateNameAliasPostDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // PetUpdateNamePost implements  operation.
 //
 // POST /pet/updateName
-func (UnimplementedHandler) PetUpdateNamePost(ctx context.Context, req OptString) (r PetUpdateNamePostDefStatusCode, _ error) {
+func (UnimplementedHandler) PetUpdateNamePost(ctx context.Context, req OptString) (r PetUpdateNamePostDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

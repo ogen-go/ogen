@@ -455,7 +455,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 // FoobarPut invokes  operation.
 //
 // PUT /foobar
-func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err error) {
+func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPut",
@@ -1235,7 +1235,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 // PetUpdateNameAliasPost invokes  operation.
 //
 // POST /pet/updateNameAlias
-func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDef, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1305,7 +1305,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 // PetUpdateNamePost invokes  operation.
 //
 // POST /pet/updateName
-func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDefStatusCode, err error) {
+func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDef, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {

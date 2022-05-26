@@ -55,10 +55,10 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response, 
 		}
 	}
 }
-func decodeHeaders200Response(resp *http.Response, span trace.Span) (res Headers200OKHeaders, err error) {
+func decodeHeaders200Response(resp *http.Response, span trace.Span) (res Headers200OK, err error) {
 	switch resp.StatusCode {
 	case 200:
-		var wrapper Headers200OKHeaders
+		var wrapper Headers200OK
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'TestHeader' header.
 		{
@@ -91,7 +91,7 @@ func decodeHeaders200Response(resp *http.Response, span trace.Span) (res Headers
 func decodeHeadersCombinedResponse(resp *http.Response, span trace.Span) (res HeadersCombinedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		var wrapper HeadersCombinedOKHeaders
+		var wrapper HeadersCombinedOK
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'TestHeader' header.
 		{
@@ -118,7 +118,7 @@ func decodeHeadersCombinedResponse(resp *http.Response, span trace.Span) (res He
 		}
 		return &wrapper, nil
 	default:
-		var wrapper HeadersCombinedDefStatusCodeWithHeaders
+		var wrapper HeadersCombinedDef
 		wrapper.StatusCode = resp.StatusCode
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'TestHeader' header.
@@ -147,10 +147,10 @@ func decodeHeadersCombinedResponse(resp *http.Response, span trace.Span) (res He
 		return &wrapper, nil
 	}
 }
-func decodeHeadersDefaultResponse(resp *http.Response, span trace.Span) (res HeadersDefaultDefStatusCodeWithHeaders, err error) {
+func decodeHeadersDefaultResponse(resp *http.Response, span trace.Span) (res HeadersDefaultDef, err error) {
 	switch resp.StatusCode {
 	default:
-		var wrapper HeadersDefaultDefStatusCodeWithHeaders
+		var wrapper HeadersDefaultDef
 		wrapper.StatusCode = resp.StatusCode
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'TestHeader' header.

@@ -40,7 +40,7 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTy
 	return nil
 
 }
-func encodeHeaders200Response(response Headers200OKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -64,7 +64,7 @@ func encodeHeaders200Response(response Headers200OKHeaders, w http.ResponseWrite
 }
 func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *HeadersCombinedOKHeaders:
+	case *HeadersCombinedOK:
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -85,7 +85,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		return nil
 
-	case *HeadersCombinedDefStatusCodeWithHeaders:
+	case *HeadersCombinedDef:
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -115,7 +115,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		return errors.Errorf("/headersCombined"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeHeadersDefaultResponse(response HeadersDefaultDefStatusCodeWithHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())

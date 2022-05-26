@@ -138,7 +138,7 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 // Headers200 invokes headers200 operation.
 //
 // GET /headers200
-func (c *Client) Headers200(ctx context.Context) (res Headers200OKHeaders, err error) {
+func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
@@ -240,7 +240,7 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 // HeadersDefault invokes headersDefault operation.
 //
 // GET /headersDefault
-func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDefStatusCodeWithHeaders, err error) {
+func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),

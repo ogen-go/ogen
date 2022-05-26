@@ -477,7 +477,7 @@ func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganiz
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (r ActionsDownloadArtifactFoundHeaders, _ error) {
+func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (r ActionsDownloadArtifactFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -492,7 +492,7 @@ func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params 
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-func (UnimplementedHandler) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (r ActionsDownloadJobLogsForWorkflowRunFoundHeaders, _ error) {
+func (UnimplementedHandler) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (r ActionsDownloadJobLogsForWorkflowRunFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -507,7 +507,7 @@ func (UnimplementedHandler) ActionsDownloadJobLogsForWorkflowRun(ctx context.Con
 // the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (r ActionsDownloadWorkflowRunLogsFoundHeaders, _ error) {
+func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (r ActionsDownloadWorkflowRunLogsFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6705,7 +6705,7 @@ func (UnimplementedHandler) ReposDisableVulnerabilityAlerts(ctx context.Context,
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
-func (UnimplementedHandler) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (r ReposDownloadTarballArchiveFoundHeaders, _ error) {
+func (UnimplementedHandler) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (r ReposDownloadTarballArchiveFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6719,7 +6719,7 @@ func (UnimplementedHandler) ReposDownloadTarballArchive(ctx context.Context, par
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
-func (UnimplementedHandler) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (r ReposDownloadZipballArchiveFoundHeaders, _ error) {
+func (UnimplementedHandler) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (r ReposDownloadZipballArchiveFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

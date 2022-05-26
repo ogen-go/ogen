@@ -209,10 +209,10 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 		}
 	}
 }
-func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDefStatusCode, err error) {
+func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDef, err error) {
 	switch resp.StatusCode {
 	default:
-		return FoobarPutDefStatusCode{
+		return FoobarPutDef{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
@@ -649,18 +649,18 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDef, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNameAliasPostDefStatusCode{
+		return PetUpdateNameAliasPostDef{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
 }
-func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDefStatusCode, err error) {
+func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDef, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNamePostDefStatusCode{
+		return PetUpdateNamePostDef{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}

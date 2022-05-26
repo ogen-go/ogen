@@ -29,45 +29,29 @@ func (s AnyContentTypeBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 }
 
 // Headers200OK is response for Headers200 operation.
-type Headers200OK struct{}
-
-// Headers200OKHeaders wraps Headers200OK with response headers.
-type Headers200OKHeaders struct {
+type Headers200OK struct {
 	TestHeader string
-	Response   Headers200OK
 }
 
 // HeadersCombinedDef is default response for HeadersCombined operation.
-type HeadersCombinedDef struct{}
-
-// HeadersCombinedDefStatusCodeWithHeaders wraps HeadersCombinedDef with status code and response headers.
-type HeadersCombinedDefStatusCodeWithHeaders struct {
-	StatusCode int
+type HeadersCombinedDef struct {
 	TestHeader string
-	Response   HeadersCombinedDef
+	StatusCode int
 }
 
-func (*HeadersCombinedDefStatusCodeWithHeaders) headersCombinedRes() {}
+func (*HeadersCombinedDef) headersCombinedRes() {}
 
 // HeadersCombinedOK is response for HeadersCombined operation.
-type HeadersCombinedOK struct{}
-
-// HeadersCombinedOKHeaders wraps HeadersCombinedOK with response headers.
-type HeadersCombinedOKHeaders struct {
+type HeadersCombinedOK struct {
 	TestHeader string
-	Response   HeadersCombinedOK
 }
 
-func (*HeadersCombinedOKHeaders) headersCombinedRes() {}
+func (*HeadersCombinedOK) headersCombinedRes() {}
 
 // HeadersDefaultDef is default response for HeadersDefault operation.
-type HeadersDefaultDef struct{}
-
-// HeadersDefaultDefStatusCodeWithHeaders wraps HeadersDefaultDef with status code and response headers.
-type HeadersDefaultDefStatusCodeWithHeaders struct {
-	StatusCode int
+type HeadersDefaultDef struct {
 	TestHeader string
-	Response   HeadersDefaultDef
+	StatusCode int
 }
 
 // NewNilInt returns new NilInt with value set to v.

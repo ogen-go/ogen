@@ -499,10 +499,10 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDownloadArtifactFoundHeaders, err error) {
+func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDownloadArtifactFound, err error) {
 	switch resp.StatusCode {
 	case 302:
-		var wrapper ActionsDownloadArtifactFoundHeaders
+		var wrapper ActionsDownloadArtifactFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
@@ -539,10 +539,10 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span)
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDownloadJobLogsForWorkflowRunFoundHeaders, err error) {
+func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	switch resp.StatusCode {
 	case 302:
-		var wrapper ActionsDownloadJobLogsForWorkflowRunFoundHeaders
+		var wrapper ActionsDownloadJobLogsForWorkflowRunFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
@@ -579,10 +579,10 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDownloadWorkflowRunLogsFoundHeaders, err error) {
+func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDownloadWorkflowRunLogsFound, err error) {
 	switch resp.StatusCode {
 	case 302:
-		var wrapper ActionsDownloadWorkflowRunLogsFoundHeaders
+		var wrapper ActionsDownloadWorkflowRunLogsFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
@@ -19069,7 +19069,7 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response, span trace.Sp
 	case 204:
 		return &OrgsCheckMembershipForUserNoContent{}, nil
 	case 302:
-		var wrapper OrgsCheckMembershipForUserFoundHeaders
+		var wrapper OrgsCheckMembershipForUserFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
@@ -20456,7 +20456,7 @@ func decodeOrgsListMembersResponse(resp *http.Response, span trace.Span) (res Or
 			return res, validate.InvalidContentType(ct)
 		}
 	case 302:
-		var wrapper OrgsListMembersFoundHeaders
+		var wrapper OrgsListMembersFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
@@ -33442,10 +33442,10 @@ func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadTarballArchiveFoundHeaders, err error) {
+func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadTarballArchiveFound, err error) {
 	switch resp.StatusCode {
 	case 302:
-		var wrapper ReposDownloadTarballArchiveFoundHeaders
+		var wrapper ReposDownloadTarballArchiveFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{
@@ -33482,10 +33482,10 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.S
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDownloadZipballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadZipballArchiveFoundHeaders, err error) {
+func decodeReposDownloadZipballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadZipballArchiveFound, err error) {
 	switch resp.StatusCode {
 	case 302:
-		var wrapper ReposDownloadZipballArchiveFoundHeaders
+		var wrapper ReposDownloadZipballArchiveFound
 		h := uri.NewHeaderDecoder(resp.Header)
 		// Parse 'Location' header.
 		{

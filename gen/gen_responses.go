@@ -168,27 +168,20 @@ func (g *Generator) responseToIR(
 			Doc:  doc,
 		}
 
-		// Note: use this in future?
-		//
-		// injectHeaderFields(headers, t)
-		// if withStatusCode {
-		// 	t.Fields = append(t.Fields, &ir.Field{
-		// 		Name: "StatusCode",
-		// 		Type: ir.Primitive(ir.Int, nil),
-		// 	})
-		// }
+		injectHeaderFields(headers, t)
+		if withStatusCode {
+			t.Fields = append(t.Fields, &ir.Field{
+				Name: "StatusCode",
+				Type: ir.Primitive(ir.Int, nil),
+			})
+		}
 
 		if err := ctx.saveType(t); err != nil {
 			return nil, errors.Wrap(err, "save type")
 		}
 
-		responseT, err := wrapResponseType(ctx, name, t, headers, withStatusCode)
-		if err != nil {
-			return nil, errors.Wrap(err, "wrap response type")
-		}
-
 		return &ir.Response{
-			NoContent:      responseT,
+			NoContent:      t,
 			Spec:           resp,
 			Headers:        headers,
 			WithStatusCode: withStatusCode,
