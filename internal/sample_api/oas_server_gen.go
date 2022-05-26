@@ -130,10 +130,6 @@ type Handler interface {
 	//
 	// GET /recursiveMap
 	RecursiveMapGet(ctx context.Context) (RecursiveMap, error)
-	// ResponseWithHeadersTest implements responseWithHeadersTest operation.
-	//
-	// GET /responseWithHeadersTest
-	ResponseWithHeadersTest(ctx context.Context) (ResponseWithHeadersTestFoundHeaders, error)
 	// SecurityTest implements securityTest operation.
 	//
 	// GET /securityTest

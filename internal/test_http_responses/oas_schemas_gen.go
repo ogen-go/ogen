@@ -28,6 +28,48 @@ func (s AnyContentTypeBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Headers200OK is response for Headers200 operation.
+type Headers200OK struct{}
+
+// Headers200OKHeaders wraps Headers200OK with response headers.
+type Headers200OKHeaders struct {
+	TestHeader string
+	Response   Headers200OK
+}
+
+// HeadersCombinedDef is default response for HeadersCombined operation.
+type HeadersCombinedDef struct{}
+
+// HeadersCombinedDefStatusCodeWithHeaders wraps HeadersCombinedDef with status code and response headers.
+type HeadersCombinedDefStatusCodeWithHeaders struct {
+	StatusCode int
+	TestHeader string
+	Response   HeadersCombinedDef
+}
+
+func (*HeadersCombinedDefStatusCodeWithHeaders) headersCombinedRes() {}
+
+// HeadersCombinedOK is response for HeadersCombined operation.
+type HeadersCombinedOK struct{}
+
+// HeadersCombinedOKHeaders wraps HeadersCombinedOK with response headers.
+type HeadersCombinedOKHeaders struct {
+	TestHeader string
+	Response   HeadersCombinedOK
+}
+
+func (*HeadersCombinedOKHeaders) headersCombinedRes() {}
+
+// HeadersDefaultDef is default response for HeadersDefault operation.
+type HeadersDefaultDef struct{}
+
+// HeadersDefaultDefStatusCodeWithHeaders wraps HeadersDefaultDef with status code and response headers.
+type HeadersDefaultDefStatusCodeWithHeaders struct {
+	StatusCode int
+	TestHeader string
+	Response   HeadersDefaultDef
+}
+
 // NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{

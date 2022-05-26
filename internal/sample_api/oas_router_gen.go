@@ -347,8 +347,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 'r': // Prefix: "re"
-				if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+			case 'r': // Prefix: "recursive"
+				if l := len("recursive"); len(elem) >= l && elem[0:l] == "recursive" {
 					elem = elem[l:]
 				} else {
 					break
@@ -358,54 +358,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'c': // Prefix: "cursive"
-					if l := len("cursive"); len(elem) >= l && elem[0:l] == "cursive" {
+				case 'A': // Prefix: "Array"
+					if l := len("Array"); len(elem) >= l && elem[0:l] == "Array" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						break
+						// Leaf: RecursiveArrayGet
+						s.handleRecursiveArrayGetRequest([0]string{}, w, r)
+
+						return
 					}
-					switch elem[0] {
-					case 'A': // Prefix: "Array"
-						if l := len("Array"); len(elem) >= l && elem[0:l] == "Array" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: RecursiveArrayGet
-							s.handleRecursiveArrayGetRequest([0]string{}, w, r)
-
-							return
-						}
-					case 'M': // Prefix: "Map"
-						if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: RecursiveMapGet
-							s.handleRecursiveMapGetRequest([0]string{}, w, r)
-
-							return
-						}
-					}
-				case 's': // Prefix: "sponseWithHeadersTest"
-					if l := len("sponseWithHeadersTest"); len(elem) >= l && elem[0:l] == "sponseWithHeadersTest" {
+				case 'M': // Prefix: "Map"
+					if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ResponseWithHeadersTest
-						s.handleResponseWithHeadersTestRequest([0]string{}, w, r)
+						// Leaf: RecursiveMapGet
+						s.handleRecursiveMapGetRequest([0]string{}, w, r)
 
 						return
 					}
@@ -1050,8 +1025,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 'r': // Prefix: "re"
-				if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+			case 'r': // Prefix: "recursive"
+				if l := len("recursive"); len(elem) >= l && elem[0:l] == "recursive" {
 					elem = elem[l:]
 				} else {
 					break
@@ -1061,56 +1036,30 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'c': // Prefix: "cursive"
-					if l := len("cursive"); len(elem) >= l && elem[0:l] == "cursive" {
+				case 'A': // Prefix: "Array"
+					if l := len("Array"); len(elem) >= l && elem[0:l] == "Array" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						break
+						// Leaf: RecursiveArrayGet
+						r.name = "RecursiveArrayGet"
+						r.args = args
+						r.count = 0
+						return r, true
 					}
-					switch elem[0] {
-					case 'A': // Prefix: "Array"
-						if l := len("Array"); len(elem) >= l && elem[0:l] == "Array" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: RecursiveArrayGet
-							r.name = "RecursiveArrayGet"
-							r.args = args
-							r.count = 0
-							return r, true
-						}
-					case 'M': // Prefix: "Map"
-						if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: RecursiveMapGet
-							r.name = "RecursiveMapGet"
-							r.args = args
-							r.count = 0
-							return r, true
-						}
-					}
-				case 's': // Prefix: "sponseWithHeadersTest"
-					if l := len("sponseWithHeadersTest"); len(elem) >= l && elem[0:l] == "sponseWithHeadersTest" {
+				case 'M': // Prefix: "Map"
+					if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ResponseWithHeadersTest
-						r.name = "ResponseWithHeadersTest"
+						// Leaf: RecursiveMapGet
+						r.name = "RecursiveMapGet"
 						r.args = args
 						r.count = 0
 						return r, true

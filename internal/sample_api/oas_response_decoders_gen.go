@@ -7,12 +7,9 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -765,46 +762,6 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
-	}
-}
-func decodeResponseWithHeadersTestResponse(resp *http.Response, span trace.Span) (res ResponseWithHeadersTestFoundHeaders, err error) {
-	switch resp.StatusCode {
-	case 302:
-		var wrapper ResponseWithHeadersTestFoundHeaders
-		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
-		{
-			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "Location",
-				Explode: false,
-			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
-					return nil
-				}(); err != nil {
-					return err
-				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
-				return nil
-			}); err != nil {
-				return res, errors.Wrap(err, "parse Location header")
-			}
-		}
-		return wrapper, nil
 	default:
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}

@@ -200,13 +200,6 @@ func (UnimplementedHandler) RecursiveMapGet(ctx context.Context) (r RecursiveMap
 	return r, ht.ErrNotImplemented
 }
 
-// ResponseWithHeadersTest implements responseWithHeadersTest operation.
-//
-// GET /responseWithHeadersTest
-func (UnimplementedHandler) ResponseWithHeadersTest(ctx context.Context) (r ResponseWithHeadersTestFoundHeaders, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
 // SecurityTest implements securityTest operation.
 //
 // GET /securityTest

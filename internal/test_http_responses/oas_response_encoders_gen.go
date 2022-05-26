@@ -10,6 +10,9 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 )
 
 func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
@@ -33,6 +36,108 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTy
 	}
 	if _, err := io.Copy(w, response.Response); err != nil {
 		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeHeaders200Response(response Headers200OKHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'TestHeader' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(response.TestHeader))
+			}); err != nil {
+				return errors.Wrap(err, "encode TestHeader header")
+			}
+		}
+	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}
+func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *HeadersCombinedOKHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'TestHeader' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "TestHeader",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.TestHeader))
+				}); err != nil {
+					return errors.Wrap(err, "encode TestHeader header")
+				}
+			}
+		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
+		return nil
+
+	case *HeadersCombinedDefStatusCodeWithHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'TestHeader' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "TestHeader",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.TestHeader))
+				}); err != nil {
+					return errors.Wrap(err, "encode TestHeader header")
+				}
+			}
+		}
+		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
+		return nil
+
+	default:
+		return errors.Errorf("/headersCombined"+`: unexpected response type: %T`, response)
+	}
+}
+func encodeHeadersDefaultResponse(response HeadersDefaultDefStatusCodeWithHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'TestHeader' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(response.TestHeader))
+			}); err != nil {
+				return errors.Wrap(err, "encode TestHeader header")
+			}
+		}
+	}
+	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
 	}
 	return nil
 

@@ -3080,15 +3080,6 @@ func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
 	return m
 }
 
-// ResponseWithHeadersTestFound is response for ResponseWithHeadersTest operation.
-type ResponseWithHeadersTestFound struct{}
-
-// ResponseWithHeadersTestFoundHeaders wraps ResponseWithHeadersTestFound with response headers.
-type ResponseWithHeadersTestFoundHeaders struct {
-	Location OptString
-	Response ResponseWithHeadersTestFound
-}
-
 // Ref: #/components/schemas/StringIntMap
 type StringIntMap struct {
 	AdditionalProps StringIntMapAdditional

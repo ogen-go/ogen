@@ -10,9 +10,6 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
-
-	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/uri"
 )
 
 func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span trace.Span) error {
@@ -460,31 +457,6 @@ func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter,
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-	return nil
-
-}
-func encodeResponseWithHeadersTestResponse(response ResponseWithHeadersTestFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	// Encoding response headers.
-	{
-		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
-		{
-			cfg := uri.HeaderParameterEncodingConfig{
-				Name:    "Location",
-				Explode: false,
-			}
-			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-				if val, ok := response.Location.Get(); ok {
-					return e.EncodeValue(conv.StringToString(val))
-				}
-				return nil
-			}); err != nil {
-				return errors.Wrap(err, "encode Location header")
-			}
-		}
-	}
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
