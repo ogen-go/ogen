@@ -464,8 +464,6 @@ func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter,
 
 }
 func encodeResponseWithHeadersTestResponse(response ResponseWithHeadersTestFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -485,6 +483,8 @@ func encodeResponseWithHeadersTestResponse(response ResponseWithHeadersTestFound
 			}
 		}
 	}
+	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }

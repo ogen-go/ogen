@@ -47,8 +47,6 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 	switch response := response.(type) {
 	case *PetsHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -68,6 +66,8 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 

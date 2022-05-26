@@ -304,8 +304,6 @@ func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 
 }
 func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -325,12 +323,12 @@ func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound
 			}
 		}
 	}
+	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
 func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -350,12 +348,12 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownload
 			}
 		}
 	}
+	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
 func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -375,6 +373,8 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkfl
 			}
 		}
 	}
+	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
@@ -642,8 +642,6 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 }
 func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -663,6 +661,8 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -675,8 +675,6 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 }
 func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -696,6 +694,8 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -708,8 +708,6 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 }
 func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -729,6 +727,8 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -741,8 +741,6 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 }
 func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -762,6 +760,8 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -788,8 +788,6 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 }
 func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -809,6 +807,8 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeade
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -821,8 +821,6 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeade
 }
 func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -842,6 +840,8 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKH
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -932,8 +932,6 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 }
 func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -953,6 +951,8 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -965,8 +965,6 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 }
 func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -986,6 +984,8 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -998,8 +998,6 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 }
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1019,6 +1017,8 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1031,8 +1031,6 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 }
 func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1052,6 +1050,8 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1064,8 +1064,6 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 }
 func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1085,6 +1083,8 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1507,8 +1507,6 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 	switch response := response.(type) {
 	case *ActivityListNotificationsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -1528,6 +1526,8 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1812,8 +1812,6 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 }
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1833,6 +1831,8 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response Ac
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1851,8 +1851,6 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	switch response := response.(type) {
 	case *ActivityListReposStarredByAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -1872,6 +1870,8 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1922,8 +1922,6 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 }
 func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1943,6 +1941,8 @@ func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatc
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1961,8 +1961,6 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	switch response := response.(type) {
 	case *ActivityListWatchedReposForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -1982,6 +1980,8 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2032,8 +2032,6 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 }
 func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -2053,6 +2051,8 @@ func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForR
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -2898,8 +2898,6 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -2919,6 +2917,8 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2979,8 +2979,6 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3000,6 +2998,8 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3034,8 +3034,6 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	switch response := response.(type) {
 	case *AppsListInstallationReposForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3055,6 +3053,8 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3103,8 +3103,6 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *AppsListPlansOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3124,6 +3122,8 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3171,8 +3171,6 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	switch response := response.(type) {
 	case *AppsListPlansStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3192,6 +3190,8 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3226,8 +3226,6 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	switch response := response.(type) {
 	case *AppsListReposAccessibleToInstallationOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3247,6 +3245,8 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3295,8 +3295,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3316,6 +3314,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3368,8 +3368,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3389,6 +3387,8 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3915,8 +3915,6 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 }
 func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -3936,6 +3934,8 @@ func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3952,8 +3952,6 @@ func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders
 }
 func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -3973,6 +3971,8 @@ func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.R
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3985,8 +3985,6 @@ func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.R
 }
 func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4006,6 +4004,8 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w ht
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4018,8 +4018,6 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w ht
 }
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4039,6 +4037,8 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeade
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4981,8 +4981,6 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 }
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5002,6 +5000,8 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -5014,8 +5014,6 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 }
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5035,6 +5033,8 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -5231,8 +5231,6 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *GistSimpleHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5252,6 +5250,8 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5313,8 +5313,6 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	switch response := response.(type) {
 	case *GistCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5334,6 +5332,8 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5466,8 +5466,6 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *BaseGistHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5487,6 +5485,8 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5706,8 +5706,6 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *GistsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5727,6 +5725,8 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5766,8 +5766,6 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	switch response := response.(type) {
 	case *GistsListCommentsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5787,6 +5785,8 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5839,8 +5839,6 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	switch response := response.(type) {
 	case *GistsListCommitsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5860,6 +5858,8 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5912,8 +5912,6 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 	switch response := response.(type) {
 	case *GistsListForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5933,6 +5931,8 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5967,8 +5967,6 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *GistsListForksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5988,6 +5986,8 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6040,8 +6040,6 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 	switch response := response.(type) {
 	case *GistsListPublicOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6061,6 +6059,8 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6113,8 +6113,6 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	switch response := response.(type) {
 	case *GistsListStarredOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6134,6 +6132,8 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6302,8 +6302,6 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *ShortBlobHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6323,6 +6321,8 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6392,8 +6392,6 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 	switch response := response.(type) {
 	case *GitCommitHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6413,6 +6411,8 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6456,8 +6456,6 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *GitRefHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6477,6 +6475,8 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6507,8 +6507,6 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *GitTagHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6528,6 +6526,8 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6558,8 +6558,6 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *GitTreeHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6579,6 +6577,8 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6856,8 +6856,6 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 }
 func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -6877,6 +6875,8 @@ func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7129,8 +7129,6 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *IssueHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7150,6 +7148,8 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7232,8 +7232,6 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	switch response := response.(type) {
 	case *IssueCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7253,6 +7251,8 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7322,8 +7322,6 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 	switch response := response.(type) {
 	case *LabelHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7343,6 +7341,8 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7386,8 +7386,6 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 	switch response := response.(type) {
 	case *MilestoneHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7407,6 +7405,8 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7703,8 +7703,6 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *IssuesListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7724,6 +7722,8 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7776,8 +7776,6 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	switch response := response.(type) {
 	case *IssuesListAssigneesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7797,6 +7795,8 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7831,8 +7831,6 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	switch response := response.(type) {
 	case *IssuesListCommentsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7852,6 +7850,8 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7899,8 +7899,6 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 	switch response := response.(type) {
 	case *IssuesListCommentsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7920,6 +7918,8 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7967,8 +7967,6 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 	switch response := response.(type) {
 	case *IssuesListEventsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7988,6 +7986,8 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8022,8 +8022,6 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 	switch response := response.(type) {
 	case *IssuesListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8043,6 +8041,8 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8082,8 +8082,6 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 	switch response := response.(type) {
 	case *IssuesListForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8103,6 +8101,8 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8137,8 +8137,6 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	switch response := response.(type) {
 	case *IssuesListForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8158,6 +8156,8 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8216,8 +8216,6 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 }
 func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -8237,6 +8235,8 @@ func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMile
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -8255,8 +8255,6 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	switch response := response.(type) {
 	case *IssuesListLabelsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8276,6 +8274,8 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8310,8 +8310,6 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8331,6 +8329,8 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8365,8 +8365,6 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	switch response := response.(type) {
 	case *IssuesListMilestonesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8386,6 +8384,8 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9214,8 +9214,6 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	switch response := response.(type) {
 	case *MigrationsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9235,6 +9233,8 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9285,8 +9285,6 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 }
 func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -9306,6 +9304,8 @@ func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -9324,8 +9324,6 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	switch response := response.(type) {
 	case *MigrationsListReposForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9345,6 +9343,8 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9379,8 +9379,6 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	switch response := response.(type) {
 	case *MigrationsListReposForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9400,6 +9398,8 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9619,8 +9619,6 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 	switch response := response.(type) {
 	case *ImportHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9640,6 +9638,8 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9776,8 +9776,6 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 	switch response := response.(type) {
 	case *AuthorizationHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9797,6 +9795,8 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10055,8 +10055,6 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10076,6 +10074,8 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10087,8 +10087,6 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10108,6 +10106,8 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10169,8 +10169,6 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10190,6 +10188,8 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10201,8 +10201,6 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10222,6 +10220,8 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10252,8 +10252,6 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10273,6 +10271,8 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10338,8 +10338,6 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListGrantsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10359,6 +10357,8 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10545,8 +10545,6 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		return nil
 
 	case *OrgsCheckMembershipForUserFoundHeaders:
-		w.WriteHeader(302)
-		span.SetStatus(codes.Ok, http.StatusText(302))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10566,6 +10564,8 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 				}
 			}
 		}
+		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 
 	case *OrgsCheckMembershipForUserNotFound:
@@ -10684,8 +10684,6 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 	switch response := response.(type) {
 	case *OrgHookHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10705,6 +10703,8 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11003,8 +11003,6 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 	switch response := response.(type) {
 	case *OrgsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11024,6 +11022,8 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11082,8 +11082,6 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	switch response := response.(type) {
 	case *OrgsListFailedInvitationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11103,6 +11101,8 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11137,8 +11137,6 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	switch response := response.(type) {
 	case *OrgsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11158,6 +11156,8 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11208,8 +11208,6 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 }
 func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -11229,6 +11227,8 @@ func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.Res
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -11247,8 +11247,6 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11268,6 +11266,8 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11302,8 +11302,6 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 	switch response := response.(type) {
 	case *OrgsListMembersOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11323,6 +11321,8 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11337,8 +11337,6 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		return nil
 
 	case *OrgsListMembersFoundHeaders:
-		w.WriteHeader(302)
-		span.SetStatus(codes.Ok, http.StatusText(302))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11358,6 +11356,8 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 				}
 			}
 		}
+		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 
 	case *ValidationError:
@@ -11381,8 +11381,6 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 	switch response := response.(type) {
 	case *OrgsListMembershipsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11402,6 +11400,8 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11465,8 +11465,6 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 }
 func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -11486,6 +11484,8 @@ func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollabor
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -11504,8 +11504,6 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	switch response := response.(type) {
 	case *OrgsListPendingInvitationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11525,6 +11523,8 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11557,8 +11557,6 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 }
 func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -11578,6 +11576,8 @@ func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -11659,8 +11659,6 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	switch response := response.(type) {
 	case *OrgsListWebhooksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11680,6 +11678,8 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13848,8 +13848,6 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	switch response := response.(type) {
 	case *ProjectsListCardsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -13869,6 +13867,8 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13921,8 +13921,6 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 	switch response := response.(type) {
 	case *ProjectsListCollaboratorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -13942,6 +13940,8 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14020,8 +14020,6 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	switch response := response.(type) {
 	case *ProjectsListColumnsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14041,6 +14039,8 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14093,8 +14093,6 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	switch response := response.(type) {
 	case *ProjectsListForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14114,6 +14112,8 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14148,8 +14148,6 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	switch response := response.(type) {
 	case *ProjectsListForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14169,6 +14167,8 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14255,8 +14255,6 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 	switch response := response.(type) {
 	case *ProjectsListForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14276,6 +14274,8 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14740,8 +14740,6 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *PullRequestHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14761,6 +14759,8 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14804,8 +14804,6 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14825,6 +14823,8 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14900,8 +14900,6 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14921,6 +14919,8 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15192,8 +15192,6 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *PullsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15213,6 +15211,8 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15252,8 +15252,6 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15273,6 +15271,8 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15305,8 +15305,6 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 }
 func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -15326,6 +15324,8 @@ func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.R
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15344,8 +15344,6 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *PullsListFilesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15365,6 +15363,8 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15410,8 +15410,6 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 }
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -15431,6 +15429,8 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15443,8 +15443,6 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 }
 func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -15464,6 +15462,8 @@ func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHea
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15480,8 +15480,6 @@ func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHea
 }
 func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -15501,6 +15499,8 @@ func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommen
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15517,8 +15517,6 @@ func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommen
 }
 func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -15538,6 +15536,8 @@ func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.R
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15866,8 +15866,6 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *RateLimitOverviewHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15917,6 +15915,8 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16438,8 +16438,6 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	switch response := response.(type) {
 	case *ReactionsListForCommitCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16459,6 +16457,8 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16506,8 +16506,6 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	switch response := response.(type) {
 	case *ReactionsListForIssueOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16527,6 +16525,8 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16587,8 +16587,6 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	switch response := response.(type) {
 	case *ReactionsListForIssueCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16608,6 +16606,8 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16655,8 +16655,6 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	switch response := response.(type) {
 	case *ReactionsListForPullRequestReviewCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16676,6 +16674,8 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16721,8 +16721,6 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 }
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16742,6 +16740,8 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response Reactions
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16758,8 +16758,6 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response Reactions
 }
 func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16779,6 +16777,8 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response Reaction
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16795,8 +16795,6 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response Reaction
 }
 func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16816,6 +16814,8 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListFor
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16832,8 +16832,6 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListFor
 }
 func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16853,6 +16851,8 @@ func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListFo
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17207,8 +17207,6 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 	switch response := response.(type) {
 	case *AutolinkHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17228,6 +17226,8 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17258,8 +17258,6 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 	switch response := response.(type) {
 	case *CommitCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17279,6 +17277,8 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17352,8 +17352,6 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 }
 func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	span.SetStatus(codes.Ok, http.StatusText(201))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17373,6 +17371,8 @@ func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.Respon
 			}
 		}
 	}
+	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17387,8 +17387,6 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 	switch response := response.(type) {
 	case *DeployKeyHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17408,6 +17406,8 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17488,8 +17488,6 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 	switch response := response.(type) {
 	case *DeploymentStatusHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17509,6 +17507,8 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17563,8 +17563,6 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	switch response := response.(type) {
 	case *RepositoryHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17584,6 +17582,8 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17742,8 +17742,6 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 	switch response := response.(type) {
 	case *RepositoryHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17763,6 +17761,8 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17935,8 +17935,6 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 	switch response := response.(type) {
 	case *ReleaseHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17956,6 +17954,8 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17997,8 +17997,6 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 }
 func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	span.SetStatus(codes.Ok, http.StatusText(201))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18018,6 +18016,8 @@ func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.R
 			}
 		}
 	}
+	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -18032,8 +18032,6 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 	switch response := response.(type) {
 	case *HookHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18053,6 +18051,8 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 				}
 			}
 		}
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18591,8 +18591,6 @@ func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerab
 
 }
 func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18612,12 +18610,12 @@ func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArch
 			}
 		}
 	}
+	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
 func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFoundHeaders, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(302)
-	span.SetStatus(codes.Ok, http.StatusText(302))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18637,6 +18635,8 @@ func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArch
 			}
 		}
 	}
+	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
@@ -20171,8 +20171,6 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	switch response := response.(type) {
 	case *ReposListBranchesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20192,6 +20190,8 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20258,8 +20258,6 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	switch response := response.(type) {
 	case *ReposListCollaboratorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20279,6 +20277,8 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20311,8 +20311,6 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 }
 func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20332,6 +20330,8 @@ func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommi
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20348,8 +20348,6 @@ func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommi
 }
 func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20369,6 +20367,8 @@ func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommen
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20387,8 +20387,6 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	switch response := response.(type) {
 	case *ReposListCommitStatusesForRefOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20408,6 +20406,8 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20442,8 +20442,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	switch response := response.(type) {
 	case *ReposListCommitsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20463,6 +20461,8 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20536,8 +20536,6 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	switch response := response.(type) {
 	case *ReposListContributorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20557,6 +20555,8 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20607,8 +20607,6 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 }
 func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20628,6 +20626,8 @@ func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20646,8 +20646,6 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	switch response := response.(type) {
 	case *ReposListDeploymentStatusesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20667,6 +20665,8 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20699,8 +20699,6 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 }
 func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20720,6 +20718,8 @@ func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20799,8 +20799,6 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 }
 func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20820,6 +20818,8 @@ func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.Res
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20836,8 +20836,6 @@ func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.Res
 }
 func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20857,6 +20855,8 @@ func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.R
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20875,8 +20875,6 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *ReposListForksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20896,6 +20894,8 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20928,8 +20928,6 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 }
 func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -20949,6 +20947,8 @@ func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20967,8 +20967,6 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	switch response := response.(type) {
 	case *ReposListInvitationsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -20988,6 +20986,8 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21065,8 +21065,6 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 }
 func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21086,6 +21084,8 @@ func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21104,8 +21104,6 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 	switch response := response.(type) {
 	case *ReposListPublicOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21125,6 +21123,8 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21162,8 +21162,6 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 }
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21183,6 +21181,8 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListP
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21199,8 +21199,6 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListP
 }
 func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21220,6 +21218,8 @@ func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeade
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21238,8 +21238,6 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	switch response := response.(type) {
 	case *ReposListReleasesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21259,6 +21257,8 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21291,8 +21291,6 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 }
 func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21312,6 +21310,8 @@ func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.Respons
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21328,8 +21328,6 @@ func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.Respons
 }
 func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21349,6 +21347,8 @@ func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.Respo
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21412,8 +21412,6 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	switch response := response.(type) {
 	case *ReposListWebhooksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21433,6 +21431,8 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -22900,8 +22900,6 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22921,6 +22919,8 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -23794,8 +23794,6 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *TeamsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -23815,6 +23813,8 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -23847,8 +23847,6 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 }
 func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -23868,6 +23866,8 @@ func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -23886,8 +23886,6 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	switch response := response.(type) {
 	case *TeamsListChildLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -23907,6 +23905,8 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -23965,8 +23965,6 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 }
 func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -23986,6 +23984,8 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussion
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24002,8 +24002,6 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussion
 }
 func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24023,6 +24021,8 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussio
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24039,8 +24039,6 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussio
 }
 func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24060,6 +24058,8 @@ func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgO
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24076,8 +24076,6 @@ func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgO
 }
 func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24097,6 +24095,8 @@ func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegac
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24115,8 +24115,6 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	switch response := response.(type) {
 	case *TeamsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24136,6 +24134,8 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -24231,8 +24231,6 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 }
 func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24252,6 +24250,8 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24278,8 +24278,6 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 }
 func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24299,6 +24297,8 @@ func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24317,8 +24317,6 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	switch response := response.(type) {
 	case *TeamsListMembersLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24338,6 +24336,8 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -24370,8 +24370,6 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 }
 func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24391,6 +24389,8 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInv
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24407,8 +24407,6 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInv
 }
 func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24428,6 +24426,8 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingIn
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24444,8 +24444,6 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingIn
 }
 func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24465,6 +24463,8 @@ func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeade
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24483,8 +24483,6 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	switch response := response.(type) {
 	case *TeamsListProjectsLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24504,6 +24502,8 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -24536,8 +24536,6 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 }
 func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -24557,6 +24555,8 @@ func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w 
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -24575,8 +24575,6 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24596,6 +24594,8 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -25821,8 +25821,6 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *UsersListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25842,6 +25840,8 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -25944,8 +25944,6 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	switch response := response.(type) {
 	case *UsersListEmailsForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25965,6 +25963,8 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -26030,8 +26030,6 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	switch response := response.(type) {
 	case *UsersListFollowedByAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26051,6 +26049,8 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -26103,8 +26103,6 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	switch response := response.(type) {
 	case *UsersListFollowersForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26124,6 +26122,8 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -26174,8 +26174,6 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 }
 func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26195,6 +26193,8 @@ func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserO
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -26211,8 +26211,6 @@ func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserO
 }
 func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26232,6 +26230,8 @@ func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserO
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -26250,8 +26250,6 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	switch response := response.(type) {
 	case *UsersListGpgKeysForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26271,6 +26269,8 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -26334,8 +26334,6 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 }
 func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26355,6 +26353,8 @@ func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHea
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -26373,8 +26373,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	switch response := response.(type) {
 	case *UsersListPublicEmailsForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26394,6 +26392,8 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -26457,8 +26457,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 }
 func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26478,6 +26476,8 @@ func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUse
 			}
 		}
 	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -26496,8 +26496,6 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	switch response := response.(type) {
 	case *UsersListPublicSSHKeysForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26517,6 +26515,8 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 				}
 			}
 		}
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
