@@ -168,6 +168,8 @@ func (g *Generator) responseToIR(
 			Doc:  doc,
 		}
 
+		// Note: use this in future?
+		//
 		// injectHeaderFields(headers, t)
 		// if withStatusCode {
 		// 	t.Fields = append(t.Fields, &ir.Field{
