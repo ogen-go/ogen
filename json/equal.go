@@ -48,12 +48,25 @@ func (c compare) equalNumber() (bool, error) {
 
 	// Fast path comparing.
 	switch {
-	case lval.Zero() != rval.Zero():
-		return false, nil
+	case lval.Zero() && rval.Zero():
+		return true, nil
 	case lval.Equal(rval): // Compare like byte slices.
 		return true, nil
+	case lval.IsInt() && rval.IsInt():
+		// If both values are integer, non-zero and are not equal as byte slice,
+		// so they are not equal as numbers.
+		return false, nil
+	default:
+		lnum, err := lval.Float64()
+		if err != nil {
+			break
+		}
+		rnum, err := rval.Float64()
+		if err != nil {
+			break
+		}
+		return lnum == rnum, nil
 	}
-	// TODO(tdakkota): try compare as int64/float64 if value fits into it.
 
 	lnum, rnum := new(big.Rat), new(big.Rat)
 	if err := lnum.UnmarshalText(lval); err != nil {
@@ -176,8 +189,18 @@ func (c compare) equal() (bool, error) {
 
 // Equal compares two JSON values.
 func Equal(a, b []byte) (bool, error) {
+	l, r := jx.GetDecoder(), jx.GetDecoder()
+	defer func() {
+		jx.PutDecoder(l)
+		jx.PutDecoder(r)
+	}()
+
+	l.ResetBytes(a)
+	r.ResetBytes(b)
+
 	c := compare{
-		left: jx.DecodeBytes(a), right: jx.DecodeBytes(b),
+		left:  l,
+		right: r,
 	}
 	return c.equal()
 }
