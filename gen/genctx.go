@@ -1,6 +1,10 @@
 package gen
 
-import "github.com/ogen-go/ogen/gen/ir"
+import (
+	"strings"
+
+	"github.com/ogen-go/ogen/gen/ir"
+)
 
 // genctx is a generation context.
 type genctx struct {
@@ -65,4 +69,17 @@ func (g *genctx) lookupWType(ref string) (*ir.Type, bool) {
 		return t, true
 	}
 	return nil, false
+}
+
+var escapeReplacer = strings.NewReplacer(
+	"/", "~1",
+	"~", "~0",
+)
+
+func (g *genctx) JSONPointer() string {
+	escaped := make([]string, len(g.path))
+	for i, part := range g.path {
+		escaped[i] = escapeReplacer.Replace(part)
+	}
+	return strings.Join(escaped, "/")
 }

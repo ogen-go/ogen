@@ -45,7 +45,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 // {{ $op.Name }} invokes {{ $op.Spec.OperationID }} operation.
 //
 {{- template "godoc_def" $op.GoDoc }}
-// {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
+// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
 	{{- if $op.Request }}{{/* Request validation */}}
 		{{- if $op.Request.Type.IsInterface }}
@@ -153,7 +153,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- template "encode_query_parameters" $op }}
 	{{- end }}
 
-	r := ht.NewRequest(ctx, {{ quote $op.Spec.HTTPMethod }}, u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
+	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
 	defer ht.PutRequest(r)
 
 	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}

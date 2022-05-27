@@ -7,7 +7,7 @@
 {{- range $op := $.Operations }}
 // Handle{{ $op.Name }}Request handles {{ $op.Spec.OperationID }} operation.
 //
-// {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
+// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{

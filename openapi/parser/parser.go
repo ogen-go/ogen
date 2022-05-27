@@ -1,8 +1,6 @@
 package parser
 
 import (
-	"strings"
-
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
@@ -122,7 +120,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	op := &openapi.Operation{
 		OperationID: spec.OperationID,
 		Description: spec.Description,
-		HTTPMethod:  strings.ToUpper(httpMethod),
+		HTTPMethod:  httpMethod,
 	}
 
 	opParams, err := p.parseParams(spec.Parameters)

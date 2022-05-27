@@ -6,6 +6,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/openapi"
+	"go.uber.org/zap"
 )
 
 func (g *Generator) generateHeaders(ctx *genctx, name string, headers map[string]*openapi.Header) (_ map[string]*ir.Parameter, err error) {
@@ -17,6 +18,7 @@ func (g *Generator) generateHeaders(ctx *genctx, name string, headers map[string
 	for hname, header := range headers {
 		ctx := ctx.appendPath(hname)
 		if http.CanonicalHeaderKey(hname) == "Content-Type" {
+			g.log.Warn("Content-Type is described separately and will be ignored in this section.", zap.String("pointer", ctx.JSONPointer()))
 			continue
 		}
 

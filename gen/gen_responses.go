@@ -48,6 +48,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			resp = responses[strconv.Itoa(code)]
 			doc  = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
+		ctx := ctx.appendPath(strconv.Itoa(code))
 		result.StatusCode[code], err = g.responseToIR(ctx, respName, doc, resp, false)
 		if err != nil {
 			return nil, errors.Wrapf(err, "%d", code)
@@ -59,6 +60,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
 		)
+		ctx := ctx.appendPath("default")
 		result.Default, err = g.responseToIR(ctx, respName, doc, def, true)
 		if err != nil {
 			return nil, errors.Wrap(err, "default")

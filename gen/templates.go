@@ -69,6 +69,7 @@ func templateFunctions() template.FuncMap {
 		"pascalSpecial": pascalSpecial,
 		"camelSpecial":  camelSpecial,
 		"capitalize":    capitalize.Capitalize,
+		"upper":         strings.ToUpper,
 
 		// Helpers for recursive encoding and decoding.
 		"elem": func(t *ir.Type, v string) Elem {

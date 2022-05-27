@@ -82,7 +82,7 @@ func (g *Generator) route() error {
 	var maxParametersCount int
 	for _, op := range g.operations {
 		if err := g.router.Add(Route{
-			Method:    op.Spec.HTTPMethod,
+			Method:    strings.ToUpper(op.Spec.HTTPMethod),
 			Path:      op.Spec.Path.String(),
 			Operation: op,
 		}); err != nil {

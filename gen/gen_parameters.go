@@ -13,7 +13,7 @@ import (
 func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for i, p := range params {
-		ctx := ctx.appendPath("[" + strconv.Itoa(i) + "]")
+		ctx := ctx.appendPath(strconv.Itoa(i))
 		param, err := g.generateParameter(ctx, opName, p)
 		if err != nil {
 			if err := g.fail(err); err != nil {
