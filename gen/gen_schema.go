@@ -94,9 +94,9 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	opts.setDefaults()
 
 	ctx := &genctx{
-		path:   []string{"#"},
-		global: newTStorage(),
-		local:  newTStorage(),
+		jsonptr: newJSONPointer("#"),
+		global:  newTStorage(),
+		local:   newTStorage(),
 	}
 
 	gen := newSchemaGen(func(ref string) (*ir.Type, bool) {

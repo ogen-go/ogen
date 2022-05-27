@@ -1,27 +1,22 @@
 package gen
 
 import (
-	"strings"
-
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
 // genctx is a generation context.
 type genctx struct {
-	path []string
+	jsonptr jsonpointer
 
 	global *tstorage // readonly
 	local  *tstorage
 }
 
 func (g *genctx) appendPath(v ...string) *genctx {
-	var newPath []string
-	newPath = append(newPath, g.path...)
-	newPath = append(newPath, v...)
 	return &genctx{
-		path:   newPath,
-		global: g.global,
-		local:  g.local,
+		jsonptr: g.jsonptr.Append(v...),
+		global:  g.global,
+		local:   g.local,
 	}
 }
 
@@ -71,15 +66,6 @@ func (g *genctx) lookupWType(ref string) (*ir.Type, bool) {
 	return nil, false
 }
 
-var escapeReplacer = strings.NewReplacer(
-	"/", "~1",
-	"~", "~0",
-)
-
 func (g *genctx) JSONPointer() string {
-	escaped := make([]string, len(g.path))
-	for i, part := range g.path {
-		escaped[i] = escapeReplacer.Replace(part)
-	}
-	return strings.Join(escaped, "/")
+	return g.jsonptr.String()
 }

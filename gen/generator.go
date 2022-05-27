@@ -129,9 +129,9 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 		}
 
 		ctx := &genctx{
-			path:   []string{"#", "paths", routePath, spec.HTTPMethod},
-			global: g.tstorage,
-			local:  newTStorage(),
+			jsonptr: newJSONPointer("#", "paths", routePath, spec.HTTPMethod),
+			global:  g.tstorage,
+			local:   newTStorage(),
 		}
 
 		op, err := g.generateOperation(ctx, spec)
