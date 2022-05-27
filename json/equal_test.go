@@ -35,13 +35,15 @@ func TestEqual(t *testing.T) {
 		{`"foo"`, `"foo "`, false},
 		// Number.
 		{`0`, `0`, true},
+		{`-0`, `-0`, true},
+		{`-0`, `0`, true},
 		{`1`, `1`, true},
 		{`10`, `10`, true},
 		{`0.0`, `0.0`, true},
 		{`10`, `1e1`, true},
-		{`1000000000000000000000000000000`, `1e30`, true},
+		{` 1000000000000000000000000000000`, `1000000000000000000000000000000`, true},
+		{`1e1000`, `1.0e1000`, true},
 		{`10`, `1.0e1`, true},
-		{`-0`, `0`, true},
 		{`0`, `1`, false},
 		{`-1`, `1`, false},
 		{`1e1`, `100`, false},
@@ -118,4 +120,48 @@ func TestEqual(t *testing.T) {
 			}
 		})
 	})
+}
+
+func BenchmarkEqual(b *testing.B) {
+	benches := []struct {
+		name string
+		a, b string
+		sink bool
+	}{
+		{`Zero`, `0`, `0`, true},
+		{`SmallInt`, `10`, `21`, false},
+		{`BigInt`, `1000000000000000000000000`, `21000000000000000000000000`, false},
+		{`SmallFloat`, `15.20`, `69.12`, false},
+		{`BigFloat`, `1e100`, `1e101`, false},
+		{`PlainString`, `"foo10bar"`, `"foobar"`, false},
+		{`EscapedString`, `"foo\nbar"`, `"foobar"`, false},
+		{`Bool`, `true`, `true`, true},
+		{`Array`, `[1,2,3,5,6,732,4312]`, `[1,2,3,5,6,732,4312]`, true},
+		{`Object`, `{"b":"a","a":"b","foo":"bar"}'`, `{"foo":"bar","a":"b","b":"a"}`, true},
+	}
+
+	for _, bb := range benches {
+		bb := bb
+		b.Run(bb.name, func(b *testing.B) {
+			x, y := []byte(bb.a), []byte(bb.b)
+			var (
+				sink bool
+				err  error
+			)
+
+			b.ReportAllocs()
+			b.ResetTimer()
+
+			for i := 0; i < b.N; i++ {
+				sink, err = Equal(x, y)
+			}
+
+			if err != nil {
+				b.Fatal(err)
+			}
+			if bb.sink != sink {
+				b.Fatalf("%q == %q must be %v", x, y, bb.sink)
+			}
+		})
+	}
 }
