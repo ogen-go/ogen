@@ -135,25 +135,41 @@ func (c compare) equalObject() (bool, error) {
 	if err != nil {
 		return false, errors.Wrap(err, "left")
 	}
-	rmap, err := collectObject(c.right)
+
+	riter, err := c.right.ObjIter()
 	if err != nil {
 		return false, errors.Wrap(err, "right")
 	}
-
-	if len(lmap) != len(rmap) {
-		return false, nil
-	}
-
-	for name, lvalue := range lmap {
-		rvalue, ok := rmap[name]
+	i := 0
+	for riter.Next() {
+		lval, ok := lmap[string(riter.Key())]
 		if !ok {
 			return false, nil
 		}
-		// Raw already validated.
-		if ok, _ := Equal(rvalue, lvalue); !ok {
+		i++
+
+		rval, err := c.right.Raw()
+		if err != nil {
+			return false, errors.Wrap(err, "right")
+		}
+
+		ok, err = Equal(lval, rval)
+		if err != nil {
+			return false, errors.Wrapf(err, "%q", riter.Key())
+		}
+		if !ok {
 			return false, nil
 		}
 	}
+	if err := riter.Err(); err != nil {
+		return false, errors.Wrap(err, "right")
+	}
+
+	// Right object is smaller than left.
+	if len(lmap) != i {
+		return false, nil
+	}
+
 	return true, nil
 }
 
