@@ -54,7 +54,7 @@ func testGenerate(name string, ignore ...string) func(t *testing.T) {
 			// Check that all ignore rules are necessary.
 			for _, feature := range ignore {
 				if _, ok := notImplemented[feature]; !ok {
-					t.Errorf("Ignore rule %q hasn' been used", feature)
+					t.Errorf("Ignore rule %q hasn't been used", feature)
 				}
 			}
 
@@ -105,6 +105,9 @@ func TestGenerate(t *testing.T) {
 		"gotd_bot_api.json":     {},
 		"k8s.json": {
 			"unsupported content types",
+		},
+		"test_content_header_response.json": {
+			"parameter content field",
 		},
 		"test_content_path_parameter.yml": {
 			"parameter content field",

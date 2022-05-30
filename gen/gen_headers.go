@@ -4,9 +4,10 @@ import (
 	"net/http"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
+
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/openapi"
-	"go.uber.org/zap"
 )
 
 func (g *Generator) generateHeaders(ctx *genctx, name string, headers map[string]*openapi.Header) (_ map[string]*ir.Parameter, err error) {
@@ -28,6 +29,7 @@ func (g *Generator) generateHeaders(ctx *genctx, name string, headers map[string
 				return nil, errors.Wrap(err, hname)
 			}
 
+			delete(result, hname)
 			continue
 		}
 	}
