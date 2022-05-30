@@ -27,6 +27,15 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 			return nil, errors.Errorf("parameter %d is empty or null", idx)
 		}
 
+		// OpenAPI spec says (https://spec.openapis.org/oas/v3.1.0#fixed-fields-9):
+		//
+		// If in is "header" and the name field is "Accept", "Content-Type" or "Authorization",
+		// the parameter definition SHALL be ignored.
+		if n := spec.Name; spec.In == "header" &&
+			(n == "Accept" || n == "Content-Type" || n == "Authorization") {
+			continue
+		}
+
 		param, err := p.parseParameter(spec, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)

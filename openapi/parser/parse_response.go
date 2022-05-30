@@ -56,6 +56,10 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Re
 		return nil, errors.Wrap(err, "content")
 	}
 
+	// OpenAPI specs says (https://spec.openapis.org/oas/v3.1.0#fixed-fields-14):
+	//
+	// If a response header is defined with the name "Content-Type", it SHALL be ignored.
+	delete(resp.Headers, "Content-Type")
 	headers, err := p.parseHeaders(resp.Headers)
 	if err != nil {
 		return nil, errors.Wrap(err, "headers")
