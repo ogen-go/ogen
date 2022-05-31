@@ -3,6 +3,7 @@ package ir
 import (
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -108,6 +109,8 @@ const (
 )
 
 func (t ContentType) String() string { return string(t) }
+
+func (t ContentType) Mask() bool { return strings.ContainsRune(string(t), '*') }
 
 func (t ContentType) JSON() bool { return t == ContentTypeJSON }
 

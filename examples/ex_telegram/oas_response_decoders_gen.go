@@ -4,7 +4,9 @@ package api
 
 import (
 	"io"
+	"mime"
 	"net/http"
+	"path"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -16,8 +18,17 @@ import (
 func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -43,8 +54,17 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -81,8 +101,17 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -108,8 +137,17 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -146,8 +184,17 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -173,8 +220,17 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -211,8 +267,17 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -238,8 +303,17 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -276,8 +350,17 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -303,8 +386,17 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -341,8 +433,17 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -368,8 +469,17 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -406,8 +516,17 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -433,8 +552,17 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -471,8 +599,17 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -498,8 +635,17 @@ func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -536,8 +682,17 @@ func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res 
 func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -563,8 +718,17 @@ func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -601,8 +765,17 @@ func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err 
 func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res ResultMessageId, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -628,8 +801,17 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -666,8 +848,17 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultChatInviteLink, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -693,8 +884,17 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -731,8 +931,17 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -758,8 +967,17 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -796,8 +1014,17 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -823,8 +1050,17 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -861,8 +1097,17 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -888,8 +1133,17 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -926,8 +1180,17 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -953,8 +1216,17 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -991,8 +1263,17 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1018,8 +1299,17 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1056,8 +1346,17 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1083,8 +1382,17 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1121,8 +1429,17 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1148,8 +1465,17 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1186,8 +1512,17 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1213,8 +1548,17 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1251,8 +1595,17 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultChatInviteLink, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1278,8 +1631,17 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1316,8 +1678,17 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1343,8 +1714,17 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1381,8 +1761,17 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1408,8 +1797,17 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1446,8 +1844,17 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1473,8 +1880,17 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1511,8 +1927,17 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1538,8 +1963,17 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1576,8 +2010,17 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1603,8 +2046,17 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1641,8 +2093,17 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultString, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1668,8 +2129,17 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1706,8 +2176,17 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1733,8 +2212,17 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1771,8 +2259,17 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1798,8 +2295,17 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1836,8 +2342,17 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat
 func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (res ResultArrayOfChatMember, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1863,8 +2378,17 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1901,8 +2425,17 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res ResultChatMember, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1928,8 +2461,17 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1966,8 +2508,17 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res ResultInt, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -1993,8 +2544,17 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2031,8 +2591,17 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2058,8 +2627,17 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2096,8 +2674,17 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res ResultArrayOfGameHighScore, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2123,8 +2710,17 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2161,8 +2757,17 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2188,8 +2793,17 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2226,8 +2840,17 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, 
 func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res ResultArrayOfBotCommand, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2253,8 +2876,17 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2291,8 +2923,17 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2318,8 +2959,17 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2356,8 +3006,17 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultArrayOfUpdate, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2383,8 +3042,17 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultA
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2421,8 +3089,17 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultA
 func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (res ResultUserProfilePhotos, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2448,8 +3125,17 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2486,8 +3172,17 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res ResultWebhookInfo, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2513,8 +3208,17 @@ func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res Res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2551,8 +3255,17 @@ func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res Res
 func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2578,8 +3291,17 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2616,8 +3338,17 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2643,8 +3374,17 @@ func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2681,8 +3421,17 @@ func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err
 func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2708,8 +3457,17 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2746,8 +3504,17 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2773,8 +3540,17 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2811,8 +3587,17 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2838,8 +3623,17 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2876,8 +3670,17 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultChatInviteLink, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2903,8 +3706,17 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2941,8 +3753,17 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -2968,8 +3789,17 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3006,8 +3836,17 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3033,8 +3872,17 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMe
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3071,8 +3919,17 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMe
 func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3098,8 +3955,17 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3136,8 +4002,17 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 func decodeSendContactResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3163,8 +4038,17 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3201,8 +4085,17 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3228,8 +4121,17 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMes
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3266,8 +4168,17 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMes
 func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3293,8 +4204,17 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3331,8 +4251,17 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3358,8 +4287,17 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMes
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3396,8 +4334,17 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMes
 func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3423,8 +4370,17 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3461,8 +4417,17 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3488,8 +4453,17 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3526,8 +4500,17 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res ResultArrayOfMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3553,8 +4536,17 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3591,8 +4583,17 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3618,8 +4619,17 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3656,8 +4666,17 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3683,8 +4702,17 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMe
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3721,8 +4749,17 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMe
 func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3748,8 +4785,17 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMes
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3786,8 +4832,17 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMes
 func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3813,8 +4868,17 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3851,8 +4915,17 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3878,8 +4951,17 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMe
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3916,8 +4998,17 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMe
 func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3943,8 +5034,17 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMe
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -3981,8 +5081,17 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMe
 func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4008,8 +5117,17 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4046,8 +5164,17 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4073,8 +5200,17 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMe
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4111,8 +5247,17 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMe
 func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4138,8 +5283,17 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4176,8 +5330,17 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4203,8 +5366,17 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4241,8 +5413,17 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4268,8 +5449,17 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4306,8 +5496,17 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4333,8 +5532,17 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4371,8 +5579,17 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4398,8 +5615,17 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4436,8 +5662,17 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4463,8 +5698,17 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4501,8 +5745,17 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4528,8 +5781,17 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4566,8 +5828,17 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4593,8 +5864,17 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4631,8 +5911,17 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4658,8 +5947,17 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4696,8 +5994,17 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4723,8 +6030,17 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4761,8 +6077,17 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4788,8 +6113,17 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4826,8 +6160,17 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4853,8 +6196,17 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4891,8 +6243,17 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4918,8 +6279,17 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4956,8 +6326,17 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPoll, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -4983,8 +6362,17 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPol
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5021,8 +6409,17 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPol
 func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5048,8 +6445,17 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5086,8 +6492,17 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5113,8 +6528,17 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (re
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5151,8 +6575,17 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (re
 func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5178,8 +6611,17 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5216,8 +6658,17 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5243,8 +6694,17 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5281,8 +6741,17 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res ResultFile, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -5308,8 +6777,17 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch ct := resp.Header.Get("Content-Type"); ct {
-			case "application/json":
+			match := func(pattern, value string) bool {
+				ok, _ := path.Match(pattern, value)
+				return ok
+			}
+			_ = match
+			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+			if err != nil {
+				return res, errors.Wrap(err, "parse media type")
+			}
+			switch {
+			case ct == "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
 				if _, err := io.Copy(buf, resp.Body); err != nil {

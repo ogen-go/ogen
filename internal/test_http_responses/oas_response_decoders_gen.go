@@ -5,7 +5,9 @@ package api
 import (
 	"bytes"
 	"io"
+	"mime"
 	"net/http"
+	"path"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -19,8 +21,17 @@ import (
 func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res AnyContentTypeBinaryStringSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "*/*":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case match("*/*", ct):
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -38,8 +49,17 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response, span tr
 func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response, span trace.Span) (res AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "*/*":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case match("*/*", ct):
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -182,8 +202,17 @@ func decodeHeadersDefaultResponse(resp *http.Response, span trace.Span) (res Hea
 func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span) (res MultipleGenericResponsesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -208,8 +237,17 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 			return res, validate.InvalidContentType(ct)
 		}
 	case 201:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/json":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
@@ -240,8 +278,17 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res OctetStreamBinaryStringSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/octet-stream":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/octet-stream":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -259,8 +306,17 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace
 func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) (res OctetStreamEmptySchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch ct := resp.Header.Get("Content-Type"); ct {
-		case "application/octet-stream":
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/octet-stream":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err

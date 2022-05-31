@@ -16,7 +16,6 @@ import (
 )
 
 func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "*/*")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	if _, err := io.Copy(w, response); err != nil {
@@ -26,7 +25,6 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinar
 
 }
 func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "*/*")
 	w.WriteHeader(response.StatusCode)
 	st := http.StatusText(response.StatusCode)
 	if response.StatusCode >= http.StatusBadRequest {

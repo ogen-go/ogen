@@ -49,10 +49,22 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
 	{{- end }}
 {{- else }}{{/* Decode content response */}}
-	switch ct := resp.Header.Get("Content-Type"); ct {
+	match := func(pattern, value string) bool {
+		ok, _ := path.Match(pattern, value)
+		return ok
+	}
+	_ = match
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
 	{{- range $contentType, $originalType := $response.Contents }}{{/* Range over contents */}}
-		case {{ quote $contentType }}:
-
+		{{- if not $contentType.Mask }}
+		case ct == {{ quote $contentType }}:
+		{{- else }}
+		case match({{ quote $contentType }}, ct):
+		{{- end }}
 		{{- $type := $originalType }}
 		{{- if or $response.WithStatusCode $response.WithHeaders }}
 			{{- $type = ($type.MustField "Response").Type }}
