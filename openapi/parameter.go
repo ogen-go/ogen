@@ -34,14 +34,22 @@ type Parameter struct {
 	Name        string
 	Description string
 	Schema      *jsonschema.Schema
-	Content     map[string]*MediaType
+	Content     *ParameterContent
 	In          ParameterLocation
 	Style       ParameterStyle
 	Explode     bool
 	Required    bool
 }
 
-// ParameterStyle is
+// ParameterContent describes OpenAPI Parameter content field.
+//
+// Parameter "content" field described as a map, and it MUST only contain one entry.
+type ParameterContent struct {
+	Name  string
+	Media *MediaType
+}
+
+// ParameterStyle is an OpenAPI Parameter style.
 type ParameterStyle string
 
 // String implements fmt.Stringer.

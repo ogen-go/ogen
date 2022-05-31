@@ -94,7 +94,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return nil, errors.Wrap(err, "schema")
 	}
 
-	content, err := p.parseContent(param.Content)
+	content, err := p.parseParameterContent(param.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "content")
 	}
