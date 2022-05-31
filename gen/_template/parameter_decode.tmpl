@@ -36,7 +36,21 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				{{- template "uri/decode" $el }}
+				{{- if $p.Spec.Content }}
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+                    	{{- template "json/dec" $el }}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
+					return nil
+				{{- else }}
+				    {{- template "uri/decode" $el }}
+				{{- end }}
 			}); err != nil {
 				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
@@ -60,7 +74,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 		param := args[{{ $idx }}]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param: {{ quote $p.Spec.Name}},
+				Param: {{ quote $p.Spec.Name }},
 				Value: param,
 				Style: uri.PathStyle{{ capitalize $p.Spec.Style.String }},
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
@@ -86,7 +100,21 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 		}
 		if err := h.HasParam(cfg); err == nil {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				{{- template "uri/decode" $el }}
+				{{- if $p.Spec.Content }}
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+                    	{{- template "json/dec" $el }}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
+					return nil
+				{{- else }}
+				    {{- template "uri/decode" $el }}
+				{{- end }}
 			}); err != nil {
 				return params, errors.Wrap(err, {{ quote $errParse }})
 			}

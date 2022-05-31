@@ -67,10 +67,6 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 }
 
 func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Parameter) (*ir.Parameter, error) {
-	if p.Content != nil {
-		return nil, &ErrNotImplemented{"parameter content field"}
-	}
-
 	if p.In == openapi.LocationCookie {
 		return nil, &ErrNotImplemented{"cookie params"}
 	}
@@ -84,26 +80,55 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		return nil, errors.Wrapf(err, "parameter type name: %q", p.Name)
 	}
 
-	ctx = ctx.appendPath("schema")
-	t, err := g.generateSchema(ctx, paramTypeName, p.Schema)
+	generate := func(ctx *genctx, sch *jsonschema.Schema) (*ir.Type, error) {
+		t, err := g.generateSchema(ctx, paramTypeName, sch)
+		if err != nil {
+			return nil, err
+		}
+
+		t, err = boxType(ctx, ir.GenericVariant{
+			Nullable: sch != nil && sch.Nullable,
+			Optional: !p.Required,
+		}, t)
+		if err != nil {
+			return nil, err
+		}
+		return t, nil
+	}
+	t, err := func() (*ir.Type, error) {
+		if content := p.Content; content != nil {
+			if val := content.Name; val != "application/json" {
+				return nil, errors.Wrapf(
+					&ErrNotImplemented{"parameter content encoding"},
+					"%q", val,
+				)
+			}
+
+			t, err := generate(ctx.appendPath("content"), content.Media.Schema)
+			if err != nil {
+				return nil, err
+			}
+			t.AddFeature("json")
+
+			return t, nil
+		} else {
+			t, err := generate(ctx.appendPath("schema"), p.Schema)
+			if err != nil {
+				return nil, err
+			}
+			t.AddFeature("uri")
+
+			visited := map[*ir.Type]struct{}{}
+			if err := isParamAllowed(t, true, visited); err != nil {
+				return nil, err
+			}
+			return t, nil
+		}
+	}()
 	if err != nil {
 		return nil, errors.Wrapf(err, "%q", p.Name)
 	}
 
-	t, err = boxType(ctx, ir.GenericVariant{
-		Nullable: p.Schema != nil && p.Schema.Nullable,
-		Optional: !p.Required,
-	}, t)
-	if err != nil {
-		return nil, errors.Wrapf(err, "%q", p.Name)
-	}
-
-	visited := map[*ir.Type]struct{}{}
-	if err := isParamAllowed(t, true, visited); err != nil {
-		return nil, err
-	}
-
-	t.AddFeature("uri")
 	paramName, err := pascalNonEmpty(p.Name)
 	if err != nil {
 		return nil, errors.Wrapf(err, "parameter name: %q", p.Name)

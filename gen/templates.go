@@ -195,6 +195,10 @@ func vendoredTemplates() *template.Template {
 }
 
 func isObjectParam(p *ir.Parameter) bool {
+	if p.Spec != nil && p.Spec.Content != nil {
+		// "content" encoding.
+		return false
+	}
 	typ := p.Type
 	if typ.IsGeneric() {
 		typ = typ.GenericOf
