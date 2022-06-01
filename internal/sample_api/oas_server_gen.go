@@ -138,6 +138,10 @@ type Handler interface {
 	//
 	// GET /stringIntMap
 	StringIntMapGet(ctx context.Context) (StringIntMap, error)
+	// TestContentParameter implements testContentParameter operation.
+	//
+	// GET /testContentParameter
+	TestContentParameter(ctx context.Context, params TestContentParameterParams) (string, error)
 	// TestFloatValidation implements testFloatValidation operation.
 	//
 	// POST /testFloatValidation

@@ -1624,6 +1624,72 @@ func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err err
 	return result, nil
 }
 
+// TestContentParameter invokes testContentParameter operation.
+//
+// GET /testContentParameter
+func (c *Client) TestContentParameter(ctx context.Context, params TestContentParameterParams) (res string, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testContentParameter"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestContentParameter",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testContentParameter"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "param" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "param",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			enc := jx.GetEncoder()
+			defer jx.PutEncoder(enc)
+			func(e *jx.Encoder) {
+				if params.Param.Set {
+					params.Param.Encode(e)
+				}
+			}(enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestContentParameterResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestFloatValidation invokes testFloatValidation operation.
 //
 // POST /testFloatValidation

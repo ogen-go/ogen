@@ -447,6 +447,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+				case 'C': // Prefix: "ContentParameter"
+					if l := len("ContentParameter"); len(elem) >= l && elem[0:l] == "ContentParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestContentParameter
+						s.handleTestContentParameterRequest([0]string{}, w, r)
+
+						return
+					}
 				case 'O': // Prefix: "ObjectQueryParameter"
 					if l := len("ObjectQueryParameter"); len(elem) >= l && elem[0:l] == "ObjectQueryParameter" {
 						elem = elem[l:]
@@ -1126,6 +1139,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					if len(elem) == 0 {
 						// Leaf: GetHeader
 						r.name = "GetHeader"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'C': // Prefix: "ContentParameter"
+					if l := len("ContentParameter"); len(elem) >= l && elem[0:l] == "ContentParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestContentParameter
+						r.name = "TestContentParameter"
 						r.args = args
 						r.count = 0
 						return r, true

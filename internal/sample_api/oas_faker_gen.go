@@ -1010,6 +1010,15 @@ func (s *OptStringStringMap) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptTestContentParameterParam) SetFake() {
+	var elem TestContentParameterParam
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptTime) SetFake() {
 	var elem time.Time
 	{
@@ -1360,6 +1369,30 @@ func (s *StringStringMap) SetFake() {
 	)
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *TestContentParameterParam) SetFake() {
+	{
+		{
+			s.Style = "string"
+		}
+	}
+	{
+		{
+			s.Min = int(0)
+		}
+	}
+	{
+		{
+			s.Max = int(0)
+		}
+	}
+	{
+		{
+			s.Filter = "string"
+		}
 	}
 }
 

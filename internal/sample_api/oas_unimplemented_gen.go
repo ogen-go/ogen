@@ -214,6 +214,13 @@ func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r StringIntMap
 	return r, ht.ErrNotImplemented
 }
 
+// TestContentParameter implements testContentParameter operation.
+//
+// GET /testContentParameter
+func (UnimplementedHandler) TestContentParameter(ctx context.Context, params TestContentParameterParams) (r string, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestFloatValidation implements testFloatValidation operation.
 //
 // POST /testFloatValidation
