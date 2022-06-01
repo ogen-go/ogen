@@ -111,19 +111,19 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 			t.AddFeature("json")
 
 			return t, nil
-		} else {
-			t, err := generate(ctx.appendPath("schema"), p.Schema)
-			if err != nil {
-				return nil, err
-			}
-			t.AddFeature("uri")
-
-			visited := map[*ir.Type]struct{}{}
-			if err := isParamAllowed(t, true, visited); err != nil {
-				return nil, err
-			}
-			return t, nil
 		}
+
+		t, err := generate(ctx.appendPath("schema"), p.Schema)
+		if err != nil {
+			return nil, err
+		}
+		t.AddFeature("uri")
+
+		visited := map[*ir.Type]struct{}{}
+		if err := isParamAllowed(t, true, visited); err != nil {
+			return nil, err
+		}
+		return t, nil
 	}()
 	if err != nil {
 		return nil, errors.Wrapf(err, "%q", p.Name)
