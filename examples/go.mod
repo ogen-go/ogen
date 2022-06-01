@@ -3,8 +3,8 @@ module github.com/ogen-go/ogen/examples
 go 1.18
 
 require (
-	github.com/go-faster/errors v0.6.0
-	github.com/go-faster/jx v0.35.1
+	github.com/go-faster/errors v0.6.1
+	github.com/go-faster/jx v0.35.2
 	github.com/google/uuid v1.3.0
 	github.com/ogen-go/ogen v0.0.0
 	github.com/stretchr/testify v1.7.1
