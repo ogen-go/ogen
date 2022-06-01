@@ -242,6 +242,11 @@ func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.NilIn
 	}, nil
 }
 
+func (s sampleAPIServer) TestContentParameter(ctx context.Context, params api.TestContentParameterParams) (string, error) {
+	val, _ := params.Param.Get()
+	return val.Style, nil
+}
+
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/payloads/pet.json
@@ -561,6 +566,12 @@ func TestIntegration(t *testing.T) {
 			resp, err := client.SecurityTest(ctx)
 			a.NoError(err)
 			a.Equal("десять", resp)
+		})
+		t.Run("TestContentParameter", func(t *testing.T) {
+			a := require.New(t)
+			a.HTTPBodyContains(h.ServeHTTP, http.MethodGet, s.URL+"/testContentParameter", url.Values{
+				"param": {`{"filter":"bar","style":"foo","min":10,"max":10}`},
+			}, "foo")
 		})
 	})
 

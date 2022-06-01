@@ -37,7 +37,17 @@ q := uri.NewQueryEncoder()
 	}
 
 	if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-		{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
+		{{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
+		{{- if $param.Spec.Content }}
+			enc := jx.GetEncoder()
+			defer jx.PutEncoder(enc)
+			func(e *jx.Encoder) {
+            	{{ template "json/enc" $el }}
+			}(enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		{{- else }}
+		    {{- template "uri/encode" $el }}
+		{{- end }}
 	}); err != nil {
 		return res, errors.Wrap(err, "encode query")
 	}
@@ -55,7 +65,17 @@ h := uri.NewHeaderEncoder(r.Header)
 		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 	}
 	if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-		{{- template "uri/encode" elem $p.Type (printf "params.%s" $p.Name) }}
+		{{- $el := elem $p.Type (printf "params.%s" $p.Name) }}
+		{{- if $p.Spec.Content }}
+			enc := jx.GetEncoder()
+			defer jx.PutEncoder(enc)
+			func(e *jx.Encoder) {
+            	{{ template "json/enc" $el }}
+			}(enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		{{- else }}
+		    {{- template "uri/encode" $el }}
+		{{- end }}
 	}); err != nil {
 		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
 	}

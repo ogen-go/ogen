@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 
 	"github.com/ogen-go/ogen/conv"
@@ -731,6 +732,44 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params Pe
 			}
 		} else {
 			return params, errors.Wrap(err, "query")
+		}
+	}
+	return params, nil
+}
+
+type TestContentParameterParams struct {
+	Param OptTestContentParameterParam
+}
+
+func decodeTestContentParameterParams(args [0]string, r *http.Request) (params TestContentParameterParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: param.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "param",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					params.Param.Reset()
+					if err := params.Param.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: param: parse")
+			}
 		}
 	}
 	return params, nil

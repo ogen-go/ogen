@@ -1060,6 +1060,49 @@ func decodeStringIntMapGetResponse(resp *http.Response, span trace.Span) (res St
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
+func decodeTestContentParameterResponse(resp *http.Response, span trace.Span) (res string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		match := func(pattern, value string) bool {
+			ok, _ := path.Match(pattern, value)
+			return ok
+		}
+		_ = match
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response string
+			if err := func() error {
+				v, err := d.Str()
+				response = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
 func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (res TestFloatValidationOK, err error) {
 	switch resp.StatusCode {
 	case 200:

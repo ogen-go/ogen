@@ -107,10 +107,10 @@ func TestGenerate(t *testing.T) {
 			"unsupported content types",
 		},
 		"test_content_header_response.json": {
-			"parameter content field",
+			"parameter content encoding",
 		},
 		"test_content_path_parameter.yml": {
-			"parameter content field",
+			"parameter content encoding",
 		},
 		"petstore-expanded.yml": {
 			"allOf",
@@ -121,7 +121,6 @@ func TestGenerate(t *testing.T) {
 		"superset.json": {
 			"allOf",
 			"unsupported content types",
-			"parameter content field",
 		},
 	}
 

@@ -8136,7 +8136,7 @@
         },
         "type": "array"
       },
-      "get_fav_star_ids_schema": {
+      "get_fav_star_ids_schema_content": {
         "items": {
           "type": "integer"
         },
@@ -10029,7 +10029,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/get_fav_star_ids_schema"
+                  "$ref": "#/components/schemas/get_fav_star_ids_schema_content"
                 }
               }
             },
@@ -11611,7 +11611,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/get_fav_star_ids_schema"
+                  "$ref": "#/components/schemas/get_fav_star_ids_schema_content"
                 }
               }
             },

@@ -858,6 +858,56 @@
           }
         }
       }
+    },
+    "/testContentParameter": {
+      "get": {
+        "operationId": "testContentParameter",
+        "parameters": [
+          {
+            "name": "param",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "style",
+                    "min",
+                    "max",
+                    "filter"
+                  ],
+                  "properties": {
+                    "style": {
+                      "type": "string"
+                    },
+                    "min": {
+                      "type": "integer"
+                    },
+                    "max": {
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

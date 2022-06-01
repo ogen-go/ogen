@@ -24,6 +24,27 @@ func (p *parser) parseContent(content map[string]ogen.Media) (_ map[string]*open
 	return result, nil
 }
 
+func (p *parser) parseParameterContent(content map[string]ogen.Media) (*openapi.ParameterContent, error) {
+	if content == nil {
+		return nil, nil
+	}
+	if len(content) != 1 {
+		return nil, errors.New(`"content" map MUST only contain one entry`)
+	}
+
+	for name, m := range content {
+		media, err := p.parseMediaType(m)
+		if err != nil {
+			return nil, errors.Wrap(err, name)
+		}
+		return &openapi.ParameterContent{
+			Name:  name,
+			Media: media,
+		}, nil
+	}
+	panic("unreachable")
+}
+
 func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 	s, err := p.schemaParser.Parse(m.Schema.ToJSONSchema())
 	if err != nil {

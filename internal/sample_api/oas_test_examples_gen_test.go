@@ -703,6 +703,18 @@ func TestStringStringMap_EncodeDecode(t *testing.T) {
 	typ2 = make(StringStringMap)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestTestContentParameterParam_EncodeDecode(t *testing.T) {
+	var typ TestContentParameterParam
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TestContentParameterParam
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestTestFloatValidation_EncodeDecode(t *testing.T) {
 	var typ TestFloatValidation
 	typ.SetFake()

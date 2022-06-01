@@ -50,17 +50,12 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx resolveCtx) (
 		return nil, errors.New("header MUST contain either a schema property, or a content property")
 	}
 
-	if header.Content != nil && len(header.Content) < 1 {
-		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
-		return nil, errors.New("content must have at least one entry")
-	}
-
 	schema, err := p.schemaParser.Parse(header.Schema.ToJSONSchema())
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}
 
-	content, err := p.parseContent(header.Content)
+	content, err := p.parseParameterContent(header.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "content")
 	}

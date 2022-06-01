@@ -2558,6 +2558,52 @@ func (o OptStringStringMap) Or(d StringStringMap) StringStringMap {
 	return d
 }
 
+// NewOptTestContentParameterParam returns new OptTestContentParameterParam with value set to v.
+func NewOptTestContentParameterParam(v TestContentParameterParam) OptTestContentParameterParam {
+	return OptTestContentParameterParam{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestContentParameterParam is optional TestContentParameterParam.
+type OptTestContentParameterParam struct {
+	Value TestContentParameterParam
+	Set   bool
+}
+
+// IsSet returns true if OptTestContentParameterParam was set.
+func (o OptTestContentParameterParam) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestContentParameterParam) Reset() {
+	var v TestContentParameterParam
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestContentParameterParam) SetTo(v TestContentParameterParam) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestContentParameterParam) Get() (v TestContentParameterParam, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestContentParameterParam) Or(d TestContentParameterParam) TestContentParameterParam {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTestFormDeepObject returns new OptTestFormDeepObject with value set to v.
 func NewOptTestFormDeepObject(v TestFormDeepObject) OptTestFormDeepObject {
 	return OptTestFormDeepObject{
@@ -3119,6 +3165,13 @@ func (s *StringStringMap) init() StringStringMap {
 		*s = m
 	}
 	return m
+}
+
+type TestContentParameterParam struct {
+	Style  string "json:\"style\""
+	Min    int    "json:\"min\""
+	Max    int    "json:\"max\""
+	Filter string "json:\"filter\""
 }
 
 // Ref: #/components/schemas/TestFloatValidation
