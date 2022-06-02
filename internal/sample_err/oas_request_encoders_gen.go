@@ -3,6 +3,9 @@
 package api
 
 import (
+	"bytes"
+	"io"
+
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -11,13 +14,15 @@ func encodeDataCreateRequestJSON(
 	req OptData,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }

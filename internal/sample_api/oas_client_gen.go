@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/url"
@@ -207,15 +206,14 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeDefaultTestRequestJSON(request, span)
+	fn, err := encodeDefaultTestRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/defaultTest"
@@ -239,8 +237,15 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -420,21 +425,27 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeFoobarPostRequestJSON(request, span)
+	fn, err := encodeFoobarPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -670,21 +681,27 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOneofBugRequestJSON(request, span)
+	fn, err := encodeOneofBugRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/oneofBug"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -785,21 +802,27 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePetCreateRequestJSON(request, span)
+	fn, err := encodePetCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1270,21 +1293,27 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePetUpdateNameAliasPostRequestJSON(request, span)
+	fn, err := encodePetUpdateNameAliasPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateNameAlias"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1348,21 +1377,27 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePetUpdateNamePostRequestJSON(request, span)
+	fn, err := encodePetUpdateNamePostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateName"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1407,14 +1442,14 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/octet-stream"
-	buf, err := encodePetUploadAvatarByIDRequestOctetStream(request, span)
+	fn, err := encodePetUploadAvatarByIDRequestOctetStream(request, span)
 	if err != nil {
 		return res, err
 	}
-	reqBody = buf
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
@@ -1435,8 +1470,15 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1723,21 +1765,27 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTestFloatValidationRequestJSON(request, span)
+	fn, err := encodeTestFloatValidationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/testFloatValidation"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1780,20 +1828,27 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/x-www-form-urlencoded"
-	buf, err := encodeTestFormURLEncodedRequestFormURLEncoded(request, span)
+	fn, err := encodeTestFormURLEncodedRequestFormURLEncoded(request, span)
 	if err != nil {
 		return res, err
 	}
-	reqBody = buf
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/testFormURLEncoded"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1836,21 +1891,28 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "multipart/form-data"
-	buf, ct, err := encodeTestMultipartRequest(request, span)
+	fn, ct, err := encodeTestMultipartRequest(request, span)
 	if err != nil {
 		return res, err
 	}
+	reqBody = fn
 	contentType = ct
-	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/testMultipart"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 

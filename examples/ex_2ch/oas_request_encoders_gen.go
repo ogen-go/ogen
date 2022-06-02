@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime/multipart"
 
@@ -11,6 +10,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -18,7 +18,7 @@ func encodeUserPassloginPostRequest(
 	req UserPassloginPostReq,
 	span trace.Span,
 ) (
-	data io.Reader,
+	data func() (io.ReadCloser, error),
 	contentType string,
 	rerr error,
 ) {
@@ -30,31 +30,25 @@ func encodeUserPassloginPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(req.Passcode))
 		}); err != nil {
 			return data, "", errors.Wrap(err, "encode query")
 		}
 	}
-	e := new(bytes.Buffer)
-	w := multipart.NewWriter(e)
-	defer func() {
-		cerr := w.Close()
-		if rerr == nil {
-			rerr = cerr
+	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
 		}
-	}()
-	if err := q.WriteMultipart(w); err != nil {
-		return e, "", errors.Wrap(err, "write multipart")
-	}
-	return e, w.FormDataContentType(), nil
+		return nil
+	})
+	return getBody, contentType, nil
 }
 func encodeUserPostingPostRequest(
 	req UserPostingPostReq,
 	span trace.Span,
 ) (
-	data io.Reader,
+	data func() (io.ReadCloser, error),
 	contentType string,
 	rerr error,
 ) {
@@ -66,7 +60,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(req.Board))
 		}); err != nil {
@@ -80,7 +73,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(string(req.CaptchaType)))
 		}); err != nil {
@@ -94,7 +86,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Comment.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -111,7 +102,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Email.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -128,7 +118,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range req.File {
@@ -151,7 +140,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Icon.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -168,7 +156,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Name.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -185,7 +172,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.OpMark.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -202,7 +188,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Subject.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -219,7 +204,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Tags.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -236,7 +220,6 @@ func encodeUserPostingPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := req.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -246,24 +229,19 @@ func encodeUserPostingPostRequest(
 			return data, "", errors.Wrap(err, "encode query")
 		}
 	}
-	e := new(bytes.Buffer)
-	w := multipart.NewWriter(e)
-	defer func() {
-		cerr := w.Close()
-		if rerr == nil {
-			rerr = cerr
+	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
 		}
-	}()
-	if err := q.WriteMultipart(w); err != nil {
-		return e, "", errors.Wrap(err, "write multipart")
-	}
-	return e, w.FormDataContentType(), nil
+		return nil
+	})
+	return getBody, contentType, nil
 }
 func encodeUserReportPostRequest(
 	req UserReportPostReq,
 	span trace.Span,
 ) (
-	data io.Reader,
+	data func() (io.ReadCloser, error),
 	contentType string,
 	rerr error,
 ) {
@@ -275,7 +253,6 @@ func encodeUserReportPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(req.Board))
 		}); err != nil {
@@ -289,7 +266,6 @@ func encodeUserReportPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(req.Comment))
 		}); err != nil {
@@ -303,7 +279,6 @@ func encodeUserReportPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range req.Post {
@@ -326,23 +301,17 @@ func encodeUserReportPostRequest(
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
-
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.IntToString(req.Thread))
 		}); err != nil {
 			return data, "", errors.Wrap(err, "encode query")
 		}
 	}
-	e := new(bytes.Buffer)
-	w := multipart.NewWriter(e)
-	defer func() {
-		cerr := w.Close()
-		if rerr == nil {
-			rerr = cerr
+	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
 		}
-	}()
-	if err := q.WriteMultipart(w); err != nil {
-		return e, "", errors.Wrap(err, "write multipart")
-	}
-	return e, w.FormDataContentType(), nil
+		return nil
+	})
+	return getBody, contentType, nil
 }

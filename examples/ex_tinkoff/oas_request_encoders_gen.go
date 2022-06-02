@@ -3,6 +3,9 @@
 package api
 
 import (
+	"bytes"
+	"io"
+
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -11,65 +14,75 @@ func encodeOrdersLimitOrderPostRequestJSON(
 	req LimitOrderRequest,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeOrdersMarketOrderPostRequestJSON(
 	req MarketOrderRequest,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeSandboxCurrenciesBalancePostRequestJSON(
 	req SandboxSetCurrencyBalanceRequest,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeSandboxPositionsBalancePostRequestJSON(
 	req SandboxSetPositionBalanceRequest,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeSandboxRegisterPostRequestJSON(
 	req OptSandboxRegisterRequest,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }

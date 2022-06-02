@@ -948,15 +948,15 @@ func (c *Client) UserPassloginPost(ctx context.Context, request UserPassloginPos
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "multipart/form-data"
-	buf, ct, err := encodeUserPassloginPostRequest(request, span)
+	fn, ct, err := encodeUserPassloginPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
+	reqBody = fn
 	contentType = ct
-	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/passlogin"
@@ -977,8 +977,15 @@ func (c *Client) UserPassloginPost(ctx context.Context, request UserPassloginPos
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1027,21 +1034,28 @@ func (c *Client) UserPostingPost(ctx context.Context, request UserPostingPostReq
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "multipart/form-data"
-	buf, ct, err := encodeUserPostingPostRequest(request, span)
+	fn, ct, err := encodeUserPostingPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
+	reqBody = fn
 	contentType = ct
-	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/posting"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1082,21 +1096,28 @@ func (c *Client) UserReportPost(ctx context.Context, request UserReportPostReq) 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "multipart/form-data"
-	buf, ct, err := encodeUserReportPostRequest(request, span)
+	fn, ct, err := encodeUserReportPostRequest(request, span)
 	if err != nil {
 		return res, err
 	}
+	reqBody = fn
 	contentType = ct
-	reqBody = buf
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/report"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
