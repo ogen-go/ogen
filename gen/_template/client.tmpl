@@ -100,26 +100,21 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- if $op.Request }}
 	var (
 		contentType string
-		reqBody io.Reader
+		reqBody func() (io.ReadCloser, error)
 	)
 
 	{{- $requestsLength := len $op.Request.Contents }}
 	{{- if eq $requestsLength 1 }}
 	{{- range $contentType, $type := $op.Request.Contents }}
 		contentType = {{ quote $contentType }}
-		buf, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
 		if err != nil {
 			return res, err
 		}
-		{{- if $contentType.JSON }}
-		defer jx.PutEncoder(buf)
-		reqBody = bytes.NewReader(buf.Bytes())
-		{{- else if $contentType.MultipartForm }}
+		reqBody = fn
+        {{- if $contentType.MultipartForm }}
 		contentType = ct
-		reqBody = buf
-		{{- else }}
-		reqBody = buf
-		{{- end }}
+        {{- end }}
 	{{- end }}
 	{{- else }}
 	{{- /* Multiple requests */}}
@@ -127,18 +122,13 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- range $contentType, $type := $op.Request.Contents }}
 	case *{{ $type.Go }}:
 		contentType = {{ quote $contentType }}
-		buf, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
 		if err != nil {
 			return res, err
 		}
-		{{- if $contentType.JSON }}
-		defer jx.PutEncoder(buf)
-		reqBody = bytes.NewReader(buf.Bytes())
-		{{- else if $contentType.MultipartForm }}
+		reqBody = fn
+		{{- if $contentType.MultipartForm }}
 		contentType = ct
-		reqBody = buf
-		{{- else }}
-		reqBody = buf
 		{{- end }}
 	{{- end }}
 	default:
@@ -153,8 +143,20 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- template "encode_query_parameters" $op }}
 	{{- end }}
 
-	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
+	{{ if $op.Request }}
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
+	{{- else }}
+	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
+	defer ht.PutRequest(r)
+	{{- end }}
 
 	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
 
