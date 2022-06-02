@@ -5,6 +5,7 @@ import (
 	"path"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/openapi"
@@ -202,6 +203,9 @@ func (g *Generator) generateContents(
 					return ctx.saveType(t)
 				}
 
+				g.log.Info(`Content type is unsupported, set "format" to "binary" to use io.Reader`,
+					zap.String("contentType", contentType),
+				)
 				unsupported = append(unsupported, contentType)
 				return nil
 			}
