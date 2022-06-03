@@ -2,9 +2,11 @@ package ogen
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"strings"
 	"testing"
 	"time"
 
@@ -12,6 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	ht "github.com/ogen-go/ogen/http"
 	api "github.com/ogen-go/ogen/internal/sample_api"
 )
 
@@ -56,6 +59,12 @@ func (s testFormServer) TestFormURLEncoded(ctx context.Context, req api.TestForm
 func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) (r api.TestMultipartOK, _ error) {
 	s.a.Equal(testForm(), req)
 	return r, nil
+}
+
+func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReq) (r string, _ error) {
+	var b strings.Builder
+	_, err := io.Copy(&b, req.FileName.File)
+	return b.String(), err
 }
 
 func TestURIEncodingE2E(t *testing.T) {
@@ -109,4 +118,33 @@ func TestMultipartEncodingE2E(t *testing.T) {
 
 	_, err = client.TestMultipart(ctx, testForm())
 	a.NoError(err)
+}
+
+func TestMultipartUploadE2E(t *testing.T) {
+	a := assert.New(t)
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
+	defer cancel()
+
+	handler := &testFormServer{
+		a:               a,
+		sampleAPIServer: new(sampleAPIServer),
+	}
+	apiServer, err := api.NewServer(handler, handler)
+	require.NoError(t, err)
+
+	s := httptest.NewServer(apiServer)
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, handler)
+	require.NoError(t, err)
+
+	data := "data"
+	r, err := client.TestMultipartUpload(ctx, api.TestMultipartUploadReq{
+		FileName: ht.MultipartFile{
+			Name: "pablo.jpg",
+			File: strings.NewReader(data),
+		},
+	})
+	a.NoError(err)
+	a.Equal(data, r)
 }

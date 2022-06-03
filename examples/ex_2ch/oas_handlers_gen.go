@@ -569,7 +569,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := s.decodeUserPassloginPostRequest(r, span)
+	request, close, err := s.decodeUserPassloginPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "UserPassloginPost",
@@ -578,6 +578,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.UserPassloginPost(ctx, request, params)
 	if err != nil {
@@ -612,7 +613,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeUserPostingPostRequest(r, span)
+	request, close, err := s.decodeUserPostingPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "UserPostingPost",
@@ -621,6 +622,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.UserPostingPost(ctx, request)
 	if err != nil {
@@ -655,7 +657,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 	defer span.End()
 
 	var err error
-	request, err := s.decodeUserReportPostRequest(r, span)
+	request, close, err := s.decodeUserReportPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "UserReportPost",
@@ -664,6 +666,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.UserReportPost(ctx, request)
 	if err != nil {

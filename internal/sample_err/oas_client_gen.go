@@ -3,14 +3,12 @@
 package api
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/url"
 	"time"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
@@ -78,21 +76,27 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeDataCreateRequestJSON(request, span)
+	fn, err := encodeDataCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/data"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 

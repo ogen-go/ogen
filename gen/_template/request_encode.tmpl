@@ -9,16 +9,23 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 	req {{ $op.Request.Type.Go }},
 	span trace.Span,
 ) (
-	data {{ $contentType.EncodedDataTypeGo }},
-	{{ if $contentType.MultipartForm }}contentType string,{{- end }}
+	data func() (io.ReadCloser, error),
+	{{- if $contentType.MultipartForm }}
+	contentType string,
+	{{- end }}
 	rerr error,
 ) {
 	{{- if $type.IsStream }}
-		return req, nil
+		return func() (io.ReadCloser, error) {
+			return io.NopCloser(req), nil
+		}, nil
 	{{- else if $contentType.JSON }}
-		e := jx.GetEncoder()
-		{{ template "json/enc" elem $type "req" }}
-		return e, nil
+		return func() (io.ReadCloser, error) {
+			e := jx.GetEncoder()
+			defer jx.PutEncoder(e)
+        	{{ template "json/enc" elem $type "req" }}
+			return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		}, nil
 	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
 		q := uri.NewQueryEncoder()
 		{{- range $param := $op.Request.FormParameters $contentType }}
@@ -29,7 +36,6 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 				Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
 				Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 			}
-
 			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 				{{- template "uri/encode" elem $param.Type (printf "req.%s" $param.Name) }}
 			}); err != nil {
@@ -38,23 +44,25 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 		}
 		{{- end }}
 		{{- if $contentType.FormURLEncoded }}
-			e := strings.NewReader(q.Values().Encode())
-			return e, nil
+			encoded := q.Values().Encode()
+			return func() (io.ReadCloser, error) {
+				return io.NopCloser(strings.NewReader(encoded)), nil
+			}, nil
 		{{- else if $contentType.MultipartForm }}
-			e := new(bytes.Buffer)
-			w := multipart.NewWriter(e)
-			defer func() {
-				cerr := w.Close()
-				if rerr == nil {
-					rerr = cerr
+			getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+            	{{- range $param := $op.Request.FileParameters $contentType }}
+				if err := {{ printf "req.%s" $param.Name }}.WriteMultipart({{ quote $param.Spec.Name }}, w); err != nil {
+					return errors.Wrap(err, {{ printf "write %q" $param.Spec.Name | quote }})
 				}
-			}()
-			if err := q.WriteMultipart(w); err != nil {
-				return e, "", errors.Wrap(err, "write multipart")
-			}
-			return e, w.FormDataContentType(), nil
+				{{- end }}
+				if err := q.WriteMultipart(w); err != nil {
+					return errors.Wrap(err, "write multipart")
+				}
+				return nil
+			})
+			return getBody, contentType, nil
 		{{- else }}
-            {{- errorf "%s encoder not implemented" $contentType }}
+			{{- errorf "%s encoder not implemented" $contentType }}
 		{{- end }}
 	{{- else }}
 		{{- errorf "%s encoder not implemented" $contentType }}

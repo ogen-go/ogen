@@ -3,36 +3,52 @@
 package api
 
 import (
+	"io"
 	"mime"
 	"net/http"
 	"net/url"
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span) (req UserPassloginPostReq, err error) {
+func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span) (
+	req UserPassloginPostReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, errors.Wrap(err, "parse multipart form")
+			return req, close, errors.Wrap(err, "parse multipart form")
 		}
 		form := url.Values(r.MultipartForm.Value)
-
-		if len(form) == 0 {
-			return req, nil
-		}
 
 		q := uri.NewQueryDecoder(form)
 		{
@@ -57,37 +73,51 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span
 					req.Passcode = c
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"passcode\"")
+					return req, close, errors.Wrap(err, "decode \"passcode\"")
 				}
 			} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			}
 		}
 
-		return req, nil
+		return req, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) (req UserPostingPostReq, err error) {
+func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) (
+	req UserPostingPostReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, errors.Wrap(err, "parse multipart form")
+			return req, close, errors.Wrap(err, "parse multipart form")
 		}
 		form := url.Values(r.MultipartForm.Value)
-
-		if len(form) == 0 {
-			return req, nil
-		}
 
 		q := uri.NewQueryDecoder(form)
 		{
@@ -112,10 +142,10 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Board = c
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"board\"")
+					return req, close, errors.Wrap(err, "decode \"board\"")
 				}
 			} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -140,7 +170,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.CaptchaType = CaptchaType(c)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"captcha_type\"")
+					return req, close, errors.Wrap(err, "decode \"captcha_type\"")
 				}
 				if err := func() error {
 					if err := req.CaptchaType.Validate(); err != nil {
@@ -148,10 +178,10 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					}
 					return nil
 				}(); err != nil {
-					return req, errors.Wrap(err, "validate")
+					return req, close, errors.Wrap(err, "validate")
 				}
 			} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -183,7 +213,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Comment.SetTo(reqDotCommentVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"comment\"")
+					return req, close, errors.Wrap(err, "decode \"comment\"")
 				}
 			}
 		}
@@ -216,7 +246,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Email.SetTo(reqDotEmailVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"email\"")
+					return req, close, errors.Wrap(err, "decode \"email\"")
 				}
 			}
 		}
@@ -251,7 +281,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 						return nil
 					})
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"file[]\"")
+					return req, close, errors.Wrap(err, "decode \"file[]\"")
 				}
 			}
 		}
@@ -284,7 +314,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Icon.SetTo(reqDotIconVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"icon\"")
+					return req, close, errors.Wrap(err, "decode \"icon\"")
 				}
 			}
 		}
@@ -317,7 +347,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Name.SetTo(reqDotNameVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"name\"")
+					return req, close, errors.Wrap(err, "decode \"name\"")
 				}
 			}
 		}
@@ -350,7 +380,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.OpMark.SetTo(reqDotOpMarkVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"op_mark\"")
+					return req, close, errors.Wrap(err, "decode \"op_mark\"")
 				}
 			}
 		}
@@ -383,7 +413,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Subject.SetTo(reqDotSubjectVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"subject\"")
+					return req, close, errors.Wrap(err, "decode \"subject\"")
 				}
 			}
 		}
@@ -416,7 +446,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Tags.SetTo(reqDotTagsVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"tags\"")
+					return req, close, errors.Wrap(err, "decode \"tags\"")
 				}
 			}
 		}
@@ -449,35 +479,49 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 					req.Thread.SetTo(reqDotThreadVal)
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"thread\"")
+					return req, close, errors.Wrap(err, "decode \"thread\"")
 				}
 			}
 		}
 
-		return req, nil
+		return req, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (req UserReportPostReq, err error) {
+func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
+	req UserReportPostReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, errors.Wrap(err, "parse multipart form")
+			return req, close, errors.Wrap(err, "parse multipart form")
 		}
 		form := url.Values(r.MultipartForm.Value)
-
-		if len(form) == 0 {
-			return req, nil
-		}
 
 		q := uri.NewQueryDecoder(form)
 		{
@@ -502,10 +546,10 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 					req.Board = c
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"board\"")
+					return req, close, errors.Wrap(err, "decode \"board\"")
 				}
 			} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -530,10 +574,10 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 					req.Comment = c
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"comment\"")
+					return req, close, errors.Wrap(err, "decode \"comment\"")
 				}
 			} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -567,7 +611,7 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 						return nil
 					})
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"post\"")
+					return req, close, errors.Wrap(err, "decode \"post\"")
 				}
 			}
 		}
@@ -593,15 +637,15 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 					req.Thread = c
 					return nil
 				}); err != nil {
-					return req, errors.Wrap(err, "decode \"thread\"")
+					return req, close, errors.Wrap(err, "decode \"thread\"")
 				}
 			} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			}
 		}
 
-		return req, nil
+		return req, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }

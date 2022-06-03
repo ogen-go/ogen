@@ -5,22 +5,40 @@
 
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
+func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
+	req {{ $op.Request.Type.Go }},
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 {{- range $contentType, $t := $op.Request.Contents }}
 	case {{ quote $contentType }}:
 	{{- if $t.IsStream }}
-		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
+		return {{ $op.Request.Type.Go }}{Data: r.Body}, close, nil
 	{{- else if $contentType.JSON }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
-			return req, nil
+			return req, close, nil
 		{{- else }}
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		{{- end }}
 		}
 
@@ -29,14 +47,14 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
 		{{- if not $op.Request.Spec.Required }}
-			return req, nil
+			return req, close, nil
 		{{- else }}
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		{{- end }}
 		}
 
@@ -47,46 +65,38 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 			{{- template "json/dec" elem $t "request" }}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
+			return req, close, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
 		}
 
 		{{- if $t.NeedValidation }}
 		if err := func() error {
 			{{- template "validate" elem $t "request" }}
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 		{{- end }}
 
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
     {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm  }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
-			return req, nil
+			return req, close, nil
 		{{- else }}
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		{{- end }}
 		}
 
 		{{- if $contentType.FormURLEncoded }}
 		if err := r.ParseForm(); err != nil {
-			return req, errors.Wrap(err, "parse form")
+			return req, close, errors.Wrap(err, "parse form")
 		}
 		form := r.PostForm
 		{{- else }}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, errors.Wrap(err, "parse multipart form")
+			return req, close, errors.Wrap(err, "parse multipart form")
 		}
 		form := url.Values(r.MultipartForm.Value)
         {{- end }}
-
-		if len(form) == 0 {
-		{{- if not $op.Request.Spec.Required }}
-			return req, nil
-		{{- else }}
-			return req, validate.ErrBodyRequired
-		{{- end }}
-		}
 
 		q := uri.NewQueryDecoder(form)
 		{{- range $p := $op.Request.FormParameters $contentType }}
@@ -105,29 +115,54 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					{{- template "uri/decode" $el }}
 				}); err != nil {
-					return req, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
+					return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
 				}
 
 				{{- if $p.Type.NeedValidation }}
 				if err := func() error {
 					{{- template "validate" $el }}
 				}(); err != nil {
-					return req, errors.Wrap(err, "validate")
+					return req, close, errors.Wrap(err, "validate")
 				}
 				{{- end }}
 			} {{- if $p.Spec.Required }} else {
-				return req, errors.Wrap(err, "query")
+				return req, close, errors.Wrap(err, "query")
 			} {{- end }}
 		}
 		{{- end }}
+		{{- if $contentType.MultipartForm }}
+        {{- range $param := $op.Request.FileParameters $contentType }}
+		if err := func() error {
+			files, ok := r.MultipartForm.File[{{ quote $param.Spec.Name }}]
+			if !ok || len(files) < 1 {
+				return errors.New("file is not set")
+			}
+			header := files[0]
 
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}req, nil
+			f, err := header.Open()
+			if err != nil {
+				return errors.Wrap(err, "open")
+			}
+			closers = append(closers, f)
+
+        	{{ printf "req.%s" $param.Name }} = ht.MultipartFile{
+				Name: header.Filename,
+				File: f,
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, {{ printf "file %q" $param.Spec.Name | quote }})
+		}
+		{{- end }}
+		{{- end }}
+
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}req, close, nil
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
 {{- end }}
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 {{- end }}

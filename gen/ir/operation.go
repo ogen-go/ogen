@@ -80,11 +80,32 @@ func (r Request) FormParameters(ct ContentType) (params []Parameter) {
 	}
 
 	for _, f := range t.Fields {
+		if t := f.Type; ct.MultipartForm() && t.IsPrimitive() && t.Primitive == File {
+			continue
+		}
 		params = append(params, Parameter{
 			Name: f.Name,
 			Type: f.Type,
 			Spec: f.Tag.Form,
 		})
+	}
+	return params
+}
+
+func (r Request) FileParameters(ct ContentType) (params []Parameter) {
+	t, ok := r.Contents[ct]
+	if !ok {
+		panic(ct)
+	}
+
+	for _, f := range t.Fields {
+		if t := f.Type; ct.MultipartForm() && t.IsPrimitive() && t.Primitive == File {
+			params = append(params, Parameter{
+				Name: f.Name,
+				Type: f.Type,
+				Spec: f.Tag.Form,
+			})
+		}
 	}
 	return params
 }

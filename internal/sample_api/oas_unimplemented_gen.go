@@ -242,6 +242,13 @@ func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) (r 
 	return r, ht.ErrNotImplemented
 }
 
+// TestMultipartUpload implements testMultipartUpload operation.
+//
+// POST /testMultipartUpload
+func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (r string, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestObjectQueryParameter implements testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

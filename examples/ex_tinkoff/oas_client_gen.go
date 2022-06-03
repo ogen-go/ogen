@@ -3,14 +3,12 @@
 package api
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/url"
 	"time"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
@@ -816,15 +814,14 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrdersLimitOrderPostRequestJSON(request, span)
+	fn, err := encodeOrdersLimitOrderPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/limit-order"
@@ -862,8 +859,15 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -916,15 +920,14 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrdersMarketOrderPostRequestJSON(request, span)
+	fn, err := encodeOrdersMarketOrderPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/market-order"
@@ -962,8 +965,15 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1210,15 +1220,14 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeSandboxCurrenciesBalancePostRequestJSON(request, span)
+	fn, err := encodeSandboxCurrenciesBalancePostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/currencies/balance"
@@ -1242,8 +1251,15 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1296,15 +1312,14 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeSandboxPositionsBalancePostRequestJSON(request, span)
+	fn, err := encodeSandboxPositionsBalancePostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/positions/balance"
@@ -1328,8 +1343,15 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	}
 	u.RawQuery = q.Values().Encode()
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1391,21 +1413,27 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeSandboxRegisterPostRequestJSON(request, span)
+	fn, err := encodeSandboxRegisterPostRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/register"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 

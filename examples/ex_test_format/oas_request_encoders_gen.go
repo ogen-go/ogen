@@ -3,6 +3,8 @@
 package api
 
 import (
+	"bytes"
+	"io"
 	"net/netip"
 	"net/url"
 	"time"
@@ -18,113 +20,1317 @@ func encodeTestRequestAnyRequestJSON(
 	req jx.Raw,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	if len(req) != 0 {
-		e.Raw(req)
-	}
-	return e, nil
+		if len(req) != 0 {
+			e.Raw(req)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestBooleanRequestJSON(
 	req OptBool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestBooleanArrayRequestJSON(
 	req []bool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Bool(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Bool(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestBooleanArrayArrayRequestJSON(
 	req [][]bool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Bool(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Bool(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestBooleanNullableRequestJSON(
 	req OptNilBool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestBooleanNullableArrayRequestJSON(
 	req []bool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Bool(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Bool(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestBooleanNullableArrayArrayRequestJSON(
 	req [][]bool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Bool(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestEmptyStructRequestJSON(
+	req *TestRequestEmptyStructReq,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestFormatTestRequestJSON(
+	req OptTestRequestFormatTestReq,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerRequestJSON(
+	req OptInt,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerArrayRequestJSON(
+	req []int,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerArrayArrayRequestJSON(
+	req [][]int,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt32RequestJSON(
+	req OptInt32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt32ArrayRequestJSON(
+	req []int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt32ArrayArrayRequestJSON(
+	req [][]int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt32NullableRequestJSON(
+	req OptNilInt32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt32NullableArrayRequestJSON(
+	req []int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(
+	req [][]int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt64RequestJSON(
+	req OptInt64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt64ArrayRequestJSON(
+	req []int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(
+	req [][]int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt64NullableRequestJSON(
+	req OptNilInt64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt64NullableArrayRequestJSON(
+	req []int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(
+	req [][]int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerNullableRequestJSON(
+	req OptNilInt,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerNullableArrayRequestJSON(
+	req []int,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestIntegerNullableArrayArrayRequestJSON(
+	req [][]int,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNullRequestJSON(
+	req OptNull,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNullArrayRequestJSON(
+	req []struct{},
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNullArrayArrayRequestJSON(
+	req [][]struct{},
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					_ = elem
+					e.Null()
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNullNullableRequestJSON(
+	req OptNull,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNullNullableArrayRequestJSON(
+	req []struct{},
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNullNullableArrayArrayRequestJSON(
+	req [][]struct{},
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					_ = elem
+					e.Null()
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberRequestJSON(
+	req OptFloat64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberArrayRequestJSON(
+	req []float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberArrayArrayRequestJSON(
+	req [][]float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberDoubleRequestJSON(
+	req OptFloat64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberDoubleArrayRequestJSON(
+	req []float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberDoubleArrayArrayRequestJSON(
+	req [][]float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberDoubleNullableRequestJSON(
+	req OptNilFloat64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberDoubleNullableArrayRequestJSON(
+	req []float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(
+	req [][]float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberFloatRequestJSON(
+	req OptFloat32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberFloatArrayRequestJSON(
+	req []float32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberFloatArrayArrayRequestJSON(
+	req [][]float32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberFloatNullableRequestJSON(
+	req OptNilFloat32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberFloatNullableArrayRequestJSON(
+	req []float32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(
+	req [][]float32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt32RequestJSON(
+	req OptInt32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt32ArrayRequestJSON(
+	req []int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt32ArrayArrayRequestJSON(
+	req [][]int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt32NullableRequestJSON(
+	req OptNilInt32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt32NullableArrayRequestJSON(
+	req []int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(
+	req [][]int32,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt64RequestJSON(
+	req OptInt64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt64ArrayRequestJSON(
+	req []int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt64ArrayArrayRequestJSON(
+	req [][]int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt64NullableRequestJSON(
+	req OptNilInt64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt64NullableArrayRequestJSON(
+	req []int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(
+	req [][]int64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberNullableRequestJSON(
+	req OptNilFloat64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberNullableArrayRequestJSON(
+	req []float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestNumberNullableArrayArrayRequestJSON(
+	req [][]float64,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestRequiredAnyRequestJSON(
+	req jx.Raw,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		if len(req) != 0 {
+			e.Raw(req)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestRequiredBooleanRequestJSON(
+	req bool,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		e.Bool(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestRequiredBooleanArrayRequestJSON(
+	req []bool,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
+		e.ArrStart()
+		for _, elem := range req {
+			e.Bool(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
+}
+func encodeTestRequestRequiredBooleanArrayArrayRequestJSON(
+	req [][]bool,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+
 		e.ArrStart()
 		for _, elem := range req {
 			e.ArrStart()
@@ -134,9231 +1340,9197 @@ func encodeTestRequestBooleanNullableArrayArrayRequestJSON(
 			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestEmptyStructRequestJSON(
-	req *TestRequestEmptyStructReq,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestFormatTestRequestJSON(
-	req OptTestRequestFormatTestReq,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerRequestJSON(
-	req OptInt,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerArrayRequestJSON(
-	req []int,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerArrayArrayRequestJSON(
-	req [][]int,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt32RequestJSON(
-	req OptInt32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt32ArrayRequestJSON(
-	req []int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt32ArrayArrayRequestJSON(
-	req [][]int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt32NullableRequestJSON(
-	req OptNilInt32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt32NullableArrayRequestJSON(
-	req []int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt64RequestJSON(
-	req OptInt64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt64ArrayRequestJSON(
-	req []int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(
-	req [][]int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt64NullableRequestJSON(
-	req OptNilInt64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt64NullableArrayRequestJSON(
-	req []int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerNullableRequestJSON(
-	req OptNilInt,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerNullableArrayRequestJSON(
-	req []int,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestIntegerNullableArrayArrayRequestJSON(
-	req [][]int,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNullRequestJSON(
-	req OptNull,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNullArrayRequestJSON(
-	req []struct{},
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			_ = elem
-			e.Null()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNullArrayArrayRequestJSON(
-	req [][]struct{},
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				_ = elem
-				e.Null()
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNullNullableRequestJSON(
-	req OptNull,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNullNullableArrayRequestJSON(
-	req []struct{},
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			_ = elem
-			e.Null()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNullNullableArrayArrayRequestJSON(
-	req [][]struct{},
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				_ = elem
-				e.Null()
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberRequestJSON(
-	req OptFloat64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberArrayRequestJSON(
-	req []float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberArrayArrayRequestJSON(
-	req [][]float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberDoubleRequestJSON(
-	req OptFloat64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberDoubleArrayRequestJSON(
-	req []float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberDoubleArrayArrayRequestJSON(
-	req [][]float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberDoubleNullableRequestJSON(
-	req OptNilFloat64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberDoubleNullableArrayRequestJSON(
-	req []float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(
-	req [][]float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberFloatRequestJSON(
-	req OptFloat32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberFloatArrayRequestJSON(
-	req []float32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Float32(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberFloatArrayArrayRequestJSON(
-	req [][]float32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberFloatNullableRequestJSON(
-	req OptNilFloat32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberFloatNullableArrayRequestJSON(
-	req []float32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Float32(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(
-	req [][]float32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt32RequestJSON(
-	req OptInt32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt32ArrayRequestJSON(
-	req []int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt32ArrayArrayRequestJSON(
-	req [][]int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt32NullableRequestJSON(
-	req OptNilInt32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt32NullableArrayRequestJSON(
-	req []int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt64RequestJSON(
-	req OptInt64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt64ArrayRequestJSON(
-	req []int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt64ArrayArrayRequestJSON(
-	req [][]int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt64NullableRequestJSON(
-	req OptNilInt64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt64NullableArrayRequestJSON(
-	req []int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberNullableRequestJSON(
-	req OptNilFloat64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
-}
-func encodeTestRequestNumberNullableArrayRequestJSON(
-	req []float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestNumberNullableArrayArrayRequestJSON(
-	req [][]float64,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	return e, nil
-}
-func encodeTestRequestRequiredAnyRequestJSON(
-	req jx.Raw,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-
-	if len(req) != 0 {
-		e.Raw(req)
-	}
-	return e, nil
-}
-func encodeTestRequestRequiredBooleanRequestJSON(
-	req bool,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-
-	e.Bool(req)
-	return e, nil
-}
-func encodeTestRequestRequiredBooleanArrayRequestJSON(
-	req []bool,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-
-	e.ArrStart()
-	for _, elem := range req {
-		e.Bool(elem)
-	}
-	e.ArrEnd()
-	return e, nil
-}
-func encodeTestRequestRequiredBooleanArrayArrayRequestJSON(
-	req [][]bool,
-	span trace.Span,
-) (
-	data *jx.Encoder,
-
-	rerr error,
-) {
-	e := jx.GetEncoder()
-
-	e.ArrStart()
-	for _, elem := range req {
-		e.ArrStart()
-		for _, elem := range elem {
-			e.Bool(elem)
-		}
-		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredBooleanNullableRequestJSON(
 	req NilBool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredBooleanNullableArrayRequestJSON(
 	req []bool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Bool(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Bool(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(
 	req [][]bool,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Bool(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredEmptyStructRequestJSON(
 	req TestRequestRequiredEmptyStructReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredFormatTestRequestJSON(
 	req TestRequestRequiredFormatTestReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerRequestJSON(
 	req int,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Int(req)
-	return e, nil
+		e.Int(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerArrayRequestJSON(
 	req []int,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerArrayArrayRequestJSON(
 	req [][]int,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32RequestJSON(
 	req int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Int32(req)
-	return e, nil
+		e.Int32(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32ArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int32(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32ArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int32(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableRequestJSON(
 	req NilInt32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int32(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int32(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64RequestJSON(
 	req int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Int64(req)
-	return e, nil
+		e.Int64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64ArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64ArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableRequestJSON(
 	req NilInt64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerNullableRequestJSON(
 	req NilInt,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerNullableArrayRequestJSON(
 	req []int,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(
 	req [][]int,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNullRequestJSON(
 	req struct{},
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	_ = req
-	e.Null()
-	return e, nil
+		_ = req
+		e.Null()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNullArrayRequestJSON(
 	req []struct{},
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		_ = elem
-		e.Null()
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			_ = elem
+			e.Null()
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNullArrayArrayRequestJSON(
 	req [][]struct{},
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			_ = elem
-			e.Null()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNullNullableRequestJSON(
 	req struct{},
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	_ = req
-	e.Null()
-	return e, nil
+		_ = req
+		e.Null()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNullNullableArrayRequestJSON(
 	req []struct{},
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		_ = elem
-		e.Null()
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			_ = elem
+			e.Null()
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNullNullableArrayArrayRequestJSON(
 	req [][]struct{},
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			_ = elem
-			e.Null()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberRequestJSON(
 	req float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Float64(req)
-	return e, nil
+		e.Float64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberArrayRequestJSON(
 	req []float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Float64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberArrayArrayRequestJSON(
 	req [][]float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Float64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleRequestJSON(
 	req float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Float64(req)
-	return e, nil
+		e.Float64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleArrayRequestJSON(
 	req []float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Float64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleArrayArrayRequestJSON(
 	req [][]float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Float64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableRequestJSON(
 	req NilFloat64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(
 	req []float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Float64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(
 	req [][]float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Float64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberFloatRequestJSON(
 	req float32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Float32(req)
-	return e, nil
+		e.Float32(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberFloatArrayRequestJSON(
 	req []float32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Float32(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Float32(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberFloatArrayArrayRequestJSON(
 	req [][]float32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Float32(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberFloatNullableRequestJSON(
 	req NilFloat32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(
 	req []float32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Float32(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Float32(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(
 	req [][]float32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Float32(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt32RequestJSON(
 	req int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Int32(req)
-	return e, nil
+		e.Int32(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt32ArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int32(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt32ArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int32(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt32NullableRequestJSON(
 	req NilInt32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int32(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int32(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt64RequestJSON(
 	req int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Int64(req)
-	return e, nil
+		e.Int64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt64ArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt64ArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt64NullableRequestJSON(
 	req NilInt64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Int64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Int64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberNullableRequestJSON(
 	req NilFloat64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberNullableArrayRequestJSON(
 	req []float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Float64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(
 	req [][]float64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Float64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringBinaryRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringBinaryArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringBinaryArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringBinaryNullableRequestJSON(
 	req NilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringByteRequestJSON(
 	req []byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Base64(req)
-	return e, nil
+		e.Base64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringByteArrayRequestJSON(
 	req [][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Base64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Base64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringByteArrayArrayRequestJSON(
 	req [][][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Base64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringByteNullableRequestJSON(
 	req []byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Base64(req)
-	return e, nil
+		e.Base64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringByteNullableArrayRequestJSON(
 	req [][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Base64(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Base64(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringByteNullableArrayArrayRequestJSON(
 	req [][][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Base64(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeDate(e, req)
-	return e, nil
+		json.EncodeDate(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeDate(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDate(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeDate(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateNullableRequestJSON(
 	req NilDate,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeDate)
-	return e, nil
+		req.Encode(e, json.EncodeDate)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeDate(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDate(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeDate(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeDateTime(e, req)
-	return e, nil
+		json.EncodeDateTime(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeDateTime(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDateTime(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeDateTime(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableRequestJSON(
 	req NilDateTime,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeDateTime)
-	return e, nil
+		req.Encode(e, json.EncodeDateTime)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeDateTime(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDateTime(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeDateTime(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDurationRequestJSON(
 	req time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeDuration(e, req)
-	return e, nil
+		json.EncodeDuration(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDurationArrayRequestJSON(
 	req []time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeDuration(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDuration(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDurationArrayArrayRequestJSON(
 	req [][]time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeDuration(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDurationNullableRequestJSON(
 	req NilDuration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(
 	req []time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeDuration(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDuration(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(
 	req [][]time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeDuration(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringEmailRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringEmailArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringEmailArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringEmailNullableRequestJSON(
 	req NilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringHostnameRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringHostnameArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringHostnameArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringHostnameNullableRequestJSON(
 	req NilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIPRequestJSON(
 	req netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeIP(e, req)
-	return e, nil
+		json.EncodeIP(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIPArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeIP(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIPArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIPNullableRequestJSON(
 	req NilIP,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeIP(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt32RequestJSON(
 	req int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeStringInt32(e, req)
-	return e, nil
+		json.EncodeStringInt32(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt32ArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeStringInt32(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeStringInt32(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt32NullableRequestJSON(
 	req NilStringInt32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeStringInt32(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeStringInt32(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt64RequestJSON(
 	req int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeStringInt64(e, req)
-	return e, nil
+		json.EncodeStringInt64(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt64ArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeStringInt64(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeStringInt64(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt64NullableRequestJSON(
 	req NilStringInt64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeStringInt64(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeStringInt64(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv4RequestJSON(
 	req netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeIP(e, req)
-	return e, nil
+		json.EncodeIP(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv4ArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeIP(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv4NullableRequestJSON(
 	req NilIPv4,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeIP(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv6RequestJSON(
 	req netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeIP(e, req)
-	return e, nil
+		json.EncodeIP(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv6ArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeIP(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv6NullableRequestJSON(
 	req NilIPv6,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeIP(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringNullableRequestJSON(
 	req NilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringPasswordRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringPasswordArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringPasswordArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringPasswordNullableRequestJSON(
 	req NilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringTimeRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeTime(e, req)
-	return e, nil
+		json.EncodeTime(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringTimeArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeTime(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeTime(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringTimeArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeTime(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringTimeNullableRequestJSON(
 	req NilTime,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeTime)
-	return e, nil
+		req.Encode(e, json.EncodeTime)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeTime(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeTime(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeTime(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringURIRequestJSON(
 	req url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeURI(e, req)
-	return e, nil
+		json.EncodeURI(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringURIArrayRequestJSON(
 	req []url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeURI(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeURI(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringURIArrayArrayRequestJSON(
 	req [][]url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeURI(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringURINullableRequestJSON(
 	req NilURI,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringURINullableArrayRequestJSON(
 	req []url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeURI(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeURI(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(
 	req [][]url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeURI(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUUIDRequestJSON(
 	req uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeUUID(e, req)
-	return e, nil
+		json.EncodeUUID(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUUIDArrayRequestJSON(
 	req []uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUUID(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUUID(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUUIDArrayArrayRequestJSON(
 	req [][]uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUUID(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUUIDNullableRequestJSON(
 	req NilUUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(
 	req []uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUUID(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUUID(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(
 	req [][]uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUUID(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeUnixSeconds(e, req)
-	return e, nil
+		json.EncodeUnixSeconds(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixSeconds(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixSeconds(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeUnixMicro(e, req)
-	return e, nil
+		json.EncodeUnixMicro(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixMicro(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixMicro(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(
 	req NilUnixMicro,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeUnixMicro)
-	return e, nil
+		req.Encode(e, json.EncodeUnixMicro)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixMicro(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixMicro(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeUnixMilli(e, req)
-	return e, nil
+		json.EncodeUnixMilli(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixMilli(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixMilli(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(
 	req NilUnixMilli,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeUnixMilli)
-	return e, nil
+		req.Encode(e, json.EncodeUnixMilli)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixMilli(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixMilli(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeUnixNano(e, req)
-	return e, nil
+		json.EncodeUnixNano(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixNano(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixNano(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(
 	req NilUnixNano,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeUnixNano)
-	return e, nil
+		req.Encode(e, json.EncodeUnixNano)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixNano(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixNano(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNullableRequestJSON(
 	req NilUnixSeconds,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeUnixSeconds)
-	return e, nil
+		req.Encode(e, json.EncodeUnixSeconds)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixSeconds(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixSeconds(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsRequestJSON(
 	req time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	json.EncodeUnixSeconds(e, req)
-	return e, nil
+		json.EncodeUnixSeconds(e, req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixSeconds(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixSeconds(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(
 	req NilUnixSeconds,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e, json.EncodeUnixSeconds)
-	return e, nil
+		req.Encode(e, json.EncodeUnixSeconds)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
-		json.EncodeUnixSeconds(e, elem)
-	}
-	e.ArrEnd()
-	return e, nil
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.ArrStart()
-	for _, elem := range req {
 		e.ArrStart()
-		for _, elem := range elem {
-			json.EncodeUnixSeconds(e, elem)
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
-	}
-	e.ArrEnd()
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringRequestJSON(
 	req OptString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringBinaryRequestJSON(
 	req OptString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringBinaryArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringBinaryArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringBinaryNullableRequestJSON(
 	req OptNilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringBinaryNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringByteRequestJSON(
 	req []byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Base64(req)
-	return e, nil
+		e.Base64(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringByteArrayRequestJSON(
 	req [][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Base64(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringByteArrayArrayRequestJSON(
 	req [][][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Base64(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Base64(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringByteNullableRequestJSON(
 	req OptNilByte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringByteNullableArrayRequestJSON(
 	req [][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Base64(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringByteNullableArrayArrayRequestJSON(
 	req [][][]byte,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Base64(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Base64(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateRequestJSON(
 	req OptDate,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeDate)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeDate)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeDate(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDate(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDate(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateNullableRequestJSON(
 	req OptNilDate,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeDate)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeDate)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeDate(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDate(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDate(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateTimeRequestJSON(
 	req OptDateTime,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeDateTime)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeDateTime)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateTimeArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeDateTime(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateTimeArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDateTime(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDateTime(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateTimeNullableRequestJSON(
 	req OptNilDateTime,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeDateTime)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeDateTime)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateTimeNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeDateTime(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDateTime(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDateTime(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDurationRequestJSON(
 	req OptDuration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDurationArrayRequestJSON(
 	req []time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeDuration(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDurationArrayArrayRequestJSON(
 	req [][]time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDuration(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDuration(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDurationNullableRequestJSON(
 	req OptNilDuration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDurationNullableArrayRequestJSON(
 	req []time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeDuration(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(
 	req [][]time.Duration,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDuration(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDuration(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringEmailRequestJSON(
 	req OptString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringEmailArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringEmailArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringEmailNullableRequestJSON(
 	req OptNilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringEmailNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringEmailNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringHostnameRequestJSON(
 	req OptString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringHostnameArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringHostnameArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringHostnameNullableRequestJSON(
 	req OptNilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringHostnameNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIPRequestJSON(
 	req OptIP,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIPArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeIP(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIPArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIPNullableRequestJSON(
 	req OptNilIP,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIPNullableArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeIP(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIPNullableArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt32RequestJSON(
 	req OptStringInt32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt32ArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeStringInt32(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt32ArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt32(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt32(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt32NullableRequestJSON(
 	req OptNilStringInt32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt32NullableArrayRequestJSON(
 	req []int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeStringInt32(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt32NullableArrayArrayRequestJSON(
 	req [][]int32,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt32(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt32(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt64RequestJSON(
 	req OptStringInt64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt64ArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeStringInt64(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt64ArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt64(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt64(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt64NullableRequestJSON(
 	req OptNilStringInt64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt64NullableArrayRequestJSON(
 	req []int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeStringInt64(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringInt64NullableArrayArrayRequestJSON(
 	req [][]int64,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt64(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt64(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv4RequestJSON(
 	req OptIPv4,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv4ArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeIP(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv4ArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv4NullableRequestJSON(
 	req OptNilIPv4,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv4NullableArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeIP(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv6RequestJSON(
 	req OptIPv6,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv6ArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeIP(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv6ArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv6NullableRequestJSON(
 	req OptNilIPv6,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv6NullableArrayRequestJSON(
 	req []netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeIP(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(
 	req [][]netip.Addr,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringNullableRequestJSON(
 	req OptNilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringPasswordRequestJSON(
 	req OptString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringPasswordArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringPasswordArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringPasswordNullableRequestJSON(
 	req OptNilString,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringPasswordNullableArrayRequestJSON(
 	req []string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			e.Str(elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(
 	req [][]string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringTimeRequestJSON(
 	req OptTime,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeTime)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeTime)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringTimeArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeTime(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringTimeArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeTime(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeTime(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringTimeNullableRequestJSON(
 	req OptNilTime,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeTime)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeTime)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringTimeNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeTime(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeTime(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeTime(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringURIRequestJSON(
 	req OptURI,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringURIArrayRequestJSON(
 	req []url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeURI(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringURIArrayArrayRequestJSON(
 	req [][]url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeURI(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeURI(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringURINullableRequestJSON(
 	req OptNilURI,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringURINullableArrayRequestJSON(
 	req []url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeURI(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringURINullableArrayArrayRequestJSON(
 	req [][]url.URL,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeURI(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeURI(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUUIDRequestJSON(
 	req OptUUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUUIDArrayRequestJSON(
 	req []uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUUID(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUUIDArrayArrayRequestJSON(
 	req [][]uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUUID(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUUID(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUUIDNullableRequestJSON(
 	req OptNilUUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUUIDNullableArrayRequestJSON(
 	req []uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUUID(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(
 	req [][]uuid.UUID,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUUID(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUUID(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixRequestJSON(
 	req OptUnixSeconds,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixSeconds)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixSeconds)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixSeconds(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixSeconds(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMicroRequestJSON(
 	req OptUnixMicro,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixMicro)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixMicro)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMicroArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixMicro(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMicroArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMicro(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixMicro(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMicroNullableRequestJSON(
 	req OptNilUnixMicro,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixMicro)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixMicro)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMicroNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixMicro(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMicro(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixMicro(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMilliRequestJSON(
 	req OptUnixMilli,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixMilli)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixMilli)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMilliArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixMilli(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMilliArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMilli(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixMilli(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMilliNullableRequestJSON(
 	req OptNilUnixMilli,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixMilli)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixMilli)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMilliNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixMilli(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMilli(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixMilli(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNanoRequestJSON(
 	req OptUnixNano,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixNano)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixNano)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNanoArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixNano(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNanoArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixNano(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixNano(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNanoNullableRequestJSON(
 	req OptNilUnixNano,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixNano)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixNano)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNanoNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixNano(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixNano(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixNano(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNullableRequestJSON(
 	req OptNilUnixSeconds,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixSeconds)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixSeconds)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixSeconds(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixSeconds(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixSecondsRequestJSON(
 	req OptUnixSeconds,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixSeconds)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixSeconds)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixSecondsArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixSeconds(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixSecondsArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixSeconds(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixSecondsNullableRequestJSON(
 	req OptNilUnixSeconds,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e, json.EncodeUnixSeconds)
-	}
-	return e, nil
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req.Set {
+			req.Encode(e, json.EncodeUnixSeconds)
+		}
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(
 	req []time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
-			json.EncodeUnixSeconds(e, elem)
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(
 	req [][]time.Time,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
-	if req != nil {
-		e.ArrStart()
-		for _, elem := range req {
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		if req != nil {
 			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUnixSeconds(e, elem)
+				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
-	}
-	return e, nil
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseAnyRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseBooleanRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseBooleanArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseBooleanArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseBooleanNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseBooleanNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseBooleanNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseEmptyStructRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseFormatTestRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt32RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt32ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt32ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt32NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt32NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt32NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt64RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt64ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt64ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt64NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt64NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerInt64NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseIntegerNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNullRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNullArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNullArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNullNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNullNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNullNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberDoubleRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberDoubleArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberDoubleArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberDoubleNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberDoubleNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberDoubleNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberFloatRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberFloatArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberFloatArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberFloatNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberFloatNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberFloatNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt32RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt32ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt32ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt32NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt32NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt32NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt64RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt64ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt64ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt64NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt64NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberInt64NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseNumberNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringBinaryRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringBinaryArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringBinaryArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringBinaryNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringBinaryNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringBinaryNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringByteRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringByteArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringByteArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringByteNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringByteNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringByteNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateTimeRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateTimeArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateTimeArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateTimeNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateTimeNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDateTimeNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDurationRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDurationArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDurationArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDurationNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDurationNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringDurationNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringEmailRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringEmailArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringEmailArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringEmailNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringEmailNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringEmailNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringHostnameRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringHostnameArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringHostnameArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringHostnameNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringHostnameNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringHostnameNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIPRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIPArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIPArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIPNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIPNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIPNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt32RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt32ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt32ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt32NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt32NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt32NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt64RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt64ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt64ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt64NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt64NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringInt64NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv4RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv4ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv4ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv4NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv4NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv4NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv6RequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv6ArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv6ArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv6NullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv6NullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringIpv6NullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringPasswordRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringPasswordArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringPasswordArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringPasswordNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringPasswordNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringPasswordNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringTimeRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringTimeArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringTimeArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringTimeNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringTimeNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringTimeNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringURIRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringURIArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringURIArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringURINullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringURINullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringURINullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUUIDRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUUIDArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUUIDArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUUIDNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUUIDNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUUIDNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMicroRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMicroArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMicroArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMicroNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMicroNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMicroNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMilliRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMilliArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMilliArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMilliNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMilliNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixMilliNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNanoRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNanoArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNanoArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNanoNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNanoNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNanoNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixSecondsRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixSecondsArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixSecondsArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixSecondsNullableRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixSecondsNullableArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeTestResponseStringUnixSecondsNullableArrayArrayRequestJSON(
 	req string,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	e.Str(req)
-	return e, nil
+		e.Str(req)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }

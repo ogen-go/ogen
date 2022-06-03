@@ -3,14 +3,12 @@
 package api
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/url"
 	"time"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
@@ -610,15 +608,14 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, span)
+	fn, err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
@@ -667,8 +664,15 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -774,15 +778,14 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, span)
+	fn, err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -816,8 +819,15 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -923,15 +933,14 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, span)
+	fn, err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -980,8 +989,15 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -1340,15 +1356,14 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
+	fn, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -1368,8 +1383,15 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}
 	u.Path += "/actions/runner-groups"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -6520,15 +6542,14 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsReviewPendingDeploymentsForRunRequestJSON(request, span)
+	fn, err := encodeActionsReviewPendingDeploymentsForRunRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -6578,8 +6599,15 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	}
 	u.Path += "/pending_deployments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -6634,15 +6662,14 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, span)
+	fn, err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6662,8 +6689,15 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -6717,15 +6751,14 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, span)
+	fn, err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -6760,8 +6793,15 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -6819,15 +6859,14 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, span)
+	fn, err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6847,8 +6886,15 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	}
 	u.Path += "/actions/permissions"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -6907,15 +6953,14 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, span)
+	fn, err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -6950,8 +6995,15 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	}
 	u.Path += "/actions/permissions"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -7009,15 +7061,14 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, span)
+	fn, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7052,8 +7103,15 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}
 	u.Path += "/repositories"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -7110,15 +7168,14 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, span)
+	fn, err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7153,8 +7210,15 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	}
 	u.Path += "/repositories"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -7212,15 +7276,14 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, span)
+	fn, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7240,8 +7303,15 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	}
 	u.Path += "/actions/permissions/repositories"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -7298,15 +7368,14 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, span)
+	fn, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7341,8 +7410,15 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	}
 	u.Path += "/runners"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -7399,15 +7475,14 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
+	fn, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7441,8 +7516,15 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -9578,21 +9660,27 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActivityMarkNotificationsAsReadRequestJSON(request, span)
+	fn, err := encodeActivityMarkNotificationsAsReadRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -9643,15 +9731,14 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, span)
+	fn, err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -9686,8 +9773,15 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	}
 	u.Path += "/notifications"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -9792,15 +9886,14 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActivitySetRepoSubscriptionRequestJSON(request, span)
+	fn, err := encodeActivitySetRepoSubscriptionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -9835,8 +9928,15 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	}
 	u.Path += "/subscription"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -9888,15 +9988,14 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeActivitySetThreadSubscriptionRequestJSON(request, span)
+	fn, err := encodeActivitySetThreadSubscriptionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
@@ -9916,8 +10015,15 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	}
 	u.Path += "/subscription"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -10194,15 +10300,14 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsCheckTokenRequestJSON(request, span)
+	fn, err := encodeAppsCheckTokenRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -10222,8 +10327,15 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	}
 	u.Path += "/token"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -10285,15 +10397,14 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsCreateContentAttachmentRequestJSON(request, span)
+	fn, err := encodeAppsCreateContentAttachmentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -10343,8 +10454,15 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	}
 	u.Path += "/attachments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -10413,15 +10531,14 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsCreateInstallationAccessTokenRequestJSON(request, span)
+	fn, err := encodeAppsCreateInstallationAccessTokenRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
@@ -10441,8 +10558,15 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	}
 	u.Path += "/access_tokens"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -10496,15 +10620,14 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsDeleteAuthorizationRequestJSON(request, span)
+	fn, err := encodeAppsDeleteAuthorizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -10524,8 +10647,15 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	}
 	u.Path += "/grant"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -10637,15 +10767,14 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsDeleteTokenRequestJSON(request, span)
+	fn, err := encodeAppsDeleteTokenRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -10665,8 +10794,15 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	}
 	u.Path += "/token"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -12103,15 +12239,14 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsResetTokenRequestJSON(request, span)
+	fn, err := encodeAppsResetTokenRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -12131,8 +12266,15 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	}
 	u.Path += "/token"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -12244,15 +12386,14 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsScopeTokenRequestJSON(request, span)
+	fn, err := encodeAppsScopeTokenRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -12272,8 +12413,15 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	}
 	u.Path += "/token/scoped"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -12465,21 +12613,27 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, span)
+	fn, err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -13117,15 +13271,14 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeChecksCreateSuiteRequestJSON(request, span)
+	fn, err := encodeChecksCreateSuiteRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -13160,8 +13313,15 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	}
 	u.Path += "/check-suites"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -14170,15 +14330,14 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeChecksSetSuitesPreferencesRequestJSON(request, span)
+	fn, err := encodeChecksSetSuitesPreferencesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -14213,8 +14372,15 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	}
 	u.Path += "/check-suites/preferences"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -15283,15 +15449,14 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeCodeScanningUpdateAlertRequestJSON(request, span)
+	fn, err := encodeCodeScanningUpdateAlertRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -15343,8 +15508,15 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -15423,15 +15595,14 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeCodeScanningUploadSarifRequestJSON(request, span)
+	fn, err := encodeCodeScanningUploadSarifRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -15466,8 +15637,15 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	}
 	u.Path += "/code-scanning/sarifs"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -15986,15 +16164,14 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -16014,8 +16191,15 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	}
 	u.Path += "/actions/runner-groups"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18004,15 +18188,14 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18032,8 +18215,15 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	}
 	u.Path += "/Groups"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18092,15 +18282,14 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18120,8 +18309,15 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	}
 	u.Path += "/Users"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18354,15 +18550,14 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18382,8 +18577,15 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18437,15 +18639,14 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18465,8 +18666,15 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	}
 	u.Path += "/actions/permissions"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18525,15 +18733,14 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18567,8 +18774,15 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18630,15 +18844,14 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18672,8 +18885,15 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18728,15 +18948,14 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18771,8 +18990,15 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}
 	u.Path += "/organizations"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18829,15 +19055,14 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18857,8 +19082,15 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	}
 	u.Path += "/actions/permissions/organizations"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -18912,15 +19144,14 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18955,8 +19186,15 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	}
 	u.Path += "/runners"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -19014,15 +19252,14 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -19056,8 +19293,15 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -19130,15 +19374,14 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -19172,8 +19415,15 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -19234,15 +19484,14 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
+	fn, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -19276,8 +19525,15 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -19390,21 +19646,27 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGistsCreateRequestJSON(request, span)
+	fn, err := encodeGistsCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -19455,15 +19717,14 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGistsCreateCommentRequestJSON(request, span)
+	fn, err := encodeGistsCreateCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
@@ -19483,8 +19744,15 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -20738,15 +21006,14 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGistsUpdateCommentRequestJSON(request, span)
+	fn, err := encodeGistsUpdateCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
@@ -20780,8 +21047,15 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -20824,15 +21098,14 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGitCreateBlobRequestJSON(request, span)
+	fn, err := encodeGitCreateBlobRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -20867,8 +21140,15 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	}
 	u.Path += "/git/blobs"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -20946,15 +21226,14 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGitCreateCommitRequestJSON(request, span)
+	fn, err := encodeGitCreateCommitRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -20989,8 +21268,15 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	}
 	u.Path += "/git/commits"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -21037,15 +21323,14 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGitCreateRefRequestJSON(request, span)
+	fn, err := encodeGitCreateRefRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -21080,8 +21365,15 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	}
 	u.Path += "/git/refs"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -21170,15 +21462,14 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGitCreateTagRequestJSON(request, span)
+	fn, err := encodeGitCreateTagRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -21213,8 +21504,15 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	}
 	u.Path += "/git/tags"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -21273,15 +21571,14 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGitCreateTreeRequestJSON(request, span)
+	fn, err := encodeGitCreateTreeRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -21316,8 +21613,15 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	}
 	u.Path += "/git/trees"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -22125,15 +22429,14 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeGitUpdateRefRequestJSON(request, span)
+	fn, err := encodeGitUpdateRefRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22182,8 +22485,15 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -22529,21 +22839,27 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(request, span)
+	fn, err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/interaction-limits"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -22599,15 +22915,14 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeInteractionsSetRestrictionsForOrgRequestJSON(request, span)
+	fn, err := encodeInteractionsSetRestrictionsForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -22627,8 +22942,15 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	}
 	u.Path += "/interaction-limits"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -22684,15 +23006,14 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, span)
+	fn, err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22727,8 +23048,15 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	}
 	u.Path += "/interaction-limits"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -22773,15 +23101,14 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesAddAssigneesRequestJSON(request, span)
+	fn, err := encodeIssuesAddAssigneesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22831,8 +23158,15 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	}
 	u.Path += "/assignees"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -22978,15 +23312,14 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesCreateRequestJSON(request, span)
+	fn, err := encodeIssuesCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23021,8 +23354,15 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	}
 	u.Path += "/issues"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -23073,15 +23413,14 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesCreateCommentRequestJSON(request, span)
+	fn, err := encodeIssuesCreateCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23131,8 +23470,15 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -23175,15 +23521,14 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesCreateLabelRequestJSON(request, span)
+	fn, err := encodeIssuesCreateLabelRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23218,8 +23563,15 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	}
 	u.Path += "/labels"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -23270,15 +23622,14 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesCreateMilestoneRequestJSON(request, span)
+	fn, err := encodeIssuesCreateMilestoneRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23313,8 +23664,15 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	}
 	u.Path += "/milestones"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -26068,15 +26426,14 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesLockRequestJSON(request, span)
+	fn, err := encodeIssuesLockRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26126,8 +26483,15 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	}
 	u.Path += "/lock"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -26260,15 +26624,14 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesRemoveAssigneesRequestJSON(request, span)
+	fn, err := encodeIssuesRemoveAssigneesRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26318,8 +26681,15 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	}
 	u.Path += "/assignees"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -26574,15 +26944,14 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesUpdateRequestJSON(request, span)
+	fn, err := encodeIssuesUpdateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26631,8 +27000,15 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -26675,15 +27051,14 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesUpdateCommentRequestJSON(request, span)
+	fn, err := encodeIssuesUpdateCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26732,8 +27107,15 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -26776,15 +27158,14 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesUpdateLabelRequestJSON(request, span)
+	fn, err := encodeIssuesUpdateLabelRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26833,8 +27214,15 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -26892,15 +27280,14 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeIssuesUpdateMilestoneRequestJSON(request, span)
+	fn, err := encodeIssuesUpdateMilestoneRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26949,8 +27336,15 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -28597,15 +28991,14 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeMigrationsMapCommitAuthorRequestJSON(request, span)
+	fn, err := encodeMigrationsMapCommitAuthorRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28654,8 +29047,15 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -28711,15 +29111,14 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeMigrationsSetLfsPreferenceRequestJSON(request, span)
+	fn, err := encodeMigrationsSetLfsPreferenceRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28754,8 +29153,15 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	}
 	u.Path += "/import/lfs"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -28808,21 +29214,27 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeMigrationsStartForAuthenticatedUserRequestJSON(request, span)
+	fn, err := encodeMigrationsStartForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -28875,15 +29287,14 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeMigrationsStartForOrgRequestJSON(request, span)
+	fn, err := encodeMigrationsStartForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -28903,8 +29314,15 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	}
 	u.Path += "/migrations"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -28957,15 +29375,14 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeMigrationsStartImportRequestJSON(request, span)
+	fn, err := encodeMigrationsStartImportRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -29000,8 +29417,15 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	}
 	u.Path += "/import"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -29219,15 +29643,14 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeMigrationsUpdateImportRequestJSON(request, span)
+	fn, err := encodeMigrationsUpdateImportRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -29262,8 +29685,15 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	}
 	u.Path += "/import"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -29350,21 +29780,27 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(request, span)
+	fn, err := encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -29710,15 +30146,14 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(request, span)
+	fn, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/clients/"
@@ -29737,8 +30172,15 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -29812,15 +30254,14 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(request, span)
+	fn, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/clients/"
@@ -29854,8 +30295,15 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -30145,15 +30593,14 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(request, span)
+	fn, err := encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/"
@@ -30172,8 +30619,15 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -30686,15 +31140,14 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrgsCreateInvitationRequestJSON(request, span)
+	fn, err := encodeOrgsCreateInvitationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -30714,8 +31167,15 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	}
 	u.Path += "/invitations"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -30768,15 +31228,14 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrgsCreateWebhookRequestJSON(request, span)
+	fn, err := encodeOrgsCreateWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -30796,8 +31255,15 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	}
 	u.Path += "/hooks"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -33464,15 +33930,14 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrgsSetMembershipForUserRequestJSON(request, span)
+	fn, err := encodeOrgsSetMembershipForUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -33506,8 +33971,15 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -33708,15 +34180,14 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(request, span)
+	fn, err := encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/memberships/orgs/"
@@ -33735,8 +34206,15 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -33800,15 +34278,14 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrgsUpdateWebhookRequestJSON(request, span)
+	fn, err := encodeOrgsUpdateWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -33842,8 +34319,15 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -33907,15 +34391,14 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, span)
+	fn, err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -33950,8 +34433,15 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	}
 	u.Path += "/config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -36472,15 +36962,14 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsAddCollaboratorRequestJSON(request, span)
+	fn, err := encodeProjectsAddCollaboratorRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -36514,8 +37003,15 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -36558,15 +37054,14 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsCreateColumnRequestJSON(request, span)
+	fn, err := encodeProjectsCreateColumnRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -36586,8 +37081,15 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	}
 	u.Path += "/columns"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -36630,21 +37132,27 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, span)
+	fn, err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/projects"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -36691,15 +37199,14 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsCreateForOrgRequestJSON(request, span)
+	fn, err := encodeProjectsCreateForOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -36719,8 +37226,15 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	}
 	u.Path += "/projects"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -36767,15 +37281,14 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsCreateForRepoRequestJSON(request, span)
+	fn, err := encodeProjectsCreateForRepoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -36810,8 +37323,15 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	}
 	u.Path += "/projects"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -37965,15 +38485,14 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsMoveCardRequestJSON(request, span)
+	fn, err := encodeProjectsMoveCardRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
@@ -37993,8 +38512,15 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	}
 	u.Path += "/moves"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38045,15 +38571,14 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsMoveColumnRequestJSON(request, span)
+	fn, err := encodeProjectsMoveColumnRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
@@ -38073,8 +38598,15 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	}
 	u.Path += "/moves"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38211,15 +38743,14 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsUpdateRequestJSON(request, span)
+	fn, err := encodeProjectsUpdateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -38238,8 +38769,15 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38282,15 +38820,14 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsUpdateCardRequestJSON(request, span)
+	fn, err := encodeProjectsUpdateCardRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
@@ -38309,8 +38846,15 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38353,15 +38897,14 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeProjectsUpdateColumnRequestJSON(request, span)
+	fn, err := encodeProjectsUpdateColumnRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
@@ -38380,8 +38923,15 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38529,15 +39079,14 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsCreateRequestJSON(request, span)
+	fn, err := encodePullsCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38572,8 +39121,15 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	}
 	u.Path += "/pulls"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38627,15 +39183,14 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsCreateReplyForReviewCommentRequestJSON(request, span)
+	fn, err := encodePullsCreateReplyForReviewCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38700,8 +39255,15 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	}
 	u.Path += "/replies"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38779,15 +39341,14 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsCreateReviewRequestJSON(request, span)
+	fn, err := encodePullsCreateReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38837,8 +39398,15 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	}
 	u.Path += "/reviews"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -38910,15 +39478,14 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsCreateReviewCommentRequestJSON(request, span)
+	fn, err := encodePullsCreateReviewCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38968,8 +39535,15 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -39207,15 +39781,14 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsDismissReviewRequestJSON(request, span)
+	fn, err := encodePullsDismissReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39280,8 +39853,15 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	}
 	u.Path += "/dismissals"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -40846,15 +41426,14 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsMergeRequestJSON(request, span)
+	fn, err := encodePullsMergeRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40904,8 +41483,15 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	}
 	u.Path += "/merge"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -40956,15 +41542,14 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsRemoveRequestedReviewersRequestJSON(request, span)
+	fn, err := encodePullsRemoveRequestedReviewersRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41014,8 +41599,15 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	}
 	u.Path += "/requested_reviewers"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41066,15 +41658,14 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsSubmitReviewRequestJSON(request, span)
+	fn, err := encodePullsSubmitReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41139,8 +41730,15 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	}
 	u.Path += "/events"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41207,15 +41805,14 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsUpdateRequestJSON(request, span)
+	fn, err := encodePullsUpdateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41264,8 +41861,15 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41311,15 +41915,14 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsUpdateBranchRequestJSON(request, span)
+	fn, err := encodePullsUpdateBranchRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41369,8 +41972,15 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	}
 	u.Path += "/update-branch"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41415,15 +42025,14 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsUpdateReviewRequestJSON(request, span)
+	fn, err := encodePullsUpdateReviewRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41487,8 +42096,15 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41533,15 +42149,14 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodePullsUpdateReviewCommentRequestJSON(request, span)
+	fn, err := encodePullsUpdateReviewCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41590,8 +42205,15 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41694,15 +42316,14 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForCommitCommentRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForCommitCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41752,8 +42373,15 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41807,15 +42435,14 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForIssueRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForIssueRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41865,8 +42492,15 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -41921,15 +42555,14 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForIssueCommentRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForIssueCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41979,8 +42612,15 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -42035,15 +42675,14 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForPullRequestReviewCommentRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForPullRequestReviewCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -42093,8 +42732,15 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -42148,15 +42794,14 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForReleaseRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForReleaseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -42206,8 +42851,15 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -42266,15 +42918,14 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -42339,8 +42990,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -42401,15 +43059,14 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -42459,8 +43116,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -42518,15 +43182,14 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -42576,8 +43239,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -42637,15 +43307,14 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, span)
+	fn, err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -42680,8 +43349,15 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	}
 	u.Path += "/reactions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -44699,15 +45375,14 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposAddAppAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposAddAppAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -44757,8 +45432,15 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	}
 	u.Path += "/protection/restrictions/apps"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -44837,15 +45519,14 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposAddCollaboratorRequestJSON(request, span)
+	fn, err := encodeReposAddCollaboratorRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -44894,8 +45575,15 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -44959,15 +45647,14 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposAddStatusCheckContextsRequestJSON(request, span)
+	fn, err := encodeReposAddStatusCheckContextsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45017,8 +45704,15 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -45090,15 +45784,14 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposAddTeamAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposAddTeamAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45148,8 +45841,15 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/teams"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -45220,15 +45920,14 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposAddUserAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposAddUserAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45278,8 +45977,15 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/users"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -45672,15 +46378,14 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateAutolinkRequestJSON(request, span)
+	fn, err := encodeReposCreateAutolinkRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45715,8 +46420,15 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	}
 	u.Path += "/autolinks"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -45768,15 +46480,14 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateCommitCommentRequestJSON(request, span)
+	fn, err := encodeReposCreateCommitCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45826,8 +46537,15 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -45978,15 +46696,14 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateCommitStatusRequestJSON(request, span)
+	fn, err := encodeReposCreateCommitStatusRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46035,8 +46752,15 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46081,15 +46805,14 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateDeployKeyRequestJSON(request, span)
+	fn, err := encodeReposCreateDeployKeyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46124,8 +46847,15 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	}
 	u.Path += "/keys"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46223,15 +46953,14 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateDeploymentRequestJSON(request, span)
+	fn, err := encodeReposCreateDeploymentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46266,8 +46995,15 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	}
 	u.Path += "/deployments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46322,15 +47058,14 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateDeploymentStatusRequestJSON(request, span)
+	fn, err := encodeReposCreateDeploymentStatusRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46380,8 +47115,15 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	}
 	u.Path += "/statuses"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46449,15 +47191,14 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateDispatchEventRequestJSON(request, span)
+	fn, err := encodeReposCreateDispatchEventRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46492,8 +47233,15 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/dispatches"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46544,21 +47292,27 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateForAuthenticatedUserRequestJSON(request, span)
+	fn, err := encodeReposCreateForAuthenticatedUserRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repos"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46606,15 +47360,14 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateForkRequestJSON(request, span)
+	fn, err := encodeReposCreateForkRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46649,8 +47402,15 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	}
 	u.Path += "/forks"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46710,15 +47470,14 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateInOrgRequestJSON(request, span)
+	fn, err := encodeReposCreateInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -46738,8 +47497,15 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	}
 	u.Path += "/repos"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46784,15 +47550,14 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateOrUpdateFileContentsRequestJSON(request, span)
+	fn, err := encodeReposCreateOrUpdateFileContentsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46841,8 +47606,15 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46896,15 +47668,14 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreatePagesSiteRequestJSON(request, span)
+	fn, err := encodeReposCreatePagesSiteRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46939,8 +47710,15 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	}
 	u.Path += "/pages"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -46992,15 +47770,14 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateReleaseRequestJSON(request, span)
+	fn, err := encodeReposCreateReleaseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -47035,8 +47812,15 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	}
 	u.Path += "/releases"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -47092,15 +47876,14 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateUsingTemplateRequestJSON(request, span)
+	fn, err := encodeReposCreateUsingTemplateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -47135,8 +47918,15 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/generate"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -47198,15 +47988,14 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposCreateWebhookRequestJSON(request, span)
+	fn, err := encodeReposCreateWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -47241,8 +48030,15 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	}
 	u.Path += "/hooks"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -48263,15 +49059,14 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposDeleteFileRequestJSON(request, span)
+	fn, err := encodeReposDeleteFileRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -48320,8 +49115,15 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -57062,15 +57864,14 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposMergeRequestJSON(request, span)
+	fn, err := encodeReposMergeRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57105,8 +57906,15 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	}
 	u.Path += "/merges"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -57152,15 +57960,14 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposMergeUpstreamRequestJSON(request, span)
+	fn, err := encodeReposMergeUpstreamRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57195,8 +58002,15 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	}
 	u.Path += "/merge-upstream"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -57464,15 +58278,14 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposRemoveAppAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposRemoveAppAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57522,8 +58335,15 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	}
 	u.Path += "/protection/restrictions/apps"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -57674,15 +58494,14 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposRemoveStatusCheckContextsRequestJSON(request, span)
+	fn, err := encodeReposRemoveStatusCheckContextsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57732,8 +58551,15 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -57899,15 +58725,14 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposRemoveTeamAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposRemoveTeamAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57957,8 +58782,15 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	}
 	u.Path += "/protection/restrictions/teams"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58029,15 +58861,14 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposRemoveUserAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposRemoveUserAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58087,8 +58918,15 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	}
 	u.Path += "/protection/restrictions/users"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58145,15 +58983,14 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposRenameBranchRequestJSON(request, span)
+	fn, err := encodeReposRenameBranchRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58203,8 +59040,15 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	}
 	u.Path += "/rename"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58255,15 +59099,14 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposReplaceAllTopicsRequestJSON(request, span)
+	fn, err := encodeReposReplaceAllTopicsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58298,8 +59141,15 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	}
 	u.Path += "/topics"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58549,15 +59399,14 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposSetAppAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposSetAppAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58607,8 +59456,15 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	}
 	u.Path += "/protection/restrictions/apps"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58672,15 +59528,14 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposSetStatusCheckContextsRequestJSON(request, span)
+	fn, err := encodeReposSetStatusCheckContextsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58730,8 +59585,15 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58804,15 +59666,14 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposSetTeamAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposSetTeamAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58862,8 +59723,15 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/teams"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -58935,15 +59803,14 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposSetUserAccessRestrictionsRequestJSON(request, span)
+	fn, err := encodeReposSetUserAccessRestrictionsRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58993,8 +59860,15 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/users"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59136,15 +60010,14 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposTransferRequestJSON(request, span)
+	fn, err := encodeReposTransferRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59179,8 +60052,15 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	}
 	u.Path += "/transfer"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59241,15 +60121,14 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateRequestJSON(request, span)
+	fn, err := encodeReposUpdateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59283,8 +60162,15 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59344,15 +60230,14 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateBranchProtectionRequestJSON(request, span)
+	fn, err := encodeReposUpdateBranchProtectionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59402,8 +60287,15 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	}
 	u.Path += "/protection"
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59446,15 +60338,14 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateCommitCommentRequestJSON(request, span)
+	fn, err := encodeReposUpdateCommitCommentRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59503,8 +60394,15 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59562,15 +60460,14 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateInvitationRequestJSON(request, span)
+	fn, err := encodeReposUpdateInvitationRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59619,8 +60516,15 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59672,15 +60576,14 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdatePullRequestReviewProtectionRequestJSON(request, span)
+	fn, err := encodeReposUpdatePullRequestReviewProtectionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59730,8 +60633,15 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	}
 	u.Path += "/protection/required_pull_request_reviews"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59776,15 +60686,14 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateReleaseRequestJSON(request, span)
+	fn, err := encodeReposUpdateReleaseRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59833,8 +60742,15 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59879,15 +60795,14 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateReleaseAssetRequestJSON(request, span)
+	fn, err := encodeReposUpdateReleaseAssetRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59936,8 +60851,15 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -59988,15 +60910,14 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateStatusCheckProtectionRequestJSON(request, span)
+	fn, err := encodeReposUpdateStatusCheckProtectionRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -60046,8 +60967,15 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	}
 	u.Path += "/protection/required_status_checks"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -60110,15 +61038,14 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateWebhookRequestJSON(request, span)
+	fn, err := encodeReposUpdateWebhookRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -60167,8 +61094,15 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -60232,15 +61166,14 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, span)
+	fn, err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -60290,8 +61223,15 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	}
 	u.Path += "/config"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -61776,15 +62716,14 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeSecretScanningUpdateAlertRequestJSON(request, span)
+	fn, err := encodeSecretScanningUpdateAlertRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -61836,8 +62775,15 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -62011,15 +62957,14 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -62068,8 +63013,15 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -62153,15 +63105,14 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -62195,8 +63146,15 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -62260,15 +63218,14 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -62317,8 +63274,15 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -62384,15 +63348,14 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -62426,8 +63389,15 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -62498,15 +63468,14 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -62570,8 +63539,15 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -62642,15 +63618,14 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -62699,8 +63674,15 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PUT", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PUT", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63139,15 +64121,14 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateRequestJSON(request, span)
+	fn, err := encodeTeamsCreateRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63167,8 +64148,15 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	}
 	u.Path += "/teams"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63223,15 +64211,14 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63281,8 +64268,15 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63338,15 +64332,14 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -63381,8 +64374,15 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	}
 	u.Path += "/comments"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63437,15 +64437,14 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63480,8 +64479,15 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	}
 	u.Path += "/discussions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63537,15 +64543,14 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -63565,8 +64570,15 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	}
 	u.Path += "/discussions"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63618,15 +64630,14 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63661,8 +64672,15 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	}
 	u.Path += "/team-sync/group-mappings"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -63724,15 +64742,14 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -63752,8 +64769,15 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	}
 	u.Path += "/team-sync/group-mappings"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -67804,15 +68828,14 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -67876,8 +68899,15 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -67926,15 +68956,14 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -67983,8 +69012,15 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68033,15 +69069,14 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -68090,8 +69125,15 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68141,15 +69183,14 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -68183,8 +69224,15 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68246,15 +69294,14 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsUpdateInOrgRequestJSON(request, span)
+	fn, err := encodeTeamsUpdateInOrgRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -68288,8 +69335,15 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68346,15 +69400,14 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeTeamsUpdateLegacyRequestJSON(request, span)
+	fn, err := encodeTeamsUpdateLegacyRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -68373,8 +69426,15 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 		u.Path += e.Result()
 	}
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68434,21 +69494,27 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeUsersAddEmailForAuthenticatedRequestJSON(request, span)
+	fn, err := encodeUsersAddEmailForAuthenticatedRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68738,21 +69804,27 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(request, span)
+	fn, err := encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68807,21 +69879,27 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(request, span)
+	fn, err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys"
 
-	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -68881,21 +69959,27 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeUsersDeleteEmailForAuthenticatedRequestJSON(request, span)
+	fn, err := encodeUsersDeleteEmailForAuthenticatedRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
 
-	r := ht.NewRequest(ctx, "DELETE", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "DELETE", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -70489,21 +71573,27 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(request, span)
+	fn, err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/email/visibility"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -70667,21 +71757,27 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
-		reqBody     io.Reader
+		reqBody     func() (io.ReadCloser, error)
 	)
 	contentType = "application/json"
-	buf, err := encodeUsersUpdateAuthenticatedRequestJSON(request, span)
+	fn, err := encodeUsersUpdateAuthenticatedRequestJSON(request, span)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutEncoder(buf)
-	reqBody = bytes.NewReader(buf.Bytes())
+	reqBody = fn
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user"
 
-	r := ht.NewRequest(ctx, "PATCH", u, reqBody)
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "PATCH", u, body)
 	defer ht.PutRequest(r)
+	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
 

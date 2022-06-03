@@ -154,6 +154,10 @@ type Handler interface {
 	//
 	// POST /testMultipart
 	TestMultipart(ctx context.Context, req TestForm) (TestMultipartOK, error)
+	// TestMultipartUpload implements testMultipartUpload operation.
+	//
+	// POST /testMultipartUpload
+	TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (string, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter

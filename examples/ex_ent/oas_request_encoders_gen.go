@@ -3,6 +3,9 @@
 package api
 
 import (
+	"bytes"
+	"io"
+
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -11,64 +14,74 @@ func encodeCreatePetRequestJSON(
 	req CreatePetReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeCreatePetCategoriesRequestJSON(
 	req CreatePetCategoriesReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeCreatePetFriendsRequestJSON(
 	req CreatePetFriendsReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeCreatePetOwnerRequestJSON(
 	req CreatePetOwnerReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }
 func encodeUpdatePetRequestJSON(
 	req UpdatePetReq,
 	span trace.Span,
 ) (
-	data *jx.Encoder,
-
+	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	e := jx.GetEncoder()
+	return func() (io.ReadCloser, error) {
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
-	req.Encode(e)
-	return e, nil
+		req.Encode(e)
+		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	}, nil
 }

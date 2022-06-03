@@ -48,6 +48,8 @@ func (p PrimitiveType) String() string {
 		return "netip.Addr"
 	case URL:
 		return "url.URL"
+	case File:
+		return "ht.MultipartFile"
 	default:
 		panic(fmt.Sprintf("unexpected PrimitiveType: %d", p))
 	}
@@ -81,4 +83,5 @@ const (
 	UUID
 	IP
 	URL
+	File
 )
