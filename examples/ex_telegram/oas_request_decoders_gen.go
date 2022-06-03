@@ -10,19 +10,38 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStickerToSet, err error) {
+func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (
+	req AddStickerToSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AddStickerToSet
@@ -30,11 +49,11 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -46,7 +65,7 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -54,24 +73,42 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req AnswerCallbackQuery, err error) {
+func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (
+	req AnswerCallbackQuery,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AnswerCallbackQuery
@@ -79,11 +116,11 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -95,7 +132,7 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -103,24 +140,42 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req AnswerInlineQuery, err error) {
+func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (
+	req AnswerInlineQuery,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AnswerInlineQuery
@@ -128,11 +183,11 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -144,7 +199,7 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -152,24 +207,42 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req AnswerPreCheckoutQuery, err error) {
+func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (
+	req AnswerPreCheckoutQuery,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AnswerPreCheckoutQuery
@@ -177,11 +250,11 @@ func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -193,24 +266,42 @@ func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req AnswerShippingQuery, err error) {
+func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (
+	req AnswerShippingQuery,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AnswerShippingQuery
@@ -218,11 +309,11 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -234,7 +325,7 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -242,24 +333,42 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req ApproveChatJoinRequest, err error) {
+func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (
+	req ApproveChatJoinRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ApproveChatJoinRequest
@@ -267,11 +376,11 @@ func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -283,24 +392,42 @@ func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMember, err error) {
+func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (
+	req BanChatMember,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request BanChatMember
@@ -308,11 +435,11 @@ func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -324,24 +451,42 @@ func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (req BanChatSenderChat, err error) {
+func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (
+	req BanChatSenderChat,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request BanChatSenderChat
@@ -349,11 +494,11 @@ func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -365,24 +510,42 @@ func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage, err error) {
+func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (
+	req CopyMessage,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request CopyMessage
@@ -390,11 +553,11 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -406,7 +569,7 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -414,24 +577,42 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req CreateChatInviteLink, err error) {
+func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (
+	req CreateChatInviteLink,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request CreateChatInviteLink
@@ -439,11 +620,11 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -455,7 +636,7 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -463,24 +644,42 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req CreateNewStickerSet, err error) {
+func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (
+	req CreateNewStickerSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request CreateNewStickerSet
@@ -488,11 +687,11 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -504,7 +703,7 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -512,24 +711,42 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req DeclineChatJoinRequest, err error) {
+func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (
+	req DeclineChatJoinRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request DeclineChatJoinRequest
@@ -537,11 +754,11 @@ func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -553,24 +770,42 @@ func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteChatPhoto, err error) {
+func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (
+	req DeleteChatPhoto,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request DeleteChatPhoto
@@ -578,11 +813,11 @@ func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -594,24 +829,42 @@ func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req DeleteChatStickerSet, err error) {
+func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (
+	req DeleteChatStickerSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request DeleteChatStickerSet
@@ -619,11 +872,11 @@ func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -635,24 +888,42 @@ func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMessage, err error) {
+func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (
+	req DeleteMessage,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request DeleteMessage
@@ -660,11 +931,11 @@ func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -676,24 +947,42 @@ func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req OptDeleteMyCommands, err error) {
+func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (
+	req OptDeleteMyCommands,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptDeleteMyCommands
@@ -701,11 +990,11 @@ func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span)
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -718,24 +1007,42 @@ func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req DeleteStickerFromSet, err error) {
+func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (
+	req DeleteStickerFromSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request DeleteStickerFromSet
@@ -743,11 +1050,11 @@ func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -759,24 +1066,42 @@ func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req OptDeleteWebhook, err error) {
+func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (
+	req OptDeleteWebhook,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptDeleteWebhook
@@ -784,11 +1109,11 @@ func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -801,24 +1126,42 @@ func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req EditChatInviteLink, err error) {
+func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (
+	req EditChatInviteLink,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EditChatInviteLink
@@ -826,11 +1169,11 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -842,7 +1185,7 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -850,24 +1193,42 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req EditMessageCaption, err error) {
+func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (
+	req EditMessageCaption,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EditMessageCaption
@@ -875,11 +1236,11 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -891,7 +1252,7 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -899,24 +1260,42 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req EditMessageLiveLocation, err error) {
+func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (
+	req EditMessageLiveLocation,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EditMessageLiveLocation
@@ -924,11 +1303,11 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -940,7 +1319,7 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -948,24 +1327,42 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMessageMedia, err error) {
+func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (
+	req EditMessageMedia,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EditMessageMedia
@@ -973,11 +1370,11 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span)
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -989,7 +1386,7 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -997,24 +1394,42 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req EditMessageReplyMarkup, err error) {
+func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (
+	req EditMessageReplyMarkup,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EditMessageReplyMarkup
@@ -1022,11 +1437,11 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1038,7 +1453,7 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1046,24 +1461,42 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMessageText, err error) {
+func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) (
+	req EditMessageText,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EditMessageText
@@ -1071,11 +1504,11 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1087,7 +1520,7 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1095,24 +1528,42 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req ExportChatInviteLink, err error) {
+func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (
+	req ExportChatInviteLink,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ExportChatInviteLink
@@ -1120,11 +1571,11 @@ func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1136,24 +1587,42 @@ func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardMessage, err error) {
+func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (
+	req ForwardMessage,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ForwardMessage
@@ -1161,11 +1630,11 @@ func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1177,24 +1646,42 @@ func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err error) {
+func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (
+	req GetChat,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetChat
@@ -1202,11 +1689,11 @@ func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (req Get
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1218,24 +1705,42 @@ func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (req Get
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req GetChatAdministrators, err error) {
+func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (
+	req GetChatAdministrators,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetChatAdministrators
@@ -1243,11 +1748,11 @@ func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1259,24 +1764,42 @@ func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMember, err error) {
+func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (
+	req GetChatMember,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetChatMember
@@ -1284,11 +1807,11 @@ func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1300,24 +1823,42 @@ func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetChatMemberCount, err error) {
+func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (
+	req GetChatMemberCount,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetChatMemberCount
@@ -1325,11 +1866,11 @@ func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1341,24 +1882,42 @@ func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err error) {
+func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (
+	req GetFile,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetFile
@@ -1366,11 +1925,11 @@ func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (req Get
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1382,24 +1941,42 @@ func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (req Get
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGameHighScores, err error) {
+func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (
+	req GetGameHighScores,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetGameHighScores
@@ -1407,11 +1984,11 @@ func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1423,24 +2000,42 @@ func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req OptGetMyCommands, err error) {
+func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (
+	req OptGetMyCommands,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptGetMyCommands
@@ -1448,11 +2043,11 @@ func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -1465,24 +2060,42 @@ func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetStickerSet, err error) {
+func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (
+	req GetStickerSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetStickerSet
@@ -1490,11 +2103,11 @@ func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1506,24 +2119,42 @@ func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdates, err error) {
+func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (
+	req OptGetUpdates,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptGetUpdates
@@ -1531,11 +2162,11 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -1548,7 +2179,7 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1563,24 +2194,42 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req GetUserProfilePhotos, err error) {
+func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (
+	req GetUserProfilePhotos,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GetUserProfilePhotos
@@ -1588,11 +2237,11 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1604,7 +2253,7 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1612,24 +2261,42 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, err error) {
+func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (
+	req LeaveChat,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request LeaveChat
@@ -1637,11 +2304,11 @@ func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (req L
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1653,24 +2320,42 @@ func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (req L
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatMessage, err error) {
+func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (
+	req PinChatMessage,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PinChatMessage
@@ -1678,11 +2363,11 @@ func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1694,24 +2379,42 @@ func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req PromoteChatMember, err error) {
+func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (
+	req PromoteChatMember,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PromoteChatMember
@@ -1719,11 +2422,11 @@ func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1735,24 +2438,42 @@ func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req RestrictChatMember, err error) {
+func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (
+	req RestrictChatMember,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request RestrictChatMember
@@ -1760,11 +2481,11 @@ func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1776,24 +2497,42 @@ func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req RevokeChatInviteLink, err error) {
+func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (
+	req RevokeChatInviteLink,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request RevokeChatInviteLink
@@ -1801,11 +2540,11 @@ func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1817,24 +2556,42 @@ func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnimation, err error) {
+func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (
+	req SendAnimation,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendAnimation
@@ -1842,11 +2599,11 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1858,7 +2615,7 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1866,24 +2623,42 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, err error) {
+func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (
+	req SendAudio,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendAudio
@@ -1891,11 +2666,11 @@ func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (req S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1907,7 +2682,7 @@ func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1915,24 +2690,42 @@ func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChatAction, err error) {
+func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (
+	req SendChatAction,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendChatAction
@@ -1940,11 +2733,11 @@ func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1956,24 +2749,42 @@ func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact, err error) {
+func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (
+	req SendContact,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendContact
@@ -1981,11 +2792,11 @@ func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1997,7 +2808,7 @@ func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2005,24 +2816,42 @@ func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err error) {
+func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (
+	req SendDice,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendDice
@@ -2030,11 +2859,11 @@ func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (req Se
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2046,7 +2875,7 @@ func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (req Se
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2054,24 +2883,42 @@ func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (req Se
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocument, err error) {
+func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (
+	req SendDocument,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendDocument
@@ -2079,11 +2926,11 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2095,7 +2942,7 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2103,24 +2950,42 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err error) {
+func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (
+	req SendGame,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendGame
@@ -2128,11 +2993,11 @@ func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (req Se
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2144,7 +3009,7 @@ func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (req Se
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2152,24 +3017,42 @@ func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (req Se
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice, err error) {
+func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (
+	req SendInvoice,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendInvoice
@@ -2177,11 +3060,11 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2193,7 +3076,7 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2201,24 +3084,42 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocation, err error) {
+func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (
+	req SendLocation,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendLocation
@@ -2226,11 +3127,11 @@ func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2242,7 +3143,7 @@ func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2250,24 +3151,42 @@ func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMediaGroup, err error) {
+func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
+	req SendMediaGroup,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendMediaGroup
@@ -2275,11 +3194,11 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2291,7 +3210,7 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2299,24 +3218,42 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage, err error) {
+func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (
+	req SendMessage,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendMessage
@@ -2324,11 +3261,11 @@ func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2340,7 +3277,7 @@ func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2348,24 +3285,42 @@ func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, err error) {
+func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (
+	req SendPhoto,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendPhoto
@@ -2373,11 +3328,11 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (req S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2389,7 +3344,7 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2397,24 +3352,42 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err error) {
+func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (
+	req SendPoll,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendPoll
@@ -2422,11 +3395,11 @@ func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (req Se
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2438,7 +3411,7 @@ func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (req Se
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2446,24 +3419,42 @@ func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (req Se
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker, err error) {
+func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (
+	req SendSticker,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendSticker
@@ -2471,11 +3462,11 @@ func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2487,7 +3478,7 @@ func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2495,24 +3486,42 @@ func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, err error) {
+func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (
+	req SendVenue,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendVenue
@@ -2520,11 +3529,11 @@ func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (req S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2536,7 +3545,7 @@ func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2544,24 +3553,42 @@ func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, err error) {
+func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (
+	req SendVideo,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendVideo
@@ -2569,11 +3596,11 @@ func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (req S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2585,7 +3612,7 @@ func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2593,24 +3620,42 @@ func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideoNote, err error) {
+func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (
+	req SendVideoNote,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendVideoNote
@@ -2618,11 +3663,11 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2634,7 +3679,7 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2642,24 +3687,42 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, err error) {
+func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (
+	req SendVoice,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SendVoice
@@ -2667,11 +3730,11 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (req S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2683,7 +3746,7 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2691,24 +3754,42 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Span) (req SetChatAdministratorCustomTitle, err error) {
+func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Span) (
+	req SetChatAdministratorCustomTitle,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetChatAdministratorCustomTitle
@@ -2716,11 +3797,11 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2732,7 +3813,7 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2740,24 +3821,42 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetChatDescription, err error) {
+func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (
+	req SetChatDescription,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetChatDescription
@@ -2765,11 +3864,11 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2781,7 +3880,7 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2789,24 +3888,42 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetChatPermissions, err error) {
+func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (
+	req SetChatPermissions,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetChatPermissions
@@ -2814,11 +3931,11 @@ func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2830,24 +3947,42 @@ func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPhoto, err error) {
+func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (
+	req SetChatPhoto,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetChatPhoto
@@ -2855,11 +3990,11 @@ func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2871,24 +4006,42 @@ func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetChatStickerSet, err error) {
+func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (
+	req SetChatStickerSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetChatStickerSet
@@ -2896,11 +4049,11 @@ func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2912,24 +4065,42 @@ func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTitle, err error) {
+func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (
+	req SetChatTitle,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetChatTitle
@@ -2937,11 +4108,11 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2953,7 +4124,7 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2961,24 +4132,42 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameScore, err error) {
+func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (
+	req SetGameScore,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetGameScore
@@ -2986,11 +4175,11 @@ func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3002,24 +4191,42 @@ func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyCommands, err error) {
+func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (
+	req SetMyCommands,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetMyCommands
@@ -3027,11 +4234,11 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3043,7 +4250,7 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3051,24 +4258,42 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req SetPassportDataErrors, err error) {
+func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (
+	req SetPassportDataErrors,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetPassportDataErrors
@@ -3076,11 +4301,11 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3092,7 +4317,7 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3100,24 +4325,42 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req SetStickerPositionInSet, err error) {
+func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (
+	req SetStickerPositionInSet,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetStickerPositionInSet
@@ -3125,11 +4368,11 @@ func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3141,24 +4384,42 @@ func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetStickerSetThumb, err error) {
+func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (
+	req SetStickerSetThumb,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetStickerSetThumb
@@ -3166,11 +4427,11 @@ func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3182,24 +4443,42 @@ func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, err error) {
+func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (
+	req SetWebhook,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SetWebhook
@@ -3207,11 +4486,11 @@ func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (req 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3223,24 +4502,42 @@ func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req StopMessageLiveLocation, err error) {
+func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (
+	req StopMessageLiveLocation,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request StopMessageLiveLocation
@@ -3248,11 +4545,11 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3264,7 +4561,7 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3272,24 +4569,42 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err error) {
+func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (
+	req StopPoll,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request StopPoll
@@ -3297,11 +4612,11 @@ func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (req St
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3313,7 +4628,7 @@ func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (req St
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3321,24 +4636,42 @@ func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (req St
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanChatMember, err error) {
+func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (
+	req UnbanChatMember,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UnbanChatMember
@@ -3346,11 +4679,11 @@ func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3362,24 +4695,42 @@ func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (req UnbanChatSenderChat, err error) {
+func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (
+	req UnbanChatSenderChat,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UnbanChatSenderChat
@@ -3387,11 +4738,11 @@ func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3403,24 +4754,42 @@ func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req UnpinAllChatMessages, err error) {
+func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (
+	req UnpinAllChatMessages,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UnpinAllChatMessages
@@ -3428,11 +4797,11 @@ func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3444,24 +4813,42 @@ func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinChatMessage, err error) {
+func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (
+	req UnpinChatMessage,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UnpinChatMessage
@@ -3469,11 +4856,11 @@ func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span)
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3485,24 +4872,42 @@ func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req UploadStickerFile, err error) {
+func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (
+	req UploadStickerFile,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UploadStickerFile
@@ -3510,11 +4915,11 @@ func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3526,11 +4931,11 @@ func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }

@@ -10,19 +10,38 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err error) {
+func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (
+	req OptData,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptData
@@ -30,11 +49,11 @@ func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (req 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -47,11 +66,11 @@ func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }

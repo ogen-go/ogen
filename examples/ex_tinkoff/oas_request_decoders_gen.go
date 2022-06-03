@@ -10,19 +10,38 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req LimitOrderRequest, err error) {
+func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (
+	req LimitOrderRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request LimitOrderRequest
@@ -30,11 +49,11 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -46,7 +65,7 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -54,24 +73,42 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req MarketOrderRequest, err error) {
+func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (
+	req MarketOrderRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request MarketOrderRequest
@@ -79,11 +116,11 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -95,7 +132,7 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -103,24 +140,42 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetCurrencyBalanceRequest, err error) {
+func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span) (
+	req SandboxSetCurrencyBalanceRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SandboxSetCurrencyBalanceRequest
@@ -128,11 +183,11 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -144,7 +199,7 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -152,24 +207,42 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetPositionBalanceRequest, err error) {
+func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) (
+	req SandboxSetPositionBalanceRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SandboxSetPositionBalanceRequest
@@ -177,11 +250,11 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -193,7 +266,7 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -201,24 +274,42 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req OptSandboxRegisterRequest, err error) {
+func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (
+	req OptSandboxRegisterRequest,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptSandboxRegisterRequest
@@ -226,11 +317,11 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -243,7 +334,7 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -258,11 +349,11 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }

@@ -10,19 +10,38 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span trace.Span) (req ActionsCreateOrUpdateEnvironmentSecretReq, err error) {
+func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span trace.Span) (
+	req ActionsCreateOrUpdateEnvironmentSecretReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsCreateOrUpdateEnvironmentSecretReq
@@ -30,11 +49,11 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -46,7 +65,7 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -54,24 +73,42 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Span) (req ActionsCreateOrUpdateOrgSecretReq, err error) {
+func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Span) (
+	req ActionsCreateOrUpdateOrgSecretReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsCreateOrUpdateOrgSecretReq
@@ -79,11 +116,11 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -95,7 +132,7 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -103,24 +140,42 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Span) (req ActionsCreateOrUpdateRepoSecretReq, err error) {
+func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Span) (
+	req ActionsCreateOrUpdateRepoSecretReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsCreateOrUpdateRepoSecretReq
@@ -128,11 +183,11 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -144,7 +199,7 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -152,24 +207,42 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span trace.Span) (req ActionsCreateSelfHostedRunnerGroupForOrgReq, err error) {
+func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span trace.Span) (
+	req ActionsCreateSelfHostedRunnerGroupForOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsCreateSelfHostedRunnerGroupForOrgReq
@@ -177,11 +250,11 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -193,7 +266,7 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -201,24 +274,42 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request, span trace.Span) (req ActionsReviewPendingDeploymentsForRunReq, err error) {
+func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request, span trace.Span) (
+	req ActionsReviewPendingDeploymentsForRunReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsReviewPendingDeploymentsForRunReq
@@ -226,11 +317,11 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -242,7 +333,7 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -250,24 +341,42 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request, span trace.Span) (req OptSelectedActions, err error) {
+func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request, span trace.Span) (
+	req OptSelectedActions,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptSelectedActions
@@ -275,11 +384,11 @@ func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Reque
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -292,24 +401,42 @@ func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request, span trace.Span) (req OptSelectedActions, err error) {
+func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request, span trace.Span) (
+	req OptSelectedActions,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptSelectedActions
@@ -317,11 +444,11 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -334,24 +461,42 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request, span trace.Span) (req ActionsSetGithubActionsPermissionsOrganizationReq, err error) {
+func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request, span trace.Span) (
+	req ActionsSetGithubActionsPermissionsOrganizationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsSetGithubActionsPermissionsOrganizationReq
@@ -359,11 +504,11 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -375,7 +520,7 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -383,24 +528,42 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, span trace.Span) (req ActionsSetGithubActionsPermissionsRepositoryReq, err error) {
+func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, span trace.Span) (
+	req ActionsSetGithubActionsPermissionsRepositoryReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsSetGithubActionsPermissionsRepositoryReq
@@ -408,11 +571,11 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -424,7 +587,7 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -432,24 +595,42 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request, span trace.Span) (req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, err error) {
+func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request, span trace.Span) (
+	req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
@@ -457,11 +638,11 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -473,7 +654,7 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -481,24 +662,42 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trace.Span) (req ActionsSetSelectedReposForOrgSecretReq, err error) {
+func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trace.Span) (
+	req ActionsSetSelectedReposForOrgSecretReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsSetSelectedReposForOrgSecretReq
@@ -506,11 +705,11 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -522,7 +721,7 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -530,24 +729,42 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request, span trace.Span) (req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, err error) {
+func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request, span trace.Span) (
+	req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
@@ -555,11 +772,11 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -571,7 +788,7 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -579,24 +796,42 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span trace.Span) (req ActionsSetSelfHostedRunnersInGroupForOrgReq, err error) {
+func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span trace.Span) (
+	req ActionsSetSelfHostedRunnersInGroupForOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsSetSelfHostedRunnersInGroupForOrgReq
@@ -604,11 +839,11 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -620,7 +855,7 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -628,24 +863,42 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span trace.Span) (req ActionsUpdateSelfHostedRunnerGroupForOrgReq, err error) {
+func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span trace.Span) (
+	req ActionsUpdateSelfHostedRunnerGroupForOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ActionsUpdateSelfHostedRunnerGroupForOrgReq
@@ -653,11 +906,11 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -669,7 +922,7 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -677,24 +930,42 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, span trace.Span) (req OptActivityMarkNotificationsAsReadReq, err error) {
+func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, span trace.Span) (
+	req OptActivityMarkNotificationsAsReadReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptActivityMarkNotificationsAsReadReq
@@ -702,11 +973,11 @@ func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -719,24 +990,42 @@ func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request, span trace.Span) (req OptActivityMarkRepoNotificationsAsReadReq, err error) {
+func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request, span trace.Span) (
+	req OptActivityMarkRepoNotificationsAsReadReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptActivityMarkRepoNotificationsAsReadReq
@@ -744,11 +1033,11 @@ func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Reques
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -761,24 +1050,42 @@ func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span trace.Span) (req OptActivitySetRepoSubscriptionReq, err error) {
+func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span trace.Span) (
+	req OptActivitySetRepoSubscriptionReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptActivitySetRepoSubscriptionReq
@@ -786,11 +1093,11 @@ func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -803,24 +1110,42 @@ func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, span trace.Span) (req OptActivitySetThreadSubscriptionReq, err error) {
+func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, span trace.Span) (
+	req OptActivitySetThreadSubscriptionReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptActivitySetThreadSubscriptionReq
@@ -828,11 +1153,11 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -845,24 +1170,42 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (req AppsCheckTokenReq, err error) {
+func (s *Server) decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (
+	req AppsCheckTokenReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AppsCheckTokenReq
@@ -870,11 +1213,11 @@ func (s *Server) decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -886,24 +1229,42 @@ func (s *Server) decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span trace.Span) (req AppsCreateContentAttachmentReq, err error) {
+func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span trace.Span) (
+	req AppsCreateContentAttachmentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AppsCreateContentAttachmentReq
@@ -911,11 +1272,11 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -927,7 +1288,7 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -935,24 +1296,42 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.Span) (req OptAppsCreateInstallationAccessTokenReq, err error) {
+func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.Span) (
+	req OptAppsCreateInstallationAccessTokenReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptAppsCreateInstallationAccessTokenReq
@@ -960,11 +1339,11 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -977,7 +1356,7 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -992,24 +1371,42 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request, span trace.Span) (req AppsDeleteAuthorizationReq, err error) {
+func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request, span trace.Span) (
+	req AppsDeleteAuthorizationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AppsDeleteAuthorizationReq
@@ -1017,11 +1414,11 @@ func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1033,24 +1430,42 @@ func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) (req AppsDeleteTokenReq, err error) {
+func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) (
+	req AppsDeleteTokenReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AppsDeleteTokenReq
@@ -1058,11 +1473,11 @@ func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1074,24 +1489,42 @@ func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (req AppsResetTokenReq, err error) {
+func (s *Server) decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (
+	req AppsResetTokenReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AppsResetTokenReq
@@ -1099,11 +1532,11 @@ func (s *Server) decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1115,24 +1548,42 @@ func (s *Server) decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (req AppsScopeTokenReq, err error) {
+func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (
+	req AppsScopeTokenReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request AppsScopeTokenReq
@@ -1140,11 +1591,11 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1156,7 +1607,7 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1164,24 +1615,42 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span) (req OptAppsUpdateWebhookConfigForAppReq, err error) {
+func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span) (
+	req OptAppsUpdateWebhookConfigForAppReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptAppsUpdateWebhookConfigForAppReq
@@ -1189,11 +1658,11 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -1206,7 +1675,7 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1221,24 +1690,42 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (req ChecksCreateSuiteReq, err error) {
+func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (
+	req ChecksCreateSuiteReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ChecksCreateSuiteReq
@@ -1246,11 +1733,11 @@ func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1262,24 +1749,42 @@ func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request, span trace.Span) (req ChecksSetSuitesPreferencesReq, err error) {
+func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request, span trace.Span) (
+	req ChecksSetSuitesPreferencesReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ChecksSetSuitesPreferencesReq
@@ -1287,11 +1792,11 @@ func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request, span t
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1303,24 +1808,42 @@ func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req CodeScanningUpdateAlertReq, err error) {
+func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (
+	req CodeScanningUpdateAlertReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request CodeScanningUpdateAlertReq
@@ -1328,11 +1851,11 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1344,7 +1867,7 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1352,24 +1875,42 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req CodeScanningUploadSarifReq, err error) {
+func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (
+	req CodeScanningUploadSarifReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request CodeScanningUploadSarifReq
@@ -1377,11 +1918,11 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1393,7 +1934,7 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1401,24 +1942,42 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request, span trace.Span) (req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, err error) {
+func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
@@ -1426,11 +1985,11 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1442,7 +2001,7 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1450,24 +2009,42 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request, span trace.Span) (req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, err error) {
+func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
@@ -1475,11 +2052,11 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1491,7 +2068,7 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1499,24 +2076,42 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request, span trace.Span) (req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, err error) {
+func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminProvisionAndInviteEnterpriseUserReq
@@ -1524,11 +2119,11 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1540,7 +2135,7 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1548,24 +2143,42 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request, span trace.Span) (req SelectedActions, err error) {
+func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request, span trace.Span) (
+	req SelectedActions,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SelectedActions
@@ -1573,11 +2186,11 @@ func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1589,24 +2202,42 @@ func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request, span trace.Span) (req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, err error) {
+func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
@@ -1614,11 +2245,11 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1630,7 +2261,7 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1638,24 +2269,42 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request, span trace.Span) (req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, err error) {
+func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
@@ -1663,11 +2312,11 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1679,7 +2328,7 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1687,24 +2336,42 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request, span trace.Span) (req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, err error) {
+func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
@@ -1712,11 +2379,11 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1728,7 +2395,7 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1736,24 +2403,42 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request, span trace.Span) (req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, err error) {
+func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
@@ -1761,11 +2446,11 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1777,7 +2462,7 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1785,24 +2470,42 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request, span trace.Span) (req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, err error) {
+func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
@@ -1810,11 +2513,11 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1826,7 +2529,7 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1834,24 +2537,42 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request, span trace.Span) (req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, err error) {
+func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
@@ -1859,11 +2580,11 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1875,7 +2596,7 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1883,24 +2604,42 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Request, span trace.Span) (req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, err error) {
+func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
@@ -1908,11 +2647,11 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1924,7 +2663,7 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1932,24 +2671,42 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request, span trace.Span) (req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, err error) {
+func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request, span trace.Span) (
+	req EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request EnterpriseAdminUpdateAttributeForEnterpriseUserReq
@@ -1957,11 +2714,11 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -1973,7 +2730,7 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1981,24 +2738,42 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request, span trace.Span) (req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, err error) {
+func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request, span trace.Span) (
+	req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
@@ -2006,11 +2781,11 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -2023,7 +2798,7 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2038,24 +2813,42 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (req GistsCreateReq, err error) {
+func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (
+	req GistsCreateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GistsCreateReq
@@ -2063,11 +2856,11 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2079,7 +2872,7 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2087,24 +2880,42 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req GistsCreateCommentReq, err error) {
+func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (
+	req GistsCreateCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GistsCreateCommentReq
@@ -2112,11 +2923,11 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2128,7 +2939,7 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2136,24 +2947,42 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req GistsUpdateCommentReq, err error) {
+func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (
+	req GistsUpdateCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GistsUpdateCommentReq
@@ -2161,11 +2990,11 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2177,7 +3006,7 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2185,24 +3014,42 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (req GitCreateBlobReq, err error) {
+func (s *Server) decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (
+	req GitCreateBlobReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GitCreateBlobReq
@@ -2210,11 +3057,11 @@ func (s *Server) decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2226,24 +3073,42 @@ func (s *Server) decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGitCreateCommitRequest(r *http.Request, span trace.Span) (req GitCreateCommitReq, err error) {
+func (s *Server) decodeGitCreateCommitRequest(r *http.Request, span trace.Span) (
+	req GitCreateCommitReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GitCreateCommitReq
@@ -2251,11 +3116,11 @@ func (s *Server) decodeGitCreateCommitRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2267,24 +3132,42 @@ func (s *Server) decodeGitCreateCommitRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGitCreateRefRequest(r *http.Request, span trace.Span) (req GitCreateRefReq, err error) {
+func (s *Server) decodeGitCreateRefRequest(r *http.Request, span trace.Span) (
+	req GitCreateRefReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GitCreateRefReq
@@ -2292,11 +3175,11 @@ func (s *Server) decodeGitCreateRefRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2308,24 +3191,42 @@ func (s *Server) decodeGitCreateRefRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (req GitCreateTagReq, err error) {
+func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (
+	req GitCreateTagReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GitCreateTagReq
@@ -2333,11 +3234,11 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2349,7 +3250,7 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2357,24 +3258,42 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (req GitCreateTreeReq, err error) {
+func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (
+	req GitCreateTreeReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GitCreateTreeReq
@@ -2382,11 +3301,11 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2398,7 +3317,7 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2406,24 +3325,42 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (req GitUpdateRefReq, err error) {
+func (s *Server) decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (
+	req GitUpdateRefReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request GitUpdateRefReq
@@ -2431,11 +3368,11 @@ func (s *Server) decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2447,24 +3384,42 @@ func (s *Server) decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Request, span trace.Span) (req InteractionLimit, err error) {
+func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+	req InteractionLimit,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request InteractionLimit
@@ -2472,11 +3427,11 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2488,7 +3443,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2496,24 +3451,42 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request, span trace.Span) (req InteractionLimit, err error) {
+func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request, span trace.Span) (
+	req InteractionLimit,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request InteractionLimit
@@ -2521,11 +3494,11 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2537,7 +3510,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2545,24 +3518,42 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace.Span) (req InteractionLimit, err error) {
+func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace.Span) (
+	req InteractionLimit,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request InteractionLimit
@@ -2570,11 +3561,11 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2586,7 +3577,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2594,24 +3585,42 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Span) (req OptIssuesAddAssigneesReq, err error) {
+func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Span) (
+	req OptIssuesAddAssigneesReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptIssuesAddAssigneesReq
@@ -2619,11 +3628,11 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -2636,24 +3645,42 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesCreateRequest(r *http.Request, span trace.Span) (req IssuesCreateReq, err error) {
+func (s *Server) decodeIssuesCreateRequest(r *http.Request, span trace.Span) (
+	req IssuesCreateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request IssuesCreateReq
@@ -2661,11 +3688,11 @@ func (s *Server) decodeIssuesCreateRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2677,24 +3704,42 @@ func (s *Server) decodeIssuesCreateRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request, span trace.Span) (req IssuesCreateCommentReq, err error) {
+func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request, span trace.Span) (
+	req IssuesCreateCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request IssuesCreateCommentReq
@@ -2702,11 +3747,11 @@ func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2718,24 +3763,42 @@ func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span) (req IssuesCreateLabelReq, err error) {
+func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span) (
+	req IssuesCreateLabelReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request IssuesCreateLabelReq
@@ -2743,11 +3806,11 @@ func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2759,24 +3822,42 @@ func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (req IssuesCreateMilestoneReq, err error) {
+func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (
+	req IssuesCreateMilestoneReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request IssuesCreateMilestoneReq
@@ -2784,11 +3865,11 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -2800,7 +3881,7 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2808,24 +3889,42 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptNilIssuesLockReq, err error) {
+func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (
+	req OptNilIssuesLockReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilIssuesLockReq
@@ -2833,11 +3932,11 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (req 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -2850,7 +3949,7 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2865,24 +3964,42 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.Span) (req OptIssuesRemoveAssigneesReq, err error) {
+func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.Span) (
+	req OptIssuesRemoveAssigneesReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptIssuesRemoveAssigneesReq
@@ -2890,11 +4007,11 @@ func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -2907,24 +4024,42 @@ func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (req OptIssuesUpdateReq, err error) {
+func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (
+	req OptIssuesUpdateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptIssuesUpdateReq
@@ -2932,11 +4067,11 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -2949,7 +4084,7 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2964,24 +4099,42 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Span) (req IssuesUpdateCommentReq, err error) {
+func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Span) (
+	req IssuesUpdateCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request IssuesUpdateCommentReq
@@ -2989,11 +4142,11 @@ func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3005,24 +4158,42 @@ func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span) (req OptIssuesUpdateLabelReq, err error) {
+func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span) (
+	req OptIssuesUpdateLabelReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptIssuesUpdateLabelReq
@@ -3030,11 +4201,11 @@ func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3047,24 +4218,42 @@ func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req OptIssuesUpdateMilestoneReq, err error) {
+func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (
+	req OptIssuesUpdateMilestoneReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptIssuesUpdateMilestoneReq
@@ -3072,11 +4261,11 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3089,7 +4278,7 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3104,24 +4293,42 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span trace.Span) (req OptMigrationsMapCommitAuthorReq, err error) {
+func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span trace.Span) (
+	req OptMigrationsMapCommitAuthorReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptMigrationsMapCommitAuthorReq
@@ -3129,11 +4336,11 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span tr
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3146,24 +4353,42 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span trace.Span) (req MigrationsSetLfsPreferenceReq, err error) {
+func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span trace.Span) (
+	req MigrationsSetLfsPreferenceReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request MigrationsSetLfsPreferenceReq
@@ -3171,11 +4396,11 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span t
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3187,7 +4412,7 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3195,24 +4420,42 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request, span trace.Span) (req MigrationsStartForAuthenticatedUserReq, err error) {
+func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+	req MigrationsStartForAuthenticatedUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request MigrationsStartForAuthenticatedUserReq
@@ -3220,11 +4463,11 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3236,7 +4479,7 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3244,24 +4487,42 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.Span) (req MigrationsStartForOrgReq, err error) {
+func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.Span) (
+	req MigrationsStartForOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request MigrationsStartForOrgReq
@@ -3269,11 +4530,11 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3285,7 +4546,7 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3293,24 +4554,42 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (req MigrationsStartImportReq, err error) {
+func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (
+	req MigrationsStartImportReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request MigrationsStartImportReq
@@ -3318,11 +4597,11 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3334,7 +4613,7 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3342,24 +4621,42 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req OptNilMigrationsUpdateImportReq, err error) {
+func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (
+	req OptNilMigrationsUpdateImportReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilMigrationsUpdateImportReq
@@ -3367,11 +4664,11 @@ func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3384,24 +4681,42 @@ func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span trace.Span) (req OptOAuthAuthorizationsCreateAuthorizationReq, err error) {
+func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span trace.Span) (
+	req OptOAuthAuthorizationsCreateAuthorizationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptOAuthAuthorizationsCreateAuthorizationReq
@@ -3409,11 +4724,11 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3426,7 +4741,7 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3441,24 +4756,42 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Request, span trace.Span) (req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, err error) {
+func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Request, span trace.Span) (
+	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
@@ -3466,11 +4799,11 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3482,7 +4815,7 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3490,24 +4823,42 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r *http.Request, span trace.Span) (req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, err error) {
+func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r *http.Request, span trace.Span) (
+	req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
@@ -3515,11 +4866,11 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3531,7 +4882,7 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3539,24 +4890,42 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span trace.Span) (req OptOAuthAuthorizationsUpdateAuthorizationReq, err error) {
+func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span trace.Span) (
+	req OptOAuthAuthorizationsUpdateAuthorizationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptOAuthAuthorizationsUpdateAuthorizationReq
@@ -3564,11 +4933,11 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3581,7 +4950,7 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3596,24 +4965,42 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (req OptOrgsCreateInvitationReq, err error) {
+func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (
+	req OptOrgsCreateInvitationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptOrgsCreateInvitationReq
@@ -3621,11 +5008,11 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3638,7 +5025,7 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3653,24 +5040,42 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span) (req OrgsCreateWebhookReq, err error) {
+func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span) (
+	req OrgsCreateWebhookReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request OrgsCreateWebhookReq
@@ -3678,11 +5083,11 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3694,7 +5099,7 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3702,24 +5107,42 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (req OptOrgsSetMembershipForUserReq, err error) {
+func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (
+	req OptOrgsSetMembershipForUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptOrgsSetMembershipForUserReq
@@ -3727,11 +5150,11 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3744,7 +5167,7 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3759,24 +5182,42 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request, span trace.Span) (req OrgsUpdateMembershipForAuthenticatedUserReq, err error) {
+func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+	req OrgsUpdateMembershipForAuthenticatedUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request OrgsUpdateMembershipForAuthenticatedUserReq
@@ -3784,11 +5225,11 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -3800,7 +5241,7 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3808,24 +5249,42 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptOrgsUpdateWebhookReq, err error) {
+func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (
+	req OptOrgsUpdateWebhookReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptOrgsUpdateWebhookReq
@@ -3833,11 +5292,11 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3850,7 +5309,7 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3865,24 +5324,42 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span) (req OptOrgsUpdateWebhookConfigForOrgReq, err error) {
+func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span) (
+	req OptOrgsUpdateWebhookConfigForOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptOrgsUpdateWebhookConfigForOrgReq
@@ -3890,11 +5367,11 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3907,7 +5384,7 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3922,24 +5399,42 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req OptNilProjectsAddCollaboratorReq, err error) {
+func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (
+	req OptNilProjectsAddCollaboratorReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilProjectsAddCollaboratorReq
@@ -3947,11 +5442,11 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -3964,7 +5459,7 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3979,24 +5474,42 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request, span trace.Span) (req ProjectsCreateColumnReq, err error) {
+func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request, span trace.Span) (
+	req ProjectsCreateColumnReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsCreateColumnReq
@@ -4004,11 +5517,11 @@ func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4020,24 +5533,42 @@ func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request, span trace.Span) (req ProjectsCreateForAuthenticatedUserReq, err error) {
+func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+	req ProjectsCreateForAuthenticatedUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsCreateForAuthenticatedUserReq
@@ -4045,11 +5576,11 @@ func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4061,24 +5592,42 @@ func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request, span trace.Span) (req ProjectsCreateForOrgReq, err error) {
+func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request, span trace.Span) (
+	req ProjectsCreateForOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsCreateForOrgReq
@@ -4086,11 +5635,11 @@ func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4102,24 +5651,42 @@ func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request, span trace.Span) (req ProjectsCreateForRepoReq, err error) {
+func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request, span trace.Span) (
+	req ProjectsCreateForRepoReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsCreateForRepoReq
@@ -4127,11 +5694,11 @@ func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4143,24 +5710,42 @@ func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span) (req ProjectsMoveCardReq, err error) {
+func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span) (
+	req ProjectsMoveCardReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsMoveCardReq
@@ -4168,11 +5753,11 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span)
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4184,7 +5769,7 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4192,24 +5777,42 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req ProjectsMoveColumnReq, err error) {
+func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (
+	req ProjectsMoveColumnReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsMoveColumnReq
@@ -4217,11 +5820,11 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4233,7 +5836,7 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4241,24 +5844,42 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req OptProjectsUpdateReq, err error) {
+func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
+	req OptProjectsUpdateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptProjectsUpdateReq
@@ -4266,11 +5887,11 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -4283,7 +5904,7 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4298,24 +5919,42 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Span) (req OptProjectsUpdateCardReq, err error) {
+func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Span) (
+	req OptProjectsUpdateCardReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptProjectsUpdateCardReq
@@ -4323,11 +5962,11 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -4340,24 +5979,42 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request, span trace.Span) (req ProjectsUpdateColumnReq, err error) {
+func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request, span trace.Span) (
+	req ProjectsUpdateColumnReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ProjectsUpdateColumnReq
@@ -4365,11 +6022,11 @@ func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4381,24 +6038,42 @@ func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsCreateRequest(r *http.Request, span trace.Span) (req PullsCreateReq, err error) {
+func (s *Server) decodePullsCreateRequest(r *http.Request, span trace.Span) (
+	req PullsCreateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsCreateReq
@@ -4406,11 +6081,11 @@ func (s *Server) decodePullsCreateRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4422,24 +6097,42 @@ func (s *Server) decodePullsCreateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request, span trace.Span) (req PullsCreateReplyForReviewCommentReq, err error) {
+func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request, span trace.Span) (
+	req PullsCreateReplyForReviewCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsCreateReplyForReviewCommentReq
@@ -4447,11 +6140,11 @@ func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request, 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4463,24 +6156,42 @@ func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req OptPullsCreateReviewReq, err error) {
+func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (
+	req OptPullsCreateReviewReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptPullsCreateReviewReq
@@ -4488,11 +6199,11 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -4505,7 +6216,7 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4520,24 +6231,42 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span trace.Span) (req PullsCreateReviewCommentReq, err error) {
+func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span trace.Span) (
+	req PullsCreateReviewCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsCreateReviewCommentReq
@@ -4545,11 +6274,11 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4561,7 +6290,7 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4569,24 +6298,42 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (req PullsDismissReviewReq, err error) {
+func (s *Server) decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (
+	req PullsDismissReviewReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsDismissReviewReq
@@ -4594,11 +6341,11 @@ func (s *Server) decodePullsDismissReviewRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4610,24 +6357,42 @@ func (s *Server) decodePullsDismissReviewRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptNilPullsMergeReq, err error) {
+func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (
+	req OptNilPullsMergeReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilPullsMergeReq
@@ -4635,11 +6400,11 @@ func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (req 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -4652,7 +6417,7 @@ func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4667,24 +6432,42 @@ func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, span trace.Span) (req PullsRemoveRequestedReviewersReq, err error) {
+func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, span trace.Span) (
+	req PullsRemoveRequestedReviewersReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsRemoveRequestedReviewersReq
@@ -4692,11 +6475,11 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4708,7 +6491,7 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4716,24 +6499,42 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req PullsSubmitReviewReq, err error) {
+func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (
+	req PullsSubmitReviewReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsSubmitReviewReq
@@ -4741,11 +6542,11 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4757,7 +6558,7 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4765,24 +6566,42 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (req OptPullsUpdateReq, err error) {
+func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (
+	req OptPullsUpdateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptPullsUpdateReq
@@ -4790,11 +6609,11 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -4807,7 +6626,7 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4822,24 +6641,42 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span) (req OptNilPullsUpdateBranchReq, err error) {
+func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span) (
+	req OptNilPullsUpdateBranchReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilPullsUpdateBranchReq
@@ -4847,11 +6684,11 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -4864,24 +6701,42 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsUpdateReviewRequest(r *http.Request, span trace.Span) (req PullsUpdateReviewReq, err error) {
+func (s *Server) decodePullsUpdateReviewRequest(r *http.Request, span trace.Span) (
+	req PullsUpdateReviewReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsUpdateReviewReq
@@ -4889,11 +6744,11 @@ func (s *Server) decodePullsUpdateReviewRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4905,24 +6760,42 @@ func (s *Server) decodePullsUpdateReviewRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request, span trace.Span) (req PullsUpdateReviewCommentReq, err error) {
+func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request, span trace.Span) (
+	req PullsUpdateReviewCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request PullsUpdateReviewCommentReq
@@ -4930,11 +6803,11 @@ func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4946,24 +6819,42 @@ func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, span trace.Span) (req ReactionsCreateForCommitCommentReq, err error) {
+func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForCommitCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForCommitCommentReq
@@ -4971,11 +6862,11 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -4987,7 +6878,7 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4995,24 +6886,42 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trace.Span) (req ReactionsCreateForIssueReq, err error) {
+func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForIssueReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForIssueReq
@@ -5020,11 +6929,11 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5036,7 +6945,7 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5044,24 +6953,42 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, span trace.Span) (req ReactionsCreateForIssueCommentReq, err error) {
+func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForIssueCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForIssueCommentReq
@@ -5069,11 +6996,11 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5085,7 +7012,7 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5093,24 +7020,42 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request, span trace.Span) (req ReactionsCreateForPullRequestReviewCommentReq, err error) {
+func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForPullRequestReviewCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForPullRequestReviewCommentReq
@@ -5118,11 +7063,11 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5134,7 +7079,7 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5142,24 +7087,42 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span trace.Span) (req ReactionsCreateForReleaseReq, err error) {
+func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForReleaseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForReleaseReq
@@ -5167,11 +7130,11 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span tr
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5183,7 +7146,7 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5191,24 +7154,42 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (req ReactionsCreateForTeamDiscussionCommentInOrgReq, err error) {
+func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForTeamDiscussionCommentInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForTeamDiscussionCommentInOrgReq
@@ -5216,11 +7197,11 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5232,7 +7213,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5240,24 +7221,42 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (req ReactionsCreateForTeamDiscussionCommentLegacyReq, err error) {
+func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForTeamDiscussionCommentLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForTeamDiscussionCommentLegacyReq
@@ -5265,11 +7264,11 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5281,7 +7280,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5289,24 +7288,42 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span trace.Span) (req ReactionsCreateForTeamDiscussionInOrgReq, err error) {
+func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForTeamDiscussionInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForTeamDiscussionInOrgReq
@@ -5314,11 +7331,11 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5330,7 +7347,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5338,24 +7355,42 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span trace.Span) (req ReactionsCreateForTeamDiscussionLegacyReq, err error) {
+func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span trace.Span) (
+	req ReactionsCreateForTeamDiscussionLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReactionsCreateForTeamDiscussionLegacyReq
@@ -5363,11 +7398,11 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5379,7 +7414,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5387,24 +7422,42 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposAddAppAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposAddAppAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposAddAppAccessRestrictionsReq
@@ -5412,11 +7465,11 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -5429,7 +7482,7 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5444,24 +7497,42 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (req OptReposAddCollaboratorReq, err error) {
+func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (
+	req OptReposAddCollaboratorReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposAddCollaboratorReq
@@ -5469,11 +7540,11 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -5486,7 +7557,7 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5501,24 +7572,42 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) (req OptReposAddStatusCheckContextsReq, err error) {
+func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) (
+	req OptReposAddStatusCheckContextsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposAddStatusCheckContextsReq
@@ -5526,11 +7615,11 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -5543,7 +7632,7 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5558,24 +7647,42 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposAddTeamAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposAddTeamAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposAddTeamAccessRestrictionsReq
@@ -5583,11 +7690,11 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -5600,7 +7707,7 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5615,24 +7722,42 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposAddUserAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposAddUserAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposAddUserAccessRestrictionsReq
@@ -5640,11 +7765,11 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -5657,7 +7782,7 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5672,24 +7797,42 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request, span trace.Span) (req ReposCreateAutolinkReq, err error) {
+func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request, span trace.Span) (
+	req ReposCreateAutolinkReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateAutolinkReq
@@ -5697,11 +7840,11 @@ func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request, span trace.Sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5713,24 +7856,42 @@ func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request, span trace.Span) (req ReposCreateCommitCommentReq, err error) {
+func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request, span trace.Span) (
+	req ReposCreateCommitCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateCommitCommentReq
@@ -5738,11 +7899,11 @@ func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5754,24 +7915,42 @@ func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req ReposCreateCommitStatusReq, err error) {
+func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (
+	req ReposCreateCommitStatusReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateCommitStatusReq
@@ -5779,11 +7958,11 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5795,7 +7974,7 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5803,24 +7982,42 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request, span trace.Span) (req ReposCreateDeployKeyReq, err error) {
+func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request, span trace.Span) (
+	req ReposCreateDeployKeyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateDeployKeyReq
@@ -5828,11 +8025,11 @@ func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5844,24 +8041,42 @@ func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request, span trace.Span) (req ReposCreateDeploymentReq, err error) {
+func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request, span trace.Span) (
+	req ReposCreateDeploymentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateDeploymentReq
@@ -5869,11 +8084,11 @@ func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5885,24 +8100,42 @@ func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span trace.Span) (req ReposCreateDeploymentStatusReq, err error) {
+func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span trace.Span) (
+	req ReposCreateDeploymentStatusReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateDeploymentStatusReq
@@ -5910,11 +8143,11 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5926,7 +8159,7 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5934,24 +8167,42 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span trace.Span) (req ReposCreateDispatchEventReq, err error) {
+func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span trace.Span) (
+	req ReposCreateDispatchEventReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateDispatchEventReq
@@ -5959,11 +8210,11 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -5975,7 +8226,7 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5983,24 +8234,42 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request, span trace.Span) (req ReposCreateForAuthenticatedUserReq, err error) {
+func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+	req ReposCreateForAuthenticatedUserReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateForAuthenticatedUserReq
@@ -6008,11 +8277,11 @@ func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6024,24 +8293,42 @@ func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) (req OptNilReposCreateForkReq, err error) {
+func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) (
+	req OptNilReposCreateForkReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilReposCreateForkReq
@@ -6049,11 +8336,11 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6066,24 +8353,42 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span) (req ReposCreateInOrgReq, err error) {
+func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span) (
+	req ReposCreateInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateInOrgReq
@@ -6091,11 +8396,11 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span)
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6107,7 +8412,7 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -6115,24 +8420,42 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, span trace.Span) (req ReposCreateOrUpdateFileContentsReq, err error) {
+func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, span trace.Span) (
+	req ReposCreateOrUpdateFileContentsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateOrUpdateFileContentsReq
@@ -6140,11 +8463,11 @@ func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6156,24 +8479,42 @@ func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req NilReposCreatePagesSiteReq, err error) {
+func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (
+	req NilReposCreatePagesSiteReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request NilReposCreatePagesSiteReq
@@ -6181,11 +8522,11 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.S
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6197,7 +8538,7 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Value.Validate(); err != nil {
@@ -6205,24 +8546,42 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateReleaseRequest(r *http.Request, span trace.Span) (req ReposCreateReleaseReq, err error) {
+func (s *Server) decodeReposCreateReleaseRequest(r *http.Request, span trace.Span) (
+	req ReposCreateReleaseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateReleaseReq
@@ -6230,11 +8589,11 @@ func (s *Server) decodeReposCreateReleaseRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6246,24 +8605,42 @@ func (s *Server) decodeReposCreateReleaseRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (req ReposCreateUsingTemplateReq, err error) {
+func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (
+	req ReposCreateUsingTemplateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposCreateUsingTemplateReq
@@ -6271,11 +8648,11 @@ func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6287,24 +8664,42 @@ func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptNilReposCreateWebhookReq, err error) {
+func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (
+	req OptNilReposCreateWebhookReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilReposCreateWebhookReq
@@ -6312,11 +8707,11 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6329,7 +8724,7 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6344,24 +8739,42 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposDeleteFileRequest(r *http.Request, span trace.Span) (req ReposDeleteFileReq, err error) {
+func (s *Server) decodeReposDeleteFileRequest(r *http.Request, span trace.Span) (
+	req ReposDeleteFileReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposDeleteFileReq
@@ -6369,11 +8782,11 @@ func (s *Server) decodeReposDeleteFileRequest(r *http.Request, span trace.Span) 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6385,24 +8798,42 @@ func (s *Server) decodeReposDeleteFileRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposMergeRequest(r *http.Request, span trace.Span) (req ReposMergeReq, err error) {
+func (s *Server) decodeReposMergeRequest(r *http.Request, span trace.Span) (
+	req ReposMergeReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposMergeReq
@@ -6410,11 +8841,11 @@ func (s *Server) decodeReposMergeRequest(r *http.Request, span trace.Span) (req 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6426,24 +8857,42 @@ func (s *Server) decodeReposMergeRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request, span trace.Span) (req ReposMergeUpstreamReq, err error) {
+func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request, span trace.Span) (
+	req ReposMergeUpstreamReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposMergeUpstreamReq
@@ -6451,11 +8900,11 @@ func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6467,24 +8916,42 @@ func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposRemoveAppAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposRemoveAppAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposRemoveAppAccessRestrictionsReq
@@ -6492,11 +8959,11 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6509,7 +8976,7 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6524,24 +8991,42 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Span) (req OptReposRemoveStatusCheckContextsReq, err error) {
+func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Span) (
+	req OptReposRemoveStatusCheckContextsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposRemoveStatusCheckContextsReq
@@ -6549,11 +9034,11 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6566,7 +9051,7 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6581,24 +9066,42 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposRemoveTeamAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposRemoveTeamAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposRemoveTeamAccessRestrictionsReq
@@ -6606,11 +9109,11 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6623,7 +9126,7 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6638,24 +9141,42 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposRemoveUserAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposRemoveUserAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposRemoveUserAccessRestrictionsReq
@@ -6663,11 +9184,11 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6680,7 +9201,7 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6695,24 +9216,42 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span) (req OptReposRenameBranchReq, err error) {
+func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span) (
+	req OptReposRenameBranchReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposRenameBranchReq
@@ -6720,11 +9259,11 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6737,24 +9276,42 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req ReposReplaceAllTopicsReq, err error) {
+func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (
+	req ReposReplaceAllTopicsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposReplaceAllTopicsReq
@@ -6762,11 +9319,11 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -6778,7 +9335,7 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -6786,24 +9343,42 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposSetAppAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposSetAppAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposSetAppAccessRestrictionsReq
@@ -6811,11 +9386,11 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6828,7 +9403,7 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6843,24 +9418,42 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) (req OptReposSetStatusCheckContextsReq, err error) {
+func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) (
+	req OptReposSetStatusCheckContextsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposSetStatusCheckContextsReq
@@ -6868,11 +9461,11 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6885,7 +9478,7 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6900,24 +9493,42 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposSetTeamAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposSetTeamAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposSetTeamAccessRestrictionsReq
@@ -6925,11 +9536,11 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6942,7 +9553,7 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6957,24 +9568,42 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (req OptReposSetUserAccessRestrictionsReq, err error) {
+func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+	req OptReposSetUserAccessRestrictionsReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposSetUserAccessRestrictionsReq
@@ -6982,11 +9611,11 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, sp
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -6999,7 +9628,7 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7014,24 +9643,42 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposTransferRequest(r *http.Request, span trace.Span) (req ReposTransferReq, err error) {
+func (s *Server) decodeReposTransferRequest(r *http.Request, span trace.Span) (
+	req ReposTransferReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposTransferReq
@@ -7039,11 +9686,11 @@ func (s *Server) decodeReposTransferRequest(r *http.Request, span trace.Span) (r
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -7055,24 +9702,42 @@ func (s *Server) decodeReposTransferRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (req OptReposUpdateReq, err error) {
+func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateReq
@@ -7080,11 +9745,11 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7097,7 +9762,7 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7112,24 +9777,42 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) (req ReposUpdateBranchProtectionReq, err error) {
+func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) (
+	req ReposUpdateBranchProtectionReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposUpdateBranchProtectionReq
@@ -7137,11 +9820,11 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -7153,7 +9836,7 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7161,24 +9844,42 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request, span trace.Span) (req ReposUpdateCommitCommentReq, err error) {
+func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request, span trace.Span) (
+	req ReposUpdateCommitCommentReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request ReposUpdateCommitCommentReq
@@ -7186,11 +9887,11 @@ func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -7202,24 +9903,42 @@ func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req OptReposUpdateInvitationReq, err error) {
+func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateInvitationReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateInvitationReq
@@ -7227,11 +9946,11 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7244,7 +9963,7 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7259,24 +9978,42 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Request, span trace.Span) (req OptReposUpdatePullRequestReviewProtectionReq, err error) {
+func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdatePullRequestReviewProtectionReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdatePullRequestReviewProtectionReq
@@ -7284,11 +10021,11 @@ func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7301,24 +10038,42 @@ func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Span) (req OptReposUpdateReleaseReq, err error) {
+func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateReleaseReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateReleaseReq
@@ -7326,11 +10081,11 @@ func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7343,24 +10098,42 @@ func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trace.Span) (req OptReposUpdateReleaseAssetReq, err error) {
+func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateReleaseAssetReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateReleaseAssetReq
@@ -7368,11 +10141,11 @@ func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trac
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7385,24 +10158,42 @@ func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, span trace.Span) (req OptReposUpdateStatusCheckProtectionReq, err error) {
+func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateStatusCheckProtectionReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateStatusCheckProtectionReq
@@ -7410,11 +10201,11 @@ func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7427,24 +10218,42 @@ func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptReposUpdateWebhookReq, err error) {
+func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateWebhookReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateWebhookReq
@@ -7452,11 +10261,11 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7469,7 +10278,7 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7484,24 +10293,42 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Span) (req OptReposUpdateWebhookConfigForRepoReq, err error) {
+func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Span) (
+	req OptReposUpdateWebhookConfigForRepoReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptReposUpdateWebhookConfigForRepoReq
@@ -7509,11 +10336,11 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, s
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7526,7 +10353,7 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7541,24 +10368,42 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req SecretScanningUpdateAlertReq, err error) {
+func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (
+	req SecretScanningUpdateAlertReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request SecretScanningUpdateAlertReq
@@ -7566,11 +10411,11 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span tr
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -7582,7 +10427,7 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7590,24 +10435,42 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span trace.Span) (req OptTeamsAddOrUpdateMembershipForUserInOrgReq, err error) {
+func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span trace.Span) (
+	req OptTeamsAddOrUpdateMembershipForUserInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsAddOrUpdateMembershipForUserInOrgReq
@@ -7615,11 +10478,11 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7632,7 +10495,7 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7647,24 +10510,42 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span trace.Span) (req OptTeamsAddOrUpdateMembershipForUserLegacyReq, err error) {
+func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span trace.Span) (
+	req OptTeamsAddOrUpdateMembershipForUserLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsAddOrUpdateMembershipForUserLegacyReq
@@ -7672,11 +10553,11 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7689,7 +10570,7 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7704,24 +10585,42 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span trace.Span) (req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, err error) {
+func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span trace.Span) (
+	req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq
@@ -7729,11 +10628,11 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7746,7 +10645,7 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7761,24 +10660,42 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span trace.Span) (req OptTeamsAddOrUpdateProjectPermissionsLegacyReq, err error) {
+func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span trace.Span) (
+	req OptTeamsAddOrUpdateProjectPermissionsLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsAddOrUpdateProjectPermissionsLegacyReq
@@ -7786,11 +10703,11 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7803,7 +10720,7 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7818,24 +10735,42 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span trace.Span) (req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, err error) {
+func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span trace.Span) (
+	req OptTeamsAddOrUpdateRepoPermissionsInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsAddOrUpdateRepoPermissionsInOrgReq
@@ -7843,11 +10778,11 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7860,7 +10795,7 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7875,24 +10810,42 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span trace.Span) (req OptTeamsAddOrUpdateRepoPermissionsLegacyReq, err error) {
+func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span trace.Span) (
+	req OptTeamsAddOrUpdateRepoPermissionsLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsAddOrUpdateRepoPermissionsLegacyReq
@@ -7900,11 +10853,11 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -7917,7 +10870,7 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7932,24 +10885,42 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req TeamsCreateReq, err error) {
+func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateReq
@@ -7957,11 +10928,11 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -7973,7 +10944,7 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7981,24 +10952,42 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (req TeamsCreateDiscussionCommentInOrgReq, err error) {
+func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateDiscussionCommentInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateDiscussionCommentInOrgReq
@@ -8006,11 +10995,11 @@ func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8022,24 +11011,42 @@ func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (req TeamsCreateDiscussionCommentLegacyReq, err error) {
+func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateDiscussionCommentLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateDiscussionCommentLegacyReq
@@ -8047,11 +11054,11 @@ func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8063,24 +11070,42 @@ func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span trace.Span) (req TeamsCreateDiscussionInOrgReq, err error) {
+func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateDiscussionInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateDiscussionInOrgReq
@@ -8088,11 +11113,11 @@ func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span t
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8104,24 +11129,42 @@ func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span trace.Span) (req TeamsCreateDiscussionLegacyReq, err error) {
+func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateDiscussionLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateDiscussionLegacyReq
@@ -8129,11 +11172,11 @@ func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8145,24 +11188,42 @@ func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request, span trace.Span) (req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, err error) {
+func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
@@ -8170,11 +11231,11 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *htt
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8186,24 +11247,42 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request, span trace.Span) (req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, err error) {
+func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request, span trace.Span) (
+	req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
@@ -8211,11 +11290,11 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8227,7 +11306,7 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -8235,24 +11314,42 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (req TeamsUpdateDiscussionCommentInOrgReq, err error) {
+func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (
+	req TeamsUpdateDiscussionCommentInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsUpdateDiscussionCommentInOrgReq
@@ -8260,11 +11357,11 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8276,24 +11373,42 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (req TeamsUpdateDiscussionCommentLegacyReq, err error) {
+func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (
+	req TeamsUpdateDiscussionCommentLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsUpdateDiscussionCommentLegacyReq
@@ -8301,11 +11416,11 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8317,24 +11432,42 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span trace.Span) (req OptTeamsUpdateDiscussionInOrgReq, err error) {
+func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
+	req OptTeamsUpdateDiscussionInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsUpdateDiscussionInOrgReq
@@ -8342,11 +11475,11 @@ func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span t
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -8359,24 +11492,42 @@ func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span trace.Span) (req OptTeamsUpdateDiscussionLegacyReq, err error) {
+func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span trace.Span) (
+	req OptTeamsUpdateDiscussionLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsUpdateDiscussionLegacyReq
@@ -8384,11 +11535,11 @@ func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -8401,24 +11552,42 @@ func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req OptTeamsUpdateInOrgReq, err error) {
+func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (
+	req OptTeamsUpdateInOrgReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptTeamsUpdateInOrgReq
@@ -8426,11 +11595,11 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span)
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -8443,7 +11612,7 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -8458,24 +11627,42 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span) (req TeamsUpdateLegacyReq, err error) {
+func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span) (
+	req TeamsUpdateLegacyReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request TeamsUpdateLegacyReq
@@ -8483,11 +11670,11 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8499,7 +11686,7 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -8507,24 +11694,42 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span) (req OptUsersAddEmailForAuthenticatedReq, err error) {
+func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span) (
+	req OptUsersAddEmailForAuthenticatedReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptUsersAddEmailForAuthenticatedReq
@@ -8532,11 +11737,11 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, spa
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -8549,7 +11754,7 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -8564,24 +11769,42 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request, span trace.Span) (req UsersCreateGpgKeyForAuthenticatedReq, err error) {
+func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request, span trace.Span) (
+	req UsersCreateGpgKeyForAuthenticatedReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UsersCreateGpgKeyForAuthenticatedReq
@@ -8589,11 +11812,11 @@ func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request,
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8605,24 +11828,42 @@ func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request, span trace.Span) (req UsersCreatePublicSSHKeyForAuthenticatedReq, err error) {
+func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request, span trace.Span) (
+	req UsersCreatePublicSSHKeyForAuthenticatedReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UsersCreatePublicSSHKeyForAuthenticatedReq
@@ -8630,11 +11871,11 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8646,7 +11887,7 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -8654,24 +11895,42 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.Span) (req OptUsersDeleteEmailForAuthenticatedReq, err error) {
+func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.Span) (
+	req OptUsersDeleteEmailForAuthenticatedReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptUsersDeleteEmailForAuthenticatedReq
@@ -8679,11 +11938,11 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, 
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -8696,7 +11955,7 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -8711,24 +11970,42 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request, span trace.Span) (req UsersSetPrimaryEmailVisibilityForAuthenticatedReq, err error) {
+func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request, span trace.Span) (
+	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		var request UsersSetPrimaryEmailVisibilityForAuthenticatedReq
@@ -8736,11 +12013,11 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, close, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
@@ -8752,7 +12029,7 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -8760,24 +12037,42 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, close, errors.Wrap(err, "validate")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
-func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request, span trace.Span) (req OptUsersUpdateAuthenticatedReq, err error) {
+func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request, span trace.Span) (
+	req OptUsersUpdateAuthenticatedReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, errors.Wrap(err, "parse media type")
+		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		var request OptUsersUpdateAuthenticatedReq
@@ -8785,11 +12080,11 @@ func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request, span tra
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
-			return req, err
+			return req, close, err
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, close, nil
 		}
 
 		d := jx.GetDecoder()
@@ -8802,11 +12097,11 @@ func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode \"application/json\"")
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 
-		return request, nil
+		return request, close, nil
 	default:
-		return req, validate.InvalidContentType(ct)
+		return req, close, validate.InvalidContentType(ct)
 	}
 }

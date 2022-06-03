@@ -31,7 +31,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestAnyRequest(r, span)
+	request, close, err := s.decodeTestRequestAnyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestAny",
@@ -40,6 +40,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestAny(ctx, request)
 	if err != nil {
@@ -76,7 +77,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestBooleanRequest(r, span)
+	request, close, err := s.decodeTestRequestBooleanRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestBoolean",
@@ -85,6 +86,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestBoolean(ctx, request)
 	if err != nil {
@@ -121,7 +123,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestBooleanArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestBooleanArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestBooleanArray",
@@ -130,6 +132,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestBooleanArray(ctx, request)
 	if err != nil {
@@ -166,7 +169,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestBooleanArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestBooleanArrayArray",
@@ -175,6 +178,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestBooleanArrayArray(ctx, request)
 	if err != nil {
@@ -211,7 +215,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestBooleanNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestBooleanNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestBooleanNullable",
@@ -220,6 +224,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestBooleanNullable(ctx, request)
 	if err != nil {
@@ -256,7 +261,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestBooleanNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestBooleanNullableArray",
@@ -265,6 +270,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestBooleanNullableArray(ctx, request)
 	if err != nil {
@@ -301,7 +307,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestBooleanNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestBooleanNullableArrayArray",
@@ -310,6 +316,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestBooleanNullableArrayArray(ctx, request)
 	if err != nil {
@@ -346,7 +353,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestEmptyStructRequest(r, span)
+	request, close, err := s.decodeTestRequestEmptyStructRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestEmptyStruct",
@@ -355,6 +362,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestEmptyStruct(ctx, request)
 	if err != nil {
@@ -391,7 +399,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestFormatTestRequest(r, span)
+	request, close, err := s.decodeTestRequestFormatTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestFormatTest",
@@ -400,6 +408,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestFormatTest(ctx, request)
 	if err != nil {
@@ -436,7 +445,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestInteger",
@@ -445,6 +454,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestInteger(ctx, request)
 	if err != nil {
@@ -481,7 +491,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerArray",
@@ -490,6 +500,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerArray(ctx, request)
 	if err != nil {
@@ -526,7 +537,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerArrayArray",
@@ -535,6 +546,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerArrayArray(ctx, request)
 	if err != nil {
@@ -571,7 +583,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt32Request(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt32",
@@ -580,6 +592,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt32(ctx, request)
 	if err != nil {
@@ -616,7 +629,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt32Array",
@@ -625,6 +638,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt32Array(ctx, request)
 	if err != nil {
@@ -661,7 +675,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt32ArrayArray",
@@ -670,6 +684,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -706,7 +721,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt32Nullable",
@@ -715,6 +730,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt32Nullable(ctx, request)
 	if err != nil {
@@ -751,7 +767,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt32NullableArray",
@@ -760,6 +776,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt32NullableArray(ctx, request)
 	if err != nil {
@@ -796,7 +813,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt32NullableArrayArray",
@@ -805,6 +822,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -841,7 +859,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt64Request(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt64",
@@ -850,6 +868,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt64(ctx, request)
 	if err != nil {
@@ -886,7 +905,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt64Array",
@@ -895,6 +914,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt64Array(ctx, request)
 	if err != nil {
@@ -931,7 +951,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt64ArrayArray",
@@ -940,6 +960,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -976,7 +997,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt64Nullable",
@@ -985,6 +1006,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt64Nullable(ctx, request)
 	if err != nil {
@@ -1021,7 +1043,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt64NullableArray",
@@ -1030,6 +1052,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt64NullableArray(ctx, request)
 	if err != nil {
@@ -1066,7 +1089,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerInt64NullableArrayArray",
@@ -1075,6 +1098,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -1111,7 +1135,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerNullable",
@@ -1120,6 +1144,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerNullable(ctx, request)
 	if err != nil {
@@ -1156,7 +1181,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerNullableArray",
@@ -1165,6 +1190,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerNullableArray(ctx, request)
 	if err != nil {
@@ -1201,7 +1227,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestIntegerNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestIntegerNullableArrayArray",
@@ -1210,6 +1236,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestIntegerNullableArrayArray(ctx, request)
 	if err != nil {
@@ -1246,7 +1273,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNullRequest(r, span)
+	request, close, err := s.decodeTestRequestNullRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNull",
@@ -1255,6 +1282,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNull(ctx, request)
 	if err != nil {
@@ -1291,7 +1319,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNullArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNullArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNullArray",
@@ -1300,6 +1328,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNullArray(ctx, request)
 	if err != nil {
@@ -1336,7 +1365,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNullArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNullArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNullArrayArray",
@@ -1345,6 +1374,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNullArrayArray(ctx, request)
 	if err != nil {
@@ -1381,7 +1411,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNullNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestNullNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNullNullable",
@@ -1390,6 +1420,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNullNullable(ctx, request)
 	if err != nil {
@@ -1426,7 +1457,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNullNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNullNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNullNullableArray",
@@ -1435,6 +1466,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNullNullableArray(ctx, request)
 	if err != nil {
@@ -1471,7 +1503,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNullNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNullNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNullNullableArrayArray",
@@ -1480,6 +1512,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNullNullableArrayArray(ctx, request)
 	if err != nil {
@@ -1516,7 +1549,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumber",
@@ -1525,6 +1558,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumber(ctx, request)
 	if err != nil {
@@ -1561,7 +1595,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberArray",
@@ -1570,6 +1604,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberArray(ctx, request)
 	if err != nil {
@@ -1606,7 +1641,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberArrayArray",
@@ -1615,6 +1650,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberArrayArray(ctx, request)
 	if err != nil {
@@ -1651,7 +1687,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberDoubleRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberDoubleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberDouble",
@@ -1660,6 +1696,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberDouble(ctx, request)
 	if err != nil {
@@ -1696,7 +1733,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberDoubleArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberDoubleArray",
@@ -1705,6 +1742,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberDoubleArray(ctx, request)
 	if err != nil {
@@ -1741,7 +1779,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberDoubleArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberDoubleArrayArray",
@@ -1750,6 +1788,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberDoubleArrayArray(ctx, request)
 	if err != nil {
@@ -1786,7 +1825,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberDoubleNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberDoubleNullable",
@@ -1795,6 +1834,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberDoubleNullable(ctx, request)
 	if err != nil {
@@ -1831,7 +1871,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberDoubleNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberDoubleNullableArray",
@@ -1840,6 +1880,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberDoubleNullableArray(ctx, request)
 	if err != nil {
@@ -1876,7 +1917,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberDoubleNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberDoubleNullableArrayArray",
@@ -1885,6 +1926,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberDoubleNullableArrayArray(ctx, request)
 	if err != nil {
@@ -1921,7 +1963,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberFloatRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberFloatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberFloat",
@@ -1930,6 +1972,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberFloat(ctx, request)
 	if err != nil {
@@ -1966,7 +2009,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberFloatArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberFloatArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberFloatArray",
@@ -1975,6 +2018,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberFloatArray(ctx, request)
 	if err != nil {
@@ -2011,7 +2055,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberFloatArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberFloatArrayArray",
@@ -2020,6 +2064,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberFloatArrayArray(ctx, request)
 	if err != nil {
@@ -2056,7 +2101,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberFloatNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberFloatNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberFloatNullable",
@@ -2065,6 +2110,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberFloatNullable(ctx, request)
 	if err != nil {
@@ -2101,7 +2147,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberFloatNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberFloatNullableArray",
@@ -2110,6 +2156,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberFloatNullableArray(ctx, request)
 	if err != nil {
@@ -2146,7 +2193,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberFloatNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberFloatNullableArrayArray",
@@ -2155,6 +2202,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberFloatNullableArrayArray(ctx, request)
 	if err != nil {
@@ -2191,7 +2239,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt32Request(r, span)
+	request, close, err := s.decodeTestRequestNumberInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt32",
@@ -2200,6 +2248,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt32(ctx, request)
 	if err != nil {
@@ -2236,7 +2285,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt32Array",
@@ -2245,6 +2294,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt32Array(ctx, request)
 	if err != nil {
@@ -2281,7 +2331,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt32ArrayArray",
@@ -2290,6 +2340,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -2326,7 +2377,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt32Nullable",
@@ -2335,6 +2386,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt32Nullable(ctx, request)
 	if err != nil {
@@ -2371,7 +2423,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt32NullableArray",
@@ -2380,6 +2432,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt32NullableArray(ctx, request)
 	if err != nil {
@@ -2416,7 +2469,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt32NullableArrayArray",
@@ -2425,6 +2478,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -2461,7 +2515,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt64Request(r, span)
+	request, close, err := s.decodeTestRequestNumberInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt64",
@@ -2470,6 +2524,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt64(ctx, request)
 	if err != nil {
@@ -2506,7 +2561,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt64Array",
@@ -2515,6 +2570,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt64Array(ctx, request)
 	if err != nil {
@@ -2551,7 +2607,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt64ArrayArray",
@@ -2560,6 +2616,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -2596,7 +2653,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt64Nullable",
@@ -2605,6 +2662,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt64Nullable(ctx, request)
 	if err != nil {
@@ -2641,7 +2699,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt64NullableArray",
@@ -2650,6 +2708,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt64NullableArray(ctx, request)
 	if err != nil {
@@ -2686,7 +2745,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberInt64NullableArrayArray",
@@ -2695,6 +2754,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -2731,7 +2791,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberNullable",
@@ -2740,6 +2800,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberNullable(ctx, request)
 	if err != nil {
@@ -2776,7 +2837,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberNullableArray",
@@ -2785,6 +2846,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberNullableArray(ctx, request)
 	if err != nil {
@@ -2821,7 +2883,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestNumberNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestNumberNullableArrayArray",
@@ -2830,6 +2892,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestNumberNullableArrayArray(ctx, request)
 	if err != nil {
@@ -2866,7 +2929,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredAnyRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredAnyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredAny",
@@ -2875,6 +2938,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredAny(ctx, request)
 	if err != nil {
@@ -2911,7 +2975,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredBooleanRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredBooleanRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredBoolean",
@@ -2920,6 +2984,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredBoolean(ctx, request)
 	if err != nil {
@@ -2956,7 +3021,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredBooleanArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredBooleanArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredBooleanArray",
@@ -2965,6 +3030,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredBooleanArray(ctx, request)
 	if err != nil {
@@ -3001,7 +3067,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredBooleanArrayArray",
@@ -3010,6 +3076,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredBooleanArrayArray(ctx, request)
 	if err != nil {
@@ -3046,7 +3113,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredBooleanNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredBooleanNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredBooleanNullable",
@@ -3055,6 +3122,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredBooleanNullable(ctx, request)
 	if err != nil {
@@ -3091,7 +3159,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredBooleanNullableArray",
@@ -3100,6 +3168,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredBooleanNullableArray(ctx, request)
 	if err != nil {
@@ -3136,7 +3205,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredBooleanNullableArrayArray",
@@ -3145,6 +3214,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredBooleanNullableArrayArray(ctx, request)
 	if err != nil {
@@ -3181,7 +3251,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredEmptyStructRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredEmptyStructRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredEmptyStruct",
@@ -3190,6 +3260,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredEmptyStruct(ctx, request)
 	if err != nil {
@@ -3226,7 +3297,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredFormatTestRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredFormatTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredFormatTest",
@@ -3235,6 +3306,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredFormatTest(ctx, request)
 	if err != nil {
@@ -3271,7 +3343,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredInteger",
@@ -3280,6 +3352,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredInteger(ctx, request)
 	if err != nil {
@@ -3316,7 +3389,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerArray",
@@ -3325,6 +3398,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerArray(ctx, request)
 	if err != nil {
@@ -3361,7 +3435,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerArrayArray",
@@ -3370,6 +3444,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerArrayArray(ctx, request)
 	if err != nil {
@@ -3406,7 +3481,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt32Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt32",
@@ -3415,6 +3490,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt32(ctx, request)
 	if err != nil {
@@ -3451,7 +3527,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt32Array",
@@ -3460,6 +3536,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt32Array(ctx, request)
 	if err != nil {
@@ -3496,7 +3573,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt32ArrayArray",
@@ -3505,6 +3582,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -3541,7 +3619,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt32Nullable",
@@ -3550,6 +3628,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt32Nullable(ctx, request)
 	if err != nil {
@@ -3586,7 +3665,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt32NullableArray",
@@ -3595,6 +3674,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt32NullableArray(ctx, request)
 	if err != nil {
@@ -3631,7 +3711,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt32NullableArrayArray",
@@ -3640,6 +3720,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -3676,7 +3757,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt64Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt64",
@@ -3685,6 +3766,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt64(ctx, request)
 	if err != nil {
@@ -3721,7 +3803,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt64Array",
@@ -3730,6 +3812,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt64Array(ctx, request)
 	if err != nil {
@@ -3766,7 +3849,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt64ArrayArray",
@@ -3775,6 +3858,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -3811,7 +3895,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt64Nullable",
@@ -3820,6 +3904,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt64Nullable(ctx, request)
 	if err != nil {
@@ -3856,7 +3941,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt64NullableArray",
@@ -3865,6 +3950,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt64NullableArray(ctx, request)
 	if err != nil {
@@ -3901,7 +3987,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerInt64NullableArrayArray",
@@ -3910,6 +3996,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -3946,7 +4033,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerNullable",
@@ -3955,6 +4042,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerNullable(ctx, request)
 	if err != nil {
@@ -3991,7 +4079,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerNullableArray",
@@ -4000,6 +4088,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerNullableArray(ctx, request)
 	if err != nil {
@@ -4036,7 +4125,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredIntegerNullableArrayArray",
@@ -4045,6 +4134,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredIntegerNullableArrayArray(ctx, request)
 	if err != nil {
@@ -4081,7 +4171,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNullRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNullRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNull",
@@ -4090,6 +4180,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNull(ctx, request)
 	if err != nil {
@@ -4126,7 +4217,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNullArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNullArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNullArray",
@@ -4135,6 +4226,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNullArray(ctx, request)
 	if err != nil {
@@ -4171,7 +4263,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNullArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNullArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNullArrayArray",
@@ -4180,6 +4272,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNullArrayArray(ctx, request)
 	if err != nil {
@@ -4216,7 +4309,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNullNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNullNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNullNullable",
@@ -4225,6 +4318,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNullNullable(ctx, request)
 	if err != nil {
@@ -4261,7 +4355,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNullNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNullNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNullNullableArray",
@@ -4270,6 +4364,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNullNullableArray(ctx, request)
 	if err != nil {
@@ -4306,7 +4401,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNullNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNullNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNullNullableArrayArray",
@@ -4315,6 +4410,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNullNullableArrayArray(ctx, request)
 	if err != nil {
@@ -4351,7 +4447,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumber",
@@ -4360,6 +4456,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumber(ctx, request)
 	if err != nil {
@@ -4396,7 +4493,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberArray",
@@ -4405,6 +4502,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberArray(ctx, request)
 	if err != nil {
@@ -4441,7 +4539,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberArrayArray",
@@ -4450,6 +4548,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberArrayArray(ctx, request)
 	if err != nil {
@@ -4486,7 +4585,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberDoubleRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberDoubleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberDouble",
@@ -4495,6 +4594,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberDouble(ctx, request)
 	if err != nil {
@@ -4531,7 +4631,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberDoubleArray",
@@ -4540,6 +4640,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberDoubleArray(ctx, request)
 	if err != nil {
@@ -4576,7 +4677,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberDoubleArrayArray",
@@ -4585,6 +4686,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberDoubleArrayArray(ctx, request)
 	if err != nil {
@@ -4621,7 +4723,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberDoubleNullable",
@@ -4630,6 +4732,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberDoubleNullable(ctx, request)
 	if err != nil {
@@ -4666,7 +4769,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberDoubleNullableArray",
@@ -4675,6 +4778,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberDoubleNullableArray(ctx, request)
 	if err != nil {
@@ -4711,7 +4815,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberDoubleNullableArrayArray",
@@ -4720,6 +4824,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberDoubleNullableArrayArray(ctx, request)
 	if err != nil {
@@ -4756,7 +4861,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberFloatRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberFloatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberFloat",
@@ -4765,6 +4870,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberFloat(ctx, request)
 	if err != nil {
@@ -4801,7 +4907,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberFloatArray",
@@ -4810,6 +4916,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberFloatArray(ctx, request)
 	if err != nil {
@@ -4846,7 +4953,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberFloatArrayArray",
@@ -4855,6 +4962,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberFloatArrayArray(ctx, request)
 	if err != nil {
@@ -4891,7 +4999,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberFloatNullable",
@@ -4900,6 +5008,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberFloatNullable(ctx, request)
 	if err != nil {
@@ -4936,7 +5045,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberFloatNullableArray",
@@ -4945,6 +5054,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberFloatNullableArray(ctx, request)
 	if err != nil {
@@ -4981,7 +5091,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberFloatNullableArrayArray",
@@ -4990,6 +5100,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberFloatNullableArrayArray(ctx, request)
 	if err != nil {
@@ -5026,7 +5137,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt32Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt32",
@@ -5035,6 +5146,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt32(ctx, request)
 	if err != nil {
@@ -5071,7 +5183,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt32Array",
@@ -5080,6 +5192,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt32Array(ctx, request)
 	if err != nil {
@@ -5116,7 +5229,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt32ArrayArray",
@@ -5125,6 +5238,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -5161,7 +5275,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt32Nullable",
@@ -5170,6 +5284,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt32Nullable(ctx, request)
 	if err != nil {
@@ -5206,7 +5321,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt32NullableArray",
@@ -5215,6 +5330,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt32NullableArray(ctx, request)
 	if err != nil {
@@ -5251,7 +5367,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt32NullableArrayArray",
@@ -5260,6 +5376,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -5296,7 +5413,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt64Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt64",
@@ -5305,6 +5422,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt64(ctx, request)
 	if err != nil {
@@ -5341,7 +5459,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt64Array",
@@ -5350,6 +5468,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt64Array(ctx, request)
 	if err != nil {
@@ -5386,7 +5505,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt64ArrayArray",
@@ -5395,6 +5514,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -5431,7 +5551,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt64Nullable",
@@ -5440,6 +5560,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt64Nullable(ctx, request)
 	if err != nil {
@@ -5476,7 +5597,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt64NullableArray",
@@ -5485,6 +5606,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt64NullableArray(ctx, request)
 	if err != nil {
@@ -5521,7 +5643,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberInt64NullableArrayArray",
@@ -5530,6 +5652,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -5566,7 +5689,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberNullable",
@@ -5575,6 +5698,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberNullable(ctx, request)
 	if err != nil {
@@ -5611,7 +5735,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberNullableArray",
@@ -5620,6 +5744,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberNullableArray(ctx, request)
 	if err != nil {
@@ -5656,7 +5781,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredNumberNullableArrayArray",
@@ -5665,6 +5790,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredNumberNullableArrayArray(ctx, request)
 	if err != nil {
@@ -5701,7 +5827,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredString",
@@ -5710,6 +5836,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredString(ctx, request)
 	if err != nil {
@@ -5746,7 +5873,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringArray",
@@ -5755,6 +5882,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringArray(ctx, request)
 	if err != nil {
@@ -5791,7 +5919,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringArrayArray",
@@ -5800,6 +5928,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringArrayArray(ctx, request)
 	if err != nil {
@@ -5836,7 +5965,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringBinaryRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringBinaryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringBinary",
@@ -5845,6 +5974,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringBinary(ctx, request)
 	if err != nil {
@@ -5881,7 +6011,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringBinaryArray",
@@ -5890,6 +6020,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringBinaryArray(ctx, request)
 	if err != nil {
@@ -5926,7 +6057,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringBinaryArrayArray",
@@ -5935,6 +6066,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringBinaryArrayArray(ctx, request)
 	if err != nil {
@@ -5971,7 +6103,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringBinaryNullable",
@@ -5980,6 +6112,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringBinaryNullable(ctx, request)
 	if err != nil {
@@ -6016,7 +6149,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringBinaryNullableArray",
@@ -6025,6 +6158,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringBinaryNullableArray(ctx, request)
 	if err != nil {
@@ -6061,7 +6195,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringBinaryNullableArrayArray",
@@ -6070,6 +6204,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringBinaryNullableArrayArray(ctx, request)
 	if err != nil {
@@ -6106,7 +6241,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringByteRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringByteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringByte",
@@ -6115,6 +6250,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringByte(ctx, request)
 	if err != nil {
@@ -6151,7 +6287,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringByteArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringByteArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringByteArray",
@@ -6160,6 +6296,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringByteArray(ctx, request)
 	if err != nil {
@@ -6196,7 +6333,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringByteArrayArray",
@@ -6205,6 +6342,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringByteArrayArray(ctx, request)
 	if err != nil {
@@ -6241,7 +6379,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringByteNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringByteNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringByteNullable",
@@ -6250,6 +6388,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringByteNullable(ctx, request)
 	if err != nil {
@@ -6286,7 +6425,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringByteNullableArray",
@@ -6295,6 +6434,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringByteNullableArray(ctx, request)
 	if err != nil {
@@ -6331,7 +6471,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringByteNullableArrayArray",
@@ -6340,6 +6480,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringByteNullableArrayArray(ctx, request)
 	if err != nil {
@@ -6376,7 +6517,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDate",
@@ -6385,6 +6526,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDate(ctx, request)
 	if err != nil {
@@ -6421,7 +6563,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateArray",
@@ -6430,6 +6572,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateArray(ctx, request)
 	if err != nil {
@@ -6466,7 +6609,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateArrayArray",
@@ -6475,6 +6618,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateArrayArray(ctx, request)
 	if err != nil {
@@ -6511,7 +6655,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateNullable",
@@ -6520,6 +6664,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateNullable(ctx, request)
 	if err != nil {
@@ -6556,7 +6701,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateNullableArray",
@@ -6565,6 +6710,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateNullableArray(ctx, request)
 	if err != nil {
@@ -6601,7 +6747,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateNullableArrayArray",
@@ -6610,6 +6756,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateNullableArrayArray(ctx, request)
 	if err != nil {
@@ -6646,7 +6793,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateTimeRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateTime",
@@ -6655,6 +6802,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateTime(ctx, request)
 	if err != nil {
@@ -6691,7 +6839,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateTimeArray",
@@ -6700,6 +6848,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateTimeArray(ctx, request)
 	if err != nil {
@@ -6736,7 +6885,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateTimeArrayArray",
@@ -6745,6 +6894,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateTimeArrayArray(ctx, request)
 	if err != nil {
@@ -6781,7 +6931,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateTimeNullable",
@@ -6790,6 +6940,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateTimeNullable(ctx, request)
 	if err != nil {
@@ -6826,7 +6977,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateTimeNullableArray",
@@ -6835,6 +6986,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateTimeNullableArray(ctx, request)
 	if err != nil {
@@ -6871,7 +7023,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDateTimeNullableArrayArray",
@@ -6880,6 +7032,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDateTimeNullableArrayArray(ctx, request)
 	if err != nil {
@@ -6916,7 +7069,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDurationRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDuration",
@@ -6925,6 +7078,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDuration(ctx, request)
 	if err != nil {
@@ -6961,7 +7115,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDurationArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDurationArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDurationArray",
@@ -6970,6 +7124,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDurationArray(ctx, request)
 	if err != nil {
@@ -7006,7 +7161,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDurationArrayArray",
@@ -7015,6 +7170,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDurationArrayArray(ctx, request)
 	if err != nil {
@@ -7051,7 +7207,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDurationNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDurationNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDurationNullable",
@@ -7060,6 +7216,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDurationNullable(ctx, request)
 	if err != nil {
@@ -7096,7 +7253,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDurationNullableArray",
@@ -7105,6 +7262,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDurationNullableArray(ctx, request)
 	if err != nil {
@@ -7141,7 +7299,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringDurationNullableArrayArray",
@@ -7150,6 +7308,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringDurationNullableArrayArray(ctx, request)
 	if err != nil {
@@ -7186,7 +7345,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringEmailRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringEmailRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringEmail",
@@ -7195,6 +7354,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringEmail(ctx, request)
 	if err != nil {
@@ -7231,7 +7391,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringEmailArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringEmailArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringEmailArray",
@@ -7240,6 +7400,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringEmailArray(ctx, request)
 	if err != nil {
@@ -7276,7 +7437,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringEmailArrayArray",
@@ -7285,6 +7446,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringEmailArrayArray(ctx, request)
 	if err != nil {
@@ -7321,7 +7483,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringEmailNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringEmailNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringEmailNullable",
@@ -7330,6 +7492,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringEmailNullable(ctx, request)
 	if err != nil {
@@ -7366,7 +7529,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringEmailNullableArray",
@@ -7375,6 +7538,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringEmailNullableArray(ctx, request)
 	if err != nil {
@@ -7411,7 +7575,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringEmailNullableArrayArray",
@@ -7420,6 +7584,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringEmailNullableArrayArray(ctx, request)
 	if err != nil {
@@ -7456,7 +7621,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringHostnameRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringHostnameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringHostname",
@@ -7465,6 +7630,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringHostname(ctx, request)
 	if err != nil {
@@ -7501,7 +7667,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringHostnameArray",
@@ -7510,6 +7676,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringHostnameArray(ctx, request)
 	if err != nil {
@@ -7546,7 +7713,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringHostnameArrayArray",
@@ -7555,6 +7722,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringHostnameArrayArray(ctx, request)
 	if err != nil {
@@ -7591,7 +7759,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringHostnameNullable",
@@ -7600,6 +7768,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringHostnameNullable(ctx, request)
 	if err != nil {
@@ -7636,7 +7805,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringHostnameNullableArray",
@@ -7645,6 +7814,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringHostnameNullableArray(ctx, request)
 	if err != nil {
@@ -7681,7 +7851,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringHostnameNullableArrayArray",
@@ -7690,6 +7860,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringHostnameNullableArrayArray(ctx, request)
 	if err != nil {
@@ -7726,7 +7897,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIPRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIPRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIP",
@@ -7735,6 +7906,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIP(ctx, request)
 	if err != nil {
@@ -7771,7 +7943,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIPArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIPArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIPArray",
@@ -7780,6 +7952,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIPArray(ctx, request)
 	if err != nil {
@@ -7816,7 +7989,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIPArrayArray",
@@ -7825,6 +7998,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIPArrayArray(ctx, request)
 	if err != nil {
@@ -7861,7 +8035,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIPNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIPNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIPNullable",
@@ -7870,6 +8044,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIPNullable(ctx, request)
 	if err != nil {
@@ -7906,7 +8081,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIPNullableArray",
@@ -7915,6 +8090,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIPNullableArray(ctx, request)
 	if err != nil {
@@ -7951,7 +8127,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIPNullableArrayArray",
@@ -7960,6 +8136,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIPNullableArrayArray(ctx, request)
 	if err != nil {
@@ -7996,7 +8173,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt32Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt32",
@@ -8005,6 +8182,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt32(ctx, request)
 	if err != nil {
@@ -8041,7 +8219,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt32Array",
@@ -8050,6 +8228,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt32Array(ctx, request)
 	if err != nil {
@@ -8086,7 +8265,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt32ArrayArray",
@@ -8095,6 +8274,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -8131,7 +8311,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt32Nullable",
@@ -8140,6 +8320,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt32Nullable(ctx, request)
 	if err != nil {
@@ -8176,7 +8357,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt32NullableArray",
@@ -8185,6 +8366,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt32NullableArray(ctx, request)
 	if err != nil {
@@ -8221,7 +8403,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt32NullableArrayArray",
@@ -8230,6 +8412,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -8266,7 +8449,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt64Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt64",
@@ -8275,6 +8458,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt64(ctx, request)
 	if err != nil {
@@ -8311,7 +8495,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt64Array",
@@ -8320,6 +8504,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt64Array(ctx, request)
 	if err != nil {
@@ -8356,7 +8541,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt64ArrayArray",
@@ -8365,6 +8550,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -8401,7 +8587,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt64Nullable",
@@ -8410,6 +8596,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt64Nullable(ctx, request)
 	if err != nil {
@@ -8446,7 +8633,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt64NullableArray",
@@ -8455,6 +8642,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt64NullableArray(ctx, request)
 	if err != nil {
@@ -8491,7 +8679,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringInt64NullableArrayArray",
@@ -8500,6 +8688,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -8536,7 +8725,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv4Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv4Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv4",
@@ -8545,6 +8734,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv4(ctx, request)
 	if err != nil {
@@ -8581,7 +8771,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv4Array",
@@ -8590,6 +8780,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv4Array(ctx, request)
 	if err != nil {
@@ -8626,7 +8817,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv4ArrayArray",
@@ -8635,6 +8826,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv4ArrayArray(ctx, request)
 	if err != nil {
@@ -8671,7 +8863,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv4Nullable",
@@ -8680,6 +8872,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv4Nullable(ctx, request)
 	if err != nil {
@@ -8716,7 +8909,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv4NullableArray",
@@ -8725,6 +8918,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv4NullableArray(ctx, request)
 	if err != nil {
@@ -8761,7 +8955,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv4NullableArrayArray",
@@ -8770,6 +8964,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv4NullableArrayArray(ctx, request)
 	if err != nil {
@@ -8806,7 +9001,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv6Request(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv6Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv6",
@@ -8815,6 +9010,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv6(ctx, request)
 	if err != nil {
@@ -8851,7 +9047,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv6Array",
@@ -8860,6 +9056,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv6Array(ctx, request)
 	if err != nil {
@@ -8896,7 +9093,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv6ArrayArray",
@@ -8905,6 +9102,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv6ArrayArray(ctx, request)
 	if err != nil {
@@ -8941,7 +9139,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv6Nullable",
@@ -8950,6 +9148,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv6Nullable(ctx, request)
 	if err != nil {
@@ -8986,7 +9185,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv6NullableArray",
@@ -8995,6 +9194,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv6NullableArray(ctx, request)
 	if err != nil {
@@ -9031,7 +9231,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringIpv6NullableArrayArray",
@@ -9040,6 +9240,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringIpv6NullableArrayArray(ctx, request)
 	if err != nil {
@@ -9076,7 +9277,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringNullable",
@@ -9085,6 +9286,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringNullable(ctx, request)
 	if err != nil {
@@ -9121,7 +9323,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringNullableArray",
@@ -9130,6 +9332,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringNullableArray(ctx, request)
 	if err != nil {
@@ -9166,7 +9369,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringNullableArrayArray",
@@ -9175,6 +9378,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringNullableArrayArray(ctx, request)
 	if err != nil {
@@ -9211,7 +9415,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringPasswordRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringPasswordRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringPassword",
@@ -9220,6 +9424,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringPassword(ctx, request)
 	if err != nil {
@@ -9256,7 +9461,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringPasswordArray",
@@ -9265,6 +9470,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringPasswordArray(ctx, request)
 	if err != nil {
@@ -9301,7 +9507,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringPasswordArrayArray",
@@ -9310,6 +9516,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringPasswordArrayArray(ctx, request)
 	if err != nil {
@@ -9346,7 +9553,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringPasswordNullable",
@@ -9355,6 +9562,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringPasswordNullable(ctx, request)
 	if err != nil {
@@ -9391,7 +9599,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringPasswordNullableArray",
@@ -9400,6 +9608,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringPasswordNullableArray(ctx, request)
 	if err != nil {
@@ -9436,7 +9645,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringPasswordNullableArrayArray",
@@ -9445,6 +9654,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringPasswordNullableArrayArray(ctx, request)
 	if err != nil {
@@ -9481,7 +9691,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringTimeRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringTime",
@@ -9490,6 +9700,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringTime(ctx, request)
 	if err != nil {
@@ -9526,7 +9737,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringTimeArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringTimeArray",
@@ -9535,6 +9746,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringTimeArray(ctx, request)
 	if err != nil {
@@ -9571,7 +9783,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringTimeArrayArray",
@@ -9580,6 +9792,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringTimeArrayArray(ctx, request)
 	if err != nil {
@@ -9616,7 +9829,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringTimeNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringTimeNullable",
@@ -9625,6 +9838,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringTimeNullable(ctx, request)
 	if err != nil {
@@ -9661,7 +9875,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringTimeNullableArray",
@@ -9670,6 +9884,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringTimeNullableArray(ctx, request)
 	if err != nil {
@@ -9706,7 +9921,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringTimeNullableArrayArray",
@@ -9715,6 +9930,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringTimeNullableArrayArray(ctx, request)
 	if err != nil {
@@ -9751,7 +9967,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringURIRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringURIRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringURI",
@@ -9760,6 +9976,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringURI(ctx, request)
 	if err != nil {
@@ -9796,7 +10013,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringURIArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringURIArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringURIArray",
@@ -9805,6 +10022,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringURIArray(ctx, request)
 	if err != nil {
@@ -9841,7 +10059,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringURIArrayArray",
@@ -9850,6 +10068,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringURIArrayArray(ctx, request)
 	if err != nil {
@@ -9886,7 +10105,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringURINullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringURINullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringURINullable",
@@ -9895,6 +10114,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringURINullable(ctx, request)
 	if err != nil {
@@ -9931,7 +10151,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringURINullableArray",
@@ -9940,6 +10160,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringURINullableArray(ctx, request)
 	if err != nil {
@@ -9976,7 +10197,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringURINullableArrayArray",
@@ -9985,6 +10206,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringURINullableArrayArray(ctx, request)
 	if err != nil {
@@ -10021,7 +10243,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUUIDRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUUIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUUID",
@@ -10030,6 +10252,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUUID(ctx, request)
 	if err != nil {
@@ -10066,7 +10289,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUUIDArray",
@@ -10075,6 +10298,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUUIDArray(ctx, request)
 	if err != nil {
@@ -10111,7 +10335,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUUIDArrayArray",
@@ -10120,6 +10344,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUUIDArrayArray(ctx, request)
 	if err != nil {
@@ -10156,7 +10381,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUUIDNullable",
@@ -10165,6 +10390,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUUIDNullable(ctx, request)
 	if err != nil {
@@ -10201,7 +10427,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUUIDNullableArray",
@@ -10210,6 +10436,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUUIDNullableArray(ctx, request)
 	if err != nil {
@@ -10246,7 +10473,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUUIDNullableArrayArray",
@@ -10255,6 +10482,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUUIDNullableArrayArray(ctx, request)
 	if err != nil {
@@ -10291,7 +10519,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnix",
@@ -10300,6 +10528,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnix(ctx, request)
 	if err != nil {
@@ -10336,7 +10565,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixArray",
@@ -10345,6 +10574,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixArray(ctx, request)
 	if err != nil {
@@ -10381,7 +10611,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixArrayArray",
@@ -10390,6 +10620,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixArrayArray(ctx, request)
 	if err != nil {
@@ -10426,7 +10657,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMicroRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMicroRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMicro",
@@ -10435,6 +10666,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMicro(ctx, request)
 	if err != nil {
@@ -10471,7 +10703,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMicroArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMicroArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMicroArray",
@@ -10480,6 +10712,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMicroArray(ctx, request)
 	if err != nil {
@@ -10516,7 +10749,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMicroArrayArray",
@@ -10525,6 +10758,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMicroArrayArray(ctx, request)
 	if err != nil {
@@ -10561,7 +10795,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMicroNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMicroNullable",
@@ -10570,6 +10804,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMicroNullable(ctx, request)
 	if err != nil {
@@ -10606,7 +10841,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMicroNullableArray",
@@ -10615,6 +10850,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMicroNullableArray(ctx, request)
 	if err != nil {
@@ -10651,7 +10887,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMicroNullableArrayArray",
@@ -10660,6 +10896,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMicroNullableArrayArray(ctx, request)
 	if err != nil {
@@ -10696,7 +10933,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMilliRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMilliRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMilli",
@@ -10705,6 +10942,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMilli(ctx, request)
 	if err != nil {
@@ -10741,7 +10979,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMilliArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMilliArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMilliArray",
@@ -10750,6 +10988,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMilliArray(ctx, request)
 	if err != nil {
@@ -10786,7 +11025,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMilliArrayArray",
@@ -10795,6 +11034,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMilliArrayArray(ctx, request)
 	if err != nil {
@@ -10831,7 +11071,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMilliNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMilliNullable",
@@ -10840,6 +11080,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMilliNullable(ctx, request)
 	if err != nil {
@@ -10876,7 +11117,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMilliNullableArray",
@@ -10885,6 +11126,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMilliNullableArray(ctx, request)
 	if err != nil {
@@ -10921,7 +11163,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixMilliNullableArrayArray",
@@ -10930,6 +11172,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixMilliNullableArrayArray(ctx, request)
 	if err != nil {
@@ -10966,7 +11209,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNanoRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNanoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNano",
@@ -10975,6 +11218,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNano(ctx, request)
 	if err != nil {
@@ -11011,7 +11255,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNanoArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNanoArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNanoArray",
@@ -11020,6 +11264,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNanoArray(ctx, request)
 	if err != nil {
@@ -11056,7 +11301,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNanoArrayArray",
@@ -11065,6 +11310,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNanoArrayArray(ctx, request)
 	if err != nil {
@@ -11101,7 +11347,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNanoNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNanoNullable",
@@ -11110,6 +11356,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNanoNullable(ctx, request)
 	if err != nil {
@@ -11146,7 +11393,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNanoNullableArray",
@@ -11155,6 +11402,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNanoNullableArray(ctx, request)
 	if err != nil {
@@ -11191,7 +11439,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNanoNullableArrayArray",
@@ -11200,6 +11448,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNanoNullableArrayArray(ctx, request)
 	if err != nil {
@@ -11236,7 +11485,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNullable",
@@ -11245,6 +11494,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNullable(ctx, request)
 	if err != nil {
@@ -11281,7 +11531,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNullableArray",
@@ -11290,6 +11540,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNullableArray(ctx, request)
 	if err != nil {
@@ -11326,7 +11577,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixNullableArrayArray",
@@ -11335,6 +11586,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixNullableArrayArray(ctx, request)
 	if err != nil {
@@ -11371,7 +11623,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixSecondsRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixSeconds",
@@ -11380,6 +11632,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixSeconds(ctx, request)
 	if err != nil {
@@ -11416,7 +11669,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixSecondsArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixSecondsArray",
@@ -11425,6 +11678,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixSecondsArray(ctx, request)
 	if err != nil {
@@ -11461,7 +11715,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixSecondsArrayArray",
@@ -11470,6 +11724,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixSecondsArrayArray(ctx, request)
 	if err != nil {
@@ -11506,7 +11761,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixSecondsNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixSecondsNullable",
@@ -11515,6 +11770,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixSecondsNullable(ctx, request)
 	if err != nil {
@@ -11551,7 +11807,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixSecondsNullableArray",
@@ -11560,6 +11816,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixSecondsNullableArray(ctx, request)
 	if err != nil {
@@ -11596,7 +11853,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
@@ -11605,6 +11862,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx, request)
 	if err != nil {
@@ -11641,7 +11899,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringRequest(r, span)
+	request, close, err := s.decodeTestRequestStringRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestString",
@@ -11650,6 +11908,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestString(ctx, request)
 	if err != nil {
@@ -11686,7 +11945,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringArray",
@@ -11695,6 +11954,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringArray(ctx, request)
 	if err != nil {
@@ -11731,7 +11991,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringArrayArray",
@@ -11740,6 +12000,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringArrayArray(ctx, request)
 	if err != nil {
@@ -11776,7 +12037,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringBinaryRequest(r, span)
+	request, close, err := s.decodeTestRequestStringBinaryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringBinary",
@@ -11785,6 +12046,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringBinary(ctx, request)
 	if err != nil {
@@ -11821,7 +12083,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringBinaryArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringBinaryArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringBinaryArray",
@@ -11830,6 +12092,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringBinaryArray(ctx, request)
 	if err != nil {
@@ -11866,7 +12129,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringBinaryArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringBinaryArrayArray",
@@ -11875,6 +12138,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringBinaryArrayArray(ctx, request)
 	if err != nil {
@@ -11911,7 +12175,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringBinaryNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringBinaryNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringBinaryNullable",
@@ -11920,6 +12184,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringBinaryNullable(ctx, request)
 	if err != nil {
@@ -11956,7 +12221,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringBinaryNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringBinaryNullableArray",
@@ -11965,6 +12230,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringBinaryNullableArray(ctx, request)
 	if err != nil {
@@ -12001,7 +12267,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringBinaryNullableArrayArray",
@@ -12010,6 +12276,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringBinaryNullableArrayArray(ctx, request)
 	if err != nil {
@@ -12046,7 +12313,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringByteRequest(r, span)
+	request, close, err := s.decodeTestRequestStringByteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringByte",
@@ -12055,6 +12322,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringByte(ctx, request)
 	if err != nil {
@@ -12091,7 +12359,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringByteArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringByteArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringByteArray",
@@ -12100,6 +12368,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringByteArray(ctx, request)
 	if err != nil {
@@ -12136,7 +12405,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringByteArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringByteArrayArray",
@@ -12145,6 +12414,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringByteArrayArray(ctx, request)
 	if err != nil {
@@ -12181,7 +12451,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringByteNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringByteNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringByteNullable",
@@ -12190,6 +12460,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringByteNullable(ctx, request)
 	if err != nil {
@@ -12226,7 +12497,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringByteNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringByteNullableArray",
@@ -12235,6 +12506,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringByteNullableArray(ctx, request)
 	if err != nil {
@@ -12271,7 +12543,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringByteNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringByteNullableArrayArray",
@@ -12280,6 +12552,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringByteNullableArrayArray(ctx, request)
 	if err != nil {
@@ -12316,7 +12589,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDate",
@@ -12325,6 +12598,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDate(ctx, request)
 	if err != nil {
@@ -12361,7 +12635,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateArray",
@@ -12370,6 +12644,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateArray(ctx, request)
 	if err != nil {
@@ -12406,7 +12681,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateArrayArray",
@@ -12415,6 +12690,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateArrayArray(ctx, request)
 	if err != nil {
@@ -12451,7 +12727,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateNullable",
@@ -12460,6 +12736,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateNullable(ctx, request)
 	if err != nil {
@@ -12496,7 +12773,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateNullableArray",
@@ -12505,6 +12782,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateNullableArray(ctx, request)
 	if err != nil {
@@ -12541,7 +12819,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateNullableArrayArray",
@@ -12550,6 +12828,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateNullableArrayArray(ctx, request)
 	if err != nil {
@@ -12586,7 +12865,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateTimeRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateTime",
@@ -12595,6 +12874,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateTime(ctx, request)
 	if err != nil {
@@ -12631,7 +12911,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateTimeArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateTimeArray",
@@ -12640,6 +12920,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateTimeArray(ctx, request)
 	if err != nil {
@@ -12676,7 +12957,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateTimeArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateTimeArrayArray",
@@ -12685,6 +12966,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateTimeArrayArray(ctx, request)
 	if err != nil {
@@ -12721,7 +13003,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateTimeNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateTimeNullable",
@@ -12730,6 +13012,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateTimeNullable(ctx, request)
 	if err != nil {
@@ -12766,7 +13049,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateTimeNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateTimeNullableArray",
@@ -12775,6 +13058,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateTimeNullableArray(ctx, request)
 	if err != nil {
@@ -12811,7 +13095,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDateTimeNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDateTimeNullableArrayArray",
@@ -12820,6 +13104,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDateTimeNullableArrayArray(ctx, request)
 	if err != nil {
@@ -12856,7 +13141,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDurationRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDuration",
@@ -12865,6 +13150,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDuration(ctx, request)
 	if err != nil {
@@ -12901,7 +13187,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDurationArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDurationArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDurationArray",
@@ -12910,6 +13196,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDurationArray(ctx, request)
 	if err != nil {
@@ -12946,7 +13233,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDurationArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDurationArrayArray",
@@ -12955,6 +13242,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDurationArrayArray(ctx, request)
 	if err != nil {
@@ -12991,7 +13279,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDurationNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDurationNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDurationNullable",
@@ -13000,6 +13288,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDurationNullable(ctx, request)
 	if err != nil {
@@ -13036,7 +13325,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDurationNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDurationNullableArray",
@@ -13045,6 +13334,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDurationNullableArray(ctx, request)
 	if err != nil {
@@ -13081,7 +13371,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringDurationNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringDurationNullableArrayArray",
@@ -13090,6 +13380,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringDurationNullableArrayArray(ctx, request)
 	if err != nil {
@@ -13126,7 +13417,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringEmailRequest(r, span)
+	request, close, err := s.decodeTestRequestStringEmailRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringEmail",
@@ -13135,6 +13426,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringEmail(ctx, request)
 	if err != nil {
@@ -13171,7 +13463,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringEmailArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringEmailArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringEmailArray",
@@ -13180,6 +13472,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringEmailArray(ctx, request)
 	if err != nil {
@@ -13216,7 +13509,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringEmailArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringEmailArrayArray",
@@ -13225,6 +13518,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringEmailArrayArray(ctx, request)
 	if err != nil {
@@ -13261,7 +13555,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringEmailNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringEmailNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringEmailNullable",
@@ -13270,6 +13564,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringEmailNullable(ctx, request)
 	if err != nil {
@@ -13306,7 +13601,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringEmailNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringEmailNullableArray",
@@ -13315,6 +13610,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringEmailNullableArray(ctx, request)
 	if err != nil {
@@ -13351,7 +13647,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringEmailNullableArrayArray",
@@ -13360,6 +13656,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringEmailNullableArrayArray(ctx, request)
 	if err != nil {
@@ -13396,7 +13693,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringHostnameRequest(r, span)
+	request, close, err := s.decodeTestRequestStringHostnameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringHostname",
@@ -13405,6 +13702,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringHostname(ctx, request)
 	if err != nil {
@@ -13441,7 +13739,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringHostnameArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringHostnameArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringHostnameArray",
@@ -13450,6 +13748,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringHostnameArray(ctx, request)
 	if err != nil {
@@ -13486,7 +13785,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringHostnameArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringHostnameArrayArray",
@@ -13495,6 +13794,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringHostnameArrayArray(ctx, request)
 	if err != nil {
@@ -13531,7 +13831,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringHostnameNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringHostnameNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringHostnameNullable",
@@ -13540,6 +13840,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringHostnameNullable(ctx, request)
 	if err != nil {
@@ -13576,7 +13877,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringHostnameNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringHostnameNullableArray",
@@ -13585,6 +13886,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringHostnameNullableArray(ctx, request)
 	if err != nil {
@@ -13621,7 +13923,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringHostnameNullableArrayArray",
@@ -13630,6 +13932,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringHostnameNullableArrayArray(ctx, request)
 	if err != nil {
@@ -13666,7 +13969,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIPRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIPRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIP",
@@ -13675,6 +13978,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIP(ctx, request)
 	if err != nil {
@@ -13711,7 +14015,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIPArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIPArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIPArray",
@@ -13720,6 +14024,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIPArray(ctx, request)
 	if err != nil {
@@ -13756,7 +14061,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIPArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIPArrayArray",
@@ -13765,6 +14070,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIPArrayArray(ctx, request)
 	if err != nil {
@@ -13801,7 +14107,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIPNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIPNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIPNullable",
@@ -13810,6 +14116,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIPNullable(ctx, request)
 	if err != nil {
@@ -13846,7 +14153,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIPNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIPNullableArray",
@@ -13855,6 +14162,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIPNullableArray(ctx, request)
 	if err != nil {
@@ -13891,7 +14199,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIPNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIPNullableArrayArray",
@@ -13900,6 +14208,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIPNullableArrayArray(ctx, request)
 	if err != nil {
@@ -13936,7 +14245,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt32Request(r, span)
+	request, close, err := s.decodeTestRequestStringInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt32",
@@ -13945,6 +14254,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt32(ctx, request)
 	if err != nil {
@@ -13981,7 +14291,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt32Array",
@@ -13990,6 +14300,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt32Array(ctx, request)
 	if err != nil {
@@ -14026,7 +14337,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt32ArrayArray",
@@ -14035,6 +14346,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -14071,7 +14383,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt32Nullable",
@@ -14080,6 +14392,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt32Nullable(ctx, request)
 	if err != nil {
@@ -14116,7 +14429,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt32NullableArray",
@@ -14125,6 +14438,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt32NullableArray(ctx, request)
 	if err != nil {
@@ -14161,7 +14475,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt32NullableArrayArray",
@@ -14170,6 +14484,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -14206,7 +14521,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt64Request(r, span)
+	request, close, err := s.decodeTestRequestStringInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt64",
@@ -14215,6 +14530,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt64(ctx, request)
 	if err != nil {
@@ -14251,7 +14567,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt64Array",
@@ -14260,6 +14576,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt64Array(ctx, request)
 	if err != nil {
@@ -14296,7 +14613,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt64ArrayArray",
@@ -14305,6 +14622,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -14341,7 +14659,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt64Nullable",
@@ -14350,6 +14668,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt64Nullable(ctx, request)
 	if err != nil {
@@ -14386,7 +14705,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt64NullableArray",
@@ -14395,6 +14714,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt64NullableArray(ctx, request)
 	if err != nil {
@@ -14431,7 +14751,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringInt64NullableArrayArray",
@@ -14440,6 +14760,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -14476,7 +14797,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv4Request(r, span)
+	request, close, err := s.decodeTestRequestStringIpv4Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv4",
@@ -14485,6 +14806,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv4(ctx, request)
 	if err != nil {
@@ -14521,7 +14843,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv4ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv4Array",
@@ -14530,6 +14852,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv4Array(ctx, request)
 	if err != nil {
@@ -14566,7 +14889,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv4ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv4ArrayArray",
@@ -14575,6 +14898,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv4ArrayArray(ctx, request)
 	if err != nil {
@@ -14611,7 +14935,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv4NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv4NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv4Nullable",
@@ -14620,6 +14944,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv4Nullable(ctx, request)
 	if err != nil {
@@ -14656,7 +14981,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv4NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv4NullableArray",
@@ -14665,6 +14990,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv4NullableArray(ctx, request)
 	if err != nil {
@@ -14701,7 +15027,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv4NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv4NullableArrayArray",
@@ -14710,6 +15036,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv4NullableArrayArray(ctx, request)
 	if err != nil {
@@ -14746,7 +15073,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv6Request(r, span)
+	request, close, err := s.decodeTestRequestStringIpv6Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv6",
@@ -14755,6 +15082,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv6(ctx, request)
 	if err != nil {
@@ -14791,7 +15119,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv6ArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv6Array",
@@ -14800,6 +15128,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv6Array(ctx, request)
 	if err != nil {
@@ -14836,7 +15165,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv6ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv6ArrayArray",
@@ -14845,6 +15174,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv6ArrayArray(ctx, request)
 	if err != nil {
@@ -14881,7 +15211,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv6NullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv6NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv6Nullable",
@@ -14890,6 +15220,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv6Nullable(ctx, request)
 	if err != nil {
@@ -14926,7 +15257,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv6NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv6NullableArray",
@@ -14935,6 +15266,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv6NullableArray(ctx, request)
 	if err != nil {
@@ -14971,7 +15303,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringIpv6NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringIpv6NullableArrayArray",
@@ -14980,6 +15312,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringIpv6NullableArrayArray(ctx, request)
 	if err != nil {
@@ -15016,7 +15349,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringNullable",
@@ -15025,6 +15358,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringNullable(ctx, request)
 	if err != nil {
@@ -15061,7 +15395,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringNullableArray",
@@ -15070,6 +15404,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringNullableArray(ctx, request)
 	if err != nil {
@@ -15106,7 +15441,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringNullableArrayArray",
@@ -15115,6 +15450,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringNullableArrayArray(ctx, request)
 	if err != nil {
@@ -15151,7 +15487,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringPasswordRequest(r, span)
+	request, close, err := s.decodeTestRequestStringPasswordRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringPassword",
@@ -15160,6 +15496,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringPassword(ctx, request)
 	if err != nil {
@@ -15196,7 +15533,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringPasswordArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringPasswordArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringPasswordArray",
@@ -15205,6 +15542,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringPasswordArray(ctx, request)
 	if err != nil {
@@ -15241,7 +15579,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringPasswordArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringPasswordArrayArray",
@@ -15250,6 +15588,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringPasswordArrayArray(ctx, request)
 	if err != nil {
@@ -15286,7 +15625,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringPasswordNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringPasswordNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringPasswordNullable",
@@ -15295,6 +15634,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringPasswordNullable(ctx, request)
 	if err != nil {
@@ -15331,7 +15671,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringPasswordNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringPasswordNullableArray",
@@ -15340,6 +15680,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringPasswordNullableArray(ctx, request)
 	if err != nil {
@@ -15376,7 +15717,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringPasswordNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringPasswordNullableArrayArray",
@@ -15385,6 +15726,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringPasswordNullableArrayArray(ctx, request)
 	if err != nil {
@@ -15421,7 +15763,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringTimeRequest(r, span)
+	request, close, err := s.decodeTestRequestStringTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringTime",
@@ -15430,6 +15772,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringTime(ctx, request)
 	if err != nil {
@@ -15466,7 +15809,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringTimeArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringTimeArray",
@@ -15475,6 +15818,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringTimeArray(ctx, request)
 	if err != nil {
@@ -15511,7 +15855,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringTimeArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringTimeArrayArray",
@@ -15520,6 +15864,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringTimeArrayArray(ctx, request)
 	if err != nil {
@@ -15556,7 +15901,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringTimeNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringTimeNullable",
@@ -15565,6 +15910,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringTimeNullable(ctx, request)
 	if err != nil {
@@ -15601,7 +15947,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringTimeNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringTimeNullableArray",
@@ -15610,6 +15956,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringTimeNullableArray(ctx, request)
 	if err != nil {
@@ -15646,7 +15993,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringTimeNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringTimeNullableArrayArray",
@@ -15655,6 +16002,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringTimeNullableArrayArray(ctx, request)
 	if err != nil {
@@ -15691,7 +16039,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringURIRequest(r, span)
+	request, close, err := s.decodeTestRequestStringURIRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringURI",
@@ -15700,6 +16048,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringURI(ctx, request)
 	if err != nil {
@@ -15736,7 +16085,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringURIArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringURIArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringURIArray",
@@ -15745,6 +16094,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringURIArray(ctx, request)
 	if err != nil {
@@ -15781,7 +16131,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringURIArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringURIArrayArray",
@@ -15790,6 +16140,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringURIArrayArray(ctx, request)
 	if err != nil {
@@ -15826,7 +16177,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringURINullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringURINullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringURINullable",
@@ -15835,6 +16186,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringURINullable(ctx, request)
 	if err != nil {
@@ -15871,7 +16223,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringURINullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringURINullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringURINullableArray",
@@ -15880,6 +16232,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringURINullableArray(ctx, request)
 	if err != nil {
@@ -15916,7 +16269,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringURINullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringURINullableArrayArray",
@@ -15925,6 +16278,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringURINullableArrayArray(ctx, request)
 	if err != nil {
@@ -15961,7 +16315,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUUIDRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUUIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUUID",
@@ -15970,6 +16324,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUUID(ctx, request)
 	if err != nil {
@@ -16006,7 +16361,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUUIDArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUUIDArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUUIDArray",
@@ -16015,6 +16370,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUUIDArray(ctx, request)
 	if err != nil {
@@ -16051,7 +16407,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUUIDArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUUIDArrayArray",
@@ -16060,6 +16416,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUUIDArrayArray(ctx, request)
 	if err != nil {
@@ -16096,7 +16453,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUUIDNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUUIDNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUUIDNullable",
@@ -16105,6 +16462,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUUIDNullable(ctx, request)
 	if err != nil {
@@ -16141,7 +16499,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUUIDNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUUIDNullableArray",
@@ -16150,6 +16508,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUUIDNullableArray(ctx, request)
 	if err != nil {
@@ -16186,7 +16545,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUUIDNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUUIDNullableArrayArray",
@@ -16195,6 +16554,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUUIDNullableArrayArray(ctx, request)
 	if err != nil {
@@ -16231,7 +16591,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnix",
@@ -16240,6 +16600,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnix(ctx, request)
 	if err != nil {
@@ -16276,7 +16637,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixArray",
@@ -16285,6 +16646,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixArray(ctx, request)
 	if err != nil {
@@ -16321,7 +16683,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixArrayArray",
@@ -16330,6 +16692,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixArrayArray(ctx, request)
 	if err != nil {
@@ -16366,7 +16729,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMicroRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMicroRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMicro",
@@ -16375,6 +16738,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMicro(ctx, request)
 	if err != nil {
@@ -16411,7 +16775,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMicroArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMicroArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMicroArray",
@@ -16420,6 +16784,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMicroArray(ctx, request)
 	if err != nil {
@@ -16456,7 +16821,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMicroArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMicroArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMicroArrayArray",
@@ -16465,6 +16830,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMicroArrayArray(ctx, request)
 	if err != nil {
@@ -16501,7 +16867,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMicroNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMicroNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMicroNullable",
@@ -16510,6 +16876,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMicroNullable(ctx, request)
 	if err != nil {
@@ -16546,7 +16913,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMicroNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMicroNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMicroNullableArray",
@@ -16555,6 +16922,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMicroNullableArray(ctx, request)
 	if err != nil {
@@ -16591,7 +16959,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMicroNullableArrayArray",
@@ -16600,6 +16968,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMicroNullableArrayArray(ctx, request)
 	if err != nil {
@@ -16636,7 +17005,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMilliRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMilliRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMilli",
@@ -16645,6 +17014,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMilli(ctx, request)
 	if err != nil {
@@ -16681,7 +17051,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMilliArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMilliArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMilliArray",
@@ -16690,6 +17060,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMilliArray(ctx, request)
 	if err != nil {
@@ -16726,7 +17097,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMilliArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMilliArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMilliArrayArray",
@@ -16735,6 +17106,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMilliArrayArray(ctx, request)
 	if err != nil {
@@ -16771,7 +17143,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMilliNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMilliNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMilliNullable",
@@ -16780,6 +17152,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMilliNullable(ctx, request)
 	if err != nil {
@@ -16816,7 +17189,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMilliNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMilliNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMilliNullableArray",
@@ -16825,6 +17198,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMilliNullableArray(ctx, request)
 	if err != nil {
@@ -16861,7 +17235,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixMilliNullableArrayArray",
@@ -16870,6 +17244,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixMilliNullableArrayArray(ctx, request)
 	if err != nil {
@@ -16906,7 +17281,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNanoRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNanoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNano",
@@ -16915,6 +17290,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNano(ctx, request)
 	if err != nil {
@@ -16951,7 +17327,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNanoArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNanoArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNanoArray",
@@ -16960,6 +17336,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNanoArray(ctx, request)
 	if err != nil {
@@ -16996,7 +17373,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNanoArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNanoArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNanoArrayArray",
@@ -17005,6 +17382,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNanoArrayArray(ctx, request)
 	if err != nil {
@@ -17041,7 +17419,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNanoNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNanoNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNanoNullable",
@@ -17050,6 +17428,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNanoNullable(ctx, request)
 	if err != nil {
@@ -17086,7 +17465,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNanoNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNanoNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNanoNullableArray",
@@ -17095,6 +17474,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNanoNullableArray(ctx, request)
 	if err != nil {
@@ -17131,7 +17511,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNanoNullableArrayArray",
@@ -17140,6 +17520,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNanoNullableArrayArray(ctx, request)
 	if err != nil {
@@ -17176,7 +17557,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNullable",
@@ -17185,6 +17566,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNullable(ctx, request)
 	if err != nil {
@@ -17221,7 +17603,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNullableArray",
@@ -17230,6 +17612,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNullableArray(ctx, request)
 	if err != nil {
@@ -17266,7 +17649,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixNullableArrayArray",
@@ -17275,6 +17658,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixNullableArrayArray(ctx, request)
 	if err != nil {
@@ -17311,7 +17695,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixSecondsRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixSecondsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixSeconds",
@@ -17320,6 +17704,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixSeconds(ctx, request)
 	if err != nil {
@@ -17356,7 +17741,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixSecondsArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixSecondsArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixSecondsArray",
@@ -17365,6 +17750,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixSecondsArray(ctx, request)
 	if err != nil {
@@ -17401,7 +17787,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixSecondsArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixSecondsArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixSecondsArrayArray",
@@ -17410,6 +17796,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixSecondsArrayArray(ctx, request)
 	if err != nil {
@@ -17446,7 +17833,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixSecondsNullableRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixSecondsNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixSecondsNullable",
@@ -17455,6 +17842,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixSecondsNullable(ctx, request)
 	if err != nil {
@@ -17491,7 +17879,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixSecondsNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixSecondsNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixSecondsNullableArray",
@@ -17500,6 +17888,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixSecondsNullableArray(ctx, request)
 	if err != nil {
@@ -17536,7 +17925,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestRequestStringUnixSecondsNullableArrayArray",
@@ -17545,6 +17934,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestRequestStringUnixSecondsNullableArrayArray(ctx, request)
 	if err != nil {
@@ -17581,7 +17971,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseAnyRequest(r, span)
+	request, close, err := s.decodeTestResponseAnyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseAny",
@@ -17590,6 +17980,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseAny(ctx, request)
 	if err != nil {
@@ -17626,7 +18017,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseBooleanRequest(r, span)
+	request, close, err := s.decodeTestResponseBooleanRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseBoolean",
@@ -17635,6 +18026,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseBoolean(ctx, request)
 	if err != nil {
@@ -17671,7 +18063,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseBooleanArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseBooleanArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseBooleanArray",
@@ -17680,6 +18072,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseBooleanArray(ctx, request)
 	if err != nil {
@@ -17716,7 +18109,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseBooleanArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseBooleanArrayArray",
@@ -17725,6 +18118,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseBooleanArrayArray(ctx, request)
 	if err != nil {
@@ -17761,7 +18155,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseBooleanNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseBooleanNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseBooleanNullable",
@@ -17770,6 +18164,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseBooleanNullable(ctx, request)
 	if err != nil {
@@ -17806,7 +18201,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseBooleanNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseBooleanNullableArray",
@@ -17815,6 +18210,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseBooleanNullableArray(ctx, request)
 	if err != nil {
@@ -17851,7 +18247,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseBooleanNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseBooleanNullableArrayArray",
@@ -17860,6 +18256,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseBooleanNullableArrayArray(ctx, request)
 	if err != nil {
@@ -17896,7 +18293,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseEmptyStructRequest(r, span)
+	request, close, err := s.decodeTestResponseEmptyStructRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseEmptyStruct",
@@ -17905,6 +18302,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseEmptyStruct(ctx, request)
 	if err != nil {
@@ -17941,7 +18339,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseFormatTestRequest(r, span)
+	request, close, err := s.decodeTestResponseFormatTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseFormatTest",
@@ -17950,6 +18348,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseFormatTest(ctx, request)
 	if err != nil {
@@ -17986,7 +18385,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseInteger",
@@ -17995,6 +18394,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseInteger(ctx, request)
 	if err != nil {
@@ -18031,7 +18431,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerArray",
@@ -18040,6 +18440,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerArray(ctx, request)
 	if err != nil {
@@ -18076,7 +18477,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerArrayArray",
@@ -18085,6 +18486,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerArrayArray(ctx, request)
 	if err != nil {
@@ -18121,7 +18523,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt32Request(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt32",
@@ -18130,6 +18532,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt32(ctx, request)
 	if err != nil {
@@ -18166,7 +18569,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt32Array",
@@ -18175,6 +18578,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt32Array(ctx, request)
 	if err != nil {
@@ -18211,7 +18615,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt32ArrayArray",
@@ -18220,6 +18624,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -18256,7 +18661,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt32Nullable",
@@ -18265,6 +18670,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt32Nullable(ctx, request)
 	if err != nil {
@@ -18301,7 +18707,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt32NullableArray",
@@ -18310,6 +18716,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt32NullableArray(ctx, request)
 	if err != nil {
@@ -18346,7 +18753,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt32NullableArrayArray",
@@ -18355,6 +18762,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -18391,7 +18799,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt64Request(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt64",
@@ -18400,6 +18808,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt64(ctx, request)
 	if err != nil {
@@ -18436,7 +18845,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt64Array",
@@ -18445,6 +18854,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt64Array(ctx, request)
 	if err != nil {
@@ -18481,7 +18891,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt64ArrayArray",
@@ -18490,6 +18900,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -18526,7 +18937,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt64Nullable",
@@ -18535,6 +18946,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt64Nullable(ctx, request)
 	if err != nil {
@@ -18571,7 +18983,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt64NullableArray",
@@ -18580,6 +18992,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt64NullableArray(ctx, request)
 	if err != nil {
@@ -18616,7 +19029,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerInt64NullableArrayArray",
@@ -18625,6 +19038,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -18661,7 +19075,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerNullable",
@@ -18670,6 +19084,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerNullable(ctx, request)
 	if err != nil {
@@ -18706,7 +19121,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerNullableArray",
@@ -18715,6 +19130,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerNullableArray(ctx, request)
 	if err != nil {
@@ -18751,7 +19167,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseIntegerNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseIntegerNullableArrayArray",
@@ -18760,6 +19176,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseIntegerNullableArrayArray(ctx, request)
 	if err != nil {
@@ -18796,7 +19213,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNullRequest(r, span)
+	request, close, err := s.decodeTestResponseNullRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNull",
@@ -18805,6 +19222,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNull(ctx, request)
 	if err != nil {
@@ -18841,7 +19259,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNullArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNullArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNullArray",
@@ -18850,6 +19268,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNullArray(ctx, request)
 	if err != nil {
@@ -18886,7 +19305,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNullArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNullArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNullArrayArray",
@@ -18895,6 +19314,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNullArrayArray(ctx, request)
 	if err != nil {
@@ -18931,7 +19351,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNullNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseNullNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNullNullable",
@@ -18940,6 +19360,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNullNullable(ctx, request)
 	if err != nil {
@@ -18976,7 +19397,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNullNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNullNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNullNullableArray",
@@ -18985,6 +19406,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNullNullableArray(ctx, request)
 	if err != nil {
@@ -19021,7 +19443,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNullNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNullNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNullNullableArrayArray",
@@ -19030,6 +19452,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNullNullableArrayArray(ctx, request)
 	if err != nil {
@@ -19066,7 +19489,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumber",
@@ -19075,6 +19498,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumber(ctx, request)
 	if err != nil {
@@ -19111,7 +19535,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberArray",
@@ -19120,6 +19544,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberArray(ctx, request)
 	if err != nil {
@@ -19156,7 +19581,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberArrayArray",
@@ -19165,6 +19590,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberArrayArray(ctx, request)
 	if err != nil {
@@ -19201,7 +19627,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberDoubleRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberDoubleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberDouble",
@@ -19210,6 +19636,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberDouble(ctx, request)
 	if err != nil {
@@ -19246,7 +19673,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberDoubleArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberDoubleArray",
@@ -19255,6 +19682,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberDoubleArray(ctx, request)
 	if err != nil {
@@ -19291,7 +19719,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberDoubleArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberDoubleArrayArray",
@@ -19300,6 +19728,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberDoubleArrayArray(ctx, request)
 	if err != nil {
@@ -19336,7 +19765,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberDoubleNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberDoubleNullable",
@@ -19345,6 +19774,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberDoubleNullable(ctx, request)
 	if err != nil {
@@ -19381,7 +19811,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberDoubleNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberDoubleNullableArray",
@@ -19390,6 +19820,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberDoubleNullableArray(ctx, request)
 	if err != nil {
@@ -19426,7 +19857,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberDoubleNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberDoubleNullableArrayArray",
@@ -19435,6 +19866,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberDoubleNullableArrayArray(ctx, request)
 	if err != nil {
@@ -19471,7 +19903,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberFloatRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberFloatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberFloat",
@@ -19480,6 +19912,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberFloat(ctx, request)
 	if err != nil {
@@ -19516,7 +19949,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberFloatArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberFloatArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberFloatArray",
@@ -19525,6 +19958,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberFloatArray(ctx, request)
 	if err != nil {
@@ -19561,7 +19995,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberFloatArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberFloatArrayArray",
@@ -19570,6 +20004,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberFloatArrayArray(ctx, request)
 	if err != nil {
@@ -19606,7 +20041,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberFloatNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberFloatNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberFloatNullable",
@@ -19615,6 +20050,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberFloatNullable(ctx, request)
 	if err != nil {
@@ -19651,7 +20087,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberFloatNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberFloatNullableArray",
@@ -19660,6 +20096,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberFloatNullableArray(ctx, request)
 	if err != nil {
@@ -19696,7 +20133,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberFloatNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberFloatNullableArrayArray",
@@ -19705,6 +20142,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberFloatNullableArrayArray(ctx, request)
 	if err != nil {
@@ -19741,7 +20179,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt32Request(r, span)
+	request, close, err := s.decodeTestResponseNumberInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt32",
@@ -19750,6 +20188,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt32(ctx, request)
 	if err != nil {
@@ -19786,7 +20225,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt32Array",
@@ -19795,6 +20234,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt32Array(ctx, request)
 	if err != nil {
@@ -19831,7 +20271,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt32ArrayArray",
@@ -19840,6 +20280,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -19876,7 +20317,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt32Nullable",
@@ -19885,6 +20326,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt32Nullable(ctx, request)
 	if err != nil {
@@ -19921,7 +20363,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt32NullableArray",
@@ -19930,6 +20372,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt32NullableArray(ctx, request)
 	if err != nil {
@@ -19966,7 +20409,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt32NullableArrayArray",
@@ -19975,6 +20418,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -20011,7 +20455,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt64Request(r, span)
+	request, close, err := s.decodeTestResponseNumberInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt64",
@@ -20020,6 +20464,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt64(ctx, request)
 	if err != nil {
@@ -20056,7 +20501,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt64Array",
@@ -20065,6 +20510,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt64Array(ctx, request)
 	if err != nil {
@@ -20101,7 +20547,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt64ArrayArray",
@@ -20110,6 +20556,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -20146,7 +20593,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt64Nullable",
@@ -20155,6 +20602,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt64Nullable(ctx, request)
 	if err != nil {
@@ -20191,7 +20639,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt64NullableArray",
@@ -20200,6 +20648,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt64NullableArray(ctx, request)
 	if err != nil {
@@ -20236,7 +20685,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberInt64NullableArrayArray",
@@ -20245,6 +20694,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -20281,7 +20731,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberNullable",
@@ -20290,6 +20740,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberNullable(ctx, request)
 	if err != nil {
@@ -20326,7 +20777,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberNullableArray",
@@ -20335,6 +20786,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberNullableArray(ctx, request)
 	if err != nil {
@@ -20371,7 +20823,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseNumberNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseNumberNullableArrayArray",
@@ -20380,6 +20832,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseNumberNullableArrayArray(ctx, request)
 	if err != nil {
@@ -20416,7 +20869,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringRequest(r, span)
+	request, close, err := s.decodeTestResponseStringRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseString",
@@ -20425,6 +20878,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseString(ctx, request)
 	if err != nil {
@@ -20461,7 +20915,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringArray",
@@ -20470,6 +20924,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringArray(ctx, request)
 	if err != nil {
@@ -20506,7 +20961,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringArrayArray",
@@ -20515,6 +20970,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringArrayArray(ctx, request)
 	if err != nil {
@@ -20551,7 +21007,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringBinaryRequest(r, span)
+	request, close, err := s.decodeTestResponseStringBinaryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringBinary",
@@ -20560,6 +21016,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringBinary(ctx, request)
 	if err != nil {
@@ -20596,7 +21053,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringBinaryArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringBinaryArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringBinaryArray",
@@ -20605,6 +21062,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringBinaryArray(ctx, request)
 	if err != nil {
@@ -20641,7 +21099,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringBinaryArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringBinaryArrayArray",
@@ -20650,6 +21108,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringBinaryArrayArray(ctx, request)
 	if err != nil {
@@ -20686,7 +21145,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringBinaryNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringBinaryNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringBinaryNullable",
@@ -20695,6 +21154,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringBinaryNullable(ctx, request)
 	if err != nil {
@@ -20731,7 +21191,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringBinaryNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringBinaryNullableArray",
@@ -20740,6 +21200,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringBinaryNullableArray(ctx, request)
 	if err != nil {
@@ -20776,7 +21237,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringBinaryNullableArrayArray",
@@ -20785,6 +21246,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringBinaryNullableArrayArray(ctx, request)
 	if err != nil {
@@ -20821,7 +21283,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringByteRequest(r, span)
+	request, close, err := s.decodeTestResponseStringByteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringByte",
@@ -20830,6 +21292,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringByte(ctx, request)
 	if err != nil {
@@ -20866,7 +21329,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringByteArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringByteArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringByteArray",
@@ -20875,6 +21338,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringByteArray(ctx, request)
 	if err != nil {
@@ -20911,7 +21375,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringByteArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringByteArrayArray",
@@ -20920,6 +21384,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringByteArrayArray(ctx, request)
 	if err != nil {
@@ -20956,7 +21421,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringByteNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringByteNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringByteNullable",
@@ -20965,6 +21430,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringByteNullable(ctx, request)
 	if err != nil {
@@ -21001,7 +21467,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringByteNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringByteNullableArray",
@@ -21010,6 +21476,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringByteNullableArray(ctx, request)
 	if err != nil {
@@ -21046,7 +21513,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringByteNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringByteNullableArrayArray",
@@ -21055,6 +21522,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringByteNullableArrayArray(ctx, request)
 	if err != nil {
@@ -21091,7 +21559,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDate",
@@ -21100,6 +21568,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDate(ctx, request)
 	if err != nil {
@@ -21136,7 +21605,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateArray",
@@ -21145,6 +21614,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateArray(ctx, request)
 	if err != nil {
@@ -21181,7 +21651,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateArrayArray",
@@ -21190,6 +21660,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateArrayArray(ctx, request)
 	if err != nil {
@@ -21226,7 +21697,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateNullable",
@@ -21235,6 +21706,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateNullable(ctx, request)
 	if err != nil {
@@ -21271,7 +21743,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateNullableArray",
@@ -21280,6 +21752,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateNullableArray(ctx, request)
 	if err != nil {
@@ -21316,7 +21789,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateNullableArrayArray",
@@ -21325,6 +21798,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateNullableArrayArray(ctx, request)
 	if err != nil {
@@ -21361,7 +21835,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateTimeRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateTime",
@@ -21370,6 +21844,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateTime(ctx, request)
 	if err != nil {
@@ -21406,7 +21881,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateTimeArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateTimeArray",
@@ -21415,6 +21890,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateTimeArray(ctx, request)
 	if err != nil {
@@ -21451,7 +21927,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateTimeArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateTimeArrayArray",
@@ -21460,6 +21936,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateTimeArrayArray(ctx, request)
 	if err != nil {
@@ -21496,7 +21973,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateTimeNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateTimeNullable",
@@ -21505,6 +21982,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateTimeNullable(ctx, request)
 	if err != nil {
@@ -21541,7 +22019,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateTimeNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateTimeNullableArray",
@@ -21550,6 +22028,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateTimeNullableArray(ctx, request)
 	if err != nil {
@@ -21586,7 +22065,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDateTimeNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDateTimeNullableArrayArray",
@@ -21595,6 +22074,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDateTimeNullableArrayArray(ctx, request)
 	if err != nil {
@@ -21631,7 +22111,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDurationRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDuration",
@@ -21640,6 +22120,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDuration(ctx, request)
 	if err != nil {
@@ -21676,7 +22157,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDurationArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDurationArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDurationArray",
@@ -21685,6 +22166,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDurationArray(ctx, request)
 	if err != nil {
@@ -21721,7 +22203,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDurationArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDurationArrayArray",
@@ -21730,6 +22212,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDurationArrayArray(ctx, request)
 	if err != nil {
@@ -21766,7 +22249,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDurationNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDurationNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDurationNullable",
@@ -21775,6 +22258,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDurationNullable(ctx, request)
 	if err != nil {
@@ -21811,7 +22295,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDurationNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDurationNullableArray",
@@ -21820,6 +22304,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDurationNullableArray(ctx, request)
 	if err != nil {
@@ -21856,7 +22341,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringDurationNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringDurationNullableArrayArray",
@@ -21865,6 +22350,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringDurationNullableArrayArray(ctx, request)
 	if err != nil {
@@ -21901,7 +22387,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringEmailRequest(r, span)
+	request, close, err := s.decodeTestResponseStringEmailRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringEmail",
@@ -21910,6 +22396,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringEmail(ctx, request)
 	if err != nil {
@@ -21946,7 +22433,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringEmailArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringEmailArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringEmailArray",
@@ -21955,6 +22442,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringEmailArray(ctx, request)
 	if err != nil {
@@ -21991,7 +22479,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringEmailArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringEmailArrayArray",
@@ -22000,6 +22488,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringEmailArrayArray(ctx, request)
 	if err != nil {
@@ -22036,7 +22525,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringEmailNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringEmailNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringEmailNullable",
@@ -22045,6 +22534,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringEmailNullable(ctx, request)
 	if err != nil {
@@ -22081,7 +22571,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringEmailNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringEmailNullableArray",
@@ -22090,6 +22580,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringEmailNullableArray(ctx, request)
 	if err != nil {
@@ -22126,7 +22617,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringEmailNullableArrayArray",
@@ -22135,6 +22626,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringEmailNullableArrayArray(ctx, request)
 	if err != nil {
@@ -22171,7 +22663,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringHostnameRequest(r, span)
+	request, close, err := s.decodeTestResponseStringHostnameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringHostname",
@@ -22180,6 +22672,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringHostname(ctx, request)
 	if err != nil {
@@ -22216,7 +22709,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringHostnameArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringHostnameArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringHostnameArray",
@@ -22225,6 +22718,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringHostnameArray(ctx, request)
 	if err != nil {
@@ -22261,7 +22755,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringHostnameArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringHostnameArrayArray",
@@ -22270,6 +22764,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringHostnameArrayArray(ctx, request)
 	if err != nil {
@@ -22306,7 +22801,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringHostnameNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringHostnameNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringHostnameNullable",
@@ -22315,6 +22810,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringHostnameNullable(ctx, request)
 	if err != nil {
@@ -22351,7 +22847,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringHostnameNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringHostnameNullableArray",
@@ -22360,6 +22856,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringHostnameNullableArray(ctx, request)
 	if err != nil {
@@ -22396,7 +22893,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringHostnameNullableArrayArray",
@@ -22405,6 +22902,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringHostnameNullableArrayArray(ctx, request)
 	if err != nil {
@@ -22441,7 +22939,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIPRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIPRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIP",
@@ -22450,6 +22948,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIP(ctx, request)
 	if err != nil {
@@ -22486,7 +22985,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIPArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIPArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIPArray",
@@ -22495,6 +22994,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIPArray(ctx, request)
 	if err != nil {
@@ -22531,7 +23031,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIPArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIPArrayArray",
@@ -22540,6 +23040,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIPArrayArray(ctx, request)
 	if err != nil {
@@ -22576,7 +23077,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIPNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIPNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIPNullable",
@@ -22585,6 +23086,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIPNullable(ctx, request)
 	if err != nil {
@@ -22621,7 +23123,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIPNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIPNullableArray",
@@ -22630,6 +23132,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIPNullableArray(ctx, request)
 	if err != nil {
@@ -22666,7 +23169,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIPNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIPNullableArrayArray",
@@ -22675,6 +23178,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIPNullableArrayArray(ctx, request)
 	if err != nil {
@@ -22711,7 +23215,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt32Request(r, span)
+	request, close, err := s.decodeTestResponseStringInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt32",
@@ -22720,6 +23224,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt32(ctx, request)
 	if err != nil {
@@ -22756,7 +23261,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt32ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt32Array",
@@ -22765,6 +23270,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt32Array(ctx, request)
 	if err != nil {
@@ -22801,7 +23307,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt32ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt32ArrayArray",
@@ -22810,6 +23316,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt32ArrayArray(ctx, request)
 	if err != nil {
@@ -22846,7 +23353,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt32NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt32Nullable",
@@ -22855,6 +23362,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt32Nullable(ctx, request)
 	if err != nil {
@@ -22891,7 +23399,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt32NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt32NullableArray",
@@ -22900,6 +23408,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt32NullableArray(ctx, request)
 	if err != nil {
@@ -22936,7 +23445,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt32NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt32NullableArrayArray",
@@ -22945,6 +23454,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt32NullableArrayArray(ctx, request)
 	if err != nil {
@@ -22981,7 +23491,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt64Request(r, span)
+	request, close, err := s.decodeTestResponseStringInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt64",
@@ -22990,6 +23500,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt64(ctx, request)
 	if err != nil {
@@ -23026,7 +23537,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt64ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt64Array",
@@ -23035,6 +23546,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt64Array(ctx, request)
 	if err != nil {
@@ -23071,7 +23583,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt64ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt64ArrayArray",
@@ -23080,6 +23592,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt64ArrayArray(ctx, request)
 	if err != nil {
@@ -23116,7 +23629,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt64NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt64Nullable",
@@ -23125,6 +23638,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt64Nullable(ctx, request)
 	if err != nil {
@@ -23161,7 +23675,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt64NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt64NullableArray",
@@ -23170,6 +23684,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt64NullableArray(ctx, request)
 	if err != nil {
@@ -23206,7 +23721,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringInt64NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringInt64NullableArrayArray",
@@ -23215,6 +23730,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringInt64NullableArrayArray(ctx, request)
 	if err != nil {
@@ -23251,7 +23767,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv4Request(r, span)
+	request, close, err := s.decodeTestResponseStringIpv4Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv4",
@@ -23260,6 +23776,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv4(ctx, request)
 	if err != nil {
@@ -23296,7 +23813,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv4ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv4Array",
@@ -23305,6 +23822,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv4Array(ctx, request)
 	if err != nil {
@@ -23341,7 +23859,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv4ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv4ArrayArray",
@@ -23350,6 +23868,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv4ArrayArray(ctx, request)
 	if err != nil {
@@ -23386,7 +23905,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv4NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv4NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv4Nullable",
@@ -23395,6 +23914,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv4Nullable(ctx, request)
 	if err != nil {
@@ -23431,7 +23951,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv4NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv4NullableArray",
@@ -23440,6 +23960,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv4NullableArray(ctx, request)
 	if err != nil {
@@ -23476,7 +23997,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv4NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv4NullableArrayArray",
@@ -23485,6 +24006,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv4NullableArrayArray(ctx, request)
 	if err != nil {
@@ -23521,7 +24043,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv6Request(r, span)
+	request, close, err := s.decodeTestResponseStringIpv6Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv6",
@@ -23530,6 +24052,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv6(ctx, request)
 	if err != nil {
@@ -23566,7 +24089,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv6ArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv6Array",
@@ -23575,6 +24098,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv6Array(ctx, request)
 	if err != nil {
@@ -23611,7 +24135,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv6ArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv6ArrayArray",
@@ -23620,6 +24144,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv6ArrayArray(ctx, request)
 	if err != nil {
@@ -23656,7 +24181,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv6NullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv6NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv6Nullable",
@@ -23665,6 +24190,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv6Nullable(ctx, request)
 	if err != nil {
@@ -23701,7 +24227,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv6NullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv6NullableArray",
@@ -23710,6 +24236,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv6NullableArray(ctx, request)
 	if err != nil {
@@ -23746,7 +24273,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringIpv6NullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringIpv6NullableArrayArray",
@@ -23755,6 +24282,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringIpv6NullableArrayArray(ctx, request)
 	if err != nil {
@@ -23791,7 +24319,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringNullable",
@@ -23800,6 +24328,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringNullable(ctx, request)
 	if err != nil {
@@ -23836,7 +24365,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringNullableArray",
@@ -23845,6 +24374,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringNullableArray(ctx, request)
 	if err != nil {
@@ -23881,7 +24411,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringNullableArrayArray",
@@ -23890,6 +24420,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringNullableArrayArray(ctx, request)
 	if err != nil {
@@ -23926,7 +24457,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringPasswordRequest(r, span)
+	request, close, err := s.decodeTestResponseStringPasswordRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringPassword",
@@ -23935,6 +24466,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringPassword(ctx, request)
 	if err != nil {
@@ -23971,7 +24503,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringPasswordArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringPasswordArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringPasswordArray",
@@ -23980,6 +24512,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringPasswordArray(ctx, request)
 	if err != nil {
@@ -24016,7 +24549,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringPasswordArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringPasswordArrayArray",
@@ -24025,6 +24558,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringPasswordArrayArray(ctx, request)
 	if err != nil {
@@ -24061,7 +24595,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringPasswordNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringPasswordNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringPasswordNullable",
@@ -24070,6 +24604,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringPasswordNullable(ctx, request)
 	if err != nil {
@@ -24106,7 +24641,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringPasswordNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringPasswordNullableArray",
@@ -24115,6 +24650,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringPasswordNullableArray(ctx, request)
 	if err != nil {
@@ -24151,7 +24687,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringPasswordNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringPasswordNullableArrayArray",
@@ -24160,6 +24696,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringPasswordNullableArrayArray(ctx, request)
 	if err != nil {
@@ -24196,7 +24733,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringTimeRequest(r, span)
+	request, close, err := s.decodeTestResponseStringTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringTime",
@@ -24205,6 +24742,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringTime(ctx, request)
 	if err != nil {
@@ -24241,7 +24779,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringTimeArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringTimeArray",
@@ -24250,6 +24788,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringTimeArray(ctx, request)
 	if err != nil {
@@ -24286,7 +24825,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringTimeArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringTimeArrayArray",
@@ -24295,6 +24834,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringTimeArrayArray(ctx, request)
 	if err != nil {
@@ -24331,7 +24871,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringTimeNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringTimeNullable",
@@ -24340,6 +24880,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringTimeNullable(ctx, request)
 	if err != nil {
@@ -24376,7 +24917,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringTimeNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringTimeNullableArray",
@@ -24385,6 +24926,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringTimeNullableArray(ctx, request)
 	if err != nil {
@@ -24421,7 +24963,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringTimeNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringTimeNullableArrayArray",
@@ -24430,6 +24972,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringTimeNullableArrayArray(ctx, request)
 	if err != nil {
@@ -24466,7 +25009,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringURIRequest(r, span)
+	request, close, err := s.decodeTestResponseStringURIRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringURI",
@@ -24475,6 +25018,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringURI(ctx, request)
 	if err != nil {
@@ -24511,7 +25055,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringURIArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringURIArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringURIArray",
@@ -24520,6 +25064,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringURIArray(ctx, request)
 	if err != nil {
@@ -24556,7 +25101,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringURIArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringURIArrayArray",
@@ -24565,6 +25110,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringURIArrayArray(ctx, request)
 	if err != nil {
@@ -24601,7 +25147,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringURINullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringURINullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringURINullable",
@@ -24610,6 +25156,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringURINullable(ctx, request)
 	if err != nil {
@@ -24646,7 +25193,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringURINullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringURINullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringURINullableArray",
@@ -24655,6 +25202,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringURINullableArray(ctx, request)
 	if err != nil {
@@ -24691,7 +25239,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringURINullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringURINullableArrayArray",
@@ -24700,6 +25248,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringURINullableArrayArray(ctx, request)
 	if err != nil {
@@ -24736,7 +25285,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUUIDRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUUIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUUID",
@@ -24745,6 +25294,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUUID(ctx, request)
 	if err != nil {
@@ -24781,7 +25331,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUUIDArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUUIDArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUUIDArray",
@@ -24790,6 +25340,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUUIDArray(ctx, request)
 	if err != nil {
@@ -24826,7 +25377,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUUIDArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUUIDArrayArray",
@@ -24835,6 +25386,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUUIDArrayArray(ctx, request)
 	if err != nil {
@@ -24871,7 +25423,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUUIDNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUUIDNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUUIDNullable",
@@ -24880,6 +25432,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUUIDNullable(ctx, request)
 	if err != nil {
@@ -24916,7 +25469,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUUIDNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUUIDNullableArray",
@@ -24925,6 +25478,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUUIDNullableArray(ctx, request)
 	if err != nil {
@@ -24961,7 +25515,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUUIDNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUUIDNullableArrayArray",
@@ -24970,6 +25524,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUUIDNullableArrayArray(ctx, request)
 	if err != nil {
@@ -25006,7 +25561,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnix",
@@ -25015,6 +25570,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnix(ctx, request)
 	if err != nil {
@@ -25051,7 +25607,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixArray",
@@ -25060,6 +25616,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixArray(ctx, request)
 	if err != nil {
@@ -25096,7 +25653,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixArrayArray",
@@ -25105,6 +25662,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixArrayArray(ctx, request)
 	if err != nil {
@@ -25141,7 +25699,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMicroRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMicroRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMicro",
@@ -25150,6 +25708,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMicro(ctx, request)
 	if err != nil {
@@ -25186,7 +25745,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMicroArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMicroArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMicroArray",
@@ -25195,6 +25754,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMicroArray(ctx, request)
 	if err != nil {
@@ -25231,7 +25791,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMicroArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMicroArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMicroArrayArray",
@@ -25240,6 +25800,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMicroArrayArray(ctx, request)
 	if err != nil {
@@ -25276,7 +25837,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMicroNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMicroNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMicroNullable",
@@ -25285,6 +25846,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMicroNullable(ctx, request)
 	if err != nil {
@@ -25321,7 +25883,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMicroNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMicroNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMicroNullableArray",
@@ -25330,6 +25892,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMicroNullableArray(ctx, request)
 	if err != nil {
@@ -25366,7 +25929,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMicroNullableArrayArray",
@@ -25375,6 +25938,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMicroNullableArrayArray(ctx, request)
 	if err != nil {
@@ -25411,7 +25975,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMilliRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMilliRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMilli",
@@ -25420,6 +25984,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMilli(ctx, request)
 	if err != nil {
@@ -25456,7 +26021,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMilliArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMilliArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMilliArray",
@@ -25465,6 +26030,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMilliArray(ctx, request)
 	if err != nil {
@@ -25501,7 +26067,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMilliArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMilliArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMilliArrayArray",
@@ -25510,6 +26076,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMilliArrayArray(ctx, request)
 	if err != nil {
@@ -25546,7 +26113,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMilliNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMilliNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMilliNullable",
@@ -25555,6 +26122,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMilliNullable(ctx, request)
 	if err != nil {
@@ -25591,7 +26159,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMilliNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMilliNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMilliNullableArray",
@@ -25600,6 +26168,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMilliNullableArray(ctx, request)
 	if err != nil {
@@ -25636,7 +26205,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixMilliNullableArrayArray",
@@ -25645,6 +26214,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixMilliNullableArrayArray(ctx, request)
 	if err != nil {
@@ -25681,7 +26251,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNanoRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNanoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNano",
@@ -25690,6 +26260,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNano(ctx, request)
 	if err != nil {
@@ -25726,7 +26297,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNanoArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNanoArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNanoArray",
@@ -25735,6 +26306,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNanoArray(ctx, request)
 	if err != nil {
@@ -25771,7 +26343,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNanoArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNanoArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNanoArrayArray",
@@ -25780,6 +26352,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNanoArrayArray(ctx, request)
 	if err != nil {
@@ -25816,7 +26389,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNanoNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNanoNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNanoNullable",
@@ -25825,6 +26398,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNanoNullable(ctx, request)
 	if err != nil {
@@ -25861,7 +26435,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNanoNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNanoNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNanoNullableArray",
@@ -25870,6 +26444,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNanoNullableArray(ctx, request)
 	if err != nil {
@@ -25906,7 +26481,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNanoNullableArrayArray",
@@ -25915,6 +26490,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNanoNullableArrayArray(ctx, request)
 	if err != nil {
@@ -25951,7 +26527,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNullable",
@@ -25960,6 +26536,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNullable(ctx, request)
 	if err != nil {
@@ -25996,7 +26573,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNullableArray",
@@ -26005,6 +26582,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNullableArray(ctx, request)
 	if err != nil {
@@ -26041,7 +26619,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixNullableArrayArray",
@@ -26050,6 +26628,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixNullableArrayArray(ctx, request)
 	if err != nil {
@@ -26086,7 +26665,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixSecondsRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixSecondsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixSeconds",
@@ -26095,6 +26674,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixSeconds(ctx, request)
 	if err != nil {
@@ -26131,7 +26711,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixSecondsArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixSecondsArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixSecondsArray",
@@ -26140,6 +26720,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixSecondsArray(ctx, request)
 	if err != nil {
@@ -26176,7 +26757,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixSecondsArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixSecondsArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixSecondsArrayArray",
@@ -26185,6 +26766,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixSecondsArrayArray(ctx, request)
 	if err != nil {
@@ -26221,7 +26803,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixSecondsNullableRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixSecondsNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixSecondsNullable",
@@ -26230,6 +26812,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixSecondsNullable(ctx, request)
 	if err != nil {
@@ -26266,7 +26849,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixSecondsNullableArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixSecondsNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixSecondsNullableArray",
@@ -26275,6 +26858,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixSecondsNullableArray(ctx, request)
 	if err != nil {
@@ -26311,7 +26895,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 	defer span.End()
 
 	var err error
-	request, err := s.decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r, span)
+	request, close, err := s.decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestResponseStringUnixSecondsNullableArrayArray",
@@ -26320,6 +26904,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 
 	response, err := s.h.TestResponseStringUnixSecondsNullableArrayArray(ctx, request)
 	if err != nil {
