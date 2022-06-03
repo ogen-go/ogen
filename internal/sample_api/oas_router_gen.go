@@ -654,10 +654,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestMultipart
 						s.handleTestMultipartRequest([0]string{}, w, r)
 
 						return
+					}
+					switch elem[0] {
+					case 'U': // Prefix: "Upload"
+						if l := len("Upload"); len(elem) >= l && elem[0:l] == "Upload" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: TestMultipartUpload
+							s.handleTestMultipartUploadRequest([0]string{}, w, r)
+
+							return
+						}
 					}
 				}
 			}
@@ -1361,11 +1375,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestMultipart
 						r.name = "TestMultipart"
 						r.args = args
 						r.count = 0
 						return r, true
+					}
+					switch elem[0] {
+					case 'U': // Prefix: "Upload"
+						if l := len("Upload"); len(elem) >= l && elem[0:l] == "Upload" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: TestMultipartUpload
+							r.name = "TestMultipartUpload"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
 					}
 				}
 			}

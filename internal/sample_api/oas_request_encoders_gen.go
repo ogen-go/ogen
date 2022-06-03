@@ -244,9 +244,9 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			return data, errors.Wrap(err, "encode query")
 		}
 	}
+	encoded := q.Values().Encode()
 	return func() (io.ReadCloser, error) {
-		r := strings.NewReader(q.Values().Encode())
-		return io.NopCloser(r), nil
+		return io.NopCloser(strings.NewReader(encoded)), nil
 	}, nil
 }
 func encodeTestMultipartRequest(
@@ -358,6 +358,58 @@ func encodeTestMultipartRequest(
 		}
 	}
 	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
+		}
+		return nil
+	})
+	return getBody, contentType, nil
+}
+func encodeTestMultipartUploadRequest(
+	req TestMultipartUploadReq,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	contentType string,
+	rerr error,
+) {
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "orderId" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "orderId",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.OrderId.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "userId" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "userId",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.UserId.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if err := req.FileName.WriteMultipart("fileName", w); err != nil {
+			return errors.Wrap(err, "write \"fileName\"")
+		}
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}

@@ -520,6 +520,20 @@ func encodeTestMultipartResponse(response TestMultipartOK, w http.ResponseWriter
 	return nil
 
 }
+func encodeTestMultipartUploadResponse(response string, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+
+	e.Str(response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
 func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

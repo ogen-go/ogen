@@ -10,6 +10,8 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 type APIKey struct {
@@ -3208,6 +3210,12 @@ type TestFormURLEncodedOK struct{}
 
 // TestMultipartOK is response for TestMultipart operation.
 type TestMultipartOK struct{}
+
+type TestMultipartUploadReq struct {
+	OrderId  OptInt           "json:\"orderId\""
+	UserId   OptInt           "json:\"userId\""
+	FileName ht.MultipartFile "json:\"fileName\""
+}
 
 type TestObjectQueryParameterDeepObject struct {
 	Min    int    "json:\"min\""
