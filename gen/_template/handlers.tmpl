@@ -49,7 +49,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	{{- end }}
 
 	{{- if $op.Request }}
-	request, err := s.decode{{ $op.Name }}Request(r, span)
+	request, close, err := s.decode{{ $op.Name }}Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: {{ quote $op.Name }},
@@ -58,6 +58,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
+	defer close()
 	{{- end }}
 
 	response, err := s.h.{{$op.Name}}(ctx{{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})

@@ -50,6 +50,11 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 			}, nil
 		{{- else if $contentType.MultipartForm }}
 			getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+            	{{- range $param := $op.Request.FileParameters $contentType }}
+				if err := {{ printf "req.%s" $param.Name }}.WriteMultipart({{ quote $param.Spec.Name }}, w); err != nil {
+					return errors.Wrap(err, {{ printf "write %q" $param.Spec.Name | quote }})
+				}
+				{{- end }}
 				if err := q.WriteMultipart(w); err != nil {
 					return errors.Wrap(err, "write multipart")
 				}
