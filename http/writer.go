@@ -17,8 +17,10 @@ func CreateMultipartBody(cb func(mw *multipart.Writer) error) (
 	getBody = func() (io.ReadCloser, error) {
 		wg := new(errgroup.Group)
 		wg.Go(func() (rerr error) {
-			defer w.Close()
-			defer mw.Close()
+			defer func() {
+				_ = mw.Close()
+				_ = w.Close()
+			}()
 			return cb(mw)
 		})
 		return bodyReader{
