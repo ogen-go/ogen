@@ -19,7 +19,7 @@ go get -d github.com/ogen-go/ogen
 
 # Usage
 ```go
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema schema.json --target target/dir -package api --clean
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --target target/dir -package api --clean schema.json
 ```
 
 # Features
