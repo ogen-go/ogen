@@ -669,6 +669,47 @@
         }
       }
     },
+    "/testMultipartUpload": {
+      "post": {
+        "operationId": "testMultipartUpload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                    "fileName"
+                ],
+                "properties": {
+                  "orderId": {
+                    "type": "integer"
+                  },
+                  "userId": {
+                    "type": "integer"
+                  },
+                  "fileName": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content":{
+              "application/json":{
+                "schema": {
+                  "type":"string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/oneofBug": {
       "post": {
         "operationId": "oneofBug",
