@@ -93,6 +93,12 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		if err != nil {
 			return nil, err
 		}
+
+		visited := map[*ir.Type]struct{}{}
+		if err := isParamAllowed(t, true, visited); err != nil {
+			return nil, err
+		}
+
 		return t, nil
 	}
 	t, err := func() (*ir.Type, error) {
@@ -108,8 +114,8 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 			if err != nil {
 				return nil, err
 			}
-			t.AddFeature("json")
 
+			t.AddFeature("json")
 			return t, nil
 		}
 
@@ -117,12 +123,8 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		if err != nil {
 			return nil, err
 		}
-		t.AddFeature("uri")
 
-		visited := map[*ir.Type]struct{}{}
-		if err := isParamAllowed(t, true, visited); err != nil {
-			return nil, err
-		}
+		t.AddFeature("uri")
 		return t, nil
 	}()
 	if err != nil {
