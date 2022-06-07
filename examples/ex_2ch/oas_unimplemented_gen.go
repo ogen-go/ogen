@@ -109,24 +109,3 @@ func (UnimplementedHandler) APIMobileV2InfoBoardThreadGet(ctx context.Context, p
 func (UnimplementedHandler) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (r MobilePost, _ error) {
 	return r, ht.ErrNotImplemented
 }
-
-// UserPassloginPost implements  operation.
-//
-// POST /user/passlogin
-func (UnimplementedHandler) UserPassloginPost(ctx context.Context, req UserPassloginPostReq, params UserPassloginPostParams) (r Passcode, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// UserPostingPost implements  operation.
-//
-// POST /user/posting
-func (UnimplementedHandler) UserPostingPost(ctx context.Context, req UserPostingPostReq) (r UserPostingPostOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// UserReportPost implements  operation.
-//
-// POST /user/report
-func (UnimplementedHandler) UserReportPost(ctx context.Context, req UserReportPostReq) (r Report, _ error) {
-	return r, ht.ErrNotImplemented
-}

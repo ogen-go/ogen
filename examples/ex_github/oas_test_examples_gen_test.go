@@ -26797,6 +26797,7 @@ func TestValidationError_EncodeDecode(t *testing.T) {
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestValidationErrorErrorsItem_EncodeDecode(t *testing.T) {
+	t.Skip("Skipped by regex")
 	var typ ValidationErrorErrorsItem
 	typ.SetFake()
 
@@ -26809,6 +26810,7 @@ func TestValidationErrorErrorsItem_EncodeDecode(t *testing.T) {
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestValidationErrorErrorsItemValue_EncodeDecode(t *testing.T) {
+	t.Skip("Skipped by regex")
 	var typ ValidationErrorErrorsItemValue
 	typ.SetFake()
 

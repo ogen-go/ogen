@@ -394,7 +394,7 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 // TestRequestBooleanNullableArray invokes test_request_boolean_nullable_array operation.
 //
 // POST /test_request_boolean_nullable_array
-func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []bool) (res Error, err error) {
+func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []NilBool) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array"),
@@ -457,7 +457,7 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 // TestRequestBooleanNullableArrayArray invokes test_request_boolean_nullable_array_array operation.
 //
 // POST /test_request_boolean_nullable_array_array
-func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, request [][]bool) (res Error, err error) {
+func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -1168,7 +1168,7 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 // TestRequestIntegerInt32NullableArray invokes test_request_integer_int32_nullable_array operation.
 //
 // POST /test_request_integer_int32_nullable_array
-func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array"),
@@ -1231,7 +1231,7 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 // TestRequestIntegerInt32NullableArrayArray invokes test_request_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_integer_int32_nullable_array_array
-func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -1590,7 +1590,7 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 // TestRequestIntegerInt64NullableArray invokes test_request_integer_int64_nullable_array operation.
 //
 // POST /test_request_integer_int64_nullable_array
-func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array"),
@@ -1653,7 +1653,7 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 // TestRequestIntegerInt64NullableArrayArray invokes test_request_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_integer_int64_nullable_array_array
-func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -1801,7 +1801,7 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 // TestRequestIntegerNullableArray invokes test_request_integer_nullable_array operation.
 //
 // POST /test_request_integer_nullable_array
-func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []int) (res Error, err error) {
+func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []NilInt) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array"),
@@ -1864,7 +1864,7 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 // TestRequestIntegerNullableArrayArray invokes test_request_integer_nullable_array_array operation.
 //
 // POST /test_request_integer_nullable_array_array
-func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, request [][]int) (res Error, err error) {
+func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -2979,12 +2979,12 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 // TestRequestNumberDoubleNullableArray invokes test_request_number_double_nullable_array operation.
 //
 // POST /test_request_number_double_nullable_array
-func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, request []float64) (res Error, err error) {
+func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -3064,7 +3064,7 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 // TestRequestNumberDoubleNullableArrayArray invokes test_request_number_double_nullable_array_array operation.
 //
 // POST /test_request_number_double_nullable_array_array
-func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, request [][]float64) (res Error, err error) {
+func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -3075,7 +3075,7 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 							return errors.Wrap(err, "float")
 						}
 						return nil
@@ -3509,12 +3509,12 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 // TestRequestNumberFloatNullableArray invokes test_request_number_float_nullable_array operation.
 //
 // POST /test_request_number_float_nullable_array
-func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, request []float32) (res Error, err error) {
+func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -3594,7 +3594,7 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 // TestRequestNumberFloatNullableArrayArray invokes test_request_number_float_nullable_array_array operation.
 //
 // POST /test_request_number_float_nullable_array_array
-func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, request [][]float32) (res Error, err error) {
+func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -3605,7 +3605,7 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 							return errors.Wrap(err, "float")
 						}
 						return nil
@@ -3970,7 +3970,7 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 // TestRequestNumberInt32NullableArray invokes test_request_number_int32_nullable_array operation.
 //
 // POST /test_request_number_int32_nullable_array
-func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, request []NilInt32) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array"),
@@ -4033,7 +4033,7 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 // TestRequestNumberInt32NullableArrayArray invokes test_request_number_int32_nullable_array_array operation.
 //
 // POST /test_request_number_int32_nullable_array_array
-func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -4392,7 +4392,7 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 // TestRequestNumberInt64NullableArray invokes test_request_number_int64_nullable_array operation.
 //
 // POST /test_request_number_int64_nullable_array
-func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, request []NilInt64) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array"),
@@ -4455,7 +4455,7 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 // TestRequestNumberInt64NullableArrayArray invokes test_request_number_int64_nullable_array_array operation.
 //
 // POST /test_request_number_int64_nullable_array_array
-func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -4618,12 +4618,12 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 // TestRequestNumberNullableArray invokes test_request_number_nullable_array operation.
 //
 // POST /test_request_number_nullable_array
-func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []float64) (res Error, err error) {
+func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []NilFloat64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -4703,7 +4703,7 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []f
 // TestRequestNumberNullableArrayArray invokes test_request_number_nullable_array_array operation.
 //
 // POST /test_request_number_nullable_array_array
-func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, request [][]float64) (res Error, err error) {
+func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -4714,7 +4714,7 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 							return errors.Wrap(err, "float")
 						}
 						return nil
@@ -5153,7 +5153,7 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 // TestRequestRequiredBooleanNullableArray invokes test_request_required_boolean_nullable_array operation.
 //
 // POST /test_request_required_boolean_nullable_array
-func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, request []bool) (res Error, err error) {
+func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, request []NilBool) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -5224,7 +5224,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 // TestRequestRequiredBooleanNullableArrayArray invokes test_request_required_boolean_nullable_array_array operation.
 //
 // POST /test_request_required_boolean_nullable_array_array
-func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Context, request [][]bool) (res Error, err error) {
+func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Context, request [][]NilBool) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -5953,7 +5953,7 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 // TestRequestRequiredIntegerInt32NullableArray invokes test_request_required_integer_int32_nullable_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array
-func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Context, request []NilInt32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -6024,7 +6024,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 // TestRequestRequiredIntegerInt32NullableArrayArray invokes test_request_required_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array_array
-func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -6397,7 +6397,7 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 // TestRequestRequiredIntegerInt64NullableArray invokes test_request_required_integer_int64_nullable_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array
-func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Context, request []NilInt64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -6468,7 +6468,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 // TestRequestRequiredIntegerInt64NullableArrayArray invokes test_request_required_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array_array
-func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -6619,7 +6619,7 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 // TestRequestRequiredIntegerNullableArray invokes test_request_required_integer_nullable_array operation.
 //
 // POST /test_request_required_integer_nullable_array
-func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, request []int) (res Error, err error) {
+func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, request []NilInt) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -6690,7 +6690,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 // TestRequestRequiredIntegerNullableArrayArray invokes test_request_required_integer_nullable_array_array operation.
 //
 // POST /test_request_required_integer_nullable_array_array
-func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, request [][]int) (res Error, err error) {
+func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, request [][]NilInt) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -7821,7 +7821,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 // TestRequestRequiredNumberDoubleNullableArray invokes test_request_required_number_double_nullable_array operation.
 //
 // POST /test_request_required_number_double_nullable_array
-func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Context, request []float64) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Context, request []NilFloat64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -7829,7 +7829,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -7909,7 +7909,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 // TestRequestRequiredNumberDoubleNullableArrayArray invokes test_request_required_number_double_nullable_array_array operation.
 //
 // POST /test_request_required_number_double_nullable_array_array
-func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, request [][]float64) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -7923,7 +7923,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 							return errors.Wrap(err, "float")
 						}
 						return nil
@@ -8349,7 +8349,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 // TestRequestRequiredNumberFloatNullableArray invokes test_request_required_number_float_nullable_array operation.
 //
 // POST /test_request_required_number_float_nullable_array
-func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context, request []float32) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context, request []NilFloat32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -8357,7 +8357,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -8437,7 +8437,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 // TestRequestRequiredNumberFloatNullableArrayArray invokes test_request_required_number_float_nullable_array_array operation.
 //
 // POST /test_request_required_number_float_nullable_array_array
-func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, request [][]float32) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, request [][]NilFloat32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -8451,7 +8451,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 							return errors.Wrap(err, "float")
 						}
 						return nil
@@ -8827,7 +8827,7 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 // TestRequestRequiredNumberInt32NullableArray invokes test_request_required_number_int32_nullable_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array
-func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context, request []NilInt32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -8898,7 +8898,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 // TestRequestRequiredNumberInt32NullableArrayArray invokes test_request_required_number_int32_nullable_array_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array_array
-func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, request [][]NilInt32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -9271,7 +9271,7 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 // TestRequestRequiredNumberInt64NullableArray invokes test_request_required_number_int64_nullable_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array
-func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context, request []NilInt64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -9342,7 +9342,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 // TestRequestRequiredNumberInt64NullableArrayArray invokes test_request_required_number_int64_nullable_array_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array_array
-func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, request [][]NilInt64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -9501,7 +9501,7 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 // TestRequestRequiredNumberNullableArray invokes test_request_required_number_nullable_array operation.
 //
 // POST /test_request_required_number_nullable_array
-func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, request []float64) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, request []NilFloat64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -9509,7 +9509,7 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+				if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
 				return nil
@@ -9589,7 +9589,7 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 // TestRequestRequiredNumberNullableArrayArray invokes test_request_required_number_nullable_array_array operation.
 //
 // POST /test_request_required_number_nullable_array_array
-func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context, request [][]float64) (res Error, err error) {
+func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context, request [][]NilFloat64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -9603,7 +9603,7 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 							return errors.Wrap(err, "float")
 						}
 						return nil
@@ -10201,7 +10201,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 // TestRequestRequiredStringBinaryNullableArray invokes test_request_required_string_binary_nullable_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array
-func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -10272,7 +10272,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 // TestRequestRequiredStringBinaryNullableArrayArray invokes test_request_required_string_binary_nullable_array_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array_array
-func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11089,7 +11089,7 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 // TestRequestRequiredStringDateNullableArray invokes test_request_required_string_date_nullable_array operation.
 //
 // POST /test_request_required_string_date_nullable_array
-func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context, request []NilDate) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11160,7 +11160,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 // TestRequestRequiredStringDateNullableArrayArray invokes test_request_required_string_date_nullable_array_array operation.
 //
 // POST /test_request_required_string_date_nullable_array_array
-func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11533,7 +11533,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 // TestRequestRequiredStringDateTimeNullableArray invokes test_request_required_string_date-time_nullable_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array
-func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11604,7 +11604,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 // TestRequestRequiredStringDateTimeNullableArrayArray invokes test_request_required_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array_array
-func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11977,7 +11977,7 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 // TestRequestRequiredStringDurationNullableArray invokes test_request_required_string_duration_nullable_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array
-func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Context, request []time.Duration) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Context, request []NilDuration) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12048,7 +12048,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 // TestRequestRequiredStringDurationNullableArrayArray invokes test_request_required_string_duration_nullable_array_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array_array
-func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, request [][]time.Duration) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12503,7 +12503,7 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 // TestRequestRequiredStringEmailNullableArray invokes test_request_required_string_email_nullable_array operation.
 //
 // POST /test_request_required_string_email_nullable_array
-func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12519,7 +12519,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
+				}).Validate(string(elem.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -12599,7 +12599,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 // TestRequestRequiredStringEmailNullableArrayArray invokes test_request_required_string_email_nullable_array_array operation.
 //
 // POST /test_request_required_string_email_nullable_array_array
-func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12621,7 +12621,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 							Email:        true,
 							Hostname:     false,
 							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
+						}).Validate(string(elem.Value)); err != nil {
 							return errors.Wrap(err, "string")
 						}
 						return nil
@@ -13079,7 +13079,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 // TestRequestRequiredStringHostnameNullableArray invokes test_request_required_string_hostname_nullable_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array
-func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -13095,7 +13095,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
+				}).Validate(string(elem.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -13175,7 +13175,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 // TestRequestRequiredStringHostnameNullableArrayArray invokes test_request_required_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array_array
-func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -13197,7 +13197,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 							Email:        false,
 							Hostname:     true,
 							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
+						}).Validate(string(elem.Value)); err != nil {
 							return errors.Wrap(err, "string")
 						}
 						return nil
@@ -13573,7 +13573,7 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 // TestRequestRequiredStringIPNullableArray invokes test_request_required_string_ip_nullable_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array
-func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, request []NilIP) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -13644,7 +13644,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 // TestRequestRequiredStringIPNullableArrayArray invokes test_request_required_string_ip_nullable_array_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array_array
-func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -14017,7 +14017,7 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 // TestRequestRequiredStringInt32NullableArray invokes test_request_required_string_int32_nullable_array operation.
 //
 // POST /test_request_required_string_int32_nullable_array
-func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -14088,7 +14088,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 // TestRequestRequiredStringInt32NullableArrayArray invokes test_request_required_string_int32_nullable_array_array operation.
 //
 // POST /test_request_required_string_int32_nullable_array_array
-func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -14461,7 +14461,7 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 // TestRequestRequiredStringInt64NullableArray invokes test_request_required_string_int64_nullable_array operation.
 //
 // POST /test_request_required_string_int64_nullable_array
-func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -14532,7 +14532,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 // TestRequestRequiredStringInt64NullableArrayArray invokes test_request_required_string_int64_nullable_array_array operation.
 //
 // POST /test_request_required_string_int64_nullable_array_array
-func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -14905,7 +14905,7 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 // TestRequestRequiredStringIpv4NullableArray invokes test_request_required_string_ipv4_nullable_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array
-func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -14976,7 +14976,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 // TestRequestRequiredStringIpv4NullableArrayArray invokes test_request_required_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array_array
-func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -15349,7 +15349,7 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 // TestRequestRequiredStringIpv6NullableArray invokes test_request_required_string_ipv6_nullable_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array
-func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -15420,7 +15420,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 // TestRequestRequiredStringIpv6NullableArrayArray invokes test_request_required_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array_array
-func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -15571,7 +15571,7 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 // TestRequestRequiredStringNullableArray invokes test_request_required_string_nullable_array operation.
 //
 // POST /test_request_required_string_nullable_array
-func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -15642,7 +15642,7 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 // TestRequestRequiredStringNullableArrayArray invokes test_request_required_string_nullable_array_array operation.
 //
 // POST /test_request_required_string_nullable_array_array
-func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -16015,7 +16015,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 // TestRequestRequiredStringPasswordNullableArray invokes test_request_required_string_password_nullable_array operation.
 //
 // POST /test_request_required_string_password_nullable_array
-func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -16086,7 +16086,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 // TestRequestRequiredStringPasswordNullableArrayArray invokes test_request_required_string_password_nullable_array_array operation.
 //
 // POST /test_request_required_string_password_nullable_array_array
-func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -16459,7 +16459,7 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 // TestRequestRequiredStringTimeNullableArray invokes test_request_required_string_time_nullable_array operation.
 //
 // POST /test_request_required_string_time_nullable_array
-func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context, request []NilTime) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -16530,7 +16530,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 // TestRequestRequiredStringTimeNullableArrayArray invokes test_request_required_string_time_nullable_array_array operation.
 //
 // POST /test_request_required_string_time_nullable_array_array
-func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -16903,7 +16903,7 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 // TestRequestRequiredStringURINullableArray invokes test_request_required_string_uri_nullable_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array
-func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, request []url.URL) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, request []NilURI) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -16974,7 +16974,7 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 // TestRequestRequiredStringURINullableArrayArray invokes test_request_required_string_uri_nullable_array_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array_array
-func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Context, request [][]url.URL) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -17347,7 +17347,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 // TestRequestRequiredStringUUIDNullableArray invokes test_request_required_string_uuid_nullable_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array
-func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context, request []uuid.UUID) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context, request []NilUUID) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -17418,7 +17418,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 // TestRequestRequiredStringUUIDNullableArrayArray invokes test_request_required_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array_array
-func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, request [][]uuid.UUID) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -18013,7 +18013,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 // TestRequestRequiredStringUnixMicroNullableArray invokes test_request_required_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array
-func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -18084,7 +18084,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 // TestRequestRequiredStringUnixMicroNullableArrayArray invokes test_request_required_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -18457,7 +18457,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 // TestRequestRequiredStringUnixMilliNullableArray invokes test_request_required_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array
-func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -18528,7 +18528,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 // TestRequestRequiredStringUnixMilliNullableArrayArray invokes test_request_required_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -18901,7 +18901,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 // TestRequestRequiredStringUnixNanoNullableArray invokes test_request_required_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array
-func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -18972,7 +18972,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 // TestRequestRequiredStringUnixNanoNullableArrayArray invokes test_request_required_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -19123,7 +19123,7 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 // TestRequestRequiredStringUnixNullableArray invokes test_request_required_string_unix_nullable_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array
-func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -19194,7 +19194,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 // TestRequestRequiredStringUnixNullableArrayArray invokes test_request_required_string_unix_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -19567,7 +19567,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 // TestRequestRequiredStringUnixSecondsNullableArray invokes test_request_required_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array
-func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -19638,7 +19638,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 // TestRequestRequiredStringUnixSecondsNullableArrayArray invokes test_request_required_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -20211,7 +20211,7 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 // TestRequestStringBinaryNullableArray invokes test_request_string_binary_nullable_array operation.
 //
 // POST /test_request_string_binary_nullable_array
-func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array"),
@@ -20274,7 +20274,7 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 // TestRequestStringBinaryNullableArrayArray invokes test_request_string_binary_nullable_array_array operation.
 //
 // POST /test_request_string_binary_nullable_array_array
-func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -21055,7 +21055,7 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 // TestRequestStringDateNullableArray invokes test_request_string_date_nullable_array operation.
 //
 // POST /test_request_string_date_nullable_array
-func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request []NilDate) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array"),
@@ -21118,7 +21118,7 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 // TestRequestStringDateNullableArrayArray invokes test_request_string_date_nullable_array_array operation.
 //
 // POST /test_request_string_date_nullable_array_array
-func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, request [][]NilDate) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -21477,7 +21477,7 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 // TestRequestStringDateTimeNullableArray invokes test_request_string_date-time_nullable_array operation.
 //
 // POST /test_request_string_date-time_nullable_array
-func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, request []NilDateTime) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array"),
@@ -21540,7 +21540,7 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 // TestRequestStringDateTimeNullableArrayArray invokes test_request_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_string_date-time_nullable_array_array
-func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -21899,7 +21899,7 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 // TestRequestStringDurationNullableArray invokes test_request_string_duration_nullable_array operation.
 //
 // POST /test_request_string_duration_nullable_array
-func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, request []time.Duration) (res Error, err error) {
+func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, request []NilDuration) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array"),
@@ -21962,7 +21962,7 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 // TestRequestStringDurationNullableArrayArray invokes test_request_string_duration_nullable_array_array operation.
 //
 // POST /test_request_string_duration_nullable_array_array
-func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context, request [][]time.Duration) (res Error, err error) {
+func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context, request [][]NilDuration) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -22422,7 +22422,7 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 // TestRequestStringEmailNullableArray invokes test_request_string_email_nullable_array operation.
 //
 // POST /test_request_string_email_nullable_array
-func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -22435,7 +22435,7 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 					Email:        true,
 					Hostname:     false,
 					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
+				}).Validate(string(elem.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -22515,7 +22515,7 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 // TestRequestStringEmailNullableArrayArray invokes test_request_string_email_nullable_array_array operation.
 //
 // POST /test_request_string_email_nullable_array_array
-func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -22534,7 +22534,7 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 							Email:        true,
 							Hostname:     false,
 							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
+						}).Validate(string(elem.Value)); err != nil {
 							return errors.Wrap(err, "string")
 						}
 						return nil
@@ -23000,7 +23000,7 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 // TestRequestStringHostnameNullableArray invokes test_request_string_hostname_nullable_array operation.
 //
 // POST /test_request_string_hostname_nullable_array
-func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -23013,7 +23013,7 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 					Email:        false,
 					Hostname:     true,
 					Regex:        nil,
-				}).Validate(string(elem)); err != nil {
+				}).Validate(string(elem.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -23093,7 +23093,7 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 // TestRequestStringHostnameNullableArrayArray invokes test_request_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_string_hostname_nullable_array_array
-func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -23112,7 +23112,7 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 							Email:        false,
 							Hostname:     true,
 							Regex:        nil,
-						}).Validate(string(elem)); err != nil {
+						}).Validate(string(elem.Value)); err != nil {
 							return errors.Wrap(err, "string")
 						}
 						return nil
@@ -23477,7 +23477,7 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 // TestRequestStringIPNullableArray invokes test_request_string_ip_nullable_array operation.
 //
 // POST /test_request_string_ip_nullable_array
-func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request []NilIP) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array"),
@@ -23540,7 +23540,7 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 // TestRequestStringIPNullableArrayArray invokes test_request_string_ip_nullable_array_array operation.
 //
 // POST /test_request_string_ip_nullable_array_array
-func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, request [][]NilIP) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -23899,7 +23899,7 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 // TestRequestStringInt32NullableArray invokes test_request_string_int32_nullable_array operation.
 //
 // POST /test_request_string_int32_nullable_array
-func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, request []NilStringInt32) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array"),
@@ -23962,7 +23962,7 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 // TestRequestStringInt32NullableArrayArray invokes test_request_string_int32_nullable_array_array operation.
 //
 // POST /test_request_string_int32_nullable_array_array
-func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, request [][]NilStringInt32) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -24321,7 +24321,7 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 // TestRequestStringInt64NullableArray invokes test_request_string_int64_nullable_array operation.
 //
 // POST /test_request_string_int64_nullable_array
-func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, request []NilStringInt64) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array"),
@@ -24384,7 +24384,7 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 // TestRequestStringInt64NullableArrayArray invokes test_request_string_int64_nullable_array_array operation.
 //
 // POST /test_request_string_int64_nullable_array_array
-func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, request [][]NilStringInt64) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -24743,7 +24743,7 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 // TestRequestStringIpv4NullableArray invokes test_request_string_ipv4_nullable_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array
-func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request []NilIPv4) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
@@ -24806,7 +24806,7 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 // TestRequestStringIpv4NullableArrayArray invokes test_request_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array_array
-func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]NilIPv4) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -25165,7 +25165,7 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 // TestRequestStringIpv6NullableArray invokes test_request_string_ipv6_nullable_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array
-func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request []NilIPv6) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
@@ -25228,7 +25228,7 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 // TestRequestStringIpv6NullableArrayArray invokes test_request_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array_array
-func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -25376,7 +25376,7 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 // TestRequestStringNullableArray invokes test_request_string_nullable_array operation.
 //
 // POST /test_request_string_nullable_array
-func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array"),
@@ -25439,7 +25439,7 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []s
 // TestRequestStringNullableArrayArray invokes test_request_string_nullable_array_array operation.
 //
 // POST /test_request_string_nullable_array_array
-func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -25798,7 +25798,7 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 // TestRequestStringPasswordNullableArray invokes test_request_string_password_nullable_array operation.
 //
 // POST /test_request_string_password_nullable_array
-func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, request []string) (res Error, err error) {
+func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, request []NilString) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array"),
@@ -25861,7 +25861,7 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 // TestRequestStringPasswordNullableArrayArray invokes test_request_string_password_nullable_array_array operation.
 //
 // POST /test_request_string_password_nullable_array_array
-func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context, request [][]string) (res Error, err error) {
+func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context, request [][]NilString) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -26220,7 +26220,7 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 // TestRequestStringTimeNullableArray invokes test_request_string_time_nullable_array operation.
 //
 // POST /test_request_string_time_nullable_array
-func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request []NilTime) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array"),
@@ -26283,7 +26283,7 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 // TestRequestStringTimeNullableArrayArray invokes test_request_string_time_nullable_array_array operation.
 //
 // POST /test_request_string_time_nullable_array_array
-func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, request [][]NilTime) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -26642,7 +26642,7 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 // TestRequestStringURINullableArray invokes test_request_string_uri_nullable_array operation.
 //
 // POST /test_request_string_uri_nullable_array
-func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request []url.URL) (res Error, err error) {
+func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request []NilURI) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array"),
@@ -26705,7 +26705,7 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 // TestRequestStringURINullableArrayArray invokes test_request_string_uri_nullable_array_array operation.
 //
 // POST /test_request_string_uri_nullable_array_array
-func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, request [][]url.URL) (res Error, err error) {
+func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, request [][]NilURI) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -27064,7 +27064,7 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 // TestRequestStringUUIDNullableArray invokes test_request_string_uuid_nullable_array operation.
 //
 // POST /test_request_string_uuid_nullable_array
-func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request []uuid.UUID) (res Error, err error) {
+func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request []NilUUID) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array"),
@@ -27127,7 +27127,7 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 // TestRequestStringUUIDNullableArrayArray invokes test_request_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_string_uuid_nullable_array_array
-func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, request [][]uuid.UUID) (res Error, err error) {
+func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, request [][]NilUUID) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -27697,7 +27697,7 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 // TestRequestStringUnixMicroNullableArray invokes test_request_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array
-func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array"),
@@ -27760,7 +27760,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 // TestRequestStringUnixMicroNullableArrayArray invokes test_request_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array_array
-func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -28119,7 +28119,7 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 // TestRequestStringUnixMilliNullableArray invokes test_request_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array
-func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array"),
@@ -28182,7 +28182,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 // TestRequestStringUnixMilliNullableArrayArray invokes test_request_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array_array
-func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -28541,7 +28541,7 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 // TestRequestStringUnixNanoNullableArray invokes test_request_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array
-func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array"),
@@ -28604,7 +28604,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 // TestRequestStringUnixNanoNullableArrayArray invokes test_request_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array_array
-func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -28752,7 +28752,7 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 // TestRequestStringUnixNullableArray invokes test_request_string_unix_nullable_array operation.
 //
 // POST /test_request_string_unix_nullable_array
-func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array"),
@@ -28815,7 +28815,7 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 // TestRequestStringUnixNullableArrayArray invokes test_request_string_unix_nullable_array_array operation.
 //
 // POST /test_request_string_unix_nullable_array_array
-func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -29174,7 +29174,7 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 // TestRequestStringUnixSecondsNullableArray invokes test_request_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array
-func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array"),
@@ -29237,7 +29237,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 // TestRequestStringUnixSecondsNullableArrayArray invokes test_request_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array_array
-func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -29637,7 +29637,7 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 // TestResponseBooleanNullableArray invokes test_response_boolean_nullable_array operation.
 //
 // POST /test_response_boolean_nullable_array
-func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request string) (res []bool, err error) {
+func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request string) (res []NilBool, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array"),
@@ -29700,7 +29700,7 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 // TestResponseBooleanNullableArrayArray invokes test_response_boolean_nullable_array_array operation.
 //
 // POST /test_response_boolean_nullable_array_array
-func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, request string) (res [][]bool, err error) {
+func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, request string) (res [][]NilBool, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array_array"),
@@ -30330,7 +30330,7 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 // TestResponseIntegerInt32NullableArray invokes test_response_integer_int32_nullable_array operation.
 //
 // POST /test_response_integer_int32_nullable_array
-func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, request string) (res []int32, err error) {
+func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, request string) (res []NilInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array"),
@@ -30393,7 +30393,7 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 // TestResponseIntegerInt32NullableArrayArray invokes test_response_integer_int32_nullable_array_array operation.
 //
 // POST /test_response_integer_int32_nullable_array_array
-func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
+func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context, request string) (res [][]NilInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array_array"),
@@ -30708,7 +30708,7 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 // TestResponseIntegerInt64NullableArray invokes test_response_integer_int64_nullable_array operation.
 //
 // POST /test_response_integer_int64_nullable_array
-func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, request string) (res []int64, err error) {
+func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, request string) (res []NilInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array"),
@@ -30771,7 +30771,7 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 // TestResponseIntegerInt64NullableArrayArray invokes test_response_integer_int64_nullable_array_array operation.
 //
 // POST /test_response_integer_int64_nullable_array_array
-func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
+func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context, request string) (res [][]NilInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array_array"),
@@ -30897,7 +30897,7 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 // TestResponseIntegerNullableArray invokes test_response_integer_nullable_array operation.
 //
 // POST /test_response_integer_nullable_array
-func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request string) (res []int, err error) {
+func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request string) (res []NilInt, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array"),
@@ -30960,7 +30960,7 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 // TestResponseIntegerNullableArrayArray invokes test_response_integer_nullable_array_array operation.
 //
 // POST /test_response_integer_nullable_array_array
-func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, request string) (res [][]int, err error) {
+func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, request string) (res [][]NilInt, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array_array"),
@@ -31842,7 +31842,7 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 // TestResponseNumberDoubleNullableArray invokes test_response_number_double_nullable_array operation.
 //
 // POST /test_response_number_double_nullable_array
-func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, request string) (res []float64, err error) {
+func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, request string) (res []NilFloat64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array"),
@@ -31905,7 +31905,7 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 // TestResponseNumberDoubleNullableArrayArray invokes test_response_number_double_nullable_array_array operation.
 //
 // POST /test_response_number_double_nullable_array_array
-func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
+func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context, request string) (res [][]NilFloat64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array_array"),
@@ -32220,7 +32220,7 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 // TestResponseNumberFloatNullableArray invokes test_response_number_float_nullable_array operation.
 //
 // POST /test_response_number_float_nullable_array
-func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, request string) (res []float32, err error) {
+func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, request string) (res []NilFloat32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array"),
@@ -32283,7 +32283,7 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 // TestResponseNumberFloatNullableArrayArray invokes test_response_number_float_nullable_array_array operation.
 //
 // POST /test_response_number_float_nullable_array_array
-func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, request string) (res [][]float32, err error) {
+func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, request string) (res [][]NilFloat32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array_array"),
@@ -32598,7 +32598,7 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 // TestResponseNumberInt32NullableArray invokes test_response_number_int32_nullable_array operation.
 //
 // POST /test_response_number_int32_nullable_array
-func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, request string) (res []int32, err error) {
+func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, request string) (res []NilInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array"),
@@ -32661,7 +32661,7 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 // TestResponseNumberInt32NullableArrayArray invokes test_response_number_int32_nullable_array_array operation.
 //
 // POST /test_response_number_int32_nullable_array_array
-func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
+func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, request string) (res [][]NilInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array_array"),
@@ -32976,7 +32976,7 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 // TestResponseNumberInt64NullableArray invokes test_response_number_int64_nullable_array operation.
 //
 // POST /test_response_number_int64_nullable_array
-func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, request string) (res []int64, err error) {
+func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, request string) (res []NilInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array"),
@@ -33039,7 +33039,7 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 // TestResponseNumberInt64NullableArrayArray invokes test_response_number_int64_nullable_array_array operation.
 //
 // POST /test_response_number_int64_nullable_array_array
-func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
+func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, request string) (res [][]NilInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array_array"),
@@ -33165,7 +33165,7 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 // TestResponseNumberNullableArray invokes test_response_number_nullable_array operation.
 //
 // POST /test_response_number_nullable_array
-func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request string) (res []float64, err error) {
+func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request string) (res []NilFloat64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array"),
@@ -33228,7 +33228,7 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 // TestResponseNumberNullableArrayArray invokes test_response_number_nullable_array_array operation.
 //
 // POST /test_response_number_nullable_array_array
-func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
+func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, request string) (res [][]NilFloat64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array_array"),
@@ -33732,7 +33732,7 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 // TestResponseStringBinaryNullableArray invokes test_response_string_binary_nullable_array operation.
 //
 // POST /test_response_string_binary_nullable_array
-func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, request string) (res []string, err error) {
+func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array"),
@@ -33795,7 +33795,7 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 // TestResponseStringBinaryNullableArrayArray invokes test_response_string_binary_nullable_array_array operation.
 //
 // POST /test_response_string_binary_nullable_array_array
-func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
+func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array_array"),
@@ -34488,7 +34488,7 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 // TestResponseStringDateNullableArray invokes test_response_string_date_nullable_array operation.
 //
 // POST /test_response_string_date_nullable_array
-func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, request string) (res []NilDate, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array"),
@@ -34551,7 +34551,7 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 // TestResponseStringDateNullableArrayArray invokes test_response_string_date_nullable_array_array operation.
 //
 // POST /test_response_string_date_nullable_array_array
-func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, request string) (res [][]NilDate, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array_array"),
@@ -34866,7 +34866,7 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 // TestResponseStringDateTimeNullableArray invokes test_response_string_date-time_nullable_array operation.
 //
 // POST /test_response_string_date-time_nullable_array
-func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, request string) (res []NilDateTime, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array"),
@@ -34929,7 +34929,7 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 // TestResponseStringDateTimeNullableArrayArray invokes test_response_string_date-time_nullable_array_array operation.
 //
 // POST /test_response_string_date-time_nullable_array_array
-func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Context, request string) (res [][]NilDateTime, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array_array"),
@@ -35244,7 +35244,7 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 // TestResponseStringDurationNullableArray invokes test_response_string_duration_nullable_array operation.
 //
 // POST /test_response_string_duration_nullable_array
-func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, request string) (res []time.Duration, err error) {
+func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, request string) (res []NilDuration, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array"),
@@ -35307,7 +35307,7 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 // TestResponseStringDurationNullableArrayArray invokes test_response_string_duration_nullable_array_array operation.
 //
 // POST /test_response_string_duration_nullable_array_array
-func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Context, request string) (res [][]time.Duration, err error) {
+func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Context, request string) (res [][]NilDuration, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array_array"),
@@ -35622,7 +35622,7 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 // TestResponseStringEmailNullableArray invokes test_response_string_email_nullable_array operation.
 //
 // POST /test_response_string_email_nullable_array
-func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, request string) (res []string, err error) {
+func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array"),
@@ -35685,7 +35685,7 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 // TestResponseStringEmailNullableArrayArray invokes test_response_string_email_nullable_array_array operation.
 //
 // POST /test_response_string_email_nullable_array_array
-func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
+func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array_array"),
@@ -36000,7 +36000,7 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 // TestResponseStringHostnameNullableArray invokes test_response_string_hostname_nullable_array operation.
 //
 // POST /test_response_string_hostname_nullable_array
-func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, request string) (res []string, err error) {
+func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array"),
@@ -36063,7 +36063,7 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 // TestResponseStringHostnameNullableArrayArray invokes test_response_string_hostname_nullable_array_array operation.
 //
 // POST /test_response_string_hostname_nullable_array_array
-func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
+func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array_array"),
@@ -36378,7 +36378,7 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 // TestResponseStringIPNullableArray invokes test_response_string_ip_nullable_array operation.
 //
 // POST /test_response_string_ip_nullable_array
-func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request string) (res []netip.Addr, err error) {
+func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request string) (res []NilIP, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array"),
@@ -36441,7 +36441,7 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 // TestResponseStringIPNullableArrayArray invokes test_response_string_ip_nullable_array_array operation.
 //
 // POST /test_response_string_ip_nullable_array_array
-func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
+func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, request string) (res [][]NilIP, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
@@ -36756,7 +36756,7 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 // TestResponseStringInt32NullableArray invokes test_response_string_int32_nullable_array operation.
 //
 // POST /test_response_string_int32_nullable_array
-func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, request string) (res []int32, err error) {
+func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, request string) (res []NilStringInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array"),
@@ -36819,7 +36819,7 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 // TestResponseStringInt32NullableArrayArray invokes test_response_string_int32_nullable_array_array operation.
 //
 // POST /test_response_string_int32_nullable_array_array
-func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
+func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, request string) (res [][]NilStringInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array_array"),
@@ -37134,7 +37134,7 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 // TestResponseStringInt64NullableArray invokes test_response_string_int64_nullable_array operation.
 //
 // POST /test_response_string_int64_nullable_array
-func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, request string) (res []int64, err error) {
+func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, request string) (res []NilStringInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array"),
@@ -37197,7 +37197,7 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 // TestResponseStringInt64NullableArrayArray invokes test_response_string_int64_nullable_array_array operation.
 //
 // POST /test_response_string_int64_nullable_array_array
-func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
+func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, request string) (res [][]NilStringInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array_array"),
@@ -37512,7 +37512,7 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 // TestResponseStringIpv4NullableArray invokes test_response_string_ipv4_nullable_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array
-func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, request string) (res []netip.Addr, err error) {
+func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, request string) (res []NilIPv4, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
@@ -37575,7 +37575,7 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 // TestResponseStringIpv4NullableArrayArray invokes test_response_string_ipv4_nullable_array_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array_array
-func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
+func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) (res [][]NilIPv4, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
@@ -37890,7 +37890,7 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 // TestResponseStringIpv6NullableArray invokes test_response_string_ipv6_nullable_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array
-func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, request string) (res []netip.Addr, err error) {
+func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, request string) (res []NilIPv6, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
@@ -37953,7 +37953,7 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 // TestResponseStringIpv6NullableArrayArray invokes test_response_string_ipv6_nullable_array_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array_array
-func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
+func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) (res [][]NilIPv6, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),
@@ -38079,7 +38079,7 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 // TestResponseStringNullableArray invokes test_response_string_nullable_array operation.
 //
 // POST /test_response_string_nullable_array
-func (c *Client) TestResponseStringNullableArray(ctx context.Context, request string) (res []string, err error) {
+func (c *Client) TestResponseStringNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array"),
@@ -38142,7 +38142,7 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 // TestResponseStringNullableArrayArray invokes test_response_string_nullable_array_array operation.
 //
 // POST /test_response_string_nullable_array_array
-func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
+func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array_array"),
@@ -38457,7 +38457,7 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 // TestResponseStringPasswordNullableArray invokes test_response_string_password_nullable_array operation.
 //
 // POST /test_response_string_password_nullable_array
-func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, request string) (res []string, err error) {
+func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, request string) (res []NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array"),
@@ -38520,7 +38520,7 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 // TestResponseStringPasswordNullableArrayArray invokes test_response_string_password_nullable_array_array operation.
 //
 // POST /test_response_string_password_nullable_array_array
-func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
+func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Context, request string) (res [][]NilString, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array_array"),
@@ -38835,7 +38835,7 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 // TestResponseStringTimeNullableArray invokes test_response_string_time_nullable_array operation.
 //
 // POST /test_response_string_time_nullable_array
-func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, request string) (res []NilTime, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array"),
@@ -38898,7 +38898,7 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 // TestResponseStringTimeNullableArrayArray invokes test_response_string_time_nullable_array_array operation.
 //
 // POST /test_response_string_time_nullable_array_array
-func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, request string) (res [][]NilTime, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array_array"),
@@ -39213,7 +39213,7 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 // TestResponseStringURINullableArray invokes test_response_string_uri_nullable_array operation.
 //
 // POST /test_response_string_uri_nullable_array
-func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request string) (res []url.URL, err error) {
+func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request string) (res []NilURI, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array"),
@@ -39276,7 +39276,7 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 // TestResponseStringURINullableArrayArray invokes test_response_string_uri_nullable_array_array operation.
 //
 // POST /test_response_string_uri_nullable_array_array
-func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, request string) (res [][]url.URL, err error) {
+func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, request string) (res [][]NilURI, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array_array"),
@@ -39591,7 +39591,7 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 // TestResponseStringUUIDNullableArray invokes test_response_string_uuid_nullable_array operation.
 //
 // POST /test_response_string_uuid_nullable_array
-func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, request string) (res []uuid.UUID, err error) {
+func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, request string) (res []NilUUID, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array"),
@@ -39654,7 +39654,7 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 // TestResponseStringUUIDNullableArrayArray invokes test_response_string_uuid_nullable_array_array operation.
 //
 // POST /test_response_string_uuid_nullable_array_array
-func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, request string) (res [][]uuid.UUID, err error) {
+func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, request string) (res [][]NilUUID, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array_array"),
@@ -40158,7 +40158,7 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 // TestResponseStringUnixMicroNullableArray invokes test_response_string_unix-micro_nullable_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array
-func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, request string) (res []NilUnixMicro, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array"),
@@ -40221,7 +40221,7 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 // TestResponseStringUnixMicroNullableArrayArray invokes test_response_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array_array
-func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMicro, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array_array"),
@@ -40536,7 +40536,7 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 // TestResponseStringUnixMilliNullableArray invokes test_response_string_unix-milli_nullable_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array
-func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, request string) (res []NilUnixMilli, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array"),
@@ -40599,7 +40599,7 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 // TestResponseStringUnixMilliNullableArrayArray invokes test_response_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array_array
-func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMilli, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array_array"),
@@ -40914,7 +40914,7 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 // TestResponseStringUnixNanoNullableArray invokes test_response_string_unix-nano_nullable_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array
-func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, request string) (res []NilUnixNano, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array"),
@@ -40977,7 +40977,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 // TestResponseStringUnixNanoNullableArrayArray invokes test_response_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array_array
-func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixNano, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array_array"),
@@ -41103,7 +41103,7 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 // TestResponseStringUnixNullableArray invokes test_response_string_unix_nullable_array operation.
 //
 // POST /test_response_string_unix_nullable_array
-func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array"),
@@ -41166,7 +41166,7 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 // TestResponseStringUnixNullableArrayArray invokes test_response_string_unix_nullable_array_array operation.
 //
 // POST /test_response_string_unix_nullable_array_array
-func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array_array"),
@@ -41481,7 +41481,7 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 // TestResponseStringUnixSecondsNullableArray invokes test_response_string_unix-seconds_nullable_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array
-func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array"),
@@ -41544,7 +41544,7 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 // TestResponseStringUnixSecondsNullableArrayArray invokes test_response_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array_array
-func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array_array"),

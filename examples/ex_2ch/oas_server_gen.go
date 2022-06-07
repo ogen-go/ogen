@@ -70,18 +70,6 @@ type Handler interface {
 	//
 	// GET /api/mobile/v2/post/{board}/{num}
 	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (MobilePost, error)
-	// UserPassloginPost implements  operation.
-	//
-	// POST /user/passlogin
-	UserPassloginPost(ctx context.Context, req UserPassloginPostReq, params UserPassloginPostParams) (Passcode, error)
-	// UserPostingPost implements  operation.
-	//
-	// POST /user/posting
-	UserPostingPost(ctx context.Context, req UserPostingPostReq) (UserPostingPostOK, error)
-	// UserReportPost implements  operation.
-	//
-	// POST /user/report
-	UserReportPost(ctx context.Context, req UserReportPostReq) (Report, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

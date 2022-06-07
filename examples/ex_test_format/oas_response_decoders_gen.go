@@ -16247,7 +16247,7 @@ func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.S
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res []bool, err error) {
+func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -16271,14 +16271,12 @@ func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []bool
+			var response []NilBool
 			if err := func() error {
-				response = make([]bool, 0)
+				response = make([]NilBool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem bool
-					v, err := d.Bool()
-					elem = bool(v)
-					if err != nil {
+					var elem NilBool
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -16298,7 +16296,7 @@ func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]bool, err error) {
+func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -16322,17 +16320,15 @@ func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]bool
+			var response [][]NilBool
 			if err := func() error {
-				response = make([][]bool, 0)
+				response = make([][]NilBool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []bool
-					elem = make([]bool, 0)
+					var elem []NilBool
+					elem = make([]NilBool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem bool
-						v, err := d.Bool()
-						elemElem = bool(v)
-						if err != nil {
+						var elemElem NilBool
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -16786,7 +16782,7 @@ func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
+func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -16810,14 +16806,12 @@ func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int32
+			var response []NilInt32
 			if err := func() error {
-				response = make([]int32, 0)
+				response = make([]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
+					var elem NilInt32
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -16837,7 +16831,7 @@ func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
+func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -16861,17 +16855,15 @@ func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Respons
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int32
+			var response [][]NilInt32
 			if err := func() error {
-				response = make([][]int32, 0)
+				response = make([][]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
+					var elem []NilInt32
+					elem = make([]NilInt32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
+						var elemElem NilInt32
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -17090,7 +17082,7 @@ func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
+func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -17114,14 +17106,12 @@ func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int64
+			var response []NilInt64
 			if err := func() error {
-				response = make([]int64, 0)
+				response = make([]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
+					var elem NilInt64
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -17141,7 +17131,7 @@ func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
+func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -17165,17 +17155,15 @@ func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Respons
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int64
+			var response [][]NilInt64
 			if err := func() error {
-				response = make([][]int64, 0)
+				response = make([][]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
+					var elem []NilInt64
+					elem = make([]NilInt64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
+						var elemElem NilInt64
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -17241,7 +17229,7 @@ func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.S
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res []int, err error) {
+func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -17265,14 +17253,12 @@ func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int
+			var response []NilInt
 			if err := func() error {
-				response = make([]int, 0)
+				response = make([]NilInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int
-					v, err := d.Int()
-					elem = int(v)
-					if err != nil {
+					var elem NilInt
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -17292,7 +17278,7 @@ func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int, err error) {
+func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -17316,17 +17302,15 @@ func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int
+			var response [][]NilInt
 			if err := func() error {
-				response = make([][]int, 0)
+				response = make([][]NilInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int
-					elem = make([]int, 0)
+					var elem []NilInt
+					elem = make([]NilInt, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int
-						v, err := d.Int()
-						elemElem = int(v)
-						if err != nil {
+						var elemElem NilInt
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -17992,7 +17976,7 @@ func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res []float64, err error) {
+func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18016,14 +18000,12 @@ func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []float64
+			var response []NilFloat64
 			if err := func() error {
-				response = make([]float64, 0)
+				response = make([]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
+					var elem NilFloat64
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18043,7 +18025,7 @@ func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float64, err error) {
+func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18067,17 +18049,15 @@ func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Respons
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]float64
+			var response [][]NilFloat64
 			if err := func() error {
-				response = make([][]float64, 0)
+				response = make([][]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
+					var elem []NilFloat64
+					elem = make([]NilFloat64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
+						var elemElem NilFloat64
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -18296,7 +18276,7 @@ func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res []float32, err error) {
+func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18320,14 +18300,12 @@ func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []float32
+			var response []NilFloat32
 			if err := func() error {
-				response = make([]float32, 0)
+				response = make([]NilFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float32
-					v, err := d.Float32()
-					elem = float32(v)
-					if err != nil {
+					var elem NilFloat32
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18347,7 +18325,7 @@ func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float32, err error) {
+func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18371,17 +18349,15 @@ func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]float32
+			var response [][]NilFloat32
 			if err := func() error {
-				response = make([][]float32, 0)
+				response = make([][]NilFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float32
-					elem = make([]float32, 0)
+					var elem []NilFloat32
+					elem = make([]NilFloat32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float32
-						v, err := d.Float32()
-						elemElem = float32(v)
-						if err != nil {
+						var elemElem NilFloat32
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -18600,7 +18576,7 @@ func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
+func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18624,14 +18600,12 @@ func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int32
+			var response []NilInt32
 			if err := func() error {
-				response = make([]int32, 0)
+				response = make([]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
+					var elem NilInt32
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18651,7 +18625,7 @@ func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
+func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18675,17 +18649,15 @@ func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int32
+			var response [][]NilInt32
 			if err := func() error {
-				response = make([][]int32, 0)
+				response = make([][]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
+					var elem []NilInt32
+					elem = make([]NilInt32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
+						var elemElem NilInt32
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -18904,7 +18876,7 @@ func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
+func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18928,14 +18900,12 @@ func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int64
+			var response []NilInt64
 			if err := func() error {
-				response = make([]int64, 0)
+				response = make([]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
+					var elem NilInt64
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -18955,7 +18925,7 @@ func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
+func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -18979,17 +18949,15 @@ func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int64
+			var response [][]NilInt64
 			if err := func() error {
-				response = make([][]int64, 0)
+				response = make([][]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
+					var elem []NilInt64
+					elem = make([]NilInt64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
+						var elemElem NilInt64
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -19055,7 +19023,7 @@ func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res []float64, err error) {
+func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -19079,14 +19047,12 @@ func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []float64
+			var response []NilFloat64
 			if err := func() error {
-				response = make([]float64, 0)
+				response = make([]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
+					var elem NilFloat64
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -19106,7 +19072,7 @@ func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float64, err error) {
+func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -19130,17 +19096,15 @@ func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]float64
+			var response [][]NilFloat64
 			if err := func() error {
-				response = make([][]float64, 0)
+				response = make([][]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
+					var elem []NilFloat64
+					elem = make([]NilFloat64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
+						var elemElem NilFloat64
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -19512,7 +19476,7 @@ func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -19536,14 +19500,12 @@ func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []string
+			var response []NilString
 			if err := func() error {
-				response = make([]string, 0)
+				response = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
+					var elem NilString
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -19563,7 +19525,7 @@ func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -19587,17 +19549,15 @@ func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Respons
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]string
+			var response [][]NilString
 			if err := func() error {
-				response = make([][]string, 0)
+				response = make([][]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
+					var elem []NilString
+					elem = make([]NilString, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
+						var elemElem NilString
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -20122,7 +20082,7 @@ func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -20146,14 +20106,12 @@ func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilDate
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilDate, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDate(d)
-					elem = v
-					if err != nil {
+					var elem NilDate
+					if err := elem.Decode(d, json.DecodeDate); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -20173,7 +20131,7 @@ func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -20197,17 +20155,15 @@ func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilDate
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilDate, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilDate
+					elem = make([]NilDate, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDate(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilDate
+						if err := elemElem.Decode(d, json.DecodeDate); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -20426,7 +20382,7 @@ func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -20450,14 +20406,12 @@ func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilDateTime
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilDateTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDateTime(d)
-					elem = v
-					if err != nil {
+					var elem NilDateTime
+					if err := elem.Decode(d, json.DecodeDateTime); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -20477,7 +20431,7 @@ func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -20501,17 +20455,15 @@ func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Respo
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilDateTime
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilDateTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilDateTime
+					elem = make([]NilDateTime, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDateTime(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilDateTime
+						if err := elemElem.Decode(d, json.DecodeDateTime); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -20730,7 +20682,7 @@ func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Duration, err error) {
+func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -20754,14 +20706,12 @@ func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Duration
+			var response []NilDuration
 			if err := func() error {
-				response = make([]time.Duration, 0)
+				response = make([]NilDuration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Duration
-					v, err := json.DecodeDuration(d)
-					elem = v
-					if err != nil {
+					var elem NilDuration
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -20781,7 +20731,7 @@ func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Duration, err error) {
+func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -20805,17 +20755,15 @@ func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Respo
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Duration
+			var response [][]NilDuration
 			if err := func() error {
-				response = make([][]time.Duration, 0)
+				response = make([][]NilDuration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Duration
-					elem = make([]time.Duration, 0)
+					var elem []NilDuration
+					elem = make([]NilDuration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Duration
-						v, err := json.DecodeDuration(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilDuration
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -21034,7 +20982,7 @@ func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21058,14 +21006,12 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []string
+			var response []NilString
 			if err := func() error {
-				response = make([]string, 0)
+				response = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
+					var elem NilString
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21085,7 +21031,7 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21109,17 +21055,15 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]string
+			var response [][]NilString
 			if err := func() error {
-				response = make([][]string, 0)
+				response = make([][]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
+					var elem []NilString
+					elem = make([]NilString, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
+						var elemElem NilString
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -21338,7 +21282,7 @@ func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21362,14 +21306,12 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []string
+			var response []NilString
 			if err := func() error {
-				response = make([]string, 0)
+				response = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
+					var elem NilString
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21389,7 +21331,7 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21413,17 +21355,15 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]string
+			var response [][]NilString
 			if err := func() error {
-				response = make([][]string, 0)
+				response = make([][]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
+					var elem []NilString
+					elem = make([]NilString, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
+						var elemElem NilString
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -21642,7 +21582,7 @@ func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
+func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21666,14 +21606,12 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []netip.Addr
+			var response []NilIP
 			if err := func() error {
-				response = make([]netip.Addr, 0)
+				response = make([]NilIP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
+					var elem NilIP
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21693,7 +21631,7 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
+func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21717,17 +21655,15 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]netip.Addr
+			var response [][]NilIP
 			if err := func() error {
-				response = make([][]netip.Addr, 0)
+				response = make([][]NilIP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
+					var elem []NilIP
+					elem = make([]NilIP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilIP
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -21946,7 +21882,7 @@ func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
+func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -21970,14 +21906,12 @@ func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int32
+			var response []NilStringInt32
 			if err := func() error {
-				response = make([]int32, 0)
+				response = make([]NilStringInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := json.DecodeStringInt32(d)
-					elem = v
-					if err != nil {
+					var elem NilStringInt32
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -21997,7 +21931,7 @@ func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
+func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22021,17 +21955,15 @@ func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int32
+			var response [][]NilStringInt32
 			if err := func() error {
-				response = make([][]int32, 0)
+				response = make([][]NilStringInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
+					var elem []NilStringInt32
+					elem = make([]NilStringInt32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := json.DecodeStringInt32(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilStringInt32
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -22250,7 +22182,7 @@ func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
+func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22274,14 +22206,12 @@ func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []int64
+			var response []NilStringInt64
 			if err := func() error {
-				response = make([]int64, 0)
+				response = make([]NilStringInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := json.DecodeStringInt64(d)
-					elem = v
-					if err != nil {
+					var elem NilStringInt64
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22301,7 +22231,7 @@ func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
+func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22325,17 +22255,15 @@ func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]int64
+			var response [][]NilStringInt64
 			if err := func() error {
-				response = make([][]int64, 0)
+				response = make([][]NilStringInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
+					var elem []NilStringInt64
+					elem = make([]NilStringInt64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := json.DecodeStringInt64(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilStringInt64
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -22554,7 +22482,7 @@ func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
+func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22578,14 +22506,12 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []netip.Addr
+			var response []NilIPv4
 			if err := func() error {
-				response = make([]netip.Addr, 0)
+				response = make([]NilIPv4, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
+					var elem NilIPv4
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22605,7 +22531,7 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
+func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22629,17 +22555,15 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]netip.Addr
+			var response [][]NilIPv4
 			if err := func() error {
-				response = make([][]netip.Addr, 0)
+				response = make([][]NilIPv4, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
+					var elem []NilIPv4
+					elem = make([]NilIPv4, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilIPv4
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -22858,7 +22782,7 @@ func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
+func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22882,14 +22806,12 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []netip.Addr
+			var response []NilIPv6
 			if err := func() error {
-				response = make([]netip.Addr, 0)
+				response = make([]NilIPv6, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
+					var elem NilIPv6
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -22909,7 +22831,7 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
+func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -22933,17 +22855,15 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]netip.Addr
+			var response [][]NilIPv6
 			if err := func() error {
-				response = make([][]netip.Addr, 0)
+				response = make([][]NilIPv6, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
+					var elem []NilIPv6
+					elem = make([]NilIPv6, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilIPv6
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -23009,7 +22929,7 @@ func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23033,14 +22953,12 @@ func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []string
+			var response []NilString
 			if err := func() error {
-				response = make([]string, 0)
+				response = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
+					var elem NilString
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -23060,7 +22978,7 @@ func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span tra
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23084,17 +23002,15 @@ func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]string
+			var response [][]NilString
 			if err := func() error {
-				response = make([][]string, 0)
+				response = make([][]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
+					var elem []NilString
+					elem = make([]NilString, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
+						var elemElem NilString
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -23313,7 +23229,7 @@ func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23337,14 +23253,12 @@ func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []string
+			var response []NilString
 			if err := func() error {
-				response = make([]string, 0)
+				response = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
+					var elem NilString
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -23364,7 +23278,7 @@ func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23388,17 +23302,15 @@ func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Respo
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]string
+			var response [][]NilString
 			if err := func() error {
-				response = make([][]string, 0)
+				response = make([][]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
+					var elem []NilString
+					elem = make([]NilString, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
+						var elemElem NilString
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -23617,7 +23529,7 @@ func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23641,14 +23553,12 @@ func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilTime
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeTime(d)
-					elem = v
-					if err != nil {
+					var elem NilTime
+					if err := elem.Decode(d, json.DecodeTime); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -23668,7 +23578,7 @@ func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23692,17 +23602,15 @@ func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilTime
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilTime
+					elem = make([]NilTime, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeTime(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilTime
+						if err := elemElem.Decode(d, json.DecodeTime); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -23921,7 +23829,7 @@ func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res []url.URL, err error) {
+func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res []NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23945,14 +23853,12 @@ func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []url.URL
+			var response []NilURI
 			if err := func() error {
-				response = make([]url.URL, 0)
+				response = make([]NilURI, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem url.URL
-					v, err := json.DecodeURI(d)
-					elem = v
-					if err != nil {
+					var elem NilURI
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -23972,7 +23878,7 @@ func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]url.URL, err error) {
+func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -23996,17 +23902,15 @@ func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]url.URL
+			var response [][]NilURI
 			if err := func() error {
-				response = make([][]url.URL, 0)
+				response = make([][]NilURI, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []url.URL
-					elem = make([]url.URL, 0)
+					var elem []NilURI
+					elem = make([]NilURI, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem url.URL
-						v, err := json.DecodeURI(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilURI
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -24225,7 +24129,7 @@ func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res []uuid.UUID, err error) {
+func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -24249,14 +24153,12 @@ func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []uuid.UUID
+			var response []NilUUID
 			if err := func() error {
-				response = make([]uuid.UUID, 0)
+				response = make([]NilUUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem uuid.UUID
-					v, err := json.DecodeUUID(d)
-					elem = v
-					if err != nil {
+					var elem NilUUID
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24276,7 +24178,7 @@ func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]uuid.UUID, err error) {
+func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -24300,17 +24202,15 @@ func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]uuid.UUID
+			var response [][]NilUUID
 			if err := func() error {
-				response = make([][]uuid.UUID, 0)
+				response = make([][]NilUUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []uuid.UUID
-					elem = make([]uuid.UUID, 0)
+					var elem []NilUUID
+					elem = make([]NilUUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem uuid.UUID
-						v, err := json.DecodeUUID(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilUUID
+						if err := elemElem.Decode(d); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -24682,7 +24582,7 @@ func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -24706,14 +24606,12 @@ func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilUnixMicro
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilUnixMicro, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMicro(d)
-					elem = v
-					if err != nil {
+					var elem NilUnixMicro
+					if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -24733,7 +24631,7 @@ func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response,
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -24757,17 +24655,15 @@ func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Resp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilUnixMicro
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilUnixMicro, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilUnixMicro
+					elem = make([]NilUnixMicro, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMicro(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilUnixMicro
+						if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -24986,7 +24882,7 @@ func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25010,14 +24906,12 @@ func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilUnixMilli
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilUnixMilli, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMilli(d)
-					elem = v
-					if err != nil {
+					var elem NilUnixMilli
+					if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25037,7 +24931,7 @@ func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response,
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25061,17 +24955,15 @@ func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Resp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilUnixMilli
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilUnixMilli, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilUnixMilli
+					elem = make([]NilUnixMilli, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMilli(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilUnixMilli
+						if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -25290,7 +25182,7 @@ func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25314,14 +25206,12 @@ func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilUnixNano
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilUnixNano, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixNano(d)
-					elem = v
-					if err != nil {
+					var elem NilUnixNano
+					if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25341,7 +25231,7 @@ func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25365,17 +25255,15 @@ func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Respo
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilUnixNano
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilUnixNano, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilUnixNano
+					elem = make([]NilUnixNano, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixNano(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilUnixNano
+						if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -25441,7 +25329,7 @@ func decodeTestResponseStringUnixNullableResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25465,14 +25353,12 @@ func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilUnixSeconds
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
+					var elem NilUnixSeconds
+					if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25492,7 +25378,7 @@ func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25516,17 +25402,15 @@ func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilUnixSeconds
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilUnixSeconds
+					elem = make([]NilUnixSeconds, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilUnixSeconds
+						if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)
@@ -25745,7 +25629,7 @@ func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response, sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25769,14 +25653,12 @@ func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Respons
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []time.Time
+			var response []NilUnixSeconds
 			if err := func() error {
-				response = make([]time.Time, 0)
+				response = make([]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
+					var elem NilUnixSeconds
+					if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					response = append(response, elem)
@@ -25796,7 +25678,7 @@ func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Respons
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -25820,17 +25702,15 @@ func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Re
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]time.Time
+			var response [][]NilUnixSeconds
 			if err := func() error {
-				response = make([][]time.Time, 0)
+				response = make([][]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
+					var elem []NilUnixSeconds
+					elem = make([]NilUnixSeconds, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
+						var elemElem NilUnixSeconds
+						if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 							return err
 						}
 						elem = append(elem, elemElem)

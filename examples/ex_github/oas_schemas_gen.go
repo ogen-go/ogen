@@ -2589,7 +2589,7 @@ type CodeScanningAlertInstance struct {
 	HTMLURL     OptString                           "json:\"html_url\""
 	// Classifications that have been applied to the file that triggered the alert.
 	// For example identifying it as documentation, or a generated file.
-	Classifications []CodeScanningAlertClassification "json:\"classifications\""
+	Classifications []NilCodeScanningAlertClassification "json:\"classifications\""
 }
 
 type CodeScanningAlertInstanceMessage struct {
@@ -4390,12 +4390,12 @@ type GistSimple struct {
 func (*GistSimple) gistsGetRes()         {}
 func (*GistSimple) gistsGetRevisionRes() {}
 
-type GistSimpleFiles map[string]GistSimpleFilesItem
+type GistSimpleFiles map[string]NilGistSimpleFilesItem
 
 func (s *GistSimpleFiles) init() GistSimpleFiles {
 	m := *s
 	if m == nil {
-		m = map[string]GistSimpleFilesItem{}
+		m = map[string]NilGistSimpleFilesItem{}
 		*s = m
 	}
 	return m
@@ -7893,6 +7893,44 @@ func (o NilCheckSuiteStatus) Or(d CheckSuiteStatus) CheckSuiteStatus {
 	return d
 }
 
+// NewNilCodeScanningAlertClassification returns new NilCodeScanningAlertClassification with value set to v.
+func NewNilCodeScanningAlertClassification(v CodeScanningAlertClassification) NilCodeScanningAlertClassification {
+	return NilCodeScanningAlertClassification{
+		Value: v,
+	}
+}
+
+// NilCodeScanningAlertClassification is nullable CodeScanningAlertClassification.
+type NilCodeScanningAlertClassification struct {
+	Value CodeScanningAlertClassification
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCodeScanningAlertClassification) SetTo(v CodeScanningAlertClassification) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCodeScanningAlertClassification) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCodeScanningAlertClassification) Get() (v CodeScanningAlertClassification, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCodeScanningAlertClassification) Or(d CodeScanningAlertClassification) CodeScanningAlertClassification {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilCodeScanningAlertDismissedAt returns new NilCodeScanningAlertDismissedAt with value set to v.
 func NewNilCodeScanningAlertDismissedAt(v CodeScanningAlertDismissedAt) NilCodeScanningAlertDismissedAt {
 	return NilCodeScanningAlertDismissedAt{
@@ -8039,6 +8077,44 @@ func (o NilFileCommitContent) Get() (v FileCommitContent, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilFileCommitContent) Or(d FileCommitContent) FileCommitContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilGistSimpleFilesItem returns new NilGistSimpleFilesItem with value set to v.
+func NewNilGistSimpleFilesItem(v GistSimpleFilesItem) NilGistSimpleFilesItem {
+	return NilGistSimpleFilesItem{
+		Value: v,
+	}
+}
+
+// NilGistSimpleFilesItem is nullable GistSimpleFilesItem.
+type NilGistSimpleFilesItem struct {
+	Value GistSimpleFilesItem
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilGistSimpleFilesItem) SetTo(v GistSimpleFilesItem) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilGistSimpleFilesItem) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilGistSimpleFilesItem) Get() (v GistSimpleFilesItem, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilGistSimpleFilesItem) Or(d GistSimpleFilesItem) GistSimpleFilesItem {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -40286,8 +40362,8 @@ type ValidationErrorErrorsItem struct {
 // ValidationErrorErrorsItemValue represents sum type.
 type ValidationErrorErrorsItemValue struct {
 	Type        ValidationErrorErrorsItemValueType // switch on this field
-	String      string
-	Int         int
+	NilString   NilString
+	NilInt      NilInt
 	StringArray []string
 }
 
@@ -40296,19 +40372,19 @@ type ValidationErrorErrorsItemValueType string
 
 // Possible values for ValidationErrorErrorsItemValueType.
 const (
-	StringValidationErrorErrorsItemValue      ValidationErrorErrorsItemValueType = "string"
-	IntValidationErrorErrorsItemValue         ValidationErrorErrorsItemValueType = "int"
+	NilStringValidationErrorErrorsItemValue   ValidationErrorErrorsItemValueType = "NilString"
+	NilIntValidationErrorErrorsItemValue      ValidationErrorErrorsItemValueType = "NilInt"
 	StringArrayValidationErrorErrorsItemValue ValidationErrorErrorsItemValueType = "[]string"
 )
 
-// IsString reports whether ValidationErrorErrorsItemValue is string.
-func (s ValidationErrorErrorsItemValue) IsString() bool {
-	return s.Type == StringValidationErrorErrorsItemValue
+// IsNilString reports whether ValidationErrorErrorsItemValue is NilString.
+func (s ValidationErrorErrorsItemValue) IsNilString() bool {
+	return s.Type == NilStringValidationErrorErrorsItemValue
 }
 
-// IsInt reports whether ValidationErrorErrorsItemValue is int.
-func (s ValidationErrorErrorsItemValue) IsInt() bool {
-	return s.Type == IntValidationErrorErrorsItemValue
+// IsNilInt reports whether ValidationErrorErrorsItemValue is NilInt.
+func (s ValidationErrorErrorsItemValue) IsNilInt() bool {
+	return s.Type == NilIntValidationErrorErrorsItemValue
 }
 
 // IsStringArray reports whether ValidationErrorErrorsItemValue is []string.
@@ -40316,45 +40392,45 @@ func (s ValidationErrorErrorsItemValue) IsStringArray() bool {
 	return s.Type == StringArrayValidationErrorErrorsItemValue
 }
 
-// SetString sets ValidationErrorErrorsItemValue to string.
-func (s *ValidationErrorErrorsItemValue) SetString(v string) {
-	s.Type = StringValidationErrorErrorsItemValue
-	s.String = v
+// SetNilString sets ValidationErrorErrorsItemValue to NilString.
+func (s *ValidationErrorErrorsItemValue) SetNilString(v NilString) {
+	s.Type = NilStringValidationErrorErrorsItemValue
+	s.NilString = v
 }
 
-// GetString returns string and true boolean if ValidationErrorErrorsItemValue is string.
-func (s ValidationErrorErrorsItemValue) GetString() (v string, ok bool) {
-	if !s.IsString() {
+// GetNilString returns NilString and true boolean if ValidationErrorErrorsItemValue is NilString.
+func (s ValidationErrorErrorsItemValue) GetNilString() (v NilString, ok bool) {
+	if !s.IsNilString() {
 		return v, false
 	}
-	return s.String, true
+	return s.NilString, true
 }
 
-// NewStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from string.
-func NewStringValidationErrorErrorsItemValue(v string) ValidationErrorErrorsItemValue {
+// NewNilStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from NilString.
+func NewNilStringValidationErrorErrorsItemValue(v NilString) ValidationErrorErrorsItemValue {
 	var s ValidationErrorErrorsItemValue
-	s.SetString(v)
+	s.SetNilString(v)
 	return s
 }
 
-// SetInt sets ValidationErrorErrorsItemValue to int.
-func (s *ValidationErrorErrorsItemValue) SetInt(v int) {
-	s.Type = IntValidationErrorErrorsItemValue
-	s.Int = v
+// SetNilInt sets ValidationErrorErrorsItemValue to NilInt.
+func (s *ValidationErrorErrorsItemValue) SetNilInt(v NilInt) {
+	s.Type = NilIntValidationErrorErrorsItemValue
+	s.NilInt = v
 }
 
-// GetInt returns int and true boolean if ValidationErrorErrorsItemValue is int.
-func (s ValidationErrorErrorsItemValue) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
+// GetNilInt returns NilInt and true boolean if ValidationErrorErrorsItemValue is NilInt.
+func (s ValidationErrorErrorsItemValue) GetNilInt() (v NilInt, ok bool) {
+	if !s.IsNilInt() {
 		return v, false
 	}
-	return s.Int, true
+	return s.NilInt, true
 }
 
-// NewIntValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from int.
-func NewIntValidationErrorErrorsItemValue(v int) ValidationErrorErrorsItemValue {
+// NewNilIntValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from NilInt.
+func NewNilIntValidationErrorErrorsItemValue(v NilInt) ValidationErrorErrorsItemValue {
 	var s ValidationErrorErrorsItemValue
-	s.SetInt(v)
+	s.SetNilInt(v)
 	return s
 }
 

@@ -1018,7 +1018,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 	switch ct {
 	case "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, close, validate.ErrBodyRequired
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")

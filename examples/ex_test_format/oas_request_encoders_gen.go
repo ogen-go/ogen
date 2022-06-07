@@ -110,7 +110,7 @@ func encodeTestRequestBooleanNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestBooleanNullableArrayRequestJSON(
-	req []bool,
+	req []NilBool,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -122,7 +122,7 @@ func encodeTestRequestBooleanNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Bool(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -130,7 +130,7 @@ func encodeTestRequestBooleanNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestBooleanNullableArrayArrayRequestJSON(
-	req [][]bool,
+	req [][]NilBool,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -144,7 +144,7 @@ func encodeTestRequestBooleanNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Bool(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -322,7 +322,7 @@ func encodeTestRequestIntegerInt32NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestIntegerInt32NullableArrayRequestJSON(
-	req []int32,
+	req []NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -334,7 +334,7 @@ func encodeTestRequestIntegerInt32NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Int32(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -342,7 +342,7 @@ func encodeTestRequestIntegerInt32NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
+	req [][]NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -356,7 +356,7 @@ func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Int32(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -442,7 +442,7 @@ func encodeTestRequestIntegerInt64NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestIntegerInt64NullableArrayRequestJSON(
-	req []int64,
+	req []NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -454,7 +454,7 @@ func encodeTestRequestIntegerInt64NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Int64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -462,7 +462,7 @@ func encodeTestRequestIntegerInt64NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
+	req [][]NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -476,7 +476,7 @@ func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Int64(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -502,7 +502,7 @@ func encodeTestRequestIntegerNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestIntegerNullableArrayRequestJSON(
-	req []int,
+	req []NilInt,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -514,7 +514,7 @@ func encodeTestRequestIntegerNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Int(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -522,7 +522,7 @@ func encodeTestRequestIntegerNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestIntegerNullableArrayArrayRequestJSON(
-	req [][]int,
+	req [][]NilInt,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -536,7 +536,7 @@ func encodeTestRequestIntegerNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Int(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -806,7 +806,7 @@ func encodeTestRequestNumberDoubleNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberDoubleNullableArrayRequestJSON(
-	req []float64,
+	req []NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -818,7 +818,7 @@ func encodeTestRequestNumberDoubleNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Float64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -826,7 +826,7 @@ func encodeTestRequestNumberDoubleNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(
-	req [][]float64,
+	req [][]NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -840,7 +840,7 @@ func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Float64(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -926,7 +926,7 @@ func encodeTestRequestNumberFloatNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberFloatNullableArrayRequestJSON(
-	req []float32,
+	req []NilFloat32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -938,7 +938,7 @@ func encodeTestRequestNumberFloatNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Float32(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -946,7 +946,7 @@ func encodeTestRequestNumberFloatNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(
-	req [][]float32,
+	req [][]NilFloat32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -960,7 +960,7 @@ func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Float32(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -1046,7 +1046,7 @@ func encodeTestRequestNumberInt32NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberInt32NullableArrayRequestJSON(
-	req []int32,
+	req []NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1058,7 +1058,7 @@ func encodeTestRequestNumberInt32NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Int32(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1066,7 +1066,7 @@ func encodeTestRequestNumberInt32NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
+	req [][]NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1080,7 +1080,7 @@ func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Int32(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -1166,7 +1166,7 @@ func encodeTestRequestNumberInt64NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberInt64NullableArrayRequestJSON(
-	req []int64,
+	req []NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1178,7 +1178,7 @@ func encodeTestRequestNumberInt64NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Int64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1186,7 +1186,7 @@ func encodeTestRequestNumberInt64NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
+	req [][]NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1200,7 +1200,7 @@ func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Int64(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -1226,7 +1226,7 @@ func encodeTestRequestNumberNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberNullableArrayRequestJSON(
-	req []float64,
+	req []NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1238,7 +1238,7 @@ func encodeTestRequestNumberNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Float64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1246,7 +1246,7 @@ func encodeTestRequestNumberNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestNumberNullableArrayArrayRequestJSON(
-	req [][]float64,
+	req [][]NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1260,7 +1260,7 @@ func encodeTestRequestNumberNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Float64(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -1359,7 +1359,7 @@ func encodeTestRequestRequiredBooleanNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredBooleanNullableArrayRequestJSON(
-	req []bool,
+	req []NilBool,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1371,14 +1371,14 @@ func encodeTestRequestRequiredBooleanNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Bool(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(
-	req [][]bool,
+	req [][]NilBool,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1392,7 +1392,7 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Bool(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1560,7 +1560,7 @@ func encodeTestRequestRequiredIntegerInt32NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(
-	req []int32,
+	req []NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1572,14 +1572,14 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Int32(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
+	req [][]NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1593,7 +1593,7 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Int32(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1674,7 +1674,7 @@ func encodeTestRequestRequiredIntegerInt64NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(
-	req []int64,
+	req []NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1686,14 +1686,14 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Int64(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
+	req [][]NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1707,7 +1707,7 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Int64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1731,7 +1731,7 @@ func encodeTestRequestRequiredIntegerNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredIntegerNullableArrayRequestJSON(
-	req []int,
+	req []NilInt,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1743,14 +1743,14 @@ func encodeTestRequestRequiredIntegerNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Int(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(
-	req [][]int,
+	req [][]NilInt,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -1764,7 +1764,7 @@ func encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Int(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2022,7 +2022,7 @@ func encodeTestRequestRequiredNumberDoubleNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(
-	req []float64,
+	req []NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2034,14 +2034,14 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Float64(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(
-	req [][]float64,
+	req [][]NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2055,7 +2055,7 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Float64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2136,7 +2136,7 @@ func encodeTestRequestRequiredNumberFloatNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(
-	req []float32,
+	req []NilFloat32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2148,14 +2148,14 @@ func encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Float32(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(
-	req [][]float32,
+	req [][]NilFloat32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2169,7 +2169,7 @@ func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Float32(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2250,7 +2250,7 @@ func encodeTestRequestRequiredNumberInt32NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(
-	req []int32,
+	req []NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2262,14 +2262,14 @@ func encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Int32(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
+	req [][]NilInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2283,7 +2283,7 @@ func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Int32(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2364,7 +2364,7 @@ func encodeTestRequestRequiredNumberInt64NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(
-	req []int64,
+	req []NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2376,14 +2376,14 @@ func encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Int64(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
+	req [][]NilInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2397,7 +2397,7 @@ func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Int64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2421,7 +2421,7 @@ func encodeTestRequestRequiredNumberNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredNumberNullableArrayRequestJSON(
-	req []float64,
+	req []NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2433,14 +2433,14 @@ func encodeTestRequestRequiredNumberNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Float64(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(
-	req [][]float64,
+	req [][]NilFloat64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2454,7 +2454,7 @@ func encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Float64(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2592,7 +2592,7 @@ func encodeTestRequestRequiredStringBinaryNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2604,14 +2604,14 @@ func encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Str(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2625,7 +2625,7 @@ func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2820,7 +2820,7 @@ func encodeTestRequestRequiredStringDateNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringDateNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilDate,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2832,14 +2832,14 @@ func encodeTestRequestRequiredStringDateNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeDate(e, elem)
+			elem.Encode(e, json.EncodeDate)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilDate,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2853,7 +2853,7 @@ func encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeDate(e, elem)
+				elem.Encode(e, json.EncodeDate)
 			}
 			e.ArrEnd()
 		}
@@ -2934,7 +2934,7 @@ func encodeTestRequestRequiredStringDateTimeNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilDateTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2946,14 +2946,14 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeDateTime(e, elem)
+			elem.Encode(e, json.EncodeDateTime)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilDateTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -2967,7 +2967,7 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeDateTime(e, elem)
+				elem.Encode(e, json.EncodeDateTime)
 			}
 			e.ArrEnd()
 		}
@@ -3048,7 +3048,7 @@ func encodeTestRequestRequiredStringDurationNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(
-	req []time.Duration,
+	req []NilDuration,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3060,14 +3060,14 @@ func encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeDuration(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(
-	req [][]time.Duration,
+	req [][]NilDuration,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3081,7 +3081,7 @@ func encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeDuration(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3162,7 +3162,7 @@ func encodeTestRequestRequiredStringEmailNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3174,14 +3174,14 @@ func encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Str(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3195,7 +3195,7 @@ func encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3276,7 +3276,7 @@ func encodeTestRequestRequiredStringHostnameNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3288,14 +3288,14 @@ func encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Str(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3309,7 +3309,7 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3390,7 +3390,7 @@ func encodeTestRequestRequiredStringIPNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(
-	req []netip.Addr,
+	req []NilIP,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3402,14 +3402,14 @@ func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeIP(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(
-	req [][]netip.Addr,
+	req [][]NilIP,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3423,7 +3423,7 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3504,7 +3504,7 @@ func encodeTestRequestRequiredStringInt32NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(
-	req []int32,
+	req []NilStringInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3516,14 +3516,14 @@ func encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeStringInt32(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
+	req [][]NilStringInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3537,7 +3537,7 @@ func encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeStringInt32(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3618,7 +3618,7 @@ func encodeTestRequestRequiredStringInt64NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(
-	req []int64,
+	req []NilStringInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3630,14 +3630,14 @@ func encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeStringInt64(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
+	req [][]NilStringInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3651,7 +3651,7 @@ func encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeStringInt64(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3732,7 +3732,7 @@ func encodeTestRequestRequiredStringIpv4NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(
-	req []netip.Addr,
+	req []NilIPv4,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3744,14 +3744,14 @@ func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeIP(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(
-	req [][]netip.Addr,
+	req [][]NilIPv4,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3765,7 +3765,7 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3846,7 +3846,7 @@ func encodeTestRequestRequiredStringIpv6NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(
-	req []netip.Addr,
+	req []NilIPv6,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3858,14 +3858,14 @@ func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeIP(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(
-	req [][]netip.Addr,
+	req [][]NilIPv6,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3879,7 +3879,7 @@ func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -3903,7 +3903,7 @@ func encodeTestRequestRequiredStringNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3915,14 +3915,14 @@ func encodeTestRequestRequiredStringNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Str(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -3936,7 +3936,7 @@ func encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -4017,7 +4017,7 @@ func encodeTestRequestRequiredStringPasswordNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4029,14 +4029,14 @@ func encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			e.Str(elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4050,7 +4050,7 @@ func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -4131,7 +4131,7 @@ func encodeTestRequestRequiredStringTimeNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4143,14 +4143,14 @@ func encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeTime(e, elem)
+			elem.Encode(e, json.EncodeTime)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4164,7 +4164,7 @@ func encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeTime(e, elem)
+				elem.Encode(e, json.EncodeTime)
 			}
 			e.ArrEnd()
 		}
@@ -4245,7 +4245,7 @@ func encodeTestRequestRequiredStringURINullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringURINullableArrayRequestJSON(
-	req []url.URL,
+	req []NilURI,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4257,14 +4257,14 @@ func encodeTestRequestRequiredStringURINullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeURI(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(
-	req [][]url.URL,
+	req [][]NilURI,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4278,7 +4278,7 @@ func encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeURI(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -4359,7 +4359,7 @@ func encodeTestRequestRequiredStringUUIDNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(
-	req []uuid.UUID,
+	req []NilUUID,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4371,14 +4371,14 @@ func encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeUUID(e, elem)
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(
-	req [][]uuid.UUID,
+	req [][]NilUUID,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4392,7 +4392,7 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeUUID(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -4530,7 +4530,7 @@ func encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixMicro,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4542,14 +4542,14 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeUnixMicro(e, elem)
+			elem.Encode(e, json.EncodeUnixMicro)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixMicro,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4563,7 +4563,7 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeUnixMicro(e, elem)
+				elem.Encode(e, json.EncodeUnixMicro)
 			}
 			e.ArrEnd()
 		}
@@ -4644,7 +4644,7 @@ func encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixMilli,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4656,14 +4656,14 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeUnixMilli(e, elem)
+			elem.Encode(e, json.EncodeUnixMilli)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixMilli,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4677,7 +4677,7 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeUnixMilli(e, elem)
+				elem.Encode(e, json.EncodeUnixMilli)
 			}
 			e.ArrEnd()
 		}
@@ -4758,7 +4758,7 @@ func encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixNano,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4770,14 +4770,14 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeUnixNano(e, elem)
+			elem.Encode(e, json.EncodeUnixNano)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixNano,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4791,7 +4791,7 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeUnixNano(e, elem)
+				elem.Encode(e, json.EncodeUnixNano)
 			}
 			e.ArrEnd()
 		}
@@ -4815,7 +4815,7 @@ func encodeTestRequestRequiredStringUnixNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4827,14 +4827,14 @@ func encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeUnixSeconds(e, elem)
+			elem.Encode(e, json.EncodeUnixSeconds)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4848,7 +4848,7 @@ func encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
+				elem.Encode(e, json.EncodeUnixSeconds)
 			}
 			e.ArrEnd()
 		}
@@ -4929,7 +4929,7 @@ func encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4941,14 +4941,14 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(
 
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeUnixSeconds(e, elem)
+			elem.Encode(e, json.EncodeUnixSeconds)
 		}
 		e.ArrEnd()
 		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
 	}, nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -4962,7 +4962,7 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
+				elem.Encode(e, json.EncodeUnixSeconds)
 			}
 			e.ArrEnd()
 		}
@@ -5107,7 +5107,7 @@ func encodeTestRequestStringBinaryNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringBinaryNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5119,7 +5119,7 @@ func encodeTestRequestStringBinaryNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -5127,7 +5127,7 @@ func encodeTestRequestStringBinaryNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5141,7 +5141,7 @@ func encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Str(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -5346,7 +5346,7 @@ func encodeTestRequestStringDateNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringDateNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilDate,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5358,7 +5358,7 @@ func encodeTestRequestStringDateNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeDate(e, elem)
+				elem.Encode(e, json.EncodeDate)
 			}
 			e.ArrEnd()
 		}
@@ -5366,7 +5366,7 @@ func encodeTestRequestStringDateNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringDateNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilDate,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5380,7 +5380,7 @@ func encodeTestRequestStringDateNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeDate(e, elem)
+					elem.Encode(e, json.EncodeDate)
 				}
 				e.ArrEnd()
 			}
@@ -5466,7 +5466,7 @@ func encodeTestRequestStringDateTimeNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringDateTimeNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilDateTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5478,7 +5478,7 @@ func encodeTestRequestStringDateTimeNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeDateTime(e, elem)
+				elem.Encode(e, json.EncodeDateTime)
 			}
 			e.ArrEnd()
 		}
@@ -5486,7 +5486,7 @@ func encodeTestRequestStringDateTimeNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilDateTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5500,7 +5500,7 @@ func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeDateTime(e, elem)
+					elem.Encode(e, json.EncodeDateTime)
 				}
 				e.ArrEnd()
 			}
@@ -5586,7 +5586,7 @@ func encodeTestRequestStringDurationNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringDurationNullableArrayRequestJSON(
-	req []time.Duration,
+	req []NilDuration,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5598,7 +5598,7 @@ func encodeTestRequestStringDurationNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeDuration(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -5606,7 +5606,7 @@ func encodeTestRequestStringDurationNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(
-	req [][]time.Duration,
+	req [][]NilDuration,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5620,7 +5620,7 @@ func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeDuration(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -5706,7 +5706,7 @@ func encodeTestRequestStringEmailNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringEmailNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5718,7 +5718,7 @@ func encodeTestRequestStringEmailNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -5726,7 +5726,7 @@ func encodeTestRequestStringEmailNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringEmailNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5740,7 +5740,7 @@ func encodeTestRequestStringEmailNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Str(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -5826,7 +5826,7 @@ func encodeTestRequestStringHostnameNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringHostnameNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5838,7 +5838,7 @@ func encodeTestRequestStringHostnameNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -5846,7 +5846,7 @@ func encodeTestRequestStringHostnameNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5860,7 +5860,7 @@ func encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Str(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -5946,7 +5946,7 @@ func encodeTestRequestStringIPNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringIPNullableArrayRequestJSON(
-	req []netip.Addr,
+	req []NilIP,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5958,7 +5958,7 @@ func encodeTestRequestStringIPNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeIP(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -5966,7 +5966,7 @@ func encodeTestRequestStringIPNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringIPNullableArrayArrayRequestJSON(
-	req [][]netip.Addr,
+	req [][]NilIP,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -5980,7 +5980,7 @@ func encodeTestRequestStringIPNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6066,7 +6066,7 @@ func encodeTestRequestStringInt32NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringInt32NullableArrayRequestJSON(
-	req []int32,
+	req []NilStringInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6078,7 +6078,7 @@ func encodeTestRequestStringInt32NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeStringInt32(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6086,7 +6086,7 @@ func encodeTestRequestStringInt32NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringInt32NullableArrayArrayRequestJSON(
-	req [][]int32,
+	req [][]NilStringInt32,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6100,7 +6100,7 @@ func encodeTestRequestStringInt32NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeStringInt32(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6186,7 +6186,7 @@ func encodeTestRequestStringInt64NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringInt64NullableArrayRequestJSON(
-	req []int64,
+	req []NilStringInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6198,7 +6198,7 @@ func encodeTestRequestStringInt64NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeStringInt64(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6206,7 +6206,7 @@ func encodeTestRequestStringInt64NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringInt64NullableArrayArrayRequestJSON(
-	req [][]int64,
+	req [][]NilStringInt64,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6220,7 +6220,7 @@ func encodeTestRequestStringInt64NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeStringInt64(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6306,7 +6306,7 @@ func encodeTestRequestStringIpv4NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringIpv4NullableArrayRequestJSON(
-	req []netip.Addr,
+	req []NilIPv4,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6318,7 +6318,7 @@ func encodeTestRequestStringIpv4NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeIP(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6326,7 +6326,7 @@ func encodeTestRequestStringIpv4NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(
-	req [][]netip.Addr,
+	req [][]NilIPv4,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6340,7 +6340,7 @@ func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6426,7 +6426,7 @@ func encodeTestRequestStringIpv6NullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringIpv6NullableArrayRequestJSON(
-	req []netip.Addr,
+	req []NilIPv6,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6438,7 +6438,7 @@ func encodeTestRequestStringIpv6NullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeIP(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6446,7 +6446,7 @@ func encodeTestRequestStringIpv6NullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(
-	req [][]netip.Addr,
+	req [][]NilIPv6,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6460,7 +6460,7 @@ func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6486,7 +6486,7 @@ func encodeTestRequestStringNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6498,7 +6498,7 @@ func encodeTestRequestStringNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6506,7 +6506,7 @@ func encodeTestRequestStringNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6520,7 +6520,7 @@ func encodeTestRequestStringNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Str(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6606,7 +6606,7 @@ func encodeTestRequestStringPasswordNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringPasswordNullableArrayRequestJSON(
-	req []string,
+	req []NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6618,7 +6618,7 @@ func encodeTestRequestStringPasswordNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				e.Str(elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6626,7 +6626,7 @@ func encodeTestRequestStringPasswordNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(
-	req [][]string,
+	req [][]NilString,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6640,7 +6640,7 @@ func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					e.Str(elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6726,7 +6726,7 @@ func encodeTestRequestStringTimeNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringTimeNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6738,7 +6738,7 @@ func encodeTestRequestStringTimeNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeTime(e, elem)
+				elem.Encode(e, json.EncodeTime)
 			}
 			e.ArrEnd()
 		}
@@ -6746,7 +6746,7 @@ func encodeTestRequestStringTimeNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilTime,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6760,7 +6760,7 @@ func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeTime(e, elem)
+					elem.Encode(e, json.EncodeTime)
 				}
 				e.ArrEnd()
 			}
@@ -6846,7 +6846,7 @@ func encodeTestRequestStringURINullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringURINullableArrayRequestJSON(
-	req []url.URL,
+	req []NilURI,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6858,7 +6858,7 @@ func encodeTestRequestStringURINullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeURI(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6866,7 +6866,7 @@ func encodeTestRequestStringURINullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringURINullableArrayArrayRequestJSON(
-	req [][]url.URL,
+	req [][]NilURI,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6880,7 +6880,7 @@ func encodeTestRequestStringURINullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeURI(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -6966,7 +6966,7 @@ func encodeTestRequestStringUUIDNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUUIDNullableArrayRequestJSON(
-	req []uuid.UUID,
+	req []NilUUID,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -6978,7 +6978,7 @@ func encodeTestRequestStringUUIDNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeUUID(e, elem)
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6986,7 +6986,7 @@ func encodeTestRequestStringUUIDNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(
-	req [][]uuid.UUID,
+	req [][]NilUUID,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7000,7 +7000,7 @@ func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeUUID(e, elem)
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -7146,7 +7146,7 @@ func encodeTestRequestStringUnixMicroNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixMicroNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixMicro,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7158,7 +7158,7 @@ func encodeTestRequestStringUnixMicroNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeUnixMicro(e, elem)
+				elem.Encode(e, json.EncodeUnixMicro)
 			}
 			e.ArrEnd()
 		}
@@ -7166,7 +7166,7 @@ func encodeTestRequestStringUnixMicroNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixMicro,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7180,7 +7180,7 @@ func encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeUnixMicro(e, elem)
+					elem.Encode(e, json.EncodeUnixMicro)
 				}
 				e.ArrEnd()
 			}
@@ -7266,7 +7266,7 @@ func encodeTestRequestStringUnixMilliNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixMilliNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixMilli,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7278,7 +7278,7 @@ func encodeTestRequestStringUnixMilliNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeUnixMilli(e, elem)
+				elem.Encode(e, json.EncodeUnixMilli)
 			}
 			e.ArrEnd()
 		}
@@ -7286,7 +7286,7 @@ func encodeTestRequestStringUnixMilliNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixMilli,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7300,7 +7300,7 @@ func encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeUnixMilli(e, elem)
+					elem.Encode(e, json.EncodeUnixMilli)
 				}
 				e.ArrEnd()
 			}
@@ -7386,7 +7386,7 @@ func encodeTestRequestStringUnixNanoNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixNanoNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixNano,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7398,7 +7398,7 @@ func encodeTestRequestStringUnixNanoNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeUnixNano(e, elem)
+				elem.Encode(e, json.EncodeUnixNano)
 			}
 			e.ArrEnd()
 		}
@@ -7406,7 +7406,7 @@ func encodeTestRequestStringUnixNanoNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixNano,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7420,7 +7420,7 @@ func encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeUnixNano(e, elem)
+					elem.Encode(e, json.EncodeUnixNano)
 				}
 				e.ArrEnd()
 			}
@@ -7446,7 +7446,7 @@ func encodeTestRequestStringUnixNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7458,7 +7458,7 @@ func encodeTestRequestStringUnixNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeUnixSeconds(e, elem)
+				elem.Encode(e, json.EncodeUnixSeconds)
 			}
 			e.ArrEnd()
 		}
@@ -7466,7 +7466,7 @@ func encodeTestRequestStringUnixNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7480,7 +7480,7 @@ func encodeTestRequestStringUnixNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeUnixSeconds(e, elem)
+					elem.Encode(e, json.EncodeUnixSeconds)
 				}
 				e.ArrEnd()
 			}
@@ -7566,7 +7566,7 @@ func encodeTestRequestStringUnixSecondsNullableRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(
-	req []time.Time,
+	req []NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7578,7 +7578,7 @@ func encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeUnixSeconds(e, elem)
+				elem.Encode(e, json.EncodeUnixSeconds)
 			}
 			e.ArrEnd()
 		}
@@ -7586,7 +7586,7 @@ func encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(
 	}, nil
 }
 func encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -7600,7 +7600,7 @@ func encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeUnixSeconds(e, elem)
+					elem.Encode(e, json.EncodeUnixSeconds)
 				}
 				e.ArrEnd()
 			}
