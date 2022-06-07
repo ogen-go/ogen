@@ -7,7 +7,7 @@ require (
 	github.com/go-faster/jx v0.35.2
 	github.com/google/uuid v1.3.0
 	github.com/ogen-go/ogen v0.0.0
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.7.2
 	go.opentelemetry.io/otel v1.7.0
 	go.opentelemetry.io/otel/metric v0.30.0
 	go.opentelemetry.io/otel/trace v1.7.0
@@ -25,7 +25,7 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
-	gopkg.in/yaml.v3 v3.0.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 replace github.com/ogen-go/ogen v0.0.0 => ./..
