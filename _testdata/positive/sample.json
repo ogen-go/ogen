@@ -985,6 +985,43 @@
           }
         }
       }
+    },
+    "/testNullableOneofs": {
+      "get": {
+        "operationId": "testNullableOneofs",
+        "responses": {
+          "200": {
+            "description": "OneOfWithNullable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OneOfWithNullable"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "OneOfWithNullable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OneOfWithNullable"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "OneOfBooleanSumNullables",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OneOfBooleanSumNullables"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1740,6 +1777,52 @@
             "type": "string"
           }
         }
+      },
+      "OneOfWithNullable": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "nullable": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "OneOfNullables": {
+        "oneOf": [
+          {
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "type": "integer",
+            "nullable": true
+          },
+          {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "OneOfBooleanSumNullables": {
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "$ref": "#/components/schemas/OneOfNullables"
+          }
+        ]
       },
       "TestFloatValidation": {
         "type": "object",
