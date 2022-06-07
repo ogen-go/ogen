@@ -888,6 +888,84 @@ func TestJSONSum(t *testing.T) {
 			})
 		}
 	})
+	t.Run("NullableOneofs", func(t *testing.T) {
+		t.Run("OneOfWithNullable", func(t *testing.T) {
+			for i, tc := range []struct {
+				Input    string
+				Expected api.OneOfWithNullable
+				Error    bool
+			}{
+				{`10`, api.NewIntOneOfWithNullable(10), false},
+				{`"foo"`, api.NewStringOneOfWithNullable("foo"), false},
+				{`["foo", "bar"]`, api.NewStringArrayOneOfWithNullable([]string{"foo", "bar"}), false},
+				{`null`, api.NewNullOneOfWithNullable(struct{}{}), false},
+			} {
+				// Make range value copy to prevent data races.
+				tc := tc
+				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+					checker := require.NoError
+					if tc.Error {
+						checker = require.Error
+					}
+					r := api.OneOfWithNullable{}
+					checker(t, r.Decode(jx.DecodeStr(tc.Input)))
+					expected, val := tc.Expected, r
+					require.Equal(t, expected.Type, val.Type)
+				})
+			}
+		})
+		t.Run("OneOfNullables", func(t *testing.T) {
+			for i, tc := range []struct {
+				Input    string
+				Expected api.OneOfNullables
+				Error    bool
+			}{
+				{`10`, api.NewIntOneOfNullables(10), false},
+				{`"foo"`, api.NewStringOneOfNullables("foo"), false},
+				{`["foo", "bar"]`, api.NewStringArrayOneOfNullables([]string{"foo", "bar"}), false},
+				{`null`, api.NewNullOneOfNullables(struct{}{}), false},
+			} {
+				// Make range value copy to prevent data races.
+				tc := tc
+				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+					checker := require.NoError
+					if tc.Error {
+						checker = require.Error
+					}
+					r := api.OneOfNullables{}
+					checker(t, r.Decode(jx.DecodeStr(tc.Input)))
+					expected, val := tc.Expected, r
+					require.Equal(t, expected.Type, val.Type)
+				})
+			}
+		})
+		t.Run("OneOfBooleanSumNullables", func(t *testing.T) {
+			for i, tc := range []struct {
+				Input    string
+				Expected api.OneOfBooleanSumNullables
+				Error    bool
+			}{
+				{`true`, api.NewBoolOneOfBooleanSumNullables(true), false},
+				{`10`, api.NewOneOfNullablesOneOfBooleanSumNullables(api.NewIntOneOfNullables(5)), false},
+				{`"foo"`, api.NewOneOfNullablesOneOfBooleanSumNullables(api.NewNullOneOfNullables(struct{}{})), false},
+				{`["foo", "bar"]`, api.NewOneOfNullablesOneOfBooleanSumNullables(api.NewStringArrayOneOfNullables([]string{"foo", "bar"})), false},
+				{`null`, api.NewOneOfNullablesOneOfBooleanSumNullables(api.NewNullOneOfNullables(struct{}{})), false},
+			} {
+				// Make range value copy to prevent data races.
+				tc := tc
+				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+					checker := require.NoError
+					if tc.Error {
+						checker = require.Error
+					}
+					r := api.OneOfBooleanSumNullables{}
+					checker(t, r.Decode(jx.DecodeStr(tc.Input)))
+					expected, val := tc.Expected, r
+					require.Equal(t, expected.Type, val.Type)
+				})
+			}
+		})
+	})
 	t.Run("Discriminator", func(t *testing.T) {
 		for i, tc := range []struct {
 			Input    string
@@ -967,7 +1045,8 @@ func TestJSONAny(t *testing.T) {
 			Error:  false,
 		},
 
-		{Name: "AnyArray",
+		{
+			Name:   "AnyArray",
 			Format: `{"any_array":[%s]}`,
 			Error:  false,
 		},
