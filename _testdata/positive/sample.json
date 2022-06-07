@@ -673,6 +673,7 @@
       "post": {
         "operationId": "testMultipartUpload",
         "requestBody": {
+          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {

@@ -29,7 +29,7 @@ import (
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_manga --clean --debug.ignoreNotImplemented "unsupported content types" --generate-tests  ../_testdata/positive/manga.json
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_petstore_expanded --clean --debug.noerr --generate-tests  ../_testdata/positive/petstore-expanded.yml
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_k8s --clean --debug.noerr --generate-tests  ../_testdata/positive/k8s.json
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_github --clean --infer-types --debug.noerr --generate-tests  ../_testdata/positive/api.github.com.json
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_github --clean --infer-types --debug.noerr --generate-tests --skip-tests=ValidationErrorErrorsItem* ../_testdata/positive/api.github.com.json
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_telegram --clean --debug.noerr --generate-tests  ../_testdata/positive/telegram_bot_api.json
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_tinkoff --clean --debug.ignoreNotImplemented "http security" --generate-tests  ../_testdata/positive/tinkoff.json
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_2ch --clean --debug.ignoreNotImplemented "unsupported content types" --generate-tests  ../_testdata/positive/2ch.yml
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --target ex_2ch --clean --debug.ignoreNotImplemented "unsupported content types, complex form schema" --generate-tests  ../_testdata/positive/2ch.yml
