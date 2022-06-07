@@ -365,6 +365,18 @@ func TestNullableEnumsOnlyNullable_EncodeDecode(t *testing.T) {
 	var typ2 NullableEnumsOnlyNullable
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestOneOfBooleanSumNullables_EncodeDecode(t *testing.T) {
+	var typ OneOfBooleanSumNullables
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OneOfBooleanSumNullables
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestOneOfBugs_EncodeDecode(t *testing.T) {
 	var typ OneOfBugs
 	typ.SetFake()
@@ -425,6 +437,18 @@ func TestOneOfMappingReferenceBData_EncodeDecode(t *testing.T) {
 	var typ2 OneOfMappingReferenceBData
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestOneOfNullables_EncodeDecode(t *testing.T) {
+	var typ OneOfNullables
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OneOfNullables
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestOneOfUUIDAndIntEnum_EncodeDecode(t *testing.T) {
 	var typ OneOfUUIDAndIntEnum
 	typ.SetFake()
@@ -447,6 +471,18 @@ func TestOneOfUUIDAndIntEnum1_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OneOfUUIDAndIntEnum1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOneOfWithNullable_EncodeDecode(t *testing.T) {
+	var typ OneOfWithNullable
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OneOfWithNullable
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOnePropertyObject_EncodeDecode(t *testing.T) {
@@ -737,6 +773,30 @@ func TestTestMultipartUploadOK_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestMultipartUploadOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTestNullableOneofsApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ TestNullableOneofsApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TestNullableOneofsApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTestNullableOneofsApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ TestNullableOneofsApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TestNullableOneofsApplicationJSONOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTestObjectQueryParameterOK_EncodeDecode(t *testing.T) {

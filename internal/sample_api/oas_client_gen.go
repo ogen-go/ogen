@@ -1971,6 +1971,48 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	return result, nil
 }
 
+// TestNullableOneofs invokes testNullableOneofs operation.
+//
+// GET /testNullableOneofs
+func (c *Client) TestNullableOneofs(ctx context.Context) (res TestNullableOneofsRes, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testNullableOneofs"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestNullableOneofs",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testNullableOneofs"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestNullableOneofsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestObjectQueryParameter invokes testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

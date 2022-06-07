@@ -249,6 +249,13 @@ func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMul
 	return r, ht.ErrNotImplemented
 }
 
+// TestNullableOneofs implements testNullableOneofs operation.
+//
+// GET /testNullableOneofs
+func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNullableOneofsRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestObjectQueryParameter implements testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

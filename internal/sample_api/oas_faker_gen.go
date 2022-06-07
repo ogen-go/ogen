@@ -556,6 +556,16 @@ func (s *NullableEnumsOnlyNullable) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OneOfBooleanSumNullables) SetFake() {
+	var elem bool
+
+	{
+		elem = true
+	}
+	s.SetBool(elem)
+}
+
+// SetFake set fake values.
 func (s *OneOfBugs) SetFake() {
 	{
 		{
@@ -622,6 +632,16 @@ func (s *OneOfMappingReferenceBData) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OneOfNullables) SetFake() {
+	var elem struct{}
+
+	{
+		elem = struct{}{}
+	}
+	s.SetNull(elem)
+}
+
+// SetFake set fake values.
 func (s *OneOfUUIDAndIntEnum) SetFake() {
 	var elem uuid.UUID
 
@@ -634,6 +654,16 @@ func (s *OneOfUUIDAndIntEnum) SetFake() {
 // SetFake set fake values.
 func (s *OneOfUUIDAndIntEnum1) SetFake() {
 	*s = OneOfUUIDAndIntEnum10
+}
+
+// SetFake set fake values.
+func (s *OneOfWithNullable) SetFake() {
+	var elem struct{}
+
+	{
+		elem = struct{}{}
+	}
+	s.SetNull(elem)
 }
 
 // SetFake set fake values.
@@ -1429,6 +1459,24 @@ func (s *TestMultipartUploadOK) SetFake() {
 			}
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *TestNullableOneofsApplicationJSONCreated) SetFake() {
+	var unwrapped OneOfWithNullable
+	{
+		unwrapped.SetFake()
+	}
+	*s = TestNullableOneofsApplicationJSONCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *TestNullableOneofsApplicationJSONOK) SetFake() {
+	var unwrapped OneOfWithNullable
+	{
+		unwrapped.SetFake()
+	}
+	*s = TestNullableOneofsApplicationJSONOK(unwrapped)
 }
 
 // SetFake set fake values.

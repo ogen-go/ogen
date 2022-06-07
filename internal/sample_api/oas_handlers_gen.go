@@ -1309,6 +1309,42 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleTestNullableOneofsRequest handles testNullableOneofs operation.
+//
+// GET /testNullableOneofs
+func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testNullableOneofs"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestNullableOneofs",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+
+	response, err := s.h.TestNullableOneofs(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestNullableOneofsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleTestObjectQueryParameterRequest handles testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

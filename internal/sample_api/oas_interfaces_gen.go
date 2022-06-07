@@ -24,3 +24,7 @@ type PetGetRes interface {
 type PetUploadAvatarByIDRes interface {
 	petUploadAvatarByIDRes()
 }
+
+type TestNullableOneofsRes interface {
+	testNullableOneofsRes()
+}
