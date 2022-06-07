@@ -40,33 +40,33 @@ func variantFieldName(t *ir.Type) string {
 	return capitalize.Capitalize(t.NamePostfix())
 }
 
-func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bool) (ret *ir.Type, err error) {
+func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
+	t, err := g.generate2(name, schema)
+	if err != nil {
+		return nil, err
+	}
+
+	nullable := schema != nil && schema.Nullable
+	t, err = boxType(t, ir.GenericVariant{
+		Optional: optional,
+		Nullable: nullable,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	if t.IsGeneric() {
+		g.side = append(g.side, t)
+	}
+
+	// TODO: update refcache to point to new boxed type?
+	return t, nil
+}
+
+func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.Type, err error) {
 	if schema == nil {
 		return nil, &ErrNotImplemented{Name: "empty schema"}
 	}
-
-	defer func() {
-		if err != nil {
-			return
-		}
-
-		nullable := schema != nil && schema.Nullable
-		boxedT, boxErr := boxType(ret, ir.GenericVariant{
-			Optional: optional,
-			Nullable: nullable,
-		})
-		if boxErr != nil {
-			err = boxErr
-			ret = nil
-			return
-		}
-
-		if boxedT.IsGeneric() {
-			g.side = append(g.side, boxedT)
-		}
-
-		ret = boxedT
-	}()
 
 	if ref := schema.Ref; ref != "" {
 		if t, ok := g.lookupRef(ref); ok {

@@ -62,13 +62,39 @@ func (g *schemaGen) collectSumVariants(
 ) (sum []*ir.Type, _ error) {
 	// TODO(tdakkota): convert oneOf+null into generic
 
+	nullableCount := 0
+	for _, s := range schemas {
+		if s != nil && s.Nullable {
+			nullableCount++
+		}
+	}
+
+	if nullableCount > 1 {
+		nullT := ir.Primitive(ir.Null, nil)
+		nullT.Name = "Null"
+		sum = append(sum, nullT)
+	}
+
 	names := map[string]struct{}{}
 	for i, s := range schemas {
 		if ref := s.Ref; ref != "" && ref == parent.Ref {
 			return nil, errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
 		}
 
-		t, err := g.generate(fmt.Sprintf("%s%d", name, i), s, false)
+		var (
+			t   *ir.Type
+			err error
+		)
+
+		if nullableCount < 2 {
+			// generate with boxing for specific type
+			t, err = g.generate(fmt.Sprintf("%s%d", name, i), s, false)
+		} else {
+			// generate without boxing because
+			// null type already added into sum
+			t, err = g.generate2(fmt.Sprintf("%s%d", name, i), s)
+		}
+
 		if err != nil {
 			return nil, errors.Wrapf(err, "oneOf[%d]", i)
 		}
