@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 
@@ -59,25 +58,6 @@ func (s *Router) Add(r Route) error {
 	return nil
 }
 
-func printEdge(ident int, e *RouteNode) {
-	identStr := strings.Repeat(" ", ident)
-	p := e.Prefix()
-	if param := e.Param(); param != nil {
-		p = fmt.Sprintf(":%s", param.Spec.Name)
-	}
-
-	fmt.Printf("%s /%s", identStr, p)
-	if e.IsLeaf() {
-		fmt.Printf(" %s\n", e.Operation().Name)
-		return
-	}
-	if op := e.Operation(); op != nil {
-		fmt.Printf("/ %s\n", op.Name)
-	} else {
-		fmt.Printf("/\n")
-	}
-}
-
 func (g *Generator) route() error {
 	var maxParametersCount int
 	for _, op := range g.operations {
@@ -99,15 +79,6 @@ func (g *Generator) route() error {
 		sort.SliceStable(m, func(i, j int) bool {
 			return m[i].Method < m[j].Method
 		})
-	}
-
-	if g.opt.VerboseRoute {
-		for _, m := range g.router.Methods {
-			fmt.Println(m.Method)
-			m.Tree.Walk(func(level int, n *RouteNode) {
-				printEdge(level*2, n)
-			})
-		}
 	}
 
 	return nil

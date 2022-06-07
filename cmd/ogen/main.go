@@ -7,13 +7,16 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/ogenzap"
 )
 
 func cleanDir(targetDir string, files []os.DirEntry) error {
@@ -36,6 +39,8 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 }
 
 func generate(specPath, packageName string, fs gen.FileSystem, opts gen.Options) error {
+	log := opts.Logger
+
 	data, err := os.ReadFile(specPath)
 	if err != nil {
 		return err
@@ -46,14 +51,18 @@ func generate(specPath, packageName string, fs gen.FileSystem, opts gen.Options)
 		return errors.Wrap(err, "parse spec")
 	}
 
+	start := time.Now()
 	g, err := gen.NewGenerator(spec, opts)
 	if err != nil {
 		return errors.Wrap(err, "build IR")
 	}
+	log.Debug("Build IR", zap.Duration("took", time.Since(start)))
 
+	start = time.Now()
 	if err := g.WriteSource(fs, packageName); err != nil {
 		return errors.Wrap(err, "write")
 	}
+	log.Debug("Write", zap.Duration("took", time.Since(start)))
 
 	return nil
 }
@@ -62,13 +71,14 @@ func run() error {
 	var (
 		targetDir         = flag.String("target", "api", "Path to target dir")
 		packageName       = flag.String("package", "api", "Target package name")
+		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		performFormat     = flag.Bool("format", true, "Perform code formatting")
-		clean             = flag.Bool("clean", false, "Clean generated files before generation")
 		verbose           = flag.Bool("v", false, "Enable verbose logging")
+		logLevel          = zap.LevelFlag("loglevel", zapcore.InfoLevel, "Zap logging level")
+		clean             = flag.Bool("clean", false, "Clean generated files before generation")
 		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
 		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
 		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
-		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 
 		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented "+
@@ -117,20 +127,15 @@ func run() error {
 		}
 	}
 
-	level := zap.InfoLevel
-	if *verbose {
-		level = zap.DebugLevel
-	}
-	logger, err := zap.NewDevelopment(zap.IncreaseLevel(level))
+	logger, err := ogenzap.Create(*logLevel, *verbose)
 	if err != nil {
-		return errors.Wrap(err, "create logger")
+		return err
 	}
 	defer func() {
 		_ = logger.Sync()
 	}()
 
 	opts := gen.Options{
-		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,

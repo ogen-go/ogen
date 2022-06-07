@@ -9,9 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/ogenzap"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -68,6 +70,8 @@ func run() error {
 		typeName      = flag.String("typename", "", "Root schema type name")
 		inferTypes    = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		performFormat = flag.Bool("format", true, "Perform code formatting")
+		verbose       = flag.Bool("v", false, "Enable verbose logging")
+		logLevel      = zap.LevelFlag("loglevel", zapcore.InfoLevel, "Zap logging level")
 		trimPrefixes  = StringArrayFlag{"#/definitions/", "#/$defs/"}
 	)
 	flag.Var(&trimPrefixes, "trim-prefixes", "Ref prefixes to trim")
@@ -112,9 +116,9 @@ func run() error {
 		*packageName = "output"
 	}
 
-	logger, err := zap.NewDevelopment()
+	logger, err := ogenzap.Create(*logLevel, *verbose)
 	if err != nil {
-		return errors.Wrap(err, "logger")
+		return err
 	}
 	defer func() {
 		_ = logger.Sync()
