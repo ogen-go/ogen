@@ -21809,9 +21809,9 @@ func (s *CodeScanningAlertInstance) Decode(d *jx.Decoder) error {
 			}
 		case "classifications":
 			if err := func() error {
-				s.Classifications = make([]CodeScanningAlertClassification, 0)
+				s.Classifications = make([]NilCodeScanningAlertClassification, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem CodeScanningAlertClassification
+					var elem NilCodeScanningAlertClassification
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -43053,7 +43053,7 @@ func (s *GistSimpleFiles) Decode(d *jx.Decoder) error {
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem GistSimpleFilesItem
+		var elem NilGistSimpleFilesItem
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -70544,6 +70544,50 @@ func (s *NilCheckSuiteStatus) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes CodeScanningAlertClassification as json.
+func (o NilCodeScanningAlertClassification) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes CodeScanningAlertClassification from json.
+func (o *NilCodeScanningAlertClassification) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilCodeScanningAlertClassification to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v CodeScanningAlertClassification
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilCodeScanningAlertClassification) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilCodeScanningAlertClassification) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes CodeScanningAlertDismissedAt as json.
 func (o NilCodeScanningAlertDismissedAt) Encode(e *jx.Encoder) {
 	if o.Null {
@@ -70718,6 +70762,50 @@ func (s NilFileCommitContent) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *NilFileCommitContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes GistSimpleFilesItem as json.
+func (o NilGistSimpleFilesItem) Encode(e *jx.Encoder) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes GistSimpleFilesItem from json.
+func (o *NilGistSimpleFilesItem) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilGistSimpleFilesItem to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v GistSimpleFilesItem
+		o.Value = v
+		o.Null = true
+		return nil
+	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NilGistSimpleFilesItem) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NilGistSimpleFilesItem) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -172061,16 +172149,20 @@ func (s *ValidationErrorErrorsItem) UnmarshalJSON(data []byte) error {
 // Encode encodes ValidationErrorErrorsItemValue as json.
 func (s ValidationErrorErrorsItemValue) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case StringValidationErrorErrorsItemValue:
-		e.Str(s.String)
-	case IntValidationErrorErrorsItemValue:
-		e.Int(s.Int)
+	case NilStringValidationErrorErrorsItemValue:
+		s.NilString.Encode(e)
+	case NilIntValidationErrorErrorsItemValue:
+		s.NilInt.Encode(e)
 	case StringArrayValidationErrorErrorsItemValue:
-		e.ArrStart()
-		for _, elem := range s.StringArray {
-			e.Str(elem)
+		if s.StringArray == nil {
+			e.Null()
+		} else {
+			e.ArrStart()
+			for _, elem := range s.StringArray {
+				e.Str(elem)
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
 	}
 }
 
@@ -172082,32 +172174,35 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
+		if err := s.NilString.Decode(d); err != nil {
 			return err
 		}
-		s.Type = StringValidationErrorErrorsItemValue
+		s.Type = NilStringValidationErrorErrorsItemValue
 	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
+		if err := s.NilInt.Decode(d); err != nil {
 			return err
 		}
-		s.Type = IntValidationErrorErrorsItemValue
+		s.Type = NilIntValidationErrorErrorsItemValue
 	case jx.Array:
-		s.StringArray = make([]string, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
+		switch tt := d.Next(); tt {
+		case jx.Null:
+			if err := d.Skip(); err != nil {
 				return err
 			}
-			s.StringArray = append(s.StringArray, elem)
-			return nil
-		}); err != nil {
-			return err
+		default:
+			s.StringArray = make([]string, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.StringArray = append(s.StringArray, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
 		}
 		s.Type = StringArrayValidationErrorErrorsItemValue
 	default:

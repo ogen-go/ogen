@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
-func boxStructFields(ctx *genctx, s *ir.Type) error {
+func checkStructRecursions(ctx *genctx, s *ir.Type) error {
 	for _, field := range s.Fields {
 		if field.Spec == nil {
 			continue
@@ -21,16 +21,24 @@ func boxStructFields(ctx *genctx, s *ir.Type) error {
 
 		boxedT, err := func(t *ir.Type) (*ir.Type, error) {
 			if s.RecursiveTo(t) {
+				if t.IsGeneric() {
+					t = t.GenericOf
+				}
+
 				switch {
 				case v.OnlyOptional():
 					return ir.Pointer(t, ir.NilOptional), nil
 				case v.OnlyNullable():
 					return ir.Pointer(t, ir.NilNull), nil
 				case v.NullableOptional():
-					t, err := boxType(ctx, ir.GenericVariant{
+					t, err := boxType(t, ir.GenericVariant{
 						Optional: true,
-					}, t)
+					})
 					if err != nil {
+						return nil, err
+					}
+
+					if err := ctx.saveType(t); err != nil {
 						return nil, err
 					}
 
@@ -40,7 +48,7 @@ func boxStructFields(ctx *genctx, s *ir.Type) error {
 					return nil, errors.Errorf("infinite recursion: %s.%s is required", s.Name, field.Name)
 				}
 			}
-			return boxType(ctx, v, t)
+			return t, nil
 		}(field.Type)
 		if err != nil {
 			return errors.Wrapf(err, "wrap field %q with generic type", field.Name)
@@ -52,7 +60,7 @@ func boxStructFields(ctx *genctx, s *ir.Type) error {
 	return nil
 }
 
-func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
+func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
 	// Do not wrap if
 	//  * type is Any
 	//  * type is Stream
@@ -80,10 +88,7 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 			if err != nil {
 				return nil, errors.Wrap(err, "postfix")
 			}
-			t = ir.Generic(postfix, t, v)
-			if err := ctx.saveType(t); err != nil {
-				return nil, err
-			}
+			return ir.Generic(postfix, t, v), nil
 		}
 
 		return t, nil
@@ -94,12 +99,7 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "postfix")
 		}
-		t = ir.Generic(postfix, t, v)
-		if err := ctx.saveType(t); err != nil {
-			return nil, err
-		}
-
-		return t, nil
+		return ir.Generic(postfix, t, v), nil
 	}
 
 	switch {
@@ -112,14 +112,9 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "postfix")
 		}
-		t = ir.Generic(postfix,
+		return ir.Generic(postfix,
 			t.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
-		)
-		if err := ctx.saveType(t); err != nil {
-			return nil, err
-		}
-
-		return t, nil
+		), nil
 	}
 }
 

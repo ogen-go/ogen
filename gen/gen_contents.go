@@ -54,13 +54,14 @@ func (g *Generator) generateFormContent(
 	ctx *genctx,
 	typeName string,
 	media *openapi.MediaType,
+	optional bool,
 	cb func(f *ir.Field) error,
 ) (*ir.Type, error) {
 	if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
-	t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema)
+	t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
 	if err != nil {
 		return nil, errors.Wrap(err, "generate schema")
 	}
@@ -143,25 +144,17 @@ func (g *Generator) generateContents(
 		if err := func() error {
 			switch parsedContentType {
 			case "application/json":
-				t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema)
+				t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
 
 				t.AddFeature("json")
-				t, err = boxType(ctx, ir.GenericVariant{
-					Nullable: t.Schema != nil && t.Schema.Nullable,
-					Optional: optional,
-				}, t)
-				if err != nil {
-					return errors.Wrap(err, "box schema")
-				}
-
 				result[ir.ContentTypeJSON] = t
 				return nil
 
 			case "application/x-www-form-urlencoded":
-				t, err := g.generateFormContent(ctx, typeName, media, func(f *ir.Field) error {
+				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
 					f.Type.AddFeature("uri")
 					return nil
 				})
@@ -173,7 +166,7 @@ func (g *Generator) generateContents(
 				return nil
 
 			case "multipart/form-data":
-				t, err := g.generateFormContent(ctx, typeName, media, func(f *ir.Field) error {
+				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
 					if s := f.Spec; s != nil && isBinary(s.Schema) {
 						if !s.Required {
 							return &ErrNotImplemented{"optional multipart file"}

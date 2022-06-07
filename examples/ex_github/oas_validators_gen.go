@@ -3492,7 +3492,7 @@ func (s CodeScanningAlertInstance) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.Classifications {
 			if err := func() error {
-				if err := elem.Validate(); err != nil {
+				if err := elem.Value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -17774,79 +17774,6 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) Validate() 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ValidationError) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		var failures []validate.FieldError
-		for i, elem := range s.Errors {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "errors",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ValidationErrorErrorsItem) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Value.Set {
-			if err := func() error {
-				if err := s.Value.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "value",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ValidationErrorErrorsItemValue) Validate() error {
-	switch s.Type {
-	case StringValidationErrorErrorsItemValue:
-		return nil // no validation needed
-	case IntValidationErrorErrorsItemValue:
-		return nil // no validation needed
-	case StringArrayValidationErrorErrorsItemValue:
-		if s.StringArray == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	default:
-		return errors.Errorf("invalid type %q", s.Type)
-	}
-}
-
 func (s ViewTraffic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

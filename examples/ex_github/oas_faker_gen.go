@@ -4340,7 +4340,7 @@ func (s *CodeScanningAlertInstance) SetFake() {
 		{
 			s.Classifications = nil
 			for i := 0; i < 0; i++ {
-				var elem CodeScanningAlertClassification
+				var elem NilCodeScanningAlertClassification
 				{
 					elem.SetFake()
 				}
@@ -8774,8 +8774,8 @@ func (s *GistSimple) SetFake() {
 // SetFake set fake values.
 func (s *GistSimpleFiles) SetFake() {
 	var (
-		elem GistSimpleFilesItem
-		m    map[string]GistSimpleFilesItem = s.init()
+		elem NilGistSimpleFilesItem
+		m    map[string]NilGistSimpleFilesItem = s.init()
 	)
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
@@ -14598,6 +14598,11 @@ func (s *NilCheckSuiteStatus) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NilCodeScanningAlertClassification) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
 func (s *NilCodeScanningAlertDismissedAt) SetFake() {
 	s.Null = true
 }
@@ -14614,6 +14619,11 @@ func (s *NilDateTime) SetFake() {
 
 // SetFake set fake values.
 func (s *NilFileCommitContent) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilGistSimpleFilesItem) SetFake() {
 	s.Null = true
 }
 
@@ -36636,12 +36646,12 @@ func (s *ValidationErrorErrorsItem) SetFake() {
 
 // SetFake set fake values.
 func (s *ValidationErrorErrorsItemValue) SetFake() {
-	var elem string
+	var elem NilString
 
 	{
-		elem = "string"
+		elem.SetFake()
 	}
-	s.SetString(elem)
+	s.SetNilString(elem)
 }
 
 // SetFake set fake values.

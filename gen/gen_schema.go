@@ -15,7 +15,7 @@ import (
 func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 	for _, t := range gen.side {
 		if t.IsStruct() {
-			if err := boxStructFields(ctx, t); err != nil {
+			if err := checkStructRecursions(ctx, t); err != nil {
 				return errors.Wrap(err, t.Name)
 			}
 		}
@@ -27,7 +27,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 
 	for ref, t := range gen.localRefs {
 		if t.IsStruct() {
-			if err := boxStructFields(ctx, t); err != nil {
+			if err := checkStructRecursions(ctx, t); err != nil {
 				return errors.Wrap(err, ref)
 			}
 		}
@@ -38,11 +38,11 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 	return nil
 }
 
-func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema) (*ir.Type, error) {
+func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
 	gen := newSchemaGen(ctx.lookupRef)
 	gen.log = g.log.Named("schemagen")
 
-	t, err := gen.generate(name, schema)
+	t, err := gen.generate(name, schema, optional)
 	if err != nil {
 		return nil, err
 	}
@@ -119,7 +119,7 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 		}
 	}
 
-	t, err := gen.generate(opts.TypeName, schema)
+	t, err := gen.generate(opts.TypeName, schema, false)
 	if err != nil {
 		return errors.Wrap(err, "generate type")
 	}

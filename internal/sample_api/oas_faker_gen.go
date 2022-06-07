@@ -412,11 +412,6 @@ func (s *MapWithProperties) SetFake() {
 	}
 	{
 		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-	{
-		{
 			s.Optional.SetFake()
 		}
 	}

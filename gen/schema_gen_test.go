@@ -22,7 +22,7 @@ func TestSchemaGenAnyWarn(t *testing.T) {
 
 	_, err := s.generate("foo", &jsonschema.Schema{
 		Type: "",
-	})
+	}, false)
 	a.NoError(err)
 
 	entries := ob.FilterMessage("Type is not defined, using any").All()

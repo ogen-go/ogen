@@ -57,14 +57,14 @@ func (UnimplementedHandler) TestRequestBooleanNullable(ctx context.Context, req 
 // TestRequestBooleanNullableArray implements test_request_boolean_nullable_array operation.
 //
 // POST /test_request_boolean_nullable_array
-func (UnimplementedHandler) TestRequestBooleanNullableArray(ctx context.Context, req []bool) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestBooleanNullableArray(ctx context.Context, req []NilBool) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestBooleanNullableArrayArray implements test_request_boolean_nullable_array_array operation.
 //
 // POST /test_request_boolean_nullable_array_array
-func (UnimplementedHandler) TestRequestBooleanNullableArrayArray(ctx context.Context, req [][]bool) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestBooleanNullableArrayArray(ctx context.Context, req [][]NilBool) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -134,14 +134,14 @@ func (UnimplementedHandler) TestRequestIntegerInt32Nullable(ctx context.Context,
 // TestRequestIntegerInt32NullableArray implements test_request_integer_int32_nullable_array operation.
 //
 // POST /test_request_integer_int32_nullable_array
-func (UnimplementedHandler) TestRequestIntegerInt32NullableArray(ctx context.Context, req []int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestIntegerInt32NullableArray(ctx context.Context, req []NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestIntegerInt32NullableArrayArray implements test_request_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_integer_int32_nullable_array_array
-func (UnimplementedHandler) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, req [][]int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, req [][]NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -176,14 +176,14 @@ func (UnimplementedHandler) TestRequestIntegerInt64Nullable(ctx context.Context,
 // TestRequestIntegerInt64NullableArray implements test_request_integer_int64_nullable_array operation.
 //
 // POST /test_request_integer_int64_nullable_array
-func (UnimplementedHandler) TestRequestIntegerInt64NullableArray(ctx context.Context, req []int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestIntegerInt64NullableArray(ctx context.Context, req []NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestIntegerInt64NullableArrayArray implements test_request_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_integer_int64_nullable_array_array
-func (UnimplementedHandler) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, req [][]int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, req [][]NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -197,14 +197,14 @@ func (UnimplementedHandler) TestRequestIntegerNullable(ctx context.Context, req 
 // TestRequestIntegerNullableArray implements test_request_integer_nullable_array operation.
 //
 // POST /test_request_integer_nullable_array
-func (UnimplementedHandler) TestRequestIntegerNullableArray(ctx context.Context, req []int) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestIntegerNullableArray(ctx context.Context, req []NilInt) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestIntegerNullableArrayArray implements test_request_integer_nullable_array_array operation.
 //
 // POST /test_request_integer_nullable_array_array
-func (UnimplementedHandler) TestRequestIntegerNullableArrayArray(ctx context.Context, req [][]int) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestIntegerNullableArrayArray(ctx context.Context, req [][]NilInt) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -302,14 +302,14 @@ func (UnimplementedHandler) TestRequestNumberDoubleNullable(ctx context.Context,
 // TestRequestNumberDoubleNullableArray implements test_request_number_double_nullable_array operation.
 //
 // POST /test_request_number_double_nullable_array
-func (UnimplementedHandler) TestRequestNumberDoubleNullableArray(ctx context.Context, req []float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberDoubleNullableArray(ctx context.Context, req []NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestNumberDoubleNullableArrayArray implements test_request_number_double_nullable_array_array operation.
 //
 // POST /test_request_number_double_nullable_array_array
-func (UnimplementedHandler) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, req [][]float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, req [][]NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -344,14 +344,14 @@ func (UnimplementedHandler) TestRequestNumberFloatNullable(ctx context.Context, 
 // TestRequestNumberFloatNullableArray implements test_request_number_float_nullable_array operation.
 //
 // POST /test_request_number_float_nullable_array
-func (UnimplementedHandler) TestRequestNumberFloatNullableArray(ctx context.Context, req []float32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberFloatNullableArray(ctx context.Context, req []NilFloat32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestNumberFloatNullableArrayArray implements test_request_number_float_nullable_array_array operation.
 //
 // POST /test_request_number_float_nullable_array_array
-func (UnimplementedHandler) TestRequestNumberFloatNullableArrayArray(ctx context.Context, req [][]float32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberFloatNullableArrayArray(ctx context.Context, req [][]NilFloat32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -386,14 +386,14 @@ func (UnimplementedHandler) TestRequestNumberInt32Nullable(ctx context.Context, 
 // TestRequestNumberInt32NullableArray implements test_request_number_int32_nullable_array operation.
 //
 // POST /test_request_number_int32_nullable_array
-func (UnimplementedHandler) TestRequestNumberInt32NullableArray(ctx context.Context, req []int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberInt32NullableArray(ctx context.Context, req []NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestNumberInt32NullableArrayArray implements test_request_number_int32_nullable_array_array operation.
 //
 // POST /test_request_number_int32_nullable_array_array
-func (UnimplementedHandler) TestRequestNumberInt32NullableArrayArray(ctx context.Context, req [][]int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberInt32NullableArrayArray(ctx context.Context, req [][]NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -428,14 +428,14 @@ func (UnimplementedHandler) TestRequestNumberInt64Nullable(ctx context.Context, 
 // TestRequestNumberInt64NullableArray implements test_request_number_int64_nullable_array operation.
 //
 // POST /test_request_number_int64_nullable_array
-func (UnimplementedHandler) TestRequestNumberInt64NullableArray(ctx context.Context, req []int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberInt64NullableArray(ctx context.Context, req []NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestNumberInt64NullableArrayArray implements test_request_number_int64_nullable_array_array operation.
 //
 // POST /test_request_number_int64_nullable_array_array
-func (UnimplementedHandler) TestRequestNumberInt64NullableArrayArray(ctx context.Context, req [][]int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberInt64NullableArrayArray(ctx context.Context, req [][]NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -449,14 +449,14 @@ func (UnimplementedHandler) TestRequestNumberNullable(ctx context.Context, req O
 // TestRequestNumberNullableArray implements test_request_number_nullable_array operation.
 //
 // POST /test_request_number_nullable_array
-func (UnimplementedHandler) TestRequestNumberNullableArray(ctx context.Context, req []float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberNullableArray(ctx context.Context, req []NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestNumberNullableArrayArray implements test_request_number_nullable_array_array operation.
 //
 // POST /test_request_number_nullable_array_array
-func (UnimplementedHandler) TestRequestNumberNullableArrayArray(ctx context.Context, req [][]float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNumberNullableArrayArray(ctx context.Context, req [][]NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -498,14 +498,14 @@ func (UnimplementedHandler) TestRequestRequiredBooleanNullable(ctx context.Conte
 // TestRequestRequiredBooleanNullableArray implements test_request_required_boolean_nullable_array operation.
 //
 // POST /test_request_required_boolean_nullable_array
-func (UnimplementedHandler) TestRequestRequiredBooleanNullableArray(ctx context.Context, req []bool) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredBooleanNullableArray(ctx context.Context, req []NilBool) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredBooleanNullableArrayArray implements test_request_required_boolean_nullable_array_array operation.
 //
 // POST /test_request_required_boolean_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredBooleanNullableArrayArray(ctx context.Context, req [][]bool) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredBooleanNullableArrayArray(ctx context.Context, req [][]NilBool) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -575,14 +575,14 @@ func (UnimplementedHandler) TestRequestRequiredIntegerInt32Nullable(ctx context.
 // TestRequestRequiredIntegerInt32NullableArray implements test_request_required_integer_int32_nullable_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array
-func (UnimplementedHandler) TestRequestRequiredIntegerInt32NullableArray(ctx context.Context, req []int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredIntegerInt32NullableArray(ctx context.Context, req []NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredIntegerInt32NullableArrayArray implements test_request_required_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, req [][]int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, req [][]NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -617,14 +617,14 @@ func (UnimplementedHandler) TestRequestRequiredIntegerInt64Nullable(ctx context.
 // TestRequestRequiredIntegerInt64NullableArray implements test_request_required_integer_int64_nullable_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array
-func (UnimplementedHandler) TestRequestRequiredIntegerInt64NullableArray(ctx context.Context, req []int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredIntegerInt64NullableArray(ctx context.Context, req []NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredIntegerInt64NullableArrayArray implements test_request_required_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, req [][]int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, req [][]NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -638,14 +638,14 @@ func (UnimplementedHandler) TestRequestRequiredIntegerNullable(ctx context.Conte
 // TestRequestRequiredIntegerNullableArray implements test_request_required_integer_nullable_array operation.
 //
 // POST /test_request_required_integer_nullable_array
-func (UnimplementedHandler) TestRequestRequiredIntegerNullableArray(ctx context.Context, req []int) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredIntegerNullableArray(ctx context.Context, req []NilInt) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredIntegerNullableArrayArray implements test_request_required_integer_nullable_array_array operation.
 //
 // POST /test_request_required_integer_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]int) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]NilInt) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -743,14 +743,14 @@ func (UnimplementedHandler) TestRequestRequiredNumberDoubleNullable(ctx context.
 // TestRequestRequiredNumberDoubleNullableArray implements test_request_required_number_double_nullable_array operation.
 //
 // POST /test_request_required_number_double_nullable_array
-func (UnimplementedHandler) TestRequestRequiredNumberDoubleNullableArray(ctx context.Context, req []float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberDoubleNullableArray(ctx context.Context, req []NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredNumberDoubleNullableArrayArray implements test_request_required_number_double_nullable_array_array operation.
 //
 // POST /test_request_required_number_double_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, req [][]float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, req [][]NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -785,14 +785,14 @@ func (UnimplementedHandler) TestRequestRequiredNumberFloatNullable(ctx context.C
 // TestRequestRequiredNumberFloatNullableArray implements test_request_required_number_float_nullable_array operation.
 //
 // POST /test_request_required_number_float_nullable_array
-func (UnimplementedHandler) TestRequestRequiredNumberFloatNullableArray(ctx context.Context, req []float32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberFloatNullableArray(ctx context.Context, req []NilFloat32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredNumberFloatNullableArrayArray implements test_request_required_number_float_nullable_array_array operation.
 //
 // POST /test_request_required_number_float_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, req [][]float32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, req [][]NilFloat32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -827,14 +827,14 @@ func (UnimplementedHandler) TestRequestRequiredNumberInt32Nullable(ctx context.C
 // TestRequestRequiredNumberInt32NullableArray implements test_request_required_number_int32_nullable_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array
-func (UnimplementedHandler) TestRequestRequiredNumberInt32NullableArray(ctx context.Context, req []int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberInt32NullableArray(ctx context.Context, req []NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredNumberInt32NullableArrayArray implements test_request_required_number_int32_nullable_array_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, req [][]int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, req [][]NilInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -869,14 +869,14 @@ func (UnimplementedHandler) TestRequestRequiredNumberInt64Nullable(ctx context.C
 // TestRequestRequiredNumberInt64NullableArray implements test_request_required_number_int64_nullable_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array
-func (UnimplementedHandler) TestRequestRequiredNumberInt64NullableArray(ctx context.Context, req []int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberInt64NullableArray(ctx context.Context, req []NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredNumberInt64NullableArrayArray implements test_request_required_number_int64_nullable_array_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, req [][]int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, req [][]NilInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -890,14 +890,14 @@ func (UnimplementedHandler) TestRequestRequiredNumberNullable(ctx context.Contex
 // TestRequestRequiredNumberNullableArray implements test_request_required_number_nullable_array operation.
 //
 // POST /test_request_required_number_nullable_array
-func (UnimplementedHandler) TestRequestRequiredNumberNullableArray(ctx context.Context, req []float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberNullableArray(ctx context.Context, req []NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredNumberNullableArrayArray implements test_request_required_number_nullable_array_array operation.
 //
 // POST /test_request_required_number_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredNumberNullableArrayArray(ctx context.Context, req [][]float64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredNumberNullableArrayArray(ctx context.Context, req [][]NilFloat64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -953,14 +953,14 @@ func (UnimplementedHandler) TestRequestRequiredStringBinaryNullable(ctx context.
 // TestRequestRequiredStringBinaryNullableArray implements test_request_required_string_binary_nullable_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringBinaryNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringBinaryNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringBinaryNullableArrayArray implements test_request_required_string_binary_nullable_array_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1037,14 +1037,14 @@ func (UnimplementedHandler) TestRequestRequiredStringDateNullable(ctx context.Co
 // TestRequestRequiredStringDateNullableArray implements test_request_required_string_date_nullable_array operation.
 //
 // POST /test_request_required_string_date_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringDateNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringDateNullableArray(ctx context.Context, req []NilDate) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringDateNullableArrayArray implements test_request_required_string_date_nullable_array_array operation.
 //
 // POST /test_request_required_string_date_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringDateNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringDateNullableArrayArray(ctx context.Context, req [][]NilDate) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1079,14 +1079,14 @@ func (UnimplementedHandler) TestRequestRequiredStringDateTimeNullable(ctx contex
 // TestRequestRequiredStringDateTimeNullableArray implements test_request_required_string_date-time_nullable_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringDateTimeNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringDateTimeNullableArray(ctx context.Context, req []NilDateTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringDateTimeNullableArrayArray implements test_request_required_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, req [][]NilDateTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1121,14 +1121,14 @@ func (UnimplementedHandler) TestRequestRequiredStringDurationNullable(ctx contex
 // TestRequestRequiredStringDurationNullableArray implements test_request_required_string_duration_nullable_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringDurationNullableArray(ctx context.Context, req []time.Duration) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringDurationNullableArray(ctx context.Context, req []NilDuration) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringDurationNullableArrayArray implements test_request_required_string_duration_nullable_array_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, req [][]time.Duration) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, req [][]NilDuration) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1163,14 +1163,14 @@ func (UnimplementedHandler) TestRequestRequiredStringEmailNullable(ctx context.C
 // TestRequestRequiredStringEmailNullableArray implements test_request_required_string_email_nullable_array operation.
 //
 // POST /test_request_required_string_email_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringEmailNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringEmailNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringEmailNullableArrayArray implements test_request_required_string_email_nullable_array_array operation.
 //
 // POST /test_request_required_string_email_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1205,14 +1205,14 @@ func (UnimplementedHandler) TestRequestRequiredStringHostnameNullable(ctx contex
 // TestRequestRequiredStringHostnameNullableArray implements test_request_required_string_hostname_nullable_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringHostnameNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringHostnameNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringHostnameNullableArrayArray implements test_request_required_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1247,14 +1247,14 @@ func (UnimplementedHandler) TestRequestRequiredStringIPNullable(ctx context.Cont
 // TestRequestRequiredStringIPNullableArray implements test_request_required_string_ip_nullable_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringIPNullableArray(ctx context.Context, req []netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringIPNullableArray(ctx context.Context, req []NilIP) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringIPNullableArrayArray implements test_request_required_string_ip_nullable_array_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, req [][]netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, req [][]NilIP) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1289,14 +1289,14 @@ func (UnimplementedHandler) TestRequestRequiredStringInt32Nullable(ctx context.C
 // TestRequestRequiredStringInt32NullableArray implements test_request_required_string_int32_nullable_array operation.
 //
 // POST /test_request_required_string_int32_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringInt32NullableArray(ctx context.Context, req []int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringInt32NullableArray(ctx context.Context, req []NilStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringInt32NullableArrayArray implements test_request_required_string_int32_nullable_array_array operation.
 //
 // POST /test_request_required_string_int32_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, req [][]int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, req [][]NilStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1331,14 +1331,14 @@ func (UnimplementedHandler) TestRequestRequiredStringInt64Nullable(ctx context.C
 // TestRequestRequiredStringInt64NullableArray implements test_request_required_string_int64_nullable_array operation.
 //
 // POST /test_request_required_string_int64_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringInt64NullableArray(ctx context.Context, req []int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringInt64NullableArray(ctx context.Context, req []NilStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringInt64NullableArrayArray implements test_request_required_string_int64_nullable_array_array operation.
 //
 // POST /test_request_required_string_int64_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, req [][]int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, req [][]NilStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1373,14 +1373,14 @@ func (UnimplementedHandler) TestRequestRequiredStringIpv4Nullable(ctx context.Co
 // TestRequestRequiredStringIpv4NullableArray implements test_request_required_string_ipv4_nullable_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringIpv4NullableArray(ctx context.Context, req []netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringIpv4NullableArray(ctx context.Context, req []NilIPv4) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringIpv4NullableArrayArray implements test_request_required_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, req [][]netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, req [][]NilIPv4) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1415,14 +1415,14 @@ func (UnimplementedHandler) TestRequestRequiredStringIpv6Nullable(ctx context.Co
 // TestRequestRequiredStringIpv6NullableArray implements test_request_required_string_ipv6_nullable_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringIpv6NullableArray(ctx context.Context, req []netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringIpv6NullableArray(ctx context.Context, req []NilIPv6) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringIpv6NullableArrayArray implements test_request_required_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, req [][]netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, req [][]NilIPv6) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1436,14 +1436,14 @@ func (UnimplementedHandler) TestRequestRequiredStringNullable(ctx context.Contex
 // TestRequestRequiredStringNullableArray implements test_request_required_string_nullable_array operation.
 //
 // POST /test_request_required_string_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringNullableArrayArray implements test_request_required_string_nullable_array_array operation.
 //
 // POST /test_request_required_string_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1478,14 +1478,14 @@ func (UnimplementedHandler) TestRequestRequiredStringPasswordNullable(ctx contex
 // TestRequestRequiredStringPasswordNullableArray implements test_request_required_string_password_nullable_array operation.
 //
 // POST /test_request_required_string_password_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringPasswordNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringPasswordNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringPasswordNullableArrayArray implements test_request_required_string_password_nullable_array_array operation.
 //
 // POST /test_request_required_string_password_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1520,14 +1520,14 @@ func (UnimplementedHandler) TestRequestRequiredStringTimeNullable(ctx context.Co
 // TestRequestRequiredStringTimeNullableArray implements test_request_required_string_time_nullable_array operation.
 //
 // POST /test_request_required_string_time_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringTimeNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringTimeNullableArray(ctx context.Context, req []NilTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringTimeNullableArrayArray implements test_request_required_string_time_nullable_array_array operation.
 //
 // POST /test_request_required_string_time_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, req [][]NilTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1562,14 +1562,14 @@ func (UnimplementedHandler) TestRequestRequiredStringURINullable(ctx context.Con
 // TestRequestRequiredStringURINullableArray implements test_request_required_string_uri_nullable_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringURINullableArray(ctx context.Context, req []url.URL) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringURINullableArray(ctx context.Context, req []NilURI) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringURINullableArrayArray implements test_request_required_string_uri_nullable_array_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringURINullableArrayArray(ctx context.Context, req [][]url.URL) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringURINullableArrayArray(ctx context.Context, req [][]NilURI) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1604,14 +1604,14 @@ func (UnimplementedHandler) TestRequestRequiredStringUUIDNullable(ctx context.Co
 // TestRequestRequiredStringUUIDNullableArray implements test_request_required_string_uuid_nullable_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUUIDNullableArray(ctx context.Context, req []uuid.UUID) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUUIDNullableArray(ctx context.Context, req []NilUUID) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUUIDNullableArrayArray implements test_request_required_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, req [][]uuid.UUID) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, req [][]NilUUID) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1667,14 +1667,14 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullable(ctx conte
 // TestRequestRequiredStringUnixMicroNullableArray implements test_request_required_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixMicroNullableArrayArray implements test_request_required_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1709,14 +1709,14 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullable(ctx conte
 // TestRequestRequiredStringUnixMilliNullableArray implements test_request_required_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixMilliNullableArrayArray implements test_request_required_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1751,14 +1751,14 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullable(ctx contex
 // TestRequestRequiredStringUnixNanoNullableArray implements test_request_required_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNanoNullableArrayArray implements test_request_required_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1772,14 +1772,14 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixNullable(ctx context.Co
 // TestRequestRequiredStringUnixNullableArray implements test_request_required_string_unix_nullable_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNullableArrayArray implements test_request_required_string_unix_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1814,14 +1814,14 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullable(ctx con
 // TestRequestRequiredStringUnixSecondsNullableArray implements test_request_required_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixSecondsNullableArrayArray implements test_request_required_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1877,14 +1877,14 @@ func (UnimplementedHandler) TestRequestStringBinaryNullable(ctx context.Context,
 // TestRequestStringBinaryNullableArray implements test_request_string_binary_nullable_array operation.
 //
 // POST /test_request_string_binary_nullable_array
-func (UnimplementedHandler) TestRequestStringBinaryNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringBinaryNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringBinaryNullableArrayArray implements test_request_string_binary_nullable_array_array operation.
 //
 // POST /test_request_string_binary_nullable_array_array
-func (UnimplementedHandler) TestRequestStringBinaryNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringBinaryNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1961,14 +1961,14 @@ func (UnimplementedHandler) TestRequestStringDateNullable(ctx context.Context, r
 // TestRequestStringDateNullableArray implements test_request_string_date_nullable_array operation.
 //
 // POST /test_request_string_date_nullable_array
-func (UnimplementedHandler) TestRequestStringDateNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringDateNullableArray(ctx context.Context, req []NilDate) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringDateNullableArrayArray implements test_request_string_date_nullable_array_array operation.
 //
 // POST /test_request_string_date_nullable_array_array
-func (UnimplementedHandler) TestRequestStringDateNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringDateNullableArrayArray(ctx context.Context, req [][]NilDate) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2003,14 +2003,14 @@ func (UnimplementedHandler) TestRequestStringDateTimeNullable(ctx context.Contex
 // TestRequestStringDateTimeNullableArray implements test_request_string_date-time_nullable_array operation.
 //
 // POST /test_request_string_date-time_nullable_array
-func (UnimplementedHandler) TestRequestStringDateTimeNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringDateTimeNullableArray(ctx context.Context, req []NilDateTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringDateTimeNullableArrayArray implements test_request_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_string_date-time_nullable_array_array
-func (UnimplementedHandler) TestRequestStringDateTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringDateTimeNullableArrayArray(ctx context.Context, req [][]NilDateTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2045,14 +2045,14 @@ func (UnimplementedHandler) TestRequestStringDurationNullable(ctx context.Contex
 // TestRequestStringDurationNullableArray implements test_request_string_duration_nullable_array operation.
 //
 // POST /test_request_string_duration_nullable_array
-func (UnimplementedHandler) TestRequestStringDurationNullableArray(ctx context.Context, req []time.Duration) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringDurationNullableArray(ctx context.Context, req []NilDuration) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringDurationNullableArrayArray implements test_request_string_duration_nullable_array_array operation.
 //
 // POST /test_request_string_duration_nullable_array_array
-func (UnimplementedHandler) TestRequestStringDurationNullableArrayArray(ctx context.Context, req [][]time.Duration) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringDurationNullableArrayArray(ctx context.Context, req [][]NilDuration) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2087,14 +2087,14 @@ func (UnimplementedHandler) TestRequestStringEmailNullable(ctx context.Context, 
 // TestRequestStringEmailNullableArray implements test_request_string_email_nullable_array operation.
 //
 // POST /test_request_string_email_nullable_array
-func (UnimplementedHandler) TestRequestStringEmailNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringEmailNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringEmailNullableArrayArray implements test_request_string_email_nullable_array_array operation.
 //
 // POST /test_request_string_email_nullable_array_array
-func (UnimplementedHandler) TestRequestStringEmailNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringEmailNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2129,14 +2129,14 @@ func (UnimplementedHandler) TestRequestStringHostnameNullable(ctx context.Contex
 // TestRequestStringHostnameNullableArray implements test_request_string_hostname_nullable_array operation.
 //
 // POST /test_request_string_hostname_nullable_array
-func (UnimplementedHandler) TestRequestStringHostnameNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringHostnameNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringHostnameNullableArrayArray implements test_request_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_string_hostname_nullable_array_array
-func (UnimplementedHandler) TestRequestStringHostnameNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringHostnameNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2171,14 +2171,14 @@ func (UnimplementedHandler) TestRequestStringIPNullable(ctx context.Context, req
 // TestRequestStringIPNullableArray implements test_request_string_ip_nullable_array operation.
 //
 // POST /test_request_string_ip_nullable_array
-func (UnimplementedHandler) TestRequestStringIPNullableArray(ctx context.Context, req []netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringIPNullableArray(ctx context.Context, req []NilIP) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringIPNullableArrayArray implements test_request_string_ip_nullable_array_array operation.
 //
 // POST /test_request_string_ip_nullable_array_array
-func (UnimplementedHandler) TestRequestStringIPNullableArrayArray(ctx context.Context, req [][]netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringIPNullableArrayArray(ctx context.Context, req [][]NilIP) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2213,14 +2213,14 @@ func (UnimplementedHandler) TestRequestStringInt32Nullable(ctx context.Context, 
 // TestRequestStringInt32NullableArray implements test_request_string_int32_nullable_array operation.
 //
 // POST /test_request_string_int32_nullable_array
-func (UnimplementedHandler) TestRequestStringInt32NullableArray(ctx context.Context, req []int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt32NullableArray(ctx context.Context, req []NilStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringInt32NullableArrayArray implements test_request_string_int32_nullable_array_array operation.
 //
 // POST /test_request_string_int32_nullable_array_array
-func (UnimplementedHandler) TestRequestStringInt32NullableArrayArray(ctx context.Context, req [][]int32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt32NullableArrayArray(ctx context.Context, req [][]NilStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2255,14 +2255,14 @@ func (UnimplementedHandler) TestRequestStringInt64Nullable(ctx context.Context, 
 // TestRequestStringInt64NullableArray implements test_request_string_int64_nullable_array operation.
 //
 // POST /test_request_string_int64_nullable_array
-func (UnimplementedHandler) TestRequestStringInt64NullableArray(ctx context.Context, req []int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt64NullableArray(ctx context.Context, req []NilStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringInt64NullableArrayArray implements test_request_string_int64_nullable_array_array operation.
 //
 // POST /test_request_string_int64_nullable_array_array
-func (UnimplementedHandler) TestRequestStringInt64NullableArrayArray(ctx context.Context, req [][]int64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt64NullableArrayArray(ctx context.Context, req [][]NilStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2297,14 +2297,14 @@ func (UnimplementedHandler) TestRequestStringIpv4Nullable(ctx context.Context, r
 // TestRequestStringIpv4NullableArray implements test_request_string_ipv4_nullable_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array
-func (UnimplementedHandler) TestRequestStringIpv4NullableArray(ctx context.Context, req []netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringIpv4NullableArray(ctx context.Context, req []NilIPv4) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringIpv4NullableArrayArray implements test_request_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array_array
-func (UnimplementedHandler) TestRequestStringIpv4NullableArrayArray(ctx context.Context, req [][]netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringIpv4NullableArrayArray(ctx context.Context, req [][]NilIPv4) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2339,14 +2339,14 @@ func (UnimplementedHandler) TestRequestStringIpv6Nullable(ctx context.Context, r
 // TestRequestStringIpv6NullableArray implements test_request_string_ipv6_nullable_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array
-func (UnimplementedHandler) TestRequestStringIpv6NullableArray(ctx context.Context, req []netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringIpv6NullableArray(ctx context.Context, req []NilIPv6) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringIpv6NullableArrayArray implements test_request_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array_array
-func (UnimplementedHandler) TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]netip.Addr) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]NilIPv6) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2360,14 +2360,14 @@ func (UnimplementedHandler) TestRequestStringNullable(ctx context.Context, req O
 // TestRequestStringNullableArray implements test_request_string_nullable_array operation.
 //
 // POST /test_request_string_nullable_array
-func (UnimplementedHandler) TestRequestStringNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringNullableArrayArray implements test_request_string_nullable_array_array operation.
 //
 // POST /test_request_string_nullable_array_array
-func (UnimplementedHandler) TestRequestStringNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2402,14 +2402,14 @@ func (UnimplementedHandler) TestRequestStringPasswordNullable(ctx context.Contex
 // TestRequestStringPasswordNullableArray implements test_request_string_password_nullable_array operation.
 //
 // POST /test_request_string_password_nullable_array
-func (UnimplementedHandler) TestRequestStringPasswordNullableArray(ctx context.Context, req []string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringPasswordNullableArray(ctx context.Context, req []NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringPasswordNullableArrayArray implements test_request_string_password_nullable_array_array operation.
 //
 // POST /test_request_string_password_nullable_array_array
-func (UnimplementedHandler) TestRequestStringPasswordNullableArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringPasswordNullableArrayArray(ctx context.Context, req [][]NilString) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2444,14 +2444,14 @@ func (UnimplementedHandler) TestRequestStringTimeNullable(ctx context.Context, r
 // TestRequestStringTimeNullableArray implements test_request_string_time_nullable_array operation.
 //
 // POST /test_request_string_time_nullable_array
-func (UnimplementedHandler) TestRequestStringTimeNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringTimeNullableArray(ctx context.Context, req []NilTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringTimeNullableArrayArray implements test_request_string_time_nullable_array_array operation.
 //
 // POST /test_request_string_time_nullable_array_array
-func (UnimplementedHandler) TestRequestStringTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringTimeNullableArrayArray(ctx context.Context, req [][]NilTime) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2486,14 +2486,14 @@ func (UnimplementedHandler) TestRequestStringURINullable(ctx context.Context, re
 // TestRequestStringURINullableArray implements test_request_string_uri_nullable_array operation.
 //
 // POST /test_request_string_uri_nullable_array
-func (UnimplementedHandler) TestRequestStringURINullableArray(ctx context.Context, req []url.URL) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringURINullableArray(ctx context.Context, req []NilURI) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringURINullableArrayArray implements test_request_string_uri_nullable_array_array operation.
 //
 // POST /test_request_string_uri_nullable_array_array
-func (UnimplementedHandler) TestRequestStringURINullableArrayArray(ctx context.Context, req [][]url.URL) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringURINullableArrayArray(ctx context.Context, req [][]NilURI) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2528,14 +2528,14 @@ func (UnimplementedHandler) TestRequestStringUUIDNullable(ctx context.Context, r
 // TestRequestStringUUIDNullableArray implements test_request_string_uuid_nullable_array operation.
 //
 // POST /test_request_string_uuid_nullable_array
-func (UnimplementedHandler) TestRequestStringUUIDNullableArray(ctx context.Context, req []uuid.UUID) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUUIDNullableArray(ctx context.Context, req []NilUUID) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUUIDNullableArrayArray implements test_request_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_string_uuid_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUUIDNullableArrayArray(ctx context.Context, req [][]uuid.UUID) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUUIDNullableArrayArray(ctx context.Context, req [][]NilUUID) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2591,14 +2591,14 @@ func (UnimplementedHandler) TestRequestStringUnixMicroNullable(ctx context.Conte
 // TestRequestStringUnixMicroNullableArray implements test_request_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixMicroNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMicroNullableArrayArray implements test_request_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2633,14 +2633,14 @@ func (UnimplementedHandler) TestRequestStringUnixMilliNullable(ctx context.Conte
 // TestRequestStringUnixMilliNullableArray implements test_request_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixMilliNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMilliNullableArrayArray implements test_request_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2675,14 +2675,14 @@ func (UnimplementedHandler) TestRequestStringUnixNanoNullable(ctx context.Contex
 // TestRequestStringUnixNanoNullableArray implements test_request_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixNanoNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNanoNullableArrayArray implements test_request_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2696,14 +2696,14 @@ func (UnimplementedHandler) TestRequestStringUnixNullable(ctx context.Context, r
 // TestRequestStringUnixNullableArray implements test_request_string_unix_nullable_array operation.
 //
 // POST /test_request_string_unix_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNullableArrayArray implements test_request_string_unix_nullable_array_array operation.
 //
 // POST /test_request_string_unix_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2738,14 +2738,14 @@ func (UnimplementedHandler) TestRequestStringUnixSecondsNullable(ctx context.Con
 // TestRequestStringUnixSecondsNullableArray implements test_request_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixSecondsNullableArrayArray implements test_request_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2787,14 +2787,14 @@ func (UnimplementedHandler) TestResponseBooleanNullable(ctx context.Context, req
 // TestResponseBooleanNullableArray implements test_response_boolean_nullable_array operation.
 //
 // POST /test_response_boolean_nullable_array
-func (UnimplementedHandler) TestResponseBooleanNullableArray(ctx context.Context, req string) (r []bool, _ error) {
+func (UnimplementedHandler) TestResponseBooleanNullableArray(ctx context.Context, req string) (r []NilBool, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseBooleanNullableArrayArray implements test_response_boolean_nullable_array_array operation.
 //
 // POST /test_response_boolean_nullable_array_array
-func (UnimplementedHandler) TestResponseBooleanNullableArrayArray(ctx context.Context, req string) (r [][]bool, _ error) {
+func (UnimplementedHandler) TestResponseBooleanNullableArrayArray(ctx context.Context, req string) (r [][]NilBool, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2864,14 +2864,14 @@ func (UnimplementedHandler) TestResponseIntegerInt32Nullable(ctx context.Context
 // TestResponseIntegerInt32NullableArray implements test_response_integer_int32_nullable_array operation.
 //
 // POST /test_response_integer_int32_nullable_array
-func (UnimplementedHandler) TestResponseIntegerInt32NullableArray(ctx context.Context, req string) (r []int32, _ error) {
+func (UnimplementedHandler) TestResponseIntegerInt32NullableArray(ctx context.Context, req string) (r []NilInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseIntegerInt32NullableArrayArray implements test_response_integer_int32_nullable_array_array operation.
 //
 // POST /test_response_integer_int32_nullable_array_array
-func (UnimplementedHandler) TestResponseIntegerInt32NullableArrayArray(ctx context.Context, req string) (r [][]int32, _ error) {
+func (UnimplementedHandler) TestResponseIntegerInt32NullableArrayArray(ctx context.Context, req string) (r [][]NilInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2906,14 +2906,14 @@ func (UnimplementedHandler) TestResponseIntegerInt64Nullable(ctx context.Context
 // TestResponseIntegerInt64NullableArray implements test_response_integer_int64_nullable_array operation.
 //
 // POST /test_response_integer_int64_nullable_array
-func (UnimplementedHandler) TestResponseIntegerInt64NullableArray(ctx context.Context, req string) (r []int64, _ error) {
+func (UnimplementedHandler) TestResponseIntegerInt64NullableArray(ctx context.Context, req string) (r []NilInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseIntegerInt64NullableArrayArray implements test_response_integer_int64_nullable_array_array operation.
 //
 // POST /test_response_integer_int64_nullable_array_array
-func (UnimplementedHandler) TestResponseIntegerInt64NullableArrayArray(ctx context.Context, req string) (r [][]int64, _ error) {
+func (UnimplementedHandler) TestResponseIntegerInt64NullableArrayArray(ctx context.Context, req string) (r [][]NilInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2927,14 +2927,14 @@ func (UnimplementedHandler) TestResponseIntegerNullable(ctx context.Context, req
 // TestResponseIntegerNullableArray implements test_response_integer_nullable_array operation.
 //
 // POST /test_response_integer_nullable_array
-func (UnimplementedHandler) TestResponseIntegerNullableArray(ctx context.Context, req string) (r []int, _ error) {
+func (UnimplementedHandler) TestResponseIntegerNullableArray(ctx context.Context, req string) (r []NilInt, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseIntegerNullableArrayArray implements test_response_integer_nullable_array_array operation.
 //
 // POST /test_response_integer_nullable_array_array
-func (UnimplementedHandler) TestResponseIntegerNullableArrayArray(ctx context.Context, req string) (r [][]int, _ error) {
+func (UnimplementedHandler) TestResponseIntegerNullableArrayArray(ctx context.Context, req string) (r [][]NilInt, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3032,14 +3032,14 @@ func (UnimplementedHandler) TestResponseNumberDoubleNullable(ctx context.Context
 // TestResponseNumberDoubleNullableArray implements test_response_number_double_nullable_array operation.
 //
 // POST /test_response_number_double_nullable_array
-func (UnimplementedHandler) TestResponseNumberDoubleNullableArray(ctx context.Context, req string) (r []float64, _ error) {
+func (UnimplementedHandler) TestResponseNumberDoubleNullableArray(ctx context.Context, req string) (r []NilFloat64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseNumberDoubleNullableArrayArray implements test_response_number_double_nullable_array_array operation.
 //
 // POST /test_response_number_double_nullable_array_array
-func (UnimplementedHandler) TestResponseNumberDoubleNullableArrayArray(ctx context.Context, req string) (r [][]float64, _ error) {
+func (UnimplementedHandler) TestResponseNumberDoubleNullableArrayArray(ctx context.Context, req string) (r [][]NilFloat64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3074,14 +3074,14 @@ func (UnimplementedHandler) TestResponseNumberFloatNullable(ctx context.Context,
 // TestResponseNumberFloatNullableArray implements test_response_number_float_nullable_array operation.
 //
 // POST /test_response_number_float_nullable_array
-func (UnimplementedHandler) TestResponseNumberFloatNullableArray(ctx context.Context, req string) (r []float32, _ error) {
+func (UnimplementedHandler) TestResponseNumberFloatNullableArray(ctx context.Context, req string) (r []NilFloat32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseNumberFloatNullableArrayArray implements test_response_number_float_nullable_array_array operation.
 //
 // POST /test_response_number_float_nullable_array_array
-func (UnimplementedHandler) TestResponseNumberFloatNullableArrayArray(ctx context.Context, req string) (r [][]float32, _ error) {
+func (UnimplementedHandler) TestResponseNumberFloatNullableArrayArray(ctx context.Context, req string) (r [][]NilFloat32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3116,14 +3116,14 @@ func (UnimplementedHandler) TestResponseNumberInt32Nullable(ctx context.Context,
 // TestResponseNumberInt32NullableArray implements test_response_number_int32_nullable_array operation.
 //
 // POST /test_response_number_int32_nullable_array
-func (UnimplementedHandler) TestResponseNumberInt32NullableArray(ctx context.Context, req string) (r []int32, _ error) {
+func (UnimplementedHandler) TestResponseNumberInt32NullableArray(ctx context.Context, req string) (r []NilInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseNumberInt32NullableArrayArray implements test_response_number_int32_nullable_array_array operation.
 //
 // POST /test_response_number_int32_nullable_array_array
-func (UnimplementedHandler) TestResponseNumberInt32NullableArrayArray(ctx context.Context, req string) (r [][]int32, _ error) {
+func (UnimplementedHandler) TestResponseNumberInt32NullableArrayArray(ctx context.Context, req string) (r [][]NilInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3158,14 +3158,14 @@ func (UnimplementedHandler) TestResponseNumberInt64Nullable(ctx context.Context,
 // TestResponseNumberInt64NullableArray implements test_response_number_int64_nullable_array operation.
 //
 // POST /test_response_number_int64_nullable_array
-func (UnimplementedHandler) TestResponseNumberInt64NullableArray(ctx context.Context, req string) (r []int64, _ error) {
+func (UnimplementedHandler) TestResponseNumberInt64NullableArray(ctx context.Context, req string) (r []NilInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseNumberInt64NullableArrayArray implements test_response_number_int64_nullable_array_array operation.
 //
 // POST /test_response_number_int64_nullable_array_array
-func (UnimplementedHandler) TestResponseNumberInt64NullableArrayArray(ctx context.Context, req string) (r [][]int64, _ error) {
+func (UnimplementedHandler) TestResponseNumberInt64NullableArrayArray(ctx context.Context, req string) (r [][]NilInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3179,14 +3179,14 @@ func (UnimplementedHandler) TestResponseNumberNullable(ctx context.Context, req 
 // TestResponseNumberNullableArray implements test_response_number_nullable_array operation.
 //
 // POST /test_response_number_nullable_array
-func (UnimplementedHandler) TestResponseNumberNullableArray(ctx context.Context, req string) (r []float64, _ error) {
+func (UnimplementedHandler) TestResponseNumberNullableArray(ctx context.Context, req string) (r []NilFloat64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseNumberNullableArrayArray implements test_response_number_nullable_array_array operation.
 //
 // POST /test_response_number_nullable_array_array
-func (UnimplementedHandler) TestResponseNumberNullableArrayArray(ctx context.Context, req string) (r [][]float64, _ error) {
+func (UnimplementedHandler) TestResponseNumberNullableArrayArray(ctx context.Context, req string) (r [][]NilFloat64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3242,14 +3242,14 @@ func (UnimplementedHandler) TestResponseStringBinaryNullable(ctx context.Context
 // TestResponseStringBinaryNullableArray implements test_response_string_binary_nullable_array operation.
 //
 // POST /test_response_string_binary_nullable_array
-func (UnimplementedHandler) TestResponseStringBinaryNullableArray(ctx context.Context, req string) (r []string, _ error) {
+func (UnimplementedHandler) TestResponseStringBinaryNullableArray(ctx context.Context, req string) (r []NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringBinaryNullableArrayArray implements test_response_string_binary_nullable_array_array operation.
 //
 // POST /test_response_string_binary_nullable_array_array
-func (UnimplementedHandler) TestResponseStringBinaryNullableArrayArray(ctx context.Context, req string) (r [][]string, _ error) {
+func (UnimplementedHandler) TestResponseStringBinaryNullableArrayArray(ctx context.Context, req string) (r [][]NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3326,14 +3326,14 @@ func (UnimplementedHandler) TestResponseStringDateNullable(ctx context.Context, 
 // TestResponseStringDateNullableArray implements test_response_string_date_nullable_array operation.
 //
 // POST /test_response_string_date_nullable_array
-func (UnimplementedHandler) TestResponseStringDateNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringDateNullableArray(ctx context.Context, req string) (r []NilDate, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringDateNullableArrayArray implements test_response_string_date_nullable_array_array operation.
 //
 // POST /test_response_string_date_nullable_array_array
-func (UnimplementedHandler) TestResponseStringDateNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringDateNullableArrayArray(ctx context.Context, req string) (r [][]NilDate, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3368,14 +3368,14 @@ func (UnimplementedHandler) TestResponseStringDateTimeNullable(ctx context.Conte
 // TestResponseStringDateTimeNullableArray implements test_response_string_date-time_nullable_array operation.
 //
 // POST /test_response_string_date-time_nullable_array
-func (UnimplementedHandler) TestResponseStringDateTimeNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringDateTimeNullableArray(ctx context.Context, req string) (r []NilDateTime, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringDateTimeNullableArrayArray implements test_response_string_date-time_nullable_array_array operation.
 //
 // POST /test_response_string_date-time_nullable_array_array
-func (UnimplementedHandler) TestResponseStringDateTimeNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringDateTimeNullableArrayArray(ctx context.Context, req string) (r [][]NilDateTime, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3410,14 +3410,14 @@ func (UnimplementedHandler) TestResponseStringDurationNullable(ctx context.Conte
 // TestResponseStringDurationNullableArray implements test_response_string_duration_nullable_array operation.
 //
 // POST /test_response_string_duration_nullable_array
-func (UnimplementedHandler) TestResponseStringDurationNullableArray(ctx context.Context, req string) (r []time.Duration, _ error) {
+func (UnimplementedHandler) TestResponseStringDurationNullableArray(ctx context.Context, req string) (r []NilDuration, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringDurationNullableArrayArray implements test_response_string_duration_nullable_array_array operation.
 //
 // POST /test_response_string_duration_nullable_array_array
-func (UnimplementedHandler) TestResponseStringDurationNullableArrayArray(ctx context.Context, req string) (r [][]time.Duration, _ error) {
+func (UnimplementedHandler) TestResponseStringDurationNullableArrayArray(ctx context.Context, req string) (r [][]NilDuration, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3452,14 +3452,14 @@ func (UnimplementedHandler) TestResponseStringEmailNullable(ctx context.Context,
 // TestResponseStringEmailNullableArray implements test_response_string_email_nullable_array operation.
 //
 // POST /test_response_string_email_nullable_array
-func (UnimplementedHandler) TestResponseStringEmailNullableArray(ctx context.Context, req string) (r []string, _ error) {
+func (UnimplementedHandler) TestResponseStringEmailNullableArray(ctx context.Context, req string) (r []NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringEmailNullableArrayArray implements test_response_string_email_nullable_array_array operation.
 //
 // POST /test_response_string_email_nullable_array_array
-func (UnimplementedHandler) TestResponseStringEmailNullableArrayArray(ctx context.Context, req string) (r [][]string, _ error) {
+func (UnimplementedHandler) TestResponseStringEmailNullableArrayArray(ctx context.Context, req string) (r [][]NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3494,14 +3494,14 @@ func (UnimplementedHandler) TestResponseStringHostnameNullable(ctx context.Conte
 // TestResponseStringHostnameNullableArray implements test_response_string_hostname_nullable_array operation.
 //
 // POST /test_response_string_hostname_nullable_array
-func (UnimplementedHandler) TestResponseStringHostnameNullableArray(ctx context.Context, req string) (r []string, _ error) {
+func (UnimplementedHandler) TestResponseStringHostnameNullableArray(ctx context.Context, req string) (r []NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringHostnameNullableArrayArray implements test_response_string_hostname_nullable_array_array operation.
 //
 // POST /test_response_string_hostname_nullable_array_array
-func (UnimplementedHandler) TestResponseStringHostnameNullableArrayArray(ctx context.Context, req string) (r [][]string, _ error) {
+func (UnimplementedHandler) TestResponseStringHostnameNullableArrayArray(ctx context.Context, req string) (r [][]NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3536,14 +3536,14 @@ func (UnimplementedHandler) TestResponseStringIPNullable(ctx context.Context, re
 // TestResponseStringIPNullableArray implements test_response_string_ip_nullable_array operation.
 //
 // POST /test_response_string_ip_nullable_array
-func (UnimplementedHandler) TestResponseStringIPNullableArray(ctx context.Context, req string) (r []netip.Addr, _ error) {
+func (UnimplementedHandler) TestResponseStringIPNullableArray(ctx context.Context, req string) (r []NilIP, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringIPNullableArrayArray implements test_response_string_ip_nullable_array_array operation.
 //
 // POST /test_response_string_ip_nullable_array_array
-func (UnimplementedHandler) TestResponseStringIPNullableArrayArray(ctx context.Context, req string) (r [][]netip.Addr, _ error) {
+func (UnimplementedHandler) TestResponseStringIPNullableArrayArray(ctx context.Context, req string) (r [][]NilIP, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3578,14 +3578,14 @@ func (UnimplementedHandler) TestResponseStringInt32Nullable(ctx context.Context,
 // TestResponseStringInt32NullableArray implements test_response_string_int32_nullable_array operation.
 //
 // POST /test_response_string_int32_nullable_array
-func (UnimplementedHandler) TestResponseStringInt32NullableArray(ctx context.Context, req string) (r []int32, _ error) {
+func (UnimplementedHandler) TestResponseStringInt32NullableArray(ctx context.Context, req string) (r []NilStringInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringInt32NullableArrayArray implements test_response_string_int32_nullable_array_array operation.
 //
 // POST /test_response_string_int32_nullable_array_array
-func (UnimplementedHandler) TestResponseStringInt32NullableArrayArray(ctx context.Context, req string) (r [][]int32, _ error) {
+func (UnimplementedHandler) TestResponseStringInt32NullableArrayArray(ctx context.Context, req string) (r [][]NilStringInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3620,14 +3620,14 @@ func (UnimplementedHandler) TestResponseStringInt64Nullable(ctx context.Context,
 // TestResponseStringInt64NullableArray implements test_response_string_int64_nullable_array operation.
 //
 // POST /test_response_string_int64_nullable_array
-func (UnimplementedHandler) TestResponseStringInt64NullableArray(ctx context.Context, req string) (r []int64, _ error) {
+func (UnimplementedHandler) TestResponseStringInt64NullableArray(ctx context.Context, req string) (r []NilStringInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringInt64NullableArrayArray implements test_response_string_int64_nullable_array_array operation.
 //
 // POST /test_response_string_int64_nullable_array_array
-func (UnimplementedHandler) TestResponseStringInt64NullableArrayArray(ctx context.Context, req string) (r [][]int64, _ error) {
+func (UnimplementedHandler) TestResponseStringInt64NullableArrayArray(ctx context.Context, req string) (r [][]NilStringInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3662,14 +3662,14 @@ func (UnimplementedHandler) TestResponseStringIpv4Nullable(ctx context.Context, 
 // TestResponseStringIpv4NullableArray implements test_response_string_ipv4_nullable_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array
-func (UnimplementedHandler) TestResponseStringIpv4NullableArray(ctx context.Context, req string) (r []netip.Addr, _ error) {
+func (UnimplementedHandler) TestResponseStringIpv4NullableArray(ctx context.Context, req string) (r []NilIPv4, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringIpv4NullableArrayArray implements test_response_string_ipv4_nullable_array_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array_array
-func (UnimplementedHandler) TestResponseStringIpv4NullableArrayArray(ctx context.Context, req string) (r [][]netip.Addr, _ error) {
+func (UnimplementedHandler) TestResponseStringIpv4NullableArrayArray(ctx context.Context, req string) (r [][]NilIPv4, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3704,14 +3704,14 @@ func (UnimplementedHandler) TestResponseStringIpv6Nullable(ctx context.Context, 
 // TestResponseStringIpv6NullableArray implements test_response_string_ipv6_nullable_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array
-func (UnimplementedHandler) TestResponseStringIpv6NullableArray(ctx context.Context, req string) (r []netip.Addr, _ error) {
+func (UnimplementedHandler) TestResponseStringIpv6NullableArray(ctx context.Context, req string) (r []NilIPv6, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringIpv6NullableArrayArray implements test_response_string_ipv6_nullable_array_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array_array
-func (UnimplementedHandler) TestResponseStringIpv6NullableArrayArray(ctx context.Context, req string) (r [][]netip.Addr, _ error) {
+func (UnimplementedHandler) TestResponseStringIpv6NullableArrayArray(ctx context.Context, req string) (r [][]NilIPv6, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3725,14 +3725,14 @@ func (UnimplementedHandler) TestResponseStringNullable(ctx context.Context, req 
 // TestResponseStringNullableArray implements test_response_string_nullable_array operation.
 //
 // POST /test_response_string_nullable_array
-func (UnimplementedHandler) TestResponseStringNullableArray(ctx context.Context, req string) (r []string, _ error) {
+func (UnimplementedHandler) TestResponseStringNullableArray(ctx context.Context, req string) (r []NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringNullableArrayArray implements test_response_string_nullable_array_array operation.
 //
 // POST /test_response_string_nullable_array_array
-func (UnimplementedHandler) TestResponseStringNullableArrayArray(ctx context.Context, req string) (r [][]string, _ error) {
+func (UnimplementedHandler) TestResponseStringNullableArrayArray(ctx context.Context, req string) (r [][]NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3767,14 +3767,14 @@ func (UnimplementedHandler) TestResponseStringPasswordNullable(ctx context.Conte
 // TestResponseStringPasswordNullableArray implements test_response_string_password_nullable_array operation.
 //
 // POST /test_response_string_password_nullable_array
-func (UnimplementedHandler) TestResponseStringPasswordNullableArray(ctx context.Context, req string) (r []string, _ error) {
+func (UnimplementedHandler) TestResponseStringPasswordNullableArray(ctx context.Context, req string) (r []NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringPasswordNullableArrayArray implements test_response_string_password_nullable_array_array operation.
 //
 // POST /test_response_string_password_nullable_array_array
-func (UnimplementedHandler) TestResponseStringPasswordNullableArrayArray(ctx context.Context, req string) (r [][]string, _ error) {
+func (UnimplementedHandler) TestResponseStringPasswordNullableArrayArray(ctx context.Context, req string) (r [][]NilString, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3809,14 +3809,14 @@ func (UnimplementedHandler) TestResponseStringTimeNullable(ctx context.Context, 
 // TestResponseStringTimeNullableArray implements test_response_string_time_nullable_array operation.
 //
 // POST /test_response_string_time_nullable_array
-func (UnimplementedHandler) TestResponseStringTimeNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringTimeNullableArray(ctx context.Context, req string) (r []NilTime, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringTimeNullableArrayArray implements test_response_string_time_nullable_array_array operation.
 //
 // POST /test_response_string_time_nullable_array_array
-func (UnimplementedHandler) TestResponseStringTimeNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringTimeNullableArrayArray(ctx context.Context, req string) (r [][]NilTime, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3851,14 +3851,14 @@ func (UnimplementedHandler) TestResponseStringURINullable(ctx context.Context, r
 // TestResponseStringURINullableArray implements test_response_string_uri_nullable_array operation.
 //
 // POST /test_response_string_uri_nullable_array
-func (UnimplementedHandler) TestResponseStringURINullableArray(ctx context.Context, req string) (r []url.URL, _ error) {
+func (UnimplementedHandler) TestResponseStringURINullableArray(ctx context.Context, req string) (r []NilURI, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringURINullableArrayArray implements test_response_string_uri_nullable_array_array operation.
 //
 // POST /test_response_string_uri_nullable_array_array
-func (UnimplementedHandler) TestResponseStringURINullableArrayArray(ctx context.Context, req string) (r [][]url.URL, _ error) {
+func (UnimplementedHandler) TestResponseStringURINullableArrayArray(ctx context.Context, req string) (r [][]NilURI, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3893,14 +3893,14 @@ func (UnimplementedHandler) TestResponseStringUUIDNullable(ctx context.Context, 
 // TestResponseStringUUIDNullableArray implements test_response_string_uuid_nullable_array operation.
 //
 // POST /test_response_string_uuid_nullable_array
-func (UnimplementedHandler) TestResponseStringUUIDNullableArray(ctx context.Context, req string) (r []uuid.UUID, _ error) {
+func (UnimplementedHandler) TestResponseStringUUIDNullableArray(ctx context.Context, req string) (r []NilUUID, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUUIDNullableArrayArray implements test_response_string_uuid_nullable_array_array operation.
 //
 // POST /test_response_string_uuid_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUUIDNullableArrayArray(ctx context.Context, req string) (r [][]uuid.UUID, _ error) {
+func (UnimplementedHandler) TestResponseStringUUIDNullableArrayArray(ctx context.Context, req string) (r [][]NilUUID, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3956,14 +3956,14 @@ func (UnimplementedHandler) TestResponseStringUnixMicroNullable(ctx context.Cont
 // TestResponseStringUnixMicroNullableArray implements test_response_string_unix-micro_nullable_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) (r []NilUnixMicro, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixMicroNullableArrayArray implements test_response_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixMicro, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3998,14 +3998,14 @@ func (UnimplementedHandler) TestResponseStringUnixMilliNullable(ctx context.Cont
 // TestResponseStringUnixMilliNullableArray implements test_response_string_unix-milli_nullable_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) (r []NilUnixMilli, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixMilliNullableArrayArray implements test_response_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixMilli, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4040,14 +4040,14 @@ func (UnimplementedHandler) TestResponseStringUnixNanoNullable(ctx context.Conte
 // TestResponseStringUnixNanoNullableArray implements test_response_string_unix-nano_nullable_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) (r []NilUnixNano, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNanoNullableArrayArray implements test_response_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixNano, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4061,14 +4061,14 @@ func (UnimplementedHandler) TestResponseStringUnixNullable(ctx context.Context, 
 // TestResponseStringUnixNullableArray implements test_response_string_unix_nullable_array operation.
 //
 // POST /test_response_string_unix_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNullableArray(ctx context.Context, req string) (r []NilUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNullableArrayArray implements test_response_string_unix_nullable_array_array operation.
 //
 // POST /test_response_string_unix_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4103,13 +4103,13 @@ func (UnimplementedHandler) TestResponseStringUnixSecondsNullable(ctx context.Co
 // TestResponseStringUnixSecondsNullableArray implements test_response_string_unix-seconds_nullable_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) (r []time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) (r []NilUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixSecondsNullableArrayArray implements test_response_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }

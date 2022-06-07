@@ -81,19 +81,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 	}
 
 	generate := func(ctx *genctx, sch *jsonschema.Schema) (*ir.Type, error) {
-		t, err := g.generateSchema(ctx, paramTypeName, sch)
-		if err != nil {
-			return nil, err
-		}
-
-		t, err = boxType(ctx, ir.GenericVariant{
-			Nullable: sch != nil && sch.Nullable,
-			Optional: !p.Required,
-		}, t)
-		if err != nil {
-			return nil, err
-		}
-		return t, nil
+		return g.generateSchema(ctx, paramTypeName, sch, !p.Required)
 	}
 	t, err := func() (*ir.Type, error) {
 		if content := p.Content; content != nil {

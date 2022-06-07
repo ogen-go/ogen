@@ -2176,6 +2176,98 @@ func (o OptResponsesOrReferences) Or(d ResponsesOrReferences) ResponsesOrReferen
 	return d
 }
 
+// NewOptSchema returns new OptSchema with value set to v.
+func NewOptSchema(v Schema) OptSchema {
+	return OptSchema{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSchema is optional Schema.
+type OptSchema struct {
+	Value Schema
+	Set   bool
+}
+
+// IsSet returns true if OptSchema was set.
+func (o OptSchema) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSchema) Reset() {
+	var v Schema
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSchema) SetTo(v Schema) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSchema) Get() (v Schema, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSchema) Or(d Schema) Schema {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSchemaAdditionalProperties returns new OptSchemaAdditionalProperties with value set to v.
+func NewOptSchemaAdditionalProperties(v SchemaAdditionalProperties) OptSchemaAdditionalProperties {
+	return OptSchemaAdditionalProperties{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSchemaAdditionalProperties is optional SchemaAdditionalProperties.
+type OptSchemaAdditionalProperties struct {
+	Value SchemaAdditionalProperties
+	Set   bool
+}
+
+// IsSet returns true if OptSchemaAdditionalProperties was set.
+func (o OptSchemaAdditionalProperties) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSchemaAdditionalProperties) Reset() {
+	var v SchemaAdditionalProperties
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSchemaAdditionalProperties) SetTo(v SchemaAdditionalProperties) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSchemaAdditionalProperties) Get() (v SchemaAdditionalProperties, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSchemaAdditionalProperties) Or(d SchemaAdditionalProperties) SchemaAdditionalProperties {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSchemaOrReference returns new OptSchemaOrReference with value set to v.
 func NewOptSchemaOrReference(v SchemaOrReference) OptSchemaOrReference {
 	return OptSchemaOrReference{
@@ -9284,6 +9376,72 @@ func (s OptResponsesOrReferences) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptResponsesOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Schema as json.
+func (o OptSchema) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Schema from json.
+func (o *OptSchema) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSchema to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSchema) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSchema) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SchemaAdditionalProperties as json.
+func (o OptSchemaAdditionalProperties) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes SchemaAdditionalProperties from json.
+func (o *OptSchemaAdditionalProperties) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSchemaAdditionalProperties to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSchemaAdditionalProperties) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSchemaAdditionalProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

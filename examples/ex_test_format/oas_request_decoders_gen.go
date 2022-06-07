@@ -371,7 +371,7 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request, span t
 }
 
 func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []bool,
+	req []NilBool,
 	close func() error,
 	rerr error,
 ) {
@@ -399,7 +399,7 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, s
 			return req, close, nil
 		}
 
-		var request []bool
+		var request []NilBool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -415,12 +415,10 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, s
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]bool, 0)
+			request = make([]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem bool
-				v, err := d.Bool()
-				elem = bool(v)
-				if err != nil {
+				var elem NilBool
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -440,7 +438,7 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]bool,
+	req [][]NilBool,
 	close func() error,
 	rerr error,
 ) {
@@ -468,7 +466,7 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request [][]bool
+		var request [][]NilBool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -484,15 +482,13 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]bool, 0)
+			request = make([][]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []bool
-				elem = make([]bool, 0)
+				var elem []NilBool
+				elem = make([]NilBool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem bool
-					v, err := d.Bool()
-					elemElem = bool(v)
-					if err != nil {
+					var elemElem NilBool
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -1192,7 +1188,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int32,
+	req []NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -1220,7 +1216,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request []int32
+		var request []NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1236,12 +1232,10 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int32, 0)
+			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int32
-				v, err := d.Int32()
-				elem = int32(v)
-				if err != nil {
+				var elem NilInt32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -1261,7 +1255,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int32,
+	req [][]NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -1289,7 +1283,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 
-		var request [][]int32
+		var request [][]NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1305,15 +1299,13 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int32, 0)
+			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int32
-				elem = make([]int32, 0)
+				var elem []NilInt32
+				elem = make([]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int32
-					v, err := d.Int32()
-					elemElem = int32(v)
-					if err != nil {
+					var elemElem NilInt32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -1648,7 +1640,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int64,
+	req []NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -1676,7 +1668,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request []int64
+		var request []NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1692,12 +1684,10 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int64, 0)
+			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int64
-				v, err := d.Int64()
-				elem = int64(v)
-				if err != nil {
+				var elem NilInt64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -1717,7 +1707,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int64,
+	req [][]NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -1745,7 +1735,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 
-		var request [][]int64
+		var request [][]NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1761,15 +1751,13 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int64, 0)
+			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int64
-				elem = make([]int64, 0)
+				var elem []NilInt64
+				elem = make([]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int64
-					v, err := d.Int64()
-					elemElem = int64(v)
-					if err != nil {
+					var elemElem NilInt64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -1876,7 +1864,7 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request, span t
 }
 
 func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int,
+	req []NilInt,
 	close func() error,
 	rerr error,
 ) {
@@ -1904,7 +1892,7 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, s
 			return req, close, nil
 		}
 
-		var request []int
+		var request []NilInt
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1920,12 +1908,10 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, s
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int, 0)
+			request = make([]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int
-				v, err := d.Int()
-				elem = int(v)
-				if err != nil {
+				var elem NilInt
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -1945,7 +1931,7 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int,
+	req [][]NilInt,
 	close func() error,
 	rerr error,
 ) {
@@ -1973,7 +1959,7 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request [][]int
+		var request [][]NilInt
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1989,15 +1975,13 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int, 0)
+			request = make([][]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int
-				elem = make([]int, 0)
+				var elem []NilInt
+				elem = make([]NilInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int
-					v, err := d.Int()
-					elemElem = int(v)
-					if err != nil {
+					var elemElem NilInt
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -3131,7 +3115,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []float64,
+	req []NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -3159,7 +3143,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request []float64
+		var request []NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3175,12 +3159,10 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]float64, 0)
+			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem float64
-				v, err := d.Float64()
-				elem = float64(v)
-				if err != nil {
+				var elem NilFloat64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -3196,7 +3178,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -3222,7 +3204,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]float64,
+	req [][]NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -3250,7 +3232,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 
-		var request [][]float64
+		var request [][]NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3266,15 +3248,13 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]float64, 0)
+			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []float64
-				elem = make([]float64, 0)
+				var elem []NilFloat64
+				elem = make([]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem float64
-					v, err := d.Float64()
-					elemElem = float64(v)
-					if err != nil {
+					var elemElem NilFloat64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -3301,7 +3281,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -3695,7 +3675,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []float32,
+	req []NilFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -3723,7 +3703,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request []float32
+		var request []NilFloat32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3739,12 +3719,10 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]float32, 0)
+			request = make([]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem float32
-				v, err := d.Float32()
-				elem = float32(v)
-				if err != nil {
+				var elem NilFloat32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -3760,7 +3738,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -3786,7 +3764,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]float32,
+	req [][]NilFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -3814,7 +3792,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 
-		var request [][]float32
+		var request [][]NilFloat32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3830,15 +3808,13 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]float32, 0)
+			request = make([][]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []float32
-				elem = make([]float32, 0)
+				var elem []NilFloat32
+				elem = make([]NilFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem float32
-					v, err := d.Float32()
-					elemElem = float32(v)
-					if err != nil {
+					var elemElem NilFloat32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -3865,7 +3841,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -4190,7 +4166,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int32,
+	req []NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -4218,7 +4194,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request []int32
+		var request []NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4234,12 +4210,10 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int32, 0)
+			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int32
-				v, err := d.Int32()
-				elem = int32(v)
-				if err != nil {
+				var elem NilInt32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -4259,7 +4233,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int32,
+	req [][]NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -4287,7 +4261,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 
-		var request [][]int32
+		var request [][]NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4303,15 +4277,13 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int32, 0)
+			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int32
-				elem = make([]int32, 0)
+				var elem []NilInt32
+				elem = make([]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int32
-					v, err := d.Int32()
-					elemElem = int32(v)
-					if err != nil {
+					var elemElem NilInt32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -4646,7 +4618,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int64,
+	req []NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -4674,7 +4646,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request []int64
+		var request []NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4690,12 +4662,10 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int64, 0)
+			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int64
-				v, err := d.Int64()
-				elem = int64(v)
-				if err != nil {
+				var elem NilInt64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -4715,7 +4685,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int64,
+	req [][]NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -4743,7 +4713,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 
-		var request [][]int64
+		var request [][]NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4759,15 +4729,13 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int64, 0)
+			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int64
-				elem = make([]int64, 0)
+				var elem []NilInt64
+				elem = make([]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int64
-					v, err := d.Int64()
-					elemElem = int64(v)
-					if err != nil {
+					var elemElem NilInt64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -4889,7 +4857,7 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request, span tr
 }
 
 func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []float64,
+	req []NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -4917,7 +4885,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 			return req, close, nil
 		}
 
-		var request []float64
+		var request []NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4933,12 +4901,10 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]float64, 0)
+			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem float64
-				v, err := d.Float64()
-				elem = float64(v)
-				if err != nil {
+				var elem NilFloat64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -4954,7 +4920,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -4980,7 +4946,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]float64,
+	req [][]NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -5008,7 +4974,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request [][]float64
+		var request [][]NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5024,15 +4990,13 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]float64, 0)
+			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []float64
-				elem = make([]float64, 0)
+				var elem []NilFloat64
+				elem = make([]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem float64
-					v, err := d.Float64()
-					elemElem = float64(v)
-					if err != nil {
+					var elemElem NilFloat64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -5059,7 +5023,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -5456,7 +5420,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []bool,
+	req []NilBool,
 	close func() error,
 	rerr error,
 ) {
@@ -5484,7 +5448,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []bool
+		var request []NilBool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5500,12 +5464,10 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]bool, 0)
+			request = make([]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem bool
-				v, err := d.Bool()
-				elem = bool(v)
-				if err != nil {
+				var elem NilBool
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -5533,7 +5495,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]bool,
+	req [][]NilBool,
 	close func() error,
 	rerr error,
 ) {
@@ -5561,7 +5523,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]bool
+		var request [][]NilBool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5577,15 +5539,13 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]bool, 0)
+			request = make([][]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []bool
-				elem = make([]bool, 0)
+				var elem []NilBool
+				elem = make([]NilBool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem bool
-					v, err := d.Bool()
-					elemElem = bool(v)
-					if err != nil {
+					var elemElem NilBool
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -6300,7 +6260,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int32,
+	req []NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -6328,7 +6288,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int32
+		var request []NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6344,12 +6304,10 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int32, 0)
+			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int32
-				v, err := d.Int32()
-				elem = int32(v)
-				if err != nil {
+				var elem NilInt32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -6377,7 +6335,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int32,
+	req [][]NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -6405,7 +6363,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int32
+		var request [][]NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6421,15 +6379,13 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int32, 0)
+			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int32
-				elem = make([]int32, 0)
+				var elem []NilInt32
+				elem = make([]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int32
-					v, err := d.Int32()
-					elemElem = int32(v)
-					if err != nil {
+					var elemElem NilInt32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -6778,7 +6734,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int64,
+	req []NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -6806,7 +6762,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int64
+		var request []NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6822,12 +6778,10 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int64, 0)
+			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int64
-				v, err := d.Int64()
-				elem = int64(v)
-				if err != nil {
+				var elem NilInt64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -6855,7 +6809,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int64,
+	req [][]NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -6883,7 +6837,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int64
+		var request [][]NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6899,15 +6853,13 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int64, 0)
+			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int64
-				elem = make([]int64, 0)
+				var elem []NilInt64
+				elem = make([]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int64
-					v, err := d.Int64()
-					elemElem = int64(v)
-					if err != nil {
+					var elemElem NilInt64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -7016,7 +6968,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int,
+	req []NilInt,
 	close func() error,
 	rerr error,
 ) {
@@ -7044,7 +6996,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int
+		var request []NilInt
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -7060,12 +7012,10 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int, 0)
+			request = make([]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int
-				v, err := d.Int()
-				elem = int(v)
-				if err != nil {
+				var elem NilInt
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -7093,7 +7043,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int,
+	req [][]NilInt,
 	close func() error,
 	rerr error,
 ) {
@@ -7121,7 +7071,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int
+		var request [][]NilInt
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -7137,15 +7087,13 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int, 0)
+			request = make([][]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int
-				elem = make([]int, 0)
+				var elem []NilInt
+				elem = make([]NilInt, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int
-					v, err := d.Int()
-					elemElem = int(v)
-					if err != nil {
+					var elemElem NilInt
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -8294,7 +8242,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []float64,
+	req []NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -8322,7 +8270,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []float64
+		var request []NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -8338,12 +8286,10 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]float64, 0)
+			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem float64
-				v, err := d.Float64()
-				elem = float64(v)
-				if err != nil {
+				var elem NilFloat64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -8362,7 +8308,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -8388,7 +8334,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]float64,
+	req [][]NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -8416,7 +8362,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]float64
+		var request [][]NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -8432,15 +8378,13 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]float64, 0)
+			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []float64
-				elem = make([]float64, 0)
+				var elem []NilFloat64
+				elem = make([]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem float64
-					v, err := d.Float64()
-					elemElem = float64(v)
-					if err != nil {
+					var elemElem NilFloat64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -8470,7 +8414,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -8856,7 +8800,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []float32,
+	req []NilFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -8884,7 +8828,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []float32
+		var request []NilFloat32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -8900,12 +8844,10 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]float32, 0)
+			request = make([]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem float32
-				v, err := d.Float32()
-				elem = float32(v)
-				if err != nil {
+				var elem NilFloat32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -8924,7 +8866,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -8950,7 +8892,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]float32,
+	req [][]NilFloat32,
 	close func() error,
 	rerr error,
 ) {
@@ -8978,7 +8920,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]float32
+		var request [][]NilFloat32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -8994,15 +8936,13 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]float32, 0)
+			request = make([][]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []float32
-				elem = make([]float32, 0)
+				var elem []NilFloat32
+				elem = make([]NilFloat32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem float32
-					v, err := d.Float32()
-					elemElem = float32(v)
-					if err != nil {
+					var elemElem NilFloat32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -9032,7 +8972,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -9368,7 +9308,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int32,
+	req []NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -9396,7 +9336,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int32
+		var request []NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9412,12 +9352,10 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int32, 0)
+			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int32
-				v, err := d.Int32()
-				elem = int32(v)
-				if err != nil {
+				var elem NilInt32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -9445,7 +9383,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int32,
+	req [][]NilInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -9473,7 +9411,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int32
+		var request [][]NilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9489,15 +9427,13 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int32, 0)
+			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int32
-				elem = make([]int32, 0)
+				var elem []NilInt32
+				elem = make([]NilInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int32
-					v, err := d.Int32()
-					elemElem = int32(v)
-					if err != nil {
+					var elemElem NilInt32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -9846,7 +9782,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int64,
+	req []NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -9874,7 +9810,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int64
+		var request []NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9890,12 +9826,10 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int64, 0)
+			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int64
-				v, err := d.Int64()
-				elem = int64(v)
-				if err != nil {
+				var elem NilInt64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -9923,7 +9857,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int64,
+	req [][]NilInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -9951,7 +9885,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int64
+		var request [][]NilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9967,15 +9901,13 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int64, 0)
+			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int64
-				elem = make([]int64, 0)
+				var elem []NilInt64
+				elem = make([]NilInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int64
-					v, err := d.Int64()
-					elemElem = int64(v)
-					if err != nil {
+					var elemElem NilInt64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -10092,7 +10024,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []float64,
+	req []NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -10120,7 +10052,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []float64
+		var request []NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10136,12 +10068,10 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]float64, 0)
+			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem float64
-				v, err := d.Float64()
-				elem = float64(v)
-				if err != nil {
+				var elem NilFloat64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -10160,7 +10090,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
 					return nil
@@ -10186,7 +10116,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]float64,
+	req [][]NilFloat64,
 	close func() error,
 	rerr error,
 ) {
@@ -10214,7 +10144,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]float64
+		var request [][]NilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10230,15 +10160,13 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]float64, 0)
+			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []float64
-				elem = make([]float64, 0)
+				var elem []NilFloat64
+				elem = make([]NilFloat64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem float64
-					v, err := d.Float64()
-					elemElem = float64(v)
-					if err != nil {
+					var elemElem NilFloat64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -10268,7 +10196,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							if err := (validate.Float{}).Validate(float64(elem.Value)); err != nil {
 								return errors.Wrap(err, "float")
 							}
 							return nil
@@ -10844,7 +10772,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -10872,7 +10800,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10888,12 +10816,10 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -10921,7 +10847,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -10949,7 +10875,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10965,15 +10891,13 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -11802,7 +11726,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilDate,
 	close func() error,
 	rerr error,
 ) {
@@ -11830,7 +11754,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -11846,12 +11770,10 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeDate(d)
-				elem = v
-				if err != nil {
+				var elem NilDate
+				if err := elem.Decode(d, json.DecodeDate); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -11879,7 +11801,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilDate,
 	close func() error,
 	rerr error,
 ) {
@@ -11907,7 +11829,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -11923,15 +11845,13 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilDate
+				elem = make([]NilDate, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeDate(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilDate
+					if err := elemElem.Decode(d, json.DecodeDate); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -12280,7 +12200,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilDateTime,
 	close func() error,
 	rerr error,
 ) {
@@ -12308,7 +12228,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -12324,12 +12244,10 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeDateTime(d)
-				elem = v
-				if err != nil {
+				var elem NilDateTime
+				if err := elem.Decode(d, json.DecodeDateTime); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -12357,7 +12275,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilDateTime,
 	close func() error,
 	rerr error,
 ) {
@@ -12385,7 +12303,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -12401,15 +12319,13 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilDateTime
+				elem = make([]NilDateTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeDateTime(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilDateTime
+					if err := elemElem.Decode(d, json.DecodeDateTime); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -12758,7 +12674,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Duration,
+	req []NilDuration,
 	close func() error,
 	rerr error,
 ) {
@@ -12786,7 +12702,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Duration
+		var request []NilDuration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -12802,12 +12718,10 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Duration, 0)
+			request = make([]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Duration
-				v, err := json.DecodeDuration(d)
-				elem = v
-				if err != nil {
+				var elem NilDuration
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -12835,7 +12749,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Duration,
+	req [][]NilDuration,
 	close func() error,
 	rerr error,
 ) {
@@ -12863,7 +12777,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Duration
+		var request [][]NilDuration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -12879,15 +12793,13 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Duration, 0)
+			request = make([][]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Duration
-				elem = make([]time.Duration, 0)
+				var elem []NilDuration
+				elem = make([]NilDuration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Duration
-					v, err := json.DecodeDuration(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilDuration
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -13318,7 +13230,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -13346,7 +13258,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -13362,12 +13274,10 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -13394,7 +13304,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 						Email:        true,
 						Hostname:     false,
 						Regex:        nil,
-					}).Validate(string(elem)); err != nil {
+					}).Validate(string(elem.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -13420,7 +13330,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -13448,7 +13358,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -13464,15 +13374,13 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -13510,7 +13418,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 								Email:        true,
 								Hostname:     false,
 								Regex:        nil,
-							}).Validate(string(elem)); err != nil {
+							}).Validate(string(elem.Value)); err != nil {
 								return errors.Wrap(err, "string")
 							}
 							return nil
@@ -13928,7 +13836,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -13956,7 +13864,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -13972,12 +13880,10 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -14004,7 +13910,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 						Email:        false,
 						Hostname:     true,
 						Regex:        nil,
-					}).Validate(string(elem)); err != nil {
+					}).Validate(string(elem.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -14030,7 +13936,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -14058,7 +13964,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -14074,15 +13980,13 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -14120,7 +14024,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 								Email:        false,
 								Hostname:     true,
 								Regex:        nil,
-							}).Validate(string(elem)); err != nil {
+							}).Validate(string(elem.Value)); err != nil {
 								return errors.Wrap(err, "string")
 							}
 							return nil
@@ -14456,7 +14360,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []netip.Addr,
+	req []NilIP,
 	close func() error,
 	rerr error,
 ) {
@@ -14484,7 +14388,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []netip.Addr
+		var request []NilIP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -14500,12 +14404,10 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]netip.Addr, 0)
+			request = make([]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem netip.Addr
-				v, err := json.DecodeIP(d)
-				elem = v
-				if err != nil {
+				var elem NilIP
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -14533,7 +14435,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 }
 
 func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]netip.Addr,
+	req [][]NilIP,
 	close func() error,
 	rerr error,
 ) {
@@ -14561,7 +14463,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]netip.Addr
+		var request [][]NilIP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -14577,15 +14479,13 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]netip.Addr, 0)
+			request = make([][]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []netip.Addr
-				elem = make([]netip.Addr, 0)
+				var elem []NilIP
+				elem = make([]NilIP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilIP
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -14934,7 +14834,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int32,
+	req []NilStringInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -14962,7 +14862,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int32
+		var request []NilStringInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -14978,12 +14878,10 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int32, 0)
+			request = make([]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int32
-				v, err := json.DecodeStringInt32(d)
-				elem = v
-				if err != nil {
+				var elem NilStringInt32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -15011,7 +14909,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int32,
+	req [][]NilStringInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -15039,7 +14937,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int32
+		var request [][]NilStringInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15055,15 +14953,13 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int32, 0)
+			request = make([][]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int32
-				elem = make([]int32, 0)
+				var elem []NilStringInt32
+				elem = make([]NilStringInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int32
-					v, err := json.DecodeStringInt32(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilStringInt32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -15412,7 +15308,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int64,
+	req []NilStringInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -15440,7 +15336,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []int64
+		var request []NilStringInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15456,12 +15352,10 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int64, 0)
+			request = make([]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int64
-				v, err := json.DecodeStringInt64(d)
-				elem = v
-				if err != nil {
+				var elem NilStringInt64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -15489,7 +15383,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int64,
+	req [][]NilStringInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -15517,7 +15411,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]int64
+		var request [][]NilStringInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15533,15 +15427,13 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int64, 0)
+			request = make([][]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int64
-				elem = make([]int64, 0)
+				var elem []NilStringInt64
+				elem = make([]NilStringInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int64
-					v, err := json.DecodeStringInt64(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilStringInt64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -15890,7 +15782,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []netip.Addr,
+	req []NilIPv4,
 	close func() error,
 	rerr error,
 ) {
@@ -15918,7 +15810,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []netip.Addr
+		var request []NilIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15934,12 +15826,10 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]netip.Addr, 0)
+			request = make([]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem netip.Addr
-				v, err := json.DecodeIP(d)
-				elem = v
-				if err != nil {
+				var elem NilIPv4
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -15967,7 +15857,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]netip.Addr,
+	req [][]NilIPv4,
 	close func() error,
 	rerr error,
 ) {
@@ -15995,7 +15885,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]netip.Addr
+		var request [][]NilIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -16011,15 +15901,13 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]netip.Addr, 0)
+			request = make([][]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []netip.Addr
-				elem = make([]netip.Addr, 0)
+				var elem []NilIPv4
+				elem = make([]NilIPv4, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilIPv4
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -16368,7 +16256,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []netip.Addr,
+	req []NilIPv6,
 	close func() error,
 	rerr error,
 ) {
@@ -16396,7 +16284,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []netip.Addr
+		var request []NilIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -16412,12 +16300,10 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]netip.Addr, 0)
+			request = make([]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem netip.Addr
-				v, err := json.DecodeIP(d)
-				elem = v
-				if err != nil {
+				var elem NilIPv6
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -16445,7 +16331,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]netip.Addr,
+	req [][]NilIPv6,
 	close func() error,
 	rerr error,
 ) {
@@ -16473,7 +16359,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]netip.Addr
+		var request [][]NilIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -16489,15 +16375,13 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]netip.Addr, 0)
+			request = make([][]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []netip.Addr
-				elem = make([]netip.Addr, 0)
+				var elem []NilIPv6
+				elem = make([]NilIPv6, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilIPv6
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -16606,7 +16490,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -16634,7 +16518,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -16650,12 +16534,10 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -16683,7 +16565,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -16711,7 +16593,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -16727,15 +16609,13 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -17084,7 +16964,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -17112,7 +16992,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -17128,12 +17008,10 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -17161,7 +17039,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -17189,7 +17067,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -17205,15 +17083,13 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -17562,7 +17438,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilTime,
 	close func() error,
 	rerr error,
 ) {
@@ -17590,7 +17466,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -17606,12 +17482,10 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeTime(d)
-				elem = v
-				if err != nil {
+				var elem NilTime
+				if err := elem.Decode(d, json.DecodeTime); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -17639,7 +17513,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilTime,
 	close func() error,
 	rerr error,
 ) {
@@ -17667,7 +17541,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -17683,15 +17557,13 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilTime
+				elem = make([]NilTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeTime(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilTime
+					if err := elemElem.Decode(d, json.DecodeTime); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -18040,7 +17912,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, span trace.Span) (
-	req []url.URL,
+	req []NilURI,
 	close func() error,
 	rerr error,
 ) {
@@ -18068,7 +17940,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []url.URL
+		var request []NilURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -18084,12 +17956,10 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]url.URL, 0)
+			request = make([]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem url.URL
-				v, err := json.DecodeURI(d)
-				elem = v
-				if err != nil {
+				var elem NilURI
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -18117,7 +17987,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]url.URL,
+	req [][]NilURI,
 	close func() error,
 	rerr error,
 ) {
@@ -18145,7 +18015,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]url.URL
+		var request [][]NilURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -18161,15 +18031,13 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]url.URL, 0)
+			request = make([][]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []url.URL
-				elem = make([]url.URL, 0)
+				var elem []NilURI
+				elem = make([]NilURI, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem url.URL
-					v, err := json.DecodeURI(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilURI
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -18518,7 +18386,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []uuid.UUID,
+	req []NilUUID,
 	close func() error,
 	rerr error,
 ) {
@@ -18546,7 +18414,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []uuid.UUID
+		var request []NilUUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -18562,12 +18430,10 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]uuid.UUID, 0)
+			request = make([]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem uuid.UUID
-				v, err := json.DecodeUUID(d)
-				elem = v
-				if err != nil {
+				var elem NilUUID
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -18595,7 +18461,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]uuid.UUID,
+	req [][]NilUUID,
 	close func() error,
 	rerr error,
 ) {
@@ -18623,7 +18489,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]uuid.UUID
+		var request [][]NilUUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -18639,15 +18505,13 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]uuid.UUID, 0)
+			request = make([][]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []uuid.UUID
-				elem = make([]uuid.UUID, 0)
+				var elem []NilUUID
+				elem = make([]NilUUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem uuid.UUID
-					v, err := json.DecodeUUID(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUUID
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -19236,7 +19100,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -19264,7 +19128,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilUnixMicro
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -19280,12 +19144,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixMicro(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixMicro
+				if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -19313,7 +19175,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -19341,7 +19203,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixMicro
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -19357,15 +19219,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixMicro
+				elem = make([]NilUnixMicro, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixMicro(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixMicro
+					if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -19714,7 +19574,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -19742,7 +19602,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilUnixMilli
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -19758,12 +19618,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixMilli(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixMilli
+				if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -19791,7 +19649,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -19819,7 +19677,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixMilli
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -19835,15 +19693,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixMilli
+				elem = make([]NilUnixMilli, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixMilli(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixMilli
+					if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -20192,7 +20048,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -20220,7 +20076,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilUnixNano
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -20236,12 +20092,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixNano(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixNano
+				if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -20269,7 +20123,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -20297,7 +20151,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixNano
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -20313,15 +20167,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixNano
+				elem = make([]NilUnixNano, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixNano(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixNano
+					if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -20430,7 +20282,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -20458,7 +20310,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -20474,12 +20326,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -20507,7 +20357,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -20535,7 +20385,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -20551,15 +20401,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -20908,7 +20756,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -20936,7 +20784,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []time.Time
+		var request []NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -20952,12 +20800,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -20985,7 +20831,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -21013,7 +20859,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -21029,15 +20875,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -21603,7 +21447,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -21631,7 +21475,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -21647,12 +21491,10 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -21672,7 +21514,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -21700,7 +21542,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -21716,15 +21558,13 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -22516,7 +22356,7 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilDate,
 	close func() error,
 	rerr error,
 ) {
@@ -22544,7 +22384,7 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -22560,12 +22400,10 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeDate(d)
-				elem = v
-				if err != nil {
+				var elem NilDate
+				if err := elem.Decode(d, json.DecodeDate); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -22585,7 +22423,7 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilDate,
 	close func() error,
 	rerr error,
 ) {
@@ -22613,7 +22451,7 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -22629,15 +22467,13 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilDate
+				elem = make([]NilDate, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeDate(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilDate
+					if err := elemElem.Decode(d, json.DecodeDate); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -22972,7 +22808,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilDateTime,
 	close func() error,
 	rerr error,
 ) {
@@ -23000,7 +22836,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -23016,12 +22852,10 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeDateTime(d)
-				elem = v
-				if err != nil {
+				var elem NilDateTime
+				if err := elem.Decode(d, json.DecodeDateTime); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -23041,7 +22875,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilDateTime,
 	close func() error,
 	rerr error,
 ) {
@@ -23069,7 +22903,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -23085,15 +22919,13 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilDateTime
+				elem = make([]NilDateTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeDateTime(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilDateTime
+					if err := elemElem.Decode(d, json.DecodeDateTime); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -23428,7 +23260,7 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Duration,
+	req []NilDuration,
 	close func() error,
 	rerr error,
 ) {
@@ -23456,7 +23288,7 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request []time.Duration
+		var request []NilDuration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -23472,12 +23304,10 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Duration, 0)
+			request = make([]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Duration
-				v, err := json.DecodeDuration(d)
-				elem = v
-				if err != nil {
+				var elem NilDuration
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -23497,7 +23327,7 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Duration,
+	req [][]NilDuration,
 	close func() error,
 	rerr error,
 ) {
@@ -23525,7 +23355,7 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 
-		var request [][]time.Duration
+		var request [][]NilDuration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -23541,15 +23371,13 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Duration, 0)
+			request = make([][]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Duration
-				elem = make([]time.Duration, 0)
+				var elem []NilDuration
+				elem = make([]NilDuration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Duration
-					v, err := json.DecodeDuration(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilDuration
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -23985,7 +23813,7 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -24013,7 +23841,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -24029,12 +23857,10 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -24058,7 +23884,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 						Email:        true,
 						Hostname:     false,
 						Regex:        nil,
-					}).Validate(string(elem)); err != nil {
+					}).Validate(string(elem.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -24084,7 +23910,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -24112,7 +23938,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -24128,15 +23954,13 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -24171,7 +23995,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 								Email:        true,
 								Hostname:     false,
 								Regex:        nil,
-							}).Validate(string(elem)); err != nil {
+							}).Validate(string(elem.Value)); err != nil {
 								return errors.Wrap(err, "string")
 							}
 							return nil
@@ -24597,7 +24421,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -24625,7 +24449,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -24641,12 +24465,10 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -24670,7 +24492,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 						Email:        false,
 						Hostname:     true,
 						Regex:        nil,
-					}).Validate(string(elem)); err != nil {
+					}).Validate(string(elem.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
 					return nil
@@ -24696,7 +24518,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -24724,7 +24546,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -24740,15 +24562,13 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -24783,7 +24603,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 								Email:        false,
 								Hostname:     true,
 								Regex:        nil,
-							}).Validate(string(elem)); err != nil {
+							}).Validate(string(elem.Value)); err != nil {
 								return errors.Wrap(err, "string")
 							}
 							return nil
@@ -25108,7 +24928,7 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request, span 
 }
 
 func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []netip.Addr,
+	req []NilIP,
 	close func() error,
 	rerr error,
 ) {
@@ -25136,7 +24956,7 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, 
 			return req, close, nil
 		}
 
-		var request []netip.Addr
+		var request []NilIP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -25152,12 +24972,10 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]netip.Addr, 0)
+			request = make([]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem netip.Addr
-				v, err := json.DecodeIP(d)
-				elem = v
-				if err != nil {
+				var elem NilIP
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -25177,7 +24995,7 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, 
 }
 
 func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]netip.Addr,
+	req [][]NilIP,
 	close func() error,
 	rerr error,
 ) {
@@ -25205,7 +25023,7 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 
-		var request [][]netip.Addr
+		var request [][]NilIP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -25221,15 +25039,13 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]netip.Addr, 0)
+			request = make([][]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []netip.Addr
-				elem = make([]netip.Addr, 0)
+				var elem []NilIP
+				elem = make([]NilIP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilIP
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -25564,7 +25380,7 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int32,
+	req []NilStringInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -25592,7 +25408,7 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request []int32
+		var request []NilStringInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -25608,12 +25424,10 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int32, 0)
+			request = make([]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int32
-				v, err := json.DecodeStringInt32(d)
-				elem = v
-				if err != nil {
+				var elem NilStringInt32
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -25633,7 +25447,7 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int32,
+	req [][]NilStringInt32,
 	close func() error,
 	rerr error,
 ) {
@@ -25661,7 +25475,7 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 
-		var request [][]int32
+		var request [][]NilStringInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -25677,15 +25491,13 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int32, 0)
+			request = make([][]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int32
-				elem = make([]int32, 0)
+				var elem []NilStringInt32
+				elem = make([]NilStringInt32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int32
-					v, err := json.DecodeStringInt32(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilStringInt32
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -26020,7 +25832,7 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []int64,
+	req []NilStringInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -26048,7 +25860,7 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request []int64
+		var request []NilStringInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -26064,12 +25876,10 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]int64, 0)
+			request = make([]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem int64
-				v, err := json.DecodeStringInt64(d)
-				elem = v
-				if err != nil {
+				var elem NilStringInt64
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -26089,7 +25899,7 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]int64,
+	req [][]NilStringInt64,
 	close func() error,
 	rerr error,
 ) {
@@ -26117,7 +25927,7 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 
-		var request [][]int64
+		var request [][]NilStringInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -26133,15 +25943,13 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]int64, 0)
+			request = make([][]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []int64
-				elem = make([]int64, 0)
+				var elem []NilStringInt64
+				elem = make([]NilStringInt64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem int64
-					v, err := json.DecodeStringInt64(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilStringInt64
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -26476,7 +26284,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []netip.Addr,
+	req []NilIPv4,
 	close func() error,
 	rerr error,
 ) {
@@ -26504,7 +26312,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []netip.Addr
+		var request []NilIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -26520,12 +26328,10 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]netip.Addr, 0)
+			request = make([]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem netip.Addr
-				v, err := json.DecodeIP(d)
-				elem = v
-				if err != nil {
+				var elem NilIPv4
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -26545,7 +26351,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]netip.Addr,
+	req [][]NilIPv4,
 	close func() error,
 	rerr error,
 ) {
@@ -26573,7 +26379,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]netip.Addr
+		var request [][]NilIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -26589,15 +26395,13 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]netip.Addr, 0)
+			request = make([][]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []netip.Addr
-				elem = make([]netip.Addr, 0)
+				var elem []NilIPv4
+				elem = make([]NilIPv4, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilIPv4
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -26932,7 +26736,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (
-	req []netip.Addr,
+	req []NilIPv6,
 	close func() error,
 	rerr error,
 ) {
@@ -26960,7 +26764,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []netip.Addr
+		var request []NilIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -26976,12 +26780,10 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]netip.Addr, 0)
+			request = make([]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem netip.Addr
-				v, err := json.DecodeIP(d)
-				elem = v
-				if err != nil {
+				var elem NilIPv6
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -27001,7 +26803,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]netip.Addr,
+	req [][]NilIPv6,
 	close func() error,
 	rerr error,
 ) {
@@ -27029,7 +26831,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]netip.Addr
+		var request [][]NilIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -27045,15 +26847,13 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]netip.Addr, 0)
+			request = make([][]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []netip.Addr
-				elem = make([]netip.Addr, 0)
+				var elem []NilIPv6
+				elem = make([]NilIPv6, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilIPv6
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -27160,7 +26960,7 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request, span tr
 }
 
 func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -27188,7 +26988,7 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, sp
 			return req, close, nil
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -27204,12 +27004,10 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -27229,7 +27027,7 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, sp
 }
 
 func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -27257,7 +27055,7 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -27273,15 +27071,13 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -27616,7 +27412,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []string,
+	req []NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -27644,7 +27440,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request []string
+		var request []NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -27660,12 +27456,10 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]string, 0)
+			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+				var elem NilString
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -27685,7 +27479,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]string,
+	req [][]NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -27713,7 +27507,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 
-		var request [][]string
+		var request [][]NilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -27729,15 +27523,13 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]string, 0)
+			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []string
-				elem = make([]string, 0)
+				var elem []NilString
+				elem = make([]NilString, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
+					var elemElem NilString
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -28072,7 +27864,7 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilTime,
 	close func() error,
 	rerr error,
 ) {
@@ -28100,7 +27892,7 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -28116,12 +27908,10 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeTime(d)
-				elem = v
-				if err != nil {
+				var elem NilTime
+				if err := elem.Decode(d, json.DecodeTime); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -28141,7 +27931,7 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilTime,
 	close func() error,
 	rerr error,
 ) {
@@ -28169,7 +27959,7 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -28185,15 +27975,13 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilTime
+				elem = make([]NilTime, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeTime(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilTime
+					if err := elemElem.Decode(d, json.DecodeTime); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -28528,7 +28316,7 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request, span
 }
 
 func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (
-	req []url.URL,
+	req []NilURI,
 	close func() error,
 	rerr error,
 ) {
@@ -28556,7 +28344,7 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request,
 			return req, close, nil
 		}
 
-		var request []url.URL
+		var request []NilURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -28572,12 +28360,10 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request,
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]url.URL, 0)
+			request = make([]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem url.URL
-				v, err := json.DecodeURI(d)
-				elem = v
-				if err != nil {
+				var elem NilURI
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -28597,7 +28383,7 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]url.URL,
+	req [][]NilURI,
 	close func() error,
 	rerr error,
 ) {
@@ -28625,7 +28411,7 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request [][]url.URL
+		var request [][]NilURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -28641,15 +28427,13 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]url.URL, 0)
+			request = make([][]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []url.URL
-				elem = make([]url.URL, 0)
+				var elem []NilURI
+				elem = make([]NilURI, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem url.URL
-					v, err := json.DecodeURI(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilURI
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -28984,7 +28768,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []uuid.UUID,
+	req []NilUUID,
 	close func() error,
 	rerr error,
 ) {
@@ -29012,7 +28796,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []uuid.UUID
+		var request []NilUUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -29028,12 +28812,10 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]uuid.UUID, 0)
+			request = make([]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem uuid.UUID
-				v, err := json.DecodeUUID(d)
-				elem = v
-				if err != nil {
+				var elem NilUUID
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -29053,7 +28835,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]uuid.UUID,
+	req [][]NilUUID,
 	close func() error,
 	rerr error,
 ) {
@@ -29081,7 +28863,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]uuid.UUID
+		var request [][]NilUUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -29097,15 +28879,13 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]uuid.UUID, 0)
+			request = make([][]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []uuid.UUID
-				elem = make([]uuid.UUID, 0)
+				var elem []NilUUID
+				elem = make([]NilUUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem uuid.UUID
-					v, err := json.DecodeUUID(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUUID
+					if err := elemElem.Decode(d); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -29668,7 +29448,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -29696,7 +29476,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilUnixMicro
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -29712,12 +29492,10 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixMicro(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixMicro
+				if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -29737,7 +29515,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -29765,7 +29543,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixMicro
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -29781,15 +29559,13 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixMicro
+				elem = make([]NilUnixMicro, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixMicro(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixMicro
+					if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -30124,7 +29900,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -30152,7 +29928,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilUnixMilli
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -30168,12 +29944,10 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixMilli(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixMilli
+				if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -30193,7 +29967,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -30221,7 +29995,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixMilli
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -30237,15 +30011,13 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixMilli
+				elem = make([]NilUnixMilli, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixMilli(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixMilli
+					if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -30580,7 +30352,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -30608,7 +30380,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilUnixNano
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -30624,12 +30396,10 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixNano(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixNano
+				if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -30649,7 +30419,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -30677,7 +30447,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixNano
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -30693,15 +30463,13 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixNano
+				elem = make([]NilUnixNano, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixNano(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixNano
+					if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -30808,7 +30576,7 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -30836,7 +30604,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -30852,12 +30620,10 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -30877,7 +30643,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -30905,7 +30671,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -30921,15 +30687,13 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -31264,7 +31028,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []time.Time,
+	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -31292,7 +31056,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 			return req, close, nil
 		}
 
-		var request []time.Time
+		var request []NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -31308,12 +31072,10 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]time.Time, 0)
+			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
-				elem = v
-				if err != nil {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -31333,7 +31095,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]time.Time,
+	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -31361,7 +31123,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 			return req, close, nil
 		}
 
-		var request [][]time.Time
+		var request [][]NilUnixSeconds
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -31377,15 +31139,13 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]time.Time, 0)
+			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []time.Time
-				elem = make([]time.Time, 0)
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elemElem = v
-					if err != nil {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)

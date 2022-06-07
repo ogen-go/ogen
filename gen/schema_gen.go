@@ -40,10 +40,33 @@ func variantFieldName(t *ir.Type) string {
 	return capitalize.Capitalize(t.NamePostfix())
 }
 
-func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type, err error) {
+func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bool) (ret *ir.Type, err error) {
 	if schema == nil {
 		return nil, &ErrNotImplemented{Name: "empty schema"}
 	}
+
+	defer func() {
+		if err != nil {
+			return
+		}
+
+		nullable := schema != nil && schema.Nullable
+		boxedT, boxErr := boxType(ret, ir.GenericVariant{
+			Optional: optional,
+			Nullable: nullable,
+		})
+		if boxErr != nil {
+			err = boxErr
+			ret = nil
+			return
+		}
+
+		if boxedT.IsGeneric() {
+			g.side = append(g.side, boxedT)
+		}
+
+		ret = boxedT
+	}()
 
 	if ref := schema.Ref; ref != "" {
 		if t, ok := g.lookupRef(ref); ok {
@@ -120,7 +143,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 				return nil, errors.Wrapf(err, "property type name: %q", prop.Name)
 			}
 
-			t, err := g.generate(propTypeName, prop.Schema)
+			t, err := g.generate(propTypeName, prop.Schema, !prop.Required)
 			if err != nil {
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
@@ -149,7 +172,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			if schItem == nil {
 				return ir.Any(schItem), nil
 			}
-			return g.generate(prefix+"Item", schItem)
+			return g.generate(prefix+"Item", schItem, false)
 		}
 
 		if hasAdditionalProps {
@@ -215,7 +238,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		ret := g.regtype(name, array)
 		if schema.Item != nil {
-			array.Item, err = g.generate(name+"Item", schema.Item)
+			array.Item, err = g.generate(name+"Item", schema.Item, false)
 			if err != nil {
 				return nil, errors.Wrap(err, "item")
 			}
