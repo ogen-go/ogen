@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
@@ -38,6 +39,8 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 }
 
 func generate(specPath, packageName string, fs gen.FileSystem, opts gen.Options) error {
+	log := opts.Logger
+
 	data, err := os.ReadFile(specPath)
 	if err != nil {
 		return err
@@ -48,14 +51,18 @@ func generate(specPath, packageName string, fs gen.FileSystem, opts gen.Options)
 		return errors.Wrap(err, "parse spec")
 	}
 
+	start := time.Now()
 	g, err := gen.NewGenerator(spec, opts)
 	if err != nil {
 		return errors.Wrap(err, "build IR")
 	}
+	log.Debug("Build IR", zap.Duration("took", time.Since(start)))
 
+	start = time.Now()
 	if err := g.WriteSource(fs, packageName); err != nil {
 		return errors.Wrap(err, "write")
 	}
+	log.Debug("Write", zap.Duration("took", time.Since(start)))
 
 	return nil
 }
