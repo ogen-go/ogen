@@ -6,7 +6,7 @@ require (
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v0.35.2
 	github.com/google/uuid v1.3.0
-	github.com/ogen-go/ogen v0.35.0
+	github.com/ogen-go/ogen v0.0.0
 	github.com/stretchr/testify v1.7.2
 	go.opentelemetry.io/otel v1.7.0
 	go.opentelemetry.io/otel/metric v0.30.0
@@ -28,4 +28,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/ogen-go/ogen v0.35.0 => ./..
+replace github.com/ogen-go/ogen v0.0.0 => ./..
