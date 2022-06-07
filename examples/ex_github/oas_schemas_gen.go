@@ -40365,8 +40365,9 @@ type ValidationErrorErrorsItem struct {
 // ValidationErrorErrorsItemValue represents sum type.
 type ValidationErrorErrorsItemValue struct {
 	Type        ValidationErrorErrorsItemValueType // switch on this field
-	NilString   NilString
-	NilInt      NilInt
+	Null        struct{}
+	String      string
+	Int         int
 	StringArray []string
 }
 
@@ -40375,19 +40376,25 @@ type ValidationErrorErrorsItemValueType string
 
 // Possible values for ValidationErrorErrorsItemValueType.
 const (
-	NilStringValidationErrorErrorsItemValue   ValidationErrorErrorsItemValueType = "NilString"
-	NilIntValidationErrorErrorsItemValue      ValidationErrorErrorsItemValueType = "NilInt"
+	NullValidationErrorErrorsItemValue        ValidationErrorErrorsItemValueType = "struct{}"
+	StringValidationErrorErrorsItemValue      ValidationErrorErrorsItemValueType = "string"
+	IntValidationErrorErrorsItemValue         ValidationErrorErrorsItemValueType = "int"
 	StringArrayValidationErrorErrorsItemValue ValidationErrorErrorsItemValueType = "[]string"
 )
 
-// IsNilString reports whether ValidationErrorErrorsItemValue is NilString.
-func (s ValidationErrorErrorsItemValue) IsNilString() bool {
-	return s.Type == NilStringValidationErrorErrorsItemValue
+// IsNull reports whether ValidationErrorErrorsItemValue is struct{}.
+func (s ValidationErrorErrorsItemValue) IsNull() bool {
+	return s.Type == NullValidationErrorErrorsItemValue
 }
 
-// IsNilInt reports whether ValidationErrorErrorsItemValue is NilInt.
-func (s ValidationErrorErrorsItemValue) IsNilInt() bool {
-	return s.Type == NilIntValidationErrorErrorsItemValue
+// IsString reports whether ValidationErrorErrorsItemValue is string.
+func (s ValidationErrorErrorsItemValue) IsString() bool {
+	return s.Type == StringValidationErrorErrorsItemValue
+}
+
+// IsInt reports whether ValidationErrorErrorsItemValue is int.
+func (s ValidationErrorErrorsItemValue) IsInt() bool {
+	return s.Type == IntValidationErrorErrorsItemValue
 }
 
 // IsStringArray reports whether ValidationErrorErrorsItemValue is []string.
@@ -40395,45 +40402,66 @@ func (s ValidationErrorErrorsItemValue) IsStringArray() bool {
 	return s.Type == StringArrayValidationErrorErrorsItemValue
 }
 
-// SetNilString sets ValidationErrorErrorsItemValue to NilString.
-func (s *ValidationErrorErrorsItemValue) SetNilString(v NilString) {
-	s.Type = NilStringValidationErrorErrorsItemValue
-	s.NilString = v
+// SetNull sets ValidationErrorErrorsItemValue to struct{}.
+func (s *ValidationErrorErrorsItemValue) SetNull(v struct{}) {
+	s.Type = NullValidationErrorErrorsItemValue
+	s.Null = v
 }
 
-// GetNilString returns NilString and true boolean if ValidationErrorErrorsItemValue is NilString.
-func (s ValidationErrorErrorsItemValue) GetNilString() (v NilString, ok bool) {
-	if !s.IsNilString() {
+// GetNull returns struct{} and true boolean if ValidationErrorErrorsItemValue is struct{}.
+func (s ValidationErrorErrorsItemValue) GetNull() (v struct{}, ok bool) {
+	if !s.IsNull() {
 		return v, false
 	}
-	return s.NilString, true
+	return s.Null, true
 }
 
-// NewNilStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from NilString.
-func NewNilStringValidationErrorErrorsItemValue(v NilString) ValidationErrorErrorsItemValue {
+// NewNullValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from struct{}.
+func NewNullValidationErrorErrorsItemValue(v struct{}) ValidationErrorErrorsItemValue {
 	var s ValidationErrorErrorsItemValue
-	s.SetNilString(v)
+	s.SetNull(v)
 	return s
 }
 
-// SetNilInt sets ValidationErrorErrorsItemValue to NilInt.
-func (s *ValidationErrorErrorsItemValue) SetNilInt(v NilInt) {
-	s.Type = NilIntValidationErrorErrorsItemValue
-	s.NilInt = v
+// SetString sets ValidationErrorErrorsItemValue to string.
+func (s *ValidationErrorErrorsItemValue) SetString(v string) {
+	s.Type = StringValidationErrorErrorsItemValue
+	s.String = v
 }
 
-// GetNilInt returns NilInt and true boolean if ValidationErrorErrorsItemValue is NilInt.
-func (s ValidationErrorErrorsItemValue) GetNilInt() (v NilInt, ok bool) {
-	if !s.IsNilInt() {
+// GetString returns string and true boolean if ValidationErrorErrorsItemValue is string.
+func (s ValidationErrorErrorsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
 		return v, false
 	}
-	return s.NilInt, true
+	return s.String, true
 }
 
-// NewNilIntValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from NilInt.
-func NewNilIntValidationErrorErrorsItemValue(v NilInt) ValidationErrorErrorsItemValue {
+// NewStringValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from string.
+func NewStringValidationErrorErrorsItemValue(v string) ValidationErrorErrorsItemValue {
 	var s ValidationErrorErrorsItemValue
-	s.SetNilInt(v)
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets ValidationErrorErrorsItemValue to int.
+func (s *ValidationErrorErrorsItemValue) SetInt(v int) {
+	s.Type = IntValidationErrorErrorsItemValue
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if ValidationErrorErrorsItemValue is int.
+func (s ValidationErrorErrorsItemValue) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntValidationErrorErrorsItemValue returns new ValidationErrorErrorsItemValue from int.
+func NewIntValidationErrorErrorsItemValue(v int) ValidationErrorErrorsItemValue {
+	var s ValidationErrorErrorsItemValue
+	s.SetInt(v)
 	return s
 }
 

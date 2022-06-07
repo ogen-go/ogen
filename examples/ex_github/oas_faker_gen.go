@@ -36646,12 +36646,12 @@ func (s *ValidationErrorErrorsItem) SetFake() {
 
 // SetFake set fake values.
 func (s *ValidationErrorErrorsItemValue) SetFake() {
-	var elem NilString
+	var elem struct{}
 
 	{
-		elem.SetFake()
+		elem = struct{}{}
 	}
-	s.SetNilString(elem)
+	s.SetNull(elem)
 }
 
 // SetFake set fake values.
