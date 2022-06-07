@@ -53,7 +53,7 @@ func (t Type) FakeFields() (r []*Field) {
 	required := 0
 	for _, f := range t.Fields {
 		// Count required fields
-		if !f.Type.IsGeneric() {
+		if f.Spec != nil && f.Spec.Required {
 			required++
 			if required > obj.MaxProperties {
 				panic(fmt.Sprintf(" required fields(%d) > maximumProperties(%d)", obj.MaxProperties, required))

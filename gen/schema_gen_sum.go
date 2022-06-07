@@ -68,7 +68,7 @@ func (g *schemaGen) collectSumVariants(
 			return nil, errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
 		}
 
-		t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
+		t, err := g.generate(fmt.Sprintf("%s%d", name, i), s, false)
 		if err != nil {
 			return nil, errors.Wrapf(err, "oneOf[%d]", i)
 		}
