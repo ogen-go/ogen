@@ -29,8 +29,6 @@ type Generator struct {
 
 // Options is Generator options.
 type Options struct {
-	// VerboseRoute whether to print routes.
-	VerboseRoute bool
 	// GenerateExampleTests whether to generate decoding tests using schema examples.
 	GenerateExampleTests bool
 	// SkipTestRegex is regex to skip generated tests.

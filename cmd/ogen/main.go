@@ -136,7 +136,6 @@ func run() error {
 	}()
 
 	opts := gen.Options{
-		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,
