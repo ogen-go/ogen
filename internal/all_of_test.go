@@ -14,20 +14,20 @@ type allofTestServer struct {
 	api.UnimplementedHandler
 }
 
-func (s *allofTestServer) NullableStrings(ctx context.Context, req string) (r api.NullableStringsOK, _ error) {
-	return api.NullableStringsOK{}, nil
+func (s *allofTestServer) NullableStrings(ctx context.Context, req string) error {
+	return nil
 }
 
-func (s *allofTestServer) SimpleInteger(ctx context.Context, req int) (api.SimpleIntegerOK, error) {
-	return api.SimpleIntegerOK{}, nil
+func (s *allofTestServer) SimpleInteger(ctx context.Context, req int) error {
+	return nil
 }
 
-func (s *allofTestServer) ObjectsWithConflictingProperties(ctx context.Context, req api.ObjectsWithConflictingPropertiesReq) (r api.ObjectsWithConflictingPropertiesOK, _ error) {
-	return api.ObjectsWithConflictingPropertiesOK{}, nil
+func (s *allofTestServer) ObjectsWithConflictingProperties(ctx context.Context, req api.ObjectsWithConflictingPropertiesReq) error {
+	return nil
 }
 
-func (s *allofTestServer) ObjectsWithConflictingArrayProperty(ctx context.Context, req api.ObjectsWithConflictingArrayPropertyReq) (r api.ObjectsWithConflictingArrayPropertyOK, _ error) {
-	return api.ObjectsWithConflictingArrayPropertyOK{}, nil
+func (s *allofTestServer) ObjectsWithConflictingArrayProperty(ctx context.Context, req api.ObjectsWithConflictingArrayPropertyReq) error {
+	return nil
 }
 
 func TestAllof(t *testing.T) {

@@ -58,14 +58,14 @@ type testFormServer struct {
 	a *assert.Assertions
 }
 
-func (s testFormServer) TestFormURLEncoded(ctx context.Context, req api.TestForm) (r api.TestFormURLEncodedOK, _ error) {
+func (s testFormServer) TestFormURLEncoded(ctx context.Context, req api.TestForm) error {
 	s.a.Equal(testForm(), req)
-	return r, nil
+	return nil
 }
 
-func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) (r api.TestMultipartOK, _ error) {
+func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) error {
 	s.a.Equal(testForm(), req)
-	return r, nil
+	return nil
 }
 
 func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReqForm) (
@@ -114,8 +114,8 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMul
 func (s testFormServer) TestShareFormSchema(
 	ctx context.Context,
 	req api.TestShareFormSchemaReq,
-) (api.TestShareFormSchemaOK, error) {
-	return api.TestShareFormSchemaOK{}, nil
+) error {
+	return nil
 }
 
 func TestURIEncodingE2E(t *testing.T) {

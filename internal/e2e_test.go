@@ -203,7 +203,7 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, er
 	}, nil
 }
 
-func (s sampleAPIServer) TestFloatValidation(ctx context.Context, req api.TestFloatValidation) (api.TestFloatValidationOK, error) {
+func (s sampleAPIServer) TestFloatValidation(ctx context.Context, req api.TestFloatValidation) error {
 	panic("implement me")
 }
 
@@ -227,7 +227,7 @@ func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params a
 	return api.TestObjectQueryParameterOK{}, errors.New("invalid input")
 }
 
-func (s sampleAPIServer) OneofBug(ctx context.Context, req api.OneOfBugs) (api.OneofBugOK, error) {
+func (s sampleAPIServer) OneofBug(ctx context.Context, req api.OneOfBugs) error {
 	panic("implement me")
 }
 
