@@ -11,7 +11,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -73,8 +72,6 @@ func run() error {
 		packageName       = flag.String("package", "api", "Target package name")
 		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		performFormat     = flag.Bool("format", true, "Perform code formatting")
-		verbose           = flag.Bool("v", false, "Enable verbose logging")
-		logLevel          = zap.LevelFlag("loglevel", zapcore.InfoLevel, "Zap logging level")
 		clean             = flag.Bool("clean", false, "Clean generated files before generation")
 		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
 		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
@@ -84,7 +81,10 @@ func run() error {
 			"Ignore methods having functionality which is not implemented "+
 				"(all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
 		debugNoerr = flag.Bool("debug.noerr", false, "Ignore all errors")
+
+		logOptions ogenzap.Options
 	)
+	logOptions.RegisterFlags(flag.CommandLine)
 
 	var (
 		filterPath    *regexp.Regexp
@@ -127,7 +127,7 @@ func run() error {
 		}
 	}
 
-	logger, err := ogenzap.Create(*logLevel, *verbose)
+	logger, err := ogenzap.Create(logOptions)
 	if err != nil {
 		return err
 	}
