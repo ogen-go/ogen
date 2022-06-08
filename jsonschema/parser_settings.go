@@ -4,6 +4,8 @@ import "errors"
 
 // Settings is parser settings.
 type Settings struct {
+	External ExternalResolver
+	// Resolver is a root resolver.
 	Resolver ReferenceResolver
 
 	// Enables type inference.
@@ -27,6 +29,9 @@ func (nopResolver) ResolveReference(ref string) (*RawSchema, error) {
 }
 
 func (s *Settings) setDefaults() {
+	if s.External == nil {
+		s.External = noExternal{}
+	}
 	if s.Resolver == nil {
 		s.Resolver = nopResolver{}
 	}

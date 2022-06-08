@@ -8,15 +8,11 @@ import (
 	"github.com/go-faster/jx"
 )
 
-// ReferenceResolver resolves JSON schema references.
-type ReferenceResolver interface {
-	ResolveReference(ref string) (*RawSchema, error)
-}
-
 // Parser parses JSON schemas.
 type Parser struct {
-	resolver   ReferenceResolver
-	refcache   map[string]*Schema
+	external   ExternalResolver
+	schemas    map[string]ReferenceResolver
+	refcache   map[refKey]*Schema
 	inferTypes bool
 }
 
@@ -24,29 +20,32 @@ type Parser struct {
 func NewParser(s Settings) *Parser {
 	s.setDefaults()
 	return &Parser{
-		resolver:   s.Resolver,
-		refcache:   map[string]*Schema{},
+		external: s.External,
+		schemas: map[string]ReferenceResolver{
+			"": s.Resolver,
+		},
+		refcache:   map[refKey]*Schema{},
 		inferTypes: s.InferTypes,
 	}
 }
 
 // Parse parses given RawSchema and returns parsed Schema.
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.parse(schema, resolveCtx{})
+	return p.parse(schema, newResolveCtx())
 }
 
 // Resolve resolves Schema by given ref.
 func (p *Parser) Resolve(ref string) (*Schema, error) {
-	return p.resolve(ref, resolveCtx{})
+	return p.resolve(ref, newResolveCtx())
 }
 
-func (p *Parser) parse(schema *RawSchema, ctx resolveCtx) (*Schema, error) {
+func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (*Schema, error) {
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
 		return p.extendInfo(schema, s)
 	})
 }
 
-func (p *Parser) parse1(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	s, err := p.parseSchema(schema, ctx, hook)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse schema")
@@ -84,7 +83,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *S
 	return s, nil
 }
 
-func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	if schema == nil {
 		return nil, nil
 	}
@@ -353,7 +352,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 	}
 }
 
-func (p *Parser) parseMany(schemas []*RawSchema, ctx resolveCtx) ([]*Schema, error) {
+func (p *Parser) parseMany(schemas []*RawSchema, ctx *resolveCtx) ([]*Schema, error) {
 	result := make([]*Schema, 0, len(schemas))
 	for i, schema := range schemas {
 		s, err := p.parse(schema, ctx)
@@ -365,34 +364,6 @@ func (p *Parser) parseMany(schemas []*RawSchema, ctx resolveCtx) ([]*Schema, err
 	}
 
 	return result, nil
-}
-
-type resolveCtx map[string]struct{}
-
-func (p *Parser) resolve(ref string, ctx resolveCtx) (*Schema, error) {
-	if s, ok := p.refcache[ref]; ok {
-		return s, nil
-	}
-
-	if _, ok := ctx[ref]; ok {
-		return nil, errors.New("infinite recursion")
-	}
-	ctx[ref] = struct{}{}
-	defer func() {
-		// Drop the resolved ref to prevent false-positive infinite recursion detection.
-		delete(ctx, ref)
-	}()
-
-	raw, err := p.resolver.ResolveReference(ref)
-	if err != nil {
-		return nil, errors.Wrap(err, "find schema")
-	}
-
-	return p.parse1(raw, ctx, func(s *Schema) *Schema {
-		s.Ref = ref
-		p.refcache[ref] = s
-		return p.extendInfo(raw, s)
-	})
 }
 
 func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
