@@ -3,9 +3,9 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $op := $.Operations }}{{/* Range over all methods */}}
-func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- if eq (len $op.ListResponseTypes) 1 }}
+{{- range $op := $.Operations }}
+func encode{{ $op.Name }}Response({{ if not $op.Responses.BlankType }}response {{ $op.Responses.Type.Go }}, {{ end }}w http.ResponseWriter, span trace.Span) error {
+	{{- if or (eq (len $op.ListResponseTypes) 1) $op.Responses.BlankType }}
 		{{- range $info := $op.ListResponseTypes }}
 			{{- template "respond" $info }}
 		{{- end }}
@@ -20,7 +20,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 		}
 	{{- end }}
 }
-{{- end }}{{/* Range over all methods */}}
+{{- end }}
 
 {{- if $.Error }}
 func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, span trace.Span) error {
