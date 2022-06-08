@@ -74,6 +74,7 @@ func run() error {
 		performFormat     = flag.Bool("format", true, "Perform code formatting")
 		clean             = flag.Bool("clean", false, "Clean generated files before generation")
 		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
+		allowRemote       = flag.Bool("allow-remote", false, "Enables remote references resolving")
 		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
 		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
 
@@ -140,6 +141,7 @@ func run() error {
 		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
+		AllowRemote:          *allowRemote,
 		Filters: gen.Filters{
 			PathRegex: filterPath,
 			Methods:   filterMethods,

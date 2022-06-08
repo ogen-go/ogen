@@ -10,6 +10,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 	"github.com/ogen-go/ogen/openapi/parser"
 )
@@ -38,6 +39,10 @@ type Options struct {
 	// InferSchemaType enables type inference for schemas. Schema parser will try to detect schema type
 	// by its properties.
 	InferSchemaType bool
+	// AllowRemote enables remote references resolving.
+	//
+	// See https://github.com/ogen-go/ogen/issues/385.
+	AllowRemote bool
 	// Filters contains filters to skip operations.
 	Filters Filters
 	// IgnoreNotImplemented contains ErrNotImplemented messages to ignore.
@@ -81,7 +86,14 @@ func (f Filters) accept(op *openapi.Operation) bool {
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	opts.setDefaults()
 
-	api, err := parser.Parse(spec, opts.InferSchemaType)
+	var external jsonschema.ExternalResolver
+	if opts.AllowRemote {
+		external = newExternalResolver()
+	}
+	api, err := parser.Parse(spec, parser.Settings{
+		External:   external,
+		InferTypes: opts.InferSchemaType,
+	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
 	}

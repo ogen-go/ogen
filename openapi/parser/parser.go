@@ -27,7 +27,7 @@ type parser struct {
 }
 
 // Parse parses raw Spec into
-func Parse(spec *ogen.Spec, inferTypes bool) (*openapi.API, error) {
+func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 	spec.Init()
 	p := &parser{
 		spec:       spec,
@@ -48,11 +48,12 @@ func Parse(spec *ogen.Spec, inferTypes bool) (*openapi.API, error) {
 			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
+			External: s.External,
 			Resolver: componentsResolver{
 				components: spec.Components.Schemas,
 				root:       jsonschema.NewRootResolver(spec.Raw),
 			},
-			InferTypes: inferTypes,
+			InferTypes: s.InferTypes,
 		}),
 	}
 
