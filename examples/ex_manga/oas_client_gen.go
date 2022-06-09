@@ -90,7 +90,6 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -162,7 +161,6 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -249,7 +247,6 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -336,7 +333,6 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -412,7 +408,6 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -488,7 +483,6 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

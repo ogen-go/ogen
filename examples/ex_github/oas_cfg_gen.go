@@ -3,11 +3,9 @@
 package api
 
 import (
-	"bytes"
 	"context"
 	"net/http"
 	"regexp"
-	"sync"
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel"
@@ -27,24 +25,6 @@ var regexMap = map[string]*regexp.Regexp{
 	"^(?:top|bottom|after:\\d+)$":                             regexp.MustCompile("^(?:top|bottom|after:\\d+)$"),
 	"^[0-9a-fA-F]+$":                                          regexp.MustCompile("^[0-9a-fA-F]+$"),
 	"^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ": regexp.MustCompile("^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) "),
-}
-
-// bufPool is pool of bytes.Buffer for encoding and decoding.
-var bufPool = &sync.Pool{
-	New: func() interface{} {
-		return new(bytes.Buffer)
-	},
-}
-
-// getBuf returns buffer from pool.
-func getBuf() *bytes.Buffer {
-	return bufPool.Get().(*bytes.Buffer)
-}
-
-// putBuf puts buffer to pool.
-func putBuf(b *bytes.Buffer) {
-	b.Reset()
-	bufPool.Put(b)
 }
 
 // ErrorHandler is error handler.

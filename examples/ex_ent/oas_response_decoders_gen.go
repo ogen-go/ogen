@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -29,16 +30,12 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetCreate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -64,16 +61,12 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -99,16 +92,12 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R409
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -134,16 +123,12 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -175,16 +160,12 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetCategoriesCreate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -210,16 +191,12 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -245,16 +222,12 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R409
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -280,16 +253,12 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -321,16 +290,12 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetFriendsCreate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -356,16 +321,12 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -391,16 +352,12 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R409
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -426,16 +383,12 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -467,16 +420,12 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetOwnerCreate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -502,16 +451,12 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -537,16 +482,12 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R409
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -572,16 +513,12 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -615,16 +552,12 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -650,16 +583,12 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -685,16 +614,12 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -728,16 +653,12 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -763,16 +684,12 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -798,16 +715,12 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -839,16 +752,12 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response ListPetOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -874,16 +783,12 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -909,16 +814,12 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -944,16 +845,12 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -985,16 +882,12 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response ListPetCategoriesOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1020,16 +913,12 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1055,16 +944,12 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1090,16 +975,12 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1131,16 +1012,12 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response ListPetFriendsOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1166,16 +1043,12 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1201,16 +1074,12 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1236,16 +1105,12 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1277,16 +1142,12 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetRead
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1312,16 +1173,12 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1347,16 +1204,12 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1382,16 +1235,12 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1423,16 +1272,12 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetOwnerRead
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1458,16 +1303,12 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1493,16 +1334,12 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1528,16 +1365,12 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1569,16 +1402,12 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response PetUpdate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1604,16 +1433,12 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R400
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1639,16 +1464,12 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R404
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1674,16 +1495,12 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response R500
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

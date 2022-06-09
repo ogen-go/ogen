@@ -92,7 +92,6 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -135,7 +134,6 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	u.Path += "/db"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -178,7 +176,6 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	u.Path += "/json"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -237,7 +234,6 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -296,7 +292,6 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

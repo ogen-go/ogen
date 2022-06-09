@@ -213,16 +213,12 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response NilInt
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -248,16 +244,12 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response NilString
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

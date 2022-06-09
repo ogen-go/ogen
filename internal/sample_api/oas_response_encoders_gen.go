@@ -17,7 +17,6 @@ func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -31,7 +30,6 @@ func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Int32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -50,7 +48,6 @@ func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, spa
 		span.SetStatus(codes.Ok, st)
 	}
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -66,7 +63,6 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -90,7 +86,6 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -113,7 +108,6 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -141,7 +135,6 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -155,7 +148,6 @@ func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTes
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -174,7 +166,6 @@ func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.Res
 		span.SetStatus(codes.Ok, st)
 	}
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -194,7 +185,6 @@ func encodePatternRecursiveMapGetResponse(response PatternRecursiveMap, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -208,7 +198,6 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -222,7 +211,6 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -242,7 +230,6 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -260,7 +247,6 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -298,7 +284,6 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -336,7 +321,6 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -353,7 +337,6 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -367,7 +350,6 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -420,7 +402,6 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -437,7 +418,6 @@ func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -451,7 +431,6 @@ func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -465,7 +444,6 @@ func encodeSecurityTestResponse(response string, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -479,7 +457,6 @@ func encodeStringIntMapGetResponse(response StringIntMap, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -493,7 +470,6 @@ func encodeTestContentParameterResponse(response string, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -525,7 +501,6 @@ func encodeTestMultipartUploadResponse(response string, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -539,7 +514,6 @@ func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {

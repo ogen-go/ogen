@@ -96,7 +96,6 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -176,7 +175,6 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -256,7 +254,6 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -336,7 +333,6 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -398,7 +394,6 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -458,7 +453,6 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 	u.Path += "/owner"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -539,7 +533,6 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -635,7 +628,6 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -731,7 +723,6 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -790,7 +781,6 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -850,7 +840,6 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 	u.Path += "/owner"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -926,7 +915,6 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)

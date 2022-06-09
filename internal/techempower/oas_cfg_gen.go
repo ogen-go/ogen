@@ -3,10 +3,8 @@
 package techempower
 
 import (
-	"bytes"
 	"context"
 	"net/http"
-	"sync"
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel"
@@ -19,24 +17,6 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
-
-// bufPool is pool of bytes.Buffer for encoding and decoding.
-var bufPool = &sync.Pool{
-	New: func() interface{} {
-		return new(bytes.Buffer)
-	},
-}
-
-// getBuf returns buffer from pool.
-func getBuf() *bytes.Buffer {
-	return bufPool.Get().(*bytes.Buffer)
-}
-
-// putBuf puts buffer to pool.
-func putBuf(b *bytes.Buffer) {
-	b.Reset()
-	bufPool.Put(b)
-}
 
 // ErrorHandler is error handler.
 type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)

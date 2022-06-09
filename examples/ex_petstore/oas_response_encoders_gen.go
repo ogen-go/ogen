@@ -31,7 +31,6 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -69,7 +68,6 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -87,7 +85,6 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -106,7 +103,6 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -124,7 +120,6 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

@@ -16,7 +16,6 @@ func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -30,7 +29,6 @@ func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -44,7 +42,6 @@ func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -58,7 +55,6 @@ func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -72,7 +68,6 @@ func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -86,7 +81,6 @@ func encodeApproveChatJoinRequestResponse(response Result, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -100,7 +94,6 @@ func encodeBanChatMemberResponse(response Result, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -114,7 +107,6 @@ func encodeBanChatSenderChatResponse(response Result, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -128,7 +120,6 @@ func encodeCloseResponse(response Result, w http.ResponseWriter, span trace.Span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -142,7 +133,6 @@ func encodeCopyMessageResponse(response ResultMessageId, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -156,7 +146,6 @@ func encodeCreateChatInviteLinkResponse(response ResultChatInviteLink, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -170,7 +159,6 @@ func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -184,7 +172,6 @@ func encodeDeclineChatJoinRequestResponse(response Result, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -198,7 +185,6 @@ func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -212,7 +198,6 @@ func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -226,7 +211,6 @@ func encodeDeleteMessageResponse(response Result, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -240,7 +224,6 @@ func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -254,7 +237,6 @@ func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -268,7 +250,6 @@ func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -282,7 +263,6 @@ func encodeEditChatInviteLinkResponse(response ResultChatInviteLink, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -296,7 +276,6 @@ func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -310,7 +289,6 @@ func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -324,7 +302,6 @@ func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -338,7 +315,6 @@ func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -352,7 +328,6 @@ func encodeEditMessageTextResponse(response Result, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -366,7 +341,6 @@ func encodeExportChatInviteLinkResponse(response ResultString, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -380,7 +354,6 @@ func encodeForwardMessageResponse(response ResultMessage, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -394,7 +367,6 @@ func encodeGetChatResponse(response ResultChat, w http.ResponseWriter, span trac
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -408,7 +380,6 @@ func encodeGetChatAdministratorsResponse(response ResultArrayOfChatMember, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -422,7 +393,6 @@ func encodeGetChatMemberResponse(response ResultChatMember, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -436,7 +406,6 @@ func encodeGetChatMemberCountResponse(response ResultInt, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -450,7 +419,6 @@ func encodeGetFileResponse(response Result, w http.ResponseWriter, span trace.Sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -464,7 +432,6 @@ func encodeGetGameHighScoresResponse(response ResultArrayOfGameHighScore, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -478,7 +445,6 @@ func encodeGetMeResponse(response ResultUser, w http.ResponseWriter, span trace.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -492,7 +458,6 @@ func encodeGetMyCommandsResponse(response ResultArrayOfBotCommand, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -506,7 +471,6 @@ func encodeGetStickerSetResponse(response Result, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -520,7 +484,6 @@ func encodeGetUpdatesResponse(response ResultArrayOfUpdate, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -534,7 +497,6 @@ func encodeGetUserProfilePhotosResponse(response ResultUserProfilePhotos, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -548,7 +510,6 @@ func encodeGetWebhookInfoResponse(response ResultWebhookInfo, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -562,7 +523,6 @@ func encodeLeaveChatResponse(response Result, w http.ResponseWriter, span trace.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -576,7 +536,6 @@ func encodeLogOutResponse(response Result, w http.ResponseWriter, span trace.Spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -590,7 +549,6 @@ func encodePinChatMessageResponse(response Result, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -604,7 +562,6 @@ func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -618,7 +575,6 @@ func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -632,7 +588,6 @@ func encodeRevokeChatInviteLinkResponse(response ResultChatInviteLink, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -646,7 +601,6 @@ func encodeSendAnimationResponse(response ResultMessage, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -660,7 +614,6 @@ func encodeSendAudioResponse(response ResultMessage, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -674,7 +627,6 @@ func encodeSendChatActionResponse(response Result, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -688,7 +640,6 @@ func encodeSendContactResponse(response ResultMessage, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -702,7 +653,6 @@ func encodeSendDiceResponse(response ResultMessage, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -716,7 +666,6 @@ func encodeSendDocumentResponse(response ResultMessage, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -730,7 +679,6 @@ func encodeSendGameResponse(response ResultMessage, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -744,7 +692,6 @@ func encodeSendInvoiceResponse(response ResultMessage, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -758,7 +705,6 @@ func encodeSendLocationResponse(response ResultMessage, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -772,7 +718,6 @@ func encodeSendMediaGroupResponse(response ResultArrayOfMessage, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -786,7 +731,6 @@ func encodeSendMessageResponse(response ResultMessage, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -800,7 +744,6 @@ func encodeSendPhotoResponse(response ResultMessage, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -814,7 +757,6 @@ func encodeSendPollResponse(response ResultMessage, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -828,7 +770,6 @@ func encodeSendStickerResponse(response ResultMessage, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -842,7 +783,6 @@ func encodeSendVenueResponse(response ResultMessage, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -856,7 +796,6 @@ func encodeSendVideoResponse(response ResultMessage, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -870,7 +809,6 @@ func encodeSendVideoNoteResponse(response ResultMessage, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -884,7 +822,6 @@ func encodeSendVoiceResponse(response ResultMessage, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -898,7 +835,6 @@ func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -912,7 +848,6 @@ func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -926,7 +861,6 @@ func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -940,7 +874,6 @@ func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -954,7 +887,6 @@ func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -968,7 +900,6 @@ func encodeSetChatTitleResponse(response Result, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -982,7 +913,6 @@ func encodeSetGameScoreResponse(response Result, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -996,7 +926,6 @@ func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1010,7 +939,6 @@ func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1024,7 +952,6 @@ func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1038,7 +965,6 @@ func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1052,7 +978,6 @@ func encodeSetWebhookResponse(response Result, w http.ResponseWriter, span trace
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1066,7 +991,6 @@ func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1080,7 +1004,6 @@ func encodeStopPollResponse(response ResultPoll, w http.ResponseWriter, span tra
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1094,7 +1017,6 @@ func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1108,7 +1030,6 @@ func encodeUnbanChatSenderChatResponse(response Result, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1122,7 +1043,6 @@ func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1136,7 +1056,6 @@ func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1150,7 +1069,6 @@ func encodeUploadStickerFileResponse(response ResultFile, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1169,7 +1087,6 @@ func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span t
 		span.SetStatus(codes.Ok, st)
 	}
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {

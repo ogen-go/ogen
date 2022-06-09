@@ -77,7 +77,6 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 	u.Path += "/market/bonds"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketBondsGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -180,7 +179,6 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -225,7 +223,6 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 	u.Path += "/market/currencies"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -270,7 +267,6 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 	u.Path += "/market/etfs"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -345,7 +341,6 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -406,7 +401,6 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -467,7 +461,6 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -512,7 +505,6 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 	u.Path += "/market/stocks"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "MarketStocksGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -621,7 +613,6 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "OperationsGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -699,7 +690,6 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -763,7 +753,6 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "OrdersGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -866,7 +855,6 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -972,7 +960,6 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1039,7 +1026,6 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -1103,7 +1089,6 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "PortfolioGet", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -1169,7 +1154,6 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "SandboxClearPost", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -1258,7 +1242,6 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1350,7 +1333,6 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1432,7 +1414,6 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1501,7 +1482,6 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -1546,7 +1526,6 @@ func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, e
 	u.Path += "/user/accounts"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securitySSOAuth(ctx, "UserAccountsGet", r); err != nil {
 		return res, errors.Wrap(err, "security")

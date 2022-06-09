@@ -92,7 +92,6 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

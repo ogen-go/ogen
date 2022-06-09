@@ -76,7 +76,6 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 	u.Path += "/pets"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -138,7 +137,6 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -195,7 +193,6 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

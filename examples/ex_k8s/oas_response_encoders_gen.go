@@ -18,7 +18,6 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -42,7 +41,6 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -66,7 +64,6 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -90,7 +87,6 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -114,7 +110,6 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -138,7 +133,6 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -162,7 +156,6 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -186,7 +179,6 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -210,7 +202,6 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -234,7 +225,6 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -258,7 +248,6 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -282,7 +271,6 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -306,7 +294,6 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -330,7 +317,6 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -354,7 +340,6 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -378,7 +363,6 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -402,7 +386,6 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -426,7 +409,6 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -450,7 +432,6 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -474,7 +455,6 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -498,7 +478,6 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -522,7 +501,6 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -546,7 +524,6 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -570,7 +547,6 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -594,7 +570,6 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -618,7 +593,6 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -642,7 +616,6 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -666,7 +639,6 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -690,7 +662,6 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -714,7 +685,6 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -738,7 +708,6 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -762,7 +731,6 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -786,7 +754,6 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -810,7 +777,6 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -834,7 +800,6 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -858,7 +823,6 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -882,7 +846,6 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -906,7 +869,6 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -930,7 +892,6 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -954,7 +915,6 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -978,7 +938,6 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1002,7 +961,6 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1026,7 +984,6 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1050,7 +1007,6 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1074,7 +1030,6 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1098,7 +1053,6 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1122,7 +1076,6 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1146,7 +1099,6 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1170,7 +1122,6 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1194,7 +1145,6 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1218,7 +1168,6 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1242,7 +1191,6 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1266,7 +1214,6 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1290,7 +1237,6 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1314,7 +1260,6 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1338,7 +1283,6 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1362,7 +1306,6 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1386,7 +1329,6 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1410,7 +1352,6 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1434,7 +1375,6 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1458,7 +1398,6 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1482,7 +1421,6 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1506,7 +1444,6 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1530,7 +1467,6 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1554,7 +1490,6 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1578,7 +1513,6 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1602,7 +1536,6 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1626,7 +1559,6 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1650,7 +1582,6 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1674,7 +1605,6 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1698,7 +1628,6 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1722,7 +1651,6 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1746,7 +1674,6 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1770,7 +1697,6 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1794,7 +1720,6 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1818,7 +1743,6 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1842,7 +1766,6 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1866,7 +1789,6 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1890,7 +1812,6 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1914,7 +1835,6 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1938,7 +1858,6 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1962,7 +1881,6 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1986,7 +1904,6 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2010,7 +1927,6 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2034,7 +1950,6 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2058,7 +1973,6 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2082,7 +1996,6 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2106,7 +2019,6 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2130,7 +2042,6 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2154,7 +2065,6 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2178,7 +2088,6 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2202,7 +2111,6 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2226,7 +2134,6 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2250,7 +2157,6 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2274,7 +2180,6 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2298,7 +2203,6 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2322,7 +2226,6 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2346,7 +2249,6 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2370,7 +2272,6 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2394,7 +2295,6 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2418,7 +2318,6 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2442,7 +2341,6 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2466,7 +2364,6 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2490,7 +2387,6 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2514,7 +2410,6 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2538,7 +2433,6 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2562,7 +2456,6 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2586,7 +2479,6 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2610,7 +2502,6 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2634,7 +2525,6 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2658,7 +2548,6 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2682,7 +2571,6 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2706,7 +2594,6 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2730,7 +2617,6 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2754,7 +2640,6 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2778,7 +2663,6 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2802,7 +2686,6 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2826,7 +2709,6 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2850,7 +2732,6 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2874,7 +2755,6 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2898,7 +2778,6 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2922,7 +2801,6 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2946,7 +2824,6 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2970,7 +2847,6 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2994,7 +2870,6 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3018,7 +2893,6 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3042,7 +2916,6 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3066,7 +2939,6 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3090,7 +2962,6 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3114,7 +2985,6 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3138,7 +3008,6 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3162,7 +3031,6 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3186,7 +3054,6 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3210,7 +3077,6 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3234,7 +3100,6 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3258,7 +3123,6 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3282,7 +3146,6 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3306,7 +3169,6 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3330,7 +3192,6 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3354,7 +3215,6 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3378,7 +3238,6 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3402,7 +3261,6 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3426,7 +3284,6 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3450,7 +3307,6 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3474,7 +3330,6 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3498,7 +3353,6 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3522,7 +3376,6 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3546,7 +3399,6 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3570,7 +3422,6 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3594,7 +3445,6 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3618,7 +3468,6 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3642,7 +3491,6 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3666,7 +3514,6 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3690,7 +3537,6 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3726,7 +3572,6 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3750,7 +3595,6 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3774,7 +3618,6 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3798,7 +3641,6 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3822,7 +3664,6 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3846,7 +3687,6 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3870,7 +3710,6 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3894,7 +3733,6 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3918,7 +3756,6 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3942,7 +3779,6 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3966,7 +3802,6 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3990,7 +3825,6 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4014,7 +3848,6 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4038,7 +3871,6 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4062,7 +3894,6 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4086,7 +3917,6 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4110,7 +3940,6 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4134,7 +3963,6 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4158,7 +3986,6 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4182,7 +4009,6 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4206,7 +4032,6 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4230,7 +4055,6 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4254,7 +4078,6 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4278,7 +4101,6 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4302,7 +4124,6 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4326,7 +4147,6 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4350,7 +4170,6 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4374,7 +4193,6 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4398,7 +4216,6 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4422,7 +4239,6 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4446,7 +4262,6 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4470,7 +4285,6 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4494,7 +4308,6 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4518,7 +4331,6 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4542,7 +4354,6 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4566,7 +4377,6 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4590,7 +4400,6 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4614,7 +4423,6 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4638,7 +4446,6 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4662,7 +4469,6 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4686,7 +4492,6 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4710,7 +4515,6 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4734,7 +4538,6 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4758,7 +4561,6 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4782,7 +4584,6 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4806,7 +4607,6 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4830,7 +4630,6 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4854,7 +4653,6 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4878,7 +4676,6 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4902,7 +4699,6 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4926,7 +4722,6 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4950,7 +4745,6 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4974,7 +4768,6 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4998,7 +4791,6 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5022,7 +4814,6 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5046,7 +4837,6 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5070,7 +4860,6 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5094,7 +4883,6 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5118,7 +4906,6 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5142,7 +4929,6 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5166,7 +4952,6 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5190,7 +4975,6 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5214,7 +4998,6 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5238,7 +5021,6 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5262,7 +5044,6 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5286,7 +5067,6 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5310,7 +5090,6 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5334,7 +5113,6 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5358,7 +5136,6 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5382,7 +5159,6 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5406,7 +5182,6 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5430,7 +5205,6 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5454,7 +5228,6 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5478,7 +5251,6 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5502,7 +5274,6 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5526,7 +5297,6 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5550,7 +5320,6 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5574,7 +5343,6 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5598,7 +5366,6 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5622,7 +5389,6 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5646,7 +5412,6 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5670,7 +5435,6 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5694,7 +5458,6 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5718,7 +5481,6 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5742,7 +5504,6 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5766,7 +5527,6 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5790,7 +5550,6 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5814,7 +5573,6 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5838,7 +5596,6 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5862,7 +5619,6 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5886,7 +5642,6 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5910,7 +5665,6 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5934,7 +5688,6 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5958,7 +5711,6 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5982,7 +5734,6 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6006,7 +5757,6 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6030,7 +5780,6 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6054,7 +5803,6 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6078,7 +5826,6 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6102,7 +5849,6 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6126,7 +5872,6 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6150,7 +5895,6 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6174,7 +5918,6 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6198,7 +5941,6 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6222,7 +5964,6 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6246,7 +5987,6 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6270,7 +6010,6 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6294,7 +6033,6 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6318,7 +6056,6 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6342,7 +6079,6 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6366,7 +6102,6 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6390,7 +6125,6 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6414,7 +6148,6 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6438,7 +6171,6 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6462,7 +6194,6 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6486,7 +6217,6 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6510,7 +6240,6 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6534,7 +6263,6 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6558,7 +6286,6 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6582,7 +6309,6 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6606,7 +6332,6 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6630,7 +6355,6 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6654,7 +6378,6 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6678,7 +6401,6 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6702,7 +6424,6 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6726,7 +6447,6 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6750,7 +6470,6 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6774,7 +6493,6 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6798,7 +6516,6 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6822,7 +6539,6 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6846,7 +6562,6 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6870,7 +6585,6 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6894,7 +6608,6 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6918,7 +6631,6 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6942,7 +6654,6 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6966,7 +6677,6 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6990,7 +6700,6 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7014,7 +6723,6 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7038,7 +6746,6 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7062,7 +6769,6 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7086,7 +6792,6 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7110,7 +6815,6 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7134,7 +6838,6 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7158,7 +6861,6 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7182,7 +6884,6 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7206,7 +6907,6 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7230,7 +6930,6 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7254,7 +6953,6 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7278,7 +6976,6 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7302,7 +6999,6 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7326,7 +7022,6 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7350,7 +7045,6 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7374,7 +7068,6 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7398,7 +7091,6 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7422,7 +7114,6 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7446,7 +7137,6 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7470,7 +7160,6 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7494,7 +7183,6 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7518,7 +7206,6 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7542,7 +7229,6 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7566,7 +7252,6 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7590,7 +7275,6 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7614,7 +7298,6 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7638,7 +7321,6 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7662,7 +7344,6 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7686,7 +7367,6 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7710,7 +7390,6 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7734,7 +7413,6 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7758,7 +7436,6 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7782,7 +7459,6 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7806,7 +7482,6 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7830,7 +7505,6 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7854,7 +7528,6 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7878,7 +7551,6 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7902,7 +7574,6 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7926,7 +7597,6 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7950,7 +7620,6 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7974,7 +7643,6 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7998,7 +7666,6 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8022,7 +7689,6 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8046,7 +7712,6 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8070,7 +7735,6 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8094,7 +7758,6 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8118,7 +7781,6 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8142,7 +7804,6 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8166,7 +7827,6 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8190,7 +7850,6 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8214,7 +7873,6 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8238,7 +7896,6 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8262,7 +7919,6 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8286,7 +7942,6 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8310,7 +7965,6 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8334,7 +7988,6 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8358,7 +8011,6 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8382,7 +8034,6 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8406,7 +8057,6 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8430,7 +8080,6 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8454,7 +8103,6 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8478,7 +8126,6 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8502,7 +8149,6 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8526,7 +8172,6 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8550,7 +8195,6 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8574,7 +8218,6 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8598,7 +8241,6 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8622,7 +8264,6 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8646,7 +8287,6 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8670,7 +8310,6 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8694,7 +8333,6 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8718,7 +8356,6 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8742,7 +8379,6 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8766,7 +8402,6 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8790,7 +8425,6 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8814,7 +8448,6 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8838,7 +8471,6 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8862,7 +8494,6 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8886,7 +8517,6 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8910,7 +8540,6 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8934,7 +8563,6 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8958,7 +8586,6 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8982,7 +8609,6 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9006,7 +8632,6 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9030,7 +8655,6 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9054,7 +8678,6 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9078,7 +8701,6 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9102,7 +8724,6 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9126,7 +8747,6 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9150,7 +8770,6 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9174,7 +8793,6 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9198,7 +8816,6 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9222,7 +8839,6 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9246,7 +8862,6 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9270,7 +8885,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9294,7 +8908,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9318,7 +8931,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9342,7 +8954,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9366,7 +8977,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9390,7 +9000,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9414,7 +9023,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9438,7 +9046,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9462,7 +9069,6 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9486,7 +9092,6 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9510,7 +9115,6 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9534,7 +9138,6 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9558,7 +9161,6 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9582,7 +9184,6 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9606,7 +9207,6 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9630,7 +9230,6 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9654,7 +9253,6 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9678,7 +9276,6 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9702,7 +9299,6 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9726,7 +9322,6 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9750,7 +9345,6 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9774,7 +9368,6 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9798,7 +9391,6 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9822,7 +9414,6 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9846,7 +9437,6 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9870,7 +9460,6 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response 
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
