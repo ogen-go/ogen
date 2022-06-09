@@ -194,7 +194,6 @@ func BenchmarkIntegration(b *testing.B) {
 				for pb.Next() {
 					req := ht.NewRequest(ctx, http.MethodGet, u, nil)
 					res, err := client.Do(req)
-					ht.PutRequest(req)
 					if err != nil {
 						b.Error(err)
 						break

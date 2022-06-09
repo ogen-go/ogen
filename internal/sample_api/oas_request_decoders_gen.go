@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -50,8 +51,7 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request DefaultTest
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -61,9 +61,7 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -117,8 +115,7 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OptPet
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -128,9 +125,7 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 			return req, close, nil
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -192,8 +187,7 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OneOfBugs
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -203,9 +197,7 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -259,8 +251,7 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OptPet
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -270,9 +261,7 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 			return req, close, nil
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -334,8 +323,7 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 		}
 
 		var request OptPetName
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -345,9 +333,7 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 			return req, close, nil
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -409,8 +395,7 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 		}
 
 		var request OptString
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -420,9 +405,7 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 			return req, close, nil
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -523,8 +506,7 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Sp
 		}
 
 		var request TestFloatValidation
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -534,9 +516,7 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Sp
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

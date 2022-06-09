@@ -157,7 +157,6 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -244,7 +243,6 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -292,7 +290,6 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 	u.Path += "/error"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -367,7 +364,6 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -444,7 +440,6 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -488,7 +483,6 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 	u.Path += "/foobar"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -533,7 +527,6 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	u.Path += "/test/header"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	h := uri.NewHeaderEncoder(r.Header)
 	{
@@ -589,7 +582,6 @@ func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAddition
 	u.Path += "/noAdditionalPropertiesTest"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -632,7 +624,6 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 	u.Path += "/nullableDefaultResponse"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -700,7 +691,6 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -744,7 +734,6 @@ func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursi
 	u.Path += "/patternRecursiveMap"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -821,7 +810,6 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -883,7 +871,6 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -958,7 +945,6 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	h := uri.NewHeaderEncoder(r.Header)
 	{
@@ -1061,7 +1047,6 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1121,7 +1106,6 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 	u.Path += "/avatar"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1180,7 +1164,6 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1239,7 +1222,6 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1312,7 +1294,6 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1396,7 +1377,6 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1477,7 +1457,6 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1521,7 +1500,6 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 	u.Path += "/recursiveArray"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1562,7 +1540,6 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err err
 	u.Path += "/recursiveMap"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1605,7 +1582,6 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 	u.Path += "/securityTest"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	if err := c.securityAPIKey(ctx, "SecurityTest", r); err != nil {
 		return res, errors.Wrap(err, "security")
@@ -1650,7 +1626,6 @@ func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err err
 	u.Path += "/stringIntMap"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1702,7 +1677,6 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			enc := jx.GetEncoder()
-			defer jx.PutEncoder(enc)
 			func(e *jx.Encoder) {
 				if params.Param.Set {
 					params.Param.Encode(e)
@@ -1716,7 +1690,6 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1784,7 +1757,6 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1847,7 +1819,6 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1911,7 +1882,6 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1975,7 +1945,6 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2057,7 +2026,6 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

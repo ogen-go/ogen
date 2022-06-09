@@ -17,12 +17,12 @@ func encodeOrdersLimitOrderPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeOrdersMarketOrderPostRequestJSON(
@@ -32,12 +32,12 @@ func encodeOrdersMarketOrderPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeSandboxCurrenciesBalancePostRequestJSON(
@@ -47,12 +47,12 @@ func encodeSandboxCurrenciesBalancePostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeSandboxPositionsBalancePostRequestJSON(
@@ -62,12 +62,12 @@ func encodeSandboxPositionsBalancePostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeSandboxRegisterPostRequestJSON(
@@ -77,12 +77,12 @@ func encodeSandboxRegisterPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }

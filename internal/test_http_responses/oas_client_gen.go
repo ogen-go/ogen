@@ -76,7 +76,6 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 	u.Path += "/anyContentTypeBinaryStringSchema"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -119,7 +118,6 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 	u.Path += "/anyContentTypeBinaryStringSchemaDefault"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -162,7 +160,6 @@ func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
 	u.Path += "/headers200"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -221,7 +218,6 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -264,7 +260,6 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 	u.Path += "/headersDefault"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -307,7 +302,6 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 	u.Path += "/multipleGenericResponses"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -350,7 +344,6 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 	u.Path += "/octetStreamBinaryStringSchema"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -393,7 +386,6 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 	u.Path += "/octetStreamEmptySchema"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

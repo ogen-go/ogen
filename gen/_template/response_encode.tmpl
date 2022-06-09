@@ -99,7 +99,6 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 
 	{{- if $.ContentType.JSON }}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 		{{ template "json/enc" elem $type $var }}
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

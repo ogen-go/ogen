@@ -22,7 +22,6 @@ func encodeTestRequestAnyResponse(response Error, w http.ResponseWriter, span tr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -36,7 +35,6 @@ func encodeTestRequestBooleanResponse(response Error, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -50,7 +48,6 @@ func encodeTestRequestBooleanArrayResponse(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -64,7 +61,6 @@ func encodeTestRequestBooleanArrayArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -78,7 +74,6 @@ func encodeTestRequestBooleanNullableResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -92,7 +87,6 @@ func encodeTestRequestBooleanNullableArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -106,7 +100,6 @@ func encodeTestRequestBooleanNullableArrayArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -120,7 +113,6 @@ func encodeTestRequestEmptyStructResponse(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -134,7 +126,6 @@ func encodeTestRequestFormatTestResponse(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -148,7 +139,6 @@ func encodeTestRequestIntegerResponse(response Error, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -162,7 +152,6 @@ func encodeTestRequestIntegerArrayResponse(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -176,7 +165,6 @@ func encodeTestRequestIntegerArrayArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -190,7 +178,6 @@ func encodeTestRequestIntegerInt32Response(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -204,7 +191,6 @@ func encodeTestRequestIntegerInt32ArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -218,7 +204,6 @@ func encodeTestRequestIntegerInt32ArrayArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -232,7 +217,6 @@ func encodeTestRequestIntegerInt32NullableResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -246,7 +230,6 @@ func encodeTestRequestIntegerInt32NullableArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -260,7 +243,6 @@ func encodeTestRequestIntegerInt32NullableArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -274,7 +256,6 @@ func encodeTestRequestIntegerInt64Response(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -288,7 +269,6 @@ func encodeTestRequestIntegerInt64ArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -302,7 +282,6 @@ func encodeTestRequestIntegerInt64ArrayArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -316,7 +295,6 @@ func encodeTestRequestIntegerInt64NullableResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -330,7 +308,6 @@ func encodeTestRequestIntegerInt64NullableArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -344,7 +321,6 @@ func encodeTestRequestIntegerInt64NullableArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -358,7 +334,6 @@ func encodeTestRequestIntegerNullableResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -372,7 +347,6 @@ func encodeTestRequestIntegerNullableArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -386,7 +360,6 @@ func encodeTestRequestIntegerNullableArrayArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -400,7 +373,6 @@ func encodeTestRequestNullResponse(response Error, w http.ResponseWriter, span t
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -414,7 +386,6 @@ func encodeTestRequestNullArrayResponse(response Error, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -428,7 +399,6 @@ func encodeTestRequestNullArrayArrayResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -442,7 +412,6 @@ func encodeTestRequestNullNullableResponse(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -456,7 +425,6 @@ func encodeTestRequestNullNullableArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -470,7 +438,6 @@ func encodeTestRequestNullNullableArrayArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -484,7 +451,6 @@ func encodeTestRequestNumberResponse(response Error, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -498,7 +464,6 @@ func encodeTestRequestNumberArrayResponse(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -512,7 +477,6 @@ func encodeTestRequestNumberArrayArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -526,7 +490,6 @@ func encodeTestRequestNumberDoubleResponse(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -540,7 +503,6 @@ func encodeTestRequestNumberDoubleArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -554,7 +516,6 @@ func encodeTestRequestNumberDoubleArrayArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -568,7 +529,6 @@ func encodeTestRequestNumberDoubleNullableResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -582,7 +542,6 @@ func encodeTestRequestNumberDoubleNullableArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -596,7 +555,6 @@ func encodeTestRequestNumberDoubleNullableArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -610,7 +568,6 @@ func encodeTestRequestNumberFloatResponse(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -624,7 +581,6 @@ func encodeTestRequestNumberFloatArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -638,7 +594,6 @@ func encodeTestRequestNumberFloatArrayArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -652,7 +607,6 @@ func encodeTestRequestNumberFloatNullableResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -666,7 +620,6 @@ func encodeTestRequestNumberFloatNullableArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -680,7 +633,6 @@ func encodeTestRequestNumberFloatNullableArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -694,7 +646,6 @@ func encodeTestRequestNumberInt32Response(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -708,7 +659,6 @@ func encodeTestRequestNumberInt32ArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -722,7 +672,6 @@ func encodeTestRequestNumberInt32ArrayArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -736,7 +685,6 @@ func encodeTestRequestNumberInt32NullableResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -750,7 +698,6 @@ func encodeTestRequestNumberInt32NullableArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -764,7 +711,6 @@ func encodeTestRequestNumberInt32NullableArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -778,7 +724,6 @@ func encodeTestRequestNumberInt64Response(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -792,7 +737,6 @@ func encodeTestRequestNumberInt64ArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -806,7 +750,6 @@ func encodeTestRequestNumberInt64ArrayArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -820,7 +763,6 @@ func encodeTestRequestNumberInt64NullableResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -834,7 +776,6 @@ func encodeTestRequestNumberInt64NullableArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -848,7 +789,6 @@ func encodeTestRequestNumberInt64NullableArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -862,7 +802,6 @@ func encodeTestRequestNumberNullableResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -876,7 +815,6 @@ func encodeTestRequestNumberNullableArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -890,7 +828,6 @@ func encodeTestRequestNumberNullableArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -904,7 +841,6 @@ func encodeTestRequestRequiredAnyResponse(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -918,7 +854,6 @@ func encodeTestRequestRequiredBooleanResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -932,7 +867,6 @@ func encodeTestRequestRequiredBooleanArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -946,7 +880,6 @@ func encodeTestRequestRequiredBooleanArrayArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -960,7 +893,6 @@ func encodeTestRequestRequiredBooleanNullableResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -974,7 +906,6 @@ func encodeTestRequestRequiredBooleanNullableArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -988,7 +919,6 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1002,7 +932,6 @@ func encodeTestRequestRequiredEmptyStructResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1016,7 +945,6 @@ func encodeTestRequestRequiredFormatTestResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1030,7 +958,6 @@ func encodeTestRequestRequiredIntegerResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1044,7 +971,6 @@ func encodeTestRequestRequiredIntegerArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1058,7 +984,6 @@ func encodeTestRequestRequiredIntegerArrayArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1072,7 +997,6 @@ func encodeTestRequestRequiredIntegerInt32Response(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1086,7 +1010,6 @@ func encodeTestRequestRequiredIntegerInt32ArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1100,7 +1023,6 @@ func encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1114,7 +1036,6 @@ func encodeTestRequestRequiredIntegerInt32NullableResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1128,7 +1049,6 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1142,7 +1062,6 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response Er
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1156,7 +1075,6 @@ func encodeTestRequestRequiredIntegerInt64Response(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1170,7 +1088,6 @@ func encodeTestRequestRequiredIntegerInt64ArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1184,7 +1101,6 @@ func encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1198,7 +1114,6 @@ func encodeTestRequestRequiredIntegerInt64NullableResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1212,7 +1127,6 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1226,7 +1140,6 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response Er
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1240,7 +1153,6 @@ func encodeTestRequestRequiredIntegerNullableResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1254,7 +1166,6 @@ func encodeTestRequestRequiredIntegerNullableArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1268,7 +1179,6 @@ func encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1282,7 +1192,6 @@ func encodeTestRequestRequiredNullResponse(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1296,7 +1205,6 @@ func encodeTestRequestRequiredNullArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1310,7 +1218,6 @@ func encodeTestRequestRequiredNullArrayArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1324,7 +1231,6 @@ func encodeTestRequestRequiredNullNullableResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1338,7 +1244,6 @@ func encodeTestRequestRequiredNullNullableArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1352,7 +1257,6 @@ func encodeTestRequestRequiredNullNullableArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1366,7 +1270,6 @@ func encodeTestRequestRequiredNumberResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1380,7 +1283,6 @@ func encodeTestRequestRequiredNumberArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1394,7 +1296,6 @@ func encodeTestRequestRequiredNumberArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1408,7 +1309,6 @@ func encodeTestRequestRequiredNumberDoubleResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1422,7 +1322,6 @@ func encodeTestRequestRequiredNumberDoubleArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1436,7 +1335,6 @@ func encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1450,7 +1348,6 @@ func encodeTestRequestRequiredNumberDoubleNullableResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1464,7 +1361,6 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1478,7 +1374,6 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response Er
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1492,7 +1387,6 @@ func encodeTestRequestRequiredNumberFloatResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1506,7 +1400,6 @@ func encodeTestRequestRequiredNumberFloatArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1520,7 +1413,6 @@ func encodeTestRequestRequiredNumberFloatArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1534,7 +1426,6 @@ func encodeTestRequestRequiredNumberFloatNullableResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1548,7 +1439,6 @@ func encodeTestRequestRequiredNumberFloatNullableArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1562,7 +1452,6 @@ func encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response Err
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1576,7 +1465,6 @@ func encodeTestRequestRequiredNumberInt32Response(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1590,7 +1478,6 @@ func encodeTestRequestRequiredNumberInt32ArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1604,7 +1491,6 @@ func encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1618,7 +1504,6 @@ func encodeTestRequestRequiredNumberInt32NullableResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1632,7 +1517,6 @@ func encodeTestRequestRequiredNumberInt32NullableArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1646,7 +1530,6 @@ func encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response Err
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1660,7 +1543,6 @@ func encodeTestRequestRequiredNumberInt64Response(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1674,7 +1556,6 @@ func encodeTestRequestRequiredNumberInt64ArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1688,7 +1569,6 @@ func encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1702,7 +1582,6 @@ func encodeTestRequestRequiredNumberInt64NullableResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1716,7 +1595,6 @@ func encodeTestRequestRequiredNumberInt64NullableArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1730,7 +1608,6 @@ func encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response Err
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1744,7 +1621,6 @@ func encodeTestRequestRequiredNumberNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1758,7 +1634,6 @@ func encodeTestRequestRequiredNumberNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1772,7 +1647,6 @@ func encodeTestRequestRequiredNumberNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1786,7 +1660,6 @@ func encodeTestRequestRequiredStringResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1800,7 +1673,6 @@ func encodeTestRequestRequiredStringArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1814,7 +1686,6 @@ func encodeTestRequestRequiredStringArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1828,7 +1699,6 @@ func encodeTestRequestRequiredStringBinaryResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1842,7 +1712,6 @@ func encodeTestRequestRequiredStringBinaryArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1856,7 +1725,6 @@ func encodeTestRequestRequiredStringBinaryArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1870,7 +1738,6 @@ func encodeTestRequestRequiredStringBinaryNullableResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1884,7 +1751,6 @@ func encodeTestRequestRequiredStringBinaryNullableArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1898,7 +1764,6 @@ func encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response Er
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1912,7 +1777,6 @@ func encodeTestRequestRequiredStringByteResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1926,7 +1790,6 @@ func encodeTestRequestRequiredStringByteArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1940,7 +1803,6 @@ func encodeTestRequestRequiredStringByteArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1954,7 +1816,6 @@ func encodeTestRequestRequiredStringByteNullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1968,7 +1829,6 @@ func encodeTestRequestRequiredStringByteNullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1982,7 +1842,6 @@ func encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1996,7 +1855,6 @@ func encodeTestRequestRequiredStringDateResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2010,7 +1868,6 @@ func encodeTestRequestRequiredStringDateArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2024,7 +1881,6 @@ func encodeTestRequestRequiredStringDateArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2038,7 +1894,6 @@ func encodeTestRequestRequiredStringDateNullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2052,7 +1907,6 @@ func encodeTestRequestRequiredStringDateNullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2066,7 +1920,6 @@ func encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2080,7 +1933,6 @@ func encodeTestRequestRequiredStringDateTimeResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2094,7 +1946,6 @@ func encodeTestRequestRequiredStringDateTimeArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2108,7 +1959,6 @@ func encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2122,7 +1972,6 @@ func encodeTestRequestRequiredStringDateTimeNullableResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2136,7 +1985,6 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2150,7 +1998,6 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2164,7 +2011,6 @@ func encodeTestRequestRequiredStringDurationResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2178,7 +2024,6 @@ func encodeTestRequestRequiredStringDurationArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2192,7 +2037,6 @@ func encodeTestRequestRequiredStringDurationArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2206,7 +2050,6 @@ func encodeTestRequestRequiredStringDurationNullableResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2220,7 +2063,6 @@ func encodeTestRequestRequiredStringDurationNullableArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2234,7 +2076,6 @@ func encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2248,7 +2089,6 @@ func encodeTestRequestRequiredStringEmailResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2262,7 +2102,6 @@ func encodeTestRequestRequiredStringEmailArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2276,7 +2115,6 @@ func encodeTestRequestRequiredStringEmailArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2290,7 +2128,6 @@ func encodeTestRequestRequiredStringEmailNullableResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2304,7 +2141,6 @@ func encodeTestRequestRequiredStringEmailNullableArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2318,7 +2154,6 @@ func encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response Err
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2332,7 +2167,6 @@ func encodeTestRequestRequiredStringHostnameResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2346,7 +2180,6 @@ func encodeTestRequestRequiredStringHostnameArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2360,7 +2193,6 @@ func encodeTestRequestRequiredStringHostnameArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2374,7 +2206,6 @@ func encodeTestRequestRequiredStringHostnameNullableResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2388,7 +2219,6 @@ func encodeTestRequestRequiredStringHostnameNullableArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2402,7 +2232,6 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2416,7 +2245,6 @@ func encodeTestRequestRequiredStringIPResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2430,7 +2258,6 @@ func encodeTestRequestRequiredStringIPArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2444,7 +2271,6 @@ func encodeTestRequestRequiredStringIPArrayArrayResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2458,7 +2284,6 @@ func encodeTestRequestRequiredStringIPNullableResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2472,7 +2297,6 @@ func encodeTestRequestRequiredStringIPNullableArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2486,7 +2310,6 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response Error,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2500,7 +2323,6 @@ func encodeTestRequestRequiredStringInt32Response(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2514,7 +2336,6 @@ func encodeTestRequestRequiredStringInt32ArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2528,7 +2349,6 @@ func encodeTestRequestRequiredStringInt32ArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2542,7 +2362,6 @@ func encodeTestRequestRequiredStringInt32NullableResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2556,7 +2375,6 @@ func encodeTestRequestRequiredStringInt32NullableArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2570,7 +2388,6 @@ func encodeTestRequestRequiredStringInt32NullableArrayArrayResponse(response Err
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2584,7 +2401,6 @@ func encodeTestRequestRequiredStringInt64Response(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2598,7 +2414,6 @@ func encodeTestRequestRequiredStringInt64ArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2612,7 +2427,6 @@ func encodeTestRequestRequiredStringInt64ArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2626,7 +2440,6 @@ func encodeTestRequestRequiredStringInt64NullableResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2640,7 +2453,6 @@ func encodeTestRequestRequiredStringInt64NullableArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2654,7 +2466,6 @@ func encodeTestRequestRequiredStringInt64NullableArrayArrayResponse(response Err
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2668,7 +2479,6 @@ func encodeTestRequestRequiredStringIpv4Response(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2682,7 +2492,6 @@ func encodeTestRequestRequiredStringIpv4ArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2696,7 +2505,6 @@ func encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2710,7 +2518,6 @@ func encodeTestRequestRequiredStringIpv4NullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2724,7 +2531,6 @@ func encodeTestRequestRequiredStringIpv4NullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2738,7 +2544,6 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2752,7 +2557,6 @@ func encodeTestRequestRequiredStringIpv6Response(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2766,7 +2570,6 @@ func encodeTestRequestRequiredStringIpv6ArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2780,7 +2583,6 @@ func encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2794,7 +2596,6 @@ func encodeTestRequestRequiredStringIpv6NullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2808,7 +2609,6 @@ func encodeTestRequestRequiredStringIpv6NullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2822,7 +2622,6 @@ func encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2836,7 +2635,6 @@ func encodeTestRequestRequiredStringNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2850,7 +2648,6 @@ func encodeTestRequestRequiredStringNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2864,7 +2661,6 @@ func encodeTestRequestRequiredStringNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2878,7 +2674,6 @@ func encodeTestRequestRequiredStringPasswordResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2892,7 +2687,6 @@ func encodeTestRequestRequiredStringPasswordArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2906,7 +2700,6 @@ func encodeTestRequestRequiredStringPasswordArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2920,7 +2713,6 @@ func encodeTestRequestRequiredStringPasswordNullableResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2934,7 +2726,6 @@ func encodeTestRequestRequiredStringPasswordNullableArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2948,7 +2739,6 @@ func encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2962,7 +2752,6 @@ func encodeTestRequestRequiredStringTimeResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2976,7 +2765,6 @@ func encodeTestRequestRequiredStringTimeArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2990,7 +2778,6 @@ func encodeTestRequestRequiredStringTimeArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3004,7 +2791,6 @@ func encodeTestRequestRequiredStringTimeNullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3018,7 +2804,6 @@ func encodeTestRequestRequiredStringTimeNullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3032,7 +2817,6 @@ func encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3046,7 +2830,6 @@ func encodeTestRequestRequiredStringURIResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3060,7 +2843,6 @@ func encodeTestRequestRequiredStringURIArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3074,7 +2856,6 @@ func encodeTestRequestRequiredStringURIArrayArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3088,7 +2869,6 @@ func encodeTestRequestRequiredStringURINullableResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3102,7 +2882,6 @@ func encodeTestRequestRequiredStringURINullableArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3116,7 +2895,6 @@ func encodeTestRequestRequiredStringURINullableArrayArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3130,7 +2908,6 @@ func encodeTestRequestRequiredStringUUIDResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3144,7 +2921,6 @@ func encodeTestRequestRequiredStringUUIDArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3158,7 +2934,6 @@ func encodeTestRequestRequiredStringUUIDArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3172,7 +2947,6 @@ func encodeTestRequestRequiredStringUUIDNullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3186,7 +2960,6 @@ func encodeTestRequestRequiredStringUUIDNullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3200,7 +2973,6 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3214,7 +2986,6 @@ func encodeTestRequestRequiredStringUnixResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3228,7 +2999,6 @@ func encodeTestRequestRequiredStringUnixArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3242,7 +3012,6 @@ func encodeTestRequestRequiredStringUnixArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3256,7 +3025,6 @@ func encodeTestRequestRequiredStringUnixMicroResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3270,7 +3038,6 @@ func encodeTestRequestRequiredStringUnixMicroArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3284,7 +3051,6 @@ func encodeTestRequestRequiredStringUnixMicroArrayArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3298,7 +3064,6 @@ func encodeTestRequestRequiredStringUnixMicroNullableResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3312,7 +3077,6 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3326,7 +3090,6 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3340,7 +3103,6 @@ func encodeTestRequestRequiredStringUnixMilliResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3354,7 +3116,6 @@ func encodeTestRequestRequiredStringUnixMilliArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3368,7 +3129,6 @@ func encodeTestRequestRequiredStringUnixMilliArrayArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3382,7 +3142,6 @@ func encodeTestRequestRequiredStringUnixMilliNullableResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3396,7 +3155,6 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3410,7 +3168,6 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3424,7 +3181,6 @@ func encodeTestRequestRequiredStringUnixNanoResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3438,7 +3194,6 @@ func encodeTestRequestRequiredStringUnixNanoArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3452,7 +3207,6 @@ func encodeTestRequestRequiredStringUnixNanoArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3466,7 +3220,6 @@ func encodeTestRequestRequiredStringUnixNanoNullableResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3480,7 +3233,6 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3494,7 +3246,6 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(response 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3508,7 +3259,6 @@ func encodeTestRequestRequiredStringUnixNullableResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3522,7 +3272,6 @@ func encodeTestRequestRequiredStringUnixNullableArrayResponse(response Error, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3536,7 +3285,6 @@ func encodeTestRequestRequiredStringUnixNullableArrayArrayResponse(response Erro
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3550,7 +3298,6 @@ func encodeTestRequestRequiredStringUnixSecondsResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3564,7 +3311,6 @@ func encodeTestRequestRequiredStringUnixSecondsArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3578,7 +3324,6 @@ func encodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3592,7 +3337,6 @@ func encodeTestRequestRequiredStringUnixSecondsNullableResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3606,7 +3350,6 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(response Er
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3620,7 +3363,6 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3634,7 +3376,6 @@ func encodeTestRequestStringResponse(response Error, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3648,7 +3389,6 @@ func encodeTestRequestStringArrayResponse(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3662,7 +3402,6 @@ func encodeTestRequestStringArrayArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3676,7 +3415,6 @@ func encodeTestRequestStringBinaryResponse(response Error, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3690,7 +3428,6 @@ func encodeTestRequestStringBinaryArrayResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3704,7 +3441,6 @@ func encodeTestRequestStringBinaryArrayArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3718,7 +3454,6 @@ func encodeTestRequestStringBinaryNullableResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3732,7 +3467,6 @@ func encodeTestRequestStringBinaryNullableArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3746,7 +3480,6 @@ func encodeTestRequestStringBinaryNullableArrayArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3760,7 +3493,6 @@ func encodeTestRequestStringByteResponse(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3774,7 +3506,6 @@ func encodeTestRequestStringByteArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3788,7 +3519,6 @@ func encodeTestRequestStringByteArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3802,7 +3532,6 @@ func encodeTestRequestStringByteNullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3816,7 +3545,6 @@ func encodeTestRequestStringByteNullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3830,7 +3558,6 @@ func encodeTestRequestStringByteNullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3844,7 +3571,6 @@ func encodeTestRequestStringDateResponse(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3858,7 +3584,6 @@ func encodeTestRequestStringDateArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3872,7 +3597,6 @@ func encodeTestRequestStringDateArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3886,7 +3610,6 @@ func encodeTestRequestStringDateNullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3900,7 +3623,6 @@ func encodeTestRequestStringDateNullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3914,7 +3636,6 @@ func encodeTestRequestStringDateNullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3928,7 +3649,6 @@ func encodeTestRequestStringDateTimeResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3942,7 +3662,6 @@ func encodeTestRequestStringDateTimeArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3956,7 +3675,6 @@ func encodeTestRequestStringDateTimeArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3970,7 +3688,6 @@ func encodeTestRequestStringDateTimeNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3984,7 +3701,6 @@ func encodeTestRequestStringDateTimeNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3998,7 +3714,6 @@ func encodeTestRequestStringDateTimeNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4012,7 +3727,6 @@ func encodeTestRequestStringDurationResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4026,7 +3740,6 @@ func encodeTestRequestStringDurationArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4040,7 +3753,6 @@ func encodeTestRequestStringDurationArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4054,7 +3766,6 @@ func encodeTestRequestStringDurationNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4068,7 +3779,6 @@ func encodeTestRequestStringDurationNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4082,7 +3792,6 @@ func encodeTestRequestStringDurationNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4096,7 +3805,6 @@ func encodeTestRequestStringEmailResponse(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4110,7 +3818,6 @@ func encodeTestRequestStringEmailArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4124,7 +3831,6 @@ func encodeTestRequestStringEmailArrayArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4138,7 +3844,6 @@ func encodeTestRequestStringEmailNullableResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4152,7 +3857,6 @@ func encodeTestRequestStringEmailNullableArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4166,7 +3870,6 @@ func encodeTestRequestStringEmailNullableArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4180,7 +3883,6 @@ func encodeTestRequestStringHostnameResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4194,7 +3896,6 @@ func encodeTestRequestStringHostnameArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4208,7 +3909,6 @@ func encodeTestRequestStringHostnameArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4222,7 +3922,6 @@ func encodeTestRequestStringHostnameNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4236,7 +3935,6 @@ func encodeTestRequestStringHostnameNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4250,7 +3948,6 @@ func encodeTestRequestStringHostnameNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4264,7 +3961,6 @@ func encodeTestRequestStringIPResponse(response Error, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4278,7 +3974,6 @@ func encodeTestRequestStringIPArrayResponse(response Error, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4292,7 +3987,6 @@ func encodeTestRequestStringIPArrayArrayResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4306,7 +4000,6 @@ func encodeTestRequestStringIPNullableResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4320,7 +4013,6 @@ func encodeTestRequestStringIPNullableArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4334,7 +4026,6 @@ func encodeTestRequestStringIPNullableArrayArrayResponse(response Error, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4348,7 +4039,6 @@ func encodeTestRequestStringInt32Response(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4362,7 +4052,6 @@ func encodeTestRequestStringInt32ArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4376,7 +4065,6 @@ func encodeTestRequestStringInt32ArrayArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4390,7 +4078,6 @@ func encodeTestRequestStringInt32NullableResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4404,7 +4091,6 @@ func encodeTestRequestStringInt32NullableArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4418,7 +4104,6 @@ func encodeTestRequestStringInt32NullableArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4432,7 +4117,6 @@ func encodeTestRequestStringInt64Response(response Error, w http.ResponseWriter,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4446,7 +4130,6 @@ func encodeTestRequestStringInt64ArrayResponse(response Error, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4460,7 +4143,6 @@ func encodeTestRequestStringInt64ArrayArrayResponse(response Error, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4474,7 +4156,6 @@ func encodeTestRequestStringInt64NullableResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4488,7 +4169,6 @@ func encodeTestRequestStringInt64NullableArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4502,7 +4182,6 @@ func encodeTestRequestStringInt64NullableArrayArrayResponse(response Error, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4516,7 +4195,6 @@ func encodeTestRequestStringIpv4Response(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4530,7 +4208,6 @@ func encodeTestRequestStringIpv4ArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4544,7 +4221,6 @@ func encodeTestRequestStringIpv4ArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4558,7 +4234,6 @@ func encodeTestRequestStringIpv4NullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4572,7 +4247,6 @@ func encodeTestRequestStringIpv4NullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4586,7 +4260,6 @@ func encodeTestRequestStringIpv4NullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4600,7 +4273,6 @@ func encodeTestRequestStringIpv6Response(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4614,7 +4286,6 @@ func encodeTestRequestStringIpv6ArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4628,7 +4299,6 @@ func encodeTestRequestStringIpv6ArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4642,7 +4312,6 @@ func encodeTestRequestStringIpv6NullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4656,7 +4325,6 @@ func encodeTestRequestStringIpv6NullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4670,7 +4338,6 @@ func encodeTestRequestStringIpv6NullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4684,7 +4351,6 @@ func encodeTestRequestStringNullableResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4698,7 +4364,6 @@ func encodeTestRequestStringNullableArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4712,7 +4377,6 @@ func encodeTestRequestStringNullableArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4726,7 +4390,6 @@ func encodeTestRequestStringPasswordResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4740,7 +4403,6 @@ func encodeTestRequestStringPasswordArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4754,7 +4416,6 @@ func encodeTestRequestStringPasswordArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4768,7 +4429,6 @@ func encodeTestRequestStringPasswordNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4782,7 +4442,6 @@ func encodeTestRequestStringPasswordNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4796,7 +4455,6 @@ func encodeTestRequestStringPasswordNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4810,7 +4468,6 @@ func encodeTestRequestStringTimeResponse(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4824,7 +4481,6 @@ func encodeTestRequestStringTimeArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4838,7 +4494,6 @@ func encodeTestRequestStringTimeArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4852,7 +4507,6 @@ func encodeTestRequestStringTimeNullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4866,7 +4520,6 @@ func encodeTestRequestStringTimeNullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4880,7 +4533,6 @@ func encodeTestRequestStringTimeNullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4894,7 +4546,6 @@ func encodeTestRequestStringURIResponse(response Error, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4908,7 +4559,6 @@ func encodeTestRequestStringURIArrayResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4922,7 +4572,6 @@ func encodeTestRequestStringURIArrayArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4936,7 +4585,6 @@ func encodeTestRequestStringURINullableResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4950,7 +4598,6 @@ func encodeTestRequestStringURINullableArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4964,7 +4611,6 @@ func encodeTestRequestStringURINullableArrayArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4978,7 +4624,6 @@ func encodeTestRequestStringUUIDResponse(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4992,7 +4637,6 @@ func encodeTestRequestStringUUIDArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5006,7 +4650,6 @@ func encodeTestRequestStringUUIDArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5020,7 +4663,6 @@ func encodeTestRequestStringUUIDNullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5034,7 +4676,6 @@ func encodeTestRequestStringUUIDNullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5048,7 +4689,6 @@ func encodeTestRequestStringUUIDNullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5062,7 +4702,6 @@ func encodeTestRequestStringUnixResponse(response Error, w http.ResponseWriter, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5076,7 +4715,6 @@ func encodeTestRequestStringUnixArrayResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5090,7 +4728,6 @@ func encodeTestRequestStringUnixArrayArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5104,7 +4741,6 @@ func encodeTestRequestStringUnixMicroResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5118,7 +4754,6 @@ func encodeTestRequestStringUnixMicroArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5132,7 +4767,6 @@ func encodeTestRequestStringUnixMicroArrayArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5146,7 +4780,6 @@ func encodeTestRequestStringUnixMicroNullableResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5160,7 +4793,6 @@ func encodeTestRequestStringUnixMicroNullableArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5174,7 +4806,6 @@ func encodeTestRequestStringUnixMicroNullableArrayArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5188,7 +4819,6 @@ func encodeTestRequestStringUnixMilliResponse(response Error, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5202,7 +4832,6 @@ func encodeTestRequestStringUnixMilliArrayResponse(response Error, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5216,7 +4845,6 @@ func encodeTestRequestStringUnixMilliArrayArrayResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5230,7 +4858,6 @@ func encodeTestRequestStringUnixMilliNullableResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5244,7 +4871,6 @@ func encodeTestRequestStringUnixMilliNullableArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5258,7 +4884,6 @@ func encodeTestRequestStringUnixMilliNullableArrayArrayResponse(response Error, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5272,7 +4897,6 @@ func encodeTestRequestStringUnixNanoResponse(response Error, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5286,7 +4910,6 @@ func encodeTestRequestStringUnixNanoArrayResponse(response Error, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5300,7 +4923,6 @@ func encodeTestRequestStringUnixNanoArrayArrayResponse(response Error, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5314,7 +4936,6 @@ func encodeTestRequestStringUnixNanoNullableResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5328,7 +4949,6 @@ func encodeTestRequestStringUnixNanoNullableArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5342,7 +4962,6 @@ func encodeTestRequestStringUnixNanoNullableArrayArrayResponse(response Error, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5356,7 +4975,6 @@ func encodeTestRequestStringUnixNullableResponse(response Error, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5370,7 +4988,6 @@ func encodeTestRequestStringUnixNullableArrayResponse(response Error, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5384,7 +5001,6 @@ func encodeTestRequestStringUnixNullableArrayArrayResponse(response Error, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5398,7 +5014,6 @@ func encodeTestRequestStringUnixSecondsResponse(response Error, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5412,7 +5027,6 @@ func encodeTestRequestStringUnixSecondsArrayResponse(response Error, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5426,7 +5040,6 @@ func encodeTestRequestStringUnixSecondsArrayArrayResponse(response Error, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5440,7 +5053,6 @@ func encodeTestRequestStringUnixSecondsNullableResponse(response Error, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5454,7 +5066,6 @@ func encodeTestRequestStringUnixSecondsNullableArrayResponse(response Error, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5468,7 +5079,6 @@ func encodeTestRequestStringUnixSecondsNullableArrayArrayResponse(response Error
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5482,7 +5092,6 @@ func encodeTestResponseAnyResponse(response jx.Raw, w http.ResponseWriter, span 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	if len(response) != 0 {
 		e.Raw(response)
@@ -5498,7 +5107,6 @@ func encodeTestResponseBooleanResponse(response bool, w http.ResponseWriter, spa
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Bool(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5512,7 +5120,6 @@ func encodeTestResponseBooleanArrayResponse(response []bool, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5530,7 +5137,6 @@ func encodeTestResponseBooleanArrayArrayResponse(response [][]bool, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5552,7 +5158,6 @@ func encodeTestResponseBooleanNullableResponse(response NilBool, w http.Response
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5566,7 +5171,6 @@ func encodeTestResponseBooleanNullableArrayResponse(response []NilBool, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5584,7 +5188,6 @@ func encodeTestResponseBooleanNullableArrayArrayResponse(response [][]NilBool, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5606,7 +5209,6 @@ func encodeTestResponseEmptyStructResponse(response TestResponseEmptyStructOK, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5620,7 +5222,6 @@ func encodeTestResponseFormatTestResponse(response TestResponseFormatTestOK, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5634,7 +5235,6 @@ func encodeTestResponseIntegerResponse(response int, w http.ResponseWriter, span
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Int(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5648,7 +5248,6 @@ func encodeTestResponseIntegerArrayResponse(response []int, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5666,7 +5265,6 @@ func encodeTestResponseIntegerArrayArrayResponse(response [][]int, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5688,7 +5286,6 @@ func encodeTestResponseIntegerInt32Response(response int32, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Int32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5702,7 +5299,6 @@ func encodeTestResponseIntegerInt32ArrayResponse(response []int32, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5720,7 +5316,6 @@ func encodeTestResponseIntegerInt32ArrayArrayResponse(response [][]int32, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5742,7 +5337,6 @@ func encodeTestResponseIntegerInt32NullableResponse(response NilInt32, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5756,7 +5350,6 @@ func encodeTestResponseIntegerInt32NullableArrayResponse(response []NilInt32, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5774,7 +5367,6 @@ func encodeTestResponseIntegerInt32NullableArrayArrayResponse(response [][]NilIn
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5796,7 +5388,6 @@ func encodeTestResponseIntegerInt64Response(response int64, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Int64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5810,7 +5401,6 @@ func encodeTestResponseIntegerInt64ArrayResponse(response []int64, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5828,7 +5418,6 @@ func encodeTestResponseIntegerInt64ArrayArrayResponse(response [][]int64, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5850,7 +5439,6 @@ func encodeTestResponseIntegerInt64NullableResponse(response NilInt64, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5864,7 +5452,6 @@ func encodeTestResponseIntegerInt64NullableArrayResponse(response []NilInt64, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5882,7 +5469,6 @@ func encodeTestResponseIntegerInt64NullableArrayArrayResponse(response [][]NilIn
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5904,7 +5490,6 @@ func encodeTestResponseIntegerNullableResponse(response NilInt, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5918,7 +5503,6 @@ func encodeTestResponseIntegerNullableArrayResponse(response []NilInt, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5936,7 +5520,6 @@ func encodeTestResponseIntegerNullableArrayArrayResponse(response [][]NilInt, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5958,7 +5541,6 @@ func encodeTestResponseNullResponse(response struct{}, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	_ = response
 	e.Null()
@@ -5973,7 +5555,6 @@ func encodeTestResponseNullArrayResponse(response []struct{}, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -5992,7 +5573,6 @@ func encodeTestResponseNullArrayArrayResponse(response [][]struct{}, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6015,7 +5595,6 @@ func encodeTestResponseNullNullableResponse(response struct{}, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	_ = response
 	e.Null()
@@ -6030,7 +5609,6 @@ func encodeTestResponseNullNullableArrayResponse(response []struct{}, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6049,7 +5627,6 @@ func encodeTestResponseNullNullableArrayArrayResponse(response [][]struct{}, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6072,7 +5649,6 @@ func encodeTestResponseNumberResponse(response float64, w http.ResponseWriter, s
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Float64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6086,7 +5662,6 @@ func encodeTestResponseNumberArrayResponse(response []float64, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6104,7 +5679,6 @@ func encodeTestResponseNumberArrayArrayResponse(response [][]float64, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6126,7 +5700,6 @@ func encodeTestResponseNumberDoubleResponse(response float64, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Float64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6140,7 +5713,6 @@ func encodeTestResponseNumberDoubleArrayResponse(response []float64, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6158,7 +5730,6 @@ func encodeTestResponseNumberDoubleArrayArrayResponse(response [][]float64, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6180,7 +5751,6 @@ func encodeTestResponseNumberDoubleNullableResponse(response NilFloat64, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6194,7 +5764,6 @@ func encodeTestResponseNumberDoubleNullableArrayResponse(response []NilFloat64, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6212,7 +5781,6 @@ func encodeTestResponseNumberDoubleNullableArrayArrayResponse(response [][]NilFl
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6234,7 +5802,6 @@ func encodeTestResponseNumberFloatResponse(response float32, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Float32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6248,7 +5815,6 @@ func encodeTestResponseNumberFloatArrayResponse(response []float32, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6266,7 +5832,6 @@ func encodeTestResponseNumberFloatArrayArrayResponse(response [][]float32, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6288,7 +5853,6 @@ func encodeTestResponseNumberFloatNullableResponse(response NilFloat32, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6302,7 +5866,6 @@ func encodeTestResponseNumberFloatNullableArrayResponse(response []NilFloat32, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6320,7 +5883,6 @@ func encodeTestResponseNumberFloatNullableArrayArrayResponse(response [][]NilFlo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6342,7 +5904,6 @@ func encodeTestResponseNumberInt32Response(response int32, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Int32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6356,7 +5917,6 @@ func encodeTestResponseNumberInt32ArrayResponse(response []int32, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6374,7 +5934,6 @@ func encodeTestResponseNumberInt32ArrayArrayResponse(response [][]int32, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6396,7 +5955,6 @@ func encodeTestResponseNumberInt32NullableResponse(response NilInt32, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6410,7 +5968,6 @@ func encodeTestResponseNumberInt32NullableArrayResponse(response []NilInt32, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6428,7 +5985,6 @@ func encodeTestResponseNumberInt32NullableArrayArrayResponse(response [][]NilInt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6450,7 +6006,6 @@ func encodeTestResponseNumberInt64Response(response int64, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Int64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6464,7 +6019,6 @@ func encodeTestResponseNumberInt64ArrayResponse(response []int64, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6482,7 +6036,6 @@ func encodeTestResponseNumberInt64ArrayArrayResponse(response [][]int64, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6504,7 +6057,6 @@ func encodeTestResponseNumberInt64NullableResponse(response NilInt64, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6518,7 +6070,6 @@ func encodeTestResponseNumberInt64NullableArrayResponse(response []NilInt64, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6536,7 +6087,6 @@ func encodeTestResponseNumberInt64NullableArrayArrayResponse(response [][]NilInt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6558,7 +6108,6 @@ func encodeTestResponseNumberNullableResponse(response NilFloat64, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6572,7 +6121,6 @@ func encodeTestResponseNumberNullableArrayResponse(response []NilFloat64, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6590,7 +6138,6 @@ func encodeTestResponseNumberNullableArrayArrayResponse(response [][]NilFloat64,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6612,7 +6159,6 @@ func encodeTestResponseStringResponse(response string, w http.ResponseWriter, sp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6626,7 +6172,6 @@ func encodeTestResponseStringArrayResponse(response []string, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6644,7 +6189,6 @@ func encodeTestResponseStringArrayArrayResponse(response [][]string, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6666,7 +6210,6 @@ func encodeTestResponseStringBinaryResponse(response string, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6680,7 +6223,6 @@ func encodeTestResponseStringBinaryArrayResponse(response []string, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6698,7 +6240,6 @@ func encodeTestResponseStringBinaryArrayArrayResponse(response [][]string, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6720,7 +6261,6 @@ func encodeTestResponseStringBinaryNullableResponse(response NilString, w http.R
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6734,7 +6274,6 @@ func encodeTestResponseStringBinaryNullableArrayResponse(response []NilString, w
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6752,7 +6291,6 @@ func encodeTestResponseStringBinaryNullableArrayArrayResponse(response [][]NilSt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6774,7 +6312,6 @@ func encodeTestResponseStringByteResponse(response []byte, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Base64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6788,7 +6325,6 @@ func encodeTestResponseStringByteArrayResponse(response [][]byte, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6806,7 +6342,6 @@ func encodeTestResponseStringByteArrayArrayResponse(response [][][]byte, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6828,7 +6363,6 @@ func encodeTestResponseStringByteNullableResponse(response []byte, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Base64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6842,7 +6376,6 @@ func encodeTestResponseStringByteNullableArrayResponse(response [][]byte, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6860,7 +6393,6 @@ func encodeTestResponseStringByteNullableArrayArrayResponse(response [][][]byte,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6882,7 +6414,6 @@ func encodeTestResponseStringDateResponse(response time.Time, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeDate(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6896,7 +6427,6 @@ func encodeTestResponseStringDateArrayResponse(response []time.Time, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6914,7 +6444,6 @@ func encodeTestResponseStringDateArrayArrayResponse(response [][]time.Time, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6936,7 +6465,6 @@ func encodeTestResponseStringDateNullableResponse(response NilDate, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeDate)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6950,7 +6478,6 @@ func encodeTestResponseStringDateNullableArrayResponse(response []NilDate, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6968,7 +6495,6 @@ func encodeTestResponseStringDateNullableArrayArrayResponse(response [][]NilDate
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -6990,7 +6516,6 @@ func encodeTestResponseStringDateTimeResponse(response time.Time, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeDateTime(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7004,7 +6529,6 @@ func encodeTestResponseStringDateTimeArrayResponse(response []time.Time, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7022,7 +6546,6 @@ func encodeTestResponseStringDateTimeArrayArrayResponse(response [][]time.Time, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7044,7 +6567,6 @@ func encodeTestResponseStringDateTimeNullableResponse(response NilDateTime, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeDateTime)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7058,7 +6580,6 @@ func encodeTestResponseStringDateTimeNullableArrayResponse(response []NilDateTim
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7076,7 +6597,6 @@ func encodeTestResponseStringDateTimeNullableArrayArrayResponse(response [][]Nil
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7098,7 +6618,6 @@ func encodeTestResponseStringDurationResponse(response time.Duration, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeDuration(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7112,7 +6631,6 @@ func encodeTestResponseStringDurationArrayResponse(response []time.Duration, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7130,7 +6648,6 @@ func encodeTestResponseStringDurationArrayArrayResponse(response [][]time.Durati
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7152,7 +6669,6 @@ func encodeTestResponseStringDurationNullableResponse(response NilDuration, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7166,7 +6682,6 @@ func encodeTestResponseStringDurationNullableArrayResponse(response []NilDuratio
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7184,7 +6699,6 @@ func encodeTestResponseStringDurationNullableArrayArrayResponse(response [][]Nil
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7206,7 +6720,6 @@ func encodeTestResponseStringEmailResponse(response string, w http.ResponseWrite
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7220,7 +6733,6 @@ func encodeTestResponseStringEmailArrayResponse(response []string, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7238,7 +6750,6 @@ func encodeTestResponseStringEmailArrayArrayResponse(response [][]string, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7260,7 +6771,6 @@ func encodeTestResponseStringEmailNullableResponse(response NilString, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7274,7 +6784,6 @@ func encodeTestResponseStringEmailNullableArrayResponse(response []NilString, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7292,7 +6801,6 @@ func encodeTestResponseStringEmailNullableArrayArrayResponse(response [][]NilStr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7314,7 +6822,6 @@ func encodeTestResponseStringHostnameResponse(response string, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7328,7 +6835,6 @@ func encodeTestResponseStringHostnameArrayResponse(response []string, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7346,7 +6852,6 @@ func encodeTestResponseStringHostnameArrayArrayResponse(response [][]string, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7368,7 +6873,6 @@ func encodeTestResponseStringHostnameNullableResponse(response NilString, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7382,7 +6886,6 @@ func encodeTestResponseStringHostnameNullableArrayResponse(response []NilString,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7400,7 +6903,6 @@ func encodeTestResponseStringHostnameNullableArrayArrayResponse(response [][]Nil
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7422,7 +6924,6 @@ func encodeTestResponseStringIPResponse(response netip.Addr, w http.ResponseWrit
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeIP(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7436,7 +6937,6 @@ func encodeTestResponseStringIPArrayResponse(response []netip.Addr, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7454,7 +6954,6 @@ func encodeTestResponseStringIPArrayArrayResponse(response [][]netip.Addr, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7476,7 +6975,6 @@ func encodeTestResponseStringIPNullableResponse(response NilIP, w http.ResponseW
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7490,7 +6988,6 @@ func encodeTestResponseStringIPNullableArrayResponse(response []NilIP, w http.Re
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7508,7 +7005,6 @@ func encodeTestResponseStringIPNullableArrayArrayResponse(response [][]NilIP, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7530,7 +7026,6 @@ func encodeTestResponseStringInt32Response(response int32, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeStringInt32(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7544,7 +7039,6 @@ func encodeTestResponseStringInt32ArrayResponse(response []int32, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7562,7 +7056,6 @@ func encodeTestResponseStringInt32ArrayArrayResponse(response [][]int32, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7584,7 +7077,6 @@ func encodeTestResponseStringInt32NullableResponse(response NilStringInt32, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7598,7 +7090,6 @@ func encodeTestResponseStringInt32NullableArrayResponse(response []NilStringInt3
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7616,7 +7107,6 @@ func encodeTestResponseStringInt32NullableArrayArrayResponse(response [][]NilStr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7638,7 +7128,6 @@ func encodeTestResponseStringInt64Response(response int64, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeStringInt64(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7652,7 +7141,6 @@ func encodeTestResponseStringInt64ArrayResponse(response []int64, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7670,7 +7158,6 @@ func encodeTestResponseStringInt64ArrayArrayResponse(response [][]int64, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7692,7 +7179,6 @@ func encodeTestResponseStringInt64NullableResponse(response NilStringInt64, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7706,7 +7192,6 @@ func encodeTestResponseStringInt64NullableArrayResponse(response []NilStringInt6
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7724,7 +7209,6 @@ func encodeTestResponseStringInt64NullableArrayArrayResponse(response [][]NilStr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7746,7 +7230,6 @@ func encodeTestResponseStringIpv4Response(response netip.Addr, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeIP(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7760,7 +7243,6 @@ func encodeTestResponseStringIpv4ArrayResponse(response []netip.Addr, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7778,7 +7260,6 @@ func encodeTestResponseStringIpv4ArrayArrayResponse(response [][]netip.Addr, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7800,7 +7281,6 @@ func encodeTestResponseStringIpv4NullableResponse(response NilIPv4, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7814,7 +7294,6 @@ func encodeTestResponseStringIpv4NullableArrayResponse(response []NilIPv4, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7832,7 +7311,6 @@ func encodeTestResponseStringIpv4NullableArrayArrayResponse(response [][]NilIPv4
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7854,7 +7332,6 @@ func encodeTestResponseStringIpv6Response(response netip.Addr, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeIP(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7868,7 +7345,6 @@ func encodeTestResponseStringIpv6ArrayResponse(response []netip.Addr, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7886,7 +7362,6 @@ func encodeTestResponseStringIpv6ArrayArrayResponse(response [][]netip.Addr, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7908,7 +7383,6 @@ func encodeTestResponseStringIpv6NullableResponse(response NilIPv6, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7922,7 +7396,6 @@ func encodeTestResponseStringIpv6NullableArrayResponse(response []NilIPv6, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7940,7 +7413,6 @@ func encodeTestResponseStringIpv6NullableArrayArrayResponse(response [][]NilIPv6
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7962,7 +7434,6 @@ func encodeTestResponseStringNullableResponse(response NilString, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7976,7 +7447,6 @@ func encodeTestResponseStringNullableArrayResponse(response []NilString, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -7994,7 +7464,6 @@ func encodeTestResponseStringNullableArrayArrayResponse(response [][]NilString, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8016,7 +7485,6 @@ func encodeTestResponseStringPasswordResponse(response string, w http.ResponseWr
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8030,7 +7498,6 @@ func encodeTestResponseStringPasswordArrayResponse(response []string, w http.Res
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8048,7 +7515,6 @@ func encodeTestResponseStringPasswordArrayArrayResponse(response [][]string, w h
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8070,7 +7536,6 @@ func encodeTestResponseStringPasswordNullableResponse(response NilString, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8084,7 +7549,6 @@ func encodeTestResponseStringPasswordNullableArrayResponse(response []NilString,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8102,7 +7566,6 @@ func encodeTestResponseStringPasswordNullableArrayArrayResponse(response [][]Nil
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8124,7 +7587,6 @@ func encodeTestResponseStringTimeResponse(response time.Time, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeTime(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8138,7 +7600,6 @@ func encodeTestResponseStringTimeArrayResponse(response []time.Time, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8156,7 +7617,6 @@ func encodeTestResponseStringTimeArrayArrayResponse(response [][]time.Time, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8178,7 +7638,6 @@ func encodeTestResponseStringTimeNullableResponse(response NilTime, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeTime)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8192,7 +7651,6 @@ func encodeTestResponseStringTimeNullableArrayResponse(response []NilTime, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8210,7 +7668,6 @@ func encodeTestResponseStringTimeNullableArrayArrayResponse(response [][]NilTime
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8232,7 +7689,6 @@ func encodeTestResponseStringURIResponse(response url.URL, w http.ResponseWriter
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeURI(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8246,7 +7702,6 @@ func encodeTestResponseStringURIArrayResponse(response []url.URL, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8264,7 +7719,6 @@ func encodeTestResponseStringURIArrayArrayResponse(response [][]url.URL, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8286,7 +7740,6 @@ func encodeTestResponseStringURINullableResponse(response NilURI, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8300,7 +7753,6 @@ func encodeTestResponseStringURINullableArrayResponse(response []NilURI, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8318,7 +7770,6 @@ func encodeTestResponseStringURINullableArrayArrayResponse(response [][]NilURI, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8340,7 +7791,6 @@ func encodeTestResponseStringUUIDResponse(response uuid.UUID, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeUUID(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8354,7 +7804,6 @@ func encodeTestResponseStringUUIDArrayResponse(response []uuid.UUID, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8372,7 +7821,6 @@ func encodeTestResponseStringUUIDArrayArrayResponse(response [][]uuid.UUID, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8394,7 +7842,6 @@ func encodeTestResponseStringUUIDNullableResponse(response NilUUID, w http.Respo
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8408,7 +7855,6 @@ func encodeTestResponseStringUUIDNullableArrayResponse(response []NilUUID, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8426,7 +7872,6 @@ func encodeTestResponseStringUUIDNullableArrayArrayResponse(response [][]NilUUID
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8448,7 +7893,6 @@ func encodeTestResponseStringUnixResponse(response time.Time, w http.ResponseWri
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeUnixSeconds(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8462,7 +7906,6 @@ func encodeTestResponseStringUnixArrayResponse(response []time.Time, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8480,7 +7923,6 @@ func encodeTestResponseStringUnixArrayArrayResponse(response [][]time.Time, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8502,7 +7944,6 @@ func encodeTestResponseStringUnixMicroResponse(response time.Time, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeUnixMicro(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8516,7 +7957,6 @@ func encodeTestResponseStringUnixMicroArrayResponse(response []time.Time, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8534,7 +7974,6 @@ func encodeTestResponseStringUnixMicroArrayArrayResponse(response [][]time.Time,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8556,7 +7995,6 @@ func encodeTestResponseStringUnixMicroNullableResponse(response NilUnixMicro, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeUnixMicro)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8570,7 +8008,6 @@ func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilUnixMi
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8588,7 +8025,6 @@ func encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response [][]Ni
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8610,7 +8046,6 @@ func encodeTestResponseStringUnixMilliResponse(response time.Time, w http.Respon
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeUnixMilli(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8624,7 +8059,6 @@ func encodeTestResponseStringUnixMilliArrayResponse(response []time.Time, w http
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8642,7 +8076,6 @@ func encodeTestResponseStringUnixMilliArrayArrayResponse(response [][]time.Time,
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8664,7 +8097,6 @@ func encodeTestResponseStringUnixMilliNullableResponse(response NilUnixMilli, w 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeUnixMilli)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8678,7 +8110,6 @@ func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilUnixMi
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8696,7 +8127,6 @@ func encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response [][]Ni
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8718,7 +8148,6 @@ func encodeTestResponseStringUnixNanoResponse(response time.Time, w http.Respons
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeUnixNano(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8732,7 +8161,6 @@ func encodeTestResponseStringUnixNanoArrayResponse(response []time.Time, w http.
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8750,7 +8178,6 @@ func encodeTestResponseStringUnixNanoArrayArrayResponse(response [][]time.Time, 
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8772,7 +8199,6 @@ func encodeTestResponseStringUnixNanoNullableResponse(response NilUnixNano, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeUnixNano)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8786,7 +8212,6 @@ func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilUnixNan
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8804,7 +8229,6 @@ func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]Nil
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8826,7 +8250,6 @@ func encodeTestResponseStringUnixNullableResponse(response NilUnixSeconds, w htt
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeUnixSeconds)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8840,7 +8263,6 @@ func encodeTestResponseStringUnixNullableArrayResponse(response []NilUnixSeconds
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8858,7 +8280,6 @@ func encodeTestResponseStringUnixNullableArrayArrayResponse(response [][]NilUnix
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8880,7 +8301,6 @@ func encodeTestResponseStringUnixSecondsResponse(response time.Time, w http.Resp
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	json.EncodeUnixSeconds(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8894,7 +8314,6 @@ func encodeTestResponseStringUnixSecondsArrayResponse(response []time.Time, w ht
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8912,7 +8331,6 @@ func encodeTestResponseStringUnixSecondsArrayArrayResponse(response [][]time.Tim
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8934,7 +8352,6 @@ func encodeTestResponseStringUnixSecondsNullableResponse(response NilUnixSeconds
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeUnixSeconds)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8948,7 +8365,6 @@ func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilUnix
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {
@@ -8966,7 +8382,6 @@ func encodeTestResponseStringUnixSecondsNullableArrayArrayResponse(response [][]
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ArrStart()
 	for _, elem := range response {

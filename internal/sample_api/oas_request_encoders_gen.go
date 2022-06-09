@@ -24,12 +24,12 @@ func encodeDefaultTestRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeFoobarPostRequestJSON(
@@ -39,13 +39,13 @@ func encodeFoobarPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeOneofBugRequestJSON(
@@ -55,12 +55,12 @@ func encodeOneofBugRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePetCreateRequestJSON(
@@ -70,13 +70,13 @@ func encodePetCreateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePetUpdateNameAliasPostRequestJSON(
@@ -86,13 +86,13 @@ func encodePetUpdateNameAliasPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePetUpdateNamePostRequestJSON(
@@ -102,13 +102,13 @@ func encodePetUpdateNamePostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePetUploadAvatarByIDRequestOctetStream(
@@ -129,12 +129,12 @@ func encodeTestFloatValidationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeTestFormURLEncodedRequestFormURLEncoded(

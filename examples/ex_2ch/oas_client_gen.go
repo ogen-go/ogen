@@ -110,7 +110,6 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -167,7 +166,6 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -264,7 +262,6 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -341,7 +338,6 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -382,7 +378,6 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 	u.Path += "/api/captcha/invisible_recaptcha/mobile"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -459,7 +454,6 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -500,7 +494,6 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 	u.Path += "/api/captcha/recaptcha/mobile"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -571,7 +564,6 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -642,7 +634,6 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -727,7 +718,6 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -768,7 +758,6 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 	u.Path += "/api/mobile/v2/boards"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -838,7 +827,6 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -908,7 +896,6 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

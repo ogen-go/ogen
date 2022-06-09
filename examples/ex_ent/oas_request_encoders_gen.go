@@ -17,12 +17,12 @@ func encodeCreatePetRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeCreatePetCategoriesRequestJSON(
@@ -32,12 +32,12 @@ func encodeCreatePetCategoriesRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeCreatePetFriendsRequestJSON(
@@ -47,12 +47,12 @@ func encodeCreatePetFriendsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeCreatePetOwnerRequestJSON(
@@ -62,12 +62,12 @@ func encodeCreatePetOwnerRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeUpdatePetRequestJSON(
@@ -77,11 +77,11 @@ func encodeUpdatePetRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }

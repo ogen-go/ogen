@@ -17,12 +17,12 @@ func encodeCreateSnapshotRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeCreateSyncActionRequestJSON(
@@ -32,12 +32,12 @@ func encodeCreateSyncActionRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeLoadSnapshotRequestJSON(
@@ -47,12 +47,12 @@ func encodeLoadSnapshotRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeMmdsConfigPutRequestJSON(
@@ -62,12 +62,12 @@ func encodeMmdsConfigPutRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeMmdsPatchRequestJSON(
@@ -77,13 +77,13 @@ func encodeMmdsPatchRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req != nil {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req != nil {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodeMmdsPutRequestJSON(
@@ -93,13 +93,13 @@ func encodeMmdsPutRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req != nil {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req != nil {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePatchBalloonRequestJSON(
@@ -109,12 +109,12 @@ func encodePatchBalloonRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePatchBalloonStatsIntervalRequestJSON(
@@ -124,12 +124,12 @@ func encodePatchBalloonStatsIntervalRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePatchGuestDriveByIDRequestJSON(
@@ -139,12 +139,12 @@ func encodePatchGuestDriveByIDRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePatchGuestNetworkInterfaceByIDRequestJSON(
@@ -154,12 +154,12 @@ func encodePatchGuestNetworkInterfaceByIDRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePatchMachineConfigurationRequestJSON(
@@ -169,13 +169,13 @@ func encodePatchMachineConfigurationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePatchVmRequestJSON(
@@ -185,12 +185,12 @@ func encodePatchVmRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutBalloonRequestJSON(
@@ -200,12 +200,12 @@ func encodePutBalloonRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutGuestBootSourceRequestJSON(
@@ -215,12 +215,12 @@ func encodePutGuestBootSourceRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutGuestDriveByIDRequestJSON(
@@ -230,12 +230,12 @@ func encodePutGuestDriveByIDRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutGuestNetworkInterfaceByIDRequestJSON(
@@ -245,12 +245,12 @@ func encodePutGuestNetworkInterfaceByIDRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutGuestVsockRequestJSON(
@@ -260,12 +260,12 @@ func encodePutGuestVsockRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutLoggerRequestJSON(
@@ -275,12 +275,12 @@ func encodePutLoggerRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutMachineConfigurationRequestJSON(
@@ -290,13 +290,13 @@ func encodePutMachineConfigurationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
-		if req.Set {
-			req.Encode(e)
-		}
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
 func encodePutMetricsRequestJSON(
@@ -306,11 +306,11 @@ func encodePutMetricsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
-	return func() (io.ReadCloser, error) {
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+	e := jx.GetEncoder()
 
-		req.Encode(e)
-		return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }

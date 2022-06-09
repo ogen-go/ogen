@@ -101,7 +101,6 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -172,7 +171,6 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -243,7 +241,6 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -306,7 +303,6 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -377,7 +373,6 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -440,7 +435,6 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -503,7 +497,6 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -566,7 +559,6 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderCha
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -612,7 +604,6 @@ func (c *Client) Close(ctx context.Context) (res Result, err error) {
 	u.Path += "/close"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -680,7 +671,6 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -751,7 +741,6 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -822,7 +811,6 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -885,7 +873,6 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -948,7 +935,6 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1011,7 +997,6 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1074,7 +1059,6 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1137,7 +1121,6 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1200,7 +1183,6 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1263,7 +1245,6 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1334,7 +1315,6 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1405,7 +1385,6 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1476,7 +1455,6 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1547,7 +1525,6 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1618,7 +1595,6 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1689,7 +1665,6 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1752,7 +1727,6 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1815,7 +1789,6 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1878,7 +1851,6 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1941,7 +1913,6 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2004,7 +1975,6 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2067,7 +2037,6 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2130,7 +2099,6 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res Result, err 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2193,7 +2161,6 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2239,7 +2206,6 @@ func (c *Client) GetMe(ctx context.Context) (res ResultUser, err error) {
 	u.Path += "/getMe"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2299,7 +2265,6 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2362,7 +2327,6 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2440,7 +2404,6 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2511,7 +2474,6 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2557,7 +2519,6 @@ func (c *Client) GetWebhookInfo(ctx context.Context) (res ResultWebhookInfo, err
 	u.Path += "/getWebhookInfo"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2617,7 +2578,6 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2663,7 +2623,6 @@ func (c *Client) LogOut(ctx context.Context) (res Result, err error) {
 	u.Path += "/logOut"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2723,7 +2682,6 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2786,7 +2744,6 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2849,7 +2806,6 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2912,7 +2868,6 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2983,7 +2938,6 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3054,7 +3008,6 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3117,7 +3070,6 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3188,7 +3140,6 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3259,7 +3210,6 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMess
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3330,7 +3280,6 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3401,7 +3350,6 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMess
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3472,7 +3420,6 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3543,7 +3490,6 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3614,7 +3560,6 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3685,7 +3630,6 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3756,7 +3700,6 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3827,7 +3770,6 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMess
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3898,7 +3840,6 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3969,7 +3910,6 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4040,7 +3980,6 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4111,7 +4050,6 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4182,7 +4120,6 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4253,7 +4190,6 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4324,7 +4260,6 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4387,7 +4322,6 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4450,7 +4384,6 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4513,7 +4446,6 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4584,7 +4516,6 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4647,7 +4578,6 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4718,7 +4648,6 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4789,7 +4718,6 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4852,7 +4780,6 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4915,7 +4842,6 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4978,7 +4904,6 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5049,7 +4974,6 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5120,7 +5044,6 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5183,7 +5106,6 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5246,7 +5168,6 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSende
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5309,7 +5230,6 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5372,7 +5292,6 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5435,7 +5354,6 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)

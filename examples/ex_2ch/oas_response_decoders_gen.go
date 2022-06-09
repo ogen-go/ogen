@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -29,16 +30,12 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response, span trace.Spa
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -80,16 +77,12 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response, span trace.S
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -121,16 +114,12 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response, span t
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -170,16 +159,12 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response, span trace.Span
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -219,16 +204,12 @@ func decodeAPIDislikeGetResponse(resp *http.Response, span trace.Span) (res Like
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Like
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -260,16 +241,12 @@ func decodeAPILikeGetResponse(resp *http.Response, span trace.Span) (res Like, e
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Like
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -301,16 +278,12 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response, span t
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response MobileThreadPostsAfter
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -342,16 +315,12 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response, span trace.Span) (r
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Boards
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -383,16 +352,12 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response, span trace
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response MobileThreadLastInfo
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -424,16 +389,12 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response, span trace.Sp
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response MobilePost
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

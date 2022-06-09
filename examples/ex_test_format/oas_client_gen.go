@@ -98,7 +98,6 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -161,7 +160,6 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -224,7 +222,6 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -309,7 +306,6 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -372,7 +368,6 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -435,7 +430,6 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -520,7 +514,6 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -583,7 +576,6 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -661,7 +653,6 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -724,7 +715,6 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -787,7 +777,6 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -872,7 +861,6 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -935,7 +923,6 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -998,7 +985,6 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1083,7 +1069,6 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1146,7 +1131,6 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1209,7 +1193,6 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1294,7 +1277,6 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1357,7 +1339,6 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1420,7 +1401,6 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1505,7 +1485,6 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1568,7 +1547,6 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1631,7 +1609,6 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1716,7 +1693,6 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1779,7 +1755,6 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1842,7 +1817,6 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1927,7 +1901,6 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1990,7 +1963,6 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2053,7 +2025,6 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2138,7 +2109,6 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2201,7 +2171,6 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2264,7 +2233,6 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2349,7 +2317,6 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2427,7 +2394,6 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2512,7 +2478,6 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2614,7 +2579,6 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2692,7 +2656,6 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2777,7 +2740,6 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2879,7 +2841,6 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -2957,7 +2918,6 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3042,7 +3002,6 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3144,7 +3103,6 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3222,7 +3180,6 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3307,7 +3264,6 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3409,7 +3365,6 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3487,7 +3442,6 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3572,7 +3526,6 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3674,7 +3627,6 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3737,7 +3689,6 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3800,7 +3751,6 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3885,7 +3835,6 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -3948,7 +3897,6 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4011,7 +3959,6 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4096,7 +4043,6 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4159,7 +4105,6 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4222,7 +4167,6 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4307,7 +4251,6 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4370,7 +4313,6 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4433,7 +4375,6 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4518,7 +4459,6 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4596,7 +4536,6 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4681,7 +4620,6 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4783,7 +4721,6 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4846,7 +4783,6 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4909,7 +4845,6 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -4980,7 +4915,6 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5068,7 +5002,6 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5131,7 +5064,6 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5202,7 +5134,6 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5290,7 +5221,6 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5353,7 +5283,6 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5424,7 +5353,6 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5487,7 +5415,6 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5558,7 +5485,6 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5646,7 +5572,6 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5709,7 +5634,6 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5780,7 +5704,6 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5868,7 +5791,6 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -5931,7 +5853,6 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6002,7 +5923,6 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6090,7 +6010,6 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6153,7 +6072,6 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6224,7 +6142,6 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6312,7 +6229,6 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6375,7 +6291,6 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6446,7 +6361,6 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6534,7 +6448,6 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6597,7 +6510,6 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6668,7 +6580,6 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6756,7 +6667,6 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6819,7 +6729,6 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6890,7 +6799,6 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6978,7 +6886,6 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7041,7 +6948,6 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7112,7 +7018,6 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7200,7 +7105,6 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7271,7 +7175,6 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7359,7 +7262,6 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7464,7 +7366,6 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7535,7 +7436,6 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7623,7 +7523,6 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7728,7 +7627,6 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7799,7 +7697,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7887,7 +7784,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7992,7 +7888,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8063,7 +7958,6 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8151,7 +8045,6 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8256,7 +8149,6 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8327,7 +8219,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8415,7 +8306,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8520,7 +8410,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8583,7 +8472,6 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8654,7 +8542,6 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8742,7 +8629,6 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8805,7 +8691,6 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8876,7 +8761,6 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -8964,7 +8848,6 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9027,7 +8910,6 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9098,7 +8980,6 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9186,7 +9067,6 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9249,7 +9129,6 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9320,7 +9199,6 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9408,7 +9286,6 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9479,7 +9356,6 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9567,7 +9443,6 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9672,7 +9547,6 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9735,7 +9609,6 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9806,7 +9679,6 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9894,7 +9766,6 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9957,7 +9828,6 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10028,7 +9898,6 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10116,7 +9985,6 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10179,7 +10047,6 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10250,7 +10117,6 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10338,7 +10204,6 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10401,7 +10266,6 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10472,7 +10336,6 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10560,7 +10423,6 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10623,7 +10485,6 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10694,7 +10555,6 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10782,7 +10642,6 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10845,7 +10704,6 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10916,7 +10774,6 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11004,7 +10861,6 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11067,7 +10923,6 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11138,7 +10993,6 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11226,7 +11080,6 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11289,7 +11142,6 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11360,7 +11212,6 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11448,7 +11299,6 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11511,7 +11361,6 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11582,7 +11431,6 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11670,7 +11518,6 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11733,7 +11580,6 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11804,7 +11650,6 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11892,7 +11737,6 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -11955,7 +11799,6 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12026,7 +11869,6 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12114,7 +11956,6 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12193,7 +12034,6 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12289,7 +12129,6 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12402,7 +12241,6 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12481,7 +12319,6 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12577,7 +12414,6 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12690,7 +12526,6 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12769,7 +12604,6 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12865,7 +12699,6 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12978,7 +12811,6 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13057,7 +12889,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13153,7 +12984,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13266,7 +13096,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13329,7 +13158,6 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13400,7 +13228,6 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13488,7 +13315,6 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13551,7 +13377,6 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13622,7 +13447,6 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13710,7 +13534,6 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13773,7 +13596,6 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13844,7 +13666,6 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13932,7 +13753,6 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13995,7 +13815,6 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14066,7 +13885,6 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14154,7 +13972,6 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14217,7 +14034,6 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14288,7 +14104,6 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14376,7 +14191,6 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14439,7 +14253,6 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14510,7 +14323,6 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14598,7 +14410,6 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14661,7 +14472,6 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14732,7 +14542,6 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14820,7 +14629,6 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14883,7 +14691,6 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14954,7 +14761,6 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15042,7 +14848,6 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15105,7 +14910,6 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15176,7 +14980,6 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15264,7 +15067,6 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15327,7 +15129,6 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15398,7 +15199,6 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15486,7 +15286,6 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15549,7 +15348,6 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15620,7 +15418,6 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15708,7 +15505,6 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15771,7 +15567,6 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15842,7 +15637,6 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15930,7 +15724,6 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15993,7 +15786,6 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16064,7 +15856,6 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16152,7 +15943,6 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16215,7 +16005,6 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16286,7 +16075,6 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16374,7 +16162,6 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16437,7 +16224,6 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16508,7 +16294,6 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16596,7 +16381,6 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16659,7 +16443,6 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16730,7 +16513,6 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16818,7 +16600,6 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16881,7 +16662,6 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16952,7 +16732,6 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17040,7 +16819,6 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17103,7 +16881,6 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17174,7 +16951,6 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17262,7 +17038,6 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17325,7 +17100,6 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17396,7 +17170,6 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17484,7 +17257,6 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17547,7 +17319,6 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17618,7 +17389,6 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17706,7 +17476,6 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17769,7 +17538,6 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17840,7 +17608,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17928,7 +17695,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -17991,7 +17757,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18062,7 +17827,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18150,7 +17914,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18213,7 +17976,6 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18284,7 +18046,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18372,7 +18133,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18435,7 +18195,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18506,7 +18265,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18594,7 +18352,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18657,7 +18414,6 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18728,7 +18484,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18816,7 +18571,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18879,7 +18633,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18950,7 +18703,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19038,7 +18790,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19101,7 +18852,6 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19172,7 +18922,6 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19260,7 +19009,6 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19323,7 +19071,6 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19394,7 +19141,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19482,7 +19228,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19545,7 +19290,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19616,7 +19360,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19704,7 +19447,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19767,7 +19509,6 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19830,7 +19571,6 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19915,7 +19655,6 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19978,7 +19717,6 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20041,7 +19779,6 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20126,7 +19863,6 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20189,7 +19925,6 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20252,7 +19987,6 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20337,7 +20071,6 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20400,7 +20133,6 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20463,7 +20195,6 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20548,7 +20279,6 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20611,7 +20341,6 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20674,7 +20403,6 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20759,7 +20487,6 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20822,7 +20549,6 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20885,7 +20611,6 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -20970,7 +20695,6 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21033,7 +20757,6 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21096,7 +20819,6 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21181,7 +20903,6 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21244,7 +20965,6 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21307,7 +21027,6 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21392,7 +21111,6 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21455,7 +21173,6 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21518,7 +21235,6 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21603,7 +21319,6 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21666,7 +21381,6 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21729,7 +21443,6 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21814,7 +21527,6 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21877,7 +21589,6 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21940,7 +21651,6 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22025,7 +21735,6 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22111,7 +21820,6 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22204,7 +21912,6 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22314,7 +22021,6 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22400,7 +22106,6 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22493,7 +22198,6 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22603,7 +22307,6 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22689,7 +22392,6 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22782,7 +22484,6 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22892,7 +22593,6 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22978,7 +22678,6 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23071,7 +22770,6 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23181,7 +22879,6 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23244,7 +22941,6 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23307,7 +23003,6 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23392,7 +23087,6 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23455,7 +23149,6 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23518,7 +23211,6 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23603,7 +23295,6 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23666,7 +23357,6 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23729,7 +23419,6 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23814,7 +23503,6 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23877,7 +23565,6 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23940,7 +23627,6 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24025,7 +23711,6 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24088,7 +23773,6 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24151,7 +23835,6 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24236,7 +23919,6 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24299,7 +23981,6 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24362,7 +24043,6 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24447,7 +24127,6 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24510,7 +24189,6 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24573,7 +24251,6 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24658,7 +24335,6 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24721,7 +24397,6 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24784,7 +24459,6 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24869,7 +24543,6 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24932,7 +24605,6 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -24995,7 +24667,6 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25080,7 +24751,6 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25143,7 +24813,6 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25206,7 +24875,6 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25291,7 +24959,6 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25354,7 +25021,6 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25417,7 +25083,6 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25502,7 +25167,6 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25565,7 +25229,6 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25628,7 +25291,6 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25713,7 +25375,6 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25776,7 +25437,6 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25839,7 +25499,6 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25924,7 +25583,6 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -25987,7 +25645,6 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26050,7 +25707,6 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26135,7 +25791,6 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26198,7 +25853,6 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26261,7 +25915,6 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26346,7 +25999,6 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26409,7 +26061,6 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26472,7 +26123,6 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26557,7 +26207,6 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26620,7 +26269,6 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26683,7 +26331,6 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26768,7 +26415,6 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26831,7 +26477,6 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26894,7 +26539,6 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26979,7 +26623,6 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27042,7 +26685,6 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27105,7 +26747,6 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27190,7 +26831,6 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27253,7 +26893,6 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptUnixSecon
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27316,7 +26955,6 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27401,7 +27039,6 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27464,7 +27101,6 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptUnix
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27527,7 +27163,6 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27612,7 +27247,6 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27675,7 +27309,6 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27738,7 +27371,6 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27823,7 +27455,6 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27886,7 +27517,6 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptUnix
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27949,7 +27579,6 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28034,7 +27663,6 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28097,7 +27725,6 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28160,7 +27787,6 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28245,7 +27871,6 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28308,7 +27933,6 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptUnixN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28371,7 +27995,6 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28456,7 +28079,6 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28519,7 +28141,6 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28582,7 +28203,6 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28667,7 +28287,6 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28730,7 +28349,6 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28793,7 +28411,6 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28878,7 +28495,6 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -28941,7 +28557,6 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptUn
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29004,7 +28619,6 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29089,7 +28703,6 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29152,7 +28765,6 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29215,7 +28827,6 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29300,7 +28911,6 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29363,7 +28973,6 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29426,7 +29035,6 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29489,7 +29097,6 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29552,7 +29159,6 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29615,7 +29221,6 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29678,7 +29283,6 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29741,7 +29345,6 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29804,7 +29407,6 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29867,7 +29469,6 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29930,7 +29531,6 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29993,7 +29593,6 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30056,7 +29655,6 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30119,7 +29717,6 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30182,7 +29779,6 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30245,7 +29841,6 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30308,7 +29903,6 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30371,7 +29965,6 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30434,7 +30027,6 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30497,7 +30089,6 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30560,7 +30151,6 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30623,7 +30213,6 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30686,7 +30275,6 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30749,7 +30337,6 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30812,7 +30399,6 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30875,7 +30461,6 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30938,7 +30523,6 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31001,7 +30585,6 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31064,7 +30647,6 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31127,7 +30709,6 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31190,7 +30771,6 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31253,7 +30833,6 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31316,7 +30895,6 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31379,7 +30957,6 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31442,7 +31019,6 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31505,7 +31081,6 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31568,7 +31143,6 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31631,7 +31205,6 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31694,7 +31267,6 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31757,7 +31329,6 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31820,7 +31391,6 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31883,7 +31453,6 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31946,7 +31515,6 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32009,7 +31577,6 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32072,7 +31639,6 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32135,7 +31701,6 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32198,7 +31763,6 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32261,7 +31825,6 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32324,7 +31887,6 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32387,7 +31949,6 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32450,7 +32011,6 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32513,7 +32073,6 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32576,7 +32135,6 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32639,7 +32197,6 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32702,7 +32259,6 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32765,7 +32321,6 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32828,7 +32383,6 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32891,7 +32445,6 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -32954,7 +32507,6 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33017,7 +32569,6 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33080,7 +32631,6 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33143,7 +32693,6 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33206,7 +32755,6 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33269,7 +32817,6 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33332,7 +32879,6 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33395,7 +32941,6 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33458,7 +33003,6 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33521,7 +33065,6 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33584,7 +33127,6 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33647,7 +33189,6 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33710,7 +33251,6 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33773,7 +33313,6 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33836,7 +33375,6 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33899,7 +33437,6 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -33962,7 +33499,6 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34025,7 +33561,6 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34088,7 +33623,6 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34151,7 +33685,6 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34214,7 +33747,6 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34277,7 +33809,6 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34340,7 +33871,6 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34403,7 +33933,6 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34466,7 +33995,6 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34529,7 +34057,6 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34592,7 +34119,6 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34655,7 +34181,6 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34718,7 +34243,6 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34781,7 +34305,6 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34844,7 +34367,6 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34907,7 +34429,6 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34970,7 +34491,6 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35033,7 +34553,6 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35096,7 +34615,6 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35159,7 +34677,6 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35222,7 +34739,6 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35285,7 +34801,6 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35348,7 +34863,6 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35411,7 +34925,6 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35474,7 +34987,6 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35537,7 +35049,6 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35600,7 +35111,6 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35663,7 +35173,6 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35726,7 +35235,6 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35789,7 +35297,6 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35852,7 +35359,6 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35915,7 +35421,6 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -35978,7 +35483,6 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36041,7 +35545,6 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36104,7 +35607,6 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36167,7 +35669,6 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36230,7 +35731,6 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36293,7 +35793,6 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36356,7 +35855,6 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36419,7 +35917,6 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36482,7 +35979,6 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36545,7 +36041,6 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36608,7 +36103,6 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36671,7 +36165,6 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36734,7 +36227,6 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36797,7 +36289,6 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36860,7 +36351,6 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36923,7 +36413,6 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -36986,7 +36475,6 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37049,7 +36537,6 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37112,7 +36599,6 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37175,7 +36661,6 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37238,7 +36723,6 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37301,7 +36785,6 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37364,7 +36847,6 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37427,7 +36909,6 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37490,7 +36971,6 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37553,7 +37033,6 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37616,7 +37095,6 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37679,7 +37157,6 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37742,7 +37219,6 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37805,7 +37281,6 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37868,7 +37343,6 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37931,7 +37405,6 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37994,7 +37467,6 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38057,7 +37529,6 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38120,7 +37591,6 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38183,7 +37653,6 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38246,7 +37715,6 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38309,7 +37777,6 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38372,7 +37839,6 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38435,7 +37901,6 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38498,7 +37963,6 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38561,7 +38025,6 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38624,7 +38087,6 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38687,7 +38149,6 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38750,7 +38211,6 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38813,7 +38273,6 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38876,7 +38335,6 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38939,7 +38397,6 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39002,7 +38459,6 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39065,7 +38521,6 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39128,7 +38583,6 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39191,7 +38645,6 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39254,7 +38707,6 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39317,7 +38769,6 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39380,7 +38831,6 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39443,7 +38893,6 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39506,7 +38955,6 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39569,7 +39017,6 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39632,7 +39079,6 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39695,7 +39141,6 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39758,7 +39203,6 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39821,7 +39265,6 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39884,7 +39327,6 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39947,7 +39389,6 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40010,7 +39451,6 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40073,7 +39513,6 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40136,7 +39575,6 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40199,7 +39637,6 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40262,7 +39699,6 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40325,7 +39761,6 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40388,7 +39823,6 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40451,7 +39885,6 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40514,7 +39947,6 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40577,7 +40009,6 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40640,7 +40071,6 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40703,7 +40133,6 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40766,7 +40195,6 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40829,7 +40257,6 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40892,7 +40319,6 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -40955,7 +40381,6 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41018,7 +40443,6 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41081,7 +40505,6 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41144,7 +40567,6 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41207,7 +40629,6 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41270,7 +40691,6 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41333,7 +40753,6 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41396,7 +40815,6 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41459,7 +40877,6 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41522,7 +40939,6 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41585,7 +41001,6 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)

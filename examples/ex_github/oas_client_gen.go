@@ -131,7 +131,6 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -224,7 +223,6 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -318,7 +316,6 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -412,7 +409,6 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	u.Path += "/approve"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -504,7 +500,6 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	u.Path += "/cancel"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -671,7 +666,6 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -826,7 +820,6 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -996,7 +989,6 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1066,7 +1058,6 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 	u.Path += "/actions/runners/registration-token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1149,7 +1140,6 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 	u.Path += "/actions/runners/registration-token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1218,7 +1208,6 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 	u.Path += "/actions/runners/remove-token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1301,7 +1290,6 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	u.Path += "/actions/runners/remove-token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1390,7 +1378,6 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1484,7 +1471,6 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1575,7 +1561,6 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1651,7 +1636,6 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1742,7 +1726,6 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1818,7 +1801,6 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1910,7 +1892,6 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1988,7 +1969,6 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2081,7 +2061,6 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2173,7 +2152,6 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	u.Path += "/logs"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2252,7 +2230,6 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2362,7 +2339,6 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2458,7 +2434,6 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	u.Path += "/logs"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2554,7 +2529,6 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	u.Path += "/logs"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2633,7 +2607,6 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2698,7 +2671,6 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 	u.Path += "/actions/permissions/selected-actions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2778,7 +2750,6 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 	u.Path += "/actions/permissions/selected-actions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2869,7 +2840,6 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2947,7 +2917,6 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 	u.Path += "/secrets/public-key"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3038,7 +3007,6 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3100,7 +3068,6 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	u.Path += "/actions/permissions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3178,7 +3145,6 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	u.Path += "/actions/permissions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3269,7 +3235,6 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3332,7 +3297,6 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 	u.Path += "/actions/secrets/public-key"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3408,7 +3372,6 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3486,7 +3449,6 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 	u.Path += "/actions/secrets/public-key"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3577,7 +3539,6 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3669,7 +3630,6 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	u.Path += "/approvals"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3744,7 +3704,6 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3835,7 +3794,6 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3913,7 +3871,6 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4004,7 +3961,6 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4103,7 +4059,6 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	u.Path += "/timing"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4216,7 +4171,6 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4329,7 +4283,6 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4476,7 +4429,6 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4574,7 +4526,6 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4689,7 +4640,6 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4802,7 +4752,6 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4915,7 +4864,6 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4976,7 +4924,6 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 	u.Path += "/actions/runners/downloads"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5052,7 +4999,6 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	u.Path += "/actions/runners/downloads"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5166,7 +5112,6 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5267,7 +5212,6 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5367,7 +5311,6 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5464,7 +5407,6 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5576,7 +5518,6 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5691,7 +5632,6 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5819,7 +5759,6 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6020,7 +5959,6 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6115,7 +6053,6 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	u.Path += "/rerun"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6211,7 +6148,6 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6304,7 +6240,6 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6398,7 +6333,6 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6490,7 +6424,6 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	u.Path += "/retry"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6606,7 +6539,6 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6696,7 +6628,6 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6800,7 +6731,6 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -6893,7 +6823,6 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7002,7 +6931,6 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7110,7 +7038,6 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7217,7 +7144,6 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7310,7 +7236,6 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7417,7 +7342,6 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7523,7 +7447,6 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -7598,7 +7521,6 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7675,7 +7597,6 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 	u.Path += "/subscription"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7739,7 +7660,6 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	u.Path += "/subscription"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7798,7 +7718,6 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	u.Path += "/feeds"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7871,7 +7790,6 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	u.Path += "/subscription"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7928,7 +7846,6 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7991,7 +7908,6 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	u.Path += "/subscription"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8088,7 +8004,6 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8237,7 +8152,6 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8347,7 +8261,6 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8429,7 +8342,6 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8538,7 +8450,6 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8632,7 +8543,6 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8726,7 +8636,6 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8824,7 +8733,6 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8918,7 +8826,6 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9027,7 +8934,6 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9206,7 +9112,6 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9323,7 +9228,6 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9419,7 +9323,6 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9500,7 +9403,6 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9611,7 +9513,6 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9679,7 +9580,6 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9780,7 +9680,6 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -9840,7 +9739,6 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9935,7 +9833,6 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10022,7 +9919,6 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10101,7 +9997,6 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10173,7 +10068,6 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10252,7 +10146,6 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10334,7 +10227,6 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10461,7 +10353,6 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10565,7 +10456,6 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10654,7 +10544,6 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10721,7 +10610,6 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10801,7 +10689,6 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -10856,7 +10743,6 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	u.Path += "/app"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10922,7 +10808,6 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10988,7 +10873,6 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11054,7 +10938,6 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11103,7 +10986,6 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	u.Path += "/app/hook/config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11165,7 +11047,6 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11303,7 +11184,6 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11441,7 +11321,6 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11543,7 +11422,6 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11629,7 +11507,6 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11715,7 +11592,6 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11799,7 +11675,6 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11882,7 +11757,6 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11965,7 +11839,6 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12049,7 +11922,6 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12112,7 +11984,6 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 	u.Path += "/attempts"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12191,7 +12062,6 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12273,7 +12143,6 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12330,7 +12199,6 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	u.Path += "/installation/token"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12420,7 +12288,6 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12488,7 +12355,6 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	u.Path += "/suspended"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12551,7 +12417,6 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	u.Path += "/suspended"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12632,7 +12497,6 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -12702,7 +12566,6 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 	u.Path += "/settings/billing/actions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12769,7 +12632,6 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 	u.Path += "/settings/billing/actions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12836,7 +12698,6 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 	u.Path += "/settings/billing/actions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12900,7 +12761,6 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 	u.Path += "/settings/billing/packages"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12964,7 +12824,6 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 	u.Path += "/settings/billing/packages"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13028,7 +12887,6 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 	u.Path += "/settings/billing/packages"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13092,7 +12950,6 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 	u.Path += "/settings/billing/shared-storage"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13156,7 +13013,6 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 	u.Path += "/settings/billing/shared-storage"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13220,7 +13076,6 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	u.Path += "/settings/billing/shared-storage"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13320,7 +13175,6 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -13417,7 +13271,6 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13511,7 +13364,6 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13640,7 +13492,6 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13840,7 +13691,6 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14022,7 +13872,6 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14188,7 +14037,6 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14283,7 +14131,6 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	u.Path += "/rerequest"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14379,7 +14226,6 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -14546,7 +14392,6 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14644,7 +14489,6 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14751,7 +14595,6 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14845,7 +14688,6 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14996,7 +14838,6 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15191,7 +15032,6 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15396,7 +15236,6 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15515,7 +15354,6 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15644,7 +15482,6 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -15690,7 +15527,6 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	u.Path += "/codes_of_conduct"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15747,7 +15583,6 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15792,7 +15627,6 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	u.Path += "/emojis"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15885,7 +15719,6 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15976,7 +15809,6 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16043,7 +15875,6 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 	u.Path += "/actions/runners/registration-token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16112,7 +15943,6 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	u.Path += "/actions/runners/remove-token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16198,7 +16028,6 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -16276,7 +16105,6 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16352,7 +16180,6 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16427,7 +16254,6 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16502,7 +16328,6 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16580,7 +16405,6 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16658,7 +16482,6 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16722,7 +16545,6 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 	u.Path += "/actions/permissions/selected-actions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16904,7 +16726,6 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16965,7 +16786,6 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	u.Path += "/actions/permissions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17059,7 +16879,6 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17134,7 +16953,6 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17209,7 +17027,6 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17284,7 +17101,6 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17396,7 +17212,6 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17527,7 +17342,6 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17666,7 +17480,6 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17727,7 +17540,6 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	u.Path += "/actions/runners/downloads"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17827,7 +17639,6 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17924,7 +17735,6 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18021,7 +17831,6 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18133,7 +17942,6 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18222,7 +18030,6 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18316,7 +18123,6 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18412,7 +18218,6 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18503,7 +18308,6 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18584,7 +18388,6 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18673,7 +18476,6 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18781,7 +18583,6 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18892,7 +18693,6 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -18997,7 +18797,6 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19089,7 +18888,6 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19193,7 +18991,6 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19300,7 +19097,6 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19422,7 +19218,6 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19532,7 +19327,6 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19593,7 +19387,6 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	u.Path += "/star"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -19665,7 +19458,6 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19751,7 +19543,6 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -19811,7 +19602,6 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -19883,7 +19673,6 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -19943,7 +19732,6 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 	u.Path += "/forks"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20000,7 +19788,6 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20072,7 +19859,6 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20144,7 +19930,6 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20243,7 +20028,6 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20337,7 +20121,6 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20431,7 +20214,6 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20544,7 +20326,6 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20638,7 +20419,6 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20739,7 +20519,6 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20837,7 +20616,6 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20899,7 +20677,6 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	u.Path += "/star"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20957,7 +20734,6 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	u.Path += "/star"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -21054,7 +20830,6 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21147,7 +20922,6 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21275,7 +21049,6 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21372,7 +21145,6 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21511,7 +21283,6 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21620,7 +21391,6 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -21710,7 +21480,6 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -21800,7 +21569,6 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -21922,7 +21690,6 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22018,7 +21785,6 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22138,7 +21904,6 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22249,7 +22014,6 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22388,7 +22152,6 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22492,7 +22255,6 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22541,7 +22303,6 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	u.Path += "/gitignore/templates"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22602,7 +22363,6 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22647,7 +22407,6 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	u.Path += "/user/interaction-limits"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22708,7 +22467,6 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	u.Path += "/interaction-limits"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22786,7 +22544,6 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	u.Path += "/interaction-limits"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22858,7 +22615,6 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -22949,7 +22705,6 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23055,7 +22810,6 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23165,7 +22919,6 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23260,7 +23013,6 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23361,7 +23113,6 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23477,7 +23228,6 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23570,7 +23320,6 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23671,7 +23420,6 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -23761,7 +23509,6 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23848,7 +23595,6 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23935,7 +23681,6 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24042,7 +23787,6 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24129,7 +23873,6 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24216,7 +23959,6 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24303,7 +24045,6 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24390,7 +24131,6 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24653,7 +24393,6 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24765,7 +24504,6 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24908,7 +24646,6 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25070,7 +24807,6 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25179,7 +24915,6 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25370,7 +25105,6 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25576,7 +25310,6 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25848,7 +25581,6 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25972,7 +25704,6 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26081,7 +25812,6 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26205,7 +25935,6 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26365,7 +26094,6 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26490,7 +26218,6 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26581,7 +26308,6 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	u.Path += "/labels"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26688,7 +26414,6 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -26796,7 +26521,6 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26886,7 +26610,6 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	u.Path += "/lock"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27007,7 +26730,6 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27114,7 +26836,6 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27221,7 +26942,6 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27343,7 +27063,6 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -27403,7 +27122,6 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27499,7 +27217,6 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27578,7 +27295,6 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	u.Path += "/license"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27627,7 +27343,6 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	u.Path += "/meta"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27672,7 +27387,6 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	u.Path += "/"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27747,7 +27461,6 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	u.Path += "/import"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27811,7 +27524,6 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	u.Path += "/archive"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27887,7 +27599,6 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	u.Path += "/archive"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27962,7 +27673,6 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	u.Path += "/archive"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28042,7 +27752,6 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	u.Path += "/archive"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28143,7 +27852,6 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28270,7 +27978,6 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 	u.Path += "/import"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28345,7 +28052,6 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	u.Path += "/import/large_files"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28436,7 +28142,6 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28540,7 +28245,6 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28621,7 +28325,6 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28740,7 +28443,6 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28851,7 +28553,6 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28947,7 +28648,6 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29054,7 +28754,6 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29160,7 +28859,6 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29233,7 +28931,6 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29321,7 +29018,6 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29424,7 +29120,6 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29506,7 +29201,6 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	u.Path += "/lock"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29598,7 +29292,6 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	u.Path += "/lock"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29692,7 +29385,6 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29799,7 +29491,6 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -29868,7 +29559,6 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29937,7 +29627,6 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30003,7 +29692,6 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30069,7 +29757,6 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30179,7 +29866,6 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30302,7 +29988,6 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30410,7 +30095,6 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30524,7 +30208,6 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30626,7 +30309,6 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -30701,7 +30383,6 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30778,7 +30459,6 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30850,7 +30530,6 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30924,7 +30603,6 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30996,7 +30674,6 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31074,7 +30751,6 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31174,7 +30850,6 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31262,7 +30937,6 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -31337,7 +31011,6 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31404,7 +31077,6 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31590,7 +31262,6 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31647,7 +31318,6 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31723,7 +31393,6 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31799,7 +31468,6 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31878,7 +31546,6 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	u.Path += "/config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31967,7 +31634,6 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32051,7 +31717,6 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32111,7 +31776,6 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	u.Path += "/blocks"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32208,7 +31872,6 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32294,7 +31957,6 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32395,7 +32057,6 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32507,7 +32168,6 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32638,7 +32298,6 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32734,7 +32393,6 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32847,7 +32505,6 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32946,7 +32603,6 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33042,7 +32698,6 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33109,7 +32764,6 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	u.Path += "/credential-authorizations"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33220,7 +32874,6 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33314,7 +32967,6 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33390,7 +33042,6 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	u.Path += "/pings"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33480,7 +33131,6 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 	u.Path += "/attempts"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33555,7 +33205,6 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33633,7 +33282,6 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33707,7 +33355,6 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33779,7 +33426,6 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33859,7 +33505,6 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33978,7 +33623,6 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34059,7 +33703,6 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34131,7 +33774,6 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34213,7 +33855,6 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34326,7 +33967,6 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34440,7 +34080,6 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -34522,7 +34161,6 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34618,7 +34256,6 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34714,7 +34351,6 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34808,7 +34444,6 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34919,7 +34554,6 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35030,7 +34664,6 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35160,7 +34793,6 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35305,7 +34937,6 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35397,7 +35028,6 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 	u.Path += "/versions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35473,7 +35103,6 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35564,7 +35193,6 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35655,7 +35283,6 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35746,7 +35373,6 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35852,7 +35478,6 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35959,7 +35584,6 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36039,7 +35663,6 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36134,7 +35757,6 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36229,7 +35851,6 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36332,7 +35953,6 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36452,7 +36072,6 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36572,7 +36191,6 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36671,7 +36289,6 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 	u.Path += "/restore"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36787,7 +36404,6 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 	u.Path += "/restore"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36903,7 +36519,6 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	u.Path += "/restore"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37010,7 +36625,6 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37088,7 +36702,6 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37151,7 +36764,6 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37233,7 +36845,6 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37330,7 +36941,6 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -37392,7 +37002,6 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37449,7 +37058,6 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37506,7 +37114,6 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37567,7 +37174,6 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37624,7 +37230,6 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37681,7 +37286,6 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37758,7 +37362,6 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 	u.Path += "/permission"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37869,7 +37472,6 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37986,7 +37588,6 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38080,7 +37681,6 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38195,7 +37795,6 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38325,7 +37924,6 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38436,7 +38034,6 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38519,7 +38116,6 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38605,7 +38201,6 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38683,7 +38278,6 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38776,7 +38370,6 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38853,7 +38446,6 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -38930,7 +38522,6 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39021,7 +38612,6 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	u.Path += "/merge"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -39128,7 +38718,6 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39262,7 +38851,6 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39405,7 +38993,6 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39542,7 +39129,6 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39647,7 +39233,6 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -39736,7 +39321,6 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -39860,7 +39444,6 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -39984,7 +39567,6 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40086,7 +39668,6 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40175,7 +39756,6 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40375,7 +39955,6 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40516,7 +40095,6 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40644,7 +40222,6 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40771,7 +40348,6 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40895,7 +40471,6 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -41073,7 +40648,6 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -41236,7 +40810,6 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -41362,7 +40935,6 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -41490,7 +41062,6 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41606,7 +41177,6 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41737,7 +41307,6 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41868,7 +41437,6 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -41979,7 +41547,6 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42103,7 +41670,6 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42212,7 +41778,6 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42263,7 +41828,6 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	u.Path += "/rate_limit"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -42380,7 +41944,6 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42499,7 +42062,6 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42619,7 +42181,6 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42739,7 +42300,6 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42858,7 +42418,6 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -42997,7 +42556,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -43123,7 +42681,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -43246,7 +42803,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -43356,7 +42912,6 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -43465,7 +43020,6 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -43571,7 +43125,6 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -43677,7 +43230,6 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -43784,7 +43336,6 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -43893,7 +43444,6 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44017,7 +43567,6 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44083,7 +43632,6 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44226,7 +43774,6 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44369,7 +43916,6 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44512,7 +44058,6 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44656,7 +44201,6 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44818,7 +44362,6 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44967,7 +44510,6 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45114,7 +44656,6 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45248,7 +44789,6 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45305,7 +44845,6 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45439,7 +44978,6 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -45582,7 +45120,6 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -45711,7 +45248,6 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -45848,7 +45384,6 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -45984,7 +45519,6 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -46080,7 +45614,6 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -46158,7 +45691,6 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 	u.Path += "/vulnerability-alerts"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -46335,7 +45867,6 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -46427,7 +45958,6 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -46544,7 +46074,6 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -46643,7 +46172,6 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	u.Path += "/protection/required_signatures"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -46759,7 +46287,6 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -46854,7 +46381,6 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47002,7 +46528,6 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47122,7 +46647,6 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47240,7 +46764,6 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47311,7 +46834,6 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47409,7 +46931,6 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47504,7 +47025,6 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47613,7 +47133,6 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47717,7 +47236,6 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47819,7 +47337,6 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -47925,7 +47442,6 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -48037,7 +47553,6 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -48097,7 +47612,6 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48174,7 +47688,6 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48269,7 +47782,6 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	u.Path += "/protection/restrictions"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48365,7 +47877,6 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	u.Path += "/protection/enforce_admins"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48454,7 +47965,6 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48544,7 +48054,6 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48638,7 +48147,6 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 	u.Path += "/protection"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48725,7 +48233,6 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48822,7 +48329,6 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	u.Path += "/protection/required_signatures"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48912,7 +48418,6 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49009,7 +48514,6 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49122,7 +48626,6 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -49212,7 +48715,6 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49285,7 +48787,6 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 	u.Path += "/pages"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49379,7 +48880,6 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	u.Path += "/protection/required_pull_request_reviews"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49468,7 +48968,6 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49555,7 +49054,6 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49642,7 +49140,6 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49719,7 +49216,6 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	u.Path += "/automated-security-fixes"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49794,7 +49290,6 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	u.Path += "/lfs"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49872,7 +49367,6 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	u.Path += "/vulnerability-alerts"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49966,7 +49460,6 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50060,7 +49553,6 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50137,7 +49629,6 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 	u.Path += "/automated-security-fixes"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50212,7 +49703,6 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	u.Path += "/lfs"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50290,7 +49780,6 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 	u.Path += "/vulnerability-alerts"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50365,7 +49854,6 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50462,7 +49950,6 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 	u.Path += "/protection/restrictions"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50556,7 +50043,6 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 	u.Path += "/protection/enforce_admins"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50650,7 +50136,6 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	u.Path += "/protection/required_status_checks/contexts"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50759,7 +50244,6 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50856,7 +50340,6 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	u.Path += "/protection/restrictions/apps"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50946,7 +50429,6 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51033,7 +50515,6 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51127,7 +50608,6 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	u.Path += "/protection"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51222,7 +50702,6 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51297,7 +50776,6 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	u.Path += "/stats/code_frequency"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51388,7 +50866,6 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 	u.Path += "/permission"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51522,7 +50999,6 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51691,7 +51167,6 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51767,7 +51242,6 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	u.Path += "/stats/commit_activity"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51854,7 +51328,6 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51953,7 +51426,6 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	u.Path += "/protection/required_signatures"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52037,7 +51509,6 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	u.Path += "/community/profile"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52117,7 +51588,6 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	u.Path += "/stats/contributors"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52204,7 +51674,6 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52291,7 +51760,6 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52395,7 +51863,6 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52468,7 +51935,6 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 	u.Path += "/pages/builds/latest"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52546,7 +52012,6 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	u.Path += "/releases/latest"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52619,7 +52084,6 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 	u.Path += "/pages"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52706,7 +52170,6 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52787,7 +52250,6 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	u.Path += "/pages/health"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52865,7 +52327,6 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	u.Path += "/stats/participation"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52959,7 +52420,6 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	u.Path += "/protection/required_pull_request_reviews"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53039,7 +52499,6 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	u.Path += "/stats/punch_card"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53135,7 +52594,6 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53245,7 +52703,6 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53336,7 +52793,6 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53428,7 +52884,6 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53517,7 +52972,6 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53611,7 +53065,6 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 	u.Path += "/protection/required_status_checks"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53706,7 +53159,6 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	u.Path += "/protection/restrictions/teams"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53781,7 +53233,6 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	u.Path += "/traffic/popular/paths"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53856,7 +53307,6 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	u.Path += "/traffic/popular/referrers"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53951,7 +53401,6 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 	u.Path += "/protection/restrictions/users"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54046,7 +53495,6 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54137,7 +53585,6 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54231,7 +53678,6 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	u.Path += "/config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54335,7 +53781,6 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54430,7 +53875,6 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54556,7 +54000,6 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54651,7 +54094,6 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 	u.Path += "/branches-where-head"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54783,7 +54225,6 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54909,7 +54350,6 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55023,7 +54463,6 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55152,7 +54591,6 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55379,7 +54817,6 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55513,7 +54950,6 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55622,7 +55058,6 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55748,7 +55183,6 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55927,7 +55361,6 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56130,7 +55563,6 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56277,7 +55709,6 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56425,7 +55856,6 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56551,7 +55981,6 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56663,7 +56092,6 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56745,7 +56173,6 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56821,7 +56248,6 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	u.Path += "/languages"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56930,7 +56356,6 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57000,7 +56425,6 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57131,7 +56555,6 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57255,7 +56678,6 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57370,7 +56792,6 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57479,7 +56900,6 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57588,7 +57008,6 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57714,7 +57133,6 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57823,7 +57241,6 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57913,7 +57330,6 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -58009,7 +57425,6 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -58103,7 +57518,6 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	u.Path += "/pings"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -58208,7 +57622,6 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 	u.Path += "/attempts"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -58342,7 +57755,6 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -58432,7 +57844,6 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -58558,7 +57969,6 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -58655,7 +58065,6 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	u.Path += "/protection/required_status_checks"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -58789,7 +58198,6 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -58925,7 +58333,6 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59047,7 +58454,6 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59148,7 +58554,6 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59231,7 +58636,6 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 	u.Path += "/pages/builds"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -59327,7 +58731,6 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	u.Path += "/protection/enforce_admins"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -59463,7 +58866,6 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59592,7 +58994,6 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59730,7 +59131,6 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59867,7 +59267,6 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -59963,7 +59362,6 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	u.Path += "/tests"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -60059,7 +59457,6 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60169,7 +59566,6 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60294,7 +59690,6 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60401,7 +59796,6 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60523,7 +59917,6 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60640,7 +60033,6 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60749,7 +60141,6 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60858,7 +60249,6 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -60974,7 +60364,6 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -61101,7 +60490,6 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -61230,7 +60618,6 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -61305,7 +60692,6 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -61453,7 +60839,6 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -61592,7 +60977,6 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -61741,7 +61125,6 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -61893,7 +61276,6 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62037,7 +61419,6 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62145,7 +61526,6 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62285,7 +61665,6 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62380,7 +61759,6 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62514,7 +61892,6 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62662,7 +62039,6 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62782,7 +62158,6 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -62878,7 +62253,6 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -63020,7 +62394,6 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -63153,7 +62526,6 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -63281,7 +62653,6 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -63396,7 +62767,6 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -63546,7 +62916,6 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -63681,7 +63050,6 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -63776,7 +63144,6 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -63855,7 +63222,6 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -63967,7 +63333,6 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -64063,7 +63428,6 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -64155,7 +63519,6 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64275,7 +63638,6 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64381,7 +63743,6 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64486,7 +63847,6 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64577,7 +63937,6 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64679,7 +64038,6 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64776,7 +64134,6 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -64886,7 +64243,6 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -64979,7 +64335,6 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65071,7 +64426,6 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65149,7 +64503,6 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65227,7 +64580,6 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65291,7 +64643,6 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65367,7 +64718,6 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65474,7 +64824,6 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65567,7 +64916,6 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65659,7 +65007,6 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65737,7 +65084,6 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65798,7 +65144,6 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65876,7 +65221,6 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65972,7 +65316,6 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66054,7 +65397,6 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66150,7 +65492,6 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66263,7 +65604,6 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66361,7 +65701,6 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66507,7 +65846,6 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66639,7 +65977,6 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66787,7 +66124,6 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66904,7 +66240,6 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66988,7 +66323,6 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67054,7 +66388,6 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	u.Path += "/team-sync/group-mappings"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67156,7 +66489,6 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67236,7 +66568,6 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	u.Path += "/team-sync/group-mappings"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67365,7 +66696,6 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67481,7 +66811,6 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67597,7 +66926,6 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67699,7 +67027,6 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67812,7 +67139,6 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67911,7 +67237,6 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68024,7 +67349,6 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68122,7 +67446,6 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68212,7 +67535,6 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68315,7 +67637,6 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68404,7 +67725,6 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68498,7 +67818,6 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68578,7 +67897,6 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68687,7 +68005,6 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68782,7 +68099,6 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -68906,7 +68222,6 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69019,7 +68334,6 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69132,7 +68446,6 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69231,7 +68544,6 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69342,7 +68654,6 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69433,7 +68744,6 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69513,7 +68823,6 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69573,7 +68882,6 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -69630,7 +68938,6 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -69702,7 +69009,6 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -69759,7 +69065,6 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -69823,7 +69128,6 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69898,7 +69202,6 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -69978,7 +69281,6 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "DELETE", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -70042,7 +69344,6 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70103,7 +69404,6 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70166,7 +69466,6 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70214,7 +69513,6 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 	u.Path += "/user"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70287,7 +69585,6 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70392,7 +69689,6 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70453,7 +69749,6 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70514,7 +69809,6 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70599,7 +69893,6 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70644,7 +69937,6 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	u.Path += "/user/blocks"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70726,7 +70018,6 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70807,7 +70098,6 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70888,7 +70178,6 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -70984,7 +70273,6 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71080,7 +70368,6 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71163,7 +70450,6 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71259,7 +70545,6 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71343,7 +70628,6 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71439,7 +70723,6 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71522,7 +70805,6 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71592,7 +70874,6 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -71652,7 +70933,6 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71712,7 +70992,6 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -71776,7 +71055,6 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)

@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -29,16 +30,12 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res string, er
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -72,16 +69,12 @@ func decodeDataGetAnyResponse(resp *http.Response, span trace.Span) (res string,
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -115,16 +108,12 @@ func decodeDataGetIDResponse(resp *http.Response, span trace.Span) (res string, 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response string
 			if err := func() error {
 				v, err := d.Str()

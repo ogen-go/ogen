@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -33,16 +34,12 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -75,16 +72,12 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Pets
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -143,16 +136,12 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -185,16 +174,12 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -220,16 +205,12 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

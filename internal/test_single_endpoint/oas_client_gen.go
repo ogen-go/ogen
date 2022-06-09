@@ -77,7 +77,6 @@ func (c *Client) ProbeLiveness(ctx context.Context) (res string, err error) {
 	u.Path += "/healthz"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

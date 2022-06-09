@@ -20,11 +20,11 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 			return io.NopCloser(req), nil
 		}, nil
 	{{- else if $contentType.JSON }}
+		e := jx.GetEncoder()
+        {{ template "json/enc" elem $type "req" }}
+		encoded := e.Bytes()
 		return func() (io.ReadCloser, error) {
-			e := jx.GetEncoder()
-			defer jx.PutEncoder(e)
-        	{{ template "json/enc" elem $type "req" }}
-			return io.NopCloser(bytes.NewReader(e.Bytes())), nil
+			return io.NopCloser(bytes.NewReader(encoded)), nil
 		}, nil
 	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
 		q := uri.NewQueryEncoder()

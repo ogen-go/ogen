@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -29,16 +30,12 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Data
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -65,16 +62,12 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 			}
 			switch {
 			case ct == "application/json":
-				buf := getBuf()
-				defer putBuf(buf)
+				buf := new(bytes.Buffer)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
 					return res, err
 				}
 
-				d := jx.GetDecoder()
-				defer jx.PutDecoder(d)
-				d.ResetBytes(buf.Bytes())
-
+				d := jx.DecodeBytes(buf.Bytes())
 				var response Error
 				if err := func() error {
 					if err := response.Decode(d); err != nil {
@@ -112,16 +105,12 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Data
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -148,16 +137,12 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 			}
 			switch {
 			case ct == "application/json":
-				buf := getBuf()
-				defer putBuf(buf)
+				buf := new(bytes.Buffer)
 				if _, err := io.Copy(buf, resp.Body); err != nil {
 					return res, err
 				}
 
-				d := jx.GetDecoder()
-				defer jx.PutDecoder(d)
-				d.ResetBytes(buf.Bytes())
-
+				d := jx.DecodeBytes(buf.Bytes())
 				var response Error
 				if err := func() error {
 					if err := response.Decode(d); err != nil {

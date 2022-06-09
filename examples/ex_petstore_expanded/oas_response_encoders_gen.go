@@ -28,7 +28,6 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 			span.SetStatus(codes.Ok, st)
 		}
 		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

@@ -30,16 +30,12 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response Book
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -163,16 +159,12 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response SearchOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -206,16 +198,12 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

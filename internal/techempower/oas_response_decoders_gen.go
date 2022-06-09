@@ -3,6 +3,7 @@
 package techempower
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -29,16 +30,12 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -70,16 +67,12 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response WorldObject
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -111,16 +104,12 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response HelloWorld
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -152,16 +141,12 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -193,16 +178,12 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 		}
 		switch {
 		case ct == "application/json":
-			buf := getBuf()
-			defer putBuf(buf)
+			buf := new(bytes.Buffer)
 			if _, err := io.Copy(buf, resp.Body); err != nil {
 				return res, err
 			}
 
-			d := jx.GetDecoder()
-			defer jx.PutDecoder(d)
-			d.ResetBytes(buf.Bytes())
-
+			d := jx.DecodeBytes(buf.Bytes())
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

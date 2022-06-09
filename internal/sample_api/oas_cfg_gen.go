@@ -3,13 +3,11 @@
 package api
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"math/big"
 	"net/http"
 	"regexp"
-	"sync"
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel"
@@ -44,24 +42,6 @@ var ratMap = map[string]*big.Rat{
 		}
 		return r
 	}(),
-}
-
-// bufPool is pool of bytes.Buffer for encoding and decoding.
-var bufPool = &sync.Pool{
-	New: func() interface{} {
-		return new(bytes.Buffer)
-	},
-}
-
-// getBuf returns buffer from pool.
-func getBuf() *bytes.Buffer {
-	return bufPool.Get().(*bytes.Buffer)
-}
-
-// putBuf puts buffer to pool.
-func putBuf(b *bytes.Buffer) {
-	b.Reset()
-	bufPool.Put(b)
 }
 
 // ErrorHandler is error handler.

@@ -104,7 +104,6 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -175,7 +174,6 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -221,7 +219,6 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	u.Path += "/balloon"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -264,7 +261,6 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	u.Path += "/balloon/statistics"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -307,7 +303,6 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	u.Path += "/"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -352,7 +347,6 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	u.Path += "/vm/config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -399,7 +393,6 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	u.Path += "/machine-config"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -462,7 +455,6 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -525,7 +517,6 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -569,7 +560,6 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	u.Path += "/mmds"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -627,7 +617,6 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -688,7 +677,6 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -754,7 +742,6 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -820,7 +807,6 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -908,7 +894,6 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -995,7 +980,6 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1076,7 +1060,6 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1149,7 +1132,6 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PATCH", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1215,7 +1197,6 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1281,7 +1262,6 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1369,7 +1349,6 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1456,7 +1435,6 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1530,7 +1508,6 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1601,7 +1578,6 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1684,7 +1660,6 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -1747,7 +1722,6 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "PUT", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)

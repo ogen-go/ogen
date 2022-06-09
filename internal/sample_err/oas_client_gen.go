@@ -95,7 +95,6 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 	defer body.Close()
 
 	r := ht.NewRequest(ctx, "POST", u, body)
-	defer ht.PutRequest(r)
 	r.GetBody = reqBody
 
 	r.Header.Set("Content-Type", contentType)
@@ -143,7 +142,6 @@ func (c *Client) DataGet(ctx context.Context) (res Data, err error) {
 	u.Path += "/data"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

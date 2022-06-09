@@ -107,7 +107,6 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -152,7 +151,6 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 	u.Path += "/name"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -211,7 +209,6 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res str
 	}
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-	defer ht.PutRequest(r)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
