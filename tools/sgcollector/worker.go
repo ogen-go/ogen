@@ -5,6 +5,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"fmt"
+	"net/http"
 	"sort"
 	"strings"
 
@@ -104,6 +105,37 @@ func (n errFs) WriteFile(baseName string, source []byte) error {
 	return nil
 }
 
+type filterTransport struct {
+	next    http.RoundTripper
+	allowed map[string]struct{}
+}
+
+func (f filterTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	host := req.Host
+	if u := req.URL; host == "" && u != nil {
+		host = u.Host
+	}
+	if _, ok := f.allowed[host]; !ok {
+		return nil, errors.Errorf("host %q is not allowed", host)
+	}
+	return f.next.RoundTrip(req)
+}
+
+func httpClient() *http.Client {
+	dc := http.DefaultClient
+	return &http.Client{
+		Transport: filterTransport{
+			next: http.DefaultTransport,
+			allowed: map[string]struct{}{
+				"raw.githubusercontent.com": {},
+			},
+		},
+		CheckRedirect: dc.CheckRedirect,
+		Jar:           dc.Jar,
+		Timeout:       dc.Timeout,
+	}
+}
+
 func generate(data []byte, isYAML bool) error {
 	if isYAML {
 		j, err := convertYAMLtoJSON(data)
@@ -124,7 +156,14 @@ func generate(data []byte, isYAML bool) error {
 
 	var notImpl []string
 	g, err := gen.NewGenerator(spec, gen.Options{
-		InferSchemaType:      true,
+		InferSchemaType: true,
+		AllowRemote:     true,
+		Remote: gen.RemoteOptions{
+			HTTPClient: httpClient(),
+			ReadFile: func(string) ([]byte, error) {
+				return nil, errors.New("local file reference is not allowed")
+			},
+		},
 		IgnoreNotImplemented: []string{"all"},
 		NotImplementedHook: func(name string, err error) {
 			for _, existing := range notImpl {
