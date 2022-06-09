@@ -43,6 +43,8 @@ type Options struct {
 	//
 	// See https://github.com/ogen-go/ogen/issues/385.
 	AllowRemote bool
+	// Remote is remote reference resolver options.
+	Remote RemoteOptions
 	// Filters contains filters to skip operations.
 	Filters Filters
 	// IgnoreNotImplemented contains ErrNotImplemented messages to ignore.
@@ -88,7 +90,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 
 	var external jsonschema.ExternalResolver
 	if opts.AllowRemote {
-		external = newExternalResolver()
+		external = newExternalResolver(opts.Remote)
 	}
 	api, err := parser.Parse(spec, parser.Settings{
 		External:   external,

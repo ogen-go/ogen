@@ -12,15 +12,34 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+// RemoteOptions is remote reference resolver options.
+type RemoteOptions struct {
+	// HTTPClient sets http client to use. Defaults to http.DefaultClient.
+	HTTPClient *http.Client
+	// ReadFile sets function for reading files from fs. Defaults to os.ReadFile.
+	ReadFile func(p string) ([]byte, error)
+}
+
+func (r *RemoteOptions) setDefaults() {
+	if r.HTTPClient == nil {
+		r.HTTPClient = http.DefaultClient
+	}
+	if r.ReadFile == nil {
+		r.ReadFile = os.ReadFile
+	}
+}
+
 type externalResolver struct {
 	client   *http.Client
 	readFile func(p string) ([]byte, error)
 }
 
-func newExternalResolver() externalResolver {
+func newExternalResolver(opts RemoteOptions) externalResolver {
+	opts.setDefaults()
+
 	return externalResolver{
-		client:   http.DefaultClient,
-		readFile: os.ReadFile,
+		client:   opts.HTTPClient,
+		readFile: opts.ReadFile,
 	}
 }
 
