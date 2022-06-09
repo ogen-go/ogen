@@ -43,8 +43,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		}
 
 		var request {{ $t.Go }}
-		buf := getBuf()
-		defer putBuf(buf)
+		buf := new(bytes.Buffer)
 		written, err := io.Copy(buf, r.Body)
 		if err != nil {
 			return req, close, err
@@ -58,9 +57,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		{{- end }}
 		}
 
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf.Bytes())
 		if err := func() error {
 			{{- template "json/dec" elem $t "request" }}
 			return nil

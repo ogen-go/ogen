@@ -82,7 +82,7 @@ func removeEmptyPort(host string) string {
 
 // NewRequest is optimized version of http.NewRequestWithContext.
 func NewRequest(ctx context.Context, method string, u *url.URL, body io.Reader) *http.Request {
-	req := AcquireRequest()
+	req := new(http.Request)
 	Set(req, ctx)
 
 	rc, ok := body.(io.ReadCloser)

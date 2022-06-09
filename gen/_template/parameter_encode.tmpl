@@ -40,7 +40,6 @@ q := uri.NewQueryEncoder()
 		{{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
 		{{- if $param.Spec.Content }}
 			enc := jx.GetEncoder()
-			defer jx.PutEncoder(enc)
 			func(e *jx.Encoder) {
             	{{ template "json/enc" $el }}
 			}(enc)
@@ -68,7 +67,6 @@ h := uri.NewHeaderEncoder(r.Header)
 		{{- $el := elem $p.Type (printf "params.%s" $p.Name) }}
 		{{- if $p.Spec.Content }}
 			enc := jx.GetEncoder()
-			defer jx.PutEncoder(enc)
 			func(e *jx.Encoder) {
             	{{ template "json/enc" $el }}
 			}(enc)
