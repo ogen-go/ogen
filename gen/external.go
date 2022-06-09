@@ -7,7 +7,10 @@ import (
 	"net/url"
 	"os"
 
+	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
+	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -98,6 +101,18 @@ func (e externalResolver) Get(ctx context.Context, loc string) (jsonschema.Refer
 			scheme = "file"
 		}
 		return nil, errors.Wrap(err, scheme)
+	}
+
+	if jsonErr := jx.DecodeBytes(data).Validate(); jsonErr != nil {
+		converted, yamlErr := yaml.YAMLToJSON(data)
+		if yamlErr != nil {
+			decErr := multierr.Append(
+				errors.Wrap(jsonErr, "json"),
+				errors.Wrap(yamlErr, "yaml"),
+			)
+			return nil, errors.Wrap(decErr, "invalid JSON or YAML schema")
+		}
+		data = converted
 	}
 
 	return jsonschema.NewRootResolver(data), nil
