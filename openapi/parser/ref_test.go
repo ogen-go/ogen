@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-type external map[string]*ogen.Spec
+type external map[string]interface{}
 
 func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 	r, ok := e[loc]
@@ -24,7 +24,7 @@ func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 }
 
 func TestExternalReference(t *testing.T) {
-	example := json.RawMessage(`"value"`)
+	exampleValue := json.RawMessage(`"value"`)
 
 	root := &ogen.Spec{
 		Paths: map[string]*ogen.PathItem{
@@ -80,7 +80,7 @@ func TestExternalReference(t *testing.T) {
 		},
 	}
 	remote := external{
-		"foo.json": {
+		"foo.json": &ogen.Spec{
 			Components: &ogen.Components{
 				Schemas: map[string]*ogen.Schema{
 					"Schema": {
@@ -89,24 +89,7 @@ func TestExternalReference(t *testing.T) {
 				},
 				Responses: map[string]*ogen.Response{
 					"RemoteResponse": {
-						Description: "response description",
-						Headers: map[string]*ogen.Header{
-							"ResponseHeader": {
-								Ref: "#/components/headers/RemoteHeader",
-							},
-						},
-						Content: map[string]ogen.Media{
-							"application/json": {
-								Schema: &ogen.Schema{
-									Type: "string",
-								},
-								Examples: map[string]*ogen.Example{
-									"ref": {
-										Ref: "#/components/examples/RemoteExample",
-									},
-								},
-							},
-						},
+						Ref: "response.json#",
 					},
 				},
 				Parameters: map[string]*ogen.Parameter{
@@ -129,7 +112,7 @@ func TestExternalReference(t *testing.T) {
 				},
 				Examples: map[string]*ogen.Example{
 					"RemoteExample": {
-						Value: example,
+						Value: exampleValue,
 					},
 				},
 				RequestBodies: map[string]*ogen.RequestBody{
@@ -152,15 +135,36 @@ func TestExternalReference(t *testing.T) {
 				SecuritySchemes: nil,
 			},
 		},
-		"bar.json": {
+		"bar.json": &ogen.Spec{
 			Components: &ogen.Components{
 				Schemas: map[string]*ogen.Schema{
 					"Schema": {
-						Type: "string",
+						Ref: "root.json#",
 					},
 				},
 			},
 		},
+		"response.json": ogen.Response{
+			Description: "response description",
+			Headers: map[string]*ogen.Header{
+				"ResponseHeader": {
+					Ref: "foo.json#/components/headers/RemoteHeader",
+				},
+			},
+			Content: map[string]ogen.Media{
+				"application/json": {
+					Schema: &ogen.Schema{
+						Type: "string",
+					},
+					Examples: map[string]*ogen.Example{
+						"ref": {
+							Ref: "foo.json#/components/examples/RemoteExample",
+						},
+					},
+				},
+			},
+		},
+		"root.json": ogen.Schema{Type: "string"},
 	}
 
 	a := require.New(t)
@@ -171,9 +175,9 @@ func TestExternalReference(t *testing.T) {
 
 	var (
 		schema = &jsonschema.Schema{
-			Ref:      "bar.json#/components/schemas/Schema",
+			Ref:      "root.json#",
 			Type:     "string",
-			Examples: []json.RawMessage{example},
+			Examples: []json.RawMessage{exampleValue},
 		}
 		param = &openapi.Parameter{
 			Ref:     "#/components/parameters/LocalParameter",
@@ -192,7 +196,7 @@ func TestExternalReference(t *testing.T) {
 					Examples: map[string]*openapi.Example{
 						"ref": {
 							Ref:   "#/components/examples/RemoteExample",
-							Value: example,
+							Value: exampleValue,
 						},
 					},
 					Encoding: map[string]*openapi.Encoding{},
@@ -204,7 +208,7 @@ func TestExternalReference(t *testing.T) {
 			Description: "response description",
 			Headers: map[string]*openapi.Header{
 				"ResponseHeader": {
-					Ref:    "#/components/headers/RemoteHeader",
+					Ref:    "foo.json#/components/headers/RemoteHeader",
 					Name:   "ResponseHeader",
 					In:     openapi.LocationHeader,
 					Style:  openapi.HeaderStyleSimple,
@@ -215,12 +219,12 @@ func TestExternalReference(t *testing.T) {
 				"application/json": {
 					Schema: &jsonschema.Schema{
 						Type:     "string",
-						Examples: []json.RawMessage{example},
+						Examples: []json.RawMessage{exampleValue},
 					},
 					Examples: map[string]*openapi.Example{
 						"ref": {
-							Ref:   "#/components/examples/RemoteExample",
-							Value: example,
+							Ref:   "foo.json#/components/examples/RemoteExample",
+							Value: exampleValue,
 						},
 					},
 					Encoding: map[string]*openapi.Encoding{},
