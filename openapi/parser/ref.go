@@ -49,15 +49,21 @@ func newResolveCtx() *resolveCtx {
 	}
 }
 
-func (r *resolveCtx) add(key refKey) error {
+func (r *resolveCtx) add(ref string) (key refKey, _ error) {
+	u, err := url.Parse(ref)
+	if err != nil {
+		return refKey{}, err
+	}
+	key.fromURL(u)
+
 	if _, ok := r.refs[key]; ok {
-		return errors.New("infinite recursion")
+		return key, errors.New("infinite recursion")
 	}
 	r.refs[key] = struct{}{}
 	if key.loc != "" {
 		r.locstack = append(r.locstack, key.loc)
 	}
-	return nil
+	return key, nil
 }
 
 func (r *resolveCtx) delete(key refKey) {
@@ -113,12 +119,13 @@ func (p *parser) resolveRequestBody(ref string, ctx *resolveCtx) (*openapi.Reque
 		return r, nil
 	}
 
-	u, err := url.Parse(ref)
+	key, err := ctx.add(ref)
 	if err != nil {
 		return nil, err
 	}
-	var key refKey
-	key.fromURL(u)
+	defer func() {
+		ctx.delete(key)
+	}()
 
 	var component *ogen.RequestBody
 	if key.loc == "" && ctx.lastLoc() == "" {
@@ -129,12 +136,6 @@ func (p *parser) resolveRequestBody(ref string, ctx *resolveCtx) (*openapi.Reque
 		}
 		component = c
 	} else {
-		if err := ctx.add(key); err != nil {
-			return nil, err
-		}
-		defer func() {
-			ctx.delete(key)
-		}()
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
 		}
@@ -157,12 +158,13 @@ func (p *parser) resolveResponse(ref string, ctx *resolveCtx) (*openapi.Response
 		return r, nil
 	}
 
-	u, err := url.Parse(ref)
+	key, err := ctx.add(ref)
 	if err != nil {
 		return nil, err
 	}
-	var key refKey
-	key.fromURL(u)
+	defer func() {
+		ctx.delete(key)
+	}()
 
 	var component *ogen.Response
 	if key.loc == "" && ctx.lastLoc() == "" {
@@ -173,12 +175,6 @@ func (p *parser) resolveResponse(ref string, ctx *resolveCtx) (*openapi.Response
 		}
 		component = c
 	} else {
-		if err := ctx.add(key); err != nil {
-			return nil, err
-		}
-		defer func() {
-			ctx.delete(key)
-		}()
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
 		}
@@ -201,12 +197,13 @@ func (p *parser) resolveParameter(ref string, ctx *resolveCtx) (*openapi.Paramet
 		return param, nil
 	}
 
-	u, err := url.Parse(ref)
+	key, err := ctx.add(ref)
 	if err != nil {
 		return nil, err
 	}
-	var key refKey
-	key.fromURL(u)
+	defer func() {
+		ctx.delete(key)
+	}()
 
 	var component *ogen.Parameter
 	if key.loc == "" && ctx.lastLoc() == "" {
@@ -217,12 +214,6 @@ func (p *parser) resolveParameter(ref string, ctx *resolveCtx) (*openapi.Paramet
 		}
 		component = c
 	} else {
-		if err := ctx.add(key); err != nil {
-			return nil, err
-		}
-		defer func() {
-			ctx.delete(key)
-		}()
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
 		}
@@ -245,12 +236,13 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *resolveCtx) (*openap
 		return header, nil
 	}
 
-	u, err := url.Parse(ref)
+	key, err := ctx.add(ref)
 	if err != nil {
 		return nil, err
 	}
-	var key refKey
-	key.fromURL(u)
+	defer func() {
+		ctx.delete(key)
+	}()
 
 	var component *ogen.Header
 	if key.loc == "" && ctx.lastLoc() == "" {
@@ -261,12 +253,6 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *resolveCtx) (*openap
 		}
 		component = c
 	} else {
-		if err := ctx.add(key); err != nil {
-			return nil, err
-		}
-		defer func() {
-			ctx.delete(key)
-		}()
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
 		}
@@ -289,12 +275,13 @@ func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, 
 		return ex, nil
 	}
 
-	u, err := url.Parse(ref)
+	key, err := ctx.add(ref)
 	if err != nil {
 		return nil, err
 	}
-	var key refKey
-	key.fromURL(u)
+	defer func() {
+		ctx.delete(key)
+	}()
 
 	var component *ogen.Example
 	if key.loc == "" && ctx.lastLoc() == "" {
@@ -305,12 +292,6 @@ func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, 
 		}
 		component = c
 	} else {
-		if err := ctx.add(key); err != nil {
-			return nil, err
-		}
-		defer func() {
-			ctx.delete(key)
-		}()
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
 		}
@@ -333,12 +314,13 @@ func (p *parser) resolveSecuritySchema(ref string, ctx *resolveCtx) (*ogen.Secur
 		return r, nil
 	}
 
-	u, err := url.Parse(ref)
+	key, err := ctx.add(ref)
 	if err != nil {
 		return nil, err
 	}
-	var key refKey
-	key.fromURL(u)
+	defer func() {
+		ctx.delete(key)
+	}()
 
 	var component *ogen.SecuritySchema
 	if key.loc == "" && ctx.lastLoc() == "" {
@@ -349,12 +331,6 @@ func (p *parser) resolveSecuritySchema(ref string, ctx *resolveCtx) (*ogen.Secur
 		}
 		component = c
 	} else {
-		if err := ctx.add(key); err != nil {
-			return nil, err
-		}
-		defer func() {
-			ctx.delete(key)
-		}()
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
 		}
