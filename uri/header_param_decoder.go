@@ -47,7 +47,7 @@ func (d *headerParamDecoder) DecodeFields(f func(field string, d Decoder) error)
 		kvSep = '='
 	}
 	return decodeObject(
-		(&cursor{src: []rune(val)}),
+		&cursor{src: []rune(val)},
 		kvSep, fieldSep, pushField,
 	)
 }

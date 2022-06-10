@@ -77,7 +77,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 }
 
 func (p *parser) parseOps() error {
-	operationIDs := make(map[string]struct{})
+	operationIDs := make(map[string]struct{}, len(p.spec.Paths))
 	for path, item := range p.spec.Paths {
 		if item == nil {
 			return errors.Errorf("%s: pathItem object is empty or null", path)

@@ -8,7 +8,7 @@ type Field struct {
 }
 
 func encodeObject(kvSep, fieldSep rune, fields []Field) string {
-	var elems []string
+	var elems = make([]string, 0, len(fields))
 	for _, f := range fields {
 		elems = append(elems, f.Name+string(kvSep)+f.Value)
 	}

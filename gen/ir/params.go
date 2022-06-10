@@ -50,8 +50,7 @@ func (op Operation) PathParamIndex(name string) int {
 	return -1
 }
 
-func (op *Operation) getParams(locatedIn openapi.ParameterLocation) []*Parameter {
-	var params []*Parameter
+func (op *Operation) getParams(locatedIn openapi.ParameterLocation) (params []*Parameter) {
 	for _, p := range op.Params {
 		if p.Spec.In == locatedIn {
 			params = append(params, p)

@@ -19,7 +19,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 
 	var (
 		result = make([]*openapi.Parameter, 0, len(params))
-		unique = make(map[pnameLoc]struct{})
+		unique = make(map[pnameLoc]struct{}, len(params))
 	)
 
 	for idx, spec := range params {

@@ -193,7 +193,7 @@ type Response struct {
 }
 
 func (s Response) ResponseInfo() []ResponseInfo {
-	var result []ResponseInfo
+	result := make([]ResponseInfo, 0, len(s.Contents))
 
 	if noc := s.NoContent; noc != nil {
 		result = append(result, ResponseInfo{

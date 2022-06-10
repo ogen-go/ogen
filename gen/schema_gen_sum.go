@@ -226,7 +226,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	// 3rd case: distinguish by unique fields.
 
 	// Determine unique fields for each SumOf variant.
-	uniq := map[string]map[string]struct{}{}
+	uniq := make(map[string]map[string]struct{}, len(sum.SumOf))
 
 	for _, s := range sum.SumOf {
 		uniq[s.Name] = map[string]struct{}{}
@@ -290,13 +290,14 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		Name   string
 		Unique []string
 	}
-	var variants []sumVariant
+	var variants = make([]sumVariant, 0, len(sum.SumOf))
 	for _, s := range sum.SumOf {
 		k := s.Name
 		f := uniq[k]
 		v := sumVariant{
 			Name: k,
 		}
+		v.Unique = make([]string, 0, len(f))
 		for fieldName := range f {
 			v.Unique = append(v.Unique, fieldName)
 		}

@@ -202,7 +202,7 @@ func camelSpecial(s ...string) (string, error) {
 
 // firstLower returns s with first rune mapped to lower case.
 func firstLower(s string) string {
-	var out []rune
+	var out = make([]rune, 0, len(s))
 	for i, c := range s {
 		if i == 0 {
 			c = unicode.ToLower(c)

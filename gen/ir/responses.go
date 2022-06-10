@@ -15,7 +15,7 @@ type ResponseInfo struct {
 }
 
 func (op *Operation) ListResponseTypes() []ResponseInfo {
-	var result []ResponseInfo
+	result := make([]ResponseInfo, 0, len(op.Responses.StatusCode))
 	for statusCode, resp := range op.Responses.StatusCode {
 		if noc := resp.NoContent; noc != nil {
 			result = append(result, ResponseInfo{

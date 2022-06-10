@@ -54,7 +54,7 @@ func (t *Type) Methods() []string {
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
 
-	var result []string
+	result := make([]string, 0, len(ms))
 	for m := range ms {
 		result = append(result, m)
 	}

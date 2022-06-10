@@ -100,8 +100,8 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			}
 
 			var (
-				lcontents []string
-				rcontents []string
+				lcontents = make([]string, 0, len(lresp.Contents))
+				rcontents = make([]string, 0, len(rresp.Contents))
 			)
 			for ct := range lresp.Contents {
 				lcontents = append(lcontents, string(ct))
@@ -206,7 +206,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 	}
 	var candidates []candidate
 
-	var contents []string
+	var contents = make([]string, 0, len(op.Request.Contents))
 	for ct := range op.Request.Contents {
 		contents = append(contents, string(ct))
 	}
@@ -258,7 +258,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 }
 
 func cloneRequest(r *ir.Request) *ir.Request {
-	contents := make(map[ir.ContentType]*ir.Type)
+	contents := make(map[ir.ContentType]*ir.Type, len(r.Contents))
 	for contentType, t := range r.Contents {
 		contents[contentType] = t
 	}
