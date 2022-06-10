@@ -20,7 +20,7 @@ func NewRootResolver(root []byte) *RootResolver {
 }
 
 // ResolveReference implements ReferenceResolver.
-func (r RootResolver) ResolveReference(ref string) (rawSchema *RawSchema, err error) {
+func (r *RootResolver) ResolveReference(ref string) (rawSchema *RawSchema, err error) {
 	ref = strings.TrimSpace(ref)
 
 	buf, err := jsonpointer.Resolve(ref, r.root)

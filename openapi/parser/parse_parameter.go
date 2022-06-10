@@ -27,7 +27,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 			return nil, errors.Errorf("parameter %d is empty or null", idx)
 		}
 
-		param, err := p.parseParameter(spec, resolveCtx{})
+		param, err := p.parseParameter(spec, newResolveCtx())
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
 		}
@@ -47,7 +47,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 	return result, nil
 }
 
-func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi.Parameter, error) {
+func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openapi.Parameter, error) {
 	if param == nil {
 		return nil, errors.New("parameter object is empty or null")
 	}
@@ -89,12 +89,12 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return nil, errors.New("path parameters must be required")
 	}
 
-	schema, err := p.schemaParser.Parse(param.Schema.ToJSONSchema())
+	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}
 
-	content, err := p.parseParameterContent(param.Content)
+	content, err := p.parseParameterContent(param.Content, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "content")
 	}
@@ -234,5 +234,6 @@ func validateParamStyle(p *openapi.Parameter) error {
 		}
 	}
 
-	return errors.New("invalid schema:style:explode combination")
+	return errors.Errorf("invalid schema:style:explode combination: (%q:%q:%v)",
+		p.Schema.Type, p.Style, p.Explode)
 }

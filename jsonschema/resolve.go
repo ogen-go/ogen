@@ -82,10 +82,12 @@ func (p *Parser) getResolver(ctx *resolveCtx) (ReferenceResolver, error) {
 		return r, nil
 	}
 
-	r, err := p.external.Get(context.TODO(), loc)
+	root, err := p.external.Get(context.TODO(), loc)
 	if err != nil {
 		return nil, errors.Wrapf(err, "external %q", loc)
 	}
+	r = NewRootResolver(root)
+	p.schemas[loc] = r
 
 	return r, nil
 }
