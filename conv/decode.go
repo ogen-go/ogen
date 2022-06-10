@@ -74,56 +74,56 @@ func ToDuration(s string) (time.Duration, error) {
 }
 
 func ToInt32Array(a []string) ([]int32, error) {
-	var arr []int32
-	for _, s := range a {
-		v, err := ToInt32(s)
+	arr := make([]int32, len(a))
+	for i := range a {
+		v, err := ToInt32(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
 }
 
 func ToInt64Array(a []string) ([]int64, error) {
-	var arr []int64
-	for _, s := range a {
-		v, err := ToInt64(s)
+	arr := make([]int64, len(a))
+	for i := range a {
+		v, err := ToInt64(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
 }
 
 func ToFloat32Array(a []string) ([]float32, error) {
-	var arr []float32
-	for _, s := range a {
-		v, err := ToFloat32(s)
+	arr := make([]float32, len(a))
+	for i := range a {
+		v, err := ToFloat32(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
 }
 
 func ToFloat64Array(a []string) ([]float64, error) {
-	var arr []float64
-	for _, s := range a {
-		v, err := ToFloat64(s)
+	arr := make([]float64, len(a))
+	for i := range a {
+		v, err := ToFloat64(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
@@ -134,51 +134,51 @@ func ToStringArray(a []string) ([]string, error) {
 }
 
 func ToBytesArray(a []string) ([][]byte, error) {
-	var arr [][]byte
-	for _, s := range a {
-		arr = append(arr, []byte(s))
+	arr := make([][]byte, len(a))
+	for i := range a {
+		arr[i] = []byte(a[i])
 	}
 
 	return arr, nil
 }
 
 func ToTimeArray(a []string) ([]time.Time, error) {
-	var arr []time.Time
-	for _, s := range a {
-		v, err := ToTime(s)
+	arr := make([]time.Time, len(a))
+	for i := range a {
+		v, err := ToTime(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
 }
 
 func ToBoolArray(a []string) ([]bool, error) {
-	var arr []bool
-	for _, s := range a {
-		v, err := ToBool(s)
+	arr := make([]bool, len(a))
+	for i := range a {
+		v, err := ToBool(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
 }
 
 func ToUUIDArray(a []string) ([]uuid.UUID, error) {
-	var arr []uuid.UUID
-	for _, s := range a {
-		v, err := ToUUID(s)
+	arr := make([]uuid.UUID, len(a))
+	for i := range a {
+		v, err := ToUUID(a[i])
 		if err != nil {
 			return nil, err
 		}
 
-		arr = append(arr, v)
+		arr[i] = v
 	}
 
 	return arr, nil
