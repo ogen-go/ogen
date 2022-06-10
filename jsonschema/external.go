@@ -16,6 +16,7 @@ var _ ExternalResolver = NoExternal{}
 // NoExternal is ExternalResolver that always returns error.
 type NoExternal struct{}
 
+// Get implements ExternalResolver.
 func (n NoExternal) Get(context.Context, string) ([]byte, error) {
 	return nil, errors.New("external references are disabled")
 }
