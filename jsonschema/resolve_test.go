@@ -5,17 +5,35 @@ import (
 	"testing"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/json"
 )
 
 type external map[string]components
 
-func (e external) Get(_ context.Context, loc string) (ReferenceResolver, error) {
+func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 	r, ok := e[loc]
 	if !ok {
 		return nil, errors.Errorf("unexpected location %q", loc)
 	}
-	return r, nil
+
+	data, err := json.Marshal(r)
+	if err != nil {
+		return nil, err
+	}
+
+	enc := jx.GetEncoder()
+	enc.Obj(func(e *jx.Encoder) {
+		enc.FieldStart("components")
+		enc.Obj(func(e *jx.Encoder) {
+			enc.FieldStart("schemas")
+			enc.Raw(data)
+		})
+	})
+
+	return enc.Bytes(), nil
 }
 
 func TestExternalReference(t *testing.T) {

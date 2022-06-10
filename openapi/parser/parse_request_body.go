@@ -7,7 +7,7 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*openapi.RequestBody, error) {
+func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (*openapi.RequestBody, error) {
 	if body == nil {
 		return nil, errors.New("requestBody object is empty or null")
 	}
@@ -24,7 +24,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*open
 		return nil, errors.New("content must have at least one entry")
 	}
 
-	content, err := p.parseContent(body.Content)
+	content, err := p.parseContent(body.Content, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "content")
 	}

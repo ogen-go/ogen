@@ -8,12 +8,14 @@ import (
 
 // ExternalResolver resolves external links.
 type ExternalResolver interface {
-	Get(ctx context.Context, loc string) (ReferenceResolver, error)
+	Get(ctx context.Context, loc string) ([]byte, error)
 }
 
-// noExternal is ExternalResolver that always returns error.
-type noExternal struct{}
+var _ ExternalResolver = NoExternal{}
 
-func (n noExternal) Get(context.Context, string) (ReferenceResolver, error) {
+// NoExternal is ExternalResolver that always returns error.
+type NoExternal struct{}
+
+func (n NoExternal) Get(context.Context, string) ([]byte, error) {
 	return nil, errors.New("external references are disabled")
 }

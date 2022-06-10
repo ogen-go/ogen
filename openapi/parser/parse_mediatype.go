@@ -8,14 +8,14 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseContent(content map[string]ogen.Media) (_ map[string]*openapi.MediaType, err error) {
+func (p *parser) parseContent(content map[string]ogen.Media, ctx *resolveCtx) (_ map[string]*openapi.MediaType, err error) {
 	if len(content) == 0 {
 		return nil, nil
 	}
 
 	result := make(map[string]*openapi.MediaType, len(content))
 	for name, m := range content {
-		result[name], err = p.parseMediaType(m)
+		result[name], err = p.parseMediaType(m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
@@ -24,7 +24,7 @@ func (p *parser) parseContent(content map[string]ogen.Media) (_ map[string]*open
 	return result, nil
 }
 
-func (p *parser) parseParameterContent(content map[string]ogen.Media) (*openapi.ParameterContent, error) {
+func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resolveCtx) (*openapi.ParameterContent, error) {
 	if content == nil {
 		return nil, nil
 	}
@@ -33,7 +33,7 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media) (*openapi.
 	}
 
 	for name, m := range content {
-		media, err := p.parseMediaType(m)
+		media, err := p.parseMediaType(m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
@@ -45,8 +45,8 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media) (*openapi.
 	panic("unreachable")
 }
 
-func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
-	s, err := p.schemaParser.Parse(m.Schema.ToJSONSchema())
+func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (*openapi.MediaType, error) {
+	s, err := p.parseSchema(m.Schema, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}
@@ -71,7 +71,7 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 				Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
 				AllowReserved: e.AllowReserved,
 			}
-			encoding.Headers, err = p.parseHeaders(e.Headers)
+			encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 			if err != nil {
 				return errors.Wrap(err, "headers")
 			}
@@ -101,7 +101,7 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 
 	examples := make(map[string]*openapi.Example, len(m.Examples))
 	for name, ex := range m.Examples {
-		examples[name], err = p.parseExample(ex, resolveCtx{})
+		examples[name], err = p.parseExample(ex, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "examples: %q", name)
 		}

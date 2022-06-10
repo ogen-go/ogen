@@ -9,12 +9,12 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseStatus(status string, response *ogen.Response) (*openapi.Response, error) {
+func (p *parser) parseStatus(status string, response *ogen.Response, ctx *resolveCtx) (*openapi.Response, error) {
 	if err := validateStatusCode(status); err != nil {
 		return nil, err
 	}
 
-	resp, err := p.parseResponse(response, resolveCtx{})
+	resp, err := p.parseResponse(response, ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -29,7 +29,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (_ map[string]*openapi
 
 	result := make(map[string]*openapi.Response, len(responses))
 	for status, response := range responses {
-		result[status], err = p.parseStatus(status, response)
+		result[status], err = p.parseStatus(status, response, newResolveCtx())
 		if err != nil {
 			return nil, errors.Wrap(err, status)
 		}
@@ -38,7 +38,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (_ map[string]*openapi
 	return result, nil
 }
 
-func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Response, error) {
+func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (*openapi.Response, error) {
 	if resp == nil {
 		return nil, errors.New("response object is empty or null")
 	}
@@ -51,12 +51,12 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Re
 		return resp, nil
 	}
 
-	content, err := p.parseContent(resp.Content)
+	content, err := p.parseContent(resp.Content, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "content")
 	}
 
-	headers, err := p.parseHeaders(resp.Headers)
+	headers, err := p.parseHeaders(resp.Headers, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "headers")
 	}

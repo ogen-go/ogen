@@ -7,14 +7,14 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseHeaders(headers map[string]*ogen.Header) (_ map[string]*openapi.Header, err error) {
+func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *resolveCtx) (_ map[string]*openapi.Header, err error) {
 	if len(headers) == 0 {
 		return nil, nil
 	}
 
 	result := make(map[string]*openapi.Header, len(headers))
 	for name, m := range headers {
-		result[name], err = p.parseHeader(name, m, resolveCtx{})
+		result[name], err = p.parseHeader(name, m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
@@ -23,7 +23,7 @@ func (p *parser) parseHeaders(headers map[string]*ogen.Header) (_ map[string]*op
 	return result, nil
 }
 
-func (p *parser) parseHeader(name string, header *ogen.Header, ctx resolveCtx) (*openapi.Header, error) {
+func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) (*openapi.Header, error) {
 	if header == nil {
 		return nil, errors.New("header object is empty or null")
 	}
@@ -50,12 +50,12 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx resolveCtx) (
 		return nil, errors.New("header MUST contain either a schema property, or a content property")
 	}
 
-	schema, err := p.schemaParser.Parse(header.Schema.ToJSONSchema())
+	schema, err := p.parseSchema(header.Schema, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}
 
-	content, err := p.parseParameterContent(header.Content)
+	content, err := p.parseParameterContent(header.Content, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "content")
 	}

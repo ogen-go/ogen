@@ -2,6 +2,7 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -17,7 +18,7 @@ func (p *parser) parseComponents(c *ogen.Components) (*openapi.Components, error
 
 	for name := range c.Parameters {
 		ref := "#/components/parameters/" + name
-		pp, err := p.resolveParameter(ref, resolveCtx{})
+		pp, err := p.resolveParameter(ref, newResolveCtx())
 		if err != nil {
 			return nil, errors.Wrapf(err, "parameters: %q", name)
 		}
@@ -37,7 +38,7 @@ func (p *parser) parseComponents(c *ogen.Components) (*openapi.Components, error
 
 	for name := range c.RequestBodies {
 		ref := "#/components/requestBodies/" + name
-		b, err := p.resolveRequestBody(ref, resolveCtx{})
+		b, err := p.resolveRequestBody(ref, newResolveCtx())
 		if err != nil {
 			return nil, errors.Wrapf(err, "requestBodies: %q", name)
 		}
@@ -47,7 +48,7 @@ func (p *parser) parseComponents(c *ogen.Components) (*openapi.Components, error
 
 	for name := range c.Responses {
 		ref := "#/components/responses/" + name
-		r, err := p.resolveResponse(ref, resolveCtx{})
+		r, err := p.resolveResponse(ref, newResolveCtx())
 		if err != nil {
 			return nil, errors.Wrapf(err, "responses: %q", name)
 		}

@@ -30,7 +30,7 @@ func (nopResolver) ResolveReference(ref string) (*RawSchema, error) {
 
 func (s *Settings) setDefaults() {
 	if s.External == nil {
-		s.External = noExternal{}
+		s.External = NoExternal{}
 	}
 	if s.Resolver == nil {
 		s.Resolver = nopResolver{}

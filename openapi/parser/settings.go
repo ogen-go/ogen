@@ -19,3 +19,9 @@ type Settings struct {
 	// In that case schemaParser will handle that schema as "array" schema, because it has "items" field.
 	InferTypes bool
 }
+
+func (s *Settings) setDefaults() {
+	if s.External == nil {
+		s.External = jsonschema.NoExternal{}
+	}
+}

@@ -7,7 +7,7 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseSecuritySchema(s *ogen.SecuritySchema, ctx resolveCtx) (*ogen.SecuritySchema, error) {
+func (p *parser) parseSecuritySchema(s *ogen.SecuritySchema, ctx *resolveCtx) (*ogen.SecuritySchema, error) {
 	if s == nil {
 		return nil, errors.New("securitySchema object is empty or null")
 	}
@@ -55,7 +55,7 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 				return nil, errors.Errorf("unknown security schema %q", requirementName)
 			}
 
-			spec, err := p.parseSecuritySchema(v, resolveCtx{})
+			spec, err := p.parseSecuritySchema(v, newResolveCtx())
 			if err != nil {
 				return nil, errors.Wrapf(err, "resolve %q", requirementName)
 			}

@@ -32,6 +32,8 @@ func (r *RemoteOptions) setDefaults() {
 	}
 }
 
+var _ jsonschema.ExternalResolver = externalResolver{}
+
 type externalResolver struct {
 	client   *http.Client
 	readFile func(p string) ([]byte, error)
@@ -78,7 +80,7 @@ func (e externalResolver) httpGet(ctx context.Context, u *url.URL) ([]byte, erro
 	return data, nil
 }
 
-func (e externalResolver) Get(ctx context.Context, loc string) (jsonschema.ReferenceResolver, error) {
+func (e externalResolver) Get(ctx context.Context, loc string) ([]byte, error) {
 	u, err := url.Parse(loc)
 	if err != nil {
 		return nil, err
@@ -115,5 +117,5 @@ func (e externalResolver) Get(ctx context.Context, loc string) (jsonschema.Refer
 		data = converted
 	}
 
-	return jsonschema.NewRootResolver(data), nil
+	return data, nil
 }

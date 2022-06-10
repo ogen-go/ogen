@@ -2,11 +2,12 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseExample(e *ogen.Example, ctx resolveCtx) (*openapi.Example, error) {
+func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (*openapi.Example, error) {
 	if e == nil {
 		return nil, nil
 	}

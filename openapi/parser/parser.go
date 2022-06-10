@@ -23,6 +23,9 @@ type parser struct {
 		securitySchemes map[string]*ogen.SecuritySchema
 	}
 
+	external jsonschema.ExternalResolver
+	schemas  map[string][]byte
+
 	schemaParser *jsonschema.Parser
 }
 
@@ -47,12 +50,13 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			examples:        map[string]*openapi.Example{},
 			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},
+		external: s.External,
+		schemas: map[string][]byte{
+			"": spec.Raw,
+		},
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
-			External: s.External,
-			Resolver: componentsResolver{
-				components: spec.Components.Schemas,
-				root:       jsonschema.NewRootResolver(spec.Raw),
-			},
+			External:   s.External,
+			Resolver:   jsonschema.NewRootResolver(spec.Raw),
 			InferTypes: s.InferTypes,
 		}),
 	}
@@ -138,7 +142,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	}
 
 	if spec.RequestBody != nil {
-		op.RequestBody, err = p.parseRequestBody(spec.RequestBody, resolveCtx{})
+		op.RequestBody, err = p.parseRequestBody(spec.RequestBody, newResolveCtx())
 		if err != nil {
 			return nil, errors.Wrap(err, "requestBody")
 		}
