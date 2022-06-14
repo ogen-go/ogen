@@ -42,7 +42,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 }
 
 {{ range $op := $.Operations }}
-// {{ $op.Name }} invokes {{ $op.Spec.OperationID }} operation.
+// {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_def" $op.GoDoc }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}

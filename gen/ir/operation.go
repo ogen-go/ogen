@@ -22,6 +22,14 @@ type Operation struct {
 	Spec        *openapi.Operation
 }
 
+func (op Operation) PrettyOperationID() string {
+	s := op.Spec
+	if id := s.OperationID; id != "" {
+		return id
+	}
+	return strings.ToUpper(s.HTTPMethod) + " " + s.Path.String()
+}
+
 func (op Operation) GoDoc() []string {
 	doc := op.Description
 	if doc == "" {

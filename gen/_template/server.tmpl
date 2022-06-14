@@ -7,7 +7,7 @@
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
 {{- range $op := $.Operations }}
-	// {{ $op.Name }} implements {{ $op.Spec.OperationID }} operation.
+	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 	//
 	{{- template "godoc_def" $op.GoDoc }}
 	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
