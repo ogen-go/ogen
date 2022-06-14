@@ -33,6 +33,7 @@ func (n *Num) UnmarshalJSON(data []byte) error {
 // RawSchema is unparsed JSON Schema.
 type RawSchema struct {
 	Ref                  string                `json:"$ref,omitempty"`
+	Summary              string                `json:"summary,omitempty"`
 	Description          string                `json:"description,omitempty"`
 	Type                 string                `json:"type,omitempty"`
 	Format               string                `json:"format,omitempty"`

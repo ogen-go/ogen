@@ -367,6 +367,7 @@ func (p *Parser) parseMany(schemas []*RawSchema, ctx *resolveCtx) ([]*Schema, er
 }
 
 func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
+	s.Summary = schema.Summary
 	s.Description = schema.Description
 	s.AddExample(schema.Example)
 

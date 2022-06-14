@@ -33,6 +33,7 @@ type Schema struct {
 
 	Type        SchemaType
 	Format      string // Schema format, optional.
+	Summary     string // Schema summary from Reference Object, optional.
 	Description string // Schema description, optional.
 	Ref         string // Whether schema is referenced.
 
