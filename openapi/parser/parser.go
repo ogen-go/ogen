@@ -124,7 +124,9 @@ func (p *parser) parseOps() error {
 func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*openapi.Parameter) (_ *openapi.Operation, err error) {
 	op := &openapi.Operation{
 		OperationID: spec.OperationID,
+		Summary:     spec.Summary,
 		Description: spec.Description,
+		Deprecated:  spec.Deprecated,
 		HTTPMethod:  httpMethod,
 	}
 

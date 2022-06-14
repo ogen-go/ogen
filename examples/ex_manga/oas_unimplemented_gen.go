@@ -15,12 +15,16 @@ type UnimplementedHandler struct{}
 
 // GetBook implements getBook operation.
 //
+// Gets metadata of book.
+//
 // GET /api/gallery/{book_id}
 func (UnimplementedHandler) GetBook(ctx context.Context, params GetBookParams) (r GetBookRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // GetPageCoverImage implements getPageCoverImage operation.
+//
+// Gets page cover.
 //
 // GET /galleries/{media_id}/cover.{format}
 func (UnimplementedHandler) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (r GetPageCoverImageRes, _ error) {
@@ -29,12 +33,16 @@ func (UnimplementedHandler) GetPageCoverImage(ctx context.Context, params GetPag
 
 // GetPageImage implements getPageImage operation.
 //
+// Gets page.
+//
 // GET /galleries/{media_id}/{page}.{format}
 func (UnimplementedHandler) GetPageImage(ctx context.Context, params GetPageImageParams) (r GetPageImageRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // GetPageThumbnailImage implements getPageThumbnailImage operation.
+//
+// Gets page thumbnail.
 //
 // GET /galleries/{media_id}/{page}t.{format}
 func (UnimplementedHandler) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (r GetPageThumbnailImageRes, _ error) {
@@ -43,12 +51,16 @@ func (UnimplementedHandler) GetPageThumbnailImage(ctx context.Context, params Ge
 
 // Search implements search operation.
 //
+// Search for comics.
+//
 // GET /api/galleries/search
 func (UnimplementedHandler) Search(ctx context.Context, params SearchParams) (r SearchRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // SearchByTagID implements searchByTagID operation.
+//
+// Search for comics by tag ID.
 //
 // GET /api/galleries/tagged
 func (UnimplementedHandler) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (r SearchByTagIDRes, _ error) {

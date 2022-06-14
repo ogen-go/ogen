@@ -14,25 +14,37 @@ import (
 type Handler interface {
 	// GetBook implements getBook operation.
 	//
+	// Gets metadata of book.
+	//
 	// GET /api/gallery/{book_id}
 	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
 	// GetPageCoverImage implements getPageCoverImage operation.
+	//
+	// Gets page cover.
 	//
 	// GET /galleries/{media_id}/cover.{format}
 	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
 	// GetPageImage implements getPageImage operation.
 	//
+	// Gets page.
+	//
 	// GET /galleries/{media_id}/{page}.{format}
 	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
 	// GetPageThumbnailImage implements getPageThumbnailImage operation.
+	//
+	// Gets page thumbnail.
 	//
 	// GET /galleries/{media_id}/{page}t.{format}
 	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
 	// Search implements search operation.
 	//
+	// Search for comics.
+	//
 	// GET /api/galleries/search
 	Search(ctx context.Context, params SearchParams) (SearchRes, error)
 	// SearchByTagID implements searchByTagID operation.
+	//
+	// Search for comics by tag ID.
 	//
 	// GET /api/galleries/tagged
 	SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error)

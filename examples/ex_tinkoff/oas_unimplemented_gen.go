@@ -13,112 +13,142 @@ var _ Handler = UnimplementedHandler{}
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
 
-// MarketBondsGet implements  operation.
+// MarketBondsGet implements GET /market/bonds operation.
+//
+// Получение списка облигаций.
 //
 // GET /market/bonds
 func (UnimplementedHandler) MarketBondsGet(ctx context.Context) (r MarketBondsGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketCandlesGet implements  operation.
+// MarketCandlesGet implements GET /market/candles operation.
+//
+// Получение исторических свечей по FIGI.
 //
 // GET /market/candles
 func (UnimplementedHandler) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (r MarketCandlesGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketCurrenciesGet implements  operation.
+// MarketCurrenciesGet implements GET /market/currencies operation.
+//
+// Получение списка валютных пар.
 //
 // GET /market/currencies
 func (UnimplementedHandler) MarketCurrenciesGet(ctx context.Context) (r MarketCurrenciesGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketEtfsGet implements  operation.
+// MarketEtfsGet implements GET /market/etfs operation.
+//
+// Получение списка ETF.
 //
 // GET /market/etfs
 func (UnimplementedHandler) MarketEtfsGet(ctx context.Context) (r MarketEtfsGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketOrderbookGet implements  operation.
+// MarketOrderbookGet implements GET /market/orderbook operation.
+//
+// Получение стакана по FIGI.
 //
 // GET /market/orderbook
 func (UnimplementedHandler) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (r MarketOrderbookGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketSearchByFigiGet implements  operation.
+// MarketSearchByFigiGet implements GET /market/search/by-figi operation.
+//
+// Получение инструмента по FIGI.
 //
 // GET /market/search/by-figi
 func (UnimplementedHandler) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (r MarketSearchByFigiGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketSearchByTickerGet implements  operation.
+// MarketSearchByTickerGet implements GET /market/search/by-ticker operation.
+//
+// Получение инструмента по тикеру.
 //
 // GET /market/search/by-ticker
 func (UnimplementedHandler) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (r MarketSearchByTickerGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MarketStocksGet implements  operation.
+// MarketStocksGet implements GET /market/stocks operation.
+//
+// Получение списка акций.
 //
 // GET /market/stocks
 func (UnimplementedHandler) MarketStocksGet(ctx context.Context) (r MarketStocksGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// OperationsGet implements  operation.
+// OperationsGet implements GET /operations operation.
+//
+// Получение списка операций.
 //
 // GET /operations
 func (UnimplementedHandler) OperationsGet(ctx context.Context, params OperationsGetParams) (r OperationsGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// OrdersCancelPost implements  operation.
+// OrdersCancelPost implements POST /orders/cancel operation.
+//
+// Отмена заявки.
 //
 // POST /orders/cancel
 func (UnimplementedHandler) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (r OrdersCancelPostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// OrdersGet implements  operation.
+// OrdersGet implements GET /orders operation.
+//
+// Получение списка активных заявок.
 //
 // GET /orders
 func (UnimplementedHandler) OrdersGet(ctx context.Context, params OrdersGetParams) (r OrdersGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// OrdersLimitOrderPost implements  operation.
+// OrdersLimitOrderPost implements POST /orders/limit-order operation.
+//
+// Создание лимитной заявки.
 //
 // POST /orders/limit-order
 func (UnimplementedHandler) OrdersLimitOrderPost(ctx context.Context, req LimitOrderRequest, params OrdersLimitOrderPostParams) (r OrdersLimitOrderPostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// OrdersMarketOrderPost implements  operation.
+// OrdersMarketOrderPost implements POST /orders/market-order operation.
+//
+// Создание рыночной заявки.
 //
 // POST /orders/market-order
 func (UnimplementedHandler) OrdersMarketOrderPost(ctx context.Context, req MarketOrderRequest, params OrdersMarketOrderPostParams) (r OrdersMarketOrderPostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// PortfolioCurrenciesGet implements  operation.
+// PortfolioCurrenciesGet implements GET /portfolio/currencies operation.
+//
+// Получение валютных активов клиента.
 //
 // GET /portfolio/currencies
 func (UnimplementedHandler) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (r PortfolioCurrenciesGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// PortfolioGet implements  operation.
+// PortfolioGet implements GET /portfolio operation.
+//
+// Получение портфеля клиента.
 //
 // GET /portfolio
 func (UnimplementedHandler) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r PortfolioGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// SandboxClearPost implements  operation.
+// SandboxClearPost implements POST /sandbox/clear operation.
 //
 // Удаление всех позиций клиента.
 //
@@ -127,21 +157,25 @@ func (UnimplementedHandler) SandboxClearPost(ctx context.Context, params Sandbox
 	return r, ht.ErrNotImplemented
 }
 
-// SandboxCurrenciesBalancePost implements  operation.
+// SandboxCurrenciesBalancePost implements POST /sandbox/currencies/balance operation.
+//
+// Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
 func (UnimplementedHandler) SandboxCurrenciesBalancePost(ctx context.Context, req SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (r SandboxCurrenciesBalancePostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// SandboxPositionsBalancePost implements  operation.
+// SandboxPositionsBalancePost implements POST /sandbox/positions/balance operation.
+//
+// Выставление баланса по инструментным позициям.
 //
 // POST /sandbox/positions/balance
 func (UnimplementedHandler) SandboxPositionsBalancePost(ctx context.Context, req SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (r SandboxPositionsBalancePostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// SandboxRegisterPost implements  operation.
+// SandboxRegisterPost implements POST /sandbox/register operation.
 //
 // Создание счета и валютных позиций для клиента.
 //
@@ -150,7 +184,7 @@ func (UnimplementedHandler) SandboxRegisterPost(ctx context.Context, req OptSand
 	return r, ht.ErrNotImplemented
 }
 
-// SandboxRemovePost implements  operation.
+// SandboxRemovePost implements POST /sandbox/remove operation.
 //
 // Удаление счета клиента.
 //
@@ -159,7 +193,9 @@ func (UnimplementedHandler) SandboxRemovePost(ctx context.Context, params Sandbo
 	return r, ht.ErrNotImplemented
 }
 
-// UserAccountsGet implements  operation.
+// UserAccountsGet implements GET /user/accounts operation.
+//
+// Получение брокерских счетов клиента.
 //
 // GET /user/accounts
 func (UnimplementedHandler) UserAccountsGet(ctx context.Context) (r UserAccountsGetRes, _ error) {

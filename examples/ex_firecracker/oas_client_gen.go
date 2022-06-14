@@ -124,6 +124,8 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 
 // CreateSyncAction invokes createSyncAction operation.
 //
+// Creates a synchronous action.
+//
 // PUT /actions
 func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	if err := func() error {
@@ -194,6 +196,8 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 
 // DescribeBalloonConfig invokes describeBalloonConfig operation.
 //
+// Returns the current balloon device configuration.
+//
 // GET /balloon
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
 	startTime := time.Now()
@@ -236,6 +240,8 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 
 // DescribeBalloonStats invokes describeBalloonStats operation.
 //
+// Returns the latest balloon device statistics, only if enabled pre-boot.
+//
 // GET /balloon/statistics
 func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
 	startTime := time.Now()
@@ -277,6 +283,8 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 }
 
 // DescribeInstance invokes describeInstance operation.
+//
+// Returns general information about an instance.
 //
 // GET /
 func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
@@ -473,7 +481,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	return result, nil
 }
 
-// MmdsConfigPut invokes  operation.
+// MmdsConfigPut invokes PUT /mmds/config operation.
 //
 // Creates MMDS configuration to be used by the MMDS network stack.
 //
@@ -535,7 +543,9 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	return result, nil
 }
 
-// MmdsGet invokes  operation.
+// MmdsGet invokes GET /mmds operation.
+//
+// Get the MMDS data store.
 //
 // GET /mmds
 func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
@@ -575,7 +585,9 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	return result, nil
 }
 
-// MmdsPatch invokes  operation.
+// MmdsPatch invokes PATCH /mmds operation.
+//
+// Updates the MMDS data store.
 //
 // PATCH /mmds
 func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
@@ -635,7 +647,9 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	return result, nil
 }
 
-// MmdsPut invokes  operation.
+// MmdsPut invokes PUT /mmds operation.
+//
+// Creates a MMDS (Microvm Metadata Service) data store.
 //
 // PUT /mmds
 func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
@@ -1528,6 +1542,8 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 
 // PutLogger invokes putLogger operation.
 //
+// Initializes the logger by specifying a named pipe or a file for the logs output.
+//
 // PUT /logger
 func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
 	if err := func() error {
@@ -1679,6 +1695,8 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 }
 
 // PutMetrics invokes putMetrics operation.
+//
+// Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 //
 // PUT /metrics
 func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetricsRes, err error) {

@@ -49,7 +49,9 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// APICaptcha2chcaptchaIDGet invokes  operation.
+// APICaptcha2chcaptchaIDGet invokes GET /api/captcha/2chcaptcha/id operation.
+//
+// Получение ид для использования 2chcaptcha.
 //
 // GET /api/captcha/2chcaptcha/id
 func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res Captcha, err error) {
@@ -125,7 +127,9 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	return result, nil
 }
 
-// APICaptcha2chcaptchaShowGet invokes  operation.
+// APICaptcha2chcaptchaShowGet invokes GET /api/captcha/2chcaptcha/show operation.
+//
+// Отображение 2chcaptcha по id.
 //
 // GET /api/captcha/2chcaptcha/show
 func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (res APICaptcha2chcaptchaShowGetRes, err error) {
@@ -181,7 +185,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	return result, nil
 }
 
-// APICaptchaAppIDPublicKeyGet invokes  operation.
+// APICaptchaAppIDPublicKeyGet invokes GET /api/captcha/app/id/{public_key} operation.
 //
 // Полученный id вам нужно отправить вместе с постом как
 // app_response_id.
@@ -277,7 +281,9 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	return result, nil
 }
 
-// APICaptchaInvisibleRecaptchaIDGet invokes  operation.
+// APICaptchaInvisibleRecaptchaIDGet invokes GET /api/captcha/invisible_recaptcha/id operation.
+//
+// Получение публичного ключа invisible recaptcha.
 //
 // GET /api/captcha/invisible_recaptcha/id
 func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res Captcha, err error) {
@@ -353,7 +359,9 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	return result, nil
 }
 
-// APICaptchaInvisibleRecaptchaMobileGet invokes  operation.
+// APICaptchaInvisibleRecaptchaMobileGet invokes GET /api/captcha/invisible_recaptcha/mobile operation.
+//
+// Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
 func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
@@ -393,7 +401,9 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 	return result, nil
 }
 
-// APICaptchaRecaptchaIDGet invokes  operation.
+// APICaptchaRecaptchaIDGet invokes GET /api/captcha/recaptcha/id operation.
+//
+// Получение публичного ключа recaptcha v2.
 //
 // GET /api/captcha/recaptcha/id
 func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res Captcha, err error) {
@@ -469,7 +479,9 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	return result, nil
 }
 
-// APICaptchaRecaptchaMobileGet invokes  operation.
+// APICaptchaRecaptchaMobileGet invokes GET /api/captcha/recaptcha/mobile operation.
+//
+// Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
 func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
@@ -509,7 +521,9 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 	return result, nil
 }
 
-// APIDislikeGet invokes  operation.
+// APIDislikeGet invokes GET /api/dislike operation.
+//
+// Добавление дизлайка на пост.
 //
 // GET /api/dislike
 func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res Like, err error) {
@@ -579,7 +593,9 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	return result, nil
 }
 
-// APILikeGet invokes  operation.
+// APILikeGet invokes GET /api/like operation.
+//
+// Добавление лайка на пост.
 //
 // GET /api/like
 func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res Like, err error) {
@@ -649,7 +665,11 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	return result, nil
 }
 
-// APIMobileV2AfterBoardThreadNumGet invokes  operation.
+// APIMobileV2AfterBoardThreadNumGet invokes GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+//
+// Получение постов в треде >= указанного. Не
+// рекомендуется использовать для получения треда
+// целиком, только для проверки новых постов.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res MobileThreadPostsAfter, err error) {
@@ -733,7 +753,9 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 	return result, nil
 }
 
-// APIMobileV2BoardsGet invokes  operation.
+// APIMobileV2BoardsGet invokes GET /api/mobile/v2/boards operation.
+//
+// Получение списка досок и их настроек.
 //
 // GET /api/mobile/v2/boards
 func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err error) {
@@ -773,7 +795,9 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 	return result, nil
 }
 
-// APIMobileV2InfoBoardThreadGet invokes  operation.
+// APIMobileV2InfoBoardThreadGet invokes GET /api/mobile/v2/info/{board}/{thread} operation.
+//
+// Получение информации о треде.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res MobileThreadLastInfo, err error) {
@@ -842,7 +866,9 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 	return result, nil
 }
 
-// APIMobileV2PostBoardNumGet invokes  operation.
+// APIMobileV2PostBoardNumGet invokes GET /api/mobile/v2/post/{board}/{num} operation.
+//
+// Получение информации о посте.
 //
 // GET /api/mobile/v2/post/{board}/{num}
 func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res MobilePost, err error) {

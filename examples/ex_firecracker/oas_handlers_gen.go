@@ -333,7 +333,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleMmdsConfigPutRequest handles  operation.
+// HandleMmdsConfigPutRequest handles PUT /mmds/config operation.
 //
 // PUT /mmds/config
 func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -377,7 +377,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleMmdsGetRequest handles  operation.
+// HandleMmdsGetRequest handles GET /mmds operation.
 //
 // GET /mmds
 func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -411,7 +411,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleMmdsPatchRequest handles  operation.
+// HandleMmdsPatchRequest handles PATCH /mmds operation.
 //
 // PATCH /mmds
 func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -455,7 +455,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleMmdsPutRequest handles  operation.
+// HandleMmdsPutRequest handles PUT /mmds operation.
 //
 // PUT /mmds
 func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

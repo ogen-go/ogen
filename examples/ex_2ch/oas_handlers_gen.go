@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
-// HandleAPICaptcha2chcaptchaIDGetRequest handles  operation.
+// HandleAPICaptcha2chcaptchaIDGetRequest handles GET /api/captcha/2chcaptcha/id operation.
 //
 // GET /api/captcha/2chcaptcha/id
 func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57,7 +57,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPICaptcha2chcaptchaShowGetRequest handles  operation.
+// HandleAPICaptcha2chcaptchaShowGetRequest handles GET /api/captcha/2chcaptcha/show operation.
 //
 // GET /api/captcha/2chcaptcha/show
 func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -100,7 +100,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPICaptchaAppIDPublicKeyGetRequest handles  operation.
+// HandleAPICaptchaAppIDPublicKeyGetRequest handles GET /api/captcha/app/id/{public_key} operation.
 //
 // GET /api/captcha/app/id/{public_key}
 func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -143,7 +143,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPICaptchaInvisibleRecaptchaIDGetRequest handles  operation.
+// HandleAPICaptchaInvisibleRecaptchaIDGetRequest handles GET /api/captcha/invisible_recaptcha/id operation.
 //
 // GET /api/captcha/invisible_recaptcha/id
 func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -186,7 +186,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPICaptchaInvisibleRecaptchaMobileGetRequest handles  operation.
+// HandleAPICaptchaInvisibleRecaptchaMobileGetRequest handles GET /api/captcha/invisible_recaptcha/mobile operation.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
 func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -220,7 +220,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPICaptchaRecaptchaIDGetRequest handles  operation.
+// HandleAPICaptchaRecaptchaIDGetRequest handles GET /api/captcha/recaptcha/id operation.
 //
 // GET /api/captcha/recaptcha/id
 func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -263,7 +263,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPICaptchaRecaptchaMobileGetRequest handles  operation.
+// HandleAPICaptchaRecaptchaMobileGetRequest handles GET /api/captcha/recaptcha/mobile operation.
 //
 // GET /api/captcha/recaptcha/mobile
 func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -297,7 +297,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPIDislikeGetRequest handles  operation.
+// HandleAPIDislikeGetRequest handles GET /api/dislike operation.
 //
 // GET /api/dislike
 func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -340,7 +340,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPILikeGetRequest handles  operation.
+// HandleAPILikeGetRequest handles GET /api/like operation.
 //
 // GET /api/like
 func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -383,7 +383,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPIMobileV2AfterBoardThreadNumGetRequest handles  operation.
+// HandleAPIMobileV2AfterBoardThreadNumGetRequest handles GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -426,7 +426,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPIMobileV2BoardsGetRequest handles  operation.
+// HandleAPIMobileV2BoardsGetRequest handles GET /api/mobile/v2/boards operation.
 //
 // GET /api/mobile/v2/boards
 func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -460,7 +460,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPIMobileV2InfoBoardThreadGetRequest handles  operation.
+// HandleAPIMobileV2InfoBoardThreadGetRequest handles GET /api/mobile/v2/info/{board}/{thread} operation.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -503,7 +503,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleAPIMobileV2PostBoardNumGetRequest handles  operation.
+// HandleAPIMobileV2PostBoardNumGetRequest handles GET /api/mobile/v2/post/{board}/{num} operation.
 //
 // GET /api/mobile/v2/post/{board}/{num}
 func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {

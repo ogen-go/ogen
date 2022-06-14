@@ -13,21 +13,25 @@ var _ Handler = UnimplementedHandler{}
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
 
-// APICaptcha2chcaptchaIDGet implements  operation.
+// APICaptcha2chcaptchaIDGet implements GET /api/captcha/2chcaptcha/id operation.
+//
+// Получение ид для использования 2chcaptcha.
 //
 // GET /api/captcha/2chcaptcha/id
 func (UnimplementedHandler) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (r Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APICaptcha2chcaptchaShowGet implements  operation.
+// APICaptcha2chcaptchaShowGet implements GET /api/captcha/2chcaptcha/show operation.
+//
+// Отображение 2chcaptcha по id.
 //
 // GET /api/captcha/2chcaptcha/show
 func (UnimplementedHandler) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (r APICaptcha2chcaptchaShowGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APICaptchaAppIDPublicKeyGet implements  operation.
+// APICaptchaAppIDPublicKeyGet implements GET /api/captcha/app/id/{public_key} operation.
 //
 // Полученный id вам нужно отправить вместе с постом как
 // app_response_id.
@@ -40,70 +44,92 @@ func (UnimplementedHandler) APICaptchaAppIDPublicKeyGet(ctx context.Context, par
 	return r, ht.ErrNotImplemented
 }
 
-// APICaptchaInvisibleRecaptchaIDGet implements  operation.
+// APICaptchaInvisibleRecaptchaIDGet implements GET /api/captcha/invisible_recaptcha/id operation.
+//
+// Получение публичного ключа invisible recaptcha.
 //
 // GET /api/captcha/invisible_recaptcha/id
 func (UnimplementedHandler) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (r Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APICaptchaInvisibleRecaptchaMobileGet implements  operation.
+// APICaptchaInvisibleRecaptchaMobileGet implements GET /api/captcha/invisible_recaptcha/mobile operation.
+//
+// Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
 func (UnimplementedHandler) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (r APICaptchaInvisibleRecaptchaMobileGetOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APICaptchaRecaptchaIDGet implements  operation.
+// APICaptchaRecaptchaIDGet implements GET /api/captcha/recaptcha/id operation.
+//
+// Получение публичного ключа recaptcha v2.
 //
 // GET /api/captcha/recaptcha/id
 func (UnimplementedHandler) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (r Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APICaptchaRecaptchaMobileGet implements  operation.
+// APICaptchaRecaptchaMobileGet implements GET /api/captcha/recaptcha/mobile operation.
+//
+// Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
 func (UnimplementedHandler) APICaptchaRecaptchaMobileGet(ctx context.Context) (r APICaptchaRecaptchaMobileGetOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APIDislikeGet implements  operation.
+// APIDislikeGet implements GET /api/dislike operation.
+//
+// Добавление дизлайка на пост.
 //
 // GET /api/dislike
 func (UnimplementedHandler) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (r Like, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APILikeGet implements  operation.
+// APILikeGet implements GET /api/like operation.
+//
+// Добавление лайка на пост.
 //
 // GET /api/like
 func (UnimplementedHandler) APILikeGet(ctx context.Context, params APILikeGetParams) (r Like, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APIMobileV2AfterBoardThreadNumGet implements  operation.
+// APIMobileV2AfterBoardThreadNumGet implements GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+//
+// Получение постов в треде >= указанного. Не
+// рекомендуется использовать для получения треда
+// целиком, только для проверки новых постов.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (UnimplementedHandler) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (r MobileThreadPostsAfter, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APIMobileV2BoardsGet implements  operation.
+// APIMobileV2BoardsGet implements GET /api/mobile/v2/boards operation.
+//
+// Получение списка досок и их настроек.
 //
 // GET /api/mobile/v2/boards
 func (UnimplementedHandler) APIMobileV2BoardsGet(ctx context.Context) (r Boards, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APIMobileV2InfoBoardThreadGet implements  operation.
+// APIMobileV2InfoBoardThreadGet implements GET /api/mobile/v2/info/{board}/{thread} operation.
+//
+// Получение информации о треде.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (UnimplementedHandler) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (r MobileThreadLastInfo, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// APIMobileV2PostBoardNumGet implements  operation.
+// APIMobileV2PostBoardNumGet implements GET /api/mobile/v2/post/{board}/{num} operation.
+//
+// Получение информации о посте.
 //
 // GET /api/mobile/v2/post/{board}/{num}
 func (UnimplementedHandler) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (r MobilePost, _ error) {

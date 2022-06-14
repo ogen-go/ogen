@@ -20,17 +20,25 @@ type Handler interface {
 	CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (CreateSnapshotRes, error)
 	// CreateSyncAction implements createSyncAction operation.
 	//
+	// Creates a synchronous action.
+	//
 	// PUT /actions
 	CreateSyncAction(ctx context.Context, req InstanceActionInfo) (CreateSyncActionRes, error)
 	// DescribeBalloonConfig implements describeBalloonConfig operation.
+	//
+	// Returns the current balloon device configuration.
 	//
 	// GET /balloon
 	DescribeBalloonConfig(ctx context.Context) (DescribeBalloonConfigRes, error)
 	// DescribeBalloonStats implements describeBalloonStats operation.
 	//
+	// Returns the latest balloon device statistics, only if enabled pre-boot.
+	//
 	// GET /balloon/statistics
 	DescribeBalloonStats(ctx context.Context) (DescribeBalloonStatsRes, error)
 	// DescribeInstance implements describeInstance operation.
+	//
+	// Returns general information about an instance.
 	//
 	// GET /
 	DescribeInstance(ctx context.Context) (DescribeInstanceRes, error)
@@ -55,21 +63,27 @@ type Handler interface {
 	//
 	// PUT /snapshot/load
 	LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (LoadSnapshotRes, error)
-	// MmdsConfigPut implements  operation.
+	// MmdsConfigPut implements PUT /mmds/config operation.
 	//
 	// Creates MMDS configuration to be used by the MMDS network stack.
 	//
 	// PUT /mmds/config
 	MmdsConfigPut(ctx context.Context, req MmdsConfig) (MmdsConfigPutRes, error)
-	// MmdsGet implements  operation.
+	// MmdsGet implements GET /mmds operation.
+	//
+	// Get the MMDS data store.
 	//
 	// GET /mmds
 	MmdsGet(ctx context.Context) (MmdsGetRes, error)
-	// MmdsPatch implements  operation.
+	// MmdsPatch implements PATCH /mmds operation.
+	//
+	// Updates the MMDS data store.
 	//
 	// PATCH /mmds
 	MmdsPatch(ctx context.Context, req *MmdsPatchReq) (MmdsPatchRes, error)
-	// MmdsPut implements  operation.
+	// MmdsPut implements PUT /mmds operation.
+	//
+	// Creates a MMDS (Microvm Metadata Service) data store.
 	//
 	// PUT /mmds
 	MmdsPut(ctx context.Context, req *MmdsPutReq) (MmdsPutRes, error)
@@ -149,6 +163,8 @@ type Handler interface {
 	PutGuestVsock(ctx context.Context, req Vsock) (PutGuestVsockRes, error)
 	// PutLogger implements putLogger operation.
 	//
+	// Initializes the logger by specifying a named pipe or a file for the logs output.
+	//
 	// PUT /logger
 	PutLogger(ctx context.Context, req Logger) (PutLoggerRes, error)
 	// PutMachineConfiguration implements putMachineConfiguration operation.
@@ -161,6 +177,8 @@ type Handler interface {
 	// PUT /machine-config
 	PutMachineConfiguration(ctx context.Context, req OptMachineConfiguration) (PutMachineConfigurationRes, error)
 	// PutMetrics implements putMetrics operation.
+	//
+	// Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 	//
 	// PUT /metrics
 	PutMetrics(ctx context.Context, req Metrics) (PutMetricsRes, error)

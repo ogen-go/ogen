@@ -11,7 +11,9 @@ import (
 
 type Operation struct {
 	Name        string
+	Summary     string
 	Description string
+	Deprecated  bool
 	PathParts   []*PathPart
 	Params      []*Parameter
 	Request     *Request
@@ -20,8 +22,26 @@ type Operation struct {
 	Spec        *openapi.Operation
 }
 
+func (op Operation) PrettyOperationID() string {
+	s := op.Spec
+	if id := s.OperationID; id != "" {
+		return id
+	}
+	return strings.ToUpper(s.HTTPMethod) + " " + s.Path.String()
+}
+
 func (op Operation) GoDoc() []string {
-	return prettyDoc(op.Description)
+	doc := op.Description
+	if doc == "" {
+		doc = op.Summary
+	}
+
+	r := prettyDoc(doc)
+	if op.Deprecated {
+		// Empty line between description and deprecated notice.
+		r = append(r, "", "Deprecated: schema marks this operation as deprecated.")
+	}
+	return r
 }
 
 type PathPart struct {

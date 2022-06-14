@@ -40,7 +40,7 @@ type Handler interface {
 	//
 	// POST /foobar
 	FoobarPost(ctx context.Context, req OptPet) (FoobarPostRes, error)
-	// FoobarPut implements  operation.
+	// FoobarPut implements PUT /foobar operation.
 	//
 	// PUT /foobar
 	FoobarPut(ctx context.Context) (FoobarPutDef, error)
@@ -62,7 +62,7 @@ type Handler interface {
 	//
 	// POST /oneofBug
 	OneofBug(ctx context.Context, req OneOfBugs) (OneofBugOK, error)
-	// PatternRecursiveMapGet implements  operation.
+	// PatternRecursiveMapGet implements GET /patternRecursiveMap operation.
 	//
 	// GET /patternRecursiveMap
 	PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error)
@@ -108,11 +108,11 @@ type Handler interface {
 	//
 	// GET /pet/name/{id}
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
-	// PetUpdateNameAliasPost implements  operation.
+	// PetUpdateNameAliasPost implements POST /pet/updateNameAlias operation.
 	//
 	// POST /pet/updateNameAlias
 	PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (PetUpdateNameAliasPostDef, error)
-	// PetUpdateNamePost implements  operation.
+	// PetUpdateNamePost implements POST /pet/updateName operation.
 	//
 	// POST /pet/updateName
 	PetUpdateNamePost(ctx context.Context, req OptString) (PetUpdateNamePostDef, error)
@@ -122,11 +122,11 @@ type Handler interface {
 	//
 	// POST /pet/avatar
 	PetUploadAvatarByID(ctx context.Context, req PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
-	// RecursiveArrayGet implements  operation.
+	// RecursiveArrayGet implements GET /recursiveArray operation.
 	//
 	// GET /recursiveArray
 	RecursiveArrayGet(ctx context.Context) (RecursiveArray, error)
-	// RecursiveMapGet implements  operation.
+	// RecursiveMapGet implements GET /recursiveMap operation.
 	//
 	// GET /recursiveMap
 	RecursiveMapGet(ctx context.Context) (RecursiveMap, error)
@@ -134,7 +134,7 @@ type Handler interface {
 	//
 	// GET /securityTest
 	SecurityTest(ctx context.Context) (string, error)
-	// StringIntMapGet implements  operation.
+	// StringIntMapGet implements GET /stringIntMap operation.
 	//
 	// GET /stringIntMap
 	StringIntMapGet(ctx context.Context) (StringIntMap, error)

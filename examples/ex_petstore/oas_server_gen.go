@@ -14,13 +14,19 @@ import (
 type Handler interface {
 	// CreatePets implements createPets operation.
 	//
+	// Create a pet.
+	//
 	// POST /pets
 	CreatePets(ctx context.Context) (CreatePetsRes, error)
 	// ListPets implements listPets operation.
 	//
+	// List all pets.
+	//
 	// GET /pets
 	ListPets(ctx context.Context, params ListPetsParams) (ListPetsRes, error)
 	// ShowPetById implements showPetById operation.
+	//
+	// Info for a specific pet.
 	//
 	// GET /pets/{petId}
 	ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error)

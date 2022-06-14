@@ -18,6 +18,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 
 	return &jsonschema.RawSchema{
 		Ref:                  s.Ref,
+		Summary:              s.Summary,
 		Description:          s.Description,
 		Type:                 s.Type,
 		Format:               s.Format,
