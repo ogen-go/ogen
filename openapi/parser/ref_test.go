@@ -47,6 +47,11 @@ func TestExternalReference(t *testing.T) {
 			},
 		},
 		Components: &ogen.Components{
+			Schemas: map[string]*ogen.Schema{
+				"LocalSchema": {
+					Ref: "foo.json#/components/schemas/RemoteSchema",
+				},
+			},
 			Responses: map[string]*ogen.Response{
 				"LocalResponse": {
 					Ref: "foo.json#/components/responses/RemoteResponse",
@@ -83,7 +88,7 @@ func TestExternalReference(t *testing.T) {
 		"foo.json": &ogen.Spec{
 			Components: &ogen.Components{
 				Schemas: map[string]*ogen.Schema{
-					"Schema": {
+					"RemoteSchema": {
 						Ref: "bar.json#/components/schemas/Schema",
 					},
 				},
@@ -98,7 +103,7 @@ func TestExternalReference(t *testing.T) {
 						In:    "query",
 						Style: "form",
 						Schema: &ogen.Schema{
-							Ref: "#/components/schemas/Schema",
+							Ref: "#/components/schemas/RemoteSchema",
 						},
 					},
 				},
@@ -121,7 +126,7 @@ func TestExternalReference(t *testing.T) {
 						Content: map[string]ogen.Media{
 							"application/json": {
 								Schema: &ogen.Schema{
-									Ref: "foo.json#/components/schemas/Schema",
+									Ref: "foo.json#/components/schemas/RemoteSchema",
 								},
 								Examples: map[string]*ogen.Example{
 									"ref": {
@@ -254,7 +259,9 @@ func TestExternalReference(t *testing.T) {
 			Parameters: map[string]*openapi.Parameter{
 				"LocalParameter": param,
 			},
-			Schemas: map[string]*jsonschema.Schema{},
+			Schemas: map[string]*jsonschema.Schema{
+				"LocalSchema": schema,
+			},
 			RequestBodies: map[string]*openapi.RequestBody{
 				"LocalRequestBody": requestBody,
 			},
