@@ -22,7 +22,9 @@ func (g *Generator) generateOperation(ctx *genctx, spec *openapi.Operation) (_ *
 
 	op := &ir.Operation{
 		Name:        opName,
+		Summary:     spec.Summary,
 		Description: spec.Description,
+		Deprecated:  spec.Deprecated,
 		Spec:        spec,
 	}
 
