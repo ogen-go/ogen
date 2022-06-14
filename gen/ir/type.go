@@ -81,10 +81,15 @@ type Type struct {
 
 // GoDoc returns type godoc.
 func (t Type) GoDoc() []string {
-	if t.Schema == nil {
+	s := t.Schema
+	if s == nil {
 		return nil
 	}
-	return prettyDoc(t.Schema.Description)
+	doc := s.Description
+	if doc == "" {
+		doc = s.Summary
+	}
+	return prettyDoc(doc)
 }
 
 // Default returns default value of this type, if it is set.
