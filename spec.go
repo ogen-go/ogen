@@ -98,6 +98,8 @@ type Tag struct {
 type Info struct {
 	// REQUIRED. The title of the API.
 	Title string `json:"title"`
+	// A short summary of the API.
+	Summary string `json:"summary,omitempty"`
 	// A short description of the API.
 	// CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty"`
@@ -160,6 +162,7 @@ type PathItem struct {
 	// In case a Path Item Object field appears both
 	// in the defined object and the referenced object, the behavior is undefined.
 	Ref         string       `json:"$ref,omitempty"`
+	Summary     string       `json:"summary,omitempty"`
 	Description string       `json:"description,omitempty"`
 	Get         *Operation   `json:"get,omitempty"`
 	Put         *Operation   `json:"put,omitempty"`
@@ -323,6 +326,7 @@ type Discriminator struct {
 // These types can be objects, but also primitives and arrays.
 type Schema struct {
 	Ref         string `json:"$ref,omitempty"` // ref object
+	Summary     string `json:"summary,omitempty"`
 	Description string `json:"description,omitempty"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
