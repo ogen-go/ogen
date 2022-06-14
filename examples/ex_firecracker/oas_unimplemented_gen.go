@@ -24,12 +24,16 @@ func (UnimplementedHandler) CreateSnapshot(ctx context.Context, req SnapshotCrea
 
 // CreateSyncAction implements createSyncAction operation.
 //
+// Creates a synchronous action.
+//
 // PUT /actions
 func (UnimplementedHandler) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (r CreateSyncActionRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // DescribeBalloonConfig implements describeBalloonConfig operation.
+//
+// Returns the current balloon device configuration.
 //
 // GET /balloon
 func (UnimplementedHandler) DescribeBalloonConfig(ctx context.Context) (r DescribeBalloonConfigRes, _ error) {
@@ -38,12 +42,16 @@ func (UnimplementedHandler) DescribeBalloonConfig(ctx context.Context) (r Descri
 
 // DescribeBalloonStats implements describeBalloonStats operation.
 //
+// Returns the latest balloon device statistics, only if enabled pre-boot.
+//
 // GET /balloon/statistics
 func (UnimplementedHandler) DescribeBalloonStats(ctx context.Context) (r DescribeBalloonStatsRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // DescribeInstance implements describeInstance operation.
+//
+// Returns general information about an instance.
 //
 // GET /
 func (UnimplementedHandler) DescribeInstance(ctx context.Context) (r DescribeInstanceRes, _ error) {
@@ -80,7 +88,7 @@ func (UnimplementedHandler) LoadSnapshot(ctx context.Context, req SnapshotLoadPa
 	return r, ht.ErrNotImplemented
 }
 
-// MmdsConfigPut implements  operation.
+// MmdsConfigPut implements PUT /mmds/config operation.
 //
 // Creates MMDS configuration to be used by the MMDS network stack.
 //
@@ -89,21 +97,27 @@ func (UnimplementedHandler) MmdsConfigPut(ctx context.Context, req MmdsConfig) (
 	return r, ht.ErrNotImplemented
 }
 
-// MmdsGet implements  operation.
+// MmdsGet implements GET /mmds operation.
+//
+// Get the MMDS data store.
 //
 // GET /mmds
 func (UnimplementedHandler) MmdsGet(ctx context.Context) (r MmdsGetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MmdsPatch implements  operation.
+// MmdsPatch implements PATCH /mmds operation.
+//
+// Updates the MMDS data store.
 //
 // PATCH /mmds
 func (UnimplementedHandler) MmdsPatch(ctx context.Context, req *MmdsPatchReq) (r MmdsPatchRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// MmdsPut implements  operation.
+// MmdsPut implements PUT /mmds operation.
+//
+// Creates a MMDS (Microvm Metadata Service) data store.
 //
 // PUT /mmds
 func (UnimplementedHandler) MmdsPut(ctx context.Context, req *MmdsPutReq) (r MmdsPutRes, _ error) {
@@ -219,6 +233,8 @@ func (UnimplementedHandler) PutGuestVsock(ctx context.Context, req Vsock) (r Put
 
 // PutLogger implements putLogger operation.
 //
+// Initializes the logger by specifying a named pipe or a file for the logs output.
+//
 // PUT /logger
 func (UnimplementedHandler) PutLogger(ctx context.Context, req Logger) (r PutLoggerRes, _ error) {
 	return r, ht.ErrNotImplemented
@@ -237,6 +253,8 @@ func (UnimplementedHandler) PutMachineConfiguration(ctx context.Context, req Opt
 }
 
 // PutMetrics implements putMetrics operation.
+//
+// Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 //
 // PUT /metrics
 func (UnimplementedHandler) PutMetrics(ctx context.Context, req Metrics) (r PutMetricsRes, _ error) {

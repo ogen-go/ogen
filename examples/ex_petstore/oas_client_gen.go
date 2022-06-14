@@ -51,6 +51,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // CreatePets invokes createPets operation.
 //
+// Create a pet.
+//
 // POST /pets
 func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) {
 	startTime := time.Now()
@@ -92,6 +94,8 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 }
 
 // ListPets invokes listPets operation.
+//
+// List all pets.
 //
 // GET /pets
 func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
@@ -153,6 +157,8 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 }
 
 // ShowPetById invokes showPetById operation.
+//
+// Info for a specific pet.
 //
 // GET /pets/{petId}
 func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res ShowPetByIdRes, err error) {

@@ -52,7 +52,9 @@ func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, e
 	return c, nil
 }
 
-// MarketBondsGet invokes  operation.
+// MarketBondsGet invokes GET /market/bonds operation.
+//
+// Получение списка облигаций.
 //
 // GET /market/bonds
 func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
@@ -96,7 +98,9 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 	return result, nil
 }
 
-// MarketCandlesGet invokes  operation.
+// MarketCandlesGet invokes GET /market/candles operation.
+//
+// Получение исторических свечей по FIGI.
 //
 // GET /market/candles
 func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
@@ -198,7 +202,9 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	return result, nil
 }
 
-// MarketCurrenciesGet invokes  operation.
+// MarketCurrenciesGet invokes GET /market/currencies operation.
+//
+// Получение списка валютных пар.
 //
 // GET /market/currencies
 func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
@@ -242,7 +248,9 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 	return result, nil
 }
 
-// MarketEtfsGet invokes  operation.
+// MarketEtfsGet invokes GET /market/etfs operation.
+//
+// Получение списка ETF.
 //
 // GET /market/etfs
 func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
@@ -286,7 +294,9 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 	return result, nil
 }
 
-// MarketOrderbookGet invokes  operation.
+// MarketOrderbookGet invokes GET /market/orderbook operation.
+//
+// Получение стакана по FIGI.
 //
 // GET /market/orderbook
 func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
@@ -360,7 +370,9 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	return result, nil
 }
 
-// MarketSearchByFigiGet invokes  operation.
+// MarketSearchByFigiGet invokes GET /market/search/by-figi operation.
+//
+// Получение инструмента по FIGI.
 //
 // GET /market/search/by-figi
 func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
@@ -420,7 +432,9 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	return result, nil
 }
 
-// MarketSearchByTickerGet invokes  operation.
+// MarketSearchByTickerGet invokes GET /market/search/by-ticker operation.
+//
+// Получение инструмента по тикеру.
 //
 // GET /market/search/by-ticker
 func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
@@ -480,7 +494,9 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	return result, nil
 }
 
-// MarketStocksGet invokes  operation.
+// MarketStocksGet invokes GET /market/stocks operation.
+//
+// Получение списка акций.
 //
 // GET /market/stocks
 func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
@@ -524,7 +540,9 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 	return result, nil
 }
 
-// OperationsGet invokes  operation.
+// OperationsGet invokes GET /operations operation.
+//
+// Получение списка операций.
 //
 // GET /operations
 func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
@@ -632,7 +650,9 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	return result, nil
 }
 
-// OrdersCancelPost invokes  operation.
+// OrdersCancelPost invokes POST /orders/cancel operation.
+//
+// Отмена заявки.
 //
 // POST /orders/cancel
 func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
@@ -709,7 +729,9 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	return result, nil
 }
 
-// OrdersGet invokes  operation.
+// OrdersGet invokes GET /orders operation.
+//
+// Получение списка активных заявок.
 //
 // GET /orders
 func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
@@ -772,7 +794,9 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	return result, nil
 }
 
-// OrdersLimitOrderPost invokes  operation.
+// OrdersLimitOrderPost invokes POST /orders/limit-order operation.
+//
+// Создание лимитной заявки.
 //
 // POST /orders/limit-order
 func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
@@ -877,7 +901,9 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	return result, nil
 }
 
-// OrdersMarketOrderPost invokes  operation.
+// OrdersMarketOrderPost invokes POST /orders/market-order operation.
+//
+// Создание рыночной заявки.
 //
 // POST /orders/market-order
 func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
@@ -982,7 +1008,9 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	return result, nil
 }
 
-// PortfolioCurrenciesGet invokes  operation.
+// PortfolioCurrenciesGet invokes GET /portfolio/currencies operation.
+//
+// Получение валютных активов клиента.
 //
 // GET /portfolio/currencies
 func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
@@ -1045,7 +1073,9 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	return result, nil
 }
 
-// PortfolioGet invokes  operation.
+// PortfolioGet invokes GET /portfolio operation.
+//
+// Получение портфеля клиента.
 //
 // GET /portfolio
 func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
@@ -1108,7 +1138,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	return result, nil
 }
 
-// SandboxClearPost invokes  operation.
+// SandboxClearPost invokes POST /sandbox/clear operation.
 //
 // Удаление всех позиций клиента.
 //
@@ -1173,7 +1203,9 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	return result, nil
 }
 
-// SandboxCurrenciesBalancePost invokes  operation.
+// SandboxCurrenciesBalancePost invokes POST /sandbox/currencies/balance operation.
+//
+// Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
 func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
@@ -1264,7 +1296,9 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	return result, nil
 }
 
-// SandboxPositionsBalancePost invokes  operation.
+// SandboxPositionsBalancePost invokes POST /sandbox/positions/balance operation.
+//
+// Выставление баланса по инструментным позициям.
 //
 // POST /sandbox/positions/balance
 func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
@@ -1355,7 +1389,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	return result, nil
 }
 
-// SandboxRegisterPost invokes  operation.
+// SandboxRegisterPost invokes POST /sandbox/register operation.
 //
 // Создание счета и валютных позиций для клиента.
 //
@@ -1436,7 +1470,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	return result, nil
 }
 
-// SandboxRemovePost invokes  operation.
+// SandboxRemovePost invokes POST /sandbox/remove operation.
 //
 // Удаление счета клиента.
 //
@@ -1501,7 +1535,9 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	return result, nil
 }
 
-// UserAccountsGet invokes  operation.
+// UserAccountsGet invokes GET /user/accounts operation.
+//
+// Получение брокерских счетов клиента.
 //
 // GET /user/accounts
 func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {

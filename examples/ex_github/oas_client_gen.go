@@ -5983,6 +5983,8 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 // an access token with the `repo` scope to use this endpoint. GitHub Apps must have
 // the `actions:write` permission to use this endpoint.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res ActionsReRunWorkflowCreated, err error) {
 	startTime := time.Now()
@@ -7467,6 +7469,8 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 
 // ActivityCheckRepoIsStarredByAuthenticatedUser invokes activity/check-repo-is-starred-by-authenticated-user operation.
 //
+// Check if a repository is starred by the authenticated user.
+//
 // GET /user/starred/{owner}/{repo}
 func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
@@ -7735,6 +7739,8 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 
 // ActivityGetRepoSubscription invokes activity/get-repo-subscription operation.
 //
+// Get a repository subscription.
+//
 // GET /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
 	startTime := time.Now()
@@ -7806,6 +7812,8 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 }
 
 // ActivityGetThread invokes activity/get-thread operation.
+//
+// Get a thread.
 //
 // GET /notifications/threads/{thread_id}
 func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
@@ -8359,6 +8367,8 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 
 // ActivityListPublicEventsForRepoNetwork invokes activity/list-public-events-for-repo-network operation.
 //
+// List public events for a network of repositories.
+//
 // GET /networks/{owner}/{repo}/events
 func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
 	startTime := time.Now()
@@ -8467,6 +8477,8 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 
 // ActivityListPublicEventsForUser invokes activity/list-public-events-for-user operation.
 //
+// List public events for a user.
+//
 // GET /users/{username}/events/public
 func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
@@ -8559,6 +8571,8 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 }
 
 // ActivityListPublicOrgEvents invokes activity/list-public-org-events operation.
+//
+// List public organization events.
 //
 // GET /orgs/{org}/events
 func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) (res []Event, err error) {
@@ -8750,6 +8764,8 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 
 // ActivityListReceivedPublicEventsForUser invokes activity/list-received-public-events-for-user operation.
 //
+// List public events received by a user.
+//
 // GET /users/{username}/received_events/public
 func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
@@ -8842,6 +8858,8 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 }
 
 // ActivityListRepoEvents invokes activity/list-repo-events operation.
+//
+// List repository events.
 //
 // GET /repos/{owner}/{repo}/events
 func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) (res []Event, err error) {
@@ -9700,6 +9718,8 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 
 // ActivityMarkThreadAsRead invokes activity/mark-thread-as-read operation.
 //
+// Mark a thread as read.
+//
 // PATCH /notifications/threads/{thread_id}
 func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
 	startTime := time.Now()
@@ -10013,6 +10033,8 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 }
 
 // ActivityUnstarRepoForAuthenticatedUser invokes activity/unstar-repo-for-authenticated-user operation.
+//
+// Unstar a repository for the authenticated user.
 //
 // DELETE /user/starred/{owner}/{repo}
 func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
@@ -15502,6 +15524,8 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 
 // CodesOfConductGetAllCodesOfConduct invokes codes-of-conduct/get-all-codes-of-conduct operation.
 //
+// Get all codes of conduct.
+//
 // GET /codes_of_conduct
 func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	startTime := time.Now()
@@ -15543,6 +15567,8 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 }
 
 // CodesOfConductGetConductCode invokes codes-of-conduct/get-conduct-code operation.
+//
+// Get a code of conduct.
 //
 // GET /codes_of_conduct/{key}
 func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
@@ -19347,6 +19373,8 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 
 // GistsCheckIsStarred invokes gists/check-is-starred operation.
 //
+// Check if a gist is starred.
+//
 // GET /gists/{gist_id}/star
 func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
 	startTime := time.Now()
@@ -19478,6 +19506,8 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 
 // GistsCreateComment invokes gists/create-comment operation.
 //
+// Create a gist comment.
+//
 // POST /gists/{gist_id}/comments
 func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
 	if err := func() error {
@@ -19563,6 +19593,8 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 
 // GistsDelete invokes gists/delete operation.
 //
+// Delete a gist.
+//
 // DELETE /gists/{gist_id}
 func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
 	startTime := time.Now()
@@ -19618,6 +19650,8 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 }
 
 // GistsDeleteComment invokes gists/delete-comment operation.
+//
+// Delete a gist comment.
 //
 // DELETE /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
@@ -19749,6 +19783,8 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 
 // GistsGet invokes gists/get operation.
 //
+// Get a gist.
+//
 // GET /gists/{gist_id}
 func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res GistsGetRes, err error) {
 	startTime := time.Now()
@@ -19804,6 +19840,8 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 }
 
 // GistsGetComment invokes gists/get-comment operation.
+//
+// Get a gist comment.
 //
 // GET /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
@@ -19875,6 +19913,8 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 }
 
 // GistsGetRevision invokes gists/get-revision operation.
+//
+// Get a gist revision.
 //
 // GET /gists/{gist_id}/{sha}
 func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (res GistsGetRevisionRes, err error) {
@@ -20045,6 +20085,8 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 
 // GistsListComments invokes gists/list-comments operation.
 //
+// List gist comments.
+//
 // GET /gists/{gist_id}/comments
 func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
 	startTime := time.Now()
@@ -20137,6 +20179,8 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 }
 
 // GistsListCommits invokes gists/list-commits operation.
+//
+// List gist commits.
 //
 // GET /gists/{gist_id}/commits
 func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
@@ -20342,6 +20386,8 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 }
 
 // GistsListForks invokes gists/list-forks operation.
+//
+// List gist forks.
 //
 // GET /gists/{gist_id}/forks
 func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams) (res GistsListForksRes, err error) {
@@ -20694,6 +20740,8 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 
 // GistsUnstar invokes gists/unstar operation.
 //
+// Unstar a gist.
+//
 // DELETE /gists/{gist_id}/star
 func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
 	startTime := time.Now()
@@ -20750,6 +20798,8 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 }
 
 // GistsUpdateComment invokes gists/update-comment operation.
+//
+// Update a gist comment.
 //
 // PATCH /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
@@ -20849,6 +20899,8 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 }
 
 // GitCreateBlob invokes git/create-blob operation.
+//
+// Create a blob.
 //
 // POST /repos/{owner}/{repo}/git/blobs
 func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, params GitCreateBlobParams) (res GitCreateBlobRes, err error) {
@@ -21410,6 +21462,8 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 }
 
 // GitDeleteRef invokes git/delete-ref operation.
+//
+// Delete a reference.
 //
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
 func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (res GitDeleteRefRes, err error) {
@@ -22168,6 +22222,8 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 }
 
 // GitUpdateRef invokes git/update-ref operation.
+//
+// Update a reference.
 //
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
 func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, params GitUpdateRefParams) (res GitUpdateRefRes, err error) {
@@ -23248,6 +23304,8 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 
 // IssuesCreateLabel invokes issues/create-label operation.
 //
+// Create a label.
+//
 // POST /repos/{owner}/{repo}/labels
 func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabelReq, params IssuesCreateLabelParams) (res IssuesCreateLabelRes, err error) {
 	startTime := time.Now()
@@ -23339,6 +23397,8 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 }
 
 // IssuesCreateMilestone invokes issues/create-milestone operation.
+//
+// Create a milestone.
 //
 // POST /repos/{owner}/{repo}/milestones
 func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (res IssuesCreateMilestoneRes, err error) {
@@ -23440,6 +23500,8 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 
 // IssuesDeleteComment invokes issues/delete-comment operation.
 //
+// Delete an issue comment.
+//
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res IssuesDeleteCommentNoContent, err error) {
 	startTime := time.Now()
@@ -23526,6 +23588,8 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 
 // IssuesDeleteLabel invokes issues/delete-label operation.
 //
+// Delete a label.
+//
 // DELETE /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res IssuesDeleteLabelNoContent, err error) {
 	startTime := time.Now()
@@ -23611,6 +23675,8 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 }
 
 // IssuesDeleteMilestone invokes issues/delete-milestone operation.
+//
+// Delete a milestone.
 //
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
@@ -23804,6 +23870,8 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 
 // IssuesGetComment invokes issues/get-comment operation.
 //
+// Get an issue comment.
+//
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
 	startTime := time.Now()
@@ -23889,6 +23957,8 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 }
 
 // IssuesGetEvent invokes issues/get-event operation.
+//
+// Get an issue event.
 //
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
 func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (res IssuesGetEventRes, err error) {
@@ -23976,6 +24046,8 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 
 // IssuesGetLabel invokes issues/get-label operation.
 //
+// Get a label.
+//
 // GET /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
 	startTime := time.Now()
@@ -24061,6 +24133,8 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 }
 
 // IssuesGetMilestone invokes issues/get-milestone operation.
+//
+// Get a milestone.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
@@ -24823,6 +24897,8 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 }
 
 // IssuesListEventsForRepo invokes issues/list-events-for-repo operation.
+//
+// List issue events for a repository.
 //
 // GET /repos/{owner}/{repo}/issues/events
 func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (res IssuesListEventsForRepoRes, err error) {
@@ -25598,6 +25674,8 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 
 // IssuesListLabelsForMilestone invokes issues/list-labels-for-milestone operation.
 //
+// List labels for issues in a milestone.
+//
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (res IssuesListLabelsForMilestoneOKHeaders, err error) {
 	startTime := time.Now()
@@ -25721,6 +25799,8 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 
 // IssuesListLabelsForRepo invokes issues/list-labels-for-repo operation.
 //
+// List labels for a repository.
+//
 // GET /repos/{owner}/{repo}/labels
 func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
 	startTime := time.Now()
@@ -25828,6 +25908,8 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 }
 
 // IssuesListLabelsOnIssue invokes issues/list-labels-on-issue operation.
+//
+// List labels for an issue.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
@@ -25951,6 +26033,8 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 }
 
 // IssuesListMilestones invokes issues/list-milestones operation.
+//
+// List milestones.
 //
 // GET /repos/{owner}/{repo}/milestones
 func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (res IssuesListMilestonesRes, err error) {
@@ -26237,6 +26321,8 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 }
 
 // IssuesRemoveAllLabels invokes issues/remove-all-labels operation.
+//
+// Remove all labels from an issue.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
@@ -26750,6 +26836,8 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 
 // IssuesUpdateComment invokes issues/update-comment operation.
 //
+// Update an issue comment.
+//
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (res IssuesUpdateCommentRes, err error) {
 	startTime := time.Now()
@@ -26856,6 +26944,8 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 
 // IssuesUpdateLabel invokes issues/update-label operation.
 //
+// Update a label.
+//
 // PATCH /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
 	startTime := time.Now()
@@ -26961,6 +27051,8 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 }
 
 // IssuesUpdateMilestone invokes issues/update-milestone operation.
+//
+// Update a milestone.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res Milestone, err error) {
@@ -27083,6 +27175,8 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 
 // LicensesGet invokes licenses/get operation.
 //
+// Get a license.
+//
 // GET /licenses/{license}
 func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
 	startTime := time.Now()
@@ -27138,6 +27232,8 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 }
 
 // LicensesGetAllCommonlyUsed invokes licenses/get-all-commonly-used operation.
+//
+// Get all commonly used licenses.
 //
 // GET /licenses
 func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
@@ -29434,6 +29530,8 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 // allowing tokens in [the GitHub Help documentation](https://help.github.
 // com/articles/about-identity-and-access-management-with-saml-single-sign-on).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // POST /authorizations
 func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
 	if err := func() error {
@@ -29520,6 +29618,8 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 // on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 // post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // DELETE /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	startTime := time.Now()
@@ -29588,6 +29688,8 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 // longer listed on [the application authorizations settings screen within GitHub](https://github.
 // com/settings/applications#authorized).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // DELETE /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	startTime := time.Now()
@@ -29653,6 +29755,8 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 // on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 // post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	startTime := time.Now()
@@ -29717,6 +29821,8 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 // Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
 // on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 // post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
@@ -29801,6 +29907,8 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 // [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
 // removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 // post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}
 func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
@@ -29909,6 +30017,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 // information, see "[Working with two-factor authentication](https://docs.github.
 // com/rest/overview/other-authentication-methods#working-with-two-factor-authentication).".
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PUT /authorizations/clients/{client_id}/{fingerprint}
 func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
 	if err := func() error {
@@ -30016,6 +30126,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 // Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
 // on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 // post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations
 func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
@@ -30130,6 +30242,8 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 // application has one token with `repo` scope and another token with `user` scope, the grant will
 // return `["repo", "user"]`.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /applications/grants
 func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
 	startTime := time.Now()
@@ -30238,6 +30352,8 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 // com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
 // You can only send one of these scope keys at a time.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PATCH /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
 	if err := func() error {
@@ -30328,6 +30444,8 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 }
 
 // OrgsBlockUser invokes orgs/block-user operation.
+//
+// Block a user from an organization.
 //
 // PUT /orgs/{org}/blocks/{username}
 func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (res OrgsBlockUserRes, err error) {
@@ -30476,6 +30594,8 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 
 // OrgsCheckBlockedUser invokes orgs/check-blocked-user operation.
 //
+// Check if a user is blocked by an organization.
+//
 // GET /orgs/{org}/blocks/{username}
 func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
 	startTime := time.Now()
@@ -30619,6 +30739,8 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 }
 
 // OrgsCheckPublicMembershipForUser invokes orgs/check-public-membership-for-user operation.
+//
+// Check public organization membership for a user.
 //
 // GET /orgs/{org}/public_members/{username}
 func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
@@ -30957,6 +31079,8 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 
 // OrgsDeleteWebhook invokes orgs/delete-webhook operation.
 //
+// Delete an organization webhook.
+//
 // DELETE /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
 	startTime := time.Now()
@@ -31278,6 +31402,8 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 }
 
 // OrgsGetMembershipForAuthenticatedUser invokes orgs/get-membership-for-authenticated-user operation.
+//
+// Get an organization membership for the authenticated user.
 //
 // GET /user/memberships/orgs/{org}
 func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
@@ -32315,6 +32441,8 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 
 // OrgsListMembershipsForAuthenticatedUser invokes orgs/list-memberships-for-authenticated-user operation.
 //
+// List organization memberships for the authenticated user.
+//
 // GET /user/memberships/orgs
 func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
@@ -32891,6 +33019,8 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 
 // OrgsListWebhooks invokes orgs/list-webhooks operation.
 //
+// List organization webhooks.
+//
 // GET /orgs/{org}/hooks
 func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
 	startTime := time.Now()
@@ -33372,6 +33502,8 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 
 // OrgsRemovePublicMembershipForAuthenticatedUser invokes orgs/remove-public-membership-for-authenticated-user operation.
 //
+// Remove public organization membership for the authenticated user.
+//
 // DELETE /orgs/{org}/public_members/{username}
 func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
@@ -33720,6 +33852,8 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 
 // OrgsUnblockUser invokes orgs/unblock-user operation.
 //
+// Unblock a user from an organization.
+//
 // DELETE /orgs/{org}/blocks/{username}
 func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res OrgsUnblockUserNoContent, err error) {
 	startTime := time.Now()
@@ -33790,6 +33924,8 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 }
 
 // OrgsUpdateMembershipForAuthenticatedUser invokes orgs/update-membership-for-authenticated-user operation.
+//
+// Update an organization membership for the authenticated user.
 //
 // PATCH /user/memberships/orgs/{org}
 func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
@@ -36645,6 +36781,8 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 
 // ProjectsCreateColumn invokes projects/create-column operation.
 //
+// Create a project column.
+//
 // POST /projects/{project_id}/columns
 func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	startTime := time.Now()
@@ -36721,6 +36859,8 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 }
 
 // ProjectsCreateForAuthenticatedUser invokes projects/create-for-authenticated-user operation.
+//
+// Create a user project.
 //
 // POST /user/projects
 func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
@@ -37019,6 +37159,8 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 
 // ProjectsDeleteCard invokes projects/delete-card operation.
 //
+// Delete a project card.
+//
 // DELETE /projects/columns/cards/{card_id}
 func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
 	startTime := time.Now()
@@ -37074,6 +37216,8 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 }
 
 // ProjectsDeleteColumn invokes projects/delete-column operation.
+//
+// Delete a project column.
 //
 // DELETE /projects/columns/{column_id}
 func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
@@ -37191,6 +37335,8 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 
 // ProjectsGetCard invokes projects/get-card operation.
 //
+// Get a project card.
+//
 // GET /projects/columns/cards/{card_id}
 func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
 	startTime := time.Now()
@@ -37246,6 +37392,8 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 }
 
 // ProjectsGetColumn invokes projects/get-column operation.
+//
+// Get a project column.
 //
 // GET /projects/columns/{column_id}
 func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
@@ -37378,6 +37526,8 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 }
 
 // ProjectsListCards invokes projects/list-cards operation.
+//
+// List project cards.
 //
 // GET /projects/columns/{column_id}/cards
 func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (res ProjectsListCardsRes, err error) {
@@ -37604,6 +37754,8 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 }
 
 // ProjectsListColumns invokes projects/list-columns operation.
+//
+// List project columns.
 //
 // GET /projects/{project_id}/columns
 func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
@@ -37941,6 +38093,8 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 
 // ProjectsListForUser invokes projects/list-for-user operation.
 //
+// List user projects.
+//
 // GET /users/{username}/projects
 func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (res ProjectsListForUserRes, err error) {
 	startTime := time.Now()
@@ -38051,6 +38205,8 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 
 // ProjectsMoveCard invokes projects/move-card operation.
 //
+// Move a project card.
+//
 // POST /projects/columns/cards/{card_id}/moves
 func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardReq, params ProjectsMoveCardParams) (res ProjectsMoveCardRes, err error) {
 	if err := func() error {
@@ -38135,6 +38291,8 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 }
 
 // ProjectsMoveColumn invokes projects/move-column operation.
+//
+// Move a project column.
 //
 // POST /projects/columns/{column_id}/moves
 func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
@@ -38390,6 +38548,8 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 
 // ProjectsUpdateCard invokes projects/update-card operation.
 //
+// Update an existing project card.
+//
 // PATCH /projects/columns/cards/{card_id}
 func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	startTime := time.Now()
@@ -38466,6 +38626,8 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 
 // ProjectsUpdateColumn invokes projects/update-column operation.
 //
+// Update an existing project column.
+//
 // PATCH /projects/columns/{column_id}
 func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	startTime := time.Now()
@@ -38541,6 +38703,8 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 }
 
 // PullsCheckIfMerged invokes pulls/check-if-merged operation.
+//
+// Check if a pull request has been merged.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
@@ -39149,6 +39313,8 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 
 // PullsDeletePendingReview invokes pulls/delete-pending-review operation.
 //
+// Delete a pending review for a pull request.
+//
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
 	startTime := time.Now()
@@ -39583,6 +39749,8 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 }
 
 // PullsGetReview invokes pulls/get-review operation.
+//
+// Get a review for a pull request.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
@@ -40365,6 +40533,8 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 
 // PullsListRequestedReviewers invokes pulls/list-requested-reviewers operation.
 //
+// List requested reviewers for a pull request.
+//
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (res PullRequestReviewRequestHeaders, err error) {
 	startTime := time.Now()
@@ -41082,6 +41252,8 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 
 // PullsRemoveRequestedReviewers invokes pulls/remove-requested-reviewers operation.
 //
+// Remove requested reviewers from a pull request.
+//
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (res PullsRemoveRequestedReviewersRes, err error) {
 	if err := func() error {
@@ -41196,6 +41368,8 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 }
 
 // PullsSubmitReview invokes pulls/submit-review operation.
+//
+// Submit a review for a pull request.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
@@ -42586,6 +42760,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 // response with an HTTP `200` status means that you already added the reaction type to this team
 // discussion comment.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res Reaction, err error) {
 	if err := func() error {
@@ -42831,6 +43007,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 //  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
 // status means that you already added the reaction type to this team discussion.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res Reaction, err error) {
@@ -43592,6 +43770,8 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team
 // discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion
 // comment](https://docs.github.com/rest/reference/teams#discussion-comments).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /reactions/{reaction_id}
 func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
@@ -44387,6 +44567,8 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 // com/rest/reference/teams#discussion-comments). OAuth access tokens require the `read:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (res ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
 	startTime := time.Now()
@@ -44681,6 +44863,8 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 // com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (res ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
 	startTime := time.Now()
@@ -44805,6 +44989,8 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 }
 
 // ReposAcceptInvitation invokes repos/accept-invitation operation.
+//
+// Accept a repository invitation.
 //
 // PATCH /user/repository_invitations/{invitation_id}
 func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
@@ -47573,6 +47759,8 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 
 // ReposDeclineInvitation invokes repos/decline-invitation operation.
 //
+// Decline a repository invitation.
+//
 // DELETE /user/repository_invitations/{invitation_id}
 func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
 	startTime := time.Now()
@@ -48164,6 +48352,8 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 
 // ReposDeleteCommitComment invokes repos/delete-commit-comment operation.
 //
+// Delete a commit comment.
+//
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
 	startTime := time.Now()
@@ -48646,6 +48836,8 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 
 // ReposDeleteInvitation invokes repos/delete-invitation operation.
 //
+// Delete a repository invitation.
+//
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res ReposDeleteInvitationNoContent, err error) {
 	startTime := time.Now()
@@ -48731,6 +48923,8 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 }
 
 // ReposDeletePagesSite invokes repos/delete-pages-site operation.
+//
+// Delete a GitHub Pages site.
 //
 // DELETE /repos/{owner}/{repo}/pages
 func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (res ReposDeletePagesSiteRes, err error) {
@@ -48985,6 +49179,8 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 
 // ReposDeleteReleaseAsset invokes repos/delete-release-asset operation.
 //
+// Delete a release asset.
+//
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res ReposDeleteReleaseAssetNoContent, err error) {
 	startTime := time.Now()
@@ -49070,6 +49266,8 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 }
 
 // ReposDeleteWebhook invokes repos/delete-webhook operation.
+//
+// Delete a repository webhook.
 //
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
@@ -50153,6 +50351,8 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 
 // ReposGetAllTopics invokes repos/get-all-topics operation.
 //
+// Get all repository topics.
+//
 // GET /repos/{owner}/{repo}/topics
 func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
 	startTime := time.Now()
@@ -50445,6 +50645,8 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 }
 
 // ReposGetBranch invokes repos/get-branch operation.
+//
+// Get a branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}
 func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
@@ -51259,6 +51461,8 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 
 // ReposGetCommitComment invokes repos/get-commit-comment operation.
 //
+// Get a commit comment.
+//
 // GET /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
 	startTime := time.Now()
@@ -51605,6 +51809,8 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 
 // ReposGetDeployKey invokes repos/get-deploy-key operation.
 //
+// Get a deploy key.
+//
 // GET /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
 	startTime := time.Now()
@@ -51690,6 +51896,8 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 }
 
 // ReposGetDeployment invokes repos/get-deployment operation.
+//
+// Get a deployment.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
 func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (res ReposGetDeploymentRes, err error) {
@@ -51880,6 +52088,8 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 
 // ReposGetLatestPagesBuild invokes repos/get-latest-pages-build operation.
 //
+// Get latest Pages build.
+//
 // GET /repos/{owner}/{repo}/pages/builds/latest
 func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (res PageBuild, err error) {
 	startTime := time.Now()
@@ -52029,6 +52239,8 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 
 // ReposGetPages invokes repos/get-pages operation.
 //
+// Get a GitHub Pages site.
+//
 // GET /repos/{owner}/{repo}/pages
 func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
 	startTime := time.Now()
@@ -52100,6 +52312,8 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 }
 
 // ReposGetPagesBuild invokes repos/get-pages-build operation.
+//
+// Get GitHub Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
 func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (res PageBuild, err error) {
@@ -53892,6 +54106,8 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 
 // ReposListBranches invokes repos/list-branches operation.
 //
+// List branches.
+//
 // GET /repos/{owner}/{repo}/branches
 func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
 	startTime := time.Now()
@@ -54967,6 +55183,8 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 
 // ReposListDeployKeys invokes repos/list-deploy-keys operation.
 //
+// List deploy keys.
+//
 // GET /repos/{owner}/{repo}/keys
 func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (res ReposListDeployKeysOKHeaders, err error) {
 	startTime := time.Now()
@@ -55873,6 +56091,8 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 
 // ReposListForks invokes repos/list-forks operation.
 //
+// List forks.
+//
 // GET /repos/{owner}/{repo}/forks
 func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams) (res ReposListForksRes, err error) {
 	startTime := time.Now()
@@ -56265,6 +56485,8 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 
 // ReposListPagesBuilds invokes repos/list-pages-builds operation.
 //
+// List GitHub Pages builds.
+//
 // GET /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (res ReposListPagesBuildsOKHeaders, err error) {
 	startTime := time.Now()
@@ -56572,6 +56794,8 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 
 // ReposListReleaseAssets invokes repos/list-release-assets operation.
 //
+// List release assets.
+//
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
 func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (res ReposListReleaseAssetsOKHeaders, err error) {
 	startTime := time.Now()
@@ -56809,6 +57033,8 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 
 // ReposListTags invokes repos/list-tags operation.
 //
+// List repository tags.
+//
 // GET /repos/{owner}/{repo}/tags
 func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) (res ReposListTagsOKHeaders, err error) {
 	startTime := time.Now()
@@ -56916,6 +57142,8 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 }
 
 // ReposListTeams invokes repos/list-teams operation.
+//
+// List repository teams.
 //
 // GET /repos/{owner}/{repo}/teams
 func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (res ReposListTeamsOKHeaders, err error) {
@@ -57150,6 +57378,8 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 
 // ReposListWebhooks invokes repos/list-webhooks operation.
 //
+// List repository webhooks.
+//
 // GET /repos/{owner}/{repo}/hooks
 func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (res ReposListWebhooksRes, err error) {
 	startTime := time.Now()
@@ -57257,6 +57487,8 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 }
 
 // ReposMerge invokes repos/merge operation.
+//
+// Merge a branch.
 //
 // POST /repos/{owner}/{repo}/merges
 func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params ReposMergeParams) (res ReposMergeRes, err error) {
@@ -57774,6 +58006,8 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 }
 
 // ReposRemoveCollaborator invokes repos/remove-collaborator operation.
+//
+// Remove a repository collaborator.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res ReposRemoveCollaboratorNoContent, err error) {
@@ -58473,6 +58707,8 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 }
 
 // ReposReplaceAllTopics invokes repos/replace-all-topics operation.
+//
+// Replace all repository topics.
 //
 // PUT /repos/{owner}/{repo}/topics
 func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
@@ -59710,6 +59946,8 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 
 // ReposUpdateCommitComment invokes repos/update-commit-comment operation.
 //
+// Update a commit comment.
+//
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	startTime := time.Now()
@@ -59815,6 +60053,8 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 }
 
 // ReposUpdateInvitation invokes repos/update-invitation operation.
+//
+// Update a repository invitation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res RepositoryInvitation, err error) {
@@ -60637,6 +60877,8 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 }
 
 // ScimDeleteUserFromOrg invokes scim/delete-user-from-org operation.
+//
+// Delete a SCIM user from an organization.
 //
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
@@ -62199,6 +62441,8 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 // information, see "[HTTP verbs](https://docs.github.
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PUT /teams/{team_id}/members/{username}
 func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
 	startTime := time.Now()
@@ -62440,6 +62684,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 // member's role. To update the membership of a team member, the authenticated user must be an
 // organization owner or a team maintainer.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PUT /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	if err := func() error {
@@ -62680,6 +62926,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 // Adds an organization project to a team. To add a project to a team or update the team's permission
 // on a project, the authenticated user must have `admin` permissions for the project. The project
 // and team must be part of the same organization.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
@@ -62949,6 +63197,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 // when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PUT /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
 	if err := func() error {
@@ -63168,6 +63418,8 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 // Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
 // response includes projects inherited from a parent team.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	startTime := time.Now()
@@ -63358,6 +63610,8 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 // You can also get information about the specified repository, including what permissions the team
 // grants on it, by passing the following custom [media type](https://docs.github.
 // com/rest/overview/media-types/) via the `Accept` header:.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
@@ -63671,6 +63925,8 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 // rate limits](https://docs.github.
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
@@ -63880,6 +64136,8 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 // rate limits](https://docs.github.
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // POST /teams/{team_id}/discussions
 func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
@@ -64068,6 +64326,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 // Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
 // team, you must include all new and existing groups to avoid replacing existing groups with the new
 // ones. Specifying an empty `groups` array will remove all connections for a team.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
 func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
@@ -64266,6 +64526,8 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 // Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	startTime := time.Now()
@@ -64449,6 +64711,8 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 // Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // DELETE /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
 	startTime := time.Now()
@@ -64603,6 +64867,8 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 // To delete a team, the authenticated user must be an organization owner or team maintainer.
 // If you are an organization owner, deleting a parent team will delete all of its child teams as
 // well.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}
 func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (res TeamsDeleteLegacyRes, err error) {
@@ -64847,6 +65113,8 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 // Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
@@ -65030,6 +65298,8 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 // Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
@@ -65105,6 +65375,8 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 // We recommend migrating your existing code to use the [Get a team by name](https://docs.github.
 // com/rest/reference/teams#get-a-team-by-name) endpoint.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}
 func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
 	startTime := time.Now()
@@ -65166,6 +65438,8 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 // com/rest/reference/teams#get-team-membership-for-a-user) endpoint instead. It allows you to get
 // both active and pending memberships.
 // To list members in a team, the team must be visible to the authenticated user.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members/{username}
 func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
@@ -65342,6 +65616,8 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 // The response contains the `state` of the membership and the member's `role`.
 // The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
 // roles, see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
@@ -65625,6 +65901,8 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 // We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.
 // com/rest/reference/teams#list-child-teams) endpoint.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/teams
 func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (res TeamsListChildLegacyRes, err error) {
 	startTime := time.Now()
@@ -65868,6 +66146,8 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 // github.com/rest/reference/teams#list-discussion-comments) endpoint.
 // List all comments on a team discussion. OAuth access tokens require the `read:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (res TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
@@ -66147,6 +66427,8 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 // List all discussions on a team's page. OAuth access tokens require the `read:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/discussions
 func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (res TeamsListDiscussionsLegacyOKHeaders, err error) {
 	startTime := time.Now()
@@ -66347,6 +66629,8 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 // information, see [GitHub's products](https://help.github.
 // com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 // List IdP groups connected to a team on GitHub.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
@@ -66718,6 +67002,8 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 // com/rest/reference/teams#list-team-members) endpoint.
 // Team members will include the members of child teams.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/members
 func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (res TeamsListMembersLegacyRes, err error) {
 	startTime := time.Now()
@@ -66951,6 +67237,8 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 // `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
 // `null`.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/invitations
 func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (res TeamsListPendingInvitationsLegacyOKHeaders, err error) {
 	startTime := time.Now()
@@ -67161,6 +67449,8 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 // github.com/rest/reference/teams#list-team-projects) endpoint.
 // Lists the organization projects for a team.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/projects
 func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
 	startTime := time.Now()
@@ -67370,6 +67660,8 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 // We recommend migrating your existing code to use the new [List team repositories](https://docs.
 // github.com/rest/reference/teams#list-team-repositories) endpoint.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // GET /teams/{team_id}/repos
 func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
 	startTime := time.Now()
@@ -67480,6 +67772,8 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 // members in an organization. For more information, see "[Synchronizing teams between your identity
 // provider and GitHub](https://help.github.
 // com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/members/{username}
 func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
@@ -67671,6 +67965,8 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 // provider and GitHub](https://help.github.
 // com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // DELETE /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	startTime := time.Now()
@@ -67842,6 +68138,8 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 // any project from the team. To remove a project from a team as an organization member, the
 // authenticated user must have `read` access to both the team and project, or `admin` access to the
 // team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (res TeamsRemoveProjectLegacyRes, err error) {
@@ -68029,6 +68327,8 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 // repositories from the team. To remove a repository from a team as an organization member, the
 // authenticated user must have admin access to the repository and must be able to see the team.
 // NOTE: This does not delete the repository, it just removes it from the team.
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res TeamsRemoveRepoLegacyNoContent, err error) {
@@ -68247,6 +68547,8 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 // comment](https://docs.github.com/rest/reference/teams#update-a-discussion-comment) endpoint.
 // Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+//
+// Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
@@ -68473,6 +68775,8 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 // OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PATCH /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
@@ -68680,6 +68984,8 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 // To edit a team, the authenticated user must either be an organization owner or a team maintainer.
 // **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
 //
+// Deprecated: schema marks this operation as deprecated.
+//
 // PATCH /teams/{team_id}
 func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (res TeamsUpdateLegacyRes, err error) {
 	if err := func() error {
@@ -68843,6 +69149,8 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 
 // UsersBlock invokes users/block operation.
 //
+// Block a user.
+//
 // PUT /user/blocks/{username}
 func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res UsersBlockRes, err error) {
 	startTime := time.Now()
@@ -68899,6 +69207,8 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 
 // UsersCheckBlocked invokes users/check-blocked operation.
 //
+// Check if a user is blocked by the authenticated user.
+//
 // GET /user/blocks/{username}
 func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
 	startTime := time.Now()
@@ -68954,6 +69264,8 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 }
 
 // UsersCheckFollowingForUser invokes users/check-following-for-user operation.
+//
+// Check if a user follows another user.
 //
 // GET /users/{username}/following/{target_user}
 func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
@@ -69025,6 +69337,8 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 }
 
 // UsersCheckPersonIsFollowedByAuthenticated invokes users/check-person-is-followed-by-authenticated operation.
+//
+// Check if a person is followed by the authenticated user.
 //
 // GET /user/following/{username}
 func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
@@ -70893,6 +71207,8 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 }
 
 // UsersUnblock invokes users/unblock operation.
+//
+// Unblock a user.
 //
 // DELETE /user/blocks/{username}
 func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {

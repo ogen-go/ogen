@@ -242,7 +242,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleFoobarPutRequest handles  operation.
+// HandleFoobarPutRequest handles PUT /foobar operation.
 //
 // PUT /foobar
 func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -439,7 +439,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandlePatternRecursiveMapGetRequest handles  operation.
+// HandlePatternRecursiveMapGetRequest handles GET /patternRecursiveMap operation.
 //
 // GET /patternRecursiveMap
 func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -789,7 +789,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandlePetUpdateNameAliasPostRequest handles  operation.
+// HandlePetUpdateNameAliasPostRequest handles POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
 func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -833,7 +833,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandlePetUpdateNamePostRequest handles  operation.
+// HandlePetUpdateNamePostRequest handles POST /pet/updateName operation.
 //
 // POST /pet/updateName
 func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -932,7 +932,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleRecursiveArrayGetRequest handles  operation.
+// HandleRecursiveArrayGetRequest handles GET /recursiveArray operation.
 //
 // GET /recursiveArray
 func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -966,7 +966,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleRecursiveMapGetRequest handles  operation.
+// HandleRecursiveMapGetRequest handles GET /recursiveMap operation.
 //
 // GET /recursiveMap
 func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1046,7 +1046,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleStringIntMapGetRequest handles  operation.
+// HandleStringIntMapGetRequest handles GET /stringIntMap operation.
 //
 // GET /stringIntMap
 func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

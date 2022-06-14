@@ -761,6 +761,8 @@ type Handler interface {
 	// an access token with the `repo` scope to use this endpoint. GitHub Apps must have
 	// the `actions:write` permission to use this endpoint.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 	ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (ActionsReRunWorkflowCreated, error)
 	// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg implements actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -920,6 +922,8 @@ type Handler interface {
 	ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (RunnerGroupsOrg, error)
 	// ActivityCheckRepoIsStarredByAuthenticatedUser implements activity/check-repo-is-starred-by-authenticated-user operation.
 	//
+	// Check if a repository is starred by the authenticated user.
+	//
 	// GET /user/starred/{owner}/{repo}
 	ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error)
 	// ActivityDeleteRepoSubscription implements activity/delete-repo-subscription operation.
@@ -962,9 +966,13 @@ type Handler interface {
 	ActivityGetFeeds(ctx context.Context) (Feed, error)
 	// ActivityGetRepoSubscription implements activity/get-repo-subscription operation.
 	//
+	// Get a repository subscription.
+	//
 	// GET /repos/{owner}/{repo}/subscription
 	ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error)
 	// ActivityGetThread implements activity/get-thread operation.
+	//
+	// Get a thread.
 	//
 	// GET /notifications/threads/{thread_id}
 	ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error)
@@ -1005,13 +1013,19 @@ type Handler interface {
 	ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error)
 	// ActivityListPublicEventsForRepoNetwork implements activity/list-public-events-for-repo-network operation.
 	//
+	// List public events for a network of repositories.
+	//
 	// GET /networks/{owner}/{repo}/events
 	ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error)
 	// ActivityListPublicEventsForUser implements activity/list-public-events-for-user operation.
 	//
+	// List public events for a user.
+	//
 	// GET /users/{username}/events/public
 	ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error)
 	// ActivityListPublicOrgEvents implements activity/list-public-org-events operation.
+	//
+	// List public organization events.
 	//
 	// GET /orgs/{org}/events
 	ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error)
@@ -1025,9 +1039,13 @@ type Handler interface {
 	ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error)
 	// ActivityListReceivedPublicEventsForUser implements activity/list-received-public-events-for-user operation.
 	//
+	// List public events received by a user.
+	//
 	// GET /users/{username}/received_events/public
 	ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error)
 	// ActivityListRepoEvents implements activity/list-repo-events operation.
+	//
+	// List repository events.
 	//
 	// GET /repos/{owner}/{repo}/events
 	ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error)
@@ -1089,6 +1107,8 @@ type Handler interface {
 	ActivityMarkRepoNotificationsAsRead(ctx context.Context, req OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error)
 	// ActivityMarkThreadAsRead implements activity/mark-thread-as-read operation.
 	//
+	// Mark a thread as read.
+	//
 	// PATCH /notifications/threads/{thread_id}
 	ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error)
 	// ActivitySetRepoSubscription implements activity/set-repo-subscription operation.
@@ -1122,6 +1142,8 @@ type Handler interface {
 	// PUT /user/starred/{owner}/{repo}
 	ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error)
 	// ActivityUnstarRepoForAuthenticatedUser implements activity/unstar-repo-for-authenticated-user operation.
+	//
+	// Unstar a repository for the authenticated user.
 	//
 	// DELETE /user/starred/{owner}/{repo}
 	ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error)
@@ -1858,9 +1880,13 @@ type Handler interface {
 	CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error)
 	// CodesOfConductGetAllCodesOfConduct implements codes-of-conduct/get-all-codes-of-conduct operation.
 	//
+	// Get all codes of conduct.
+	//
 	// GET /codes_of_conduct
 	CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error)
 	// CodesOfConductGetConductCode implements codes-of-conduct/get-conduct-code operation.
+	//
+	// Get a code of conduct.
 	//
 	// GET /codes_of_conduct/{key}
 	CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error)
@@ -2263,6 +2289,8 @@ type Handler interface {
 	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (RunnerGroupsEnterprise, error)
 	// GistsCheckIsStarred implements gists/check-is-starred operation.
 	//
+	// Check if a gist is starred.
+	//
 	// GET /gists/{gist_id}/star
 	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
 	// GistsCreate implements gists/create operation.
@@ -2275,13 +2303,19 @@ type Handler interface {
 	GistsCreate(ctx context.Context, req GistsCreateReq) (GistsCreateRes, error)
 	// GistsCreateComment implements gists/create-comment operation.
 	//
+	// Create a gist comment.
+	//
 	// POST /gists/{gist_id}/comments
 	GistsCreateComment(ctx context.Context, req GistsCreateCommentReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error)
 	// GistsDelete implements gists/delete operation.
 	//
+	// Delete a gist.
+	//
 	// DELETE /gists/{gist_id}
 	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error)
 	// GistsDeleteComment implements gists/delete-comment operation.
+	//
+	// Delete a gist comment.
 	//
 	// DELETE /gists/{gist_id}/comments/{comment_id}
 	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
@@ -2293,13 +2327,19 @@ type Handler interface {
 	GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error)
 	// GistsGet implements gists/get operation.
 	//
+	// Get a gist.
+	//
 	// GET /gists/{gist_id}
 	GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error)
 	// GistsGetComment implements gists/get-comment operation.
 	//
+	// Get a gist comment.
+	//
 	// GET /gists/{gist_id}/comments/{comment_id}
 	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
 	// GistsGetRevision implements gists/get-revision operation.
+	//
+	// Get a gist revision.
 	//
 	// GET /gists/{gist_id}/{sha}
 	GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error)
@@ -2312,9 +2352,13 @@ type Handler interface {
 	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
 	// GistsListComments implements gists/list-comments operation.
 	//
+	// List gist comments.
+	//
 	// GET /gists/{gist_id}/comments
 	GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error)
 	// GistsListCommits implements gists/list-commits operation.
+	//
+	// List gist commits.
 	//
 	// GET /gists/{gist_id}/commits
 	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
@@ -2325,6 +2369,8 @@ type Handler interface {
 	// GET /users/{username}/gists
 	GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error)
 	// GistsListForks implements gists/list-forks operation.
+	//
+	// List gist forks.
 	//
 	// GET /gists/{gist_id}/forks
 	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
@@ -2353,13 +2399,19 @@ type Handler interface {
 	GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error)
 	// GistsUnstar implements gists/unstar operation.
 	//
+	// Unstar a gist.
+	//
 	// DELETE /gists/{gist_id}/star
 	GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error)
 	// GistsUpdateComment implements gists/update-comment operation.
 	//
+	// Update a gist comment.
+	//
 	// PATCH /gists/{gist_id}/comments/{comment_id}
 	GistsUpdateComment(ctx context.Context, req GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error)
 	// GitCreateBlob implements git/create-blob operation.
+	//
+	// Create a blob.
 	//
 	// POST /repos/{owner}/{repo}/git/blobs
 	GitCreateBlob(ctx context.Context, req GitCreateBlobReq, params GitCreateBlobParams) (GitCreateBlobRes, error)
@@ -2465,6 +2517,8 @@ type Handler interface {
 	// POST /repos/{owner}/{repo}/git/trees
 	GitCreateTree(ctx context.Context, req GitCreateTreeReq, params GitCreateTreeParams) (GitCreateTreeRes, error)
 	// GitDeleteRef implements git/delete-ref operation.
+	//
+	// Delete a reference.
 	//
 	// DELETE /repos/{owner}/{repo}/git/refs/{ref}
 	GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (GitDeleteRefRes, error)
@@ -2595,6 +2649,8 @@ type Handler interface {
 	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (GitListMatchingRefsOKHeaders, error)
 	// GitUpdateRef implements git/update-ref operation.
 	//
+	// Update a reference.
+	//
 	// PATCH /repos/{owner}/{repo}/git/refs/{ref}
 	GitUpdateRef(ctx context.Context, req GitUpdateRefReq, params GitUpdateRefParams) (GitUpdateRefRes, error)
 	// GitignoreGetAllTemplates implements gitignore/get-all-templates operation.
@@ -2704,21 +2760,31 @@ type Handler interface {
 	IssuesCreateComment(ctx context.Context, req IssuesCreateCommentReq, params IssuesCreateCommentParams) (IssuesCreateCommentRes, error)
 	// IssuesCreateLabel implements issues/create-label operation.
 	//
+	// Create a label.
+	//
 	// POST /repos/{owner}/{repo}/labels
 	IssuesCreateLabel(ctx context.Context, req IssuesCreateLabelReq, params IssuesCreateLabelParams) (IssuesCreateLabelRes, error)
 	// IssuesCreateMilestone implements issues/create-milestone operation.
+	//
+	// Create a milestone.
 	//
 	// POST /repos/{owner}/{repo}/milestones
 	IssuesCreateMilestone(ctx context.Context, req IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (IssuesCreateMilestoneRes, error)
 	// IssuesDeleteComment implements issues/delete-comment operation.
 	//
+	// Delete an issue comment.
+	//
 	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteCommentNoContent, error)
 	// IssuesDeleteLabel implements issues/delete-label operation.
 	//
+	// Delete a label.
+	//
 	// DELETE /repos/{owner}/{repo}/labels/{name}
 	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (IssuesDeleteLabelNoContent, error)
 	// IssuesDeleteMilestone implements issues/delete-milestone operation.
+	//
+	// Delete a milestone.
 	//
 	// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error)
@@ -2748,17 +2814,25 @@ type Handler interface {
 	IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesGetRes, error)
 	// IssuesGetComment implements issues/get-comment operation.
 	//
+	// Get an issue comment.
+	//
 	// GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 	IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error)
 	// IssuesGetEvent implements issues/get-event operation.
+	//
+	// Get an issue event.
 	//
 	// GET /repos/{owner}/{repo}/issues/events/{event_id}
 	IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventRes, error)
 	// IssuesGetLabel implements issues/get-label operation.
 	//
+	// Get a label.
+	//
 	// GET /repos/{owner}/{repo}/labels/{name}
 	IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error)
 	// IssuesGetMilestone implements issues/get-milestone operation.
+	//
+	// Get a milestone.
 	//
 	// GET /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error)
@@ -2800,6 +2874,8 @@ type Handler interface {
 	// GET /repos/{owner}/{repo}/issues/comments
 	IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (IssuesListCommentsForRepoRes, error)
 	// IssuesListEventsForRepo implements issues/list-events-for-repo operation.
+	//
+	// List issue events for a repository.
 	//
 	// GET /repos/{owner}/{repo}/issues/events
 	IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (IssuesListEventsForRepoRes, error)
@@ -2847,17 +2923,25 @@ type Handler interface {
 	IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (IssuesListForRepoRes, error)
 	// IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
 	//
+	// List labels for issues in a milestone.
+	//
 	// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (IssuesListLabelsForMilestoneOKHeaders, error)
 	// IssuesListLabelsForRepo implements issues/list-labels-for-repo operation.
+	//
+	// List labels for a repository.
 	//
 	// GET /repos/{owner}/{repo}/labels
 	IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error)
 	// IssuesListLabelsOnIssue implements issues/list-labels-on-issue operation.
 	//
+	// List labels for an issue.
+	//
 	// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 	IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error)
 	// IssuesListMilestones implements issues/list-milestones operation.
+	//
+	// List milestones.
 	//
 	// GET /repos/{owner}/{repo}/milestones
 	IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error)
@@ -2871,6 +2955,8 @@ type Handler interface {
 	// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
 	IssuesLock(ctx context.Context, req OptNilIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error)
 	// IssuesRemoveAllLabels implements issues/remove-all-labels operation.
+	//
+	// Remove all labels from an issue.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 	IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error)
@@ -2901,21 +2987,31 @@ type Handler interface {
 	IssuesUpdate(ctx context.Context, req OptIssuesUpdateReq, params IssuesUpdateParams) (IssuesUpdateRes, error)
 	// IssuesUpdateComment implements issues/update-comment operation.
 	//
+	// Update an issue comment.
+	//
 	// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
 	IssuesUpdateComment(ctx context.Context, req IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (IssuesUpdateCommentRes, error)
 	// IssuesUpdateLabel implements issues/update-label operation.
+	//
+	// Update a label.
 	//
 	// PATCH /repos/{owner}/{repo}/labels/{name}
 	IssuesUpdateLabel(ctx context.Context, req OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (Label, error)
 	// IssuesUpdateMilestone implements issues/update-milestone operation.
 	//
+	// Update a milestone.
+	//
 	// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 	IssuesUpdateMilestone(ctx context.Context, req OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (Milestone, error)
 	// LicensesGet implements licenses/get operation.
 	//
+	// Get a license.
+	//
 	// GET /licenses/{license}
 	LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error)
 	// LicensesGetAllCommonlyUsed implements licenses/get-all-commonly-used operation.
+	//
+	// Get all commonly used licenses.
 	//
 	// GET /licenses
 	LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error)
@@ -3216,6 +3312,8 @@ type Handler interface {
 	// allowing tokens in [the GitHub Help documentation](https://help.github.
 	// com/articles/about-identity-and-access-management-with-saml-single-sign-on).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// POST /authorizations
 	OAuthAuthorizationsCreateAuthorization(ctx context.Context, req OptOAuthAuthorizationsCreateAuthorizationReq) (OAuthAuthorizationsCreateAuthorizationRes, error)
 	// OAuthAuthorizationsDeleteAuthorization implements oauth-authorizations/delete-authorization operation.
@@ -3228,6 +3326,8 @@ type Handler interface {
 	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
 	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /authorizations/{authorization_id}
 	OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error)
@@ -3245,6 +3345,8 @@ type Handler interface {
 	// longer listed on [the application authorizations settings screen within GitHub](https://github.
 	// com/settings/applications#authorized).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// DELETE /applications/grants/{grant_id}
 	OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error)
 	// OAuthAuthorizationsGetAuthorization implements oauth-authorizations/get-authorization operation.
@@ -3258,6 +3360,8 @@ type Handler interface {
 	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /authorizations/{authorization_id}
 	OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error)
 	// OAuthAuthorizationsGetGrant implements oauth-authorizations/get-grant operation.
@@ -3270,6 +3374,8 @@ type Handler interface {
 	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
 	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /applications/grants/{grant_id}
 	OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error)
@@ -3303,6 +3409,8 @@ type Handler interface {
 	// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PUT /authorizations/clients/{client_id}
 	OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, error)
 	// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint implements oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
@@ -3330,6 +3438,8 @@ type Handler interface {
 	// information, see "[Working with two-factor authentication](https://docs.github.
 	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication).".
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PUT /authorizations/clients/{client_id}/{fingerprint}
 	OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, error)
 	// OAuthAuthorizationsListAuthorizations implements oauth-authorizations/list-authorizations operation.
@@ -3342,6 +3452,8 @@ type Handler interface {
 	// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
 	// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
 	// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /authorizations
 	OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error)
@@ -3365,6 +3477,8 @@ type Handler interface {
 	// application has one token with `repo` scope and another token with `user` scope, the grant will
 	// return `["repo", "user"]`.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /applications/grants
 	OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error)
 	// OAuthAuthorizationsUpdateAuthorization implements oauth-authorizations/update-authorization operation.
@@ -3382,9 +3496,13 @@ type Handler interface {
 	// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
 	// You can only send one of these scope keys at a time.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PATCH /authorizations/{authorization_id}
 	OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (OAuthAuthorizationsUpdateAuthorizationRes, error)
 	// OrgsBlockUser implements orgs/block-user operation.
+	//
+	// Block a user from an organization.
 	//
 	// PUT /orgs/{org}/blocks/{username}
 	OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (OrgsBlockUserRes, error)
@@ -3399,6 +3517,8 @@ type Handler interface {
 	OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (OrgsCancelInvitationRes, error)
 	// OrgsCheckBlockedUser implements orgs/check-blocked-user operation.
 	//
+	// Check if a user is blocked by an organization.
+	//
 	// GET /orgs/{org}/blocks/{username}
 	OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error)
 	// OrgsCheckMembershipForUser implements orgs/check-membership-for-user operation.
@@ -3408,6 +3528,8 @@ type Handler interface {
 	// GET /orgs/{org}/members/{username}
 	OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error)
 	// OrgsCheckPublicMembershipForUser implements orgs/check-public-membership-for-user operation.
+	//
+	// Check public organization membership for a user.
 	//
 	// GET /orgs/{org}/public_members/{username}
 	OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error)
@@ -3443,6 +3565,8 @@ type Handler interface {
 	OrgsCreateWebhook(ctx context.Context, req OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (OrgsCreateWebhookRes, error)
 	// OrgsDeleteWebhook implements orgs/delete-webhook operation.
 	//
+	// Delete an organization webhook.
+	//
 	// DELETE /orgs/{org}/hooks/{hook_id}
 	OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error)
 	// OrgsGet implements orgs/get operation.
@@ -3471,6 +3595,8 @@ type Handler interface {
 	// GET /orgs/{org}/audit-log
 	OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error)
 	// OrgsGetMembershipForAuthenticatedUser implements orgs/get-membership-for-authenticated-user operation.
+	//
+	// Get an organization membership for the authenticated user.
 	//
 	// GET /user/memberships/orgs/{org}
 	OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error)
@@ -3566,6 +3692,8 @@ type Handler interface {
 	OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (OrgsListMembersRes, error)
 	// OrgsListMembershipsForAuthenticatedUser implements orgs/list-memberships-for-authenticated-user operation.
 	//
+	// List organization memberships for the authenticated user.
+	//
 	// GET /user/memberships/orgs
 	OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (OrgsListMembershipsForAuthenticatedUserRes, error)
 	// OrgsListOutsideCollaborators implements orgs/list-outside-collaborators operation.
@@ -3610,6 +3738,8 @@ type Handler interface {
 	OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (OrgsListWebhookDeliveriesRes, error)
 	// OrgsListWebhooks implements orgs/list-webhooks operation.
 	//
+	// List organization webhooks.
+	//
 	// GET /orgs/{org}/hooks
 	OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error)
 	// OrgsPingWebhook implements orgs/ping-webhook operation.
@@ -3649,6 +3779,8 @@ type Handler interface {
 	// DELETE /orgs/{org}/outside_collaborators/{username}
 	OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error)
 	// OrgsRemovePublicMembershipForAuthenticatedUser implements orgs/remove-public-membership-for-authenticated-user operation.
+	//
+	// Remove public organization membership for the authenticated user.
 	//
 	// DELETE /orgs/{org}/public_members/{username}
 	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (OrgsRemovePublicMembershipForAuthenticatedUserNoContent, error)
@@ -3695,9 +3827,13 @@ type Handler interface {
 	OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error)
 	// OrgsUnblockUser implements orgs/unblock-user operation.
 	//
+	// Unblock a user from an organization.
+	//
 	// DELETE /orgs/{org}/blocks/{username}
 	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUserNoContent, error)
 	// OrgsUpdateMembershipForAuthenticatedUser implements orgs/update-membership-for-authenticated-user operation.
+	//
+	// Update an organization membership for the authenticated user.
 	//
 	// PATCH /user/memberships/orgs/{org}
 	OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, req OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (OrgsUpdateMembershipForAuthenticatedUserRes, error)
@@ -3999,9 +4135,13 @@ type Handler interface {
 	ProjectsAddCollaborator(ctx context.Context, req OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error)
 	// ProjectsCreateColumn implements projects/create-column operation.
 	//
+	// Create a project column.
+	//
 	// POST /projects/{project_id}/columns
 	ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error)
 	// ProjectsCreateForAuthenticatedUser implements projects/create-for-authenticated-user operation.
+	//
+	// Create a user project.
 	//
 	// POST /user/projects
 	ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserReq) (ProjectsCreateForAuthenticatedUserRes, error)
@@ -4029,9 +4169,13 @@ type Handler interface {
 	ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error)
 	// ProjectsDeleteCard implements projects/delete-card operation.
 	//
+	// Delete a project card.
+	//
 	// DELETE /projects/columns/cards/{card_id}
 	ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error)
 	// ProjectsDeleteColumn implements projects/delete-column operation.
+	//
+	// Delete a project column.
 	//
 	// DELETE /projects/columns/{column_id}
 	ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error)
@@ -4045,9 +4189,13 @@ type Handler interface {
 	ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error)
 	// ProjectsGetCard implements projects/get-card operation.
 	//
+	// Get a project card.
+	//
 	// GET /projects/columns/cards/{card_id}
 	ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error)
 	// ProjectsGetColumn implements projects/get-column operation.
+	//
+	// Get a project column.
 	//
 	// GET /projects/columns/{column_id}
 	ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error)
@@ -4060,6 +4208,8 @@ type Handler interface {
 	// GET /projects/{project_id}/collaborators/{username}/permission
 	ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (ProjectsGetPermissionForUserRes, error)
 	// ProjectsListCards implements projects/list-cards operation.
+	//
+	// List project cards.
 	//
 	// GET /projects/columns/{column_id}/cards
 	ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error)
@@ -4074,6 +4224,8 @@ type Handler interface {
 	// GET /projects/{project_id}/collaborators
 	ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (ProjectsListCollaboratorsRes, error)
 	// ProjectsListColumns implements projects/list-columns operation.
+	//
+	// List project columns.
 	//
 	// GET /projects/{project_id}/columns
 	ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error)
@@ -4095,13 +4247,19 @@ type Handler interface {
 	ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error)
 	// ProjectsListForUser implements projects/list-for-user operation.
 	//
+	// List user projects.
+	//
 	// GET /users/{username}/projects
 	ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (ProjectsListForUserRes, error)
 	// ProjectsMoveCard implements projects/move-card operation.
 	//
+	// Move a project card.
+	//
 	// POST /projects/columns/cards/{card_id}/moves
 	ProjectsMoveCard(ctx context.Context, req ProjectsMoveCardReq, params ProjectsMoveCardParams) (ProjectsMoveCardRes, error)
 	// ProjectsMoveColumn implements projects/move-column operation.
+	//
+	// Move a project column.
 	//
 	// POST /projects/columns/{column_id}/moves
 	ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error)
@@ -4122,13 +4280,19 @@ type Handler interface {
 	ProjectsUpdate(ctx context.Context, req OptProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error)
 	// ProjectsUpdateCard implements projects/update-card operation.
 	//
+	// Update an existing project card.
+	//
 	// PATCH /projects/columns/cards/{card_id}
 	ProjectsUpdateCard(ctx context.Context, req OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error)
 	// ProjectsUpdateColumn implements projects/update-column operation.
 	//
+	// Update an existing project column.
+	//
 	// PATCH /projects/columns/{column_id}
 	ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error)
 	// PullsCheckIfMerged implements pulls/check-if-merged operation.
+	//
+	// Check if a pull request has been merged.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 	PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error)
@@ -4219,6 +4383,8 @@ type Handler interface {
 	PullsCreateReviewComment(ctx context.Context, req PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (PullsCreateReviewCommentRes, error)
 	// PullsDeletePendingReview implements pulls/delete-pending-review operation.
 	//
+	// Delete a pending review for a pull request.
+	//
 	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 	PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error)
 	// PullsDeleteReviewComment implements pulls/delete-review-comment operation.
@@ -4275,6 +4441,8 @@ type Handler interface {
 	PullsGet(ctx context.Context, params PullsGetParams) (PullsGetRes, error)
 	// PullsGetReview implements pulls/get-review operation.
 	//
+	// Get a review for a pull request.
+	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 	PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error)
 	// PullsGetReviewComment implements pulls/get-review-comment operation.
@@ -4316,6 +4484,8 @@ type Handler interface {
 	PullsListFiles(ctx context.Context, params PullsListFilesParams) (PullsListFilesRes, error)
 	// PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
 	//
+	// List requested reviewers for a pull request.
+	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (PullRequestReviewRequestHeaders, error)
 	// PullsListReviewComments implements pulls/list-review-comments operation.
@@ -4352,9 +4522,13 @@ type Handler interface {
 	PullsMerge(ctx context.Context, req OptNilPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error)
 	// PullsRemoveRequestedReviewers implements pulls/remove-requested-reviewers operation.
 	//
+	// Remove requested reviewers from a pull request.
+	//
 	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 	PullsRemoveRequestedReviewers(ctx context.Context, req PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (PullsRemoveRequestedReviewersRes, error)
 	// PullsSubmitReview implements pulls/submit-review operation.
+	//
+	// Submit a review for a pull request.
 	//
 	// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 	PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error)
@@ -4461,6 +4635,8 @@ type Handler interface {
 	// response with an HTTP `200` status means that you already added the reaction type to this team
 	// discussion comment.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 	ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (Reaction, error)
 	// ReactionsCreateForTeamDiscussionInOrg implements reactions/create-for-team-discussion-in-org operation.
@@ -4484,6 +4660,8 @@ type Handler interface {
 	//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
 	// status means that you already added the reaction type to this team discussion.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// POST /teams/{team_id}/discussions/{discussion_number}/reactions
 	ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (Reaction, error)
@@ -4553,6 +4731,8 @@ type Handler interface {
 	// discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion
 	// comment](https://docs.github.com/rest/reference/teams#discussion-comments).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// DELETE /reactions/{reaction_id}
 	ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error)
 	// ReactionsListForCommitComment implements reactions/list-for-commit-comment operation.
@@ -4600,6 +4780,8 @@ type Handler interface {
 	// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `read:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 	ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (ReactionsListForTeamDiscussionCommentLegacyOKHeaders, error)
 	// ReactionsListForTeamDiscussionInOrg implements reactions/list-for-team-discussion-in-org operation.
@@ -4622,9 +4804,13 @@ type Handler interface {
 	// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/reactions
 	ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (ReactionsListForTeamDiscussionLegacyOKHeaders, error)
 	// ReposAcceptInvitation implements repos/accept-invitation operation.
+	//
+	// Accept a repository invitation.
 	//
 	// PATCH /user/repository_invitations/{invitation_id}
 	ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error)
@@ -5013,6 +5199,8 @@ type Handler interface {
 	ReposCreateWebhook(ctx context.Context, req OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error)
 	// ReposDeclineInvitation implements repos/decline-invitation operation.
 	//
+	// Decline a repository invitation.
+	//
 	// DELETE /user/repository_invitations/{invitation_id}
 	ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error)
 	// ReposDelete implements repos/delete operation.
@@ -5072,6 +5260,8 @@ type Handler interface {
 	ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error)
 	// ReposDeleteCommitComment implements repos/delete-commit-comment operation.
 	//
+	// Delete a commit comment.
+	//
 	// DELETE /repos/{owner}/{repo}/comments/{comment_id}
 	ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error)
 	// ReposDeleteCommitSignatureProtection implements repos/delete-commit-signature-protection operation.
@@ -5123,9 +5313,13 @@ type Handler interface {
 	ReposDeleteFile(ctx context.Context, req ReposDeleteFileReq, params ReposDeleteFileParams) (ReposDeleteFileRes, error)
 	// ReposDeleteInvitation implements repos/delete-invitation operation.
 	//
+	// Delete a repository invitation.
+	//
 	// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitationNoContent, error)
 	// ReposDeletePagesSite implements repos/delete-pages-site operation.
+	//
+	// Delete a GitHub Pages site.
 	//
 	// DELETE /repos/{owner}/{repo}/pages
 	ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (ReposDeletePagesSiteRes, error)
@@ -5147,9 +5341,13 @@ type Handler interface {
 	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (ReposDeleteReleaseNoContent, error)
 	// ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
 	//
+	// Delete a release asset.
+	//
 	// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (ReposDeleteReleaseAssetNoContent, error)
 	// ReposDeleteWebhook implements repos/delete-webhook operation.
+	//
+	// Delete a repository webhook.
 	//
 	// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 	ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error)
@@ -5263,6 +5461,8 @@ type Handler interface {
 	ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error)
 	// ReposGetAllTopics implements repos/get-all-topics operation.
 	//
+	// Get all repository topics.
+	//
 	// GET /repos/{owner}/{repo}/topics
 	ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error)
 	// ReposGetAppsWithAccessToProtectedBranch implements repos/get-apps-with-access-to-protected-branch operation.
@@ -5286,6 +5486,8 @@ type Handler interface {
 	// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 	ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error)
 	// ReposGetBranch implements repos/get-branch operation.
+	//
+	// Get a branch.
 	//
 	// GET /repos/{owner}/{repo}/branches/{branch}
 	ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error)
@@ -5392,6 +5594,8 @@ type Handler interface {
 	ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error)
 	// ReposGetCommitComment implements repos/get-commit-comment operation.
 	//
+	// Get a commit comment.
+	//
 	// GET /repos/{owner}/{repo}/comments/{comment_id}
 	ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error)
 	// ReposGetCommitSignatureProtection implements repos/get-commit-signature-protection operation.
@@ -5437,9 +5641,13 @@ type Handler interface {
 	ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error)
 	// ReposGetDeployKey implements repos/get-deploy-key operation.
 	//
+	// Get a deploy key.
+	//
 	// GET /repos/{owner}/{repo}/keys/{key_id}
 	ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error)
 	// ReposGetDeployment implements repos/get-deployment operation.
+	//
+	// Get a deployment.
 	//
 	// GET /repos/{owner}/{repo}/deployments/{deployment_id}
 	ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (ReposGetDeploymentRes, error)
@@ -5450,6 +5658,8 @@ type Handler interface {
 	// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error)
 	// ReposGetLatestPagesBuild implements repos/get-latest-pages-build operation.
+	//
+	// Get latest Pages build.
 	//
 	// GET /repos/{owner}/{repo}/pages/builds/latest
 	ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (PageBuild, error)
@@ -5464,9 +5674,13 @@ type Handler interface {
 	ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (Release, error)
 	// ReposGetPages implements repos/get-pages operation.
 	//
+	// Get a GitHub Pages site.
+	//
 	// GET /repos/{owner}/{repo}/pages
 	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error)
 	// ReposGetPagesBuild implements repos/get-pages-build operation.
+	//
+	// Get GitHub Pages build.
 	//
 	// GET /repos/{owner}/{repo}/pages/builds/{build_id}
 	ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (PageBuild, error)
@@ -5635,6 +5849,8 @@ type Handler interface {
 	ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error)
 	// ReposListBranches implements repos/list-branches operation.
 	//
+	// List branches.
+	//
 	// GET /repos/{owner}/{repo}/branches
 	ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error)
 	// ReposListBranchesForHeadCommit implements repos/list-branches-for-head-commit operation.
@@ -5733,6 +5949,8 @@ type Handler interface {
 	ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error)
 	// ReposListDeployKeys implements repos/list-deploy-keys operation.
 	//
+	// List deploy keys.
+	//
 	// GET /repos/{owner}/{repo}/keys
 	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (ReposListDeployKeysOKHeaders, error)
 	// ReposListDeploymentStatuses implements repos/list-deployment-statuses operation.
@@ -5771,6 +5989,8 @@ type Handler interface {
 	ReposListForUser(ctx context.Context, params ReposListForUserParams) (ReposListForUserOKHeaders, error)
 	// ReposListForks implements repos/list-forks operation.
 	//
+	// List forks.
+	//
 	// GET /repos/{owner}/{repo}/forks
 	ReposListForks(ctx context.Context, params ReposListForksParams) (ReposListForksRes, error)
 	// ReposListInvitations implements repos/list-invitations operation.
@@ -5795,6 +6015,8 @@ type Handler interface {
 	// GET /repos/{owner}/{repo}/languages
 	ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error)
 	// ReposListPagesBuilds implements repos/list-pages-builds operation.
+	//
+	// List GitHub Pages builds.
 	//
 	// GET /repos/{owner}/{repo}/pages/builds
 	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (ReposListPagesBuildsOKHeaders, error)
@@ -5823,6 +6045,8 @@ type Handler interface {
 	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (ReposListPullRequestsAssociatedWithCommitOKHeaders, error)
 	// ReposListReleaseAssets implements repos/list-release-assets operation.
 	//
+	// List release assets.
+	//
 	// GET /repos/{owner}/{repo}/releases/{release_id}/assets
 	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (ReposListReleaseAssetsOKHeaders, error)
 	// ReposListReleases implements repos/list-releases operation.
@@ -5837,9 +6061,13 @@ type Handler interface {
 	ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error)
 	// ReposListTags implements repos/list-tags operation.
 	//
+	// List repository tags.
+	//
 	// GET /repos/{owner}/{repo}/tags
 	ReposListTags(ctx context.Context, params ReposListTagsParams) (ReposListTagsOKHeaders, error)
 	// ReposListTeams implements repos/list-teams operation.
+	//
+	// List repository teams.
 	//
 	// GET /repos/{owner}/{repo}/teams
 	ReposListTeams(ctx context.Context, params ReposListTeamsParams) (ReposListTeamsOKHeaders, error)
@@ -5851,9 +6079,13 @@ type Handler interface {
 	ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (ReposListWebhookDeliveriesRes, error)
 	// ReposListWebhooks implements repos/list-webhooks operation.
 	//
+	// List repository webhooks.
+	//
 	// GET /repos/{owner}/{repo}/hooks
 	ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error)
 	// ReposMerge implements repos/merge operation.
+	//
+	// Merge a branch.
 	//
 	// POST /repos/{owner}/{repo}/merges
 	ReposMerge(ctx context.Context, req ReposMergeReq, params ReposMergeParams) (ReposMergeRes, error)
@@ -5896,6 +6128,8 @@ type Handler interface {
 	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 	ReposRemoveAppAccessRestrictions(ctx context.Context, req OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (ReposRemoveAppAccessRestrictionsRes, error)
 	// ReposRemoveCollaborator implements repos/remove-collaborator operation.
+	//
+	// Remove a repository collaborator.
 	//
 	// DELETE /repos/{owner}/{repo}/collaborators/{username}
 	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaboratorNoContent, error)
@@ -5973,6 +6207,8 @@ type Handler interface {
 	// POST /repos/{owner}/{repo}/branches/{branch}/rename
 	ReposRenameBranch(ctx context.Context, req OptReposRenameBranchReq, params ReposRenameBranchParams) (ReposRenameBranchRes, error)
 	// ReposReplaceAllTopics implements repos/replace-all-topics operation.
+	//
+	// Replace all repository topics.
 	//
 	// PUT /repos/{owner}/{repo}/topics
 	ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error)
@@ -6107,9 +6343,13 @@ type Handler interface {
 	ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error)
 	// ReposUpdateCommitComment implements repos/update-commit-comment operation.
 	//
+	// Update a commit comment.
+	//
 	// PATCH /repos/{owner}/{repo}/comments/{comment_id}
 	ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error)
 	// ReposUpdateInvitation implements repos/update-invitation operation.
+	//
+	// Update a repository invitation.
 	//
 	// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 	ReposUpdateInvitation(ctx context.Context, req OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (RepositoryInvitation, error)
@@ -6170,6 +6410,8 @@ type Handler interface {
 	// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 	ReposUpdateWebhookConfigForRepo(ctx context.Context, req OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (WebhookConfig, error)
 	// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
+	//
+	// Delete a SCIM user from an organization.
 	//
 	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
@@ -6372,6 +6614,8 @@ type Handler interface {
 	// information, see "[HTTP verbs](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PUT /teams/{team_id}/members/{username}
 	TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error)
 	// TeamsAddOrUpdateMembershipForUserInOrg implements teams/add-or-update-membership-for-user-in-org operation.
@@ -6429,6 +6673,8 @@ type Handler interface {
 	// member's role. To update the membership of a team member, the authenticated user must be an
 	// organization owner or a team maintainer.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PUT /teams/{team_id}/memberships/{username}
 	TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, req OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error)
 	// TeamsAddOrUpdateProjectPermissionsInOrg implements teams/add-or-update-project-permissions-in-org operation.
@@ -6450,6 +6696,8 @@ type Handler interface {
 	// Adds an organization project to a team. To add a project to a team or update the team's permission
 	// on a project, the authenticated user must have `admin` permissions for the project. The project
 	// and team must be part of the same organization.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// PUT /teams/{team_id}/projects/{project_id}
 	TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, req OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (TeamsAddOrUpdateProjectPermissionsLegacyRes, error)
@@ -6485,6 +6733,8 @@ type Handler interface {
 	// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PUT /teams/{team_id}/repos/{owner}/{repo}
 	TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (TeamsAddOrUpdateRepoPermissionsLegacyRes, error)
 	// TeamsCheckPermissionsForProjectInOrg implements teams/check-permissions-for-project-in-org operation.
@@ -6504,6 +6754,8 @@ type Handler interface {
 	// endpoint.
 	// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
 	// response includes projects inherited from a parent team.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}/projects/{project_id}
 	TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error)
@@ -6531,6 +6783,8 @@ type Handler interface {
 	// You can also get information about the specified repository, including what permissions the team
 	// grants on it, by passing the following custom [media type](https://docs.github.
 	// com/rest/overview/media-types/) via the `Accept` header:.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}/repos/{owner}/{repo}
 	TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error)
@@ -6578,6 +6832,8 @@ type Handler interface {
 	// rate limits](https://docs.github.
 	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// POST /teams/{team_id}/discussions/{discussion_number}/comments
 	TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsCreateDiscussionInOrg implements teams/create-discussion-in-org operation.
@@ -6611,6 +6867,8 @@ type Handler interface {
 	// rate limits](https://docs.github.
 	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// POST /teams/{team_id}/discussions
 	TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsCreateOrUpdateIdpGroupConnectionsInOrg implements teams/create-or-update-idp-group-connections-in-org operation.
@@ -6639,6 +6897,8 @@ type Handler interface {
 	// team, you must include all new and existing groups to avoid replacing existing groups with the new
 	// ones. Specifying an empty `groups` array will remove all connections for a team.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PATCH /teams/{team_id}/team-sync/group-mappings
 	TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, error)
 	// TeamsDeleteDiscussionCommentInOrg implements teams/delete-discussion-comment-in-org operation.
@@ -6658,6 +6918,8 @@ type Handler interface {
 	// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (TeamsDeleteDiscussionCommentLegacyNoContent, error)
 	// TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
@@ -6676,6 +6938,8 @@ type Handler interface {
 	// github.com/rest/reference/teams#delete-a-discussion) endpoint.
 	// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}/discussions/{discussion_number}
 	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (TeamsDeleteDiscussionLegacyNoContent, error)
@@ -6697,6 +6961,8 @@ type Handler interface {
 	// To delete a team, the authenticated user must be an organization owner or team maintainer.
 	// If you are an organization owner, deleting a parent team will delete all of its child teams as
 	// well.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}
 	TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (TeamsDeleteLegacyRes, error)
@@ -6725,6 +6991,8 @@ type Handler interface {
 	// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
 	// TeamsGetDiscussionInOrg implements teams/get-discussion-in-org operation.
@@ -6744,6 +7012,8 @@ type Handler interface {
 	// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/discussions/{discussion_number}
 	TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsGetLegacy implements teams/get-legacy operation.
@@ -6751,6 +7021,8 @@ type Handler interface {
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
 	// We recommend migrating your existing code to use the [Get a team by name](https://docs.github.
 	// com/rest/reference/teams#get-a-team-by-name) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}
 	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error)
@@ -6761,6 +7033,8 @@ type Handler interface {
 	// com/rest/reference/teams#get-team-membership-for-a-user) endpoint instead. It allows you to get
 	// both active and pending memberships.
 	// To list members in a team, the team must be visible to the authenticated user.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}/members/{username}
 	TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error)
@@ -6789,6 +7063,8 @@ type Handler interface {
 	// The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
 	// roles, see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/memberships/{username}
 	TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error)
 	// TeamsList implements teams/list operation.
@@ -6811,6 +7087,8 @@ type Handler interface {
 	// We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.
 	// com/rest/reference/teams#list-child-teams) endpoint.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/teams
 	TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (TeamsListChildLegacyRes, error)
 	// TeamsListDiscussionCommentsInOrg implements teams/list-discussion-comments-in-org operation.
@@ -6830,6 +7108,8 @@ type Handler interface {
 	// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/comments
 	TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (TeamsListDiscussionCommentsLegacyOKHeaders, error)
 	// TeamsListDiscussionsInOrg implements teams/list-discussions-in-org operation.
@@ -6848,6 +7128,8 @@ type Handler interface {
 	// com/rest/reference/teams#list-discussions) endpoint.
 	// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}/discussions
 	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (TeamsListDiscussionsLegacyOKHeaders, error)
@@ -6869,6 +7151,8 @@ type Handler interface {
 	// information, see [GitHub's products](https://help.github.
 	// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 	// List IdP groups connected to a team on GitHub.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}/team-sync/group-mappings
 	TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error)
@@ -6909,6 +7193,8 @@ type Handler interface {
 	// com/rest/reference/teams#list-team-members) endpoint.
 	// Team members will include the members of child teams.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/members
 	TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (TeamsListMembersLegacyRes, error)
 	// TeamsListPendingInvitationsInOrg implements teams/list-pending-invitations-in-org operation.
@@ -6932,6 +7218,8 @@ type Handler interface {
 	// `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
 	// `null`.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/invitations
 	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (TeamsListPendingInvitationsLegacyOKHeaders, error)
 	// TeamsListProjectsInOrg implements teams/list-projects-in-org operation.
@@ -6949,6 +7237,8 @@ type Handler interface {
 	// github.com/rest/reference/teams#list-team-projects) endpoint.
 	// Lists the organization projects for a team.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// GET /teams/{team_id}/projects
 	TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error)
 	// TeamsListReposInOrg implements teams/list-repos-in-org operation.
@@ -6964,6 +7254,8 @@ type Handler interface {
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
 	// We recommend migrating your existing code to use the new [List team repositories](https://docs.
 	// github.com/rest/reference/teams#list-team-repositories) endpoint.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// GET /teams/{team_id}/repos
 	TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error)
@@ -6986,6 +7278,8 @@ type Handler interface {
 	// members in an organization. For more information, see "[Synchronizing teams between your identity
 	// provider and GitHub](https://help.github.
 	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}/members/{username}
 	TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error)
@@ -7028,6 +7322,8 @@ type Handler interface {
 	// provider and GitHub](https://help.github.
 	// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// DELETE /teams/{team_id}/memberships/{username}
 	TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error)
 	// TeamsRemoveProjectInOrg implements teams/remove-project-in-org operation.
@@ -7050,6 +7346,8 @@ type Handler interface {
 	// any project from the team. To remove a project from a team as an organization member, the
 	// authenticated user must have `read` access to both the team and project, or `admin` access to the
 	// team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}/projects/{project_id}
 	TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (TeamsRemoveProjectLegacyRes, error)
@@ -7074,6 +7372,8 @@ type Handler interface {
 	// authenticated user must have admin access to the repository and must be able to see the team.
 	// NOTE: This does not delete the repository, it just removes it from the team.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// DELETE /teams/{team_id}/repos/{owner}/{repo}
 	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (TeamsRemoveRepoLegacyNoContent, error)
 	// TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.
@@ -7092,6 +7392,8 @@ type Handler interface {
 	// comment](https://docs.github.com/rest/reference/teams#update-a-discussion-comment) endpoint.
 	// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// Deprecated: schema marks this operation as deprecated.
 	//
 	// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 	TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (TeamDiscussionComment, error)
@@ -7114,6 +7416,8 @@ type Handler interface {
 	// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PATCH /teams/{team_id}/discussions/{discussion_number}
 	TeamsUpdateDiscussionLegacy(ctx context.Context, req OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (TeamDiscussion, error)
 	// TeamsUpdateInOrg implements teams/update-in-org operation.
@@ -7132,6 +7436,8 @@ type Handler interface {
 	// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
 	// **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
 	//
+	// Deprecated: schema marks this operation as deprecated.
+	//
 	// PATCH /teams/{team_id}
 	TeamsUpdateLegacy(ctx context.Context, req TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (TeamsUpdateLegacyRes, error)
 	// UsersAddEmailForAuthenticated implements users/add-email-for-authenticated operation.
@@ -7142,17 +7448,25 @@ type Handler interface {
 	UsersAddEmailForAuthenticated(ctx context.Context, req OptUsersAddEmailForAuthenticatedReq) (UsersAddEmailForAuthenticatedRes, error)
 	// UsersBlock implements users/block operation.
 	//
+	// Block a user.
+	//
 	// PUT /user/blocks/{username}
 	UsersBlock(ctx context.Context, params UsersBlockParams) (UsersBlockRes, error)
 	// UsersCheckBlocked implements users/check-blocked operation.
+	//
+	// Check if a user is blocked by the authenticated user.
 	//
 	// GET /user/blocks/{username}
 	UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error)
 	// UsersCheckFollowingForUser implements users/check-following-for-user operation.
 	//
+	// Check if a user follows another user.
+	//
 	// GET /users/{username}/following/{target_user}
 	UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error)
 	// UsersCheckPersonIsFollowedByAuthenticated implements users/check-person-is-followed-by-authenticated operation.
+	//
+	// Check if a person is followed by the authenticated user.
 	//
 	// GET /user/following/{username}
 	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
@@ -7355,6 +7669,8 @@ type Handler interface {
 	// PATCH /user/email/visibility
 	UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, req UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (UsersSetPrimaryEmailVisibilityForAuthenticatedRes, error)
 	// UsersUnblock implements users/unblock operation.
+	//
+	// Unblock a user.
 	//
 	// DELETE /user/blocks/{username}
 	UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error)

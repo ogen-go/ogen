@@ -458,7 +458,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	return result, nil
 }
 
-// FoobarPut invokes  operation.
+// FoobarPut invokes PUT /foobar operation.
 //
 // PUT /foobar
 func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
@@ -709,7 +709,7 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	return result, nil
 }
 
-// PatternRecursiveMapGet invokes  operation.
+// PatternRecursiveMapGet invokes GET /patternRecursiveMap operation.
 //
 // GET /patternRecursiveMap
 func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursiveMap, err error) {
@@ -1237,7 +1237,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	return result, nil
 }
 
-// PetUpdateNameAliasPost invokes  operation.
+// PetUpdateNameAliasPost invokes POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDef, err error) {
@@ -1312,7 +1312,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	return result, nil
 }
 
-// PetUpdateNamePost invokes  operation.
+// PetUpdateNamePost invokes POST /pet/updateName operation.
 //
 // POST /pet/updateName
 func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDef, err error) {
@@ -1475,7 +1475,7 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	return result, nil
 }
 
-// RecursiveArrayGet invokes  operation.
+// RecursiveArrayGet invokes GET /recursiveArray operation.
 //
 // GET /recursiveArray
 func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err error) {
@@ -1515,7 +1515,7 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 	return result, nil
 }
 
-// RecursiveMapGet invokes  operation.
+// RecursiveMapGet invokes GET /recursiveMap operation.
 //
 // GET /recursiveMap
 func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err error) {
@@ -1601,7 +1601,7 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 	return result, nil
 }
 
-// StringIntMapGet invokes  operation.
+// StringIntMapGet invokes GET /stringIntMap operation.
 //
 // GET /stringIntMap
 func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err error) {

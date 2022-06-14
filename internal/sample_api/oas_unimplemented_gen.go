@@ -56,7 +56,7 @@ func (UnimplementedHandler) FoobarPost(ctx context.Context, req OptPet) (r Fooba
 	return r, ht.ErrNotImplemented
 }
 
-// FoobarPut implements  operation.
+// FoobarPut implements PUT /foobar operation.
 //
 // PUT /foobar
 func (UnimplementedHandler) FoobarPut(ctx context.Context) (r FoobarPutDef, _ error) {
@@ -93,7 +93,7 @@ func (UnimplementedHandler) OneofBug(ctx context.Context, req OneOfBugs) (r Oneo
 	return r, ht.ErrNotImplemented
 }
 
-// PatternRecursiveMapGet implements  operation.
+// PatternRecursiveMapGet implements GET /patternRecursiveMap operation.
 //
 // GET /patternRecursiveMap
 func (UnimplementedHandler) PatternRecursiveMapGet(ctx context.Context) (r PatternRecursiveMap, _ error) {
@@ -163,14 +163,14 @@ func (UnimplementedHandler) PetNameByID(ctx context.Context, params PetNameByIDP
 	return r, ht.ErrNotImplemented
 }
 
-// PetUpdateNameAliasPost implements  operation.
+// PetUpdateNameAliasPost implements POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
 func (UnimplementedHandler) PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (r PetUpdateNameAliasPostDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// PetUpdateNamePost implements  operation.
+// PetUpdateNamePost implements POST /pet/updateName operation.
 //
 // POST /pet/updateName
 func (UnimplementedHandler) PetUpdateNamePost(ctx context.Context, req OptString) (r PetUpdateNamePostDef, _ error) {
@@ -186,14 +186,14 @@ func (UnimplementedHandler) PetUploadAvatarByID(ctx context.Context, req PetUplo
 	return r, ht.ErrNotImplemented
 }
 
-// RecursiveArrayGet implements  operation.
+// RecursiveArrayGet implements GET /recursiveArray operation.
 //
 // GET /recursiveArray
 func (UnimplementedHandler) RecursiveArrayGet(ctx context.Context) (r RecursiveArray, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// RecursiveMapGet implements  operation.
+// RecursiveMapGet implements GET /recursiveMap operation.
 //
 // GET /recursiveMap
 func (UnimplementedHandler) RecursiveMapGet(ctx context.Context) (r RecursiveMap, _ error) {
@@ -207,7 +207,7 @@ func (UnimplementedHandler) SecurityTest(ctx context.Context) (r string, _ error
 	return r, ht.ErrNotImplemented
 }
 
-// StringIntMapGet implements  operation.
+// StringIntMapGet implements GET /stringIntMap operation.
 //
 // GET /stringIntMap
 func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r StringIntMap, _ error) {

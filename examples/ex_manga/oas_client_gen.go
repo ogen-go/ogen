@@ -51,6 +51,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // GetBook invokes getBook operation.
 //
+// Gets metadata of book.
+//
 // GET /api/gallery/{book_id}
 func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	startTime := time.Now()
@@ -106,6 +108,8 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 }
 
 // GetPageCoverImage invokes getPageCoverImage operation.
+//
+// Gets page cover.
 //
 // GET /galleries/{media_id}/cover.{format}
 func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
@@ -177,6 +181,8 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 }
 
 // GetPageImage invokes getPageImage operation.
+//
+// Gets page.
 //
 // GET /galleries/{media_id}/{page}.{format}
 func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
@@ -264,6 +270,8 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 
 // GetPageThumbnailImage invokes getPageThumbnailImage operation.
 //
+// Gets page thumbnail.
+//
 // GET /galleries/{media_id}/{page}t.{format}
 func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
 	startTime := time.Now()
@@ -350,6 +358,8 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 
 // Search invokes search operation.
 //
+// Search for comics.
+//
 // GET /api/galleries/search
 func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	startTime := time.Now()
@@ -424,6 +434,8 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 }
 
 // SearchByTagID invokes searchByTagID operation.
+//
+// Search for comics by tag ID.
 //
 // GET /api/galleries/tagged
 func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {

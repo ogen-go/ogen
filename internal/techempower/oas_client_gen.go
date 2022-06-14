@@ -51,6 +51,13 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // Caching invokes Caching operation.
 //
+// Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology
+// for the platform or framework. For implementation simplicity, the requirements are very similar to
+// the multiple database-query test Test #3, but use a separate database table. The requirements are
+// quite generous, affording each framework fairly broad freedom to meet the requirements in the
+// manner that best represents the canonical non-distributed caching approach for the framework.
+// (Note: a distributed caching test type could be added later.).
+//
 // GET /cached-worlds
 func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	startTime := time.Now()
@@ -109,6 +116,9 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 
 // DB invokes DB operation.
 //
+// Test #2. The Single Database Query test exercises the framework's object-relational mapper (ORM),
+// random number generator, database driver, and database connection pool.
+//
 // GET /db
 func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	startTime := time.Now()
@@ -151,6 +161,10 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 
 // JSON invokes json operation.
 //
+// Test #1. The JSON Serialization test exercises the framework fundamentals including keep-alive
+// support, request routing, request header parsing, object instantiation, JSON serialization,
+// response header generation, and request count throughput.
+//
 // GET /json
 func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	startTime := time.Now()
@@ -192,6 +206,11 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 }
 
 // Queries invokes Queries operation.
+//
+// Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World
+// table. Multiple rows are fetched to more dramatically punish the database driver and connection
+// pool. At the highest queries-per-request tested (20), this test demonstrates all frameworks'
+// convergence toward zero requests-per-second as database activity increases.
 //
 // GET /queries
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
@@ -250,6 +269,10 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 }
 
 // Updates invokes Updates operation.
+//
+// Test #5. The Database Updates test is a variation of Test #3 that exercises the ORM's persistence
+// of objects and the database driver's performance at running UPDATE statements or similar. The
+// spirit of this test is to exercise a variable number of read-then-write style database operations.
 //
 // GET /updates
 func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {

@@ -12,15 +12,19 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// APICaptcha2chcaptchaIDGet implements  operation.
+	// APICaptcha2chcaptchaIDGet implements GET /api/captcha/2chcaptcha/id operation.
+	//
+	// Получение ид для использования 2chcaptcha.
 	//
 	// GET /api/captcha/2chcaptcha/id
 	APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (Captcha, error)
-	// APICaptcha2chcaptchaShowGet implements  operation.
+	// APICaptcha2chcaptchaShowGet implements GET /api/captcha/2chcaptcha/show operation.
+	//
+	// Отображение 2chcaptcha по id.
 	//
 	// GET /api/captcha/2chcaptcha/show
 	APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (APICaptcha2chcaptchaShowGetRes, error)
-	// APICaptchaAppIDPublicKeyGet implements  operation.
+	// APICaptchaAppIDPublicKeyGet implements GET /api/captcha/app/id/{public_key} operation.
 	//
 	// Полученный id вам нужно отправить вместе с постом как
 	// app_response_id.
@@ -30,43 +34,65 @@ type Handler interface {
 	//
 	// GET /api/captcha/app/id/{public_key}
 	APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (Captcha, error)
-	// APICaptchaInvisibleRecaptchaIDGet implements  operation.
+	// APICaptchaInvisibleRecaptchaIDGet implements GET /api/captcha/invisible_recaptcha/id operation.
+	//
+	// Получение публичного ключа invisible recaptcha.
 	//
 	// GET /api/captcha/invisible_recaptcha/id
 	APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (Captcha, error)
-	// APICaptchaInvisibleRecaptchaMobileGet implements  operation.
+	// APICaptchaInvisibleRecaptchaMobileGet implements GET /api/captcha/invisible_recaptcha/mobile operation.
+	//
+	// Получение html страницы для решения капчи, CORS отключён.
 	//
 	// GET /api/captcha/invisible_recaptcha/mobile
 	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (APICaptchaInvisibleRecaptchaMobileGetOK, error)
-	// APICaptchaRecaptchaIDGet implements  operation.
+	// APICaptchaRecaptchaIDGet implements GET /api/captcha/recaptcha/id operation.
+	//
+	// Получение публичного ключа recaptcha v2.
 	//
 	// GET /api/captcha/recaptcha/id
 	APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (Captcha, error)
-	// APICaptchaRecaptchaMobileGet implements  operation.
+	// APICaptchaRecaptchaMobileGet implements GET /api/captcha/recaptcha/mobile operation.
+	//
+	// Получение html страницы для решения капчи, CORS отключён.
 	//
 	// GET /api/captcha/recaptcha/mobile
 	APICaptchaRecaptchaMobileGet(ctx context.Context) (APICaptchaRecaptchaMobileGetOK, error)
-	// APIDislikeGet implements  operation.
+	// APIDislikeGet implements GET /api/dislike operation.
+	//
+	// Добавление дизлайка на пост.
 	//
 	// GET /api/dislike
 	APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (Like, error)
-	// APILikeGet implements  operation.
+	// APILikeGet implements GET /api/like operation.
+	//
+	// Добавление лайка на пост.
 	//
 	// GET /api/like
 	APILikeGet(ctx context.Context, params APILikeGetParams) (Like, error)
-	// APIMobileV2AfterBoardThreadNumGet implements  operation.
+	// APIMobileV2AfterBoardThreadNumGet implements GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+	//
+	// Получение постов в треде >= указанного. Не
+	// рекомендуется использовать для получения треда
+	// целиком, только для проверки новых постов.
 	//
 	// GET /api/mobile/v2/after/{board}/{thread}/{num}
 	APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (MobileThreadPostsAfter, error)
-	// APIMobileV2BoardsGet implements  operation.
+	// APIMobileV2BoardsGet implements GET /api/mobile/v2/boards operation.
+	//
+	// Получение списка досок и их настроек.
 	//
 	// GET /api/mobile/v2/boards
 	APIMobileV2BoardsGet(ctx context.Context) (Boards, error)
-	// APIMobileV2InfoBoardThreadGet implements  operation.
+	// APIMobileV2InfoBoardThreadGet implements GET /api/mobile/v2/info/{board}/{thread} operation.
+	//
+	// Получение информации о треде.
 	//
 	// GET /api/mobile/v2/info/{board}/{thread}
 	APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (MobileThreadLastInfo, error)
-	// APIMobileV2PostBoardNumGet implements  operation.
+	// APIMobileV2PostBoardNumGet implements GET /api/mobile/v2/post/{board}/{num} operation.
+	//
+	// Получение информации о посте.
 	//
 	// GET /api/mobile/v2/post/{board}/{num}
 	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (MobilePost, error)
