@@ -9,8 +9,12 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-// Num represents JSON number.
-type Num = jsonschema.Num
+type (
+	// Num represents JSON number.
+	Num = jsonschema.Num
+	// Enum is JSON Schema enum validator description.
+	Enum = jsonschema.Enum
+)
 
 // Spec is the root document object of the OpenAPI document.
 type Spec struct {
@@ -387,7 +391,7 @@ type Schema struct {
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
 	// Elements in the array SHOULD be unique.
-	Enum []json.RawMessage `json:"enum,omitempty"`
+	Enum Enum `json:"enum,omitempty"`
 
 	// The value of "multipleOf" MUST be a number, strictly greater than 0.
 	//

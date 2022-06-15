@@ -6,6 +6,8 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 // Num represents JSON number.
@@ -47,7 +49,7 @@ type RawSchema struct {
 	OneOf                []*RawSchema          `json:"oneOf,omitempty"`
 	AnyOf                []*RawSchema          `json:"anyOf,omitempty"`
 	Discriminator        *Discriminator        `json:"discriminator,omitempty"`
-	Enum                 []json.RawMessage     `json:"enum,omitempty"`
+	Enum                 Enum                  `json:"enum,omitempty"`
 	MultipleOf           Num                   `json:"multipleOf,omitempty"`
 	Maximum              Num                   `json:"maximum,omitempty"`
 	ExclusiveMaximum     bool                  `json:"exclusiveMaximum,omitempty"`
@@ -91,6 +93,27 @@ func (r *RawSchema) UnmarshalJSON(data []byte) error {
 			r.XAnnotations = map[string]jx.Raw{}
 		}
 		r.XAnnotations[string(key)] = val
+		return nil
+	})
+}
+
+// Enum is JSON Schema enum validator description.
+type Enum []json.RawMessage
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (n *Enum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return d.Arr(func(d *jx.Decoder) error {
+		val, err := d.RawAppend(nil)
+		if err != nil {
+			return errors.Wrapf(err, "parse [%d]", len(*n))
+		}
+		for _, x := range *n {
+			if eq, _ := ogenjson.Equal(x, val); eq {
+				return errors.Errorf("value %q is duplicated", x)
+			}
+		}
+		*n = append(*n, json.RawMessage(val))
 		return nil
 	})
 }
