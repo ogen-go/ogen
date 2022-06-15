@@ -211,7 +211,7 @@ type Parameter struct {
 
 	// Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
 	// Default value is false.
-	Deprecated bool `json:"deprecated,omitempty"` // TODO: implement
+	Deprecated bool `json:"deprecated,omitempty"`
 
 	// For more complex scenarios, the content property can define the media type and schema of the parameter.
 	// A parameter MUST contain either a schema property, or a content property, but not both.
@@ -221,7 +221,7 @@ type Parameter struct {
 	// A map containing the representations for the parameter.
 	// The key is the media type and the value describes it.
 	// The map MUST only contain one entry.
-	Content map[string]Media `json:"content,omitempty"` // TODO: implement
+	Content map[string]Media `json:"content,omitempty"`
 
 	// Describes how the parameter value will be serialized
 	// depending on the type of the parameter value.
@@ -376,10 +376,10 @@ type Schema struct {
 	AllOf []*Schema `json:"allOf,omitempty"` // TODO: implement.
 
 	// OneOf validates the value against exactly one of the subschemas
-	OneOf []*Schema `json:"oneOf,omitempty"` // TODO: implement.
+	OneOf []*Schema `json:"oneOf,omitempty"`
 
 	// AnyOf validates the value against any (one or more) of the subschemas
-	AnyOf []*Schema `json:"anyOf,omitempty"` // TODO: implement.
+	AnyOf []*Schema `json:"anyOf,omitempty"`
 
 	// Discriminator for subschemas.
 	Discriminator *Discriminator `json:"discriminator,omitempty"`
@@ -387,7 +387,7 @@ type Schema struct {
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
 	// Elements in the array SHOULD be unique.
-	Enum []json.RawMessage `json:"enum,omitempty"` // TODO: Nullable.
+	Enum []json.RawMessage `json:"enum,omitempty"`
 
 	// The value of "multipleOf" MUST be a number, strictly greater than 0.
 	//
@@ -512,7 +512,7 @@ type Schema struct {
 	MinProperties *uint64 `json:"minProperties,omitempty"`
 
 	// Default value.
-	Default json.RawMessage `json:"default,omitempty"` // TODO: support
+	Default json.RawMessage `json:"default,omitempty"`
 
 	// A free-form property to include an example of an instance for this schema.
 	// To represent examples that cannot be naturally represented in JSON or YAML,

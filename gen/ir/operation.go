@@ -36,12 +36,11 @@ func (op Operation) GoDoc() []string {
 		doc = op.Summary
 	}
 
-	r := prettyDoc(doc)
+	var notice string
 	if op.Deprecated {
-		// Empty line between description and deprecated notice.
-		r = append(r, "", "Deprecated: schema marks this operation as deprecated.")
+		notice = "Deprecated: schema marks this operation as deprecated."
 	}
-	return r
+	return prettyDoc(doc, notice)
 }
 
 type PathPart struct {
@@ -62,6 +61,19 @@ type Parameter struct {
 	Spec *openapi.Parameter
 }
 
+func (op Parameter) GoDoc() []string {
+	s := op.Spec
+	if s == nil {
+		return nil
+	}
+
+	var notice string
+	if s.Deprecated {
+		notice = "Deprecated: schema marks this parameter as deprecated."
+	}
+	return prettyDoc(s.Description, notice)
+}
+
 // Default returns default value of this field, if it is set.
 func (op Parameter) Default() Default {
 	var schema *jsonschema.Schema
@@ -78,13 +90,6 @@ func (op Parameter) Default() Default {
 		return typ.Default()
 	}
 	return Default{}
-}
-
-func (op Parameter) GoDoc() []string {
-	if op.Spec == nil {
-		return nil
-	}
-	return prettyDoc(op.Spec.Description)
 }
 
 type Request struct {

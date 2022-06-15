@@ -102,12 +102,13 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openap
 	op := &openapi.Parameter{
 		Name:        param.Name,
 		Description: param.Description,
-		In:          locatedIn,
 		Schema:      schema,
 		Content:     content,
+		In:          locatedIn,
 		Style:       inferParamStyle(locatedIn, param.Style),
 		Explode:     inferParamExplode(locatedIn, param.Explode),
 		Required:    param.Required,
+		Deprecated:  param.Deprecated,
 	}
 
 	if param.Content != nil {

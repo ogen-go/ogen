@@ -39,6 +39,7 @@ type Parameter struct {
 	Style       ParameterStyle
 	Explode     bool
 	Required    bool
+	Deprecated  bool
 }
 
 // ParameterContent describes OpenAPI Parameter content field.

@@ -76,7 +76,7 @@ type Security struct {
 }
 
 func (s *Security) GoDoc() []string {
-	return prettyDoc(s.Description)
+	return prettyDoc(s.Description, "")
 }
 
 type SecurityRequirement struct {

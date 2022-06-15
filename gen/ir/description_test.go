@@ -12,8 +12,9 @@ import (
 
 func Test_prettyDoc(t *testing.T) {
 	tests := []struct {
-		input string
-		wantR []string
+		input  string
+		notice string
+		wantR  []string
 	}{
 		{
 			input: ``,
@@ -22,6 +23,11 @@ func Test_prettyDoc(t *testing.T) {
 		{
 			input: `example`,
 			wantR: []string{`Example.`},
+		},
+		{
+			input:  `example`,
+			notice: "Deprecated: for some reason.",
+			wantR:  []string{`Example.`, ``, `Deprecated: for some reason.`},
 		},
 		{
 			input: "The name of the fully qualified reference (ie: `refs/heads/master`). " +
@@ -67,7 +73,7 @@ func Test_prettyDoc(t *testing.T) {
 	for i, tt := range tests {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			require.Equal(t, tt.wantR, prettyDoc(tt.input))
+			require.Equal(t, tt.wantR, prettyDoc(tt.input, tt.notice))
 		})
 	}
 }

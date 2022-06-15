@@ -2532,10 +2532,11 @@ type CodeOfConductSimple struct {
 
 // Ref: #/components/schemas/code-scanning-alert
 type CodeScanningAlert struct {
-	Number             AlertNumber                         "json:\"number\""
-	CreatedAt          AlertCreatedAt                      "json:\"created_at\""
-	URL                AlertURL                            "json:\"url\""
-	HTMLURL            AlertHTMLURL                        "json:\"html_url\""
+	Number    AlertNumber    "json:\"number\""
+	CreatedAt AlertCreatedAt "json:\"created_at\""
+	URL       AlertURL       "json:\"url\""
+	HTMLURL   AlertHTMLURL   "json:\"html_url\""
+	// Deprecated: schema marks this property as deprecated.
 	Instances          jx.Raw                              "json:\"instances\""
 	InstancesURL       AlertInstancesURL                   "json:\"instances_url\""
 	State              CodeScanningAlertState              "json:\"state\""
@@ -4363,8 +4364,10 @@ type GistHistoryChangeStatus struct {
 // Gist Simple.
 // Ref: #/components/schemas/gist-simple
 type GistSimple struct {
-	Forks   OptNilGistSimpleForksItemArray "json:\"forks\""
-	History OptNilGistHistoryArray         "json:\"history\""
+	// Deprecated: schema marks this property as deprecated.
+	Forks OptNilGistSimpleForksItemArray "json:\"forks\""
+	// Deprecated: schema marks this property as deprecated.
+	History OptNilGistHistoryArray "json:\"history\""
 	// Gist.
 	ForkOf      OptNilGistSimpleForkOf "json:\"fork_of\""
 	URL         OptString              "json:\"url\""

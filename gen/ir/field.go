@@ -70,13 +70,20 @@ func (f Field) Default() Default {
 
 // GoDoc returns field godoc.
 func (f Field) GoDoc() []string {
-	if f.Spec == nil {
+	s := f.Spec
+	if s == nil {
 		if f.Inline == InlinePattern {
 			return []string{fmt.Sprintf("Pattern: %q.", f.Type.MapPattern)}
 		}
 		return nil
 	}
-	return prettyDoc(f.Spec.Description)
+
+	var notice string
+	if sch := s.Schema; sch != nil && sch.Deprecated {
+		notice = "Deprecated: schema marks this property as deprecated."
+	}
+
+	return prettyDoc(s.Description, notice)
 }
 
 // DefaultFields returns fields with default values.
