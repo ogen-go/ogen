@@ -85,11 +85,17 @@ func (t Type) GoDoc() []string {
 	if s == nil {
 		return nil
 	}
+
 	doc := s.Description
 	if doc == "" {
 		doc = s.Summary
 	}
-	return prettyDoc(doc)
+
+	var notice string
+	if s.Deprecated {
+		notice = "Deprecated: schema marks this type as deprecated."
+	}
+	return prettyDoc(doc, notice)
 }
 
 // Default returns default value of this type, if it is set.

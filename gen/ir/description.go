@@ -43,7 +43,7 @@ const (
 	lineLimit = 100
 )
 
-func prettyDoc(s string) (r []string) {
+func prettyDoc(s, deprecation string) (r []string) {
 	// TODO(tdakkota): basic common mark rendering?
 	for _, line := range strings.Split(s, "\n") {
 		r = append(r, splitLine(line, lineLimit)...)
@@ -54,6 +54,13 @@ func prettyDoc(s string) (r []string) {
 		if last := r[len(r)-1]; len(last) > 0 && last[len(last)-1] != '.' {
 			r[len(r)-1] = last + "."
 		}
+	}
+	if deprecation != "" {
+		if len(r) > 0 {
+			// Insert empty line between description and deprecated notice.
+			r = append(r, "")
+		}
+		r = append(r, deprecation)
 	}
 
 	return r
