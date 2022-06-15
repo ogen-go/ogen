@@ -62,14 +62,15 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 
 	locatedIn := openapi.LocationHeader
 	op := &openapi.Header{
-		In:          locatedIn,
 		Name:        name,
 		Description: header.Description,
 		Schema:      schema,
 		Content:     content,
+		In:          locatedIn,
 		Style:       inferParamStyle(locatedIn, header.Style),
 		Explode:     inferParamExplode(locatedIn, header.Explode),
 		Required:    header.Required,
+		Deprecated:  header.Deprecated,
 	}
 
 	if header.Content != nil {
