@@ -35,6 +35,7 @@ type Schema struct {
 	Format      string // Schema format, optional.
 	Summary     string // Schema summary from Reference Object, optional.
 	Description string // Schema description, optional.
+	Deprecated  bool
 	Ref         string // Whether schema is referenced.
 
 	Item                 *Schema           // Only for Array and Object with additional properties.
