@@ -290,6 +290,9 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {

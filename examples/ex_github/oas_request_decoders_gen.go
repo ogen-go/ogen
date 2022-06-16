@@ -354,6 +354,9 @@ func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -411,6 +414,9 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -916,6 +922,9 @@ func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -973,6 +982,9 @@ func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -1030,6 +1042,9 @@ func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -1087,6 +1102,9 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -1264,6 +1282,9 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -1568,6 +1589,9 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -2640,6 +2664,9 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -3448,6 +3475,9 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -3737,6 +3767,9 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -3809,6 +3842,9 @@ func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -3866,6 +3902,9 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -3994,6 +4033,9 @@ func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4051,6 +4093,9 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4123,6 +4168,9 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span tr
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4436,6 +4484,9 @@ func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4493,6 +4544,9 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4693,6 +4747,9 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4765,6 +4822,9 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -4901,6 +4961,9 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -5037,6 +5100,9 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -5109,6 +5175,9 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -5181,6 +5250,9 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -5605,6 +5677,9 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -5677,6 +5752,9 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -5902,6 +5980,9 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -6094,6 +6175,9 @@ func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -6294,6 +6378,9 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -6366,6 +6453,9 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -7111,6 +7201,9 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -7183,6 +7276,9 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -7255,6 +7351,9 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -7327,6 +7426,9 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -7399,6 +7501,9 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -7943,6 +8048,9 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8296,6 +8404,9 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8536,6 +8647,9 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8608,6 +8722,9 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8680,6 +8797,9 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8752,6 +8872,9 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8824,6 +8947,9 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -8945,6 +9071,9 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9017,6 +9146,9 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9089,6 +9221,9 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9161,6 +9296,9 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9289,6 +9427,9 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9481,6 +9622,9 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9553,6 +9697,9 @@ func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9610,6 +9757,9 @@ func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9667,6 +9817,9 @@ func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9724,6 +9877,9 @@ func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9781,6 +9937,9 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9853,6 +10012,9 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -9989,6 +10151,9 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10061,6 +10226,9 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10133,6 +10301,9 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10205,6 +10376,9 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10277,6 +10451,9 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10349,6 +10526,9 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10941,6 +11121,9 @@ func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -10998,6 +11181,9 @@ func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -11055,6 +11241,9 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span)
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -11191,6 +11380,9 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -11383,6 +11575,9 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
@@ -11519,6 +11714,9 @@ func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
 
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
