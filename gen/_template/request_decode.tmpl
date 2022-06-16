@@ -24,6 +24,12 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		}
 	}()
 
+	{{- if not $op.Request.Spec.Required }}
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+	{{- end }}
+
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
