@@ -122,6 +122,11 @@ issues:
       linters: [ gosec ]
       text: G103
 
+    # We are using quoting algorithm from mime/multipart package. False-positive.
+    - path: http(\/|\\)file\.go
+      linters: [ gocritic ]
+      text: sprintfQuotedString
+
     # Intended design.
     - path: http
       source: Set
@@ -134,3 +139,4 @@ issues:
 
     - linters: [ revive ]
       text: "if-return: redundant if ...; err != nil check, just return error instead."
+

@@ -1092,17 +1092,18 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 			if !ok || len(files) < 1 {
 				return errors.New("file is not set")
 			}
-			header := files[0]
+			fh := files[0]
 
-			f, err := header.Open()
+			f, err := fh.Open()
 			if err != nil {
 				return errors.Wrap(err, "open")
 			}
 			closers = append(closers, f)
 
 			req.FileName = ht.MultipartFile{
-				Name: header.Filename,
-				File: f,
+				Name:   fh.Filename,
+				File:   f,
+				Header: fh.Header,
 			}
 			return nil
 		}(); err != nil {

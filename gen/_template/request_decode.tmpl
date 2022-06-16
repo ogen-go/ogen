@@ -140,17 +140,18 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 			if !ok || len(files) < 1 {
 				return errors.New("file is not set")
 			}
-			header := files[0]
+			fh := files[0]
 
-			f, err := header.Open()
+			f, err := fh.Open()
 			if err != nil {
 				return errors.Wrap(err, "open")
 			}
 			closers = append(closers, f)
 
         	{{ printf "req.%s" $param.Name }} = ht.MultipartFile{
-				Name: header.Filename,
-				File: f,
+				Name:   fh.Filename,
+				File:   f,
+				Header: fh.Header,
 			}
 			return nil
 		}(); err != nil {
