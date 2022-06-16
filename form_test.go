@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"net/textproto"
 	"net/url"
 	"strings"
 	"testing"
@@ -16,6 +17,7 @@ import (
 
 	ht "github.com/ogen-go/ogen/http"
 	api "github.com/ogen-go/ogen/internal/sample_api"
+	"github.com/ogen-go/ogen/validate"
 )
 
 func testForm() api.TestForm {
@@ -62,8 +64,13 @@ func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) (r 
 }
 
 func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReq) (r string, _ error) {
+	f := req.FileName
+	if val := f.Header.Get("Content-Type"); val != "image/jpeg" {
+		return "", validate.InvalidContentType(val)
+	}
+
 	var b strings.Builder
-	_, err := io.Copy(&b, req.FileName.File)
+	_, err := io.Copy(&b, f.File)
 	return b.String(), err
 }
 
@@ -143,6 +150,9 @@ func TestMultipartUploadE2E(t *testing.T) {
 		FileName: ht.MultipartFile{
 			Name: "pablo.jpg",
 			File: strings.NewReader(data),
+			Header: textproto.MIMEHeader{
+				"Content-Type": []string{"image/jpeg"},
+			},
 		},
 	})
 	a.NoError(err)
