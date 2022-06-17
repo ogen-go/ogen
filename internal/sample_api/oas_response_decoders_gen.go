@@ -1031,7 +1031,7 @@ func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (res Test
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (res TestMultipartUploadOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		match := func(pattern, value string) bool {
@@ -1051,11 +1051,9 @@ func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (re
 			}
 
 			d := jx.DecodeBytes(buf.Bytes())
-			var response string
+			var response TestMultipartUploadOK
 			if err := func() error {
-				v, err := d.Str()
-				response = string(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil

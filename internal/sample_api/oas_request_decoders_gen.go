@@ -1088,9 +1088,9 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 			}
 		}
 		if err := func() error {
-			files, ok := r.MultipartForm.File["fileName"]
+			files, ok := r.MultipartForm.File["file"]
 			if !ok || len(files) < 1 {
-				return errors.New("file is not set")
+				return validate.ErrFieldRequired
 			}
 			fh := files[0]
 
@@ -1099,15 +1099,69 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				return errors.Wrap(err, "open")
 			}
 			closers = append(closers, f)
-
-			req.FileName = ht.MultipartFile{
+			req.File = ht.MultipartFile{
 				Name:   fh.Filename,
 				File:   f,
 				Header: fh.Header,
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "file \"fileName\"")
+			return req, close, errors.Wrap(err, "decode \"file\"")
+		}
+		if err := func() error {
+			files, ok := r.MultipartForm.File["optional_file"]
+			if !ok || len(files) < 1 {
+				return nil
+			}
+			fh := files[0]
+
+			f, err := fh.Open()
+			if err != nil {
+				return errors.Wrap(err, "open")
+			}
+			closers = append(closers, f)
+			req.OptionalFile.SetTo(ht.MultipartFile{
+				Name:   fh.Filename,
+				File:   f,
+				Header: fh.Header,
+			})
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"optional_file\"")
+		}
+		if err := func() error {
+			files, ok := r.MultipartForm.File["files"]
+			_ = ok
+			req.Files = make([]ht.MultipartFile, 0, len(files))
+			for _, fh := range files {
+				f, err := fh.Open()
+				if err != nil {
+					return errors.Wrap(err, "open")
+				}
+				closers = append(closers, f)
+
+				req.Files = append(req.Files, ht.MultipartFile{
+					Name:   fh.Filename,
+					File:   f,
+					Header: fh.Header,
+				})
+			}
+			if err := func() error {
+				if err := (validate.Array{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    5,
+					MaxLengthSet: true,
+				}).ValidateLength(len(req.Files)); err != nil {
+					return errors.Wrap(err, "array")
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "validate")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"files\"")
 		}
 
 		return req, close, nil

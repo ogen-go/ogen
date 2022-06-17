@@ -1898,6 +1898,52 @@ func (o OptMaxPropertiesTest) Or(d MaxPropertiesTest) MaxPropertiesTest {
 	return d
 }
 
+// NewOptMultipartFile returns new OptMultipartFile with value set to v.
+func NewOptMultipartFile(v ht.MultipartFile) OptMultipartFile {
+	return OptMultipartFile{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMultipartFile is optional ht.MultipartFile.
+type OptMultipartFile struct {
+	Value ht.MultipartFile
+	Set   bool
+}
+
+// IsSet returns true if OptMultipartFile was set.
+func (o OptMultipartFile) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMultipartFile) Reset() {
+	var v ht.MultipartFile
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMultipartFile) SetTo(v ht.MultipartFile) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMultipartFile) Get() (v ht.MultipartFile, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMultipartFile) Or(d ht.MultipartFile) ht.MultipartFile {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilString returns new OptNilString with value set to v.
 func NewOptNilString(v string) OptNilString {
 	return OptNilString{
@@ -3211,10 +3257,18 @@ type TestFormURLEncodedOK struct{}
 // TestMultipartOK is response for TestMultipart operation.
 type TestMultipartOK struct{}
 
+type TestMultipartUploadOK struct {
+	File         string    "json:\"file\""
+	OptionalFile OptString "json:\"optional_file\""
+	Files        []string  "json:\"files\""
+}
+
 type TestMultipartUploadReq struct {
-	OrderId  OptInt           "json:\"orderId\""
-	UserId   OptInt           "json:\"userId\""
-	FileName ht.MultipartFile "json:\"fileName\""
+	OrderId      OptInt             "json:\"orderId\""
+	UserId       OptInt             "json:\"userId\""
+	File         ht.MultipartFile   "json:\"file\""
+	OptionalFile OptMultipartFile   "json:\"optional_file\""
+	Files        []ht.MultipartFile "json:\"files\""
 }
 
 type TestObjectQueryParameterDeepObject struct {

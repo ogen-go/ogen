@@ -245,7 +245,7 @@ func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) (r 
 // TestMultipartUpload implements testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (r string, _ error) {
+func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (r TestMultipartUploadOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

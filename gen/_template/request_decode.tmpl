@@ -136,26 +136,9 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		{{- if $contentType.MultipartForm }}
         {{- range $param := $op.Request.FileParameters $contentType }}
 		if err := func() error {
-			files, ok := r.MultipartForm.File[{{ quote $param.Spec.Name }}]
-			if !ok || len(files) < 1 {
-				return errors.New("file is not set")
-			}
-			fh := files[0]
-
-			f, err := fh.Open()
-			if err != nil {
-				return errors.Wrap(err, "open")
-			}
-			closers = append(closers, f)
-
-        	{{ printf "req.%s" $param.Name }} = ht.MultipartFile{
-				Name:   fh.Filename,
-				File:   f,
-				Header: fh.Header,
-			}
-			return nil
+			{{- template "decode_multipart_file_param" $param }}
 		}(); err != nil {
-			return req, close, errors.Wrap(err, {{ printf "file %q" $param.Spec.Name | quote }})
+			return req, close, errors.Wrap(err, {{ printf "decode %q" $param.Spec.Name | quote }})
 		}
 		{{- end }}
 		{{- end }}
@@ -172,3 +155,67 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 {{- end }}
 {{ end }}
 {{ end }}
+
+{{- define "decode_multipart_file_param" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}
+{{- $name := quote $.Spec.Name }}
+{{- $t := $.Type }}
+	files, ok := r.MultipartForm.File[{{ $name }}]
+	{{- if or $t.IsPrimitive $t.IsGeneric }}
+	if !ok || len(files) < 1  {
+		{{- if $t.IsPrimitive }}
+		return validate.ErrFieldRequired
+		{{- else }}
+		return nil
+		{{- end }}
+	}
+	fh := files[0]
+
+	f, err := fh.Open()
+	if err != nil {
+		return errors.Wrap(err, "open")
+	}
+	closers = append(closers, f)
+
+    {{- if $t.IsPrimitive }}
+	{{ printf "req.%s" $.Name }} = ht.MultipartFile{
+		Name:   fh.Filename,
+		File:   f,
+		Header: fh.Header,
+	}
+	{{- else }}
+	{{ printf "req.%s" $.Name }}.SetTo(ht.MultipartFile{
+		Name:   fh.Filename,
+		File:   f,
+		Header: fh.Header,
+	})
+	{{- end }}
+	{{- else if $t.IsArray }}
+	_ = ok
+	req.Files = make({{ $t.Go }}, 0, len(files))
+	for _, fh := range files {
+		f, err := fh.Open()
+		if err != nil {
+			return errors.Wrap(err, "open")
+		}
+		closers = append(closers, f)
+
+		{{ printf "req.%s" $.Name }} = append({{ printf "req.%s" $.Name }}, ht.MultipartFile{
+			Name:   fh.Filename,
+			File:   f,
+			Header: fh.Header,
+		})
+	}
+	{{- else }}
+		{{ errorf "unexpected kind %s" $t.Kind }}
+	{{- end }}
+
+	{{- if $t.NeedValidation }}
+	if err := func() error {
+		{{- template "validate" elem $t (printf "req.%s" $.Name) }}
+	}(); err != nil {
+		return errors.Wrap(err, "validate")
+	}
+	{{- end }}
+	return nil
+{{- end }}

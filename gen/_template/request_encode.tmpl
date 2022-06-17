@@ -51,9 +51,7 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 		{{- else if $contentType.MultipartForm }}
 			getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
             	{{- range $param := $op.Request.FileParameters $contentType }}
-				if err := {{ printf "req.%s" $param.Name }}.WriteMultipart({{ quote $param.Spec.Name }}, w); err != nil {
-					return errors.Wrap(err, {{ printf "write %q" $param.Spec.Name | quote }})
-				}
+				{{- template "encode_multipart_file_param" $param }}
 				{{- end }}
 				if err := q.WriteMultipart(w); err != nil {
 					return errors.Wrap(err, "write multipart")
@@ -71,3 +69,36 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 {{- end }}
 {{- end }}{{ end }}
 {{ end }}
+
+{{- define "encode_multipart_file_param" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}
+{{- $name := quote $.Spec.Name }}
+{{- $errWrite := printf "write %s" $name | quote }}
+{{- $recv := printf "req.%s" $.Name }}
+{{- $t := $.Type }}
+
+{{- if $t.IsPrimitive }}
+	if err := {{ $recv }}.WriteMultipart({{ $name }}, w); err != nil {
+		return errors.Wrap(err, {{ $errWrite }})
+	}
+{{- else if $t.IsGeneric }}
+	if val, ok := {{ $recv }}.Get(); ok {
+		if err := val.WriteMultipart({{ $name }}, w); err != nil {
+			return errors.Wrap(err, {{ $errWrite }})
+		}
+	}
+{{- else if $t.IsArray }}
+	if err := func() error {
+		for idx, val := range {{ $recv }} {
+			if err := val.WriteMultipart({{ $name }}, w); err != nil {
+				return errors.Wrapf(err, "file [%d]", idx)
+			}
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, {{ $errWrite }})
+	}
+{{- else }}
+    {{ errorf "unexpected kind %s" $t.Kind }}
+{{- end }}
+{{- end }}

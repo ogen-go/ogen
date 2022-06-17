@@ -2,6 +2,7 @@ package ogen
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -11,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -63,15 +65,47 @@ func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) (r 
 	return r, nil
 }
 
-func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReq) (r string, _ error) {
-	f := req.FileName
-	if val := f.Header.Get("Content-Type"); val != "image/jpeg" {
-		return "", validate.InvalidContentType(val)
+func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReq) (
+	r api.TestMultipartUploadOK,
+	_ error,
+) {
+	readFile := func(f ht.MultipartFile, to *string) error {
+		var b strings.Builder
+		if _, err := io.Copy(&b, f.File); err != nil {
+			return err
+		}
+		*to = b.String()
+		return nil
 	}
 
-	var b strings.Builder
-	_, err := io.Copy(&b, f.File)
-	return b.String(), err
+	f := req.File
+	if val := f.Header.Get("Content-Type"); val != "image/jpeg" {
+		return r, validate.InvalidContentType(val)
+	}
+
+	if err := readFile(req.File, &r.File); err != nil {
+		return r, errors.Wrap(err, "file")
+	}
+	if file, ok := req.OptionalFile.Get(); ok {
+		r.OptionalFile.Set = true
+		if err := readFile(file, &r.OptionalFile.Value); err != nil {
+			return r, errors.Wrap(err, "optional_file")
+		}
+	}
+	if err := func() error {
+		for idx, file := range req.Files {
+			var val string
+			if err := readFile(file, &val); err != nil {
+				return errors.Wrapf(err, "[%d]", idx)
+			}
+			r.Files = append(r.Files, val)
+		}
+		return nil
+	}(); err != nil {
+		return r, errors.Wrap(err, "files")
+	}
+
+	return r, nil
 }
 
 func TestURIEncodingE2E(t *testing.T) {
@@ -145,16 +179,56 @@ func TestMultipartUploadE2E(t *testing.T) {
 	client, err := api.NewClient(s.URL, handler)
 	require.NoError(t, err)
 
-	data := "data"
-	r, err := client.TestMultipartUpload(ctx, api.TestMultipartUploadReq{
-		FileName: ht.MultipartFile{
-			Name: "pablo.jpg",
-			File: strings.NewReader(data),
-			Header: textproto.MIMEHeader{
-				"Content-Type": []string{"image/jpeg"},
-			},
-		},
-	})
-	a.NoError(err)
-	a.Equal(data, r)
+	tests := []struct {
+		name     string
+		file     string
+		optional api.OptString
+		array    []string
+		wantErr  bool
+	}{
+		{name: "OnlyFile", file: "data"},
+		{name: "All", file: "file", optional: api.NewOptString("optional"), array: []string{"1", "2"}},
+		{name: "TooBigArray", file: "file", array: []string{"1", "2", "3", "4", "5", "6"}, wantErr: true},
+	}
+	for _, tt := range tests {
+		if tt.array == nil {
+			tt.array = []string{}
+		}
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			a := require.New(t)
+
+			req := api.TestMultipartUploadReq{
+				File: ht.MultipartFile{
+					Name: "pablo.jpg",
+					File: strings.NewReader(tt.file),
+					Header: textproto.MIMEHeader{
+						"Content-Type": []string{"image/jpeg"},
+					},
+				},
+			}
+			if val, ok := tt.optional.Get(); ok {
+				req.OptionalFile = api.NewOptMultipartFile(ht.MultipartFile{
+					Name: "henry.jpg",
+					File: strings.NewReader(val),
+				})
+			}
+			for idx, val := range tt.array {
+				req.Files = append(req.Files, ht.MultipartFile{
+					Name: fmt.Sprintf("file%d.png", idx),
+					File: strings.NewReader(val),
+				})
+			}
+
+			r, err := client.TestMultipartUpload(ctx, req)
+			if tt.wantErr {
+				a.Error(err)
+				return
+			}
+			a.NoError(err)
+			a.Equal(tt.file, r.File)
+			a.Equal(tt.optional, r.OptionalFile)
+			a.Equal(tt.array, r.Files)
+		})
+	}
 }

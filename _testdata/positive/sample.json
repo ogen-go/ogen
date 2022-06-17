@@ -679,7 +679,8 @@
               "schema": {
                 "type": "object",
                 "required": [
-                    "fileName"
+                  "file",
+                  "files"
                 ],
                 "properties": {
                   "orderId": {
@@ -688,9 +689,21 @@
                   "userId": {
                     "type": "integer"
                   },
-                  "fileName": {
+                  "file": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "optional_file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "maxItems": 5
                   }
                 }
               }
@@ -700,10 +713,32 @@
         "responses": {
           "200": {
             "description": "Ok",
-            "content":{
-              "application/json":{
+            "content": {
+              "application/json": {
                 "schema": {
-                  "type":"string"
+                  "type": "object",
+                  "required": [
+                    "file", 
+                    "files"
+                  ],
+                  "properties": {
+                    "file": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "optional_file": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "files": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "binary"
+                      },
+                      "maxItems": 5
+                    }
+                  }
                 }
               }
             }

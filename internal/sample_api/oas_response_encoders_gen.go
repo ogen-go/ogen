@@ -496,13 +496,13 @@ func encodeTestMultipartResponse(response TestMultipartOK, w http.ResponseWriter
 	return nil
 
 }
-func encodeTestMultipartUploadResponse(response string, w http.ResponseWriter, span trace.Span) error {
+func encodeTestMultipartUploadResponse(response TestMultipartUploadOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	e.Str(response)
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -18,6 +19,45 @@ func isBinary(s *jsonschema.Schema) bool {
 	default:
 		return false
 	}
+}
+
+// isMultipartFile tries to map field to multipart file.
+//
+// Returns nil type if field is not a file parameter.
+func isMultipartFile(ctx *genctx, t *ir.Type, p *jsonschema.Property) (*ir.Type, error) {
+	if p == nil || p.Schema == nil {
+		return nil, nil
+	}
+	file := ir.Primitive(ir.File, p.Schema)
+	switch {
+	case t.IsGeneric():
+		v := t.GenericVariant
+		if !isBinary(p.Schema) || !v.OnlyOptional() {
+			return nil, nil
+		}
+
+		r := ir.Generic("MultipartFile", file, v)
+		if err := ctx.saveType(r); err != nil {
+			return nil, err
+		}
+		return r, nil
+	case t.IsArray():
+		if !isBinary(p.Schema.Item) {
+			return nil, nil
+		}
+
+		r := ir.Array(file, ir.NilNull, p.Schema)
+		r.Validators = ir.Validators{
+			Array: t.Validators.Array,
+		}
+		return r, nil
+	case t.IsPrimitive():
+		if !isBinary(p.Schema) {
+			return nil, nil
+		}
+		return file, nil
+	}
+	return nil, nil
 }
 
 func statusText(code int) string {
