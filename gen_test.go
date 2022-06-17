@@ -123,7 +123,6 @@ func TestGenerate(t *testing.T) {
 		"superset.json": {
 			"allOf",
 			"unsupported content types",
-			"optional multipart file",
 		},
 	}
 
