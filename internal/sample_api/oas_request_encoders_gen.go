@@ -407,8 +407,23 @@ func encodeTestMultipartUploadRequest(
 		}
 	}
 	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-		if err := req.FileName.WriteMultipart("fileName", w); err != nil {
-			return errors.Wrap(err, "write \"fileName\"")
+		if err := req.File.WriteMultipart("file", w); err != nil {
+			return errors.Wrap(err, "write \"file\"")
+		}
+		if val, ok := req.OptionalFile.Get(); ok {
+			if err := val.WriteMultipart("optional_file", w); err != nil {
+				return errors.Wrap(err, "write \"optional_file\"")
+			}
+		}
+		if err := func() error {
+			for idx, val := range req.Files {
+				if err := val.WriteMultipart("files", w); err != nil {
+					return errors.Wrapf(err, "file [%d]", idx)
+				}
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "write \"files\"")
 		}
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")

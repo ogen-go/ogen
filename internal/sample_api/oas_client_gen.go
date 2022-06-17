@@ -1903,7 +1903,15 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 // TestMultipartUpload invokes testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartUploadReq) (res string, err error) {
+func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartUploadReq) (res TestMultipartUploadOK, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),

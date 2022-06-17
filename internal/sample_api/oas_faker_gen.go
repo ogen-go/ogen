@@ -1406,6 +1406,32 @@ func (s *TestFloatValidation) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *TestMultipartUploadOK) SetFake() {
+	{
+		{
+			s.File = "string"
+		}
+	}
+	{
+		{
+			s.OptionalFile.SetFake()
+		}
+	}
+	{
+		{
+			s.Files = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Files = append(s.Files, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *TestObjectQueryParameterOK) SetFake() {
 	{
 		{
