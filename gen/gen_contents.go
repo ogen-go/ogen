@@ -167,11 +167,13 @@ func (g *Generator) generateContents(
 
 			case "multipart/form-data":
 				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
-					if s := f.Spec; s != nil && isBinary(s.Schema) {
-						if !s.Required {
-							return &ErrNotImplemented{"optional multipart file"}
-						}
-						f.Type = ir.Primitive(ir.File, nil)
+					t, err := isMultipartFile(ctx, f.Type, f.Spec)
+					if err != nil {
+						return err
+					}
+					if t != nil {
+						t.AddFeature("multipart-file")
+						f.Type = t
 						return nil
 					}
 					f.Type.AddFeature("uri")
