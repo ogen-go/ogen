@@ -158,6 +158,10 @@ type Handler interface {
 	//
 	// POST /testMultipartUpload
 	TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (TestMultipartUploadOK, error)
+	// TestNullableOneofs implements testNullableOneofs operation.
+	//
+	// GET /testNullableOneofs
+	TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter

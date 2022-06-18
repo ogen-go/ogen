@@ -172149,20 +172149,19 @@ func (s *ValidationErrorErrorsItem) UnmarshalJSON(data []byte) error {
 // Encode encodes ValidationErrorErrorsItemValue as json.
 func (s ValidationErrorErrorsItemValue) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case NilStringValidationErrorErrorsItemValue:
-		s.NilString.Encode(e)
-	case NilIntValidationErrorErrorsItemValue:
-		s.NilInt.Encode(e)
+	case NullValidationErrorErrorsItemValue:
+		_ = s.Null
+		e.Null()
+	case StringValidationErrorErrorsItemValue:
+		e.Str(s.String)
+	case IntValidationErrorErrorsItemValue:
+		e.Int(s.Int)
 	case StringArrayValidationErrorErrorsItemValue:
-		if s.StringArray == nil {
-			e.Null()
-		} else {
-			e.ArrStart()
-			for _, elem := range s.StringArray {
-				e.Str(elem)
-			}
-			e.ArrEnd()
+		e.ArrStart()
+		for _, elem := range s.StringArray {
+			e.Str(elem)
 		}
+		e.ArrEnd()
 	}
 }
 
@@ -172173,36 +172172,38 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		s.Type = NullValidationErrorErrorsItemValue
 	case jx.String:
-		if err := s.NilString.Decode(d); err != nil {
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
 			return err
 		}
-		s.Type = NilStringValidationErrorErrorsItemValue
+		s.Type = StringValidationErrorErrorsItemValue
 	case jx.Number:
-		if err := s.NilInt.Decode(d); err != nil {
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
 			return err
 		}
-		s.Type = NilIntValidationErrorErrorsItemValue
+		s.Type = IntValidationErrorErrorsItemValue
 	case jx.Array:
-		switch tt := d.Next(); tt {
-		case jx.Null:
-			if err := d.Skip(); err != nil {
+		s.StringArray = make([]string, 0)
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
 				return err
 			}
-		default:
-			s.StringArray = make([]string, 0)
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.StringArray = append(s.StringArray, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
+			s.StringArray = append(s.StringArray, elem)
+			return nil
+		}); err != nil {
+			return err
 		}
 		s.Type = StringArrayValidationErrorErrorsItemValue
 	default:

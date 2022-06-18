@@ -754,6 +754,75 @@ const (
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
 
+// Ref: #/components/schemas/OneOfBooleanSumNullables
+// OneOfBooleanSumNullables represents sum type.
+type OneOfBooleanSumNullables struct {
+	Type           OneOfBooleanSumNullablesType // switch on this field
+	Bool           bool
+	OneOfNullables OneOfNullables
+}
+
+// OneOfBooleanSumNullablesType is oneOf type of OneOfBooleanSumNullables.
+type OneOfBooleanSumNullablesType string
+
+// Possible values for OneOfBooleanSumNullablesType.
+const (
+	BoolOneOfBooleanSumNullables           OneOfBooleanSumNullablesType = "bool"
+	OneOfNullablesOneOfBooleanSumNullables OneOfBooleanSumNullablesType = "OneOfNullables"
+)
+
+// IsBool reports whether OneOfBooleanSumNullables is bool.
+func (s OneOfBooleanSumNullables) IsBool() bool { return s.Type == BoolOneOfBooleanSumNullables }
+
+// IsOneOfNullables reports whether OneOfBooleanSumNullables is OneOfNullables.
+func (s OneOfBooleanSumNullables) IsOneOfNullables() bool {
+	return s.Type == OneOfNullablesOneOfBooleanSumNullables
+}
+
+// SetBool sets OneOfBooleanSumNullables to bool.
+func (s *OneOfBooleanSumNullables) SetBool(v bool) {
+	s.Type = BoolOneOfBooleanSumNullables
+	s.Bool = v
+}
+
+// GetBool returns bool and true boolean if OneOfBooleanSumNullables is bool.
+func (s OneOfBooleanSumNullables) GetBool() (v bool, ok bool) {
+	if !s.IsBool() {
+		return v, false
+	}
+	return s.Bool, true
+}
+
+// NewBoolOneOfBooleanSumNullables returns new OneOfBooleanSumNullables from bool.
+func NewBoolOneOfBooleanSumNullables(v bool) OneOfBooleanSumNullables {
+	var s OneOfBooleanSumNullables
+	s.SetBool(v)
+	return s
+}
+
+// SetOneOfNullables sets OneOfBooleanSumNullables to OneOfNullables.
+func (s *OneOfBooleanSumNullables) SetOneOfNullables(v OneOfNullables) {
+	s.Type = OneOfNullablesOneOfBooleanSumNullables
+	s.OneOfNullables = v
+}
+
+// GetOneOfNullables returns OneOfNullables and true boolean if OneOfBooleanSumNullables is OneOfNullables.
+func (s OneOfBooleanSumNullables) GetOneOfNullables() (v OneOfNullables, ok bool) {
+	if !s.IsOneOfNullables() {
+		return v, false
+	}
+	return s.OneOfNullables, true
+}
+
+// NewOneOfNullablesOneOfBooleanSumNullables returns new OneOfBooleanSumNullables from OneOfNullables.
+func NewOneOfNullablesOneOfBooleanSumNullables(v OneOfNullables) OneOfBooleanSumNullables {
+	var s OneOfBooleanSumNullables
+	s.SetOneOfNullables(v)
+	return s
+}
+
+func (*OneOfBooleanSumNullables) testNullableOneofsRes() {}
+
 // Ref: #/components/schemas/OneOfBugs
 type OneOfBugs struct {
 	Issue143                        Issue143                    "json:\"issue143\""
@@ -845,6 +914,123 @@ type OneOfMappingReferenceB struct {
 
 type OneOfMappingReferenceBData struct{}
 
+// Ref: #/components/schemas/OneOfNullables
+// OneOfNullables represents sum type.
+type OneOfNullables struct {
+	Type        OneOfNullablesType // switch on this field
+	Null        struct{}
+	String      string
+	Int         int
+	StringArray []string
+}
+
+// OneOfNullablesType is oneOf type of OneOfNullables.
+type OneOfNullablesType string
+
+// Possible values for OneOfNullablesType.
+const (
+	NullOneOfNullables        OneOfNullablesType = "struct{}"
+	StringOneOfNullables      OneOfNullablesType = "string"
+	IntOneOfNullables         OneOfNullablesType = "int"
+	StringArrayOneOfNullables OneOfNullablesType = "[]string"
+)
+
+// IsNull reports whether OneOfNullables is struct{}.
+func (s OneOfNullables) IsNull() bool { return s.Type == NullOneOfNullables }
+
+// IsString reports whether OneOfNullables is string.
+func (s OneOfNullables) IsString() bool { return s.Type == StringOneOfNullables }
+
+// IsInt reports whether OneOfNullables is int.
+func (s OneOfNullables) IsInt() bool { return s.Type == IntOneOfNullables }
+
+// IsStringArray reports whether OneOfNullables is []string.
+func (s OneOfNullables) IsStringArray() bool { return s.Type == StringArrayOneOfNullables }
+
+// SetNull sets OneOfNullables to struct{}.
+func (s *OneOfNullables) SetNull(v struct{}) {
+	s.Type = NullOneOfNullables
+	s.Null = v
+}
+
+// GetNull returns struct{} and true boolean if OneOfNullables is struct{}.
+func (s OneOfNullables) GetNull() (v struct{}, ok bool) {
+	if !s.IsNull() {
+		return v, false
+	}
+	return s.Null, true
+}
+
+// NewNullOneOfNullables returns new OneOfNullables from struct{}.
+func NewNullOneOfNullables(v struct{}) OneOfNullables {
+	var s OneOfNullables
+	s.SetNull(v)
+	return s
+}
+
+// SetString sets OneOfNullables to string.
+func (s *OneOfNullables) SetString(v string) {
+	s.Type = StringOneOfNullables
+	s.String = v
+}
+
+// GetString returns string and true boolean if OneOfNullables is string.
+func (s OneOfNullables) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringOneOfNullables returns new OneOfNullables from string.
+func NewStringOneOfNullables(v string) OneOfNullables {
+	var s OneOfNullables
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets OneOfNullables to int.
+func (s *OneOfNullables) SetInt(v int) {
+	s.Type = IntOneOfNullables
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if OneOfNullables is int.
+func (s OneOfNullables) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntOneOfNullables returns new OneOfNullables from int.
+func NewIntOneOfNullables(v int) OneOfNullables {
+	var s OneOfNullables
+	s.SetInt(v)
+	return s
+}
+
+// SetStringArray sets OneOfNullables to []string.
+func (s *OneOfNullables) SetStringArray(v []string) {
+	s.Type = StringArrayOneOfNullables
+	s.StringArray = v
+}
+
+// GetStringArray returns []string and true boolean if OneOfNullables is []string.
+func (s OneOfNullables) GetStringArray() (v []string, ok bool) {
+	if !s.IsStringArray() {
+		return v, false
+	}
+	return s.StringArray, true
+}
+
+// NewStringArrayOneOfNullables returns new OneOfNullables from []string.
+func NewStringArrayOneOfNullables(v []string) OneOfNullables {
+	var s OneOfNullables
+	s.SetStringArray(v)
+	return s
+}
+
 // Ref: #/components/schemas/OneOfUUIDAndIntEnum
 // OneOfUUIDAndIntEnum represents sum type.
 type OneOfUUIDAndIntEnum struct {
@@ -918,6 +1104,123 @@ const (
 	OneOfUUIDAndIntEnum10 OneOfUUIDAndIntEnum1 = 0
 	OneOfUUIDAndIntEnum11 OneOfUUIDAndIntEnum1 = 1
 )
+
+// Ref: #/components/schemas/OneOfWithNullable
+// OneOfWithNullable represents sum type.
+type OneOfWithNullable struct {
+	Type        OneOfWithNullableType // switch on this field
+	Null        struct{}
+	String      string
+	Int         int
+	StringArray []string
+}
+
+// OneOfWithNullableType is oneOf type of OneOfWithNullable.
+type OneOfWithNullableType string
+
+// Possible values for OneOfWithNullableType.
+const (
+	NullOneOfWithNullable        OneOfWithNullableType = "struct{}"
+	StringOneOfWithNullable      OneOfWithNullableType = "string"
+	IntOneOfWithNullable         OneOfWithNullableType = "int"
+	StringArrayOneOfWithNullable OneOfWithNullableType = "[]string"
+)
+
+// IsNull reports whether OneOfWithNullable is struct{}.
+func (s OneOfWithNullable) IsNull() bool { return s.Type == NullOneOfWithNullable }
+
+// IsString reports whether OneOfWithNullable is string.
+func (s OneOfWithNullable) IsString() bool { return s.Type == StringOneOfWithNullable }
+
+// IsInt reports whether OneOfWithNullable is int.
+func (s OneOfWithNullable) IsInt() bool { return s.Type == IntOneOfWithNullable }
+
+// IsStringArray reports whether OneOfWithNullable is []string.
+func (s OneOfWithNullable) IsStringArray() bool { return s.Type == StringArrayOneOfWithNullable }
+
+// SetNull sets OneOfWithNullable to struct{}.
+func (s *OneOfWithNullable) SetNull(v struct{}) {
+	s.Type = NullOneOfWithNullable
+	s.Null = v
+}
+
+// GetNull returns struct{} and true boolean if OneOfWithNullable is struct{}.
+func (s OneOfWithNullable) GetNull() (v struct{}, ok bool) {
+	if !s.IsNull() {
+		return v, false
+	}
+	return s.Null, true
+}
+
+// NewNullOneOfWithNullable returns new OneOfWithNullable from struct{}.
+func NewNullOneOfWithNullable(v struct{}) OneOfWithNullable {
+	var s OneOfWithNullable
+	s.SetNull(v)
+	return s
+}
+
+// SetString sets OneOfWithNullable to string.
+func (s *OneOfWithNullable) SetString(v string) {
+	s.Type = StringOneOfWithNullable
+	s.String = v
+}
+
+// GetString returns string and true boolean if OneOfWithNullable is string.
+func (s OneOfWithNullable) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringOneOfWithNullable returns new OneOfWithNullable from string.
+func NewStringOneOfWithNullable(v string) OneOfWithNullable {
+	var s OneOfWithNullable
+	s.SetString(v)
+	return s
+}
+
+// SetInt sets OneOfWithNullable to int.
+func (s *OneOfWithNullable) SetInt(v int) {
+	s.Type = IntOneOfWithNullable
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if OneOfWithNullable is int.
+func (s OneOfWithNullable) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntOneOfWithNullable returns new OneOfWithNullable from int.
+func NewIntOneOfWithNullable(v int) OneOfWithNullable {
+	var s OneOfWithNullable
+	s.SetInt(v)
+	return s
+}
+
+// SetStringArray sets OneOfWithNullable to []string.
+func (s *OneOfWithNullable) SetStringArray(v []string) {
+	s.Type = StringArrayOneOfWithNullable
+	s.StringArray = v
+}
+
+// GetStringArray returns []string and true boolean if OneOfWithNullable is []string.
+func (s OneOfWithNullable) GetStringArray() (v []string, ok bool) {
+	if !s.IsStringArray() {
+		return v, false
+	}
+	return s.StringArray, true
+}
+
+// NewStringArrayOneOfWithNullable returns new OneOfWithNullable from []string.
+func NewStringArrayOneOfWithNullable(v []string) OneOfWithNullable {
+	var s OneOfWithNullable
+	s.SetStringArray(v)
+	return s
+}
 
 // Ref: #/components/schemas/OnePropertyObject
 type OnePropertyObject struct {
@@ -3270,6 +3573,14 @@ type TestMultipartUploadReq struct {
 	OptionalFile OptMultipartFile   "json:\"optional_file\""
 	Files        []ht.MultipartFile "json:\"files\""
 }
+
+type TestNullableOneofsApplicationJSONCreated OneOfWithNullable
+
+func (*TestNullableOneofsApplicationJSONCreated) testNullableOneofsRes() {}
+
+type TestNullableOneofsApplicationJSONOK OneOfWithNullable
+
+func (*TestNullableOneofsApplicationJSONOK) testNullableOneofsRes() {}
 
 type TestObjectQueryParameterDeepObject struct {
 	Min    int    "json:\"min\""

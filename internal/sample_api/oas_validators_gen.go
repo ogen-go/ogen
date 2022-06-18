@@ -421,6 +421,20 @@ func (s NullableEnumsOnlyNullable) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s OneOfBooleanSumNullables) Validate() error {
+	switch s.Type {
+	case BoolOneOfBooleanSumNullables:
+		return nil // no validation needed
+	case OneOfNullablesOneOfBooleanSumNullables:
+		if err := s.OneOfNullables.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
 func (s OneOfBugs) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -446,6 +460,24 @@ func (s OneOfBugs) Validate() error {
 	}
 	return nil
 }
+func (s OneOfNullables) Validate() error {
+	switch s.Type {
+	case NullOneOfNullables:
+		return nil // no validation needed
+	case StringOneOfNullables:
+		return nil // no validation needed
+	case IntOneOfNullables:
+		return nil // no validation needed
+	case StringArrayOneOfNullables:
+		if s.StringArray == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
 func (s OneOfUUIDAndIntEnum) Validate() error {
 	switch s.Type {
 	case UUIDOneOfUUIDAndIntEnum:
@@ -468,6 +500,23 @@ func (s OneOfUUIDAndIntEnum1) Validate() error {
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
+	}
+}
+func (s OneOfWithNullable) Validate() error {
+	switch s.Type {
+	case NullOneOfWithNullable:
+		return nil // no validation needed
+	case StringOneOfWithNullable:
+		return nil // no validation needed
+	case IntOneOfWithNullable:
+		return nil // no validation needed
+	case StringArrayOneOfWithNullable:
+		if s.StringArray == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
@@ -1000,6 +1049,18 @@ func (s TestMultipartUploadReq) Validate() error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s TestNullableOneofsApplicationJSONCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s TestNullableOneofsApplicationJSONOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
 	}
 	return nil
 }
