@@ -49,13 +49,8 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
 	{{- end }}
 {{- else }}{{/* Decode content response */}}
-	match := func(pattern, value string) bool {
-		ok, _ := path.Match(pattern, value)
-		return ok
-	}
-	_ = match
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
+	if err != nil {
 		return res, errors.Wrap(err, "parse media type")
 	}
 	switch {
@@ -63,7 +58,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		{{- if not $contentType.Mask }}
 		case ct == {{ quote $contentType }}:
 		{{- else }}
-		case match({{ quote $contentType }}, ct):
+		case ht.MatchContentType({{ quote $contentType }}, ct):
 		{{- end }}
 		{{- $type := $originalType }}
 		{{- if or $response.WithStatusCode $response.WithHeaders }}
@@ -71,12 +66,12 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		{{- end }}
 
 		{{- if $contentType.JSON }}
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response {{ $type.Go }}
 			if err := func() error {
 				{{- template "json/dec" elem $type "response" }}
