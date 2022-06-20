@@ -166,6 +166,7 @@ func (g *Generator) generateContents(
 				return nil
 
 			case "multipart/form-data":
+				files := map[string]*ir.Type{}
 				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
 					t, err := isMultipartFile(ctx, f.Type, f.Spec)
 					if err != nil {
@@ -173,7 +174,7 @@ func (g *Generator) generateContents(
 					}
 					if t != nil {
 						t.AddFeature("multipart-file")
-						f.Type = t
+						files[f.Name] = t
 						return nil
 					}
 					f.Type.AddFeature("uri")
@@ -181,6 +182,61 @@ func (g *Generator) generateContents(
 				})
 				if err != nil {
 					return err
+				}
+				// Create special type for multipart type if form includes file parameters.
+				//
+				// We need to do it in case when same media definition shared by different content types.
+				// For example:
+				//
+				//	content:
+				//    application/json:
+				//      schema:
+				//        $ref: '#/components/schemas/Form'
+				//
+				//    multipart/form-data:
+				//      schema:
+				//        $ref: '#/components/schemas/Form'
+				// ...
+				//  components:
+				//    schemas:
+				//      Form:
+				//        type: object
+				//        properties:
+				//          file:
+				//            type: string
+				//            format: binary
+				//
+				if len(files) > 0 {
+					// TODO(tdakkota): too hacky
+					newt := &ir.Type{
+						Doc:            t.Doc,
+						Kind:           t.Kind,
+						Name:           t.Name + "Form",
+						Schema:         t.Schema,
+						GenericOf:      t.GenericOf,
+						GenericVariant: t.GenericVariant,
+						Validators:     t.Validators,
+					}
+					newt.Features = append(newt.Features, t.Features...)
+
+					for _, f := range t.Fields {
+						fieldType := f.Type
+						if file, ok := files[f.Name]; ok {
+							fieldType = file
+						}
+						newt.Fields = append(newt.Fields, &ir.Field{
+							Name:   f.Name,
+							Type:   fieldType,
+							Tag:    f.Tag,
+							Inline: f.Inline,
+							Spec:   f.Spec,
+						})
+					}
+
+					if err := ctx.saveType(newt); err != nil {
+						return errors.Wrapf(err, "override form %q", t.Name)
+					}
+					t = newt
 				}
 
 				result[ir.ContentTypeMultipart] = t
