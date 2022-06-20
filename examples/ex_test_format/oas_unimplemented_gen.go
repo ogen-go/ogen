@@ -19,6 +19,13 @@ var _ Handler = UnimplementedHandler{}
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
 
+// TestQueryParameter implements test_query_parameter operation.
+//
+// POST /test_query_parameter
+func (UnimplementedHandler) TestQueryParameter(ctx context.Context, req string, params TestQueryParameterParams) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestRequestAny implements test_request_Any operation.
 //
 // POST /test_request_Any

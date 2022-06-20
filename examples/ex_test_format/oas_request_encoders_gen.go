@@ -16,6 +16,21 @@ import (
 	"github.com/ogen-go/ogen/json"
 )
 
+func encodeTestQueryParameterRequestJSON(
+	req string,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
+	}, nil
+}
 func encodeTestRequestAnyRequestJSON(
 	req jx.Raw,
 	span trace.Span,

@@ -19,6 +19,38 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func decodeTestQueryParameterResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			d := jx.DecodeBytes(b)
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
 func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:

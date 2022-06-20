@@ -6453,7 +6453,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -8214,7 +8214,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -8248,7 +8248,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -9564,7 +9564,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -9598,7 +9598,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -20060,7 +20060,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListPar
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -20465,7 +20465,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (params Gists
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -20715,7 +20715,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsL
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -20842,7 +20842,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (params Gists
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -24311,7 +24311,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -24825,7 +24825,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -25123,7 +25123,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -25670,7 +25670,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -26095,7 +26095,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -26637,7 +26637,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -42773,7 +42773,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -43065,7 +43065,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -58224,7 +58224,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -58258,7 +58258,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -59583,7 +59583,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
@@ -59617,7 +59617,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					c, err := conv.ToTime(val)
+					c, err := conv.ToDateTime(val)
 					if err != nil {
 						return err
 					}
