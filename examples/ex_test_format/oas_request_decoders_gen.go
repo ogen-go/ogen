@@ -22,6 +22,64 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func (s *Server) decodeTestQueryParameterRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := new(bytes.Buffer)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if written == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
 func (s *Server) decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (
 	req jx.Raw,
 	close func() error,

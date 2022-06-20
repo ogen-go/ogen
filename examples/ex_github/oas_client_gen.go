@@ -5949,7 +5949,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Created.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -8099,7 +8099,7 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -8116,7 +8116,7 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Before.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -9069,7 +9069,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -9086,7 +9086,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Before.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -20024,7 +20024,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -20326,7 +20326,7 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -20521,7 +20521,7 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -20618,7 +20618,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -24355,7 +24355,7 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -24676,7 +24676,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -24837,7 +24837,7 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -25137,7 +25137,7 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -25342,7 +25342,7 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -25613,7 +25613,7 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -40774,7 +40774,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -40936,7 +40936,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -54972,7 +54972,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -54989,7 +54989,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Until.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -55754,7 +55754,7 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -55771,7 +55771,7 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Before.Get(); ok {
-				return e.EncodeValue(conv.TimeToString(val))
+				return e.EncodeValue(conv.DateTimeToString(val))
 			}
 			return nil
 		}); err != nil {

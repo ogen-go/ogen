@@ -1,12 +1,11 @@
 package conv
 
 import (
-	"net"
+	"net/netip"
 	"net/url"
 	"strconv"
 	"time"
 
-	"github.com/go-faster/errors"
 	"github.com/google/uuid"
 )
 
@@ -42,7 +41,47 @@ func ToBytes(s string) ([]byte, error) {
 }
 
 func ToTime(s string) (time.Time, error) {
+	return time.Parse(timeLayout, s)
+}
+
+func ToDate(s string) (time.Time, error) {
+	return time.Parse(dateLayout, s)
+}
+
+func ToDateTime(s string) (time.Time, error) {
 	return time.Parse(time.RFC3339, s)
+}
+
+func ToUnixSeconds(s string) (time.Time, error) {
+	val, err := ToInt64(s)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.Unix(val, 0), nil
+}
+
+func ToUnixNano(s string) (time.Time, error) {
+	val, err := ToInt64(s)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.Unix(0, val), nil
+}
+
+func ToUnixMicro(s string) (time.Time, error) {
+	val, err := ToInt64(s)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.UnixMicro(val), nil
+}
+
+func ToUnixMilli(s string) (time.Time, error) {
+	val, err := ToInt64(s)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.UnixMilli(val), nil
 }
 
 func ToBool(s string) (bool, error) {
@@ -53,12 +92,8 @@ func ToUUID(s string) (uuid.UUID, error) {
 	return uuid.Parse(s)
 }
 
-func ToIP(s string) (net.IP, error) {
-	ip := net.ParseIP(s)
-	if ip == nil {
-		return nil, errors.Errorf("invalid ip: %q", s)
-	}
-	return ip, nil
+func ToAddr(s string) (netip.Addr, error) {
+	return netip.ParseAddr(s)
 }
 
 func ToURL(s string) (url.URL, error) {
@@ -71,6 +106,15 @@ func ToURL(s string) (url.URL, error) {
 
 func ToDuration(s string) (time.Duration, error) {
 	return time.ParseDuration(s)
+}
+
+func ToStringInt32(s string) (int32, error) {
+	v, err := strconv.ParseInt(s, 10, 32)
+	return int32(v), err
+}
+
+func ToStringInt64(s string) (int64, error) {
+	return strconv.ParseInt(s, 10, 64)
 }
 
 func ToInt32Array(a []string) ([]int32, error) {

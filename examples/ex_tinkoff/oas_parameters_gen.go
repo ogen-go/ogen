@@ -69,7 +69,7 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 					return err
 				}
 
-				c, err := conv.ToTime(val)
+				c, err := conv.ToDateTime(val)
 				if err != nil {
 					return err
 				}
@@ -98,7 +98,7 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 					return err
 				}
 
-				c, err := conv.ToTime(val)
+				c, err := conv.ToDateTime(val)
 				if err != nil {
 					return err
 				}
@@ -328,7 +328,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 					return err
 				}
 
-				c, err := conv.ToTime(val)
+				c, err := conv.ToDateTime(val)
 				if err != nil {
 					return err
 				}
@@ -357,7 +357,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 					return err
 				}
 
-				c, err := conv.ToTime(val)
+				c, err := conv.ToDateTime(val)
 				if err != nil {
 					return err
 				}

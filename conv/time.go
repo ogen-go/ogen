@@ -4,6 +4,11 @@ import (
 	"time"
 )
 
+const (
+	dateLayout = "2006-01-02"
+	timeLayout = "15:04:05"
+)
+
 func Date(t time.Time) time.Time {
 	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
 }

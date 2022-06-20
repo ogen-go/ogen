@@ -147,7 +147,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.TimeToString(params.From))
+			return e.EncodeValue(conv.DateTimeToString(params.From))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -161,7 +161,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.TimeToString(params.To))
+			return e.EncodeValue(conv.DateTimeToString(params.To))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -575,7 +575,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.TimeToString(params.From))
+			return e.EncodeValue(conv.DateTimeToString(params.From))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -589,7 +589,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.TimeToString(params.To))
+			return e.EncodeValue(conv.DateTimeToString(params.To))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}

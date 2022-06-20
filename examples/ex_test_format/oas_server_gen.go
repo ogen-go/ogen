@@ -17,6 +17,10 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// TestQueryParameter implements test_query_parameter operation.
+	//
+	// POST /test_query_parameter
+	TestQueryParameter(ctx context.Context, req string, params TestQueryParameterParams) (Error, error)
 	// TestRequestAny implements test_request_Any operation.
 	//
 	// POST /test_request_Any

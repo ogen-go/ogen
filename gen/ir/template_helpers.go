@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func afterDot(v string) string {
@@ -31,8 +32,33 @@ func (t *Type) EncodeFn() string {
 	}
 }
 
+func (t Type) uriFormat() string {
+	if s := t.Schema; s != nil {
+		switch f := s.Format; f {
+		case "time", "date":
+			return capitalize.Capitalize(f)
+		case "date-time":
+			return "DateTime"
+		case "int32", "int64":
+			if s.Type != jsonschema.String {
+				break
+			}
+			return "String" + capitalize.Capitalize(f)
+		case "unix", "unix-seconds":
+			return "UnixSeconds"
+		case "unix-nano":
+			return "UnixNano"
+		case "unix-micro":
+			return "UnixMicro"
+		case "unix-milli":
+			return "UnixMilli"
+		}
+	}
+	return t.EncodeFn()
+}
+
 func (t Type) ToString() string {
-	encodeFn := t.EncodeFn()
+	encodeFn := t.uriFormat()
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
 	}
@@ -40,7 +66,7 @@ func (t Type) ToString() string {
 }
 
 func (t Type) FromString() string {
-	encodeFn := t.EncodeFn()
+	encodeFn := t.uriFormat()
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
 	}

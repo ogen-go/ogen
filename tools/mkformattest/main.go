@@ -193,6 +193,48 @@ func generateSpec() *ogen.Spec {
 		}
 	}
 
+	{
+		op := ogen.NewOperation().SetOperationID("test_query_parameter").
+			SetRequestBody(&ogen.RequestBody{
+				Ref: "#/components/requestBodies/defaultBody",
+			}).
+			SetResponses(map[string]*ogen.Response{
+				"200": {
+					Ref: "#/components/responses/error",
+				},
+			})
+
+		eachMapping(func(name, format, typ string) {
+			if typ == "null" {
+				return
+			}
+
+			add := func(name string, s *ogen.Schema) {
+				op.Parameters = append(op.Parameters, &ogen.Parameter{
+					Name:     name,
+					In:       "query",
+					Required: true,
+					Schema:   s,
+				})
+			}
+
+			s := &ogen.Schema{
+				Type:   typ,
+				Format: format,
+			}
+			add(name, s)
+			add(name+"_array", s.AsArray())
+		})
+		p := op.Parameters
+		sort.SliceStable(p, func(i, j int) bool {
+			return p[i].Name < p[j].Name
+		})
+
+		spec.Paths["/test_query_parameter"] = &ogen.PathItem{
+			Post: op,
+		}
+	}
+
 	return spec
 }
 
