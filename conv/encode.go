@@ -1,7 +1,7 @@
 package conv
 
 import (
-	"net"
+	"net/netip"
 	"net/url"
 	"strconv"
 	"time"
@@ -23,17 +23,45 @@ func StringToString(v string) string { return v }
 
 func BytesToString(v []byte) string { return string(v) }
 
-func TimeToString(v time.Time) string { return v.Format(time.RFC3339) }
+func TimeToString(v time.Time) string { return v.Format(timeLayout) }
+
+func DateToString(v time.Time) string { return v.Format(dateLayout) }
+
+func DateTimeToString(v time.Time) string { return v.Format(time.RFC3339) }
+
+func UnixSecondsToString(v time.Time) string {
+	return StringInt64ToString(v.Unix())
+}
+
+func UnixNanoToString(v time.Time) string {
+	return StringInt64ToString(v.UnixNano())
+}
+
+func UnixMicroToString(v time.Time) string {
+	return StringInt64ToString(v.UnixMicro())
+}
+
+func UnixMilliToString(v time.Time) string {
+	return StringInt64ToString(v.UnixMilli())
+}
 
 func BoolToString(v bool) string { return strconv.FormatBool(v) }
 
 func UUIDToString(v uuid.UUID) string { return v.String() }
 
-func IPToString(v net.IP) string { return v.String() }
+func AddrToString(v netip.Addr) string { return v.String() }
 
 func URLToString(v url.URL) string { return v.String() }
 
 func DurationToString(v time.Duration) string { return v.String() }
+
+func StringInt32ToString(v int32) string {
+	return strconv.FormatInt(int64(v), 10)
+}
+
+func StringInt64ToString(v int64) string {
+	return strconv.FormatInt(v, 10)
+}
 
 func Int32ArrayToString(vs []int32) []string {
 	strs := make([]string, 0, len(vs))
