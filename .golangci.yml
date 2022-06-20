@@ -136,6 +136,8 @@ issues:
     # Not supposed to be constant.
     - linters: [ goconst ]
       text: 'string `(string|number|int32|int64)`'
+    - linters: [ goconst ]
+      text: 'string `(Unix|unix|date|time)'
 
     - linters: [ revive ]
       text: "if-return: redundant if ...; err != nil check, just return error instead."
