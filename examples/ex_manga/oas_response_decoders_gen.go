@@ -7,35 +7,30 @@ import (
 	"io"
 	"mime"
 	"net/http"
-	"path"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/validate"
 )
 
 func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response Book
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -58,17 +53,12 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res GetPageCoverImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
-		case match("image/*", ct):
+		case ht.MatchContentType("image/*", ct):
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -88,17 +78,12 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPageImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
-		case match("image/*", ct):
+		case ht.MatchContentType("image/*", ct):
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -118,17 +103,12 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (res GetPageThumbnailImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
-		case match("image/*", ct):
+		case ht.MatchContentType("image/*", ct):
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -148,23 +128,18 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response SearchOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -187,23 +162,18 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res SearchByTagIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

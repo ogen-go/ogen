@@ -3,11 +3,9 @@
 package techempower
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
-	"path"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -19,23 +17,18 @@ import (
 func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -56,23 +49,18 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response WorldObject
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -93,23 +81,18 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response HelloWorld
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -130,23 +113,18 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -167,23 +145,18 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

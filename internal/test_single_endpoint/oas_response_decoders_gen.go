@@ -3,11 +3,9 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
-	"path"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -19,23 +17,18 @@ import (
 func decodeProbeLivenessResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		match := func(pattern, value string) bool {
-			ok, _ := path.Match(pattern, value)
-			return ok
-		}
-		_ = match
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
 		case ct == "application/json":
-			buf := new(bytes.Buffer)
-			if _, err := io.Copy(buf, resp.Body); err != nil {
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(buf.Bytes())
+			d := jx.DecodeBytes(b)
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -53,23 +46,18 @@ func decodeProbeLivenessResponse(resp *http.Response, span trace.Span) (res stri
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			match := func(pattern, value string) bool {
-				ok, _ := path.Match(pattern, value)
-				return ok
-			}
-			_ = match
 			ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 			if err != nil {
 				return res, errors.Wrap(err, "parse media type")
 			}
 			switch {
 			case ct == "application/json":
-				buf := new(bytes.Buffer)
-				if _, err := io.Copy(buf, resp.Body); err != nil {
+				b, err := io.ReadAll(resp.Body)
+				if err != nil {
 					return res, err
 				}
 
-				d := jx.DecodeBytes(buf.Bytes())
+				d := jx.DecodeBytes(b)
 				var response Error
 				if err := func() error {
 					if err := response.Decode(d); err != nil {
