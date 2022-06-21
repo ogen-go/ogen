@@ -80,6 +80,8 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
     {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm  }}
+		var request {{ $t.Go }}
+
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, close, nil
@@ -103,7 +105,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		q := uri.NewQueryDecoder(form)
 		{{- range $p := $op.Request.FormParameters $contentType }}
 		{
-        	{{- $el := elem $p.Type (printf "req.%s" $p.Name) }}
+        	{{- $el := elem $p.Type (printf "request.%s" $p.Name) }}
 			cfg := uri.QueryParameterDecodingConfig{
 				Name:    {{ quote $p.Spec.Name }},
 				Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
@@ -142,7 +144,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		{{- end }}
 		{{- end }}
 
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}req, close, nil
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
@@ -177,13 +179,13 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 	closers = append(closers, f)
 
     {{- if $t.IsPrimitive }}
-	{{ printf "req.%s" $.Name }} = ht.MultipartFile{
+	{{ printf "request.%s" $.Name }} = ht.MultipartFile{
 		Name:   fh.Filename,
 		File:   f,
 		Header: fh.Header,
 	}
 	{{- else }}
-	{{ printf "req.%s" $.Name }}.SetTo(ht.MultipartFile{
+	{{ printf "request.%s" $.Name }}.SetTo(ht.MultipartFile{
 		Name:   fh.Filename,
 		File:   f,
 		Header: fh.Header,
@@ -191,7 +193,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 	{{- end }}
 	{{- else if $t.IsArray }}
 	_ = ok
-	req.Files = make({{ $t.Go }}, 0, len(files))
+	request.Files = make({{ $t.Go }}, 0, len(files))
 	for _, fh := range files {
 		f, err := fh.Open()
 		if err != nil {
@@ -199,7 +201,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		}
 		closers = append(closers, f)
 
-		{{ printf "req.%s" $.Name }} = append({{ printf "req.%s" $.Name }}, ht.MultipartFile{
+		{{ printf "request.%s" $.Name }} = append({{ printf "request.%s" $.Name }}, ht.MultipartFile{
 			Name:   fh.Filename,
 			File:   f,
 			Header: fh.Header,
@@ -211,7 +213,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 
 	{{- if $t.NeedValidation }}
 	if err := func() error {
-		{{- template "validate" elem $t (printf "req.%s" $.Name) }}
+		{{- template "validate" elem $t (printf "request.%s" $.Name) }}
 	}(); err != nil {
 		return errors.Wrap(err, "validate")
 	}
