@@ -1903,7 +1903,7 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 // TestMultipartUpload invokes testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartUploadReq) (res TestMultipartUploadOK, err error) {
+func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartUploadReqForm) (res TestMultipartUploadOK, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -2084,6 +2084,89 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	defer resp.Body.Close()
 
 	result, err := decodeTestObjectQueryParameterResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestShareFormSchema invokes testShareFormSchema operation.
+//
+// POST /testShareFormSchema
+func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res TestShareFormSchemaOK, err error) {
+	switch request := request.(type) {
+	case *SharedRequest:
+		// Validation is not required for this type.
+	case *SharedRequestForm:
+		// Validation is not required for this type.
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testShareFormSchema"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestShareFormSchema",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error)
+	)
+	switch req := request.(type) {
+	case *SharedRequest:
+		contentType = "application/json"
+		fn, err := encodeTestShareFormSchemaRequestJSON(*req, span)
+		if err != nil {
+			return res, err
+		}
+		reqBody = fn
+	case *SharedRequestForm:
+		contentType = "multipart/form-data"
+		fn, ct, err := encodeTestShareFormSchemaRequest(*req, span)
+		if err != nil {
+			return res, err
+		}
+		reqBody = fn
+		contentType = ct
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testShareFormSchema"
+
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r := ht.NewRequest(ctx, "POST", u, body)
+	r.GetBody = reqBody
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestShareFormSchemaResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

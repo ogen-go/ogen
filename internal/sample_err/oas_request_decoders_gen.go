@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -49,17 +48,16 @@ func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OptData
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {

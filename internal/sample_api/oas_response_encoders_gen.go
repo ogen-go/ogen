@@ -564,3 +564,9 @@ func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK,
 	return nil
 
 }
+func encodeTestShareFormSchemaResponse(response TestShareFormSchemaOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}

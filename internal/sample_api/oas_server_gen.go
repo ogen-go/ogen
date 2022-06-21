@@ -157,7 +157,7 @@ type Handler interface {
 	// TestMultipartUpload implements testMultipartUpload operation.
 	//
 	// POST /testMultipartUpload
-	TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (TestMultipartUploadOK, error)
+	TestMultipartUpload(ctx context.Context, req TestMultipartUploadReqForm) (TestMultipartUploadOK, error)
 	// TestNullableOneofs implements testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
@@ -166,6 +166,10 @@ type Handler interface {
 	//
 	// GET /testObjectQueryParameter
 	TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (TestObjectQueryParameterOK, error)
+	// TestShareFormSchema implements testShareFormSchema operation.
+	//
+	// POST /testShareFormSchema
+	TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) (TestShareFormSchemaOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

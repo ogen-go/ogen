@@ -28,3 +28,7 @@ type PetUploadAvatarByIDRes interface {
 type TestNullableOneofsRes interface {
 	testNullableOneofsRes()
 }
+
+type TestShareFormSchemaReq interface {
+	testShareFormSchemaReq()
+}

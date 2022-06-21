@@ -65,7 +65,7 @@ func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) (r 
 	return r, nil
 }
 
-func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReq) (
+func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReqForm) (
 	r api.TestMultipartUploadOK,
 	_ error,
 ) {
@@ -198,7 +198,7 @@ func TestMultipartUploadE2E(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := require.New(t)
 
-			req := api.TestMultipartUploadReq{
+			req := api.TestMultipartUploadReqForm{
 				File: ht.MultipartFile{
 					Name: "pablo.jpg",
 					File: strings.NewReader(tt.file),

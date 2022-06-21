@@ -718,7 +718,7 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "file", 
+                    "file",
                     "files"
                   ],
                   "properties": {
@@ -982,6 +982,31 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/testShareFormSchema": {
+      "post": {
+        "operationId": "testShareFormSchema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
           }
         }
       }
@@ -1976,6 +2001,18 @@
           }
         },
         "additionalProperties": false
+      },
+      "SharedRequest": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string",
+            "format": "binary"
+          }
+        }
       }
     },
     "parameters": {

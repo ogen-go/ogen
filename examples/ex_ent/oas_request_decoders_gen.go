@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -46,17 +45,16 @@ func (s *Server) decodeCreatePetRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request CreatePetReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -102,17 +100,16 @@ func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request, span trace.Sp
 		}
 
 		var request CreatePetCategoriesReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -158,17 +155,16 @@ func (s *Server) decodeCreatePetFriendsRequest(r *http.Request, span trace.Span)
 		}
 
 		var request CreatePetFriendsReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -214,17 +210,16 @@ func (s *Server) decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request CreatePetOwnerReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -270,17 +265,16 @@ func (s *Server) decodeUpdatePetRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request UpdatePetReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
