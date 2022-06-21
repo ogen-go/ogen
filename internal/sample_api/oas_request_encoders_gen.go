@@ -366,7 +366,7 @@ func encodeTestMultipartRequest(
 	return getBody, contentType, nil
 }
 func encodeTestMultipartUploadRequest(
-	req TestMultipartUploadReq,
+	req TestMultipartUploadReqForm,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -424,6 +424,59 @@ func encodeTestMultipartUploadRequest(
 			return nil
 		}(); err != nil {
 			return errors.Wrap(err, "write \"files\"")
+		}
+		if err := q.WriteMultipart(w); err != nil {
+			return errors.Wrap(err, "write multipart")
+		}
+		return nil
+	})
+	return getBody, contentType, nil
+}
+func encodeTestShareFormSchemaRequestJSON(
+	req SharedRequest,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	e := jx.GetEncoder()
+
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
+	}, nil
+}
+func encodeTestShareFormSchemaRequest(
+	req SharedRequestForm,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	contentType string,
+	rerr error,
+) {
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "filename" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "filename",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.Filename.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		if val, ok := req.File.Get(); ok {
+			if err := val.WriteMultipart("file", w); err != nil {
+				return errors.Wrap(err, "write \"file\"")
+			}
 		}
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")

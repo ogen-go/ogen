@@ -1048,3 +1048,11 @@ func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
+func decodeTestShareFormSchemaResponse(resp *http.Response, span trace.Span) (res TestShareFormSchemaOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return TestShareFormSchemaOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}

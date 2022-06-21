@@ -686,6 +686,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
+				case 'S': // Prefix: "ShareFormSchema"
+					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestShareFormSchema
+						s.handleTestShareFormSchemaRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			}
 		}
@@ -1422,6 +1435,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							r.count = 0
 							return r, true
 						}
+					}
+				case 'S': // Prefix: "ShareFormSchema"
+					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestShareFormSchema
+						r.name = "TestShareFormSchema"
+						r.args = args
+						r.count = 0
+						return r, true
 					}
 				}
 			}

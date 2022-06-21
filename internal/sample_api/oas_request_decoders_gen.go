@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -51,17 +50,16 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request DefaultTest
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -118,17 +116,16 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OptPet
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -190,17 +187,16 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OneOfBugs
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -257,17 +253,16 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request OptPet
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -332,17 +327,16 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 		}
 
 		var request OptPetName
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -407,17 +401,16 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 		}
 
 		var request OptString
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -521,17 +514,16 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Sp
 		}
 
 		var request TestFloatValidation
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -580,6 +572,8 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 	}
 	switch ct {
 	case "application/x-www-form-urlencoded":
+		var request TestForm
+
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -598,7 +592,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotIDVal int
+					var requestDotIDVal int
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -610,12 +604,12 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 							return err
 						}
 
-						reqDotIDVal = c
+						requestDotIDVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					req.ID.SetTo(reqDotIDVal)
+					request.ID.SetTo(requestDotIDVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"id\"")
@@ -631,7 +625,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotUUIDVal uuid.UUID
+					var requestDotUUIDVal uuid.UUID
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -643,12 +637,12 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 							return err
 						}
 
-						reqDotUUIDVal = c
+						requestDotUUIDVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					req.UUID.SetTo(reqDotUUIDVal)
+					request.UUID.SetTo(requestDotUUIDVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"uuid\"")
@@ -674,7 +668,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 						return err
 					}
 
-					req.Description = c
+					request.Description = c
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"description\"")
@@ -693,7 +687,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					return d.DecodeArray(func(d uri.Decoder) error {
-						var reqDotArrayVal string
+						var requestDotArrayVal string
 						if err := func() error {
 							val, err := d.DecodeValue()
 							if err != nil {
@@ -705,12 +699,12 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 								return err
 							}
 
-							reqDotArrayVal = c
+							requestDotArrayVal = c
 							return nil
 						}(); err != nil {
 							return err
 						}
-						req.Array = append(req.Array, reqDotArrayVal)
+						request.Array = append(request.Array, requestDotArrayVal)
 						return nil
 					})
 				}); err != nil {
@@ -728,13 +722,13 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotObjectVal TestFormObject
+					var requestDotObjectVal TestFormObject
 					if err := func() error {
-						return reqDotObjectVal.DecodeURI(d)
+						return requestDotObjectVal.DecodeURI(d)
 					}(); err != nil {
 						return err
 					}
-					req.Object.SetTo(reqDotObjectVal)
+					request.Object.SetTo(requestDotObjectVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"object\"")
@@ -751,13 +745,13 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotDeepObjectVal TestFormDeepObject
+					var requestDotDeepObjectVal TestFormDeepObject
 					if err := func() error {
-						return reqDotDeepObjectVal.DecodeURI(d)
+						return requestDotDeepObjectVal.DecodeURI(d)
 					}(); err != nil {
 						return err
 					}
-					req.DeepObject.SetTo(reqDotDeepObjectVal)
+					request.DeepObject.SetTo(requestDotDeepObjectVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"deepObject\"")
@@ -765,7 +759,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 			}
 		}
 
-		return req, close, nil
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -796,6 +790,8 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 	}
 	switch ct {
 	case "multipart/form-data":
+		var request TestForm
+
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -814,7 +810,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotIDVal int
+					var requestDotIDVal int
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -826,12 +822,12 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 							return err
 						}
 
-						reqDotIDVal = c
+						requestDotIDVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					req.ID.SetTo(reqDotIDVal)
+					request.ID.SetTo(requestDotIDVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"id\"")
@@ -847,7 +843,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotUUIDVal uuid.UUID
+					var requestDotUUIDVal uuid.UUID
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -859,12 +855,12 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 							return err
 						}
 
-						reqDotUUIDVal = c
+						requestDotUUIDVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					req.UUID.SetTo(reqDotUUIDVal)
+					request.UUID.SetTo(requestDotUUIDVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"uuid\"")
@@ -890,7 +886,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 						return err
 					}
 
-					req.Description = c
+					request.Description = c
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"description\"")
@@ -909,7 +905,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					return d.DecodeArray(func(d uri.Decoder) error {
-						var reqDotArrayVal string
+						var requestDotArrayVal string
 						if err := func() error {
 							val, err := d.DecodeValue()
 							if err != nil {
@@ -921,12 +917,12 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 								return err
 							}
 
-							reqDotArrayVal = c
+							requestDotArrayVal = c
 							return nil
 						}(); err != nil {
 							return err
 						}
-						req.Array = append(req.Array, reqDotArrayVal)
+						request.Array = append(request.Array, requestDotArrayVal)
 						return nil
 					})
 				}); err != nil {
@@ -944,13 +940,13 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotObjectVal TestFormObject
+					var requestDotObjectVal TestFormObject
 					if err := func() error {
-						return reqDotObjectVal.DecodeURI(d)
+						return requestDotObjectVal.DecodeURI(d)
 					}(); err != nil {
 						return err
 					}
-					req.Object.SetTo(reqDotObjectVal)
+					request.Object.SetTo(requestDotObjectVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"object\"")
@@ -967,13 +963,13 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotDeepObjectVal TestFormDeepObject
+					var requestDotDeepObjectVal TestFormDeepObject
 					if err := func() error {
-						return reqDotDeepObjectVal.DecodeURI(d)
+						return requestDotDeepObjectVal.DecodeURI(d)
 					}(); err != nil {
 						return err
 					}
-					req.DeepObject.SetTo(reqDotDeepObjectVal)
+					request.DeepObject.SetTo(requestDotDeepObjectVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"deepObject\"")
@@ -981,14 +977,14 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 			}
 		}
 
-		return req, close, nil
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Span) (
-	req TestMultipartUploadReq,
+	req TestMultipartUploadReqForm,
 	close func() error,
 	rerr error,
 ) {
@@ -1012,6 +1008,8 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 	}
 	switch ct {
 	case "multipart/form-data":
+		var request TestMultipartUploadReqForm
+
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -1030,7 +1028,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotOrderIdVal int
+					var requestDotOrderIdVal int
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -1042,12 +1040,12 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 							return err
 						}
 
-						reqDotOrderIdVal = c
+						requestDotOrderIdVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					req.OrderId.SetTo(reqDotOrderIdVal)
+					request.OrderId.SetTo(requestDotOrderIdVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"orderId\"")
@@ -1063,7 +1061,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var reqDotUserIdVal int
+					var requestDotUserIdVal int
 					if err := func() error {
 						val, err := d.DecodeValue()
 						if err != nil {
@@ -1075,12 +1073,12 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 							return err
 						}
 
-						reqDotUserIdVal = c
+						requestDotUserIdVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					req.UserId.SetTo(reqDotUserIdVal)
+					request.UserId.SetTo(requestDotUserIdVal)
 					return nil
 				}); err != nil {
 					return req, close, errors.Wrap(err, "decode \"userId\"")
@@ -1099,7 +1097,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				return errors.Wrap(err, "open")
 			}
 			closers = append(closers, f)
-			req.File = ht.MultipartFile{
+			request.File = ht.MultipartFile{
 				Name:   fh.Filename,
 				File:   f,
 				Header: fh.Header,
@@ -1120,7 +1118,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				return errors.Wrap(err, "open")
 			}
 			closers = append(closers, f)
-			req.OptionalFile.SetTo(ht.MultipartFile{
+			request.OptionalFile.SetTo(ht.MultipartFile{
 				Name:   fh.Filename,
 				File:   f,
 				Header: fh.Header,
@@ -1132,7 +1130,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 		if err := func() error {
 			files, ok := r.MultipartForm.File["files"]
 			_ = ok
-			req.Files = make([]ht.MultipartFile, 0, len(files))
+			request.Files = make([]ht.MultipartFile, 0, len(files))
 			for _, fh := range files {
 				f, err := fh.Open()
 				if err != nil {
@@ -1140,7 +1138,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				}
 				closers = append(closers, f)
 
-				req.Files = append(req.Files, ht.MultipartFile{
+				request.Files = append(request.Files, ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
 					Header: fh.Header,
@@ -1152,7 +1150,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 					MinLengthSet: false,
 					MaxLength:    5,
 					MaxLengthSet: true,
-				}).ValidateLength(len(req.Files)); err != nil {
+				}).ValidateLength(len(request.Files)); err != nil {
 					return errors.Wrap(err, "array")
 				}
 				return nil
@@ -1164,7 +1162,130 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 			return req, close, errors.Wrap(err, "decode \"files\"")
 		}
 
-		return req, close, nil
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Span) (
+	req TestShareFormSchemaReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request SharedRequest
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+
+		return &request, close, nil
+	case "multipart/form-data":
+		var request SharedRequestForm
+
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, close, errors.Wrap(err, "parse multipart form")
+		}
+		form := url.Values(r.MultipartForm.Value)
+
+		q := uri.NewQueryDecoder(form)
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "filename",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var requestDotFilenameVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						requestDotFilenameVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					request.Filename.SetTo(requestDotFilenameVal)
+					return nil
+				}); err != nil {
+					return req, close, errors.Wrap(err, "decode \"filename\"")
+				}
+			}
+		}
+		if err := func() error {
+			files, ok := r.MultipartForm.File["file"]
+			if !ok || len(files) < 1 {
+				return nil
+			}
+			fh := files[0]
+
+			f, err := fh.Open()
+			if err != nil {
+				return errors.Wrap(err, "open")
+			}
+			closers = append(closers, f)
+			request.File.SetTo(ht.MultipartFile{
+				Name:   fh.Filename,
+				File:   f,
+				Header: fh.Header,
+			})
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"file\"")
+		}
+
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -46,17 +45,16 @@ func (s *Server) decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request SnapshotCreateParams
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -110,17 +108,16 @@ func (s *Server) decodeCreateSyncActionRequest(r *http.Request, span trace.Span)
 		}
 
 		var request InstanceActionInfo
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -174,17 +171,16 @@ func (s *Server) decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request SnapshotLoadParams
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -230,17 +226,16 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request MmdsConfig
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -289,17 +284,16 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request *MmdsPatchReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request = nil
 			var elem MmdsPatchReq
@@ -351,17 +345,16 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request *MmdsPutReq
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request = nil
 			var elem MmdsPutReq
@@ -410,17 +403,16 @@ func (s *Server) decodePatchBalloonRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request BalloonUpdate
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -466,17 +458,16 @@ func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request, span tr
 		}
 
 		var request BalloonStatsUpdate
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -522,17 +513,16 @@ func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Sp
 		}
 
 		var request PartialDrive
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -586,17 +576,16 @@ func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, sp
 		}
 
 		var request PartialNetworkInterface
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -653,17 +642,16 @@ func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request, span tr
 		}
 
 		var request OptMachineConfiguration
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -725,17 +713,16 @@ func (s *Server) decodePatchVmRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request VM
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -789,17 +776,16 @@ func (s *Server) decodePutBalloonRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request Balloon
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -845,17 +831,16 @@ func (s *Server) decodePutGuestBootSourceRequest(r *http.Request, span trace.Spa
 		}
 
 		var request BootSource
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -901,17 +886,16 @@ func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span
 		}
 
 		var request Drive
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -965,17 +949,16 @@ func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span
 		}
 
 		var request NetworkInterface
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1029,17 +1012,16 @@ func (s *Server) decodePutGuestVsockRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request Vsock
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1093,17 +1075,16 @@ func (s *Server) decodePutLoggerRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request Logger
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1160,17 +1141,16 @@ func (s *Server) decodePutMachineConfigurationRequest(r *http.Request, span trac
 		}
 
 		var request OptMachineConfiguration
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1232,17 +1212,16 @@ func (s *Server) decodePutMetricsRequest(r *http.Request, span trace.Span) (
 		}
 
 		var request Metrics
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

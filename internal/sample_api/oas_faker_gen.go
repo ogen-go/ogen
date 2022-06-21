@@ -1340,6 +1340,20 @@ func (s *RecursiveMapAdditional) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *SharedRequest) SetFake() {
+	{
+		{
+			s.Filename.SetFake()
+		}
+	}
+	{
+		{
+			s.File.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *StringIntMap) SetFake() {
 	{
 		{

@@ -245,7 +245,7 @@ func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) (r 
 // TestMultipartUpload implements testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMultipartUploadReq) (r TestMultipartUploadOK, _ error) {
+func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMultipartUploadReqForm) (r TestMultipartUploadOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -260,5 +260,12 @@ func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNulla
 //
 // GET /testObjectQueryParameter
 func (UnimplementedHandler) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (r TestObjectQueryParameterOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestShareFormSchema implements testShareFormSchema operation.
+//
+// POST /testShareFormSchema
+func (UnimplementedHandler) TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) (r TestShareFormSchemaOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

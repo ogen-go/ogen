@@ -3465,6 +3465,22 @@ func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
 	return m
 }
 
+// Ref: #/components/schemas/SharedRequest
+type SharedRequest struct {
+	Filename OptString "json:\"filename\""
+	File     OptString "json:\"file\""
+}
+
+func (*SharedRequest) testShareFormSchemaReq() {}
+
+// Ref: #/components/schemas/SharedRequest
+type SharedRequestForm struct {
+	Filename OptString        "json:\"filename\""
+	File     OptMultipartFile "json:\"file\""
+}
+
+func (*SharedRequestForm) testShareFormSchemaReq() {}
+
 // Ref: #/components/schemas/StringIntMap
 type StringIntMap struct {
 	AdditionalProps StringIntMapAdditional
@@ -3567,6 +3583,14 @@ type TestMultipartUploadOK struct {
 }
 
 type TestMultipartUploadReq struct {
+	OrderId      OptInt    "json:\"orderId\""
+	UserId       OptInt    "json:\"userId\""
+	File         string    "json:\"file\""
+	OptionalFile OptString "json:\"optional_file\""
+	Files        []string  "json:\"files\""
+}
+
+type TestMultipartUploadReqForm struct {
 	OrderId      OptInt             "json:\"orderId\""
 	UserId       OptInt             "json:\"userId\""
 	File         ht.MultipartFile   "json:\"file\""
@@ -3600,6 +3624,9 @@ type TestObjectQueryParameterOK struct {
 	Max    int    "json:\"max\""
 	Filter string "json:\"filter\""
 }
+
+// TestShareFormSchemaOK is response for TestShareFormSchema operation.
+type TestShareFormSchemaOK struct{}
 
 // Ref: #/components/schemas/ValidationStringMap
 type ValidationStringMap map[string]string

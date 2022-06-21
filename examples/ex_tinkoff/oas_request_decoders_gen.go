@@ -3,7 +3,6 @@
 package api
 
 import (
-	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -46,17 +45,16 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 		}
 
 		var request LimitOrderRequest
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -110,17 +108,16 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 		}
 
 		var request MarketOrderRequest
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -174,17 +171,16 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 		}
 
 		var request SandboxSetCurrencyBalanceRequest
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -238,17 +234,16 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 		}
 
 		var request SandboxSetPositionBalanceRequest
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -305,17 +300,16 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 		}
 
 		var request OptSandboxRegisterRequest
-		buf := new(bytes.Buffer)
-		written, err := io.Copy(buf, r.Body)
+		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
 		}
 
-		if written == 0 {
+		if len(buf) == 0 {
 			return req, close, nil
 		}
 
-		d := jx.DecodeBytes(buf.Bytes())
+		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
