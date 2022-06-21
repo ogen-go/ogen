@@ -6,7 +6,7 @@
 {{- range $op := $.Operations }}{{ if $op.Request }}
 {{- range $contentType, $type := $op.Request.Contents }}
 func encode{{ $op.Name }}Request{{ $contentType.Name }}(
-	req {{ $op.Request.Type.Go }},
+	req {{ $type.Go }},
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),

@@ -118,11 +118,11 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- end }}
 	{{- else }}
 	{{- /* Multiple requests */}}
-	switch req := req.(type) {
+	switch req := request.(type) {
 	{{- range $contentType, $type := $op.Request.Contents }}
 	case *{{ $type.Go }}:
 		contentType = {{ quote $contentType }}
-		fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(*req, span)
 		if err != nil {
 			return res, err
 		}
@@ -132,7 +132,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 		{{- end }}
 	{{- end }}
 	default:
-		return nil, "", errors.Errorf("unexpected request type: %T", req)
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 	{{- end }}
 	{{ end }}
