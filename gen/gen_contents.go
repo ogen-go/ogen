@@ -217,7 +217,6 @@ func (g *Generator) generateContents(
 						GenericVariant: t.GenericVariant,
 						Validators:     t.Validators,
 					}
-					newt.Features = append(newt.Features, t.Features...)
 
 					for _, f := range t.Fields {
 						fieldType := f.Type
