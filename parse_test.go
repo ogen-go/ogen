@@ -1,49 +1,39 @@
-package ogen
+package ogen_test
 
 import (
-	"encoding/json"
-	"fmt"
+	"io/fs"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen"
 )
 
-func Test_wrapLineOffset(t *testing.T) {
-	tests := []struct {
-		input        string
-		target       func([]byte) error
-		line, offset int
-	}{
-		{"{\n\t\"a\":1,\n\t\"b\":2\n}", func(input []byte) error {
-			var target struct {
-				A int  `json:"a"`
-				B bool `json:"b"`
-			}
-			return json.Unmarshal(input, &target)
-		}, 3, 7},
+func TestParse(t *testing.T) {
+	testDataPath := "_testdata/positive"
+	if err := fs.WalkDir(testdata, testDataPath, func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d == nil || d.IsDir() {
+			return err
+		}
+		file := strings.TrimPrefix(path, testDataPath+"/")
 
-		{"[\n0,\ntrue\n]", func(input []byte) error {
-			var target []int
-			return json.Unmarshal(input, &target)
-		}, 3, 5},
-	}
-	for i, tt := range tests {
-		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			input := []byte(tt.input)
+		testName := file
+		testName = strings.TrimSuffix(testName, ".json")
+		testName = strings.TrimSuffix(testName, ".yml")
+		testName = strings.TrimSuffix(testName, ".yaml")
 
+		t.Run(testName, func(t *testing.T) {
 			a := require.New(t)
-			err := tt.target(input)
-			a.Error(err)
 
-			err = wrapLineOffset(input, err)
-			a.Error(err)
+			data, err := testdata.ReadFile(path)
+			a.NoError(err)
 
-			msg := err.Error()
-			prefix := fmt.Sprintf("line %d:%d", tt.line, tt.offset)
-			a.Truef(strings.HasPrefix(msg, prefix), "prefix: %s, msg: %s", prefix, msg)
+			_, err = ogen.Parse(data)
+			a.NoError(err)
 		})
+		return nil
+	}); err != nil {
+		t.Fatal(err)
 	}
-
 }
