@@ -34,6 +34,9 @@ type Spec struct {
 	// Each tag name in the list MUST be unique.
 	Tags []Tag `json:"tags,omitempty"`
 
+	// Additional external documentation.
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+
 	// Raw JSON value. Used by JSON Schema resolver.
 	Raw []byte `json:"-"`
 }
@@ -91,8 +94,9 @@ type Example struct {
 //
 // https://swagger.io/specification/#tag-object
 type Tag struct {
-	Name        string `json:"name"`
-	Description string `json:"description,omitempty"`
+	Name         string                `json:"name"`
+	Description  string                `json:"description,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 }
 
 // Info provides metadata about the API.
@@ -132,8 +136,8 @@ type License struct {
 
 // Server represents a Server.
 type Server struct {
-	Description string `json:"description,omitempty"`
 	URL         string `json:"url"`
+	Description string `json:"description,omitempty"`
 }
 
 // Components hold a set of reusable objects for different aspects of the OAS.
@@ -186,14 +190,24 @@ type Operation struct {
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
 	Tags []string `json:"tags,omitempty"`
 
-	Summary     string               `json:"summary,omitempty"`
-	Description string               `json:"description,omitempty"`
+	Summary      string                `json:"summary,omitempty"`
+	Description  string                `json:"description,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+
 	OperationID string               `json:"operationId,omitempty"`
 	Parameters  []*Parameter         `json:"parameters,omitempty"`
 	RequestBody *RequestBody         `json:"requestBody,omitempty"`
 	Responses   Responses            `json:"responses,omitempty"`
 	Security    SecurityRequirements `json:"security,omitempty"`
 	Deprecated  bool                 `json:"deprecated,omitempty"`
+}
+
+// ExternalDocumentation describes a reference to external resource for extended documentation.
+type ExternalDocumentation struct {
+	// A description of the target documentation. CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty"`
+	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
+	URL string `json:"url"`
 }
 
 // Parameter describes a single operation parameter.
@@ -332,6 +346,9 @@ type Schema struct {
 	Ref         string `json:"$ref,omitempty"` // ref object
 	Summary     string `json:"summary,omitempty"`
 	Description string `json:"description,omitempty"`
+
+	// Additional external documentation for this schema.
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
 	Type string `json:"type,omitempty"`
