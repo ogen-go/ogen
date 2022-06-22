@@ -526,6 +526,27 @@ type Schema struct {
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.
 	Deprecated bool `json:"deprecated,omitempty"`
+
+	// If the instance value is a string, this property defines that the
+	// string SHOULD be interpreted as binary data and decoded using the
+	// encoding named by this property.  RFC 2045, Section 6.1 lists
+	// the possible values for this property.
+	//
+	// The value of this property MUST be a string.
+	//
+	// The value of this property SHOULD be ignored if the instance
+	// described is not a string.
+	ContentEncoding string `json:"contentEncoding,omitempty"`
+
+	// The value of this property must be a media type, as defined by RFC
+	// 2046. This property defines the media type of instances
+	// which this schema defines.
+	//
+	// The value of this property MUST be a string.
+	//
+	// The value of this property SHOULD be ignored if the instance
+	// described is not a string.
+	ContentMediaType string `json:"contentMediaType,omitempty"`
 }
 
 // Property is item of Properties.

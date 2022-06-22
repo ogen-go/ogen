@@ -31,12 +31,16 @@ const (
 type Schema struct {
 	XOgenName string // Annotation to set type name.
 
-	Type        SchemaType
-	Format      string // Schema format, optional.
+	Ref string // Whether schema is referenced.
+
+	Type             SchemaType
+	Format           string // Schema format, optional.
+	ContentEncoding  string
+	ContentMediaType string
+
 	Summary     string // Schema summary from Reference Object, optional.
 	Description string // Schema description, optional.
 	Deprecated  bool
-	Ref         string // Whether schema is referenced.
 
 	Item                 *Schema           // Only for Array and Object with additional properties.
 	AdditionalProperties *bool             // Whether Object has additional properties.
