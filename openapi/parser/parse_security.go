@@ -60,6 +60,11 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 				return nil, errors.Wrapf(err, "resolve %q", requirementName)
 			}
 
+			var flows ogen.OAuthFlows
+			if spec.Flows != nil {
+				flows = *spec.Flows
+			}
+
 			result = append(result, openapi.SecurityRequirements{
 				Scopes: scopes,
 				Name:   requirementName,
@@ -70,7 +75,7 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 					In:               spec.In,
 					Scheme:           spec.Scheme,
 					BearerFormat:     spec.BearerFormat,
-					Flows:            cloneOAuthFlows(spec.Flows),
+					Flows:            cloneOAuthFlows(flows),
 					OpenIDConnectURL: spec.OpenIDConnectURL,
 				},
 			})

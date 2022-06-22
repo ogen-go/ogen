@@ -18,10 +18,10 @@ type SecuritySchema struct {
 	// by an authorization server, so this information is primarily for documentation purposes.
 	BearerFormat string `json:"bearerFormat,omitempty"`
 	// An object containing configuration information for the flow types supported.
-	Flows OAuthFlows `json:"flows"`
+	Flows *OAuthFlows `json:"flows,omitempty"`
 	// OpenId Connect URL to discover OAuth2 configuration values.
 	// This MUST be in the form of a URL. The OpenID Connect standard requires the use of TLS.
-	OpenIDConnectURL string `json:"openIdConnectUrl"`
+	OpenIDConnectURL string `json:"openIdConnectUrl,omitempty"`
 }
 
 // OAuthFlows allows configuration of the supported OAuth Flows.
