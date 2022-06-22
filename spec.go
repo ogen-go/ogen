@@ -94,8 +94,8 @@ type Example struct {
 //
 // https://swagger.io/specification/#tag-object
 type Tag struct {
-	Name         string                `json:"name"`
-	Description  string                `json:"description,omitempty"`
+	Name         string                 `json:"name"`
+	Description  string                 `json:"description,omitempty"`
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 }
 
@@ -136,7 +136,28 @@ type License struct {
 
 // Server represents a Server.
 type Server struct {
-	URL         string `json:"url"`
+	// REQUIRED. A URL to the target host. This URL supports Server Variables and MAY be relative,
+	// to indicate that the host location is relative to the location where the OpenAPI document is being served.
+	// Variable substitutions will be made when a variable is named in {brackets}.
+	URL string `json:"url"`
+	// An optional string describing the host designated by the URL.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty"`
+	// A map between a variable name and its value. The value is used for substitution in the server's URL template.
+	Variables map[string]ServerVariable `json:"variables,omitempty"`
+}
+
+// ServerVariable describes an object representing a Server Variable for server URL template substitution.
+type ServerVariable struct {
+	// An enumeration of string values to be used if the substitution options are from a limited set.
+	//
+	// The array MUST NOT be empty.
+	Enum []string `json:"enum,omitempty"`
+	// REQUIRED. The default value to use for substitution, which SHALL be sent if an alternate value is not supplied.
+	// Note this behavior is different than the Schema Object’s treatment of default values, because in those
+	// cases parameter values are optional. If the enum is defined, the value MUST exist in the enum’s values.
+	Default string `json:"default"`
+	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty"`
 }
 
@@ -190,8 +211,8 @@ type Operation struct {
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
 	Tags []string `json:"tags,omitempty"`
 
-	Summary      string                `json:"summary,omitempty"`
-	Description  string                `json:"description,omitempty"`
+	Summary      string                 `json:"summary,omitempty"`
+	Description  string                 `json:"description,omitempty"`
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 
 	OperationID string               `json:"operationId,omitempty"`
