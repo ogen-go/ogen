@@ -9,22 +9,16 @@ import (
 )
 
 // Parse parses JSON/YAML into OpenAPI Spec.
-func Parse(data []byte) (*Spec, error) {
+func Parse(data []byte) (s *Spec, err error) {
+	s = &Spec{}
 	if !jx.Valid(data) {
-		d, err := yaml.YAMLToJSON(data)
-		if err != nil {
-			return nil, err
+		if err := yaml.Unmarshal(data, s); err != nil {
+			return nil, errors.Wrap(err, "yaml")
 		}
-		data = d
+	} else {
+		if err := json.Unmarshal(data, s); err != nil {
+			return nil, errors.Wrap(wrapLineOffset(data, err), "json")
+		}
 	}
-	if len(data) == 0 {
-		return nil, errors.New("blank data")
-	}
-
-	s := &Spec{}
-	if err := json.Unmarshal(data, s); err != nil {
-		return nil, err
-	}
-
 	return s, nil
 }
