@@ -34,6 +34,9 @@ type Spec struct {
 	// Each tag name in the list MUST be unique.
 	Tags []Tag `json:"tags,omitempty"`
 
+	// Additional external documentation.
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+
 	// Raw JSON value. Used by JSON Schema resolver.
 	Raw []byte `json:"-"`
 }
@@ -91,8 +94,9 @@ type Example struct {
 //
 // https://swagger.io/specification/#tag-object
 type Tag struct {
-	Name        string `json:"name"`
-	Description string `json:"description,omitempty"`
+	Name         string                 `json:"name"`
+	Description  string                 `json:"description,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 }
 
 // Info provides metadata about the API.
@@ -132,8 +136,29 @@ type License struct {
 
 // Server represents a Server.
 type Server struct {
+	// REQUIRED. A URL to the target host. This URL supports Server Variables and MAY be relative,
+	// to indicate that the host location is relative to the location where the OpenAPI document is being served.
+	// Variable substitutions will be made when a variable is named in {brackets}.
+	URL string `json:"url"`
+	// An optional string describing the host designated by the URL.
+	// CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty"`
-	URL         string `json:"url"`
+	// A map between a variable name and its value. The value is used for substitution in the server's URL template.
+	Variables map[string]ServerVariable `json:"variables,omitempty"`
+}
+
+// ServerVariable describes an object representing a Server Variable for server URL template substitution.
+type ServerVariable struct {
+	// An enumeration of string values to be used if the substitution options are from a limited set.
+	//
+	// The array MUST NOT be empty.
+	Enum []string `json:"enum,omitempty"`
+	// REQUIRED. The default value to use for substitution, which SHALL be sent if an alternate value is not supplied.
+	// Note this behavior is different than the Schema Object’s treatment of default values, because in those
+	// cases parameter values are optional. If the enum is defined, the value MUST exist in the enum’s values.
+	Default string `json:"default"`
+	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty"`
 }
 
 // Components hold a set of reusable objects for different aspects of the OAS.
@@ -186,14 +211,24 @@ type Operation struct {
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
 	Tags []string `json:"tags,omitempty"`
 
-	Summary     string               `json:"summary,omitempty"`
-	Description string               `json:"description,omitempty"`
+	Summary      string                 `json:"summary,omitempty"`
+	Description  string                 `json:"description,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+
 	OperationID string               `json:"operationId,omitempty"`
 	Parameters  []*Parameter         `json:"parameters,omitempty"`
 	RequestBody *RequestBody         `json:"requestBody,omitempty"`
 	Responses   Responses            `json:"responses,omitempty"`
 	Security    SecurityRequirements `json:"security,omitempty"`
 	Deprecated  bool                 `json:"deprecated,omitempty"`
+}
+
+// ExternalDocumentation describes a reference to external resource for extended documentation.
+type ExternalDocumentation struct {
+	// A description of the target documentation. CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty"`
+	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
+	URL string `json:"url"`
 }
 
 // Parameter describes a single operation parameter.
@@ -332,6 +367,9 @@ type Schema struct {
 	Ref         string `json:"$ref,omitempty"` // ref object
 	Summary     string `json:"summary,omitempty"`
 	Description string `json:"description,omitempty"`
+
+	// Additional external documentation for this schema.
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
 	Type string `json:"type,omitempty"`
@@ -526,6 +564,27 @@ type Schema struct {
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.
 	Deprecated bool `json:"deprecated,omitempty"`
+
+	// If the instance value is a string, this property defines that the
+	// string SHOULD be interpreted as binary data and decoded using the
+	// encoding named by this property.  RFC 2045, Section 6.1 lists
+	// the possible values for this property.
+	//
+	// The value of this property MUST be a string.
+	//
+	// The value of this property SHOULD be ignored if the instance
+	// described is not a string.
+	ContentEncoding string `json:"contentEncoding,omitempty"`
+
+	// The value of this property must be a media type, as defined by RFC
+	// 2046. This property defines the media type of instances
+	// which this schema defines.
+	//
+	// The value of this property MUST be a string.
+	//
+	// The value of this property SHOULD be ignored if the instance
+	// described is not a string.
+	ContentMediaType string `json:"contentMediaType,omitempty"`
 }
 
 // Property is item of Properties.

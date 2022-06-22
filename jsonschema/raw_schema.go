@@ -66,6 +66,8 @@ type RawSchema struct {
 	Default              json.RawMessage       `json:"default,omitempty"`
 	Example              json.RawMessage       `json:"example,omitempty"`
 	Deprecated           bool                  `json:"deprecated,omitempty"`
+	ContentEncoding      string                `json:"contentEncoding,omitempty"`
+	ContentMediaType     string                `json:"contentMediaType,omitempty"`
 	XAnnotations         map[string]jx.Raw     `json:"-"`
 }
 

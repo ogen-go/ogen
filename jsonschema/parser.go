@@ -367,6 +367,8 @@ func (p *Parser) parseMany(schemas []*RawSchema, ctx *resolveCtx) ([]*Schema, er
 }
 
 func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
+	s.ContentEncoding = schema.ContentEncoding
+	s.ContentMediaType = schema.ContentMediaType
 	s.Summary = schema.Summary
 	s.Description = schema.Description
 	s.Deprecated = schema.Deprecated
