@@ -48,13 +48,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "\"param6",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
