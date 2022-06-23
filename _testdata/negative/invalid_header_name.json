@@ -7,13 +7,15 @@
   "paths": {
     "/healthz": {
       "get": {
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Parameter"
-          }
-        ],
         "responses": {
           "200": {
+            "headers": {
+              "\r\n": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
             "description": "User info",
             "content": {
               "application/json": {
@@ -24,15 +26,6 @@
             }
           }
         }
-      }
-    }
-  },
-  "components": {
-    "parameters": {
-      "Parameter": {
-        "name": "foo",
-        "in": "query",
-        "schema": null
       }
     }
   }
