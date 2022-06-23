@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/net/http/httpguts"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -47,6 +48,31 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 	return result, nil
 }
 
+func validateParameter(name string, locatedIn openapi.ParameterLocation, param *ogen.Parameter) error {
+	switch {
+	case param.Schema != nil && param.Content != nil:
+		return errors.New("parameter MUST contain either a schema property, or a content property, but not both")
+	case param.Schema == nil && param.Content == nil:
+		return errors.New("parameter MUST contain either a schema property, or a content property")
+	case param.Content != nil && len(param.Content) < 1:
+		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
+		return errors.New("content must have at least one entry")
+	}
+
+	// Path parameters are always required.
+	switch locatedIn {
+	case openapi.LocationPath:
+		if !param.Required {
+			return errors.New("path parameters must be required")
+		}
+	case openapi.LocationHeader:
+		if !httpguts.ValidHeaderFieldName(name) {
+			return errors.Errorf("invalid header name %q", name)
+		}
+	}
+	return nil
+}
+
 func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openapi.Parameter, error) {
 	if param == nil {
 		return nil, errors.New("parameter object is empty or null")
@@ -57,19 +83,6 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openap
 			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}
 		return parsed, nil
-	}
-
-	if param.Schema != nil && param.Content != nil {
-		return nil, errors.New("parameter MUST contain either a schema property, or a content property, but not both")
-	}
-
-	if param.Schema == nil && param.Content == nil {
-		return nil, errors.New("parameter MUST contain either a schema property, or a content property")
-	}
-
-	if param.Content != nil && len(param.Content) < 1 {
-		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
-		return nil, errors.New("content must have at least one entry")
 	}
 
 	types := map[string]openapi.ParameterLocation{
@@ -84,9 +97,8 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openap
 		return nil, errors.Errorf("unsupported parameter type %q", param.In)
 	}
 
-	// Path parameters are always required.
-	if locatedIn == openapi.LocationPath && !param.Required {
-		return nil, errors.New("path parameters must be required")
+	if err := validateParameter(param.Name, locatedIn, param); err != nil {
+		return nil, err
 	}
 
 	schema, err := p.parseSchema(param.Schema, ctx)

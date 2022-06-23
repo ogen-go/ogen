@@ -41,13 +41,10 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 	if header.Name != "" {
 		return nil, errors.Errorf(`"name" MUST NOT be specified, got %q`, header.Name)
 	}
+	locatedIn := openapi.LocationHeader
 
-	if header.Schema != nil && header.Content != nil {
-		return nil, errors.New("header MUST contain either a schema property, or a content property, but not both")
-	}
-
-	if header.Schema == nil && header.Content == nil {
-		return nil, errors.New("header MUST contain either a schema property, or a content property")
+	if err := validateParameter(name, locatedIn, header); err != nil {
+		return nil, err
 	}
 
 	schema, err := p.parseSchema(header.Schema, ctx)
@@ -60,7 +57,6 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		return nil, errors.Wrap(err, "content")
 	}
 
-	locatedIn := openapi.LocationHeader
 	op := &openapi.Header{
 		Name:        name,
 		Description: header.Description,
