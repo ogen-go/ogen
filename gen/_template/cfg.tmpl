@@ -6,6 +6,9 @@
 
 {{ template "globals" $ }}
 
+{{- if or $.ServerEnabled $.ClientEnabled }}
+
+{{- if $.ServerEnabled }}
 // ErrorHandler is error handler.
 type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)
 
@@ -28,29 +31,38 @@ func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, e
 		ErrorMessage: err.Error(),
 	})
 	if writeErr == nil {
-	  w.Write(data)
+		w.Write(data)
 	}
 }
+{{- end }}
 
 type config struct {
 	TracerProvider     trace.TracerProvider
 	Tracer             trace.Tracer
 	MeterProvider      metric.MeterProvider
 	Meter              metric.Meter
+	{{- if $.ClientEnabled }}
 	Client             ht.Client
+	{{- end }}
+	{{- if $.ServerEnabled }}
 	NotFound           http.HandlerFunc
 	ErrorHandler       ErrorHandler
 	MaxMultipartMemory int64
+	{{- end }}
 }
 
 func newConfig(opts ...Option) config {
 	cfg := config{
 		TracerProvider: otel.GetTracerProvider(),
 		MeterProvider: nonrecording.NewNoopMeterProvider(),
+		{{- if $.ClientEnabled }}
 		Client: http.DefaultClient,
+		{{- end }}
+		{{- if $.ServerEnabled }}
 		NotFound: http.NotFound,
 		ErrorHandler: respondError,
 		MaxMultipartMemory: 32 << 20, // 32 MB
+		{{- end }}
 	}
 	for _, opt := range opts {
 		opt.apply(&cfg)
@@ -94,6 +106,7 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 	})
 }
 
+{{- if $.ClientEnabled }}
 // WithClient specifies http client to use.
 func WithClient(client ht.Client) Option {
 	return optionFunc(func(cfg *config) {
@@ -102,7 +115,9 @@ func WithClient(client ht.Client) Option {
 		}
 	})
 }
+{{- end }}
 
+{{- if $.ServerEnabled }}
 // WithNotFound specifies Not Found handler to use.
 func WithNotFound(notFound http.HandlerFunc) Option {
 	return optionFunc(func(cfg *config) {
@@ -130,4 +145,7 @@ func WithMaxMultipartMemory(max int64) Option {
 		}
 	})
 }
+{{- end }}
+
+{{- end }}
 {{ end }}

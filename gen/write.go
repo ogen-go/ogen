@@ -15,14 +15,16 @@ import (
 )
 
 type TemplateConfig struct {
-	Package    string
-	Operations []*ir.Operation
-	Types      map[string]*ir.Type
-	Interfaces map[string]*ir.Type
-	Error      *ir.Response
-	ErrorType  *ir.Type
-	Securities map[string]*ir.Security
-	Router     Router
+	Package       string
+	Operations    []*ir.Operation
+	Types         map[string]*ir.Type
+	Interfaces    map[string]*ir.Type
+	Error         *ir.Response
+	ErrorType     *ir.Type
+	Securities    map[string]*ir.Security
+	Router        Router
+	ClientEnabled bool
+	ServerEnabled bool
 
 	skipTestRegex *regexp.Regexp
 }
@@ -173,62 +175,54 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		ErrorType:     nil,
 		Securities:    g.securities,
 		Router:        g.router,
+		ClientEnabled: !g.opt.NoClient,
+		ServerEnabled: !g.opt.NoServer,
 		skipTestRegex: g.opt.SkipTestRegex,
 	}
 	if cfg.Error != nil {
 		cfg.ErrorType = cfg.Error.Contents[ir.ContentTypeJSON]
 	}
-	for _, name := range []string{
-		"schemas",
-		"uri",
-		"json",
-		"interfaces",
-		"parameters",
-		"handlers",
-		"request_encoders",
-		"request_decoders",
-		"response_encoders",
-		"response_decoders",
-		"validators",
-		"server",
-		"client",
-		"cfg",
-		"router",
-		"defaults",
-		"security",
-	} {
-		// Skip uri encode/decode if no types for that.
-		if name == "uri" && !g.hasURIObjectParams() {
-			continue
-		}
 
-		fileName := fmt.Sprintf("oas_%s_gen.go", name)
-		if err := w.Generate(name, fileName, cfg); err != nil {
-			return errors.Wrapf(err, "%s", name)
-		}
-	}
-
-	for _, optional := range []struct {
+	genClient, genServer := !g.opt.NoClient, !g.opt.NoServer
+	for _, t := range []struct {
 		name    string
 		enabled bool
 	}{
+		{"schemas", true},
+		{"uri", g.hasURIObjectParams()},
+		{"json", true},
+		{"interfaces", genClient || genServer},
+		{"parameters", true},
+		{"handlers", genServer},
+		{"request_encoders", genClient},
+		{"request_decoders", genServer},
+		{"response_encoders", genServer},
+		{"response_decoders", genClient},
+		{"validators", true},
+		{"server", genServer},
+		{"client", genClient},
+		{"cfg", true},
+		{"router", genServer},
+		{"defaults", true},
+		{"security", genClient || genServer},
 		{"test_examples", g.opt.GenerateExampleTests},
 		{"faker", g.opt.GenerateExampleTests},
-		{"unimplemented", !g.opt.SkipUnimplemented},
+		{"unimplemented", !g.opt.SkipUnimplemented && genServer},
 	} {
-		if optional.enabled {
-			name := optional.name
-			var fileName string
-			if name == "test_examples" {
-				fileName = fmt.Sprintf("oas_%s_gen_test.go", name)
-			} else {
-				fileName = fmt.Sprintf("oas_%s_gen.go", name)
-			}
-			if err := w.Generate(name, fileName, cfg); err != nil {
-				return errors.Wrapf(err, "%s", name)
-			}
+		if !t.enabled {
+			continue
+		}
+
+		fileName := fmt.Sprintf("oas_%s_gen.go", t.name)
+		if t.name == "test_examples" {
+			fileName = fmt.Sprintf("oas_%s_gen_test.go", t.name)
+		}
+
+		if err := w.Generate(t.name, fileName, cfg); err != nil {
+			return errors.Wrapf(err, "%s", t.name)
 		}
 	}
+
 	return nil
 }
 

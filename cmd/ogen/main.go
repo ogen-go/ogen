@@ -77,11 +77,12 @@ func run() error {
 		allowRemote       = flag.Bool("allow-remote", false, "Enables remote references resolving")
 		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
 		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
+		noClient          = flag.Bool("no-client", false, "Disables client generation")
+		noServer          = flag.Bool("no-server", false, "Disables server generation")
 
 		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "",
-			"Ignore methods having functionality which is not implemented "+
-				"(all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
-		debugNoerr = flag.Bool("debug.noerr", false, "Ignore all errors")
+			"Ignore methods having functionality which is not implemented ")
+		debugNoerr = flag.Bool("debug.noerr", false, "Ignore errors")
 
 		logOptions ogenzap.Options
 	)
@@ -115,7 +116,7 @@ func run() error {
 
 	switch files, err := os.ReadDir(*targetDir); {
 	case os.IsNotExist(err):
-		if err := os.MkdirAll(*targetDir, 0750); err != nil {
+		if err := os.MkdirAll(*targetDir, 0o750); err != nil {
 			return err
 		}
 	case err != nil:
@@ -137,6 +138,8 @@ func run() error {
 	}()
 
 	opts := gen.Options{
+		NoClient:             *noClient,
+		NoServer:             *noServer,
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,
