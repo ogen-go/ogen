@@ -30,6 +30,10 @@ type Generator struct {
 
 // Options is Generator options.
 type Options struct {
+	// NoClient disables client generation.
+	NoClient bool
+	// NoServer disables server generation.
+	NoServer bool
 	// GenerateExampleTests whether to generate decoding tests using schema examples.
 	GenerateExampleTests bool
 	// SkipTestRegex is regex to skip generated tests.

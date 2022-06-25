@@ -13,7 +13,9 @@ type {{ $op.Name }}Params struct {
 	{{- end}}
 }
 
+{{- if $.ServerEnabled }}
 {{- template "parameter_decoder" $op }}
+{{- end }}
 
 {{ end }}{{/* Check parameters existence */}}
 {{ end }}{{/* Range over operations */}}
