@@ -30,7 +30,7 @@ func (s *ObjectsWithConflictingArrayPropertyReq) SetFake() {
 	{
 		{
 			s.Foo = nil
-			for i := 0; i < 0; i++ {
+			for i := 0; i < 1; i++ {
 				var elem int
 				{
 					elem = int(0)
