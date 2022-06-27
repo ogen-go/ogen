@@ -33,6 +33,11 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 			return io.NopCloser(bytes.NewReader(encoded)), nil
 		}, nil
 	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
+		{{- if $type.IsGeneric }}
+		request := req.Value
+		{{- else }}
+		request := req
+		{{- end }}
 		q := uri.NewQueryEncoder()
 		{{- range $param := $op.Request.FormParameters $contentType }}
 		{
@@ -43,7 +48,7 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 				Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 			}
 			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-				{{- template "uri/encode" elem $param.Type (printf "req.%s" $param.Name) }}
+				{{- template "uri/encode" elem $param.Type (printf "request.%s" $param.Name) }}
 			}); err != nil {
 				return data, {{ if $contentType.MultipartForm }}"",{{- end }}errors.Wrap(err, "encode query")
 			}
@@ -80,7 +85,7 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}
 {{- $name := quote $.Spec.Name }}
 {{- $errWrite := printf "write %s" $name | quote }}
-{{- $recv := printf "req.%s" $.Name }}
+{{- $recv := printf "request.%s" $.Name }}
 {{- $t := $.Type }}
 
 {{- if $t.IsPrimitive }}
