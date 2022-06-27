@@ -1815,6 +1815,151 @@ func (s *AppsCreateContentAttachmentReq) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *AppsCreateFromManifestCreated) SetFake() {
+	{
+		{
+			s.ID = int(0)
+		}
+	}
+	{
+		{
+			s.Slug.SetFake()
+		}
+	}
+	{
+		{
+			s.NodeID = "string"
+		}
+	}
+	{
+		{
+			s.Owner.SetFake()
+		}
+	}
+	{
+		{
+			s.Name = "string"
+		}
+	}
+	{
+		{
+			s.Description.SetFake()
+		}
+	}
+	{
+		{
+			s.ExternalURL = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+		}
+	}
+	{
+		{
+			s.HTMLURL = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+		}
+	}
+	{
+		{
+			s.CreatedAt = time.Now()
+		}
+	}
+	{
+		{
+			s.UpdatedAt = time.Now()
+		}
+	}
+	{
+		{
+			s.Permissions.SetFake()
+		}
+	}
+	{
+		{
+			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Events = append(s.Events, elem)
+			}
+		}
+	}
+	{
+		{
+			s.InstallationsCount.SetFake()
+		}
+	}
+	{
+		{
+			s.ClientID = "string"
+		}
+	}
+	{
+		{
+			s.ClientSecret = "string"
+		}
+	}
+	{
+		{
+			s.WebhookSecret.SetFake()
+		}
+	}
+	{
+		{
+			s.Pem = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *AppsCreateFromManifestCreatedPermissions) SetFake() {
+	{
+		{
+			s.Issues.SetFake()
+		}
+	}
+	{
+		{
+			s.Checks.SetFake()
+		}
+	}
+	{
+		{
+			s.Metadata.SetFake()
+		}
+	}
+	{
+		{
+			s.Contents.SetFake()
+		}
+	}
+	{
+		{
+			s.Deployments.SetFake()
+		}
+	}
+	{
+		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *AppsCreateFromManifestCreatedPermissionsAdditional) SetFake() {
+	var (
+		elem string
+		m    map[string]string = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *AppsCreateFromManifestReq) SetFake() {
+}
+
+// SetFake set fake values.
 func (s *AppsCreateInstallationAccessTokenApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{

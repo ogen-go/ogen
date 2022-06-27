@@ -340,6 +340,22 @@ func encodeAppsCreateContentAttachmentRequestJSON(
 		return io.NopCloser(bytes.NewReader(encoded)), nil
 	}, nil
 }
+func encodeAppsCreateFromManifestRequestJSON(
+	req *AppsCreateFromManifestReq,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	e := jx.GetEncoder()
+	if req != nil {
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
+	}, nil
+}
 func encodeAppsCreateInstallationAccessTokenRequestJSON(
 	req OptAppsCreateInstallationAccessTokenReq,
 	span trace.Span,

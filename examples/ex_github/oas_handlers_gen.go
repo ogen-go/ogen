@@ -5102,6 +5102,61 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleAppsCreateFromManifestRequest handles apps/create-from-manifest operation.
+//
+// POST /app-manifests/{code}/conversions
+func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/create-from-manifest"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsCreateFromManifest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	params, err := decodeAppsCreateFromManifestParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			Operation: "AppsCreateFromManifest",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+	request, close, err := s.decodeAppsCreateFromManifestRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			Operation: "AppsCreateFromManifest",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+	defer close()
+
+	response, err := s.h.AppsCreateFromManifest(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeAppsCreateFromManifestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
 //
 // POST /app/installations/{installation_id}/access_tokens

@@ -1243,6 +1243,67 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span 
 	}
 }
 
+func (s *Server) decodeAppsCreateFromManifestRequest(r *http.Request, span trace.Span) (
+	req *AppsCreateFromManifestReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request *AppsCreateFromManifestReq
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = nil
+			var elem AppsCreateFromManifestReq
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			request = &elem
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
 func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.Span) (
 	req OptAppsCreateInstallationAccessTokenReq,
 	close func() error,

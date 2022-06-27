@@ -47,6 +47,65 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleFindPetsRequest([0]string{}, w, r)
+
+				return
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				// Param: "id"
+				// Leaf parameter
+				args[0] = elem
+				elem = ""
+
+				if len(elem) == 0 {
+					// Leaf: FindPetByID
+					s.handleFindPetByIDRequest([1]string{
+						args[0],
+					}, w, r)
+
+					return
+				}
+			}
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				// Leaf: AddPet
+				s.handleAddPetRequest([0]string{}, w, r)
+
+				return
+			}
+		}
 	}
 	s.notFound(w, r)
 }
@@ -103,6 +162,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				r.name = "DeletePet"
 				r.args = args
 				r.count = 1
+				return r, true
+			}
+		}
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				r.name = "FindPets"
+				r.args = args
+				r.count = 0
+				return r, true
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				// Param: "id"
+				// Leaf parameter
+				args[0] = elem
+				elem = ""
+
+				if len(elem) == 0 {
+					// Leaf: FindPetByID
+					r.name = "FindPetByID"
+					r.args = args
+					r.count = 1
+					return r, true
+				}
+			}
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				// Leaf: AddPet
+				r.name = "AddPet"
+				r.args = args
+				r.count = 0
 				return r, true
 			}
 		}

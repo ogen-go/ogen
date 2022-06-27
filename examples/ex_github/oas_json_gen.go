@@ -9905,6 +9905,644 @@ func (s *AppsCreateContentAttachmentReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode implements json.Marshaler.
+func (s AppsCreateFromManifestCreated) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s AppsCreateFromManifestCreated) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("id")
+		e.Int(s.ID)
+	}
+	{
+		if s.Slug.Set {
+			e.FieldStart("slug")
+			s.Slug.Encode(e)
+		}
+	}
+	{
+
+		e.FieldStart("node_id")
+		e.Str(s.NodeID)
+	}
+	{
+
+		e.FieldStart("owner")
+		s.Owner.Encode(e)
+	}
+	{
+
+		e.FieldStart("name")
+		e.Str(s.Name)
+	}
+	{
+
+		e.FieldStart("description")
+		s.Description.Encode(e)
+	}
+	{
+
+		e.FieldStart("external_url")
+		json.EncodeURI(e, s.ExternalURL)
+	}
+	{
+
+		e.FieldStart("html_url")
+		json.EncodeURI(e, s.HTMLURL)
+	}
+	{
+
+		e.FieldStart("created_at")
+		json.EncodeDateTime(e, s.CreatedAt)
+	}
+	{
+
+		e.FieldStart("updated_at")
+		json.EncodeDateTime(e, s.UpdatedAt)
+	}
+	{
+
+		e.FieldStart("permissions")
+		s.Permissions.Encode(e)
+	}
+	{
+
+		e.FieldStart("events")
+		e.ArrStart()
+		for _, elem := range s.Events {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+		if s.InstallationsCount.Set {
+			e.FieldStart("installations_count")
+			s.InstallationsCount.Encode(e)
+		}
+	}
+	{
+
+		e.FieldStart("client_id")
+		e.Str(s.ClientID)
+	}
+	{
+
+		e.FieldStart("client_secret")
+		e.Str(s.ClientSecret)
+	}
+	{
+
+		e.FieldStart("webhook_secret")
+		s.WebhookSecret.Encode(e)
+	}
+	{
+
+		e.FieldStart("pem")
+		e.Str(s.Pem)
+	}
+}
+
+var jsonFieldsNameOfAppsCreateFromManifestCreated = [17]string{
+	0:  "id",
+	1:  "slug",
+	2:  "node_id",
+	3:  "owner",
+	4:  "name",
+	5:  "description",
+	6:  "external_url",
+	7:  "html_url",
+	8:  "created_at",
+	9:  "updated_at",
+	10: "permissions",
+	11: "events",
+	12: "installations_count",
+	13: "client_id",
+	14: "client_secret",
+	15: "webhook_secret",
+	16: "pem",
+}
+
+// Decode decodes AppsCreateFromManifestCreated from json.
+func (s *AppsCreateFromManifestCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AppsCreateFromManifestCreated to nil")
+	}
+	var requiredBitSet [3]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "id":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.ID = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "slug":
+			if err := func() error {
+				s.Slug.Reset()
+				if err := s.Slug.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"slug\"")
+			}
+		case "node_id":
+			requiredBitSet[0] |= 1 << 2
+			if err := func() error {
+				v, err := d.Str()
+				s.NodeID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"node_id\"")
+			}
+		case "owner":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				if err := s.Owner.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"owner\"")
+			}
+		case "name":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				v, err := d.Str()
+				s.Name = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
+			}
+		case "description":
+			requiredBitSet[0] |= 1 << 5
+			if err := func() error {
+				if err := s.Description.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"description\"")
+			}
+		case "external_url":
+			requiredBitSet[0] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeURI(d)
+				s.ExternalURL = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"external_url\"")
+			}
+		case "html_url":
+			requiredBitSet[0] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeURI(d)
+				s.HTMLURL = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"html_url\"")
+			}
+		case "created_at":
+			requiredBitSet[1] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeDateTime(d)
+				s.CreatedAt = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"created_at\"")
+			}
+		case "updated_at":
+			requiredBitSet[1] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeDateTime(d)
+				s.UpdatedAt = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"updated_at\"")
+			}
+		case "permissions":
+			requiredBitSet[1] |= 1 << 2
+			if err := func() error {
+				if err := s.Permissions.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"permissions\"")
+			}
+		case "events":
+			requiredBitSet[1] |= 1 << 3
+			if err := func() error {
+				s.Events = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.Events = append(s.Events, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"events\"")
+			}
+		case "installations_count":
+			if err := func() error {
+				s.InstallationsCount.Reset()
+				if err := s.InstallationsCount.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"installations_count\"")
+			}
+		case "client_id":
+			requiredBitSet[1] |= 1 << 5
+			if err := func() error {
+				v, err := d.Str()
+				s.ClientID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"client_id\"")
+			}
+		case "client_secret":
+			requiredBitSet[1] |= 1 << 6
+			if err := func() error {
+				v, err := d.Str()
+				s.ClientSecret = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"client_secret\"")
+			}
+		case "webhook_secret":
+			requiredBitSet[1] |= 1 << 7
+			if err := func() error {
+				if err := s.WebhookSecret.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"webhook_secret\"")
+			}
+		case "pem":
+			requiredBitSet[2] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Pem = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"pem\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AppsCreateFromManifestCreated")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [3]uint8{
+		0b11111101,
+		0b11101111,
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfAppsCreateFromManifestCreated) {
+					name = jsonFieldsNameOfAppsCreateFromManifestCreated[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s AppsCreateFromManifestCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AppsCreateFromManifestCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s AppsCreateFromManifestCreatedPermissions) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s AppsCreateFromManifestCreatedPermissions) encodeFields(e *jx.Encoder) {
+	{
+		if s.Issues.Set {
+			e.FieldStart("issues")
+			s.Issues.Encode(e)
+		}
+	}
+	{
+		if s.Checks.Set {
+			e.FieldStart("checks")
+			s.Checks.Encode(e)
+		}
+	}
+	{
+		if s.Metadata.Set {
+			e.FieldStart("metadata")
+			s.Metadata.Encode(e)
+		}
+	}
+	{
+		if s.Contents.Set {
+			e.FieldStart("contents")
+			s.Contents.Encode(e)
+		}
+	}
+	{
+		if s.Deployments.Set {
+			e.FieldStart("deployments")
+			s.Deployments.Encode(e)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+var jsonFieldsNameOfAppsCreateFromManifestCreatedPermissions = [5]string{
+	0: "issues",
+	1: "checks",
+	2: "metadata",
+	3: "contents",
+	4: "deployments",
+}
+
+// Decode decodes AppsCreateFromManifestCreatedPermissions from json.
+func (s *AppsCreateFromManifestCreatedPermissions) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AppsCreateFromManifestCreatedPermissions to nil")
+	}
+	s.AdditionalProps = map[string]string{}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "issues":
+			if err := func() error {
+				s.Issues.Reset()
+				if err := s.Issues.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"issues\"")
+			}
+		case "checks":
+			if err := func() error {
+				s.Checks.Reset()
+				if err := s.Checks.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"checks\"")
+			}
+		case "metadata":
+			if err := func() error {
+				s.Metadata.Reset()
+				if err := s.Metadata.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"metadata\"")
+			}
+		case "contents":
+			if err := func() error {
+				s.Contents.Reset()
+				if err := s.Contents.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"contents\"")
+			}
+		case "deployments":
+			if err := func() error {
+				s.Deployments.Reset()
+				if err := s.Deployments.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"deployments\"")
+			}
+		default:
+			var elem string
+			if err := func() error {
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "decode field %q", k)
+			}
+			s.AdditionalProps[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AppsCreateFromManifestCreatedPermissions")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s AppsCreateFromManifestCreatedPermissions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AppsCreateFromManifestCreatedPermissions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s AppsCreateFromManifestCreatedPermissionsAdditional) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AppsCreateFromManifestCreatedPermissionsAdditional) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes AppsCreateFromManifestCreatedPermissionsAdditional from json.
+func (s *AppsCreateFromManifestCreatedPermissionsAdditional) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AppsCreateFromManifestCreatedPermissionsAdditional to nil")
+	}
+	m := s.init()
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AppsCreateFromManifestCreatedPermissionsAdditional")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s AppsCreateFromManifestCreatedPermissionsAdditional) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AppsCreateFromManifestCreatedPermissionsAdditional) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s AppsCreateFromManifestReq) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s AppsCreateFromManifestReq) encodeFields(e *jx.Encoder) {
+}
+
+var jsonFieldsNameOfAppsCreateFromManifestReq = [0]string{}
+
+// Decode decodes AppsCreateFromManifestReq from json.
+func (s *AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AppsCreateFromManifestReq to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return errors.Errorf("unexpected field %q", k)
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AppsCreateFromManifestReq")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s AppsCreateFromManifestReq) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AppsCreateFromManifestReq) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes AppsCreateInstallationAccessTokenApplicationJSONForbidden as json.
 func (s AppsCreateInstallationAccessTokenApplicationJSONForbidden) Encode(e *jx.Encoder) {
 	unwrapped := BasicError(s)

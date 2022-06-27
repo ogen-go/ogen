@@ -2263,6 +2263,24 @@ func (s AppsCreateContentAttachmentReq) Validate() error {
 	}
 	return nil
 }
+func (s AppsCreateFromManifestCreated) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Events == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "events",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s AppsCreateInstallationAccessTokenReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

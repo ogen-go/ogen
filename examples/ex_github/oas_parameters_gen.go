@@ -10848,6 +10848,45 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type AppsCreateFromManifestParams struct {
+	Code string
+}
+
+func decodeAppsCreateFromManifestParams(args [1]string, r *http.Request) (params AppsCreateFromManifestParams, _ error) {
+	// Decode path: code.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "code",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Code = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: code: not specified")
+		}
+	}
+	return params, nil
+}
+
 type AppsCreateInstallationAccessTokenParams struct {
 	// Installation_id parameter.
 	InstallationID int
