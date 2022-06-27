@@ -89,7 +89,7 @@ paths:
                     type: array
                     items:
                       type: integer
-                      minItems: 1
+                    minItems: 1
                   bar:
                     type: integer
                     minimum: 1
@@ -100,7 +100,7 @@ paths:
                     type: array
                     items:
                       type: integer
-                      maxItems: 2
+                    maxItems: 5
       responses:
         '200':
           description: ok
