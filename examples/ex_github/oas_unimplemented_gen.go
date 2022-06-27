@@ -1512,6 +1512,18 @@ func (UnimplementedHandler) AppsCreateContentAttachment(ctx context.Context, req
 	return r, ht.ErrNotImplemented
 }
 
+// AppsCreateFromManifest implements apps/create-from-manifest operation.
+//
+// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest
+// flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/).
+// When you create a GitHub App with the manifest flow, you receive a temporary `code` used to
+// retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+//
+// POST /app-manifests/{code}/conversions
+func (UnimplementedHandler) AppsCreateFromManifest(ctx context.Context, req *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (r AppsCreateFromManifestRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // AppsCreateInstallationAccessToken implements apps/create-installation-access-token operation.
 //
 // Creates an installation access token that enables a GitHub App to make authenticated API requests

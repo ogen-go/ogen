@@ -13491,6 +13491,42 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 					switch elem[0] {
+					case '-': // Prefix: "-manifests/"
+						if l := len("-manifests/"); len(elem) >= l && elem[0:l] == "-manifests/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						// Param: "code"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/conversions"
+							if l := len("/conversions"); len(elem) >= l && elem[0:l] == "/conversions" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: AppsCreateFromManifest
+								s.handleAppsCreateFromManifestRequest([1]string{
+									args[0],
+								}, w, r)
+
+								return
+							}
+						}
 					case '/': // Prefix: "/"
 						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
@@ -31241,6 +31277,41 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						break
 					}
 					switch elem[0] {
+					case '-': // Prefix: "-manifests/"
+						if l := len("-manifests/"); len(elem) >= l && elem[0:l] == "-manifests/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						// Param: "code"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/conversions"
+							if l := len("/conversions"); len(elem) >= l && elem[0:l] == "/conversions" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: AppsCreateFromManifest
+								r.name = "AppsCreateFromManifest"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
+						}
 					case '/': // Prefix: "/"
 						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]

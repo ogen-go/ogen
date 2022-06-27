@@ -1,0 +1,159 @@
+openapi: 3.0.0
+info:
+  title: title
+  version: v0.1.0
+paths:
+  "/simpleInteger":
+    get:
+      operationId: simpleInteger
+      description: Simple integers with validation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: integer
+                minimum: -5
+              - type: integer
+                minimum: -10
+                maximum: 5
+      responses:
+        '200':
+          description: ok
+  "/simpleObjects":
+    get:
+      operationId: simpleObjects
+      description: Simple objects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: object
+                properties:
+                  foo:
+                    type: string
+              - type: object
+                properties:
+                  bar:
+                    type: boolean
+      responses:
+        '200':
+          description: ok
+  "/objectsWithConflictingProperties":
+    get:
+      operationId: objectsWithConflictingProperties
+      description: Objects with conflicting properties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: object
+                required:
+                - foo
+                properties:
+                  foo:
+                    type: string
+                  bar:
+                    type: integer
+                    minimum: 1
+                    maximum: 255
+              - type: object
+                properties:
+                  foo:
+                    type: string
+                    minLength: 10
+      responses:
+        '200':
+          description: ok
+  "/objectsWithConflictingArrayProperty":
+    get:
+      operationId: objectsWithConflictingArrayProperty
+      description: Objects with conflicting array property
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: object
+                required:
+                - foo
+                - bar
+                properties:
+                  foo:
+                    type: array
+                    items:
+                      type: integer
+                      minItems: 1
+                  bar:
+                    type: integer
+                    minimum: 1
+                    maximum: 255
+              - type: object
+                properties:
+                  foo:
+                    type: array
+                    items:
+                      type: integer
+                      maxItems: 2
+      responses:
+        '200':
+          description: ok
+  "/referencedAllof":
+    get:
+      operationId: referencedAllof
+      description: referenced allOf
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Robot"
+          # Doesn't work
+          #
+          # multipart/form-data:
+          #   schema:
+          #     "$ref": "#/components/schemas/Robot"
+      responses:
+        '200':
+          description: ok
+components:
+  schemas:
+    Robot:
+      allOf:
+      - type: object
+        required:
+        - state
+        properties:
+          state:
+            type: string
+            enum:
+            - 'on'
+            - 'off'
+      - "$ref": "#/components/schemas/WorldObject"
+    Location:
+      type: object
+      required:
+      - lat
+      - lon
+      properties:
+        lat:
+          type: number
+        lon:
+          type: number
+    WorldObject:
+      type: object
+      required:
+      - id
+      - location
+      properties:
+        id:
+          type: string
+          format: uuid
+        location:
+          "$ref": "#/components/schemas/Location"

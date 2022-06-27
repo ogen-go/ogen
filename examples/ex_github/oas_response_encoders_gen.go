@@ -2407,6 +2407,48 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return errors.Errorf("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"+`: unexpected response type: %T`, response)
 	}
 }
+func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *AppsCreateFromManifestCreated:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
+		e := jx.GetEncoder()
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *BasicError:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
+		e := jx.GetEncoder()
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *ValidationErrorSimple:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
+		e := jx.GetEncoder()
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	default:
+		return errors.Errorf("/app-manifests/{code}/conversions"+`: unexpected response type: %T`, response)
+	}
+}
 func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstallationAccessTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InstallationToken:

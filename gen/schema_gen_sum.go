@@ -1,11 +1,13 @@
 package gen
 
 import (
+	"bytes"
 	"fmt"
 	"path"
 	"sort"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -344,4 +346,306 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		}
 	}
 	return sum, nil
+}
+
+func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	mergedSchema, err := mergeNSchemes(schema.AllOf)
+	if err != nil {
+		return nil, err
+	}
+
+	mergedSchema.Ref = schema.Ref
+	return g.generate2(name, mergedSchema)
+}
+
+func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
+	if len(ss) < 1 {
+		panic("unreachable")
+	}
+
+	root := ss[0]
+	for i := 1; i < len(ss); i++ {
+		root, err = mergeSchemes(root, ss[i])
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return root, nil
+}
+
+func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
+	if s1 == nil || s2 == nil {
+		return nil, errors.Errorf("schema is null or empty")
+	}
+
+	if s1.Type != s2.Type {
+		return nil, errors.Errorf("schema type mismatch: %s and %s", s1.Type, s2.Type)
+	}
+
+	if s1.Format != s2.Format {
+		return nil, errors.Errorf("schema format mismatch: %s and %s", s1.Format, s2.Format)
+	}
+
+	nullable := s1.Nullable
+	if s2.Nullable {
+		nullable = s2.Nullable
+	}
+
+	enum, err := mergeEnums(s1, s2)
+	if err != nil {
+		return nil, errors.Wrap(err, "enum")
+	}
+
+	r := &jsonschema.Schema{
+		Type:        s1.Type,
+		Format:      s1.Format,
+		Enum:        enum,
+		Nullable:    nullable,
+		Description: "Merged schema",
+	}
+
+	// Helper functions for comparing validation fields.
+	var (
+		someU64 = func(n1, n2 *uint64, both func(n1, n2 uint64) uint64) *uint64 {
+			switch {
+			case n1 == nil && n2 == nil:
+				return nil
+			case n1 != nil && n2 == nil:
+				return n1
+			case n1 == nil && n2 != nil:
+				return n2
+			case n1 != nil && n2 != nil:
+				result := both(*n1, *n2)
+				return &result
+			default:
+				panic("unreachable")
+			}
+		}
+
+		selectMaxU64 = func(n1, n2 uint64) uint64 {
+			if n1 > n2 {
+				return n1
+			}
+			return n2
+		}
+
+		selectMinU64 = func(n1, n2 uint64) uint64 {
+			if n1 < n2 {
+				return n1
+			}
+			return n2
+		}
+
+		someStr = func(s1, s2 string, both func(s1, s2 string) (string, error)) (string, error) {
+			switch {
+			case s1 == "" && s2 == "":
+				return "", nil
+			case s1 != "" && s2 == "":
+				return s1, nil
+			case s1 == "" && s2 != "":
+				return s2, nil
+			case s1 != "" && s2 != "":
+				return both(s1, s2)
+			default:
+				panic("unreachable")
+			}
+		}
+
+		someBool = func(b1, b2 bool) bool {
+			if b1 {
+				return true
+			}
+			return b2
+		}
+
+		someNum = func(n1, n2 jsonschema.Num, both func(n1, n2 jx.Num) jx.Num) jsonschema.Num {
+			switch {
+			case len(n1) == 0 && len(n2) == 0:
+				return jsonschema.Num{}
+			case len(n1) != 0 && len(n2) == 0:
+				return n1
+			case len(n1) == 0 && len(n2) != 0:
+				return n2
+			default:
+				if jx.Num(n1).Equal(jx.Num(n2)) {
+					return n1
+				}
+				return jsonschema.Num(both(jx.Num(n1), jx.Num(n2)))
+			}
+		}
+
+		maxNum = func(n1, n2 jx.Num) jx.Num {
+			f1, err := n1.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			f2, err := n2.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			if f1 > f2 {
+				return n1
+			}
+			return n2
+		}
+
+		minNum = func(n1, n2 jx.Num) jx.Num {
+			f1, err := n1.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			f2, err := n2.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			if f1 < f2 {
+				return n1
+			}
+			return n2
+		}
+	)
+
+	// JSONSchema says:
+	//   To validate against allOf, the given data
+	//   must be valid against all of the given subschemas.
+	//
+	// Current implementation simply select the strictest constraints from both schemes.
+	//
+	// Note that this approach will not work with different 'pattern' or 'multipleOf' constraints
+	// because they cannot be merged.
+	switch s1.Type {
+	case jsonschema.String:
+		r.MaxLength = someU64(s1.MaxLength, s2.MaxLength, selectMinU64)
+		r.MinLength = someU64(s1.MinLength, s2.MinLength, selectMaxU64)
+		r.Pattern, err = someStr(s1.Pattern, s2.Pattern, func(s1, s2 string) (string, error) {
+			if s1 == s2 {
+				return s1, nil
+			}
+			return "", errors.Errorf("cannot merge different patterns: %q and %q", s1, s2)
+		})
+		if err != nil {
+			return nil, errors.Wrap(err, "pattern")
+		}
+
+		return r, nil
+	case jsonschema.Integer, jsonschema.Number:
+		r.Maximum = someNum(s1.Maximum, s2.Maximum, minNum)
+		s1.ExclusiveMaximum = someBool(s1.ExclusiveMaximum, s2.ExclusiveMaximum)
+
+		r.Minimum = someNum(s1.Minimum, s2.Minimum, maxNum)
+		r.ExclusiveMinimum = someBool(s1.ExclusiveMinimum, s2.ExclusiveMinimum)
+
+		// NOTE: We need to refactor ir.Validators to support multiple 'multipleOf's.
+		//
+		// Most likely it will require rewriting this schema merging code, because
+		// we cannot set multiple 'multipleOf's into single jsonschema.Schema.
+		// We need to generate ir.Type for each schema in 'allOf' and then merge
+		// them into single *ir.Type with all the validation.
+		if !bytes.Equal(s1.MultipleOf, s2.MultipleOf) {
+			return nil, errors.Errorf("multipleOf is different")
+		}
+		r.MultipleOf = s1.MultipleOf
+		return r, nil
+
+	case jsonschema.Array:
+		r.Item, err = mergeSchemes(s1.Item, s2.Item)
+		if err != nil {
+			return nil, errors.Wrap(err, "merge item schema")
+		}
+
+		r.MinItems = someU64(s1.MinItems, s2.MinItems, selectMaxU64)
+		r.MaxItems = someU64(s1.MaxItems, s2.MaxItems, selectMinU64)
+		r.UniqueItems = someBool(s1.UniqueItems, s2.UniqueItems)
+		return r, nil
+
+	case jsonschema.Null, jsonschema.Boolean:
+		return r, nil
+
+	case jsonschema.Object:
+		if len(s1.PatternProperties) > 0 || len(s2.PatternProperties) > 0 {
+			return nil, &ErrNotImplemented{Name: "allOf with patternProperties"}
+		}
+
+		switch {
+		case s1.AdditionalProperties == nil && s2.AdditionalProperties == nil:
+			// Nothing to do.
+		case s1.AdditionalProperties != nil && s2.AdditionalProperties == nil:
+			r.AdditionalProperties = s1.AdditionalProperties
+			r.Item = s1.Item
+		case s1.AdditionalProperties == nil && s2.AdditionalProperties != nil:
+			r.AdditionalProperties = s2.AdditionalProperties
+			r.Item = s2.Item
+		case s1.AdditionalProperties != nil && s2.AdditionalProperties != nil:
+			return nil, &ErrNotImplemented{Name: "allOf additionalProperties merging"}
+		}
+
+		r.MaxProperties = someU64(s1.MaxProperties, s2.MaxProperties, selectMinU64)
+		r.Properties, err = mergeProperties([]*jsonschema.Schema{s1, s2})
+		if err != nil {
+			return nil, errors.Wrap(err, "merge properties")
+		}
+
+		return r, nil
+
+	default:
+		return nil, &ErrNotImplemented{Name: "complex schema merging"}
+	}
+}
+
+func mergeProperties(schemas []*jsonschema.Schema) ([]jsonschema.Property, error) {
+	propmap := make(map[string]jsonschema.Property)
+	order := make(map[string]int)
+	orderIndex := 0
+	for _, s := range schemas {
+		if s.Type != jsonschema.Object {
+			return nil, &ErrNotImplemented{Name: "non-object schema type"}
+		}
+		for _, p := range s.Properties {
+			if confP, ok := propmap[p.Name]; ok {
+				// Property name conflict.
+				s, err := mergeSchemes(p.Schema, confP.Schema)
+				if err != nil {
+					return nil, errors.Wrap(err, "try to merge conflicting property schemas")
+				}
+
+				required := p.Required
+				if confP.Required {
+					required = true
+				}
+
+				propmap[p.Name] = jsonschema.Property{
+					Name:        p.Name,
+					Description: "Merged property",
+					Schema:      s,
+					Required:    required,
+				}
+				continue
+			}
+
+			propmap[p.Name] = p
+			order[p.Name] = orderIndex
+			orderIndex++
+		}
+	}
+
+	result := make([]jsonschema.Property, len(propmap))
+	for name, p := range propmap {
+		result[order[name]] = p
+	}
+	return result, nil
+}
+
+func mergeEnums(s1, s2 *jsonschema.Schema) ([]interface{}, error) {
+	switch {
+	case len(s1.Enum) == 0 && len(s2.Enum) == 0:
+		return nil, nil
+	case len(s1.Enum) > 0 && len(s2.Enum) == 0:
+		return s1.Enum, nil
+	case len(s1.Enum) == 0 && len(s2.Enum) > 0:
+		return s2.Enum, nil
+	}
+
+	// TODO: Merge enums and check for duplicates.
+	return nil, &ErrNotImplemented{Name: "allOf enum merging"}
 }

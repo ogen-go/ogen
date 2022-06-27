@@ -1320,6 +1320,74 @@ type AppsCreateContentAttachmentReq struct {
 	Body string "json:\"body\""
 }
 
+// Merged schema.
+type AppsCreateFromManifestCreated struct {
+	// Unique identifier of the GitHub app.
+	ID int "json:\"id\""
+	// The slug name of the GitHub app.
+	Slug   OptString             "json:\"slug\""
+	NodeID string                "json:\"node_id\""
+	Owner  NilNullableSimpleUser "json:\"owner\""
+	// The name of the GitHub app.
+	Name        string    "json:\"name\""
+	Description NilString "json:\"description\""
+	ExternalURL url.URL   "json:\"external_url\""
+	HTMLURL     url.URL   "json:\"html_url\""
+	CreatedAt   time.Time "json:\"created_at\""
+	UpdatedAt   time.Time "json:\"updated_at\""
+	// The set of permissions for the GitHub app.
+	Permissions AppsCreateFromManifestCreatedPermissions "json:\"permissions\""
+	// The list of events for the GitHub app.
+	Events []string "json:\"events\""
+	// The number of installations associated with the GitHub app.
+	InstallationsCount OptInt "json:\"installations_count\""
+	// Merged property.
+	ClientID string "json:\"client_id\""
+	// Merged property.
+	ClientSecret string "json:\"client_secret\""
+	// Merged property.
+	WebhookSecret NilString "json:\"webhook_secret\""
+	// Merged property.
+	Pem             string "json:\"pem\""
+	AdditionalProps AppsCreateFromManifestCreatedAdditional
+}
+
+func (*AppsCreateFromManifestCreated) appsCreateFromManifestRes() {}
+
+type AppsCreateFromManifestCreatedAdditional map[string]jx.Raw
+
+func (s *AppsCreateFromManifestCreatedAdditional) init() AppsCreateFromManifestCreatedAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// The set of permissions for the GitHub app.
+type AppsCreateFromManifestCreatedPermissions struct {
+	Issues          OptString "json:\"issues\""
+	Checks          OptString "json:\"checks\""
+	Metadata        OptString "json:\"metadata\""
+	Contents        OptString "json:\"contents\""
+	Deployments     OptString "json:\"deployments\""
+	AdditionalProps AppsCreateFromManifestCreatedPermissionsAdditional
+}
+
+type AppsCreateFromManifestCreatedPermissionsAdditional map[string]string
+
+func (s *AppsCreateFromManifestCreatedPermissionsAdditional) init() AppsCreateFromManifestCreatedPermissionsAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
+type AppsCreateFromManifestReq struct{}
+
 type AppsCreateInstallationAccessTokenApplicationJSONForbidden BasicError
 
 func (*AppsCreateInstallationAccessTokenApplicationJSONForbidden) appsCreateInstallationAccessTokenRes() {
@@ -1896,6 +1964,7 @@ func (*BasicError) activityGetRepoSubscriptionRes()                      {}
 func (*BasicError) activityListPublicEventsRes()                         {}
 func (*BasicError) activityMarkThreadAsReadRes()                         {}
 func (*BasicError) appsCheckTokenRes()                                   {}
+func (*BasicError) appsCreateFromManifestRes()                           {}
 func (*BasicError) appsDeleteInstallationRes()                           {}
 func (*BasicError) appsGetSubscriptionPlanForAccountStubbedRes()         {}
 func (*BasicError) appsGetWebhookDeliveryRes()                           {}
@@ -40494,6 +40563,7 @@ type ValidationErrorSimple struct {
 	Errors           []string "json:\"errors\""
 }
 
+func (*ValidationErrorSimple) appsCreateFromManifestRes()             {}
 func (*ValidationErrorSimple) projectsCreateColumnRes()               {}
 func (*ValidationErrorSimple) projectsCreateForAuthenticatedUserRes() {}
 func (*ValidationErrorSimple) projectsCreateForOrgRes()               {}

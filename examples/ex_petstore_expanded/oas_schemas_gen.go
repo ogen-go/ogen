@@ -19,4 +19,120 @@ type ErrorStatusCode struct {
 	Response   Error
 }
 
-func (*ErrorStatusCode) deletePetRes() {}
+func (*ErrorStatusCode) addPetRes()      {}
+func (*ErrorStatusCode) deletePetRes()   {}
+func (*ErrorStatusCode) findPetByIDRes() {}
+func (*ErrorStatusCode) findPetsRes()    {}
+
+type FindPetsOKApplicationJSON []Pet
+
+func (FindPetsOKApplicationJSON) findPetsRes() {}
+
+// Ref: #/components/schemas/NewPet
+type NewPet struct {
+	Name string    "json:\"name\""
+	Tag  OptString "json:\"tag\""
+}
+
+// NewOptInt32 returns new OptInt32 with value set to v.
+func NewOptInt32(v int32) OptInt32 {
+	return OptInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt32 is optional int32.
+type OptInt32 struct {
+	Value int32
+	Set   bool
+}
+
+// IsSet returns true if OptInt32 was set.
+func (o OptInt32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt32) Reset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt32) SetTo(v int32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt32) Get() (v int32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptString returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptString is optional string.
+type OptString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptString) Get() (v string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// Merged schema.
+// Ref: #/components/schemas/Pet
+type Pet struct {
+	Name string    "json:\"name\""
+	Tag  OptString "json:\"tag\""
+	ID   int64     "json:\"id\""
+}
+
+func (*Pet) addPetRes()      {}
+func (*Pet) findPetByIDRes() {}

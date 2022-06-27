@@ -99,7 +99,11 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 		return t, nil
 	case len(schema.AllOf) > 0:
-		return nil, &ErrNotImplemented{"allOf"}
+		t, err := g.allOf(name, schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "allOf")
+		}
+		return t, nil
 	case len(schema.OneOf) > 0:
 		t, err := g.oneOf(name, schema)
 		if err != nil {

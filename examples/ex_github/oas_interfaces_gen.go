@@ -101,6 +101,10 @@ type AppsCreateContentAttachmentRes interface {
 	appsCreateContentAttachmentRes()
 }
 
+type AppsCreateFromManifestRes interface {
+	appsCreateFromManifestRes()
+}
+
 type AppsCreateInstallationAccessTokenRes interface {
 	appsCreateInstallationAccessTokenRes()
 }

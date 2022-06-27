@@ -15,6 +15,52 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// HandleAddPetRequest handles addPet operation.
+//
+// POST /pets
+func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("addPet"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AddPet",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, close, err := s.decodeAddPetRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			Operation: "AddPet",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+	defer close()
+
+	response, err := s.h.AddPet(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeAddPetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleDeletePetRequest handles deletePet operation.
 //
 // DELETE /pets/{id}
@@ -51,6 +97,96 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	}
 
 	if err := encodeDeletePetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleFindPetByIDRequest handles find pet by id operation.
+//
+// GET /pets/{id}
+func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("find pet by id"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "FindPetByID",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	params, err := decodeFindPetByIDParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			Operation: "FindPetByID",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.FindPetByID(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeFindPetByIDResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleFindPetsRequest handles findPets operation.
+//
+// GET /pets
+func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("findPets"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "FindPets",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	params, err := decodeFindPetsParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			Operation: "FindPets",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.FindPets(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeFindPetsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

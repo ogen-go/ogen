@@ -10474,6 +10474,92 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	return result, nil
 }
 
+// AppsCreateFromManifest invokes apps/create-from-manifest operation.
+//
+// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest
+// flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/).
+// When you create a GitHub App with the manifest flow, you receive a temporary `code` used to
+// retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+//
+// POST /app-manifests/{code}/conversions
+func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (res AppsCreateFromManifestRes, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/create-from-manifest"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateFromManifest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/app-manifests/"
+	{
+		// Encode "code" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "code",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Code))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/conversions"
+
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodeAppsCreateFromManifestRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	reqBody = fn
+
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
+
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAppsCreateFromManifestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // AppsCreateInstallationAccessToken invokes apps/create-installation-access-token operation.
 //
 // Creates an installation access token that enables a GitHub App to make authenticated API requests
