@@ -396,6 +396,31 @@ func (s MobileThreadPostsAfter) Validate() error {
 	return nil
 }
 
+func (s Passcode) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Error.Set {
+			if err := func() error {
+				if err := s.Error.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "error",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s Post) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -420,6 +445,116 @@ func (s Post) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "files",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PostingNewPost) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Error.Set {
+			if err := func() error {
+				if err := s.Error.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "error",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PostingNewThread) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Error.Set {
+			if err := func() error {
+				if err := s.Error.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "error",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s Report) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Error.Set {
+			if err := func() error {
+				if err := s.Error.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "error",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s UserPostingPostOK) Validate() error {
+	switch s.Type {
+	case PostingNewThreadUserPostingPostOK:
+		if err := s.PostingNewThread.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case PostingNewPostUserPostingPostOK:
+		if err := s.PostingNewPost.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s UserPostingPostReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.CaptchaType.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "captcha_type",
 			Error: err,
 		})
 	}

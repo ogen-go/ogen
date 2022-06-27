@@ -92,7 +92,13 @@ func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.Opt
 }
 
 func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (api.PetUpdateNamePostDef, error) {
-	panic("implement me")
+	code := http.StatusAccepted
+	if _, ok := req.Get(); ok {
+		code = http.StatusOK
+	}
+	return api.PetUpdateNamePostDef{
+		StatusCode: code,
+	}, nil
 }
 
 func (s sampleAPIServer) PetFriendsNamesByID(ctx context.Context, params api.PetFriendsNamesByIDParams) ([]string, error) {
@@ -127,7 +133,9 @@ func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (a
 }
 
 func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.OptPet) (pet api.Pet, err error) {
-	s.pet = req.Value
+	if val, ok := req.Get(); ok {
+		s.pet = val
+	}
 	return req.Value, nil
 }
 
@@ -479,6 +487,16 @@ func TestIntegration(t *testing.T) {
 				}
 				assert.Equal(t, errStatusCode, got)
 			})
+		})
+		t.Run("PetUpdateNamePost", func(t *testing.T) {
+			// Ensure optional body handled correctly.
+			h, err := client.PetUpdateNamePost(ctx, api.OptString{})
+			require.NoError(t, err)
+			require.Equal(t, http.StatusAccepted, h.StatusCode)
+
+			h, err = client.PetUpdateNamePost(ctx, api.NewOptString("amongus"))
+			require.NoError(t, err)
+			require.Equal(t, http.StatusOK, h.StatusCode)
 		})
 		t.Run("GetHeader", func(t *testing.T) {
 			h, err := client.GetHeader(ctx, api.GetHeaderParams{XAuthToken: "hello, world"})

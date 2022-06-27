@@ -79,8 +79,12 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		{{- end }}
 
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
-    {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm  }}
+    {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
+		{{- if $t.IsGeneric }}
+		var request {{ $t.GenericOf.Go }}
+		{{- else }}
 		var request {{ $t.Go }}
+		{{- end }}
 
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
@@ -144,7 +148,14 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		{{- end }}
 		{{- end }}
 
+		{{- if $t.IsGeneric }}
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}{{ $t.Go }}{
+			Value: request,
+			Set: true,
+		}, close, nil
+		{{- else }}
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
+		{{- end }}
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}

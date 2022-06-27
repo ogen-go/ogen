@@ -385,6 +385,75 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/user/"
+			if l := len("/user/"); len(elem) >= l && elem[0:l] == "/user/" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				break
+			}
+			switch elem[0] {
+			case 'p': // Prefix: "p"
+				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "asslogin"
+					if l := len("asslogin"); len(elem) >= l && elem[0:l] == "asslogin" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: UserPassloginPost
+						s.handleUserPassloginPostRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'o': // Prefix: "osting"
+					if l := len("osting"); len(elem) >= l && elem[0:l] == "osting" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: UserPostingPost
+						s.handleUserPostingPostRequest([0]string{}, w, r)
+
+						return
+					}
+				}
+			case 'r': // Prefix: "report"
+				if l := len("report"); len(elem) >= l && elem[0:l] == "report" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: UserReportPost
+					s.handleUserReportPostRequest([0]string{}, w, r)
+
+					return
+				}
+			}
+		}
 	}
 	s.notFound(w, r)
 }
@@ -780,6 +849,78 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							return r, true
 						}
 					}
+				}
+			}
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/user/"
+			if l := len("/user/"); len(elem) >= l && elem[0:l] == "/user/" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				break
+			}
+			switch elem[0] {
+			case 'p': // Prefix: "p"
+				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "asslogin"
+					if l := len("asslogin"); len(elem) >= l && elem[0:l] == "asslogin" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: UserPassloginPost
+						r.name = "UserPassloginPost"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'o': // Prefix: "osting"
+					if l := len("osting"); len(elem) >= l && elem[0:l] == "osting" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: UserPostingPost
+						r.name = "UserPostingPost"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				}
+			case 'r': // Prefix: "report"
+				if l := len("report"); len(elem) >= l && elem[0:l] == "report" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: UserReportPost
+					r.name = "UserReportPost"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			}
 		}

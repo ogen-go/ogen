@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"io"
+	"net/http"
 	"net/url"
 	"time"
 
@@ -203,17 +204,6 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/json"
-	fn, err := encodeDefaultTestRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/defaultTest"
 	q := uri.NewQueryEncoder()
@@ -236,16 +226,31 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	}
 	u.RawQuery = q.Values().Encode()
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodeDefaultTestRequestJSON(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -419,9 +424,12 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/foobar"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeFoobarPostRequestJSON(request, span)
@@ -430,19 +438,20 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/foobar"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -527,7 +536,6 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	u.Path += "/test/header"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-
 	h := uri.NewHeaderEncoder(r.Header)
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
@@ -670,9 +678,12 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/oneofBug"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeOneofBugRequestJSON(request, span)
@@ -681,19 +692,20 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/oneofBug"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -789,9 +801,12 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePetCreateRequestJSON(request, span)
@@ -800,19 +815,20 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -945,7 +961,6 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
-
 	h := uri.NewHeaderEncoder(r.Header)
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
@@ -1273,9 +1288,12 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/updateNameAlias"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePetUpdateNameAliasPostRequestJSON(request, span)
@@ -1284,19 +1302,20 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet/updateNameAlias"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1356,9 +1375,12 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/updateName"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePetUpdateNamePostRequestJSON(request, span)
@@ -1367,19 +1389,20 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/pet/updateName"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1420,17 +1443,6 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/octet-stream"
-	fn, err := encodePetUploadAvatarByIDRequestOctetStream(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
 	q := uri.NewQueryEncoder()
@@ -1450,16 +1462,31 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	}
 	u.RawQuery = q.Values().Encode()
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/octet-stream"
+	fn, err := encodePetUploadAvatarByIDRequestOctetStream(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1736,9 +1763,12 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testFloatValidation"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeTestFloatValidationRequestJSON(request, span)
@@ -1747,19 +1777,20 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/testFloatValidation"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1798,9 +1829,12 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testFormURLEncoded"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/x-www-form-urlencoded"
 	fn, err := encodeTestFormURLEncodedRequestFormURLEncoded(request, span)
@@ -1809,19 +1843,20 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/testFormURLEncoded"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1860,9 +1895,12 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testMultipart"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "multipart/form-data"
 	fn, ct, err := encodeTestMultipartRequest(request, span)
@@ -1872,19 +1910,20 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	reqBody = fn
 	contentType = ct
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/testMultipart"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1931,9 +1970,12 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testMultipartUpload"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "multipart/form-data"
 	fn, ct, err := encodeTestMultipartUploadRequest(request, span)
@@ -1943,19 +1985,20 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	reqBody = fn
 	contentType = ct
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/testMultipartUpload"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2122,9 +2165,12 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testShareFormSchema"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	switch req := request.(type) {
 	case *SharedRequest:
@@ -2146,19 +2192,20 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 		return res, errors.Errorf("unexpected request type: %T", request)
 	}
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/testShareFormSchema"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

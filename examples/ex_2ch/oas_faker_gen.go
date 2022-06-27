@@ -488,6 +488,15 @@ func (s *OptMobileThreadLastInfoThread) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptPasscodePasscode) SetFake() {
+	var elem PasscodePasscode
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptPost) SetFake() {
 	var elem Post
 	{
@@ -503,6 +512,39 @@ func (s *OptString) SetFake() {
 		elem = "string"
 	}
 	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *Passcode) SetFake() {
+	{
+		{
+			s.Error.SetFake()
+		}
+	}
+	{
+		{
+			s.Passcode.SetFake()
+		}
+	}
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *PasscodePasscode) SetFake() {
+	{
+		{
+			s.Expires.SetFake()
+		}
+	}
+	{
+		{
+			s.Type.SetFake()
+		}
+	}
 }
 
 // SetFake set fake values.
@@ -629,4 +671,66 @@ func (s *Post) SetFake() {
 			s.Views = int(0)
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PostingNewPost) SetFake() {
+	{
+		{
+			s.Error.SetFake()
+		}
+	}
+	{
+		{
+			s.Num.SetFake()
+		}
+	}
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *PostingNewThread) SetFake() {
+	{
+		{
+			s.Error.SetFake()
+		}
+	}
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
+	{
+		{
+			s.Thread.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Report) SetFake() {
+	{
+		{
+			s.Error.SetFake()
+		}
+	}
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *UserPostingPostOK) SetFake() {
+	var elem PostingNewThread
+
+	{
+		elem.SetFake()
+	}
+	s.SetPostingNewThread(elem)
 }

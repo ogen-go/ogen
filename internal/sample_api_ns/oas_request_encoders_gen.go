@@ -39,6 +39,10 @@ func encodeFoobarPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -70,6 +74,10 @@ func encodePetCreateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -86,6 +94,10 @@ func encodePetUpdateNameAliasPostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -102,6 +114,10 @@ func encodePetUpdateNamePostRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -144,6 +160,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	request := req
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" form field.
@@ -153,7 +170,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.ID.Get(); ok {
+			if val, ok := request.ID.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
@@ -169,7 +186,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.UUID.Get(); ok {
+			if val, ok := request.UUID.Get(); ok {
 				return e.EncodeValue(conv.UUIDToString(val))
 			}
 			return nil
@@ -185,7 +202,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(req.Description))
+			return e.EncodeValue(conv.StringToString(request.Description))
 		}); err != nil {
 			return data, errors.Wrap(err, "encode query")
 		}
@@ -199,7 +216,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range req.Array {
+				for i, item := range request.Array {
 					if err := func() error {
 						return e.EncodeValue(conv.StringToString(item))
 					}(); err != nil {
@@ -220,7 +237,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.Object.Get(); ok {
+			if val, ok := request.Object.Get(); ok {
 				return val.EncodeURI(e)
 			}
 			return nil
@@ -236,7 +253,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.DeepObject.Get(); ok {
+			if val, ok := request.DeepObject.Get(); ok {
 				return val.EncodeURI(e)
 			}
 			return nil
@@ -257,6 +274,7 @@ func encodeTestMultipartRequest(
 	contentType string,
 	rerr error,
 ) {
+	request := req
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" form field.
@@ -266,7 +284,7 @@ func encodeTestMultipartRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.ID.Get(); ok {
+			if val, ok := request.ID.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
@@ -282,7 +300,7 @@ func encodeTestMultipartRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.UUID.Get(); ok {
+			if val, ok := request.UUID.Get(); ok {
 				return e.EncodeValue(conv.UUIDToString(val))
 			}
 			return nil
@@ -298,7 +316,7 @@ func encodeTestMultipartRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(req.Description))
+			return e.EncodeValue(conv.StringToString(request.Description))
 		}); err != nil {
 			return data, "", errors.Wrap(err, "encode query")
 		}
@@ -312,7 +330,7 @@ func encodeTestMultipartRequest(
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range req.Array {
+				for i, item := range request.Array {
 					if err := func() error {
 						return e.EncodeValue(conv.StringToString(item))
 					}(); err != nil {
@@ -333,7 +351,7 @@ func encodeTestMultipartRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.Object.Get(); ok {
+			if val, ok := request.Object.Get(); ok {
 				return val.EncodeURI(e)
 			}
 			return nil
@@ -349,7 +367,7 @@ func encodeTestMultipartRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.DeepObject.Get(); ok {
+			if val, ok := request.DeepObject.Get(); ok {
 				return val.EncodeURI(e)
 			}
 			return nil
@@ -373,6 +391,7 @@ func encodeTestMultipartUploadRequest(
 	contentType string,
 	rerr error,
 ) {
+	request := req
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "orderId" form field.
@@ -382,7 +401,7 @@ func encodeTestMultipartUploadRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.OrderId.Get(); ok {
+			if val, ok := request.OrderId.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
@@ -398,7 +417,7 @@ func encodeTestMultipartUploadRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.UserId.Get(); ok {
+			if val, ok := request.UserId.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
@@ -407,16 +426,16 @@ func encodeTestMultipartUploadRequest(
 		}
 	}
 	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-		if err := req.File.WriteMultipart("file", w); err != nil {
+		if err := request.File.WriteMultipart("file", w); err != nil {
 			return errors.Wrap(err, "write \"file\"")
 		}
-		if val, ok := req.OptionalFile.Get(); ok {
+		if val, ok := request.OptionalFile.Get(); ok {
 			if err := val.WriteMultipart("optional_file", w); err != nil {
 				return errors.Wrap(err, "write \"optional_file\"")
 			}
 		}
 		if err := func() error {
-			for idx, val := range req.Files {
+			for idx, val := range request.Files {
 				if err := val.WriteMultipart("files", w); err != nil {
 					return errors.Wrapf(err, "file [%d]", idx)
 				}
@@ -455,6 +474,7 @@ func encodeTestShareFormSchemaRequest(
 	contentType string,
 	rerr error,
 ) {
+	request := req
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filename" form field.
@@ -464,7 +484,7 @@ func encodeTestShareFormSchemaRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := req.Filename.Get(); ok {
+			if val, ok := request.Filename.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -473,7 +493,7 @@ func encodeTestShareFormSchemaRequest(
 		}
 	}
 	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-		if val, ok := req.File.Get(); ok {
+		if val, ok := request.File.Get(); ok {
 			if err := val.WriteMultipart("file", w); err != nil {
 				return errors.Wrap(err, "write \"file\"")
 			}

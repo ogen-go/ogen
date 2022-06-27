@@ -92,6 +92,10 @@ func encodeActionsSetAllowedActionsOrganizationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -108,6 +112,10 @@ func encodeActionsSetAllowedActionsRepositoryRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -229,6 +237,10 @@ func encodeActivityMarkNotificationsAsReadRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -245,6 +257,10 @@ func encodeActivityMarkRepoNotificationsAsReadRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -261,6 +277,10 @@ func encodeActivitySetRepoSubscriptionRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -277,6 +297,10 @@ func encodeActivitySetThreadSubscriptionRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -323,6 +347,10 @@ func encodeAppsCreateInstallationAccessTokenRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -399,6 +427,10 @@ func encodeAppsUpdateWebhookConfigForAppRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -655,6 +687,10 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -851,6 +887,10 @@ func encodeIssuesAddAssigneesRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -927,6 +967,10 @@ func encodeIssuesLockRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -943,6 +987,10 @@ func encodeIssuesRemoveAssigneesRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -959,6 +1007,10 @@ func encodeIssuesUpdateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -990,6 +1042,10 @@ func encodeIssuesUpdateLabelRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1006,6 +1062,10 @@ func encodeIssuesUpdateMilestoneRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1022,6 +1082,10 @@ func encodeMigrationsMapCommitAuthorRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1098,6 +1162,10 @@ func encodeMigrationsUpdateImportRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1114,6 +1182,10 @@ func encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1160,6 +1232,10 @@ func encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1176,6 +1252,10 @@ func encodeOrgsCreateInvitationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1207,6 +1287,10 @@ func encodeOrgsSetMembershipForUserRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1238,6 +1322,10 @@ func encodeOrgsUpdateWebhookRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1254,6 +1342,10 @@ func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1270,6 +1362,10 @@ func encodeProjectsAddCollaboratorRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1376,6 +1472,10 @@ func encodeProjectsUpdateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1392,6 +1492,10 @@ func encodeProjectsUpdateCardRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1453,6 +1557,10 @@ func encodePullsCreateReviewRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1499,6 +1607,10 @@ func encodePullsMergeRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1545,6 +1657,10 @@ func encodePullsUpdateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1561,6 +1677,10 @@ func encodePullsUpdateBranchRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1742,6 +1862,10 @@ func encodeReposAddAppAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1758,6 +1882,10 @@ func encodeReposAddCollaboratorRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1774,6 +1902,10 @@ func encodeReposAddStatusCheckContextsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1790,6 +1922,10 @@ func encodeReposAddTeamAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1806,6 +1942,10 @@ func encodeReposAddUserAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1942,6 +2082,10 @@ func encodeReposCreateForkRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2033,6 +2177,10 @@ func encodeReposCreateWebhookRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2094,6 +2242,10 @@ func encodeReposRemoveAppAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2110,6 +2262,10 @@ func encodeReposRemoveStatusCheckContextsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2126,6 +2282,10 @@ func encodeReposRemoveTeamAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2142,6 +2302,10 @@ func encodeReposRemoveUserAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2158,6 +2322,10 @@ func encodeReposRenameBranchRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2189,6 +2357,10 @@ func encodeReposSetAppAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2205,6 +2377,10 @@ func encodeReposSetStatusCheckContextsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2221,6 +2397,10 @@ func encodeReposSetTeamAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2237,6 +2417,10 @@ func encodeReposSetUserAccessRestrictionsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2268,6 +2452,10 @@ func encodeReposUpdateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2314,6 +2502,10 @@ func encodeReposUpdateInvitationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2330,6 +2522,10 @@ func encodeReposUpdatePullRequestReviewProtectionRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2346,6 +2542,10 @@ func encodeReposUpdateReleaseRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2362,6 +2562,10 @@ func encodeReposUpdateReleaseAssetRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2378,6 +2582,10 @@ func encodeReposUpdateStatusCheckProtectionRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2394,6 +2602,10 @@ func encodeReposUpdateWebhookRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2410,6 +2622,10 @@ func encodeReposUpdateWebhookConfigForRepoRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2441,6 +2657,10 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2457,6 +2677,10 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2473,6 +2697,10 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2489,6 +2717,10 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2505,6 +2737,10 @@ func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2521,6 +2757,10 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2672,6 +2912,10 @@ func encodeTeamsUpdateDiscussionInOrgRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2688,6 +2932,10 @@ func encodeTeamsUpdateDiscussionLegacyRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2704,6 +2952,10 @@ func encodeTeamsUpdateInOrgRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2735,6 +2987,10 @@ func encodeUsersAddEmailForAuthenticatedRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2781,6 +3037,10 @@ func encodeUsersDeleteEmailForAuthenticatedRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -2812,6 +3072,10 @@ func encodeUsersUpdateAuthenticatedRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

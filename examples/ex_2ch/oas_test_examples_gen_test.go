@@ -179,6 +179,30 @@ func TestMobileThreadPostsAfter_EncodeDecode(t *testing.T) {
 	var typ2 MobileThreadPostsAfter
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPasscode_EncodeDecode(t *testing.T) {
+	var typ Passcode
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Passcode
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPasscodePasscode_EncodeDecode(t *testing.T) {
+	var typ PasscodePasscode
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PasscodePasscode
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPost_EncodeDecode(t *testing.T) {
 	var typ Post
 	typ.SetFake()
@@ -189,5 +213,53 @@ func TestPost_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 Post
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPostingNewPost_EncodeDecode(t *testing.T) {
+	var typ PostingNewPost
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PostingNewPost
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPostingNewThread_EncodeDecode(t *testing.T) {
+	var typ PostingNewThread
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PostingNewThread
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReport_EncodeDecode(t *testing.T) {
+	var typ Report
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Report
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUserPostingPostOK_EncodeDecode(t *testing.T) {
+	var typ UserPostingPostOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UserPostingPostOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }

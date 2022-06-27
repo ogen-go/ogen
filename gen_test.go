@@ -66,8 +66,6 @@ func testGenerate(name string, ignore ...string) func(t *testing.T) {
 }
 
 func TestGenerate(t *testing.T) {
-	t.Parallel()
-
 	skipSets := map[string][]string{
 		"autorest/additionalProperties.json": {
 			"allOf",
@@ -88,9 +86,7 @@ func TestGenerate(t *testing.T) {
 		"autorest/xms-error-responses.json": {
 			"allOf",
 		},
-		"2ch.yml": {
-			"complex form schema",
-		},
+		"2ch.yml": {},
 		"api.github.com.json": {
 			"complex anyOf",
 			"allOf",

@@ -927,3 +927,48 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 	}
 	return params, nil
 }
+
+type UserPassloginPostParams struct {
+	// Параметр, указывающий что запрос выполняется не
+	// пользователем и ответ нужен в формате json.
+	JSON int
+}
+
+func decodeUserPassloginPostParams(args [0]string, r *http.Request) (params UserPassloginPostParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Set default value for query: json.
+	{
+		val := int(1)
+		params.JSON = val
+	}
+	// Decode query: json.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "json",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.JSON = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: json: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	return params, nil
+}

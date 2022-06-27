@@ -98,14 +98,18 @@ type Request struct {
 	Spec     *openapi.RequestBody
 }
 
-func (r Request) FormParameters(ct ContentType) (params []Parameter) {
+func (r Request) parameters(ct ContentType, skip func(t *Type) bool) (params []Parameter) {
 	t, ok := r.Contents[ct]
 	if !ok {
 		panic(ct)
 	}
 
+	if t.IsGeneric() {
+		t = t.GenericOf
+	}
+
 	for _, f := range t.Fields {
-		if t := f.Type; ct.MultipartForm() && t.HasFeature("multipart-file") {
+		if skip(f.Type) {
 			continue
 		}
 		params = append(params, Parameter{
@@ -117,26 +121,20 @@ func (r Request) FormParameters(ct ContentType) (params []Parameter) {
 	return params
 }
 
-func (r Request) FileParameters(ct ContentType) (params []Parameter) {
-	t, ok := r.Contents[ct]
-	if !ok {
-		panic(ct)
-	}
+func (r Request) FormParameters(ct ContentType) (params []Parameter) {
+	multipart := ct.MultipartForm()
+	return r.parameters(ct, func(t *Type) bool {
+		return multipart && t.HasFeature("multipart-file")
+	})
+}
 
+func (r Request) FileParameters(ct ContentType) (params []Parameter) {
 	if !ct.MultipartForm() {
 		return params
 	}
-
-	for _, f := range t.Fields {
-		if t := f.Type; t.HasFeature("multipart-file") {
-			params = append(params, Parameter{
-				Name: f.Name,
-				Type: f.Type,
-				Spec: f.Tag.Form,
-			})
-		}
-	}
-	return params
+	return r.parameters(ct, func(t *Type) bool {
+		return !t.HasFeature("multipart-file")
+	})
 }
 
 type Content struct {

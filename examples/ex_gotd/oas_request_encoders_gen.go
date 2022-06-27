@@ -257,6 +257,10 @@ func encodeDeleteMyCommandsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -288,6 +292,10 @@ func encodeDeleteWebhookRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -484,6 +492,10 @@ func encodeGetChatMenuButtonRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -530,6 +542,10 @@ func encodeGetMyCommandsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -546,6 +562,10 @@ func encodeGetMyDefaultAdministratorRightsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -577,6 +597,10 @@ func encodeGetUpdatesRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -983,6 +1007,10 @@ func encodeSetChatMenuButtonRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1089,6 +1117,10 @@ func encodeSetMyDefaultAdministratorRightsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

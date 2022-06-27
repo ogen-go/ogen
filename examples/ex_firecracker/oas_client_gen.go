@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"io"
+	"net/http"
 	"net/url"
 	"time"
 
@@ -83,9 +84,12 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/snapshot/create"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeCreateSnapshotRequestJSON(request, span)
@@ -94,19 +98,20 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/snapshot/create"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -155,9 +160,12 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/actions"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeCreateSyncActionRequestJSON(request, span)
@@ -166,19 +174,20 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/actions"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -442,9 +451,12 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/snapshot/load"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeLoadSnapshotRequestJSON(request, span)
@@ -453,19 +465,20 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/snapshot/load"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -504,9 +517,12 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds/config"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeMmdsConfigPutRequestJSON(request, span)
@@ -515,19 +531,20 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/mmds/config"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -608,9 +625,12 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeMmdsPatchRequestJSON(request, span)
@@ -619,19 +639,20 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/mmds"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -670,9 +691,12 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeMmdsPutRequestJSON(request, span)
@@ -681,19 +705,20 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/mmds"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -735,9 +760,12 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePatchBalloonRequestJSON(request, span)
@@ -746,19 +774,20 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/balloon"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -800,9 +829,12 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon/statistics"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePatchBalloonStatsIntervalRequestJSON(request, span)
@@ -811,19 +843,20 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/balloon/statistics"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -873,17 +906,6 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/json"
-	fn, err := encodePatchGuestDriveByIDRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
 	{
@@ -901,16 +923,31 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 		u.Path += e.Result()
 	}
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodePatchGuestDriveByIDRequestJSON(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -959,17 +996,6 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/json"
-	fn, err := encodePatchGuestNetworkInterfaceByIDRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
 	{
@@ -987,16 +1013,31 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 		u.Path += e.Result()
 	}
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodePatchGuestNetworkInterfaceByIDRequestJSON(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1053,9 +1094,12 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/machine-config"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePatchMachineConfigurationRequestJSON(request, span)
@@ -1064,19 +1108,20 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/machine-config"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1125,9 +1170,12 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/vm"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePatchVmRequestJSON(request, span)
@@ -1136,19 +1184,20 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/vm"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PATCH", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PATCH", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1190,9 +1239,12 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePutBalloonRequestJSON(request, span)
@@ -1201,19 +1253,20 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/balloon"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1255,9 +1308,12 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/boot-source"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePutGuestBootSourceRequestJSON(request, span)
@@ -1266,19 +1322,20 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/boot-source"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1328,17 +1385,6 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/json"
-	fn, err := encodePutGuestDriveByIDRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
 	{
@@ -1356,16 +1402,31 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 		u.Path += e.Result()
 	}
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodePutGuestDriveByIDRequestJSON(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1414,17 +1475,6 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/json"
-	fn, err := encodePutGuestNetworkInterfaceByIDRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
 	{
@@ -1442,16 +1492,31 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 		u.Path += e.Result()
 	}
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodePutGuestNetworkInterfaceByIDRequestJSON(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1501,9 +1566,12 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/vsock"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePutGuestVsockRequestJSON(request, span)
@@ -1512,19 +1580,20 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/vsock"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1573,9 +1642,12 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/logger"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePutLoggerRequestJSON(request, span)
@@ -1584,19 +1656,20 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/logger"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1655,9 +1728,12 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/machine-config"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePutMachineConfigurationRequestJSON(request, span)
@@ -1666,19 +1742,20 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/machine-config"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1719,9 +1796,12 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/metrics"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodePutMetricsRequestJSON(request, span)
@@ -1730,19 +1810,20 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/metrics"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "PUT", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "PUT", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
