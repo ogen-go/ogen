@@ -10502,17 +10502,6 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error)
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsCreateFromManifestRequestJSON(request, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app-manifests/"
 	{
@@ -10531,16 +10520,31 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	}
 	u.Path += "/conversions"
 
-	body, err := reqBody()
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodeAppsCreateFromManifestRequestJSON(request, span)
 	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		return res, err
 	}
-	defer body.Close()
+	reqBody = fn
 
-	r := ht.NewRequest(ctx, "POST", u, body)
-	r.GetBody = reqBody
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	r.Header.Set("Content-Type", contentType)
+		r = ht.NewRequest(ctx, "POST", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "POST", u, nil)
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

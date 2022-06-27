@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"io"
+	"net/http"
 	"net/url"
 	"time"
 
@@ -83,9 +84,12 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/objectsWithConflictingArrayProperty"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeObjectsWithConflictingArrayPropertyRequestJSON(request, span)
@@ -94,19 +98,20 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/objectsWithConflictingArrayProperty"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "GET", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "GET", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "GET", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -155,9 +160,12 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/objectsWithConflictingProperties"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeObjectsWithConflictingPropertiesRequestJSON(request, span)
@@ -166,19 +174,20 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/objectsWithConflictingProperties"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "GET", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "GET", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "GET", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -227,9 +236,12 @@ func (c *Client) ReferencedAllof(ctx context.Context, request Robot) (res Refere
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/referencedAllof"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeReferencedAllofRequestJSON(request, span)
@@ -238,19 +250,20 @@ func (c *Client) ReferencedAllof(ctx context.Context, request Robot) (res Refere
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/referencedAllof"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "GET", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "GET", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "GET", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -308,9 +321,12 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/simpleInteger"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeSimpleIntegerRequestJSON(request, span)
@@ -319,19 +335,20 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/simpleInteger"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "GET", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "GET", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "GET", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -372,9 +389,12 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 		span.End()
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/simpleObjects"
+
 	var (
 		contentType string
-		reqBody     func() (io.ReadCloser, error)
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
 	)
 	contentType = "application/json"
 	fn, err := encodeSimpleObjectsRequestJSON(request, span)
@@ -383,19 +403,20 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	}
 	reqBody = fn
 
-	u := uri.Clone(c.serverURL)
-	u.Path += "/simpleObjects"
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
 
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+		r = ht.NewRequest(ctx, "GET", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "GET", u, nil)
 	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, "GET", u, body)
-	r.GetBody = reqBody
-
-	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
