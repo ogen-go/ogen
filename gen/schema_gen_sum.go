@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"bytes"
 	"fmt"
 	"path"
 	"sort"
@@ -344,4 +345,182 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		}
 	}
 	return sum, nil
+}
+
+func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	mergedSchema, err := mergeNSchemes(schema.AllOf)
+	if err != nil {
+		return nil, err
+	}
+
+	mergedSchema.Ref = schema.Ref
+	return g.generate2(name, mergedSchema)
+}
+
+func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
+	if len(ss) < 1 {
+		panic("unreachable")
+	}
+
+	root := ss[0]
+	for i := 1; i < len(ss); i++ {
+		root, err = mergeSchemes(root, ss[i])
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return root, nil
+}
+
+func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
+	if s1 == nil || s2 == nil {
+		return nil, errors.Errorf("schema is null or empty")
+	}
+
+	if s1.Type != s2.Type {
+		return nil, errors.Errorf("schema type mismatch: %s and %s", s1.Type, s2.Type)
+	}
+
+	if s1.Format != s2.Format {
+		return nil, errors.Errorf("schema format mismatch: %s and %s", s1.Format, s2.Format)
+	}
+
+	nullable := s1.Nullable
+	if s2.Nullable {
+		nullable = s2.Nullable
+	}
+
+	r := &jsonschema.Schema{
+		Type:        s1.Type,
+		Format:      s1.Format,
+		Nullable:    nullable,
+		Description: "Merged schema",
+	}
+
+	switch s1.Type {
+	case jsonschema.String:
+		if s1.MaxLength != s2.MaxLength {
+			return nil, errors.Errorf("maxLength is different")
+		}
+		r.MaxLength = s1.MaxLength
+
+		if s1.MinLength != s2.MinLength {
+			return nil, errors.Errorf("minLength is different")
+		}
+		r.MinLength = s1.MinLength
+
+		if s1.Pattern != s2.Pattern {
+			return nil, errors.Errorf("pattern is different")
+		}
+		r.Pattern = s1.Pattern
+
+		return r, nil
+	case jsonschema.Integer, jsonschema.Number:
+		if !bytes.Equal(s1.Maximum, s2.Maximum) {
+			return nil, errors.Errorf("maximum is different")
+		}
+		r.Maximum = s1.Maximum
+
+		if s1.ExclusiveMaximum != s2.ExclusiveMaximum {
+			return nil, errors.Errorf("exclusiveMaximum is different")
+		}
+		r.ExclusiveMaximum = s1.ExclusiveMaximum
+
+		if !bytes.Equal(s1.Minimum, s2.Minimum) {
+			return nil, errors.Errorf("minimum is different")
+		}
+		r.Minimum = s1.Minimum
+
+		if s1.ExclusiveMinimum != s2.ExclusiveMinimum {
+			return nil, errors.Errorf("exclusiveMinimum is different")
+		}
+		r.ExclusiveMinimum = s1.ExclusiveMinimum
+
+		if !bytes.Equal(s1.MultipleOf, s2.MultipleOf) {
+			return nil, errors.Errorf("multipleOf is different")
+		}
+		r.MultipleOf = s1.MultipleOf
+		return r, nil
+
+	case jsonschema.Array:
+		r.Item, err = mergeSchemes(s1.Item, s2.Item)
+		if err != nil {
+			return nil, errors.Wrap(err, "item")
+		}
+
+		if s1.MinItems != s2.MinItems {
+			return nil, errors.Wrap(err, "minItems is different")
+		}
+		r.MinItems = s1.MinItems
+
+		if s1.MaxItems != s2.MaxItems {
+			return nil, errors.Wrap(err, "maxItems is different")
+		}
+		r.MaxItems = s1.MaxItems
+
+		if s1.UniqueItems != s2.UniqueItems {
+			return nil, errors.Errorf("uniqueItems is different")
+		}
+		r.UniqueItems = s1.UniqueItems
+
+		return r, nil
+
+	case jsonschema.Null, jsonschema.Boolean:
+		return r, nil
+
+	case jsonschema.Object:
+		r.Properties, err = mergeProperties([]*jsonschema.Schema{s1, s2})
+		if err != nil {
+			return nil, errors.Wrap(err, "merge properties")
+		}
+
+		return r, nil
+
+	default:
+		return nil, &ErrNotImplemented{Name: "complex schema merging"}
+	}
+}
+
+func mergeProperties(schemas []*jsonschema.Schema) ([]jsonschema.Property, error) {
+	propmap := make(map[string]jsonschema.Property)
+	order := make(map[string]int)
+	orderIndex := 0
+	for _, s := range schemas {
+		if s.Type != jsonschema.Object {
+			return nil, &ErrNotImplemented{Name: "non-object schema type"}
+		}
+		for _, p := range s.Properties {
+			if confP, ok := propmap[p.Name]; ok {
+				// Property name conflict.
+				s, err := mergeSchemes(p.Schema, confP.Schema)
+				if err != nil {
+					return nil, errors.Wrap(err, "try to merge conflicting property schemas")
+				}
+
+				required := p.Required
+				if confP.Required {
+					required = true
+				}
+
+				propmap[p.Name] = jsonschema.Property{
+					Name:        p.Name,
+					Description: "Merged property",
+					Schema:      s,
+					Required:    required,
+				}
+				continue
+			}
+
+			propmap[p.Name] = p
+			order[p.Name] = orderIndex
+			orderIndex++
+		}
+	}
+
+	result := make([]jsonschema.Property, len(propmap))
+	for name, p := range propmap {
+		result[order[name]] = p
+	}
+	return result, nil
 }
