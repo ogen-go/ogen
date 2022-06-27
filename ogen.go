@@ -12,3 +12,5 @@ package ogen
 
 //go:generate go run ./cmd/ogen -v --target internal/sample_err --clean --generate-tests _testdata/positive/errors.json
 //go:generate go run ./cmd/ogen -v --target internal/techempower --package techempower --clean --generate-tests _testdata/positive/techempower.json
+
+//go:generate go run ./cmd/ogen -v --target internal/test_allof --clean --generate-tests _testdata/positive/test_allof.yml
