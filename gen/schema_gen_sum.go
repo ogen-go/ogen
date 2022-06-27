@@ -496,8 +496,10 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	//   To validate against allOf, the given data
 	//   must be valid against all of the given subschemas.
 	//
-	// Current implementation simply select
-	// the strictest constraints from both schemes.
+	// Current implementation simply select the strictest constraints from both schemes.
+	//
+	// Note that this approach will not work with different 'pattern' or 'multipleOf'constraints
+	// because they cannot be merged.
 	switch s1.Type {
 	case jsonschema.String:
 		r.MaxLength = someU64(s1.MaxLength, s2.MaxLength, selectMinU64)
