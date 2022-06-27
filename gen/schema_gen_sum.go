@@ -547,6 +547,23 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		return r, nil
 
 	case jsonschema.Object:
+		if len(s1.PatternProperties) > 0 || len(s2.PatternProperties) > 0 {
+			return nil, &ErrNotImplemented{Name: "allOf with patternProperties"}
+		}
+
+		if s1.AdditionalProperties != nil {
+			if *s1.AdditionalProperties {
+				return nil, &ErrNotImplemented{Name: "allOf with additionalProperties"}
+			}
+			r.AdditionalProperties = s1.AdditionalProperties
+		}
+		if s2.AdditionalProperties != nil {
+			if *s2.AdditionalProperties {
+				return nil, &ErrNotImplemented{Name: "allOf with additionalProperties"}
+			}
+			r.AdditionalProperties = s2.AdditionalProperties
+		}
+
 		r.Properties, err = mergeProperties([]*jsonschema.Schema{s1, s2})
 		if err != nil {
 			return nil, errors.Wrap(err, "merge properties")
