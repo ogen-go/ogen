@@ -55,6 +55,10 @@ func encodeTestRequestBooleanRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -115,6 +119,10 @@ func encodeTestRequestBooleanNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -191,6 +199,10 @@ func encodeTestRequestFormatTestRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -207,6 +219,10 @@ func encodeTestRequestIntegerRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -267,6 +283,10 @@ func encodeTestRequestIntegerInt32RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -327,6 +347,10 @@ func encodeTestRequestIntegerInt32NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -387,6 +411,10 @@ func encodeTestRequestIntegerInt64RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -447,6 +475,10 @@ func encodeTestRequestIntegerInt64NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -507,6 +539,10 @@ func encodeTestRequestIntegerNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -567,6 +603,10 @@ func encodeTestRequestNullRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -629,6 +669,10 @@ func encodeTestRequestNullNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -691,6 +735,10 @@ func encodeTestRequestNumberRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -751,6 +799,10 @@ func encodeTestRequestNumberDoubleRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -811,6 +863,10 @@ func encodeTestRequestNumberDoubleNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -871,6 +927,10 @@ func encodeTestRequestNumberFloatRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -931,6 +991,10 @@ func encodeTestRequestNumberFloatNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -991,6 +1055,10 @@ func encodeTestRequestNumberInt32RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1051,6 +1119,10 @@ func encodeTestRequestNumberInt32NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1111,6 +1183,10 @@ func encodeTestRequestNumberInt64RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1171,6 +1247,10 @@ func encodeTestRequestNumberInt64NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -1231,6 +1311,10 @@ func encodeTestRequestNumberNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -4992,6 +5076,10 @@ func encodeTestRequestStringRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5052,6 +5140,10 @@ func encodeTestRequestStringBinaryRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5112,6 +5204,10 @@ func encodeTestRequestStringBinaryNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5231,6 +5327,10 @@ func encodeTestRequestStringByteNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5291,6 +5391,10 @@ func encodeTestRequestStringDateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeDate)
@@ -5351,6 +5455,10 @@ func encodeTestRequestStringDateNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeDate)
@@ -5411,6 +5519,10 @@ func encodeTestRequestStringDateTimeRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeDateTime)
@@ -5471,6 +5583,10 @@ func encodeTestRequestStringDateTimeNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeDateTime)
@@ -5531,6 +5647,10 @@ func encodeTestRequestStringDurationRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5591,6 +5711,10 @@ func encodeTestRequestStringDurationNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5651,6 +5775,10 @@ func encodeTestRequestStringEmailRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5711,6 +5839,10 @@ func encodeTestRequestStringEmailNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5771,6 +5903,10 @@ func encodeTestRequestStringHostnameRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5831,6 +5967,10 @@ func encodeTestRequestStringHostnameNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5891,6 +6031,10 @@ func encodeTestRequestStringIPRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -5951,6 +6095,10 @@ func encodeTestRequestStringIPNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6011,6 +6159,10 @@ func encodeTestRequestStringInt32RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6071,6 +6223,10 @@ func encodeTestRequestStringInt32NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6131,6 +6287,10 @@ func encodeTestRequestStringInt64RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6191,6 +6351,10 @@ func encodeTestRequestStringInt64NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6251,6 +6415,10 @@ func encodeTestRequestStringIpv4RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6311,6 +6479,10 @@ func encodeTestRequestStringIpv4NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6371,6 +6543,10 @@ func encodeTestRequestStringIpv6RequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6431,6 +6607,10 @@ func encodeTestRequestStringIpv6NullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6491,6 +6671,10 @@ func encodeTestRequestStringNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6551,6 +6735,10 @@ func encodeTestRequestStringPasswordRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6611,6 +6799,10 @@ func encodeTestRequestStringPasswordNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6671,6 +6863,10 @@ func encodeTestRequestStringTimeRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeTime)
@@ -6731,6 +6927,10 @@ func encodeTestRequestStringTimeNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeTime)
@@ -6791,6 +6991,10 @@ func encodeTestRequestStringURIRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6851,6 +7055,10 @@ func encodeTestRequestStringURINullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6911,6 +7119,10 @@ func encodeTestRequestStringUUIDRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -6971,6 +7183,10 @@ func encodeTestRequestStringUUIDNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -7031,6 +7247,10 @@ func encodeTestRequestStringUnixRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixSeconds)
@@ -7091,6 +7311,10 @@ func encodeTestRequestStringUnixMicroRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixMicro)
@@ -7151,6 +7375,10 @@ func encodeTestRequestStringUnixMicroNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixMicro)
@@ -7211,6 +7439,10 @@ func encodeTestRequestStringUnixMilliRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixMilli)
@@ -7271,6 +7503,10 @@ func encodeTestRequestStringUnixMilliNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixMilli)
@@ -7331,6 +7567,10 @@ func encodeTestRequestStringUnixNanoRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixNano)
@@ -7391,6 +7631,10 @@ func encodeTestRequestStringUnixNanoNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixNano)
@@ -7451,6 +7695,10 @@ func encodeTestRequestStringUnixNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixSeconds)
@@ -7511,6 +7759,10 @@ func encodeTestRequestStringUnixSecondsRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixSeconds)
@@ -7571,6 +7823,10 @@ func encodeTestRequestStringUnixSecondsNullableRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e, json.EncodeUnixSeconds)

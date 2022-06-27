@@ -135,3 +135,30 @@ func (UnimplementedHandler) APIMobileV2InfoBoardThreadGet(ctx context.Context, p
 func (UnimplementedHandler) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (r MobilePost, _ error) {
 	return r, ht.ErrNotImplemented
 }
+
+// UserPassloginPost implements POST /user/passlogin operation.
+//
+// Авторизация пасскода.
+//
+// POST /user/passlogin
+func (UnimplementedHandler) UserPassloginPost(ctx context.Context, req OptUserPassloginPostReq, params UserPassloginPostParams) (r Passcode, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// UserPostingPost implements POST /user/posting operation.
+//
+// Создание нового поста или треда.
+//
+// POST /user/posting
+func (UnimplementedHandler) UserPostingPost(ctx context.Context, req OptUserPostingPostReqForm) (r UserPostingPostOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// UserReportPost implements POST /user/report operation.
+//
+// Отправка жалобы.
+//
+// POST /user/report
+func (UnimplementedHandler) UserReportPost(ctx context.Context, req OptUserReportPostReq) (r Report, _ error) {
+	return r, ht.ErrNotImplemented
+}

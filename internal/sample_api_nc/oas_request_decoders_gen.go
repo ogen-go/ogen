@@ -758,7 +758,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				}
 			}
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -976,7 +975,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				}
 			}
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1161,7 +1159,6 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"files\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1284,7 +1281,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"file\"")
 		}
-
 		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

@@ -17,6 +17,10 @@ func encodeDataCreateRequestJSON(
 	data func() (io.ReadCloser, error),
 	rerr error,
 ) {
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

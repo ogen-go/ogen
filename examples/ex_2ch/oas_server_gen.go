@@ -96,6 +96,24 @@ type Handler interface {
 	//
 	// GET /api/mobile/v2/post/{board}/{num}
 	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (MobilePost, error)
+	// UserPassloginPost implements POST /user/passlogin operation.
+	//
+	// Авторизация пасскода.
+	//
+	// POST /user/passlogin
+	UserPassloginPost(ctx context.Context, req OptUserPassloginPostReq, params UserPassloginPostParams) (Passcode, error)
+	// UserPostingPost implements POST /user/posting operation.
+	//
+	// Создание нового поста или треда.
+	//
+	// POST /user/posting
+	UserPostingPost(ctx context.Context, req OptUserPostingPostReqForm) (UserPostingPostOK, error)
+	// UserReportPost implements POST /user/report operation.
+	//
+	// Отправка жалобы.
+	//
+	// POST /user/report
+	UserReportPost(ctx context.Context, req OptUserReportPostReq) (Report, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and
