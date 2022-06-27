@@ -65,11 +65,21 @@ func (g *Generator) generateFormContent(
 	if err != nil {
 		return nil, errors.Wrap(err, "generate schema")
 	}
-	if !t.IsStruct() {
+
+	structType := t
+	switch t.Kind {
+	case ir.KindStruct:
+	case ir.KindGeneric:
+		if v := t.GenericVariant; optional && v.OnlyOptional() && t.GenericOf.IsStruct() {
+			structType = t.GenericOf
+			break
+		}
+		fallthrough
+	default:
 		return nil, errors.Wrapf(&ErrNotImplemented{"complex form schema"}, "%s", t.Kind)
 	}
 
-	for _, f := range t.Fields {
+	for _, f := range structType.Fields {
 		tag := f.Tag.JSON
 
 		spec := &openapi.Parameter{

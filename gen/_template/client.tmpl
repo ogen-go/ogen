@@ -1,6 +1,5 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-
 {{ define "client" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
@@ -97,46 +96,6 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
 
-	{{- if $op.Request }}
-	var (
-		contentType string
-		reqBody func() (io.ReadCloser, error)
-	)
-
-	{{- $requestsLength := len $op.Request.Contents }}
-	{{- if eq $requestsLength 1 }}
-	{{- range $contentType, $type := $op.Request.Contents }}
-		contentType = {{ quote $contentType }}
-		fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
-		if err != nil {
-			return res, err
-		}
-		reqBody = fn
-        {{- if $contentType.MultipartForm }}
-		contentType = ct
-        {{- end }}
-	{{- end }}
-	{{- else }}
-	{{- /* Multiple requests */}}
-	switch req := request.(type) {
-	{{- range $contentType, $type := $op.Request.Contents }}
-	case *{{ $type.Go }}:
-		contentType = {{ quote $contentType }}
-		fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $op.Name }}Request{{ $contentType.Name }}(*req, span)
-		if err != nil {
-			return res, err
-		}
-		reqBody = fn
-		{{- if $contentType.MultipartForm }}
-		contentType = ct
-		{{- end }}
-	{{- end }}
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
-	}
-	{{- end }}
-	{{ end }}
-
 	{{- template "encode_path_parameters" $op }}
 
 	{{- if $op.HasQueryParams }}
@@ -144,19 +103,10 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- end }}
 
 	{{ if $op.Request }}
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
-	}
-	defer body.Close()
-
-	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, body)
-	r.GetBody = reqBody
+	{{- template "encode_request_body" $op }}
 	{{- else }}
 	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
 	{{- end }}
-
-	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
 
 	{{- if $op.HasHeaderParams }}
 	{{- template "encode_header_parameters" $op }}
@@ -185,6 +135,60 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 {{ end }}
 {{ end }}
 
+{{ define "encode_request_body" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
+var (
+	contentType string
+	reqBody func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+)
+{{- $requestsLength := len $.Request.Contents }}
+{{- if eq $requestsLength 1 }}
+{{- range $contentType, $type := $.Request.Contents }}
+	contentType = {{ quote $contentType }}
+	fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $.Name }}Request{{ $contentType.Name }}(request, span)
+	if err != nil {
+		return res, err
+	}
+	reqBody = fn
+    {{- if $contentType.MultipartForm }}
+	contentType = ct
+    {{- end }}
+{{- end }}
+{{- else }}
+{{- /* Multiple requests */}}
+switch req := request.(type) {
+{{- range $contentType, $type := $.Request.Contents }}
+case *{{ $type.Go }}:
+	contentType = {{ quote $contentType }}
+	fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $.Name }}Request{{ $contentType.Name }}(*req, span)
+	if err != nil {
+		return res, err
+	}
+	reqBody = fn
+	{{- if $contentType.MultipartForm }}
+	contentType = ct
+	{{- end }}
+{{- end }}
+default:
+	return res, errors.Errorf("unexpected request type: %T", request)
+}
+{{- end }}
+
+var r *http.Request
+if reqBody != nil {
+	body, err := reqBody()
+	if err != nil {
+		return res, errors.Wrap(err, "request body")
+	}
+	defer body.Close()
+
+	r = ht.NewRequest(ctx, {{ $.Spec.HTTPMethod | upper | quote }}, u, body)
+	r.GetBody = reqBody
+	r.Header.Set("Content-Type", contentType)
+} else {
+	r = ht.NewRequest(ctx, {{ $.Spec.HTTPMethod | upper | quote }}, u, nil)
+}
+{{ end }}
 
 {{ define "encode_cookie_params" }}
 {{- range $param := $.CookieParams }}{{/* Range over params */}}

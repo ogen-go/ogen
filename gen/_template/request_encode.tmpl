@@ -15,6 +15,12 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 	{{- end }}
 	rerr error,
 ) {
+	{{- if $type.GenericVariant.Optional }}
+	if !req.Set {
+		// Return nil callback if value is not set.
+		return
+	}
+	{{- end }}
 	{{- if $type.IsStream }}
 		return func() (io.ReadCloser, error) {
 			return io.NopCloser(req), nil
