@@ -392,9 +392,15 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		nullable = s2.Nullable
 	}
 
+	enum, err := mergeEnums(s1, s2)
+	if err != nil {
+		return nil, errors.Wrap(err, "enum")
+	}
+
 	r := &jsonschema.Schema{
 		Type:        s1.Type,
 		Format:      s1.Format,
+		Enum:        enum,
 		Nullable:    nullable,
 		Description: "Merged schema",
 	}
@@ -620,4 +626,17 @@ func mergeProperties(schemas []*jsonschema.Schema) ([]jsonschema.Property, error
 		result[order[name]] = p
 	}
 	return result, nil
+}
+
+func mergeEnums(s1, s2 *jsonschema.Schema) ([]interface{}, error) {
+	switch {
+	case len(s1.Enum) == 0 && len(s2.Enum) == 0:
+		return nil, nil
+	case len(s1.Enum) > 0 && len(s2.Enum) == 0:
+		return s1.Enum, nil
+	case len(s1.Enum) == 0 && len(s2.Enum) > 0:
+		return s2.Enum, nil
+	}
+
+	return nil, &ErrNotImplemented{Name: "allOf enum merging"}
 }
