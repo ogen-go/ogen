@@ -504,7 +504,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	//
 	// Current implementation simply select the strictest constraints from both schemes.
 	//
-	// Note that this approach will not work with different 'pattern' or 'multipleOf'constraints
+	// Note that this approach will not work with different 'pattern' or 'multipleOf' constraints
 	// because they cannot be merged.
 	switch s1.Type {
 	case jsonschema.String:
@@ -638,5 +638,6 @@ func mergeEnums(s1, s2 *jsonschema.Schema) ([]interface{}, error) {
 		return s2.Enum, nil
 	}
 
+	// TODO: Merge enums and check for duplicates.
 	return nil, &ErrNotImplemented{Name: "allOf enum merging"}
 }
