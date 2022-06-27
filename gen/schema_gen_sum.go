@@ -7,6 +7,7 @@ import (
 	"sort"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -398,45 +399,133 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Description: "Merged schema",
 	}
 
+	// Helper functions for comparing validation fields.
+	var (
+		someU64 = func(n1, n2 *uint64, both func(n1, n2 uint64) uint64) *uint64 {
+			switch {
+			case n1 == nil && n2 == nil:
+				return nil
+			case n1 != nil && n2 == nil:
+				return n1
+			case n1 == nil && n2 != nil:
+				return n2
+			case n1 != nil && n2 != nil:
+				result := both(*n1, *n2)
+				return &result
+			default:
+				panic("unreachable")
+			}
+		}
+
+		selectMaxU64 = func(n1, n2 uint64) uint64 {
+			if n1 > n2 {
+				return n1
+			}
+			return n2
+		}
+
+		selectMinU64 = func(n1, n2 uint64) uint64 {
+			if n1 < n2 {
+				return n1
+			}
+			return n2
+		}
+
+		someStr = func(s1, s2 string, both func(s1, s2 string) (string, error)) (string, error) {
+			switch {
+			case s1 == "" && s2 == "":
+				return "", nil
+			case s1 != "" && s2 == "":
+				return s1, nil
+			case s1 == "" && s2 != "":
+				return s2, nil
+			case s1 != "" && s2 != "":
+				return both(s1, s2)
+			default:
+				panic("unreachable")
+			}
+		}
+
+		someBool = func(b1, b2 bool) bool {
+			if b1 {
+				return true
+			}
+			return b2
+		}
+
+		maxNum = func(j1, j2 jsonschema.Num) jsonschema.Num {
+			n1, n2 := jx.Num(j1), jx.Num(j2)
+			if n1.Equal(n2) {
+				return j1
+			}
+			f1, err := n1.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			f2, err := n2.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			if f1 > f2 {
+				return j1
+			}
+			return j2
+		}
+
+		minNum = func(j1, j2 jsonschema.Num) jsonschema.Num {
+			n1, n2 := jx.Num(j1), jx.Num(j2)
+			if n1.Equal(n2) {
+				return j1
+			}
+			f1, err := n1.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			f2, err := n2.Float64()
+			if err != nil {
+				panic("unreachable")
+			}
+			if f1 < f2 {
+				return j1
+			}
+			return j2
+		}
+	)
+
+	// JSONSchema says:
+	//   To validate against allOf, the given data
+	//   must be valid against all of the given subschemas.
+	//
+	// Current implementation simply select
+	// the strictest constraints from both schemes.
 	switch s1.Type {
 	case jsonschema.String:
-		if s1.MaxLength != s2.MaxLength {
-			return nil, errors.Errorf("maxLength is different")
+		r.MaxLength = someU64(s1.MaxLength, s2.MaxLength, selectMinU64)
+		r.MinLength = someU64(s1.MinLength, s2.MinLength, selectMaxU64)
+		r.Pattern, err = someStr(s1.Pattern, s2.Pattern, func(s1, s2 string) (string, error) {
+			if s1 == s2 {
+				return s1, nil
+			}
+			return "", errors.Errorf("cannot merge different patterns: %q and %q", s1, s2)
+		})
+		if err != nil {
+			return nil, errors.Wrap(err, "pattern")
 		}
-		r.MaxLength = s1.MaxLength
-
-		if s1.MinLength != s2.MinLength {
-			return nil, errors.Errorf("minLength is different")
-		}
-		r.MinLength = s1.MinLength
-
-		if s1.Pattern != s2.Pattern {
-			return nil, errors.Errorf("pattern is different")
-		}
-		r.Pattern = s1.Pattern
 
 		return r, nil
 	case jsonschema.Integer, jsonschema.Number:
-		if !bytes.Equal(s1.Maximum, s2.Maximum) {
-			return nil, errors.Errorf("maximum is different")
-		}
-		r.Maximum = s1.Maximum
+		r.Maximum = minNum(s1.Maximum, s2.Maximum)
+		s1.ExclusiveMaximum = someBool(s1.ExclusiveMaximum, s2.ExclusiveMaximum)
 
-		if s1.ExclusiveMaximum != s2.ExclusiveMaximum {
-			return nil, errors.Errorf("exclusiveMaximum is different")
-		}
-		r.ExclusiveMaximum = s1.ExclusiveMaximum
+		r.Minimum = maxNum(s1.Minimum, s2.Minimum)
+		r.ExclusiveMinimum = someBool(s1.ExclusiveMinimum, s2.ExclusiveMinimum)
 
-		if !bytes.Equal(s1.Minimum, s2.Minimum) {
-			return nil, errors.Errorf("minimum is different")
-		}
-		r.Minimum = s1.Minimum
-
-		if s1.ExclusiveMinimum != s2.ExclusiveMinimum {
-			return nil, errors.Errorf("exclusiveMinimum is different")
-		}
-		r.ExclusiveMinimum = s1.ExclusiveMinimum
-
+		// NOTE: We need to refactor ir.Validators to support multiple 'multipleOf's.
+		//
+		// Most likely it will require rewriting this schema merging code, because
+		// we cannot set multiple 'multipleOf's into single jsonschema.Schema.
+		// We need to generate ir.Type for each schema in 'allOf' and then merge
+		// them into single *ir.Type with all the validation.
 		if !bytes.Equal(s1.MultipleOf, s2.MultipleOf) {
 			return nil, errors.Errorf("multipleOf is different")
 		}
@@ -446,24 +535,12 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	case jsonschema.Array:
 		r.Item, err = mergeSchemes(s1.Item, s2.Item)
 		if err != nil {
-			return nil, errors.Wrap(err, "item")
+			return nil, errors.Wrap(err, "merge item schema")
 		}
 
-		if s1.MinItems != s2.MinItems {
-			return nil, errors.Wrap(err, "minItems is different")
-		}
-		r.MinItems = s1.MinItems
-
-		if s1.MaxItems != s2.MaxItems {
-			return nil, errors.Wrap(err, "maxItems is different")
-		}
-		r.MaxItems = s1.MaxItems
-
-		if s1.UniqueItems != s2.UniqueItems {
-			return nil, errors.Errorf("uniqueItems is different")
-		}
-		r.UniqueItems = s1.UniqueItems
-
+		r.MinItems = someU64(s1.MinItems, s2.MinItems, selectMaxU64)
+		r.MaxItems = someU64(s1.MaxItems, s2.MaxItems, selectMinU64)
+		r.UniqueItems = someBool(s1.UniqueItems, s2.UniqueItems)
 		return r, nil
 
 	case jsonschema.Null, jsonschema.Boolean:
