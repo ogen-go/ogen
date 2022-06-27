@@ -29,6 +29,9 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 	}
 
 	for contentType, t := range contents {
+		if contentType.Mask() {
+			return nil, &ErrNotImplemented{"masked request content type"}
+		}
 		switch {
 		case len(contents) > 1:
 			if !t.CanHaveMethods() {
