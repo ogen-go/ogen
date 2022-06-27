@@ -1348,10 +1348,22 @@ type AppsCreateFromManifestCreated struct {
 	// Merged property.
 	WebhookSecret NilString "json:\"webhook_secret\""
 	// Merged property.
-	Pem string "json:\"pem\""
+	Pem             string "json:\"pem\""
+	AdditionalProps AppsCreateFromManifestCreatedAdditional
 }
 
 func (*AppsCreateFromManifestCreated) appsCreateFromManifestRes() {}
+
+type AppsCreateFromManifestCreatedAdditional map[string]jx.Raw
+
+func (s *AppsCreateFromManifestCreatedAdditional) init() AppsCreateFromManifestCreatedAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // The set of permissions for the GitHub app.
 type AppsCreateFromManifestCreatedPermissions struct {

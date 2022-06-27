@@ -1908,6 +1908,22 @@ func (s *AppsCreateFromManifestCreated) SetFake() {
 			s.Pem = "string"
 		}
 	}
+	{
+		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *AppsCreateFromManifestCreatedAdditional) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
