@@ -67,29 +67,19 @@ func testGenerate(name string, ignore ...string) func(t *testing.T) {
 
 func TestGenerate(t *testing.T) {
 	skipSets := map[string][]string{
-		"autorest/additionalProperties.json": {
-			"allOf",
-		},
+		"autorest/additionalProperties.json": {},
 		"autorest/ApiManagementClient-openapi.json": {
-			"allOf",
 			"oauth2 security",
 		},
-		"autorest/lro.json": {
-			"allOf",
-		},
-		"autorest/storage.json": {
-			"allOf",
-		},
+		"autorest/lro.json":     {},
+		"autorest/storage.json": {},
 		"autorest/xml-service.json": {
 			"unsupported content types",
 		},
-		"autorest/xms-error-responses.json": {
-			"allOf",
-		},
+		"autorest/xms-error-responses.json": {},
 		"2ch.yml": {},
 		"api.github.com.json": {
 			"complex anyOf",
-			"allOf",
 			"discriminator inference",
 			"sum types with same names",
 			"sum type parameter",
@@ -110,14 +100,11 @@ func TestGenerate(t *testing.T) {
 		"test_content_path_parameter.yml": {
 			"parameter content encoding",
 		},
-		"petstore-expanded.yml": {
-			"allOf",
-		},
+		"petstore-expanded.yml": {},
 		"redoc/discriminator.json": {
 			"unsupported content types",
 		},
 		"superset.json": {
-			"allOf",
 			"unsupported content types",
 		},
 	}
