@@ -564,6 +564,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 			r.AdditionalProperties = s2.AdditionalProperties
 		}
 
+		r.MaxProperties = someU64(s1.MaxProperties, s2.MaxProperties, selectMinU64)
 		r.Properties, err = mergeProperties([]*jsonschema.Schema{s1, s2})
 		if err != nil {
 			return nil, errors.Wrap(err, "merge properties")
