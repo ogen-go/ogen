@@ -459,11 +459,23 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 			return b2
 		}
 
-		maxNum = func(j1, j2 jsonschema.Num) jsonschema.Num {
-			n1, n2 := jx.Num(j1), jx.Num(j2)
-			if n1.Equal(n2) {
-				return j1
+		someNum = func(n1, n2 jsonschema.Num, both func(n1, n2 jx.Num) jx.Num) jsonschema.Num {
+			switch {
+			case len(n1) == 0 && len(n2) == 0:
+				return jsonschema.Num{}
+			case len(n1) != 0 && len(n2) == 0:
+				return n1
+			case len(n1) == 0 && len(n2) != 0:
+				return n2
+			default:
+				if jx.Num(n1).Equal(jx.Num(n2)) {
+					return n1
+				}
+				return jsonschema.Num(both(jx.Num(n1), jx.Num(n2)))
 			}
+		}
+
+		maxNum = func(n1, n2 jx.Num) jx.Num {
 			f1, err := n1.Float64()
 			if err != nil {
 				panic("unreachable")
@@ -473,16 +485,12 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 				panic("unreachable")
 			}
 			if f1 > f2 {
-				return j1
+				return n1
 			}
-			return j2
+			return n2
 		}
 
-		minNum = func(j1, j2 jsonschema.Num) jsonschema.Num {
-			n1, n2 := jx.Num(j1), jx.Num(j2)
-			if n1.Equal(n2) {
-				return j1
-			}
+		minNum = func(n1, n2 jx.Num) jx.Num {
 			f1, err := n1.Float64()
 			if err != nil {
 				panic("unreachable")
@@ -492,9 +500,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 				panic("unreachable")
 			}
 			if f1 < f2 {
-				return j1
+				return n1
 			}
-			return j2
+			return n2
 		}
 	)
 
@@ -522,10 +530,10 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 		return r, nil
 	case jsonschema.Integer, jsonschema.Number:
-		r.Maximum = minNum(s1.Maximum, s2.Maximum)
+		r.Maximum = someNum(s1.Maximum, s2.Maximum, minNum)
 		s1.ExclusiveMaximum = someBool(s1.ExclusiveMaximum, s2.ExclusiveMaximum)
 
-		r.Minimum = maxNum(s1.Minimum, s2.Minimum)
+		r.Minimum = someNum(s1.Minimum, s2.Minimum, maxNum)
 		r.ExclusiveMinimum = someBool(s1.ExclusiveMinimum, s2.ExclusiveMinimum)
 
 		// NOTE: We need to refactor ir.Validators to support multiple 'multipleOf's.
