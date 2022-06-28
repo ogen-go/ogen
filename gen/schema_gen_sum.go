@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"path"
+	"reflect"
 	"sort"
 
 	"github.com/go-faster/errors"
@@ -398,6 +399,24 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Enum:        enum,
 		Nullable:    s1.Nullable || s2.Nullable,
 		Description: "Merged schema",
+	}
+
+	switch {
+	case !s1.DefaultSet && !s2.DefaultSet:
+		// Nothing to do.
+	case s1.DefaultSet && !s2.DefaultSet:
+		r.Default = s1.Default
+		r.DefaultSet = true
+	case !s1.DefaultSet && s2.DefaultSet:
+		r.Default = s2.Default
+		r.DefaultSet = true
+	case s1.DefaultSet && s2.DefaultSet:
+		if !reflect.DeepEqual(s1.Default, s2.Default) {
+			return nil, errors.Errorf("schemes have different defaults")
+		}
+
+		r.Default = s1.Default
+		r.DefaultSet = true
 	}
 
 	// Helper functions for comparing validation fields.
