@@ -572,8 +572,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 	}
 	switch ct {
 	case "application/x-www-form-urlencoded":
-		var request TestForm
-
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -582,6 +580,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 		}
 		form := r.PostForm
 
+		var request TestForm
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -589,7 +588,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotIDVal int
@@ -622,7 +620,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUUIDVal uuid.UUID
@@ -655,7 +652,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
@@ -683,7 +679,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					return d.DecodeArray(func(d uri.Decoder) error {
@@ -719,7 +714,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotObjectVal TestFormObject
@@ -742,7 +736,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotDeepObjectVal TestFormDeepObject
@@ -789,8 +782,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 	}
 	switch ct {
 	case "multipart/form-data":
-		var request TestForm
-
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -799,6 +790,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 		}
 		form := url.Values(r.MultipartForm.Value)
 
+		var request TestForm
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -806,7 +798,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotIDVal int
@@ -839,7 +830,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUUIDVal uuid.UUID
@@ -872,7 +862,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					val, err := d.DecodeValue()
@@ -900,7 +889,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					return d.DecodeArray(func(d uri.Decoder) error {
@@ -936,7 +924,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotObjectVal TestFormObject
@@ -959,7 +946,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 				Explode: true,
 				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotDeepObjectVal TestFormDeepObject
@@ -1006,8 +992,6 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 	}
 	switch ct {
 	case "multipart/form-data":
-		var request TestMultipartUploadReqForm
-
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -1016,6 +1000,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 		}
 		form := url.Values(r.MultipartForm.Value)
 
+		var request TestMultipartUploadReqForm
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1023,7 +1008,6 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotOrderIdVal int
@@ -1056,7 +1040,6 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotUserIdVal int
@@ -1083,81 +1066,87 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				}
 			}
 		}
-		if err := func() error {
-			files, ok := r.MultipartForm.File["file"]
-			if !ok || len(files) < 1 {
-				return validate.ErrFieldRequired
-			}
-			fh := files[0]
+		{
+			if err := func() error {
+				files, ok := r.MultipartForm.File["file"]
+				if !ok || len(files) < 1 {
+					return validate.ErrFieldRequired
+				}
+				fh := files[0]
 
-			f, err := fh.Open()
-			if err != nil {
-				return errors.Wrap(err, "open")
-			}
-			closers = append(closers, f)
-			request.File = ht.MultipartFile{
-				Name:   fh.Filename,
-				File:   f,
-				Header: fh.Header,
-			}
-			return nil
-		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"file\"")
-		}
-		if err := func() error {
-			files, ok := r.MultipartForm.File["optional_file"]
-			if !ok || len(files) < 1 {
-				return nil
-			}
-			fh := files[0]
-
-			f, err := fh.Open()
-			if err != nil {
-				return errors.Wrap(err, "open")
-			}
-			closers = append(closers, f)
-			request.OptionalFile.SetTo(ht.MultipartFile{
-				Name:   fh.Filename,
-				File:   f,
-				Header: fh.Header,
-			})
-			return nil
-		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"optional_file\"")
-		}
-		if err := func() error {
-			files, ok := r.MultipartForm.File["files"]
-			_ = ok
-			request.Files = make([]ht.MultipartFile, 0, len(files))
-			for _, fh := range files {
 				f, err := fh.Open()
 				if err != nil {
 					return errors.Wrap(err, "open")
 				}
 				closers = append(closers, f)
+				request.File = ht.MultipartFile{
+					Name:   fh.Filename,
+					File:   f,
+					Header: fh.Header,
+				}
+				return nil
+			}(); err != nil {
+				return req, close, errors.Wrap(err, "decode \"file\"")
+			}
+		}
+		{
+			if err := func() error {
+				files, ok := r.MultipartForm.File["optional_file"]
+				if !ok || len(files) < 1 {
+					return nil
+				}
+				fh := files[0]
 
-				request.Files = append(request.Files, ht.MultipartFile{
+				f, err := fh.Open()
+				if err != nil {
+					return errors.Wrap(err, "open")
+				}
+				closers = append(closers, f)
+				request.OptionalFile.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
 					Header: fh.Header,
 				})
+				return nil
+			}(); err != nil {
+				return req, close, errors.Wrap(err, "decode \"optional_file\"")
 			}
+		}
+		{
 			if err := func() error {
-				if err := (validate.Array{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    5,
-					MaxLengthSet: true,
-				}).ValidateLength(len(request.Files)); err != nil {
-					return errors.Wrap(err, "array")
+				files, ok := r.MultipartForm.File["files"]
+				_ = ok
+				request.Files = make([]ht.MultipartFile, 0, len(files))
+				for _, fh := range files {
+					f, err := fh.Open()
+					if err != nil {
+						return errors.Wrap(err, "open")
+					}
+					closers = append(closers, f)
+
+					request.Files = append(request.Files, ht.MultipartFile{
+						Name:   fh.Filename,
+						File:   f,
+						Header: fh.Header,
+					})
+				}
+				if err := func() error {
+					if err := (validate.Array{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    5,
+						MaxLengthSet: true,
+					}).ValidateLength(len(request.Files)); err != nil {
+						return errors.Wrap(err, "array")
+					}
+					return nil
+				}(); err != nil {
+					return errors.Wrap(err, "validate")
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "validate")
+				return req, close, errors.Wrap(err, "decode \"files\"")
 			}
-			return nil
-		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"files\"")
 		}
 		return request, close, nil
 	default:
@@ -1216,8 +1205,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 
 		return &request, close, nil
 	case "multipart/form-data":
-		var request SharedRequestForm
-
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -1226,6 +1213,7 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 		}
 		form := url.Values(r.MultipartForm.Value)
 
+		var request SharedRequestForm
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1233,7 +1221,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			}
-
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 					var requestDotFilenameVal string
@@ -1260,26 +1247,28 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 				}
 			}
 		}
-		if err := func() error {
-			files, ok := r.MultipartForm.File["file"]
-			if !ok || len(files) < 1 {
-				return nil
-			}
-			fh := files[0]
+		{
+			if err := func() error {
+				files, ok := r.MultipartForm.File["file"]
+				if !ok || len(files) < 1 {
+					return nil
+				}
+				fh := files[0]
 
-			f, err := fh.Open()
-			if err != nil {
-				return errors.Wrap(err, "open")
+				f, err := fh.Open()
+				if err != nil {
+					return errors.Wrap(err, "open")
+				}
+				closers = append(closers, f)
+				request.File.SetTo(ht.MultipartFile{
+					Name:   fh.Filename,
+					File:   f,
+					Header: fh.Header,
+				})
+				return nil
+			}(); err != nil {
+				return req, close, errors.Wrap(err, "decode \"file\"")
 			}
-			closers = append(closers, f)
-			request.File.SetTo(ht.MultipartFile{
-				Name:   fh.Filename,
-				File:   f,
-				Header: fh.Header,
-			})
-			return nil
-		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"file\"")
 		}
 		return &request, close, nil
 	default:

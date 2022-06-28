@@ -45,7 +45,16 @@ func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context
 // Referenced allOf.
 //
 // POST /referencedAllof
-func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req Robot) (r ReferencedAllofOK, _ error) {
+func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req ReferencedAllofReq) (r ReferencedAllofOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ReferencedAllofOptional implements referencedAllofOptional operation.
+//
+// Referenced allOf, but requestBody is not required.
+//
+// POST /referencedAllofOptional
+func (UnimplementedHandler) ReferencedAllofOptional(ctx context.Context, req ReferencedAllofOptionalReq) (r ReferencedAllofOptionalOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

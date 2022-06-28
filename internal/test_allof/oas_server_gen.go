@@ -35,7 +35,13 @@ type Handler interface {
 	// Referenced allOf.
 	//
 	// POST /referencedAllof
-	ReferencedAllof(ctx context.Context, req Robot) (ReferencedAllofOK, error)
+	ReferencedAllof(ctx context.Context, req ReferencedAllofReq) (ReferencedAllofOK, error)
+	// ReferencedAllofOptional implements referencedAllofOptional operation.
+	//
+	// Referenced allOf, but requestBody is not required.
+	//
+	// POST /referencedAllofOptional
+	ReferencedAllofOptional(ctx context.Context, req ReferencedAllofOptionalReq) (ReferencedAllofOptionalOK, error)
 	// SimpleInteger implements simpleInteger operation.
 	//
 	// Simple integers with validation.

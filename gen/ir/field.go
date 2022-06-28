@@ -105,3 +105,32 @@ func (t Type) HasDefaultFields() bool {
 	}
 	return false
 }
+
+func (t Type) parameters(keep func(t *Type) bool) (params []Parameter) {
+	if !t.IsStruct() {
+		panic(fmt.Sprintf("unreachable: %s", t))
+	}
+	for _, f := range t.Fields {
+		if !keep(f.Type) {
+			continue
+		}
+		params = append(params, Parameter{
+			Name: f.Name,
+			Type: f.Type,
+			Spec: f.Tag.Form,
+		})
+	}
+	return params
+}
+
+func (t Type) FormParameters() (params []Parameter) {
+	return t.parameters(func(t *Type) bool {
+		return !t.HasFeature("multipart-file")
+	})
+}
+
+func (t Type) FileParameters() (params []Parameter) {
+	return t.parameters(func(t *Type) bool {
+		return t.HasFeature("multipart-file")
+	})
+}

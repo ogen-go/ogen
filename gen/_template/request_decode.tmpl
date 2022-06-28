@@ -80,12 +80,6 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
     {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
-		{{- if $t.IsGeneric }}
-		var request {{ $t.GenericOf.Go }}
-		{{- else }}
-		var request {{ $t.Go }}
-		{{- end }}
-
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, close, nil
@@ -106,56 +100,9 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		form := url.Values(r.MultipartForm.Value)
         {{- end }}
 
-		q := uri.NewQueryDecoder(form)
-		{{- range $p := $op.Request.FormParameters $contentType }}
-		{
-        	{{- $el := elem $p.Type (printf "request.%s" $p.Name) }}
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    {{ quote $p.Spec.Name }},
-				Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
-				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-				{{- if isObjectParam $p }}
-				Fields: {{ paramObjectFields $p.Type }},
-				{{- end }}
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					{{- template "uri/decode" $el }}
-				}); err != nil {
-					return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
-				}
-
-				{{- if $p.Type.NeedValidation }}
-				if err := func() error {
-					{{- template "validate" $el }}
-				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
-				}
-				{{- end }}
-			} {{- if $p.Spec.Required }} else {
-				return req, close, errors.Wrap(err, "query")
-			} {{- end }}
-		}
-		{{- end }}
-		{{- if $contentType.MultipartForm }}
-        {{- range $param := $op.Request.FileParameters $contentType }}
-		if err := func() error {
-			{{- template "decode_multipart_file_param" $param }}
-		}(); err != nil {
-			return req, close, errors.Wrap(err, {{ printf "decode %q" $param.Spec.Name | quote }})
-		}
-		{{- end }}
-		{{- end }}
-
-		{{- if $t.IsGeneric }}
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}{{ $t.Go }}{
-			Value: request,
-			Set: true,
-		}, close, nil
-		{{- else }}
+		var request {{ $t.Go -}}
+		{{ template "decode_form_request" elem $t "request" }}
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
-		{{- end }}
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
@@ -168,66 +115,131 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 {{ end }}
 {{ end }}
 
-{{- define "decode_multipart_file_param" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}
-{{- $name := quote $.Spec.Name }}
+{{- define "decode_form_request" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
 {{- $t := $.Type }}
-	files, ok := r.MultipartForm.File[{{ $name }}]
-	{{- if or $t.IsPrimitive $t.IsGeneric }}
-	if !ok || len(files) < 1  {
-		{{- if $t.IsPrimitive }}
-		return validate.ErrFieldRequired
-		{{- else }}
-		return nil
-		{{- end }}
-	}
-	fh := files[0]
+{{- $v := $.Var }}
 
-	f, err := fh.Open()
-	if err != nil {
-		return errors.Wrap(err, "open")
-	}
-	closers = append(closers, f)
 
-    {{- if $t.IsPrimitive }}
-	{{ printf "request.%s" $.Name }} = ht.MultipartFile{
-		Name:   fh.Filename,
-		File:   f,
-		Header: fh.Header,
+{{- if $t.IsAlias }}
+	{
+		var unwrapped {{ $t.AliasTo.Go -}}
+		{{ template "decode_form_request" elem $t.AliasTo "unwrapped" }}
+    	{{ $v }} = {{ $t.Go }}(unwrapped)
 	}
-	{{- else }}
-	{{ printf "request.%s" $.Name }}.SetTo(ht.MultipartFile{
-		Name:   fh.Filename,
-		File:   f,
-		Header: fh.Header,
-	})
-	{{- end }}
-	{{- else if $t.IsArray }}
-	_ = ok
-	request.Files = make({{ $t.Go }}, 0, len(files))
-	for _, fh := range files {
-		f, err := fh.Open()
-		if err != nil {
-			return errors.Wrap(err, "open")
+{{- else if $t.IsGeneric }}
+	{
+		var optForm {{ $t.GenericOf.Go -}}
+		{{ template "decode_form_request" elem $t.GenericOf "optForm" }}
+		{{ $v }} = {{ $t.Go }}{
+			Value: optForm,
+			Set:   true,
 		}
-		closers = append(closers, f)
-
-		{{ printf "request.%s" $.Name }} = append({{ printf "request.%s" $.Name }}, ht.MultipartFile{
-			Name:   fh.Filename,
-			File:   f,
-			Header: fh.Header,
-		})
 	}
-	{{- else }}
-		{{ errorf "unexpected kind %s" $t.Kind }}
-	{{- end }}
+{{- else if $t.IsStruct }}
+	q := uri.NewQueryDecoder(form)
+	{{- range $p := $t.FormParameters }}
+	{
+		{{- $el := elem $p.Type (printf "%s.%s" $.Var $p.Name) }}
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    {{ quote $p.Spec.Name }},
+			Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
+			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+			{{- if isObjectParam $p }}
+			Fields: {{ paramObjectFields $p.Type }},
+			{{- end }}
+		}
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				{{- template "uri/decode" $el }}
+			}); err != nil {
+				return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
+			}
 
-	{{- if $t.NeedValidation }}
-	if err := func() error {
-		{{- template "validate" elem $t (printf "request.%s" $.Name) }}
-	}(); err != nil {
-		return errors.Wrap(err, "validate")
+			{{- if $p.Type.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" $el }}
+			}(); err != nil {
+				return req, close, errors.Wrap(err, "validate")
+			}
+			{{- end }}
+		} {{- if $p.Spec.Required }} else {
+			return req, close, errors.Wrap(err, "query")
+		} {{- end }}
 	}
 	{{- end }}
-	return nil
+    {{- range $p := $t.FileParameters }}
+	{
+    	{{- $name := quote $p.Spec.Name }}
+    	{{- $recv := printf "%s.%s" $.Var $p.Name }}
+    	{{- $t := $p.Type }}
+		if err := func() error {
+			files, ok := r.MultipartForm.File[{{ $name }}]
+			{{- if or $t.IsPrimitive $t.IsGeneric }}
+			if !ok || len(files) < 1  {
+				{{- if $t.IsPrimitive }}
+				return validate.ErrFieldRequired
+				{{- else }}
+				return nil
+				{{- end }}
+			}
+			fh := files[0]
+
+			f, err := fh.Open()
+			if err != nil {
+				return errors.Wrap(err, "open")
+			}
+			closers = append(closers, f)
+
+			{{- if $t.IsPrimitive }}
+			{{ $recv }} = ht.MultipartFile{
+				Name:   fh.Filename,
+				File:   f,
+				Header: fh.Header,
+			}
+			{{- else }}
+			{{ $recv }}.SetTo(ht.MultipartFile{
+				Name:   fh.Filename,
+				File:   f,
+				Header: fh.Header,
+			})
+			{{- end }}
+			{{- else if $t.IsArray }}
+			_ = ok
+			request.Files = make({{ $t.Go }}, 0, len(files))
+			for _, fh := range files {
+				f, err := fh.Open()
+				if err != nil {
+					return errors.Wrap(err, "open")
+				}
+				closers = append(closers, f)
+
+				{{ $recv }} = append({{ $recv }}, ht.MultipartFile{
+					Name:   fh.Filename,
+					File:   f,
+					Header: fh.Header,
+				})
+			}
+			{{- else }}
+				{{ errorf "unexpected kind %s" $t.Kind }}
+			{{- end }}
+
+			{{- if $t.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" elem $t $recv }}
+			}(); err != nil {
+				return errors.Wrap(err, "validate")
+			}
+			{{- end }}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
+		}
+	}
+    {{- end }}
+{{- else }}
+	{{ errorf "unexpected type: %s" $t }}
 {{- end }}
+
+{{- end }}
+

@@ -33,6 +33,12 @@ func encodeReferencedAllofResponse(response ReferencedAllofOK, w http.ResponseWr
 	return nil
 
 }
+func encodeReferencedAllofOptionalResponse(response ReferencedAllofOptionalOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}
 func encodeSimpleIntegerResponse(response SimpleIntegerOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

@@ -45,8 +45,6 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span
 	}
 	switch ct {
 	case "multipart/form-data":
-		var request UserPassloginPostReq
-
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -55,39 +53,43 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span
 		}
 		form := url.Values(r.MultipartForm.Value)
 
-		q := uri.NewQueryDecoder(form)
+		var request OptUserPassloginPostReq
 		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "passcode",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					request.Passcode = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"passcode\"")
+			var optForm UserPassloginPostReq
+			q := uri.NewQueryDecoder(form)
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "passcode",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
 				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						optForm.Passcode = c
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"passcode\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
+				}
+			}
+			request = OptUserPassloginPostReq{
+				Value: optForm,
+				Set:   true,
 			}
 		}
-		return OptUserPassloginPostReq{
-			Value: request,
-			Set:   true,
-		}, close, nil
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -121,8 +123,6 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 	}
 	switch ct {
 	case "multipart/form-data":
-		var request UserPostingPostReq
-
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -131,82 +131,18 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 		}
 		form := url.Values(r.MultipartForm.Value)
 
-		q := uri.NewQueryDecoder(form)
+		var request OptUserPostingPostReqForm
 		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "board",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					request.Board = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"board\"")
+			var optForm UserPostingPostReq
+			q := uri.NewQueryDecoder(form)
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "board",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
 				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
-			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "captcha_type",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					request.CaptchaType = CaptchaType(c)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"captcha_type\"")
-				}
-				if err := func() error {
-					if err := request.CaptchaType.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
-				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
-			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "comment",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotCommentVal string
-					if err := func() error {
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
 							return err
@@ -217,29 +153,23 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 							return err
 						}
 
-						requestDotCommentVal = c
+						optForm.Board = c
 						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"board\"")
 					}
-					request.Comment.SetTo(requestDotCommentVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"comment\"")
+				} else {
+					return req, close, errors.Wrap(err, "query")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "email",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotEmailVal string
-					if err := func() error {
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "captcha_type",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 						val, err := d.DecodeValue()
 						if err != nil {
 							return err
@@ -250,29 +180,32 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 							return err
 						}
 
-						requestDotEmailVal = c
+						optForm.CaptchaType = CaptchaType(c)
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"captcha_type\"")
+					}
+					if err := func() error {
+						if err := optForm.CaptchaType.Validate(); err != nil {
+							return err
+						}
 						return nil
 					}(); err != nil {
-						return err
+						return req, close, errors.Wrap(err, "validate")
 					}
-					request.Email.SetTo(requestDotEmailVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"email\"")
+				} else {
+					return req, close, errors.Wrap(err, "query")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "file[]",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					return d.DecodeArray(func(d uri.Decoder) error {
-						var requestDotFileVal string
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "comment",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotCommentVal string
 						if err := func() error {
 							val, err := d.DecodeValue()
 							if err != nil {
@@ -284,221 +217,282 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 								return err
 							}
 
-							requestDotFileVal = c
+							optFormDotCommentVal = c
 							return nil
 						}(); err != nil {
 							return err
 						}
-						request.File = append(request.File, requestDotFileVal)
+						optForm.Comment.SetTo(optFormDotCommentVal)
 						return nil
-					})
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"file[]\"")
-				}
-			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "icon",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotIconVal int
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
-							return err
-						}
-
-						c, err := conv.ToInt(val)
-						if err != nil {
-							return err
-						}
-
-						requestDotIconVal = c
-						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"comment\"")
 					}
-					request.Icon.SetTo(requestDotIconVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"icon\"")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "name",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "email",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotEmailVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
 
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotNameVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotEmailVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						requestDotNameVal = c
+						optForm.Email.SetTo(optFormDotEmailVal)
 						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"email\"")
 					}
-					request.Name.SetTo(requestDotNameVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"name\"")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "op_mark",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "file[]",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						return d.DecodeArray(func(d uri.Decoder) error {
+							var optFormDotFileVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								optFormDotFileVal = c
+								return nil
+							}(); err != nil {
+								return err
+							}
+							optForm.File = append(optForm.File, optFormDotFileVal)
+							return nil
+						})
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"file[]\"")
+					}
+				}
 			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "icon",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotIconVal int
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
 
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotOpMarkVal int
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+							c, err := conv.ToInt(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotIconVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToInt(val)
-						if err != nil {
-							return err
-						}
-
-						requestDotOpMarkVal = c
+						optForm.Icon.SetTo(optFormDotIconVal)
 						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"icon\"")
 					}
-					request.OpMark.SetTo(requestDotOpMarkVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"op_mark\"")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "subject",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "name",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotNameVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
 
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotSubjectVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotNameVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						requestDotSubjectVal = c
+						optForm.Name.SetTo(optFormDotNameVal)
 						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"name\"")
 					}
-					request.Subject.SetTo(requestDotSubjectVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"subject\"")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "tags",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "op_mark",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotOpMarkVal int
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
 
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotTagsVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+							c, err := conv.ToInt(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotOpMarkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						requestDotTagsVal = c
+						optForm.OpMark.SetTo(optFormDotOpMarkVal)
 						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"op_mark\"")
 					}
-					request.Tags.SetTo(requestDotTagsVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"tags\"")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "thread",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "subject",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotSubjectVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
 
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					var requestDotThreadVal int
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotSubjectVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToInt(val)
-						if err != nil {
-							return err
-						}
-
-						requestDotThreadVal = c
+						optForm.Subject.SetTo(optFormDotSubjectVal)
 						return nil
-					}(); err != nil {
-						return err
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"subject\"")
 					}
-					request.Thread.SetTo(requestDotThreadVal)
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"thread\"")
 				}
 			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "tags",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotTagsVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotTagsVal = c
+							return nil
+						}(); err != nil {
+							return err
+						}
+						optForm.Tags.SetTo(optFormDotTagsVal)
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"tags\"")
+					}
+				}
+			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "thread",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						var optFormDotThreadVal int
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToInt(val)
+							if err != nil {
+								return err
+							}
+
+							optFormDotThreadVal = c
+							return nil
+						}(); err != nil {
+							return err
+						}
+						optForm.Thread.SetTo(optFormDotThreadVal)
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"thread\"")
+					}
+				}
+			}
+			request = OptUserPostingPostReqForm{
+				Value: optForm,
+				Set:   true,
+			}
 		}
-		return OptUserPostingPostReqForm{
-			Value: request,
-			Set:   true,
-		}, close, nil
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -532,8 +526,6 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 	}
 	switch ct {
 	case "multipart/form-data":
-		var request UserReportPostReq
-
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -542,130 +534,131 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 		}
 		form := url.Values(r.MultipartForm.Value)
 
-		q := uri.NewQueryDecoder(form)
+		var request OptUserReportPostReq
 		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "board",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					request.Board = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"board\"")
+			var optForm UserReportPostReq
+			q := uri.NewQueryDecoder(form)
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "board",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
 				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
-			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "comment",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					request.Comment = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"comment\"")
-				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
-			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "post",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					return d.DecodeArray(func(d uri.Decoder) error {
-						var requestDotPostVal int
-						if err := func() error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
-
-							c, err := conv.ToInt(val)
-							if err != nil {
-								return err
-							}
-
-							requestDotPostVal = c
-							return nil
-						}(); err != nil {
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
 							return err
 						}
-						request.Post = append(request.Post, requestDotPostVal)
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						optForm.Board = c
 						return nil
-					})
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"post\"")
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"board\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
 				}
 			}
-		}
-		{
-			cfg := uri.QueryParameterDecodingConfig{
-				Name:    "thread",
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			}
-
-			if err := q.HasParam(cfg); err == nil {
-				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToInt(val)
-					if err != nil {
-						return err
-					}
-
-					request.Thread = c
-					return nil
-				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"thread\"")
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "comment",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
 				}
-			} else {
-				return req, close, errors.Wrap(err, "query")
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						optForm.Comment = c
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"comment\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
+				}
+			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "post",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						return d.DecodeArray(func(d uri.Decoder) error {
+							var optFormDotPostVal int
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToInt(val)
+								if err != nil {
+									return err
+								}
+
+								optFormDotPostVal = c
+								return nil
+							}(); err != nil {
+								return err
+							}
+							optForm.Post = append(optForm.Post, optFormDotPostVal)
+							return nil
+						})
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"post\"")
+					}
+				}
+			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "thread",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						optForm.Thread = c
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"thread\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
+				}
+			}
+			request = OptUserReportPostReq{
+				Value: optForm,
+				Set:   true,
 			}
 		}
-		return OptUserReportPostReq{
-			Value: request,
-			Set:   true,
-		}, close, nil
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

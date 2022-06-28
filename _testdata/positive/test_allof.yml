@@ -132,11 +132,24 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/Robot"
-          # Doesn't work
-          #
-          # multipart/form-data:
-          #   schema:
-          #     "$ref": "#/components/schemas/Robot"
+          multipart/form-data:
+            schema:
+              "$ref": "#/components/schemas/Robot"
+      responses:
+        '200':
+          description: ok
+  "/referencedAllofOptional":
+    post:
+      operationId: referencedAllofOptional
+      description: referenced allOf, but requestBody is not required
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Robot"
+          multipart/form-data:
+            schema:
+              "$ref": "#/components/schemas/Robot"
       responses:
         '200':
           description: ok

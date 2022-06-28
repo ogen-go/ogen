@@ -165,6 +165,52 @@ func (o OptInt) Or(d int) int {
 	return d
 }
 
+// NewOptRobot returns new OptRobot with value set to v.
+func NewOptRobot(v Robot) OptRobot {
+	return OptRobot{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptRobot is optional Robot.
+type OptRobot struct {
+	Value Robot
+	Set   bool
+}
+
+// IsSet returns true if OptRobot was set.
+func (o OptRobot) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptRobot) Reset() {
+	var v Robot
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptRobot) SetTo(v Robot) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptRobot) Get() (v Robot, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptRobot) Or(d Robot) Robot {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -211,8 +257,27 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
+type ReferencedAllofApplicationJSON Robot
+
+func (*ReferencedAllofApplicationJSON) referencedAllofReq() {}
+
+type ReferencedAllofMultipartFormData Robot
+
+func (*ReferencedAllofMultipartFormData) referencedAllofReq() {}
+
 // ReferencedAllofOK is response for ReferencedAllof operation.
 type ReferencedAllofOK struct{}
+
+type ReferencedAllofOptionalApplicationJSON OptRobot
+
+func (*ReferencedAllofOptionalApplicationJSON) referencedAllofOptionalReq() {}
+
+type ReferencedAllofOptionalMultipartFormData OptRobot
+
+func (*ReferencedAllofOptionalMultipartFormData) referencedAllofOptionalReq() {}
+
+// ReferencedAllofOptionalOK is response for ReferencedAllofOptional operation.
+type ReferencedAllofOptionalOK struct{}
 
 // Merged schema.
 // Ref: #/components/schemas/Robot
