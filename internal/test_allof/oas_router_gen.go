@@ -95,10 +95,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: ReferencedAllof
 					s.handleReferencedAllofRequest([0]string{}, w, r)
 
 					return
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: ReferencedAllofOptional
+						s.handleReferencedAllofOptionalRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			case 's': // Prefix: "simple"
 				if l := len("simple"); len(elem) >= l && elem[0:l] == "simple" {
@@ -252,11 +266,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: ReferencedAllof
 					r.name = "ReferencedAllof"
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: ReferencedAllofOptional
+						r.name = "ReferencedAllofOptional"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			case 's': // Prefix: "simple"
 				if l := len("simple"); len(elem) >= l && elem[0:l] == "simple" {

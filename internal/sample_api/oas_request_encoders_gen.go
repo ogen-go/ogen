@@ -161,6 +161,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 	rerr error,
 ) {
 	request := req
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" form field.
@@ -275,6 +276,7 @@ func encodeTestMultipartRequest(
 	rerr error,
 ) {
 	request := req
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" form field.
@@ -392,6 +394,7 @@ func encodeTestMultipartUploadRequest(
 	rerr error,
 ) {
 	request := req
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "orderId" form field.
@@ -475,6 +478,7 @@ func encodeTestShareFormSchemaRequest(
 	rerr error,
 ) {
 	request := req
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filename" form field.

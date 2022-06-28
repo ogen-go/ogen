@@ -27,6 +27,7 @@ func encodeUserPassloginPostRequest(
 		return
 	}
 	request := req.Value
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "passcode" form field.
@@ -62,6 +63,7 @@ func encodeUserPostingPostRequest(
 		return
 	}
 	request := req.Value
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" form field.
@@ -260,6 +262,7 @@ func encodeUserReportPostRequest(
 		return
 	}
 	request := req.Value
+
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" form field.

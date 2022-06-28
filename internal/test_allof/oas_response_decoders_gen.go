@@ -42,6 +42,14 @@ func decodeReferencedAllofResponse(resp *http.Response, span trace.Span) (res Re
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
+func decodeReferencedAllofOptionalResponse(resp *http.Response, span trace.Span) (res ReferencedAllofOptionalOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return ReferencedAllofOptionalOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
 func decodeSimpleIntegerResponse(resp *http.Response, span trace.Span) (res SimpleIntegerOK, err error) {
 	switch resp.StatusCode {
 	case 200:

@@ -79,12 +79,57 @@ func (s *OptInt) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptRobot) SetFake() {
+	var elem Robot
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
 	{
 		elem = "string"
 	}
 	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllofApplicationJSON) SetFake() {
+	var unwrapped Robot
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReferencedAllofApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllofMultipartFormData) SetFake() {
+	var unwrapped Robot
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReferencedAllofMultipartFormData(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllofOptionalApplicationJSON) SetFake() {
+	var unwrapped OptRobot
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReferencedAllofOptionalApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllofOptionalMultipartFormData) SetFake() {
+	var unwrapped OptRobot
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReferencedAllofOptionalMultipartFormData(unwrapped)
 }
 
 // SetFake set fake values.

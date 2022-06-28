@@ -199,6 +199,52 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleReferencedAllofOptionalRequest handles referencedAllofOptional operation.
+//
+// POST /referencedAllofOptional
+func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("referencedAllofOptional"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReferencedAllofOptional",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, close, err := s.decodeReferencedAllofOptionalRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			Operation: "ReferencedAllofOptional",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+	defer close()
+
+	response, err := s.h.ReferencedAllofOptional(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeReferencedAllofOptionalResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleSimpleIntegerRequest handles simpleInteger operation.
 //
 // POST /simpleInteger
