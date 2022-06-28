@@ -355,7 +355,7 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	}
 
 	mergedSchema.Ref = schema.Ref
-	return g.generate2(name, mergedSchema)
+	return g.generate(name, mergedSchema, false)
 }
 
 func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
