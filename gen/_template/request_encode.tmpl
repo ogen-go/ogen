@@ -15,7 +15,8 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 	{{- end }}
 	rerr error,
 ) {
-	{{- if $type.GenericVariant.Optional }}
+	{{- $unaliased := $type }}{{- if $type.IsAlias }}{{ $unaliased = $type.AliasTo }}{{- end }}
+	{{- if $unaliased.GenericVariant.Optional }}
 	if !req.Set {
 		// Return nil callback if value is not set.
 		return
@@ -33,13 +34,17 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 			return io.NopCloser(bytes.NewReader(encoded)), nil
 		}, nil
 	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
-		{{- if $type.IsGeneric }}
-		request := req.Value
+		{{- if $unaliased.IsGeneric }}
+			request := req.Value
+			{{ $type = $unaliased.GenericOf }}
+		{{- else if $unaliased.IsStruct }}
+			request := req
+            {{ $type = $unaliased }}
 		{{- else }}
-		request := req
+            {{- errorf "unexpected type: %s" $unaliased }}
 		{{- end }}
 		q := uri.NewQueryEncoder()
-		{{- range $param := $op.Request.FormParameters $contentType }}
+		{{- range $param := $type.FormParameters }}
 		{
 			// Encode {{ quote $param.Spec.Name }} form field.
 			cfg := uri.QueryParameterEncodingConfig{
@@ -61,8 +66,8 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 			}, nil
 		{{- else if $contentType.MultipartForm }}
 			getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-            	{{- range $param := $op.Request.FileParameters $contentType }}
-				{{- template "encode_multipart_file_param" $param }}
+            	{{- range $param := $type.FileParameters }}
+					{{- template "encode_multipart_file_param" $param }}
 				{{- end }}
 				if err := q.WriteMultipart(w); err != nil {
 					return errors.Wrap(err, "write multipart")

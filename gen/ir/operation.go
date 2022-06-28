@@ -98,50 +98,6 @@ type Request struct {
 	Spec     *openapi.RequestBody
 }
 
-func (r Request) parameters(ct ContentType, skip func(t *Type) bool) (params []Parameter) {
-	t, ok := r.Contents[ct]
-	if !ok {
-		panic(ct)
-	}
-
-	if t.IsGeneric() {
-		t = t.GenericOf
-	}
-
-	for _, f := range t.Fields {
-		if skip(f.Type) {
-			continue
-		}
-		params = append(params, Parameter{
-			Name: f.Name,
-			Type: f.Type,
-			Spec: f.Tag.Form,
-		})
-	}
-	return params
-}
-
-func (r Request) FormParameters(ct ContentType) (params []Parameter) {
-	multipart := ct.MultipartForm()
-	return r.parameters(ct, func(t *Type) bool {
-		return multipart && t.HasFeature("multipart-file")
-	})
-}
-
-func (r Request) FileParameters(ct ContentType) (params []Parameter) {
-	if !ct.MultipartForm() {
-		return params
-	}
-	return r.parameters(ct, func(t *Type) bool {
-		return !t.HasFeature("multipart-file")
-	})
-}
-
-type Content struct {
-	ContentType ContentType
-	Type        *Type
-}
-
 // ContentType of body.
 type ContentType string
 
