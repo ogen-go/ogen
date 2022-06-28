@@ -17,7 +17,7 @@ import (
 
 // HandleNullableStringsRequest handles nullableStrings operation.
 //
-// GET /nullableStrings
+// POST /nullableStrings
 func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -63,7 +63,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 
 // HandleObjectsWithConflictingArrayPropertyRequest handles objectsWithConflictingArrayProperty operation.
 //
-// GET /objectsWithConflictingArrayProperty
+// POST /objectsWithConflictingArrayProperty
 func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -109,7 +109,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 
 // HandleObjectsWithConflictingPropertiesRequest handles objectsWithConflictingProperties operation.
 //
-// GET /objectsWithConflictingProperties
+// POST /objectsWithConflictingProperties
 func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -155,7 +155,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 
 // HandleReferencedAllofRequest handles referencedAllof operation.
 //
-// GET /referencedAllof
+// POST /referencedAllof
 func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -201,7 +201,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 
 // HandleSimpleIntegerRequest handles simpleInteger operation.
 //
-// GET /simpleInteger
+// POST /simpleInteger
 func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -247,7 +247,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 
 // HandleSimpleObjectsRequest handles simpleObjects operation.
 //
-// GET /simpleObjects
+// POST /simpleObjects
 func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{

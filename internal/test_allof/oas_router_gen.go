@@ -20,7 +20,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "GET":
+	case "POST":
 		if len(elem) == 0 {
 			break
 		}
@@ -174,7 +174,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 
 	// Static code generated router with unwrapped path search.
 	switch method {
-	case "GET":
+	case "POST":
 		if len(elem) == 0 {
 			break
 		}

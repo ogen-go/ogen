@@ -17,7 +17,7 @@ type UnimplementedHandler struct{}
 //
 // Nullable strings.
 //
-// GET /nullableStrings
+// POST /nullableStrings
 func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) (r NullableStringsOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
@@ -26,7 +26,7 @@ func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) 
 //
 // Objects with conflicting array property.
 //
-// GET /objectsWithConflictingArrayProperty
+// POST /objectsWithConflictingArrayProperty
 func (UnimplementedHandler) ObjectsWithConflictingArrayProperty(ctx context.Context, req ObjectsWithConflictingArrayPropertyReq) (r ObjectsWithConflictingArrayPropertyOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
@@ -35,7 +35,7 @@ func (UnimplementedHandler) ObjectsWithConflictingArrayProperty(ctx context.Cont
 //
 // Objects with conflicting properties.
 //
-// GET /objectsWithConflictingProperties
+// POST /objectsWithConflictingProperties
 func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context, req ObjectsWithConflictingPropertiesReq) (r ObjectsWithConflictingPropertiesOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
@@ -44,7 +44,7 @@ func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context
 //
 // Referenced allOf.
 //
-// GET /referencedAllof
+// POST /referencedAllof
 func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req Robot) (r ReferencedAllofOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
@@ -53,7 +53,7 @@ func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req Robot) (r R
 //
 // Simple integers with validation.
 //
-// GET /simpleInteger
+// POST /simpleInteger
 func (UnimplementedHandler) SimpleInteger(ctx context.Context, req int) (r SimpleIntegerOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
@@ -62,7 +62,7 @@ func (UnimplementedHandler) SimpleInteger(ctx context.Context, req int) (r Simpl
 //
 // Simple objects.
 //
-// GET /simpleObjects
+// POST /simpleObjects
 func (UnimplementedHandler) SimpleObjects(ctx context.Context, req SimpleObjectsReq) (r SimpleObjectsOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

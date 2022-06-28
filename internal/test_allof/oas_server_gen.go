@@ -16,37 +16,37 @@ type Handler interface {
 	//
 	// Nullable strings.
 	//
-	// GET /nullableStrings
+	// POST /nullableStrings
 	NullableStrings(ctx context.Context, req NilString) (NullableStringsOK, error)
 	// ObjectsWithConflictingArrayProperty implements objectsWithConflictingArrayProperty operation.
 	//
 	// Objects with conflicting array property.
 	//
-	// GET /objectsWithConflictingArrayProperty
+	// POST /objectsWithConflictingArrayProperty
 	ObjectsWithConflictingArrayProperty(ctx context.Context, req ObjectsWithConflictingArrayPropertyReq) (ObjectsWithConflictingArrayPropertyOK, error)
 	// ObjectsWithConflictingProperties implements objectsWithConflictingProperties operation.
 	//
 	// Objects with conflicting properties.
 	//
-	// GET /objectsWithConflictingProperties
+	// POST /objectsWithConflictingProperties
 	ObjectsWithConflictingProperties(ctx context.Context, req ObjectsWithConflictingPropertiesReq) (ObjectsWithConflictingPropertiesOK, error)
 	// ReferencedAllof implements referencedAllof operation.
 	//
 	// Referenced allOf.
 	//
-	// GET /referencedAllof
+	// POST /referencedAllof
 	ReferencedAllof(ctx context.Context, req Robot) (ReferencedAllofOK, error)
 	// SimpleInteger implements simpleInteger operation.
 	//
 	// Simple integers with validation.
 	//
-	// GET /simpleInteger
+	// POST /simpleInteger
 	SimpleInteger(ctx context.Context, req int) (SimpleIntegerOK, error)
 	// SimpleObjects implements simpleObjects operation.
 	//
 	// Simple objects.
 	//
-	// GET /simpleObjects
+	// POST /simpleObjects
 	SimpleObjects(ctx context.Context, req SimpleObjectsReq) (SimpleObjectsOK, error)
 }
 

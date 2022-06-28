@@ -55,7 +55,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // Nullable strings.
 //
-// GET /nullableStrings
+// POST /nullableStrings
 func (c *Client) NullableStrings(ctx context.Context, request NilString) (res NullableStringsOK, err error) {
 	if err := func() error {
 		if err := (validate.String{
@@ -114,11 +114,11 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) (res Nu
 		}
 		defer body.Close()
 
-		r = ht.NewRequest(ctx, "GET", u, body)
+		r = ht.NewRequest(ctx, "POST", u, body)
 		r.GetBody = reqBody
 		r.Header.Set("Content-Type", contentType)
 	} else {
-		r = ht.NewRequest(ctx, "GET", u, nil)
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -139,7 +139,7 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) (res Nu
 //
 // Objects with conflicting array property.
 //
-// GET /objectsWithConflictingArrayProperty
+// POST /objectsWithConflictingArrayProperty
 func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, request ObjectsWithConflictingArrayPropertyReq) (res ObjectsWithConflictingArrayPropertyOK, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -190,11 +190,11 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 		}
 		defer body.Close()
 
-		r = ht.NewRequest(ctx, "GET", u, body)
+		r = ht.NewRequest(ctx, "POST", u, body)
 		r.GetBody = reqBody
 		r.Header.Set("Content-Type", contentType)
 	} else {
-		r = ht.NewRequest(ctx, "GET", u, nil)
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -215,7 +215,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 //
 // Objects with conflicting properties.
 //
-// GET /objectsWithConflictingProperties
+// POST /objectsWithConflictingProperties
 func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request ObjectsWithConflictingPropertiesReq) (res ObjectsWithConflictingPropertiesOK, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -266,11 +266,11 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 		}
 		defer body.Close()
 
-		r = ht.NewRequest(ctx, "GET", u, body)
+		r = ht.NewRequest(ctx, "POST", u, body)
 		r.GetBody = reqBody
 		r.Header.Set("Content-Type", contentType)
 	} else {
-		r = ht.NewRequest(ctx, "GET", u, nil)
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -291,7 +291,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 //
 // Referenced allOf.
 //
-// GET /referencedAllof
+// POST /referencedAllof
 func (c *Client) ReferencedAllof(ctx context.Context, request Robot) (res ReferencedAllofOK, err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -342,11 +342,11 @@ func (c *Client) ReferencedAllof(ctx context.Context, request Robot) (res Refere
 		}
 		defer body.Close()
 
-		r = ht.NewRequest(ctx, "GET", u, body)
+		r = ht.NewRequest(ctx, "POST", u, body)
 		r.GetBody = reqBody
 		r.Header.Set("Content-Type", contentType)
 	} else {
-		r = ht.NewRequest(ctx, "GET", u, nil)
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -367,7 +367,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request Robot) (res Refere
 //
 // Simple integers with validation.
 //
-// GET /simpleInteger
+// POST /simpleInteger
 func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleIntegerOK, err error) {
 	if err := func() error {
 		if err := (validate.Int{
@@ -427,11 +427,11 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 		}
 		defer body.Close()
 
-		r = ht.NewRequest(ctx, "GET", u, body)
+		r = ht.NewRequest(ctx, "POST", u, body)
 		r.GetBody = reqBody
 		r.Header.Set("Content-Type", contentType)
 	} else {
-		r = ht.NewRequest(ctx, "GET", u, nil)
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -452,7 +452,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 //
 // Simple objects.
 //
-// GET /simpleObjects
+// POST /simpleObjects
 func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (res SimpleObjectsOK, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -495,11 +495,11 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 		}
 		defer body.Close()
 
-		r = ht.NewRequest(ctx, "GET", u, body)
+		r = ht.NewRequest(ctx, "POST", u, body)
 		r.GetBody = reqBody
 		r.Header.Set("Content-Type", contentType)
 	} else {
-		r = ht.NewRequest(ctx, "GET", u, nil)
+		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
