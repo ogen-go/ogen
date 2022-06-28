@@ -387,11 +387,6 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		return nil, errors.Errorf("schema format mismatch: %s and %s", s1.Format, s2.Format)
 	}
 
-	nullable := s1.Nullable
-	if s2.Nullable {
-		nullable = s2.Nullable
-	}
-
 	enum, err := mergeEnums(s1, s2)
 	if err != nil {
 		return nil, errors.Wrap(err, "enum")
@@ -401,7 +396,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Type:        s1.Type,
 		Format:      s1.Format,
 		Enum:        enum,
-		Nullable:    nullable,
+		Nullable:    s1.Nullable || s2.Nullable,
 		Description: "Merged schema",
 	}
 
@@ -450,13 +445,6 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 			default:
 				panic("unreachable")
 			}
-		}
-
-		someBool = func(b1, b2 bool) bool {
-			if b1 {
-				return true
-			}
-			return b2
 		}
 
 		someNum = func(n1, n2 jsonschema.Num, both func(n1, n2 jx.Num) jx.Num) jsonschema.Num {
@@ -531,10 +519,10 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		return r, nil
 	case jsonschema.Integer, jsonschema.Number:
 		r.Maximum = someNum(s1.Maximum, s2.Maximum, minNum)
-		s1.ExclusiveMaximum = someBool(s1.ExclusiveMaximum, s2.ExclusiveMaximum)
+		s1.ExclusiveMaximum = s1.ExclusiveMaximum || s2.ExclusiveMaximum
 
 		r.Minimum = someNum(s1.Minimum, s2.Minimum, maxNum)
-		r.ExclusiveMinimum = someBool(s1.ExclusiveMinimum, s2.ExclusiveMinimum)
+		r.ExclusiveMinimum = s1.ExclusiveMinimum || s2.ExclusiveMinimum
 
 		// NOTE: We need to refactor ir.Validators to support multiple 'multipleOf's.
 		//
@@ -556,7 +544,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 		r.MinItems = someU64(s1.MinItems, s2.MinItems, selectMaxU64)
 		r.MaxItems = someU64(s1.MaxItems, s2.MaxItems, selectMinU64)
-		r.UniqueItems = someBool(s1.UniqueItems, s2.UniqueItems)
+		r.UniqueItems = s1.UniqueItems || s2.UniqueItems
 		return r, nil
 
 	case jsonschema.Null, jsonschema.Boolean:
@@ -609,16 +597,11 @@ func mergeProperties(schemas []*jsonschema.Schema) ([]jsonschema.Property, error
 					return nil, errors.Wrap(err, "try to merge conflicting property schemas")
 				}
 
-				required := p.Required
-				if confP.Required {
-					required = true
-				}
-
 				propmap[p.Name] = jsonschema.Property{
 					Name:        p.Name,
 					Description: "Merged property",
 					Schema:      s,
-					Required:    required,
+					Required:    p.Required || confP.Required,
 				}
 				continue
 			}
