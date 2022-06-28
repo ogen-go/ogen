@@ -29,7 +29,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (_ map[string]*openapi
 
 	result := make(map[string]*openapi.Response, len(responses))
 	for status, response := range responses {
-		result[status], err = p.parseStatus(status, response, newResolveCtx())
+		result[status], err = p.parseStatus(status, response, newResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, errors.Wrap(err, status)
 		}

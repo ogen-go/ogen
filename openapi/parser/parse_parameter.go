@@ -28,7 +28,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 			return nil, errors.Errorf("parameter %d is empty or null", idx)
 		}
 
-		param, err := p.parseParameter(spec, newResolveCtx())
+		param, err := p.parseParameter(spec, newResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
 		}

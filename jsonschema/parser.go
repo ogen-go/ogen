@@ -26,6 +26,7 @@ func NewParser(s Settings) *Parser {
 			"": s.Resolver,
 		},
 		refcache:   map[refKey]*Schema{},
+		depthLimit: s.DepthLimit,
 		inferTypes: s.InferTypes,
 	}
 }

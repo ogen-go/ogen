@@ -40,12 +40,15 @@ type resolveCtx struct {
 	// "#/definitions/SchemaProperty" should be resolved against "https://example.com/schema".
 	locstack []string
 	// Store references to detect infinite recursive references.
-	refs map[refKey]struct{}
+	refs       map[refKey]struct{}
+	depthLimit int
 }
 
-func newResolveCtx() *resolveCtx {
+func newResolveCtx(depthLimit int) *resolveCtx {
 	return &resolveCtx{
-		refs: map[refKey]struct{}{},
+		locstack:   nil,
+		refs:       map[refKey]struct{}{},
+		depthLimit: depthLimit,
 	}
 }
 
@@ -56,10 +59,15 @@ func (r *resolveCtx) add(ref string) (key refKey, _ error) {
 	}
 	key.fromURL(u)
 
+	if r.depthLimit <= 0 {
+		return refKey{}, errors.New("depth limit exceeded")
+	}
 	if _, ok := r.refs[key]; ok {
 		return key, errors.New("infinite recursion")
 	}
 	r.refs[key] = struct{}{}
+	r.depthLimit--
+
 	if key.loc != "" {
 		r.locstack = append(r.locstack, key.loc)
 	}
@@ -67,6 +75,7 @@ func (r *resolveCtx) add(ref string) (key refKey, _ error) {
 }
 
 func (r *resolveCtx) delete(key refKey) {
+	r.depthLimit++
 	delete(r.refs, key)
 	if key.loc != "" && len(r.locstack) > 0 {
 		r.locstack = r.locstack[:len(r.locstack)-1]

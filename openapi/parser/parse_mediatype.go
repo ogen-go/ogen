@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"mime"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
@@ -15,6 +17,10 @@ func (p *parser) parseContent(content map[string]ogen.Media, ctx *resolveCtx) (_
 
 	result := make(map[string]*openapi.MediaType, len(content))
 	for name, m := range content {
+		if _, _, err := mime.ParseMediaType(name); err != nil {
+			return nil, errors.Wrapf(err, "content type %q", name)
+		}
+
 		result[name], err = p.parseMediaType(m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
@@ -33,10 +39,15 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resol
 	}
 
 	for name, m := range content {
+		if _, _, err := mime.ParseMediaType(name); err != nil {
+			return nil, errors.Wrapf(err, "content type %q", name)
+		}
+
 		media, err := p.parseMediaType(m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
+
 		return &openapi.ParameterContent{
 			Name:  name,
 			Media: media,
