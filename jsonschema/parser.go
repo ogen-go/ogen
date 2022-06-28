@@ -13,6 +13,7 @@ type Parser struct {
 	external   ExternalResolver
 	schemas    map[string]ReferenceResolver
 	refcache   map[refKey]*Schema
+	depthLimit int
 	inferTypes bool
 }
 
@@ -31,12 +32,12 @@ func NewParser(s Settings) *Parser {
 
 // Parse parses given RawSchema and returns parsed Schema.
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.parse(schema, newResolveCtx())
+	return p.parse(schema, newResolveCtx(p.depthLimit))
 }
 
 // Resolve resolves Schema by given ref.
 func (p *Parser) Resolve(ref string) (*Schema, error) {
-	return p.resolve(ref, newResolveCtx())
+	return p.resolve(ref, newResolveCtx(p.depthLimit))
 }
 
 func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (*Schema, error) {

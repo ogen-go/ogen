@@ -4,9 +4,14 @@ import "errors"
 
 // Settings is parser settings.
 type Settings struct {
+	// External is external resolver. If nil, NoExternal resolver is used.
 	External ExternalResolver
+
 	// Resolver is a root resolver.
 	Resolver ReferenceResolver
+
+	// DepthLimit limits the number of nested references. Default is 1000.
+	DepthLimit int
 
 	// Enables type inference.
 	//
@@ -34,5 +39,8 @@ func (s *Settings) setDefaults() {
 	}
 	if s.Resolver == nil {
 		s.Resolver = nopResolver{}
+	}
+	if s.DepthLimit == 0 {
+		s.DepthLimit = 1000
 	}
 }
