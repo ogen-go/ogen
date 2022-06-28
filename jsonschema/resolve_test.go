@@ -133,3 +133,40 @@ func TestExternalReference(t *testing.T) {
 	}
 	require.Equal(t, expect, out)
 }
+
+func TestLimitDepth(t *testing.T) {
+	root := components{
+		"Schema1": {
+			Ref: "#/components/schemas/Schema2",
+		},
+		"Schema2": {
+			Ref: "#/components/schemas/Schema3",
+		},
+		"Schema3": {
+			Ref: "#/components/schemas/Schema4",
+		},
+		"Schema4": {
+			Type: "string",
+		},
+	}
+
+	tests := []struct {
+		limit   int
+		checker func(t require.TestingT, err error, args ...interface{})
+	}{
+		{1, require.Error},
+		{2, require.Error},
+		{3, require.Error},
+		{4, require.NoError},
+		{0, require.NoError}, // Default
+	}
+
+	for _, tt := range tests {
+		parser := NewParser(Settings{
+			Resolver:   root,
+			DepthLimit: tt.limit,
+		})
+		_, err := parser.Resolve("#/components/schemas/Schema1")
+		tt.checker(t, err, "limit: %d", tt.limit)
+	}
+}

@@ -4,7 +4,11 @@ import "github.com/ogen-go/ogen/jsonschema"
 
 // Settings is parser settings.
 type Settings struct {
+	// External is external JSON Schema resolver. If nil, NoExternal resolver is used.
 	External jsonschema.ExternalResolver
+
+	// DepthLimit limits the number of nested references. Default is 1000.
+	DepthLimit int
 
 	// Enables type inference.
 	//
@@ -21,7 +25,7 @@ type Settings struct {
 }
 
 func (s *Settings) setDefaults() {
-	if s.External == nil {
-		s.External = jsonschema.NoExternal{}
+	if s.DepthLimit == 0 {
+		s.DepthLimit = 1000
 	}
 }

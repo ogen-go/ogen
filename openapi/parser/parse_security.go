@@ -55,7 +55,7 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 				return nil, errors.Errorf("unknown security schema %q", requirementName)
 			}
 
-			spec, err := p.parseSecuritySchema(v, newResolveCtx())
+			spec, err := p.parseSecuritySchema(v, newResolveCtx(p.depthLimit))
 			if err != nil {
 				return nil, errors.Wrapf(err, "resolve %q", requirementName)
 			}

@@ -18,7 +18,7 @@ func (p *parser) parseComponents(c *ogen.Components) (*openapi.Components, error
 
 	for name := range c.Parameters {
 		ref := "#/components/parameters/" + name
-		pp, err := p.resolveParameter(ref, newResolveCtx())
+		pp, err := p.resolveParameter(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, errors.Wrapf(err, "parameters: %q", name)
 		}
@@ -38,7 +38,7 @@ func (p *parser) parseComponents(c *ogen.Components) (*openapi.Components, error
 
 	for name := range c.RequestBodies {
 		ref := "#/components/requestBodies/" + name
-		b, err := p.resolveRequestBody(ref, newResolveCtx())
+		b, err := p.resolveRequestBody(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, errors.Wrapf(err, "requestBodies: %q", name)
 		}
@@ -48,7 +48,7 @@ func (p *parser) parseComponents(c *ogen.Components) (*openapi.Components, error
 
 	for name := range c.Responses {
 		ref := "#/components/responses/" + name
-		r, err := p.resolveResponse(ref, newResolveCtx())
+		r, err := p.resolveResponse(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, errors.Wrapf(err, "responses: %q", name)
 		}
