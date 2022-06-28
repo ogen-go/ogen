@@ -410,11 +410,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 				return n1
 			case n1 == nil && n2 != nil:
 				return n2
-			case n1 != nil && n2 != nil:
+			default:
 				result := both(*n1, *n2)
 				return &result
-			default:
-				panic("unreachable")
 			}
 		}
 
@@ -440,10 +438,8 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 				return s1, nil
 			case s1 == "" && s2 != "":
 				return s2, nil
-			case s1 != "" && s2 != "":
-				return both(s1, s2)
 			default:
-				panic("unreachable")
+				return both(s1, s2)
 			}
 		}
 
@@ -569,7 +565,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		}
 
 		r.MaxProperties = someU64(s1.MaxProperties, s2.MaxProperties, selectMinU64)
-		r.Properties, err = mergeProperties([]*jsonschema.Schema{s1, s2})
+		r.Properties, err = mergeProperties(s1.Properties, s2.Properties)
 		if err != nil {
 			return nil, errors.Wrap(err, "merge properties")
 		}
@@ -581,41 +577,50 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	}
 }
 
-func mergeProperties(schemas []*jsonschema.Schema) ([]jsonschema.Property, error) {
-	propmap := make(map[string]jsonschema.Property)
-	order := make(map[string]int)
-	orderIndex := 0
-	for _, s := range schemas {
-		if s.Type != jsonschema.Object {
-			return nil, &ErrNotImplemented{Name: "non-object schema type"}
-		}
-		for _, p := range s.Properties {
-			if confP, ok := propmap[p.Name]; ok {
-				// Property name conflict.
-				s, err := mergeSchemes(p.Schema, confP.Schema)
-				if err != nil {
-					return nil, errors.Wrap(err, "try to merge conflicting property schemas")
-				}
+// mergeProperties finds properties with identical names
+// and tries to merge them into one, avoiding duplicates.
+func mergeProperties(p1, p2 []jsonschema.Property) ([]jsonschema.Property, error) {
+	var (
+		propmap    = make(map[string]jsonschema.Property, len(p1)+len(p2))
+		order      = make(map[string]int, len(p1)+len(p2))
+		orderIndex = 0
+	)
 
-				propmap[p.Name] = jsonschema.Property{
-					Name:        p.Name,
-					Description: "Merged property",
-					Schema:      s,
-					Required:    p.Required || confP.Required,
-				}
-				continue
+	// Fill the map with p1 props.
+	for _, p := range p1 {
+		propmap[p.Name] = p
+		order[p.Name] = orderIndex
+		orderIndex++
+	}
+
+	// Try to merge p2 props.
+	for _, p := range p2 {
+		if confP, ok := propmap[p.Name]; ok {
+			// Property name conflict.
+			s, err := mergeSchemes(p.Schema, confP.Schema)
+			if err != nil {
+				return nil, errors.Wrap(err, "try to merge conflicting property schemas")
 			}
 
-			propmap[p.Name] = p
-			order[p.Name] = orderIndex
-			orderIndex++
+			propmap[p.Name] = jsonschema.Property{
+				Name:        p.Name,
+				Description: "Merged property",
+				Schema:      s,
+				Required:    p.Required || confP.Required,
+			}
+			continue
 		}
+
+		propmap[p.Name] = p
+		order[p.Name] = orderIndex
+		orderIndex++
 	}
 
 	result := make([]jsonschema.Property, len(propmap))
 	for name, p := range propmap {
 		result[order[name]] = p
 	}
+
 	return result, nil
 }
 
