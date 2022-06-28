@@ -10,6 +10,14 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func decodeNullableStringsResponse(resp *http.Response, span trace.Span) (res NullableStringsOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return NullableStringsOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
 func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response, span trace.Span) (res ObjectsWithConflictingArrayPropertyOK, err error) {
 	switch resp.StatusCode {
 	case 200:

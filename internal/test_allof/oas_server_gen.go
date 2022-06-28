@@ -12,6 +12,12 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// NullableStrings implements nullableStrings operation.
+	//
+	// Nullable strings.
+	//
+	// GET /nullableStrings
+	NullableStrings(ctx context.Context, req NilString) (NullableStringsOK, error)
 	// ObjectsWithConflictingArrayProperty implements objectsWithConflictingArrayProperty operation.
 	//
 	// Objects with conflicting array property.

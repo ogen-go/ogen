@@ -51,6 +51,90 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+// NullableStrings invokes nullableStrings operation.
+//
+// Nullable strings.
+//
+// GET /nullableStrings
+func (c *Client) NullableStrings(ctx context.Context, request NilString) (res NullableStringsOK, err error) {
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        regexMap["(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"],
+		}).Validate(string(request.Value)); err != nil {
+			return errors.Wrap(err, "string")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("nullableStrings"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "NullableStrings",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/nullableStrings"
+
+	var (
+		contentType string
+		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
+	)
+	contentType = "application/json"
+	fn, err := encodeNullableStringsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	reqBody = fn
+
+	var r *http.Request
+	if reqBody != nil {
+		body, err := reqBody()
+		if err != nil {
+			return res, errors.Wrap(err, "request body")
+		}
+		defer body.Close()
+
+		r = ht.NewRequest(ctx, "GET", u, body)
+		r.GetBody = reqBody
+		r.Header.Set("Content-Type", contentType)
+	} else {
+		r = ht.NewRequest(ctx, "GET", u, nil)
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeNullableStringsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ObjectsWithConflictingArrayProperty invokes objectsWithConflictingArrayProperty operation.
 //
 // Objects with conflicting array property.

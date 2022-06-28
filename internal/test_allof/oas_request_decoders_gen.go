@@ -15,6 +15,77 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) (
+	req NilString,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request NilString
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     false,
+				Regex:        regexMap["(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"],
+			}).Validate(string(request.Value)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
 func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Request, span trace.Span) (
 	req ObjectsWithConflictingArrayPropertyReq,
 	close func() error,

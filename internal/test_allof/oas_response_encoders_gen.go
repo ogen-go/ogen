@@ -9,6 +9,12 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+func encodeNullableStringsResponse(response NullableStringsOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}
 func encodeObjectsWithConflictingArrayPropertyResponse(response ObjectsWithConflictingArrayPropertyOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

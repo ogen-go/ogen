@@ -10,6 +10,21 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+func encodeNullableStringsRequestJSON(
+	req NilString,
+	span trace.Span,
+) (
+	data func() (io.ReadCloser, error),
+	rerr error,
+) {
+	e := jx.GetEncoder()
+
+	req.Encode(e)
+	encoded := e.Bytes()
+	return func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewReader(encoded)), nil
+	}, nil
+}
 func encodeObjectsWithConflictingArrayPropertyRequestJSON(
 	req ObjectsWithConflictingArrayPropertyReq,
 	span trace.Span,

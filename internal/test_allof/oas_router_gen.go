@@ -36,6 +36,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 			switch elem[0] {
+			case 'n': // Prefix: "nullableStrings"
+				if l := len("nullableStrings"); len(elem) >= l && elem[0:l] == "nullableStrings" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: NullableStrings
+					s.handleNullableStringsRequest([0]string{}, w, r)
+
+					return
+				}
 			case 'o': // Prefix: "objectsWithConflicting"
 				if l := len("objectsWithConflicting"); len(elem) >= l && elem[0:l] == "objectsWithConflicting" {
 					elem = elem[l:]
@@ -177,6 +190,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				break
 			}
 			switch elem[0] {
+			case 'n': // Prefix: "nullableStrings"
+				if l := len("nullableStrings"); len(elem) >= l && elem[0:l] == "nullableStrings" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: NullableStrings
+					r.name = "NullableStrings"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
 			case 'o': // Prefix: "objectsWithConflicting"
 				if l := len("objectsWithConflicting"); len(elem) >= l && elem[0:l] == "objectsWithConflicting" {
 					elem = elem[l:]

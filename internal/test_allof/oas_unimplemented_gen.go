@@ -13,6 +13,15 @@ var _ Handler = UnimplementedHandler{}
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
 
+// NullableStrings implements nullableStrings operation.
+//
+// Nullable strings.
+//
+// GET /nullableStrings
+func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) (r NullableStringsOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ObjectsWithConflictingArrayProperty implements objectsWithConflictingArrayProperty operation.
 //
 // Objects with conflicting array property.
