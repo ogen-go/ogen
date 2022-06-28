@@ -4,7 +4,7 @@ info:
   version: v0.1.0
 paths:
   "/simpleInteger":
-    get:
+    post:
       operationId: simpleInteger
       description: Simple integers with validation.
       requestBody:
@@ -22,7 +22,7 @@ paths:
         '200':
           description: ok
   "/nullableStrings":
-    get:
+    post:
       operationId: nullableStrings
       description: Nullable strings
       requestBody:
@@ -40,7 +40,7 @@ paths:
         '200':
           description: ok
   "/simpleObjects":
-    get:
+    post:
       operationId: simpleObjects
       description: Simple objects
       requestBody:
@@ -61,7 +61,7 @@ paths:
         '200':
           description: ok
   "/objectsWithConflictingProperties":
-    get:
+    post:
       operationId: objectsWithConflictingProperties
       description: Objects with conflicting properties
       requestBody:
@@ -89,7 +89,7 @@ paths:
         '200':
           description: ok
   "/objectsWithConflictingArrayProperty":
-    get:
+    post:
       operationId: objectsWithConflictingArrayProperty
       description: Objects with conflicting array property
       requestBody:
@@ -123,7 +123,7 @@ paths:
         '200':
           description: ok
   "/referencedAllof":
-    get:
+    post:
       operationId: referencedAllof
       description: referenced allOf
       requestBody:
