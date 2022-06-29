@@ -58,12 +58,16 @@ fragment SearchResultsAlertFields on SearchResults {
 
 func run(ctx context.Context) error {
 	var (
-		output         = flag.String("output", "./corpus", "Path to corpus output")
-		stats          = flag.String("stats", "", "Path to stats output")
-		clean          = flag.Bool("clean", false, "Clean generated files before generation")
-		generateYaml   = flag.Bool("yaml", false, "Query yaml files")
-		q              = flag.String("query", "", "Sourcegraph query")
-		workers        = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+		output = flag.String("output", "./corpus", "Path to corpus output")
+		clean  = flag.Bool("clean", false, "Clean generated files before generation")
+		stats  = flag.String("stats", "", "Path to stats output")
+
+		generateYaml = flag.Bool("yaml", false, "Query yaml files")
+		q            = flag.String("query", "", "Sourcegraph query")
+		filter       = flag.String("filter", "", "Additional filter to concatenate to the query")
+
+		workers = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
 		memProfileRate = flag.Int64("memprofilerate", 0, "Set runtime.MemProfileRate")
@@ -121,6 +125,11 @@ func run(ctx context.Context) error {
 		}
 		for i := range queries {
 			queries[i] += ` count:all -repo:^github\.com/ogen-go/corpus$`
+		}
+	}
+	if f := *filter; f != "" {
+		for i := range queries {
+			queries[i] += " " + f
 		}
 	}
 
