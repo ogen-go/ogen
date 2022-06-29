@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap/zapcore"
 )
 
 type (
@@ -69,6 +70,12 @@ type (
 		Variables QueryVariables
 	}
 )
+
+func (m FileMatch) MarshalLogObject(e zapcore.ObjectEncoder) error {
+	e.AddString("repo", m.Repository.Name)
+	e.AddString("link", m.Link())
+	return nil
+}
 
 func (m FileMatch) Link() string {
 	for _, external := range m.File.ExternalURLs {

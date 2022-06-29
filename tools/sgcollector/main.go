@@ -3,15 +3,18 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"os"
 	"os/signal"
 	"runtime"
 	"runtime/pprof"
+	"strconv"
 	"sync"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 	"golang.org/x/sync/errgroup"
+
+	"github.com/ogen-go/ogen/internal/ogenzap"
 )
 
 func run(ctx context.Context) error {
@@ -29,7 +32,10 @@ func run(ctx context.Context) error {
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
 		memProfileRate = flag.Int64("memprofilerate", 0, "Set runtime.MemProfileRate")
+
+		logOptions ogenzap.Options
 	)
+	logOptions.RegisterFlags(flag.CommandLine)
 	flag.Parse()
 
 	if val := *cpuProfile; val != "" {
@@ -64,6 +70,14 @@ func run(ctx context.Context) error {
 			_ = pprof.WriteHeapProfile(f)
 		}()
 	}
+
+	logger, err := ogenzap.Create(logOptions)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		_ = logger.Sync()
+	}()
 
 	var queries []string
 	if *q != "" {
@@ -107,6 +121,11 @@ func run(ctx context.Context) error {
 			if err != nil {
 				return err
 			}
+			logger.Info("Query complete",
+				zap.String("query", q),
+				zap.Int("total", len(results.Matches)),
+				zap.Int("match_count", results.MatchCount),
+			)
 
 			for i, m := range results.Matches {
 				select {
@@ -128,6 +147,7 @@ func run(ctx context.Context) error {
 	var workersWg sync.WaitGroup
 	for i := 0; i < *workers; i++ {
 		workersWg.Add(1)
+		logger := logger.Named("worker"+strconv.Itoa(i))
 		g.Go(func() error {
 			defer workersWg.Done()
 			for {
@@ -139,9 +159,16 @@ func run(ctx context.Context) error {
 						return nil
 					}
 
-					link := m.Link()
-					if err := worker(ctx, m, reporters); err != nil {
-						fmt.Printf("Check %q: %v\n", link, err)
+					err := worker(ctx, m, reporters)
+					if err != nil {
+						logger.Error("Error",
+							zap.Inline(m),
+							zap.Error(err),
+						)
+					} else {
+						logger.Debug("Success",
+							zap.Inline(m),
+						)
 					}
 				}
 			}
