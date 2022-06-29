@@ -73,9 +73,6 @@ func TestGenerate(t *testing.T) {
 		},
 		"autorest/lro.json":     {},
 		"autorest/storage.json": {},
-		"autorest/xml-service.json": {
-			"unsupported content types",
-		},
 		"autorest/xms-error-responses.json": {},
 		"2ch.yml": {},
 		"api.github.com.json": {
