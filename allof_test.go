@@ -13,6 +13,10 @@ type allofTestServer struct {
 	api.UnimplementedHandler
 }
 
+func (s *allofTestServer) NullableStrings(ctx context.Context, req string) (r api.NullableStringsOK, _ error) {
+	return api.NullableStringsOK{}, nil
+}
+
 func (s *allofTestServer) SimpleInteger(ctx context.Context, req int) (api.SimpleIntegerOK, error) {
 	return api.SimpleIntegerOK{}, nil
 }
@@ -39,6 +43,13 @@ func TestAllof(t *testing.T) {
 	}
 
 	ctx := context.Background()
+	t.Run("nullableStrings", func(t *testing.T) {
+		_, err := client.NullableStrings(ctx, "foo")
+		require.EqualError(t, err, "validate: string: no regex match")
+
+		_, err = client.NullableStrings(ctx, "127.0.0.1")
+		require.NoError(t, err)
+	})
 	t.Run("simpleInteger", func(t *testing.T) {
 		_, err := client.SimpleInteger(ctx, -7)
 		require.EqualError(t, err, "validate: int: value -7 less than -5")
@@ -52,7 +63,6 @@ func TestAllof(t *testing.T) {
 		_, err = client.SimpleInteger(ctx, 10)
 		require.EqualError(t, err, "validate: int: value 10 greater than 5")
 	})
-
 	t.Run("objectsWithConflictingProperties", func(t *testing.T) {
 		_, err := client.ObjectsWithConflictingProperties(ctx, api.ObjectsWithConflictingPropertiesReq{
 			Foo: "1234567890",
