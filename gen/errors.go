@@ -98,3 +98,18 @@ func (e *ErrBuildRouter) Unwrap() error {
 func (e *ErrBuildRouter) Error() string {
 	return fmt.Sprintf("build router: %s", e.err)
 }
+
+// ErrGoFormat reports that generated code formatting failed.
+type ErrGoFormat struct {
+	err error
+}
+
+// Unwrap implements errors.Wrapper.
+func (e *ErrGoFormat) Unwrap() error {
+	return e.err
+}
+
+// Error implements error.
+func (e *ErrGoFormat) Error() string {
+	return fmt.Sprintf("goimports: %s", e.err)
+}

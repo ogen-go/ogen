@@ -18,9 +18,10 @@ import (
 	"github.com/ogen-go/ogen/gen/genfs"
 )
 
-var errPanic = errors.New("panic")
-
-var bomPrefix = []byte{0xEF, 0xBB, 0xBF}
+var (
+	errPanic  = errors.New("panic")
+	bomPrefix = []byte{0xEF, 0xBB, 0xBF}
+)
 
 func convertYAMLtoJSON(data []byte) (_ []byte, rErr error) {
 	defer func() {
@@ -186,9 +187,8 @@ func generate(data []byte, isYAML bool) error {
 	}
 
 	if err := g.WriteSource(errFs{}, "api"); err != nil {
-		var pse *GenerateError
-		if errors.As(err, &pse) {
-			return err
+		if as := new(gen.ErrGoFormat); errors.As(err, &as) {
+			return &GenerateError{stage: Format, notImpl: notImpl, err: err}
 		}
 		return &GenerateError{stage: Template, notImpl: notImpl, err: err}
 	}
