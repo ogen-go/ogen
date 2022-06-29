@@ -438,7 +438,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Type:        s1.Type,
 		Format:      s1.Format,
 		Enum:        enum,
-		Nullable:    s1.Nullable || s2.Nullable,
+		Nullable:    s1.Nullable && s2.Nullable,
 		Description: "Merged schema",
 	}
 
