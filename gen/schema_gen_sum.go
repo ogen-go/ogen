@@ -58,9 +58,40 @@ func canUseTypeDiscriminator(sum []*ir.Type) bool {
 	return true
 }
 
+func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
+	var do func(map[string]struct{}, []*jsonschema.Schema) error
+	do = func(ctx map[string]struct{}, schemas []*jsonschema.Schema) error {
+		for i, s := range schemas {
+			if ref := s.Ref; ref != "" {
+				if _, ok := ctx[ref]; ok {
+					return errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
+				}
+				ctx[ref] = struct{}{}
+			}
+			switch {
+			case len(s.OneOf) > 0:
+				if err := do(ctx, s.OneOf); err != nil {
+					return errors.Wrapf(err, "oneOf %q [%d]", s.Ref, i)
+				}
+			case len(s.AllOf) > 0:
+				if err := do(ctx, s.AllOf); err != nil {
+					return errors.Wrapf(err, "allOf %q [%d]", s.Ref, i)
+				}
+			case len(s.AnyOf) > 0:
+				if err := do(ctx, s.AnyOf); err != nil {
+					return errors.Wrapf(err, "anyOf %q [%d]", s.Ref, i)
+				}
+			}
+			delete(ctx, s.Ref)
+		}
+		return nil
+	}
+
+	return do(map[string]struct{}{}, []*jsonschema.Schema{parent})
+}
+
 func (g *schemaGen) collectSumVariants(
 	name string,
-	parent *jsonschema.Schema,
 	schemas []*jsonschema.Schema,
 ) (sum []*ir.Type, _ error) {
 	// TODO(tdakkota): convert oneOf+null into generic
@@ -76,10 +107,6 @@ func (g *schemaGen) collectSumVariants(
 
 	names := map[string]struct{}{}
 	for i, s := range schemas {
-		if ref := s.Ref; ref != "" && ref == parent.Ref {
-			return nil, errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
-		}
-
 		// generate without boxing because:
 		// 1) sum variant cannot be optional
 		// 2) if sum variant is nullable - null type already added into sum
@@ -102,13 +129,17 @@ func (g *schemaGen) collectSumVariants(
 }
 
 func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	if err := ensureNoInfiniteRecursion(schema); err != nil {
+		return nil, err
+	}
+
 	sum := g.regtype(name, &ir.Type{
 		Name:   name,
 		Kind:   ir.KindSum,
 		Schema: schema,
 	})
 	{
-		variants, err := g.collectSumVariants(name, schema, schema.AnyOf)
+		variants, err := g.collectSumVariants(name, schema.AnyOf)
 		if err != nil {
 			return nil, errors.Wrap(err, "collect variants")
 		}
@@ -155,13 +186,17 @@ func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 }
 
 func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	if err := ensureNoInfiniteRecursion(schema); err != nil {
+		return nil, err
+	}
+
 	sum := g.regtype(name, &ir.Type{
 		Name:   name,
 		Kind:   ir.KindSum,
 		Schema: schema,
 	})
 	{
-		variants, err := g.collectSumVariants(name, schema, schema.OneOf)
+		variants, err := g.collectSumVariants(name, schema.OneOf)
 		if err != nil {
 			return nil, errors.Wrap(err, "collect variants")
 		}
@@ -350,12 +385,15 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 }
 
 func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	if err := ensureNoInfiniteRecursion(schema); err != nil {
+		return nil, err
+	}
+
 	mergedSchema, err := mergeNSchemes(schema.AllOf)
 	if err != nil {
 		return nil, err
 	}
 
-	mergedSchema.Ref = schema.Ref
 	return g.generate(name, mergedSchema, false)
 }
 
