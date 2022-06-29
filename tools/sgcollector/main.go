@@ -108,18 +108,19 @@ func run(ctx context.Context) error {
 		queries = []string{*q}
 	} else {
 		queries = []string{
-			`(openapi|"openapi"):\s?"3 file:.*\.yml$`,
-			`(openapi|"openapi"):\s+3 file:.*\.yml$`,
-			`(openapi|"openapi"):\s?"3 file:.*\.yaml$`,
-			`(openapi|"openapi"):\s+3 file:.*\.yaml$`,
 			`"openapi":"3 file:.*\.json$`,
 			`"openapi":\s+"3 file:.*\.json$`,
 		}
+		if *generateYaml {
+			queries = append(queries,
+				`(openapi|"openapi"):\s?"3 file:.*\.yml$`,
+				`(openapi|"openapi"):\s+3 file:.*\.yml$`,
+				`(openapi|"openapi"):\s?"3 file:.*\.yaml$`,
+				`(openapi|"openapi"):\s+3 file:.*\.yaml$`,
+			)
+		}
 		for i := range queries {
 			queries[i] += ` count:all -repo:^github\.com/ogen-go/corpus$`
-		}
-		if !(*generateYaml) {
-			queries = queries[2:]
 		}
 	}
 
