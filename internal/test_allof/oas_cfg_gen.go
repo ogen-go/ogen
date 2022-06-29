@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"net/http"
+	"regexp"
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel"
@@ -17,6 +18,10 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
+
+var regexMap = map[string]*regexp.Regexp{
+	"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$": regexp.MustCompile("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"),
+}
 
 // ErrorHandler is error handler.
 type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)

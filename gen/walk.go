@@ -57,3 +57,51 @@ func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*i
 
 	return nil
 }
+
+func walkOpTypes(ops []*ir.Operation, walk func(*ir.Type) error) (err error) {
+	seen := make(map[*ir.Type]struct{})
+	visit := func(t *ir.Type) {
+		_, skip := seen[t]
+		if err != nil || t == nil || skip {
+			return
+		}
+
+		seen[t] = struct{}{}
+		err = walk(t)
+	}
+
+	visitContents := func(c map[ir.ContentType]*ir.Type) {
+		for _, t := range c {
+			visit(t)
+		}
+	}
+
+	visitResponse := func(r *ir.Response) {
+		if r == nil {
+			return
+		}
+
+		visit(r.NoContent)
+		visitContents(r.Contents)
+		for _, p := range r.Headers {
+			visit(p.Type)
+		}
+	}
+
+	for _, op := range ops {
+		for _, p := range op.Params {
+			visit(p.Type)
+		}
+		if op.Request != nil {
+			visit(op.Request.Type)
+			visitContents(op.Request.Contents)
+		}
+		visit(op.Responses.Type)
+		for _, r := range op.Responses.StatusCode {
+			visitResponse(r)
+		}
+		visitResponse(op.Responses.Default)
+	}
+
+	return err
+}

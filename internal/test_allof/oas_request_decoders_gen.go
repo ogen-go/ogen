@@ -68,6 +68,22 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     false,
+				Regex:        regexMap["^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"],
+			}).Validate(string(request)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
 
 		return request, close, nil
 	default:
