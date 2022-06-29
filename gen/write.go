@@ -76,6 +76,11 @@ func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) (r []stri
 	}
 	add(t.ErrorType)
 
+	_ = walkOpTypes(t.Operations, func(t *ir.Type) error {
+		add(t)
+		return nil
+	})
+
 	for exp := range m {
 		r = append(r, exp)
 	}

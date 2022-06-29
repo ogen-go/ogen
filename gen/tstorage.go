@@ -8,7 +8,26 @@ import (
 
 // tstorage is a type storage.
 type tstorage struct {
-	refs      map[string]*ir.Type     // Key: ref
+	refs map[string]*ir.Type // Key: ref
+
+	// types map contains public types.
+	// Public type is any type that has a name:
+	//  * Struct
+	//  * Alias
+	//  * Generic
+	//  * Interface
+	//  * etc
+	//
+	// Example:
+	// ...
+	// requestBody:
+	//   content:
+	//     application/json:
+	//       schema:
+	//         type: string <- this type will not present
+	//                         in the map because
+	//                         the type is anonymous.
+	//
 	types     map[string]*ir.Type     // Key: type name
 	responses map[string]*ir.Response // Key: ref
 
