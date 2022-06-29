@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"sync"
 	"text/template"
 
 	"github.com/go-faster/errors"
@@ -186,12 +187,22 @@ func templateFunctions() template.FuncMap {
 //go:embed _template/*
 var templates embed.FS
 
+var (
+	_templates struct {
+		sync.Once
+		val *template.Template
+	}
+)
+
 // vendoredTemplates parses and returns vendored code generation templates.
 func vendoredTemplates() *template.Template {
-	tmpl := template.New("templates").Funcs(templateFunctions())
-	tmpl = template.Must(tmpl.ParseFS(templates, "_template/*.tmpl"))
-	tmpl = template.Must(tmpl.ParseFS(templates, "_template/*/*.tmpl"))
-	return tmpl
+	_templates.Do(func() {
+		tmpl := template.New("templates").Funcs(templateFunctions())
+		tmpl = template.Must(tmpl.ParseFS(templates, "_template/*.tmpl"))
+		tmpl = template.Must(tmpl.ParseFS(templates, "_template/*/*.tmpl"))
+		_templates.val = tmpl
+	})
+	return _templates.val
 }
 
 func isObjectParam(p *ir.Parameter) bool {
