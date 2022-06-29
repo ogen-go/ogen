@@ -21,11 +21,6 @@ func (s *Location) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *NilString) SetFake() {
-	s.Null = true
-}
-
-// SetFake set fake values.
 func (s *ObjectsWithConflictingArrayPropertyReq) SetFake() {
 	{
 		{

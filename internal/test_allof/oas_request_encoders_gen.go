@@ -17,7 +17,7 @@ import (
 )
 
 func encodeNullableStringsRequestJSON(
-	req NilString,
+	req string,
 	span trace.Span,
 ) (
 	data func() (io.ReadCloser, error),
@@ -25,7 +25,7 @@ func encodeNullableStringsRequestJSON(
 ) {
 	e := jx.GetEncoder()
 
-	req.Encode(e)
+	e.Str(req)
 	encoded := e.Bytes()
 	return func() (io.ReadCloser, error) {
 		return io.NopCloser(bytes.NewReader(encoded)), nil

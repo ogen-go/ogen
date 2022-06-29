@@ -18,7 +18,7 @@ type UnimplementedHandler struct{}
 // Nullable strings.
 //
 // POST /nullableStrings
-func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) (r NullableStringsOK, _ error) {
+func (UnimplementedHandler) NullableStrings(ctx context.Context, req string) (r NullableStringsOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
