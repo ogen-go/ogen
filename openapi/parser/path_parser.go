@@ -1,7 +1,11 @@
 package parser
 
 import (
+	"net/url"
+	"strings"
+
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -27,7 +31,23 @@ func (p *pathParser) Parse() ([]openapi.PathPart, error) {
 }
 
 func (p *pathParser) parse() error {
-	for _, r := range p.path {
+	// Validate and unescape path.
+	u, err := url.Parse(p.path)
+	if err != nil {
+		return err
+	}
+	switch {
+	case u.IsAbs() || u.Host != "" || u.User != nil:
+		return errors.New("path MUST be relative")
+	case u.Path == "" || !strings.HasPrefix(u.Path, "/"):
+		return errors.New("path MUST begin with a forward slash")
+	case u.RawQuery != "":
+		return errors.New("path MUST NOT contain a query string")
+	case u.Fragment != "" || u.RawFragment != "":
+		return errors.New("path MUST NOT contain a fragment")
+	}
+
+	for _, r := range u.Path {
 		switch r {
 		case '/':
 			if p.param {

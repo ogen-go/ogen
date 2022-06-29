@@ -148,7 +148,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 
 	op.Path, err = parsePath(path, op.Parameters)
 	if err != nil {
-		return nil, errors.Wrap(err, "parse path")
+		return nil, errors.Wrapf(err, "parse path %q", path)
 	}
 
 	if spec.RequestBody != nil {
