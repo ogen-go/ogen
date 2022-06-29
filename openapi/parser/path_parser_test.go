@@ -58,9 +58,19 @@ func TestPathParser(t *testing.T) {
 			},
 		},
 		{
+			Path: "/foo%20bar",
+			Expect: []openapi.PathPart{
+				{Raw: "/foo bar"},
+			},
+		},
+		{
 			Path:      "/foo/{bar}/{baz}",
 			Params:    []*openapi.Parameter{bar},
 			ExpectErr: `path parameter not specified: "baz"`,
+		},
+		{
+			Path:      "/foo/{",
+			ExpectErr: `invalid path: /foo/{`,
 		},
 		{
 			Path:      "/foo/{{",
@@ -77,6 +87,26 @@ func TestPathParser(t *testing.T) {
 		{
 			Path:      "/foo/{{}}",
 			ExpectErr: `invalid path: /foo/{{}}`,
+		},
+		{
+			Path:      "/foo/{/",
+			ExpectErr: `invalid path: /foo/{/`,
+		},
+		{
+			Path:      "foo/",
+			ExpectErr: `path MUST begin with a forward slash`,
+		},
+		{
+			Path:      "/foo?k=v",
+			ExpectErr: `path MUST NOT contain a query string`,
+		},
+		{
+			Path:      "/foo#frag",
+			ExpectErr: `path MUST NOT contain a fragment`,
+		},
+		{
+			Path:      "https://i-want-to-die.org/foo",
+			ExpectErr: `path MUST be relative`,
 		},
 	}
 

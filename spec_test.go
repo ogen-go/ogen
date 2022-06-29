@@ -26,6 +26,5 @@ func TestPropertiesJSON(t *testing.T) {
 
 	b, err := json.Marshal(props)
 	require.NoError(t, err)
-
 	require.Equal(t, data, string(b))
 }
