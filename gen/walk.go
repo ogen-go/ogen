@@ -61,13 +61,11 @@ func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*i
 func walkOpTypes(ops []*ir.Operation, walk func(*ir.Type) error) (err error) {
 	seen := make(map[*ir.Type]struct{})
 	visit := func(t *ir.Type) {
-		if err != nil || t == nil {
+		_, skip := seen[t]
+		if err != nil || t == nil || skip {
 			return
 		}
 
-		if _, ok := seen[t]; ok {
-			return
-		}
 		seen[t] = struct{}{}
 		err = walk(t)
 	}
