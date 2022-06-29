@@ -135,15 +135,10 @@ func run(ctx context.Context) error {
 	g.Go(func() error {
 		defer close(links)
 
-		for i, q := range queries {
-			results, err := query(ctx, Query{
-				Query: graphQLQuery,
-				Variables: QueryVariables{
-					Query: q,
-				},
-			})
+		for _, q := range queries {
+			results, err := search(ctx, q)
 			if err != nil {
-				return errors.Wrapf(err, "query: %d", i)
+				return err
 			}
 
 			for i, m := range results.Matches {

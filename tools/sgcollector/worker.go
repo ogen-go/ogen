@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
@@ -15,7 +16,6 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
-	"github.com/ogen-go/ogen/gen/genfs"
 )
 
 var (
@@ -104,23 +104,7 @@ func (n nopFs) WriteFile(string, []byte) error {
 	return nil
 }
 
-type filterTransport struct {
-	next    http.RoundTripper
-	allowed map[string]struct{}
-}
-
-func (f filterTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	host := req.Host
-	if u := req.URL; host == "" && u != nil {
-		host = u.Host
-	}
-	if _, ok := f.allowed[host]; !ok {
-		return nil, errors.Errorf("host %q is not allowed", host)
-	}
-	return f.next.RoundTrip(req)
-}
-
-func httpClient() *http.Client {
+func workerHTTPClient() *http.Client {
 	dc := http.DefaultClient
 	return &http.Client{
 		Transport: filterTransport{
@@ -131,7 +115,7 @@ func httpClient() *http.Client {
 		},
 		CheckRedirect: dc.CheckRedirect,
 		Jar:           dc.Jar,
-		Timeout:       dc.Timeout,
+		Timeout:       1 * time.Minute,
 	}
 }
 
@@ -161,7 +145,7 @@ func generate(data []byte, isYAML bool) *GenerateError {
 		InferSchemaType: true,
 		AllowRemote:     true,
 		Remote: gen.RemoteOptions{
-			HTTPClient: httpClient(),
+			HTTPClient: workerHTTPClient(),
 			ReadFile: func(string) ([]byte, error) {
 				return nil, errors.New("local file reference is not allowed")
 			},
