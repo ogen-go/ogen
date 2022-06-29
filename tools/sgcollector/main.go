@@ -146,13 +146,15 @@ func run(ctx context.Context) error {
 				return errors.Wrapf(err, "query: %d", i)
 			}
 
-			for _, m := range results.Matches {
+			for i, m := range results.Matches {
 				select {
 				case <-ctx.Done():
 					return nil
 				case links <- m:
 					total++
 				}
+				// Zero element to let GC collect FileMatch's fields.
+				results.Matches[i] = FileMatch{}
 			}
 		}
 		return nil
