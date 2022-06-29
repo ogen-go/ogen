@@ -19,7 +19,7 @@ import (
 )
 
 func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) (
-	req NilString,
+	req string,
 	close func() error,
 	rerr error,
 ) {
@@ -47,7 +47,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request NilString
+		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -59,28 +59,14 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) 
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			if err := request.Decode(d); err != nil {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := func() error {
-			if err := (validate.String{
-				MinLength:    0,
-				MinLengthSet: false,
-				MaxLength:    0,
-				MaxLengthSet: false,
-				Email:        false,
-				Hostname:     false,
-				Regex:        regexMap["(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"],
-			}).Validate(string(request.Value)); err != nil {
-				return errors.Wrap(err, "string")
-			}
-			return nil
-		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
 		}
 
 		return request, close, nil

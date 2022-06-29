@@ -56,23 +56,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // Nullable strings.
 //
 // POST /nullableStrings
-func (c *Client) NullableStrings(ctx context.Context, request NilString) (res NullableStringsOK, err error) {
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        regexMap["(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"],
-		}).Validate(string(request.Value)); err != nil {
-			return errors.Wrap(err, "string")
-		}
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
+func (c *Client) NullableStrings(ctx context.Context, request string) (res NullableStringsOK, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
