@@ -61,21 +61,24 @@ func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
 		}
 	}()
 
-	if err := generate(data, isYAML); err != nil {
-		var pse *GenerateError
-		if !errors.As(err, &pse) {
-			return errors.Wrap(err, "invalid schema")
-		}
-
+	pse := generate(data, isYAML)
+	if pse != nil {
 		if err := r.report(ctx, pse.stage, Report{
 			File:           m,
-			Error:          err.Error(),
+			Error:          pse.Error(),
 			NotImplemented: pse.notImpl,
 			Hash:           hash,
 		}); err != nil {
 			return errors.Wrap(err, "report")
 		}
-		return errors.Wrap(err, "generate")
+		return errors.Wrap(pse, "generate")
+	}
+
+	if err := r.report(ctx, Good, Report{
+		File: m,
+		Hash: hash,
+	}); err != nil {
+		return errors.Wrap(err, "report")
 	}
 	return nil
 }
@@ -132,7 +135,7 @@ func httpClient() *http.Client {
 	}
 }
 
-func generate(data []byte, isYAML bool) error {
+func generate(data []byte, isYAML bool) *GenerateError {
 	if isYAML {
 		j, err := convertYAMLtoJSON(data)
 		if err != nil {
@@ -150,7 +153,10 @@ func generate(data []byte, isYAML bool) error {
 		return &GenerateError{stage: Unmarshal, err: err}
 	}
 
-	var notImpl []string
+	var (
+		notImpl      []string
+		firstNotImpl error
+	)
 	g, err := gen.NewGenerator(spec, gen.Options{
 		InferSchemaType: true,
 		AllowRemote:     true,
@@ -167,9 +173,13 @@ func generate(data []byte, isYAML bool) error {
 					return
 				}
 			}
+			if firstNotImpl == nil {
+				firstNotImpl = err
+			}
 			notImpl = append(notImpl, name)
 		},
 	})
+
 	sort.Strings(notImpl)
 	if err != nil {
 		if as := new(gen.ErrParseSpec); errors.As(err, &as) {
@@ -186,6 +196,10 @@ func generate(data []byte, isYAML bool) error {
 			return &GenerateError{stage: Format, notImpl: notImpl, err: err}
 		}
 		return &GenerateError{stage: Template, notImpl: notImpl, err: err}
+	}
+
+	if len(notImpl) > 0 {
+		return &GenerateError{stage: NotImplemented, notImpl: notImpl, err: firstNotImpl}
 	}
 	return nil
 }
