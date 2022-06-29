@@ -394,6 +394,9 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		return nil, err
 	}
 
+	if mergedSchema.Ref == "" {
+		mergedSchema.Ref = schema.Ref
+	}
 	return g.generate(name, mergedSchema, false)
 }
 
