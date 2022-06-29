@@ -14,12 +14,19 @@ type (
 		Name string `json:"name"`
 	}
 
+	ExternalURL struct {
+		URL         string `json:"url"`
+		ServiceKind string `json:"serviceKind"`
+	}
+
 	File struct {
-		Name     string `json:"name"`
-		Size     int    `json:"size"`
-		Path     string `json:"path"`
-		ByteSize uint64 `json:"byteSize"`
-		Content  string `json:"content"`
+		Name         string        `json:"name"`
+		Size         int           `json:"size"`
+		Path         string        `json:"path"`
+		ByteSize     uint64        `json:"byteSize"`
+		Content      string        `json:"content"`
+		CanonicalURL string        `json:"canonicalURL"`
+		ExternalURLs []ExternalURL `json:"externalURLs"`
 	}
 
 	FileMatch struct {
@@ -64,8 +71,58 @@ type (
 )
 
 func (m FileMatch) Link() string {
-	return "https://" + m.Repository.Name + "/blob/-/" + m.File.Path
+	for _, external := range m.File.ExternalURLs {
+		return external.URL
+	}
+	return "https://sourcegraph.com" + m.File.CanonicalURL
 }
+
+const graphQLQuery = `query ($query: String!) {
+  search(query: $query, version: V2, patternType: regexp) {
+    results {
+      results {
+        __typename
+        ... on FileMatch {
+          ...FileMatchFields
+        }
+      }
+      limitHit
+      matchCount
+      elapsedMilliseconds
+      ...SearchResultsAlertFields
+    }
+  }
+}
+
+fragment FileMatchFields on FileMatch {
+  repository {
+    name
+  }
+  file {
+    name
+    path
+    canonicalURL
+    externalURLs {
+      serviceKind
+      url
+    }
+    byteSize
+    content
+  }
+}
+
+
+fragment SearchResultsAlertFields on SearchResults {
+  alert {
+    title
+    description
+    proposedQueries {
+      description
+      query
+    }
+  }
+}
+`
 
 func search(ctx context.Context, query string) (SearchResult, error) {
 	r, err := querySourcegraph(ctx, GraphQLQuery{

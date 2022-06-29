@@ -14,48 +14,6 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-const graphQLQuery = `query ($query: String!) {
-  search(query: $query, version: V2, patternType: regexp) {
-    results {
-      results {
-        __typename
-        ... on FileMatch {
-          ...FileMatchFields
-        }
-      }
-      limitHit
-      matchCount
-      elapsedMilliseconds
-      ...SearchResultsAlertFields
-    }
-  }
-}
-
-fragment FileMatchFields on FileMatch {
-  repository {
-    name
-  }
-  file {
-    name
-    path
-    byteSize
-    content
-  }
-}
-
-
-fragment SearchResultsAlertFields on SearchResults {
-  alert {
-    title
-    description
-    proposedQueries {
-      description
-      query
-    }
-  }
-}
-`
-
 func run(ctx context.Context) error {
 	var (
 		output = flag.String("output", "./corpus", "Path to corpus output")
