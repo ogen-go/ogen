@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
@@ -15,12 +16,12 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
-	"github.com/ogen-go/ogen/gen/genfs"
 )
 
-var errPanic = errors.New("panic")
-
-var bomPrefix = []byte{0xEF, 0xBB, 0xBF}
+var (
+	errPanic  = errors.New("panic")
+	bomPrefix = []byte{0xEF, 0xBB, 0xBF}
+)
 
 func convertYAMLtoJSON(data []byte) (_ []byte, rErr error) {
 	defer func() {
@@ -60,21 +61,24 @@ func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
 		}
 	}()
 
-	if err := generate(data, isYAML); err != nil {
-		var pse *GenerateError
-		if !errors.As(err, &pse) {
-			return errors.Wrap(err, "invalid schema")
-		}
-
+	pse := generate(data, isYAML)
+	if pse != nil {
 		if err := r.report(ctx, pse.stage, Report{
 			File:           m,
-			Error:          err.Error(),
+			Error:          pse.Error(),
 			NotImplemented: pse.notImpl,
 			Hash:           hash,
 		}); err != nil {
 			return errors.Wrap(err, "report")
 		}
-		return errors.Wrap(err, "generate")
+		return errors.Wrap(pse, "generate")
+	}
+
+	if err := r.report(ctx, Good, Report{
+		File: m,
+		Hash: hash,
+	}); err != nil {
+		return errors.Wrap(err, "report")
 	}
 	return nil
 }
@@ -94,34 +98,13 @@ func (p *GenerateError) Error() string {
 	return fmt.Sprintf("%s: %s", p.stage, p.err)
 }
 
-type errFs struct {
-	genfs.CheckFS
-}
+type nopFs struct{}
 
-func (n errFs) WriteFile(baseName string, source []byte) error {
-	if err := n.CheckFS.WriteFile(baseName, source); err != nil {
-		return &GenerateError{stage: Format, err: err}
-	}
+func (n nopFs) WriteFile(string, []byte) error {
 	return nil
 }
 
-type filterTransport struct {
-	next    http.RoundTripper
-	allowed map[string]struct{}
-}
-
-func (f filterTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	host := req.Host
-	if u := req.URL; host == "" && u != nil {
-		host = u.Host
-	}
-	if _, ok := f.allowed[host]; !ok {
-		return nil, errors.Errorf("host %q is not allowed", host)
-	}
-	return f.next.RoundTrip(req)
-}
-
-func httpClient() *http.Client {
+func workerHTTPClient() *http.Client {
 	dc := http.DefaultClient
 	return &http.Client{
 		Transport: filterTransport{
@@ -132,11 +115,11 @@ func httpClient() *http.Client {
 		},
 		CheckRedirect: dc.CheckRedirect,
 		Jar:           dc.Jar,
-		Timeout:       dc.Timeout,
+		Timeout:       1 * time.Minute,
 	}
 }
 
-func generate(data []byte, isYAML bool) error {
+func generate(data []byte, isYAML bool) *GenerateError {
 	if isYAML {
 		j, err := convertYAMLtoJSON(data)
 		if err != nil {
@@ -154,12 +137,15 @@ func generate(data []byte, isYAML bool) error {
 		return &GenerateError{stage: Unmarshal, err: err}
 	}
 
-	var notImpl []string
+	var (
+		notImpl      []string
+		firstNotImpl error
+	)
 	g, err := gen.NewGenerator(spec, gen.Options{
 		InferSchemaType: true,
 		AllowRemote:     true,
 		Remote: gen.RemoteOptions{
-			HTTPClient: httpClient(),
+			HTTPClient: workerHTTPClient(),
 			ReadFile: func(string) ([]byte, error) {
 				return nil, errors.New("local file reference is not allowed")
 			},
@@ -171,9 +157,13 @@ func generate(data []byte, isYAML bool) error {
 					return
 				}
 			}
+			if firstNotImpl == nil {
+				firstNotImpl = err
+			}
 			notImpl = append(notImpl, name)
 		},
 	})
+
 	sort.Strings(notImpl)
 	if err != nil {
 		if as := new(gen.ErrParseSpec); errors.As(err, &as) {
@@ -185,12 +175,15 @@ func generate(data []byte, isYAML bool) error {
 		return &GenerateError{stage: BuildIR, notImpl: notImpl, err: err}
 	}
 
-	if err := g.WriteSource(errFs{}, "api"); err != nil {
-		var pse *GenerateError
-		if errors.As(err, &pse) {
-			return err
+	if err := g.WriteSource(nopFs{}, "api"); err != nil {
+		if as := new(gen.ErrGoFormat); errors.As(err, &as) {
+			return &GenerateError{stage: Format, notImpl: notImpl, err: err}
 		}
 		return &GenerateError{stage: Template, notImpl: notImpl, err: err}
+	}
+
+	if len(notImpl) > 0 {
+		return &GenerateError{stage: NotImplemented, notImpl: notImpl, err: firstNotImpl}
 	}
 	return nil
 }

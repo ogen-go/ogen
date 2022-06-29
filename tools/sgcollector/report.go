@@ -15,7 +15,7 @@ import (
 
 type Report struct {
 	File           FileMatch
-	Error          string
+	Error          string            `json:",omitempty"`
 	NotImplemented []string          `json:",omitempty"`
 	Hash           [sha256.Size]byte `json:"-"`
 }

@@ -127,25 +127,32 @@ type writer struct {
 }
 
 // Generate executes template to file using config.
-func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) error {
+func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (rerr error) {
 	if w.wrote[fileName] {
 		return errors.Errorf("name collision (already wrote %s)", fileName)
 	}
 
 	w.buf.Reset()
 	if err := w.t.ExecuteTemplate(w.buf, templateName, cfg); err != nil {
-		return errors.Wrapf(err, "failed to execute template %s for %s", templateName, fileName)
+		return errors.Wrapf(err, "execute template %q for %q", templateName, fileName)
 	}
 
-	b, err := imports.Process(fileName, w.buf.Bytes(), nil)
+	b := w.buf.Bytes()
+	defer func() {
+		if rerr != nil {
+			_ = os.WriteFile(fileName+".dump", b, 0o600)
+		}
+	}()
+
+	b, err := imports.Process(fileName, b, nil)
 	if err != nil {
-		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0o600)
-		return errors.Wrap(err, "format imports")
+		return &ErrGoFormat{
+			err: err,
+		}
 	}
 
 	if err := w.fs.WriteFile(fileName, b); err != nil {
-		_ = os.WriteFile(fileName+".dump", b, 0o600)
-		return errors.Wrapf(err, "failed to write file %s", fileName)
+		return errors.Wrapf(err, "write %q", fileName)
 	}
 	w.wrote[fileName] = true
 

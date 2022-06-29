@@ -3,71 +3,39 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"os"
 	"os/signal"
 	"runtime"
 	"runtime/pprof"
+	"strconv"
 	"sync"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 	"golang.org/x/sync/errgroup"
+
+	"github.com/ogen-go/ogen/internal/ogenzap"
 )
-
-const graphQLQuery = `query ($query: String!) {
-  search(query: $query, version: V2, patternType: regexp) {
-    results {
-      results {
-        __typename
-        ... on FileMatch {
-          ...FileMatchFields
-        }
-      }
-      limitHit
-      matchCount
-      elapsedMilliseconds
-      ...SearchResultsAlertFields
-    }
-  }
-}
-
-fragment FileMatchFields on FileMatch {
-  repository {
-    name
-  }
-  file {
-    name
-    path
-    byteSize
-    content
-  }
-}
-
-
-fragment SearchResultsAlertFields on SearchResults {
-  alert {
-    title
-    description
-    proposedQueries {
-      description
-      query
-    }
-  }
-}
-`
 
 func run(ctx context.Context) error {
 	var (
-		output         = flag.String("output", "./corpus", "Path to corpus output")
-		stats          = flag.String("stats", "", "Path to stats output")
-		clean          = flag.Bool("clean", false, "Clean generated files before generation")
-		generateYaml   = flag.Bool("yaml", false, "Query yaml files")
-		q              = flag.String("query", "", "Sourcegraph query")
-		workers        = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+		output = flag.String("output", "./corpus", "Path to corpus output")
+		clean  = flag.Bool("clean", false, "Clean generated files before generation")
+		stats  = flag.String("stats", "", "Path to stats output")
+
+		generateYaml = flag.Bool("yaml", false, "Query yaml files")
+		q            = flag.String("query", "", "Sourcegraph query")
+		filter       = flag.String("filter", "", "Additional filter to concatenate to the query")
+
+		workers = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
 		memProfileRate = flag.Int64("memprofilerate", 0, "Set runtime.MemProfileRate")
+
+		logOptions ogenzap.Options
 	)
+	logOptions.RegisterFlags(flag.CommandLine)
 	flag.Parse()
 
 	if val := *cpuProfile; val != "" {
@@ -103,23 +71,37 @@ func run(ctx context.Context) error {
 		}()
 	}
 
+	logger, err := ogenzap.Create(logOptions)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		_ = logger.Sync()
+	}()
+
 	var queries []string
 	if *q != "" {
 		queries = []string{*q}
 	} else {
 		queries = []string{
-			`(openapi|"openapi"):\s?"3 file:.*\.yml$`,
-			`(openapi|"openapi"):\s+3 file:.*\.yml$`,
-			`(openapi|"openapi"):\s?"3 file:.*\.yaml$`,
-			`(openapi|"openapi"):\s+3 file:.*\.yaml$`,
 			`"openapi":"3 file:.*\.json$`,
 			`"openapi":\s+"3 file:.*\.json$`,
+		}
+		if *generateYaml {
+			queries = append(queries,
+				`(openapi|"openapi"):\s?"3 file:.*\.yml$`,
+				`(openapi|"openapi"):\s+3 file:.*\.yml$`,
+				`(openapi|"openapi"):\s?"3 file:.*\.yaml$`,
+				`(openapi|"openapi"):\s+3 file:.*\.yaml$`,
+			)
 		}
 		for i := range queries {
 			queries[i] += ` count:all -repo:^github\.com/ogen-go/corpus$`
 		}
-		if !(*generateYaml) {
-			queries = queries[2:]
+	}
+	if f := *filter; f != "" {
+		for i := range queries {
+			queries[i] += " " + f
 		}
 	}
 
@@ -134,24 +116,26 @@ func run(ctx context.Context) error {
 	g.Go(func() error {
 		defer close(links)
 
-		for i, q := range queries {
-			results, err := query(ctx, Query{
-				Query: graphQLQuery,
-				Variables: QueryVariables{
-					Query: q,
-				},
-			})
+		for _, q := range queries {
+			results, err := search(ctx, q)
 			if err != nil {
-				return errors.Wrapf(err, "query: %d", i)
+				return err
 			}
+			logger.Info("Query complete",
+				zap.String("query", q),
+				zap.Int("total", len(results.Matches)),
+				zap.Int("match_count", results.MatchCount),
+			)
 
-			for _, m := range results.Matches {
+			for i, m := range results.Matches {
 				select {
 				case <-ctx.Done():
 					return nil
 				case links <- m:
 					total++
 				}
+				// Zero element to let GC collect FileMatch's fields.
+				results.Matches[i] = FileMatch{}
 			}
 		}
 		return nil
@@ -163,6 +147,7 @@ func run(ctx context.Context) error {
 	var workersWg sync.WaitGroup
 	for i := 0; i < *workers; i++ {
 		workersWg.Add(1)
+		logger := logger.Named("worker"+strconv.Itoa(i))
 		g.Go(func() error {
 			defer workersWg.Done()
 			for {
@@ -174,9 +159,16 @@ func run(ctx context.Context) error {
 						return nil
 					}
 
-					link := m.Link()
-					if err := worker(ctx, m, reporters); err != nil {
-						fmt.Printf("Check %q: %v\n", link, err)
+					err := worker(ctx, m, reporters)
+					if err != nil {
+						logger.Error("Error",
+							zap.Inline(m),
+							zap.Error(err),
+						)
+					} else {
+						logger.Debug("Success",
+							zap.Inline(m),
+						)
 					}
 				}
 			}

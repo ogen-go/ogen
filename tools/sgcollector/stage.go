@@ -11,12 +11,14 @@ const (
 	BuildRouter
 	Template
 	Format
+	NotImplemented
+	Good
 	Crash
 	last
 )
 
 func (s Stage) String() string {
-	r := [9]string{
+	r := [last]string{
 		"invalidYAML",
 		"invalidJSON",
 		"unmarshal",
@@ -25,6 +27,8 @@ func (s Stage) String() string {
 		"buildRouter",
 		"template",
 		"format",
+		"notImplemented",
+		"good",
 		last - 1: "crash",
 	}
 	if int(s) >= len(r) {
