@@ -147,7 +147,7 @@ func run(ctx context.Context) error {
 	var workersWg sync.WaitGroup
 	for i := 0; i < *workers; i++ {
 		workersWg.Add(1)
-		logger := logger.Named("worker"+strconv.Itoa(i))
+		logger := logger.Named("worker" + strconv.Itoa(i))
 		g.Go(func() error {
 			defer workersWg.Done()
 			for {
@@ -163,7 +163,7 @@ func run(ctx context.Context) error {
 					if err != nil {
 						logger.Error("Error",
 							zap.Inline(m),
-							zap.Error(err),
+							zap.Error(noVerboseError{err: err}),
 						)
 					} else {
 						logger.Debug("Success",
