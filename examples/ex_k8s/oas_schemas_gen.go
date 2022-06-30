@@ -3,6 +3,7 @@
 package api
 
 import (
+	"io"
 	"time"
 )
 
@@ -24939,6 +24940,16 @@ func (*ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) readCoreV1Namespa
 type ReadCoreV1NamespacedPodLogOKApplicationJSON string
 
 func (*ReadCoreV1NamespacedPodLogOKApplicationJSON) readCoreV1NamespacedPodLogRes() {}
+
+type ReadCoreV1NamespacedPodLogOKTextPlain struct {
+	Data io.Reader
+}
+
+func (s ReadCoreV1NamespacedPodLogOKTextPlain) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ReadCoreV1NamespacedPodLogOKTextPlain) readCoreV1NamespacedPodLogRes() {}
 
 // ReadCoreV1NamespacedPodLogUnauthorized is response for ReadCoreV1NamespacedPodLog operation.
 type ReadCoreV1NamespacedPodLogUnauthorized struct{}

@@ -3,6 +3,7 @@
 package api
 
 import (
+	"io"
 	"net/http"
 
 	"github.com/go-faster/errors"
@@ -8462,6 +8463,16 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 	default:
 		return errors.Errorf("/meta"+`: unexpected response type: %T`, response)
 	}
+}
+func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "text/plain")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	if _, err := io.Copy(w, response); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
 }
 func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")

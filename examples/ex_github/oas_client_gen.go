@@ -27805,6 +27805,50 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	return result, nil
 }
 
+// MetaGetZen invokes meta/get-zen operation.
+//
+// Get a random sentence from the Zen of GitHub.
+//
+// GET /zen
+func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("meta/get-zen"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGetZen",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/zen"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMetaGetZenResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // MetaRoot invokes meta/root operation.
 //
 // Get Hypermedia links to resources accessible in GitHub's REST API.

@@ -13438,6 +13438,42 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleMetaGetZenRequest handles meta/get-zen operation.
+//
+// GET /zen
+func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("meta/get-zen"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MetaGetZen",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+
+	response, err := s.h.MetaGetZen(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeMetaGetZenResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleMetaRootRequest handles meta/root operation.
 //
 // GET /
