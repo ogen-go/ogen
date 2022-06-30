@@ -72,7 +72,6 @@ type (
 )
 
 func (m FileMatch) MarshalLogObject(e zapcore.ObjectEncoder) error {
-	e.AddString("repo", m.Repository.Name)
 	e.AddString("link", m.Link())
 	return nil
 }
