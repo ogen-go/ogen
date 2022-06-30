@@ -2,6 +2,15 @@ package main
 
 type Stage int
 
+func (s Stage) OnlyCounter() bool {
+	switch s {
+	case NotImplemented, Good:
+		return true
+	default:
+		return false
+	}
+}
+
 const (
 	InvalidYAML Stage = iota
 	InvalidJSON

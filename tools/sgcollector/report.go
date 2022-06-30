@@ -21,6 +21,7 @@ type Report struct {
 }
 
 type Reporter struct {
+	stage   Stage
 	ch      chan Report
 	counter int
 }
@@ -38,14 +39,16 @@ func (r *Reporter) run(ctx context.Context, path string) error {
 				return nil
 			}
 
-			data, err := json.MarshalIndent(report, "", "\t")
-			if err != nil {
-				return errors.Wrap(err, "encode error")
-			}
+			if !r.stage.OnlyCounter() {
+				data, err := json.MarshalIndent(report, "", "\t")
+				if err != nil {
+					return errors.Wrap(err, "encode error")
+				}
 
-			writePath := filepath.Join(path, fmt.Sprintf("%x.json", report.Hash))
-			if err := os.WriteFile(writePath, data, 0o750); err != nil {
-				return err
+				writePath := filepath.Join(path, fmt.Sprintf("%x.json", report.Hash))
+				if err := os.WriteFile(writePath, data, 0o750); err != nil {
+					return err
+				}
 			}
 			r.counter++
 		}
@@ -63,7 +66,9 @@ type Reporters struct {
 func (r *Reporters) init(buf int) {
 	for i := range r.reporters {
 		r.reporters[i] = &Reporter{
-			ch: make(chan Report, buf),
+			stage:   Stage(i),
+			ch:      make(chan Report, buf),
+			counter: 0,
 		}
 	}
 }
