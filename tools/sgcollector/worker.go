@@ -83,21 +83,6 @@ func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
 	return nil
 }
 
-// GenerateError reports that generation failed.
-type GenerateError struct {
-	stage   Stage
-	notImpl []string
-	err     error
-}
-
-func (p *GenerateError) Unwrap() error {
-	return p.err
-}
-
-func (p *GenerateError) Error() string {
-	return fmt.Sprintf("%s: %s", p.stage, p.err)
-}
-
 type nopFs struct{}
 
 func (n nopFs) WriteFile(string, []byte) error {
