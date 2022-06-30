@@ -3,7 +3,6 @@ package parser
 import (
 	"context"
 	"encoding/json"
-	"net/url"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -12,83 +11,6 @@ import (
 	"github.com/ogen-go/ogen/jsonpointer"
 	"github.com/ogen-go/ogen/openapi"
 )
-
-type refKey struct {
-	loc string
-	ref string
-}
-
-func (r *refKey) fromURL(u *url.URL) {
-	{
-		// Make copy.
-		u2 := *u
-		u2.Fragment = ""
-		r.loc = u2.String()
-	}
-	r.ref = "#" + u.Fragment
-}
-
-type resolveCtx struct {
-	// Location stack. Used for context-depending resolving.
-	//
-	// For resolve trace like
-	//
-	// 	"#/components/schemas/Schema" ->
-	// 	"https://example.com/schema#Schema" ->
-	//	"#/definitions/SchemaProperty"
-	//
-	// "#/definitions/SchemaProperty" should be resolved against "https://example.com/schema".
-	locstack []string
-	// Store references to detect infinite recursive references.
-	refs       map[refKey]struct{}
-	depthLimit int
-}
-
-func newResolveCtx(depthLimit int) *resolveCtx {
-	return &resolveCtx{
-		locstack:   nil,
-		refs:       map[refKey]struct{}{},
-		depthLimit: depthLimit,
-	}
-}
-
-func (r *resolveCtx) add(ref string) (key refKey, _ error) {
-	u, err := url.Parse(ref)
-	if err != nil {
-		return refKey{}, err
-	}
-	key.fromURL(u)
-
-	if r.depthLimit <= 0 {
-		return refKey{}, errors.New("depth limit exceeded")
-	}
-	if _, ok := r.refs[key]; ok {
-		return key, errors.New("infinite recursion")
-	}
-	r.refs[key] = struct{}{}
-	r.depthLimit--
-
-	if key.loc != "" {
-		r.locstack = append(r.locstack, key.loc)
-	}
-	return key, nil
-}
-
-func (r *resolveCtx) delete(key refKey) {
-	r.depthLimit++
-	delete(r.refs, key)
-	if key.loc != "" && len(r.locstack) > 0 {
-		r.locstack = r.locstack[:len(r.locstack)-1]
-	}
-}
-
-func (r *resolveCtx) lastLoc() string {
-	s := r.locstack
-	if len(s) == 0 {
-		return ""
-	}
-	return s[len(s)-1]
-}
 
 func (p *parser) getSchema(ctx *resolveCtx) ([]byte, error) {
 	loc := ctx.lastLoc()
@@ -107,18 +29,21 @@ func (p *parser) getSchema(ctx *resolveCtx) ([]byte, error) {
 	return r, nil
 }
 
-func (p *parser) resolve(key refKey, ctx *resolveCtx, to interface{}) error {
-	schema, err := p.getSchema(ctx)
-	if err != nil {
-		return err
-	}
-
-	data, err := jsonpointer.Resolve(key.ref, schema)
+func resolvePointer(root []byte, ptr string, to interface{}) error {
+	data, err := jsonpointer.Resolve(ptr, root)
 	if err != nil {
 		return err
 	}
 
 	return json.Unmarshal(data, to)
+}
+
+func (p *parser) resolve(key refKey, ctx *resolveCtx, to interface{}) error {
+	schema, err := p.getSchema(ctx)
+	if err != nil {
+		return err
+	}
+	return resolvePointer(schema, key.ref, to)
 }
 
 func (p *parser) resolveRequestBody(ref string, ctx *resolveCtx) (*openapi.RequestBody, error) {
@@ -140,10 +65,13 @@ func (p *parser) resolveRequestBody(ref string, ctx *resolveCtx) (*openapi.Reque
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.RequestBodies[name]
-		if !found {
-			return nil, errors.New("component by reference not found")
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
 		}
-		component = c
 	} else {
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
@@ -179,10 +107,13 @@ func (p *parser) resolveResponse(ref string, ctx *resolveCtx) (*openapi.Response
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Responses[name]
-		if !found {
-			return nil, errors.New("component by reference not found")
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
 		}
-		component = c
 	} else {
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
@@ -218,10 +149,13 @@ func (p *parser) resolveParameter(ref string, ctx *resolveCtx) (*openapi.Paramet
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Parameters[name]
-		if !found {
-			return nil, errors.New("component by reference not found")
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
 		}
-		component = c
 	} else {
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
@@ -257,10 +191,13 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *resolveCtx) (*openap
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Headers[name]
-		if !found {
-			return nil, errors.New("component by reference not found")
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
 		}
-		component = c
 	} else {
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
@@ -296,10 +233,13 @@ func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, 
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Examples[name]
-		if !found {
-			return nil, errors.New("component by reference not found")
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
 		}
-		component = c
 	} else {
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err
@@ -335,10 +275,13 @@ func (p *parser) resolveSecuritySchema(ref string, ctx *resolveCtx) (*ogen.Secur
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.SecuritySchemes[name]
-		if !found {
-			return nil, errors.New("component by reference not found")
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
 		}
-		component = c
 	} else {
 		if err := p.resolve(key, ctx, &component); err != nil {
 			return nil, err

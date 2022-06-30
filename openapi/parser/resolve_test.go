@@ -3,6 +3,7 @@ package parser
 import (
 	"context"
 	"encoding/json"
+	"sort"
 	"testing"
 
 	"github.com/go-faster/errors"
@@ -268,6 +269,232 @@ func TestExternalReference(t *testing.T) {
 			Responses: map[string]*openapi.Response{
 				"LocalResponse": response,
 			},
+		},
+	}, spec)
+}
+
+func TestComplicatedReference(t *testing.T) {
+	root := &ogen.Spec{
+		Paths: map[string]*ogen.PathItem{
+			"/get": {
+				Get: &ogen.Operation{
+					OperationID: "testGet",
+					Description: "operation description",
+					Parameters: []*ogen.Parameter{
+						{Ref: "#/paths/~1post/post/parameters/0"},
+					},
+					RequestBody: &ogen.RequestBody{
+						Ref: "#/paths/~1post/post/requestBody",
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {
+							Ref: "#/paths/~1post/post/responses/200",
+						},
+						"201": {
+							Headers: map[string]*ogen.Header{
+								"ResponseHeader": {
+									Schema: &ogen.Schema{Type: "string"},
+									Style:  "simple",
+								},
+							},
+							Content: map[string]ogen.Media{
+								"application/json": {
+									Schema: &ogen.Schema{Type: "string"},
+								},
+							},
+						},
+					},
+				},
+			},
+			"/post": {
+				Post: &ogen.Operation{
+					OperationID: "testPost",
+					Description: "operation description",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:  "param",
+							In:    "query",
+							Style: "form",
+							Schema: &ogen.Schema{
+								Type: "string",
+							},
+						},
+					},
+					RequestBody: &ogen.RequestBody{
+						Content: map[string]ogen.Media{
+							"application/json": {
+								Schema: &ogen.Schema{
+									Type: "string",
+								},
+							},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {
+							Headers: map[string]*ogen.Header{
+								"ResponseHeader": {
+									Schema: &ogen.Schema{Type: "string"},
+									Style:  "simple",
+								},
+							},
+							Content: map[string]ogen.Media{
+								"application/json": {
+									Schema: &ogen.Schema{
+										Ref: "#/paths/~1post/post/requestBody/content/application~1json/schema",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	a := require.New(t)
+
+	raw, err := json.Marshal(root)
+	a.NoError(err)
+	root.Raw = raw
+
+	spec, err := Parse(root, Settings{})
+	a.NoError(err)
+
+	var (
+		responseHeader = &openapi.Header{
+			Name:   "ResponseHeader",
+			Schema: &jsonschema.Schema{Type: "string"},
+			In:     openapi.LocationHeader,
+			Style:  openapi.HeaderStyleSimple,
+		}
+		testGet = &openapi.Operation{
+			OperationID: "testGet",
+			Description: "operation description",
+			HTTPMethod:  "get",
+			Path: openapi.Path{
+				{Raw: "/get"},
+			},
+			Parameters: []*openapi.Parameter{
+				{
+					Ref:  "#/paths/~1post/post/parameters/0",
+					Name: "param",
+					Schema: &jsonschema.Schema{
+						Type: "string",
+					},
+					In:      openapi.LocationQuery,
+					Style:   openapi.QueryStyleForm,
+					Explode: true,
+				},
+			},
+			RequestBody: &openapi.RequestBody{
+				Ref: "#/paths/~1post/post/requestBody",
+				Content: map[string]*openapi.MediaType{
+					"application/json": {
+						Schema: &jsonschema.Schema{
+							Type: "string",
+						},
+						Examples: map[string]*openapi.Example{},
+						Encoding: map[string]*openapi.Encoding{},
+					},
+				},
+			},
+			Security: []openapi.SecurityRequirements{},
+			Responses: map[string]*openapi.Response{
+				"200": {
+					Ref: "#/paths/~1post/post/responses/200",
+					Headers: map[string]*openapi.Header{
+						"ResponseHeader": responseHeader,
+					},
+					Content: map[string]*openapi.MediaType{
+						"application/json": {
+							Schema: &jsonschema.Schema{
+								Ref:  "#/paths/~1post/post/requestBody/content/application~1json/schema",
+								Type: "string",
+							},
+							Examples: map[string]*openapi.Example{},
+							Encoding: map[string]*openapi.Encoding{},
+						},
+					},
+				},
+				"201": {
+					Headers: map[string]*openapi.Header{
+						"ResponseHeader": responseHeader,
+					},
+					Content: map[string]*openapi.MediaType{
+						"application/json": {
+							Schema:   &jsonschema.Schema{Type: "string"},
+							Examples: map[string]*openapi.Example{},
+							Encoding: map[string]*openapi.Encoding{},
+						},
+					},
+				},
+			},
+		}
+		testPost = &openapi.Operation{
+			OperationID: "testPost",
+			Description: "operation description",
+			HTTPMethod:  "post",
+			Path: openapi.Path{
+				{Raw: "/post"},
+			},
+			Parameters: []*openapi.Parameter{
+				{
+					Name: "param",
+					Schema: &jsonschema.Schema{
+						Type: "string",
+					},
+					In:      openapi.LocationQuery,
+					Style:   openapi.QueryStyleForm,
+					Explode: true,
+				},
+			},
+			RequestBody: &openapi.RequestBody{
+				Content: map[string]*openapi.MediaType{
+					"application/json": {
+						Schema: &jsonschema.Schema{
+							Type: "string",
+						},
+						Examples: map[string]*openapi.Example{},
+						Encoding: map[string]*openapi.Encoding{},
+					},
+				},
+			},
+			Security: []openapi.SecurityRequirements{},
+			Responses: map[string]*openapi.Response{
+				"200": {
+					Headers: map[string]*openapi.Header{
+						"ResponseHeader": responseHeader,
+					},
+					Content: map[string]*openapi.MediaType{
+						"application/json": {
+							Schema: &jsonschema.Schema{
+								Ref:  "#/paths/~1post/post/requestBody/content/application~1json/schema",
+								Type: "string",
+							},
+							Examples: map[string]*openapi.Example{},
+							Encoding: map[string]*openapi.Encoding{},
+						},
+					},
+				},
+			},
+		}
+	)
+	{
+		s := spec.Operations
+		sort.Slice(s, func(i, j int) bool {
+			return s[i].OperationID < s[j].OperationID
+		})
+	}
+	a.Equal(&openapi.API{
+		Operations: []*openapi.Operation{
+			testGet,
+			testPost,
+		},
+		Components: &openapi.Components{
+			Parameters:    map[string]*openapi.Parameter{},
+			Schemas:       map[string]*jsonschema.Schema{},
+			RequestBodies: map[string]*openapi.RequestBody{},
+			Responses:     map[string]*openapi.Response{},
 		},
 	}, spec)
 }
