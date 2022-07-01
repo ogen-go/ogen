@@ -49,6 +49,12 @@ func (t testHTTPResponses) OctetStreamEmptySchema(ctx context.Context) (api.Octe
 	}, nil
 }
 
+func (t testHTTPResponses) TextPlainBinaryStringSchema(ctx context.Context) (api.TextPlainBinaryStringSchemaOK, error) {
+	return api.TextPlainBinaryStringSchemaOK{
+		Data: bytes.NewReader(t.data),
+	}, nil
+}
+
 func (t testHTTPResponses) Headers200(ctx context.Context) (api.Headers200OK, error) {
 	return api.Headers200OK{
 		TestHeader: "foo",
@@ -119,6 +125,13 @@ func TestResponses(t *testing.T) {
 	}
 	{
 		r, err := client.OctetStreamEmptySchema(ctx)
+		a.NoError(err)
+		data, err := io.ReadAll(r.Data)
+		a.NoError(err)
+		a.Equal(testData, data)
+	}
+	{
+		r, err := client.TextPlainBinaryStringSchema(ctx)
 		a.NoError(err)
 		data, err := io.ReadAll(r.Data)
 		a.NoError(err)

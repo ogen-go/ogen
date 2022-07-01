@@ -41,7 +41,15 @@
         },
         "responses": {
           "200": {
-            "description": "Ok"
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
           }
         }
       }
@@ -82,7 +90,15 @@
         },
         "responses": {
           "200": {
-            "description": "Ok"
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
           }
         }
       }
