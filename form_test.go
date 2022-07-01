@@ -109,29 +109,60 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMul
 }
 
 func TestURIEncodingE2E(t *testing.T) {
-	a := assert.New(t)
-	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
-	defer cancel()
-
-	handler := &testFormServer{
-		a:               a,
-		sampleAPIServer: new(sampleAPIServer),
+	tests := []struct {
+		name        string
+		serverSetup func(h http.Handler) *httptest.Server
+	}{
+		{
+			`Plain`,
+			httptest.NewServer,
+		},
+		{
+			`Redirect`,
+			func(h http.Handler) *httptest.Server {
+				mux := http.NewServeMux()
+				mux.HandleFunc("/testFormURLEncoded", func(w http.ResponseWriter, r *http.Request) {
+					w.Header().Set("Location", "/redirectTo")
+					w.WriteHeader(http.StatusPermanentRedirect)
+				})
+				mux.HandleFunc("/redirectTo", func(w http.ResponseWriter, r *http.Request) {
+					// Overwrite the request URI for ogen handler.
+					r.URL = &url.URL{Path: "/testFormURLEncoded"}
+					h.ServeHTTP(w, r)
+				})
+				return httptest.NewServer(mux)
+			},
+		},
 	}
-	apiServer, err := api.NewServer(handler, handler)
-	require.NoError(t, err)
 
-	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-		a.NoError(req.ParseForm())
-		checkTestFormValues(a, req.PostForm)
-		apiServer.ServeHTTP(w, req)
-	}))
-	defer s.Close()
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			a := assert.New(t)
+			ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
+			defer cancel()
 
-	client, err := api.NewClient(s.URL, handler)
-	require.NoError(t, err)
+			handler := &testFormServer{
+				a:               a,
+				sampleAPIServer: new(sampleAPIServer),
+			}
+			apiServer, err := api.NewServer(handler, handler)
+			require.NoError(t, err)
 
-	_, err = client.TestFormURLEncoded(ctx, testForm())
-	a.NoError(err)
+			s := tt.serverSetup(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+				a.NoError(req.ParseForm())
+				checkTestFormValues(a, req.PostForm)
+				apiServer.ServeHTTP(w, req)
+			}))
+			defer s.Close()
+
+			client, err := api.NewClient(s.URL, handler)
+			require.NoError(t, err)
+
+			_, err = client.TestFormURLEncoded(ctx, testForm())
+			a.NoError(err)
+		})
+	}
 }
 
 func TestMultipartEncodingE2E(t *testing.T) {
