@@ -4,321 +4,242 @@ package api
 
 import (
 	"bytes"
-	"io"
+	"net/http"
 
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 func encodeCreateSnapshotRequestJSON(
 	req SnapshotCreateParams,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeCreateSyncActionRequestJSON(
 	req InstanceActionInfo,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeLoadSnapshotRequestJSON(
 	req SnapshotLoadParams,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeMmdsConfigPutRequestJSON(
 	req MmdsConfig,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeMmdsPatchRequestJSON(
 	req *MmdsPatchReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 	if req != nil {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeMmdsPutRequestJSON(
 	req *MmdsPutReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 	if req != nil {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePatchBalloonRequestJSON(
 	req BalloonUpdate,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePatchBalloonStatsIntervalRequestJSON(
 	req BalloonStatsUpdate,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePatchGuestDriveByIDRequestJSON(
 	req PartialDrive,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePatchGuestNetworkInterfaceByIDRequestJSON(
 	req PartialNetworkInterface,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePatchMachineConfigurationRequestJSON(
 	req OptMachineConfiguration,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePatchVmRequestJSON(
 	req VM,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutBalloonRequestJSON(
 	req Balloon,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutGuestBootSourceRequestJSON(
 	req BootSource,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutGuestDriveByIDRequestJSON(
 	req Drive,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutGuestNetworkInterfaceByIDRequestJSON(
 	req NetworkInterface,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutGuestVsockRequestJSON(
 	req Vsock,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutLoggerRequestJSON(
 	req Logger,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutMachineConfigurationRequestJSON(
 	req OptMachineConfiguration,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePutMetricsRequestJSON(
 	req Metrics,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }

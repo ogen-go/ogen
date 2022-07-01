@@ -102,10 +102,9 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- template "encode_query_parameters" $op }}
 	{{- end }}
 
-	{{ if $op.Request }}
-	{{- template "encode_request_body" $op }}
-	{{- else }}
 	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
+	{{- if $op.Request }}
+	{{- template "encode_request_body" $op }}
 	{{- end }}
 
 	{{- if $op.HasHeaderParams }}
@@ -137,57 +136,28 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 
 {{ define "encode_request_body" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
-var (
-	contentType string
-	reqBody func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-)
 {{- $requestsLength := len $.Request.Contents }}
+
 {{- if eq $requestsLength 1 }}
-{{- range $contentType, $type := $.Request.Contents }}
-	contentType = {{ quote $contentType }}
-	fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $.Name }}Request{{ $contentType.Name }}(request, span)
-	if err != nil {
+	{{- range $contentType, $type := $.Request.Contents }}
+	if err := encode{{ $.Name }}Request{{ $contentType.Name }}(request, r); err != nil {
 		return res, err
 	}
-	reqBody = fn
-    {{- if $contentType.MultipartForm }}
-	contentType = ct
-    {{- end }}
-{{- end }}
-{{- else }}
-{{- /* Multiple requests */}}
-switch req := request.(type) {
-{{- range $contentType, $type := $.Request.Contents }}
-case *{{ $type.Go }}:
-	contentType = {{ quote $contentType }}
-	fn, {{ if $contentType.MultipartForm }}ct,{{ end }} err := encode{{ $.Name }}Request{{ $contentType.Name }}(*req, span)
-	if err != nil {
-		return res, err
-	}
-	reqBody = fn
-	{{- if $contentType.MultipartForm }}
-	contentType = ct
 	{{- end }}
-{{- end }}
-default:
-	return res, errors.Errorf("unexpected request type: %T", request)
-}
-{{- end }}
-
-var r *http.Request
-if reqBody != nil {
-	body, err := reqBody()
-	if err != nil {
-		return res, errors.Wrap(err, "request body")
+{{- else }}
+	{{- /* Multiple requests */}}
+	switch req := request.(type) {
+	{{- range $contentType, $type := $.Request.Contents }}
+	case *{{ $type.Go }}:
+		if err := encode{{ $.Name }}Request{{ $contentType.Name }}(*req, r); err != nil {
+			return res, err
+		}
+	{{- end }}
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
 	}
-	defer body.Close()
+{{- end }}
 
-	r = ht.NewRequest(ctx, {{ $.Spec.HTTPMethod | upper | quote }}, u, body)
-	r.GetBody = reqBody
-	r.Header.Set("Content-Type", contentType)
-} else {
-	r = ht.NewRequest(ctx, {{ $.Spec.HTTPMethod | upper | quote }}, u, nil)
-}
 {{ end }}
 
 {{ define "encode_cookie_params" }}

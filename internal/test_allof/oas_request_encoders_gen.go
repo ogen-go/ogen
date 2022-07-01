@@ -4,12 +4,11 @@ package api
 
 import (
 	"bytes"
-	"io"
 	"mime/multipart"
+	"net/http"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -18,72 +17,52 @@ import (
 
 func encodeNullableStringsRequestJSON(
 	req string,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	e.Str(req)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeObjectsWithConflictingArrayPropertyRequestJSON(
 	req ObjectsWithConflictingArrayPropertyReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeObjectsWithConflictingPropertiesRequestJSON(
 	req ObjectsWithConflictingPropertiesReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeReferencedAllofRequestJSON(
 	req ReferencedAllofApplicationJSON,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeReferencedAllofRequest(
 	req ReferencedAllofMultipartFormData,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -97,7 +76,7 @@ func encodeReferencedAllofRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(string(request.State)))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -110,7 +89,7 @@ func encodeReferencedAllofRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.UUIDToString(request.ID))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -123,47 +102,40 @@ func encodeReferencedAllofRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return request.Location.EncodeURI(e)
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
 func encodeReferencedAllofOptionalRequestJSON(
 	req ReferencedAllofOptionalApplicationJSON,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeReferencedAllofOptionalRequest(
 	req ReferencedAllofOptionalMultipartFormData,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	request := req.Value
 
@@ -178,7 +150,7 @@ func encodeReferencedAllofOptionalRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(string(request.State)))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -191,7 +163,7 @@ func encodeReferencedAllofOptionalRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.UUIDToString(request.ID))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -204,44 +176,37 @@ func encodeReferencedAllofOptionalRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return request.Location.EncodeURI(e)
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
 func encodeSimpleIntegerRequestJSON(
 	req int,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	e.Int(req)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeSimpleObjectsRequestJSON(
 	req SimpleObjectsReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }

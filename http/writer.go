@@ -8,29 +8,27 @@ import (
 )
 
 // CreateMultipartBody is helper for streaming multipart/form-data.
-func CreateMultipartBody(cb func(mw *multipart.Writer) error) (
-	getBody func() (io.ReadCloser, error),
-	contentType string,
-) {
-	r, w := io.Pipe()
-	mw := multipart.NewWriter(w)
-	getBody = func() (io.ReadCloser, error) {
-		wg := new(errgroup.Group)
-		wg.Go(func() (rerr error) {
-			defer func() {
-				_ = mw.Close()
-				_ = w.Close()
-			}()
-			return cb(mw)
-		})
-		return bodyReader{
-			mw: mw,
-			r:  r,
-			w:  w,
-			wg: wg,
-		}, nil
+func CreateMultipartBody(cb func(mw *multipart.Writer) error) (body io.ReadCloser, contentType string) {
+	piper, pipew := io.Pipe()
+
+	mw := multipart.NewWriter(pipew)
+	wg := new(errgroup.Group)
+	wg.Go(func() (rerr error) {
+		defer func() {
+			_ = mw.Close()
+			_ = pipew.Close()
+		}()
+		return cb(mw)
+	})
+
+	body = bodyReader{
+		mw: mw,
+		r:  piper,
+		w:  pipew,
+		wg: wg,
 	}
-	return getBody, mw.FormDataContentType()
+	contentType = mw.FormDataContentType()
+	return body, contentType
 }
 
 type bodyReader struct {

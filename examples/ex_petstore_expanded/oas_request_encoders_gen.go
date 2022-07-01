@@ -4,24 +4,21 @@ package api
 
 import (
 	"bytes"
-	"io"
+	"net/http"
 
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
+
+	ht "github.com/ogen-go/ogen/http"
 )
 
 func encodeAddPetRequestJSON(
 	req NewPet,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }

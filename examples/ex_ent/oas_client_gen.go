@@ -4,8 +4,6 @@ package api
 
 import (
 	"context"
-	"io"
-	"net/http"
 	"net/url"
 	"time"
 
@@ -79,30 +77,9 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeCreatePetRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeCreatePetRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -162,30 +139,9 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	}
 	u.Path += "/categories"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeCreatePetCategoriesRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeCreatePetCategoriesRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -245,30 +201,9 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	}
 	u.Path += "/friends"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeCreatePetFriendsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeCreatePetFriendsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -328,30 +263,9 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	}
 	u.Path += "/owner"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeCreatePetOwnerRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeCreatePetOwnerRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -914,30 +828,9 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUpdatePetRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeUpdatePetRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)

@@ -4,8 +4,6 @@ package api
 
 import (
 	"context"
-	"io"
-	"net/http"
 	"net/url"
 	"time"
 
@@ -981,31 +979,9 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 	}
 	u.RawQuery = q.Values().Encode()
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "multipart/form-data"
-	fn, ct, err := encodeUserPassloginPostRequest(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeUserPassloginPostRequest(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-	contentType = ct
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1063,31 +1039,9 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/posting"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "multipart/form-data"
-	fn, ct, err := encodeUserPostingPostRequest(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeUserPostingPostRequest(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-	contentType = ct
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1130,31 +1084,9 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/report"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "multipart/form-data"
-	fn, ct, err := encodeUserReportPostRequest(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeUserReportPostRequest(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-	contentType = ct
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)

@@ -7,32 +7,24 @@
 {{- range $contentType, $type := $op.Request.Contents }}
 func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 	req {{ $type.Go }},
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	{{- if $contentType.MultipartForm }}
-	contentType string,
-	{{- end }}
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	{{- $unaliased := $type }}{{- if $type.IsAlias }}{{ $unaliased = $type.AliasTo }}{{- end }}
 	{{- if $unaliased.GenericVariant.Optional }}
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	{{- end }}
 	{{- if $type.IsStream }}
-		return func() (io.ReadCloser, error) {
-			return io.NopCloser(req), nil
-		}, nil
+		ht.SetBody(r, req, {{ quote $contentType }})
+		return nil
 	{{- else if $contentType.JSON }}
 		e := jx.GetEncoder()
         {{ template "json/enc" elem $type "req" }}
 		encoded := e.Bytes()
-		return func() (io.ReadCloser, error) {
-			return io.NopCloser(bytes.NewReader(encoded)), nil
-		}, nil
+		ht.SetBody(r, bytes.NewReader(encoded), {{ quote $contentType }})
+		return nil
 	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
 		{{- if $unaliased.IsGeneric }}
 			request := req.Value
@@ -55,17 +47,16 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 				{{- template "uri/encode" elem $param.Type (printf "request.%s" $param.Name) }}
 			}); err != nil {
-				return data, {{ if $contentType.MultipartForm }}"",{{- end }}errors.Wrap(err, "encode query")
+				return errors.Wrap(err, "encode query")
 			}
 		}
 		{{- end }}
 		{{- if $contentType.FormURLEncoded }}
 			encoded := q.Values().Encode()
-			return func() (io.ReadCloser, error) {
-				return io.NopCloser(strings.NewReader(encoded)), nil
-			}, nil
+			ht.SetBody(r, strings.NewReader(encoded), {{ quote $contentType }})
+			return nil
 		{{- else if $contentType.MultipartForm }}
-			getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+			body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
             	{{- range $param := $type.FileParameters }}
 					{{- template "encode_multipart_file_param" $param }}
 				{{- end }}
@@ -74,7 +65,8 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(
 				}
 				return nil
 			})
-			return getBody, contentType, nil
+			ht.SetBody(r, body, contentType)
+			return nil
 		{{- else }}
 			{{- errorf "%s encoder not implemented" $contentType }}
 		{{- end }}
