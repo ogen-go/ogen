@@ -71,10 +71,10 @@ func TestGenerate(t *testing.T) {
 		"autorest/ApiManagementClient-openapi.json": {
 			"oauth2 security",
 		},
-		"autorest/lro.json":     {},
-		"autorest/storage.json": {},
+		"autorest/lro.json":                 {},
+		"autorest/storage.json":             {},
 		"autorest/xms-error-responses.json": {},
-		"2ch.yml": {},
+		"2ch.yml":                           {},
 		"api.github.com.json": {
 			"complex anyOf",
 			"discriminator inference",
@@ -101,9 +101,7 @@ func TestGenerate(t *testing.T) {
 		"redoc/discriminator.json": {
 			"unsupported content types",
 		},
-		"superset.json": {
-			"unsupported content types",
-		},
+		"superset.json": {},
 	}
 
 	testDataPath := "_testdata/positive"

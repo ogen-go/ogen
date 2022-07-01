@@ -3903,6 +3903,15 @@ func (UnimplementedHandler) MetaGet(ctx context.Context) (r MetaGetRes, _ error)
 	return r, ht.ErrNotImplemented
 }
 
+// MetaGetZen implements meta/get-zen operation.
+//
+// Get a random sentence from the Zen of GitHub.
+//
+// GET /zen
+func (UnimplementedHandler) MetaGetZen(ctx context.Context) (r MetaGetZenOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // MetaRoot implements meta/root operation.
 //
 // Get Hypermedia links to resources accessible in GitHub's REST API.

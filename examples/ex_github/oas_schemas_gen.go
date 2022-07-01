@@ -3,6 +3,7 @@
 package api
 
 import (
+	"io"
 	"net/url"
 	"time"
 
@@ -7266,6 +7267,14 @@ const (
 	MergedUpstreamMergeTypeFastMinusForward MergedUpstreamMergeType = "fast-forward"
 	MergedUpstreamMergeTypeNone             MergedUpstreamMergeType = "none"
 )
+
+type MetaGetZenOK struct {
+	Data io.Reader
+}
+
+func (s MetaGetZenOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
 
 type MetaRootOK struct {
 	CurrentUserURL                   string    "json:\"current_user_url\""

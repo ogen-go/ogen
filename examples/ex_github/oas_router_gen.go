@@ -12122,6 +12122,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
+			case 'z': // Prefix: "zen"
+				if l := len("zen"); len(elem) >= l && elem[0:l] == "zen" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: MetaGetZen
+					s.handleMetaGetZenRequest([0]string{}, w, r)
+
+					return
+				}
 			}
 		}
 	case "PATCH":
@@ -30006,6 +30019,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 						}
 					}
+				}
+			case 'z': // Prefix: "zen"
+				if l := len("zen"); len(elem) >= l && elem[0:l] == "zen" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: MetaGetZen
+					r.name = "MetaGetZen"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			}
 		}

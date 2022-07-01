@@ -3,6 +3,7 @@
 package api
 
 import (
+	"io"
 	"net/http"
 
 	"github.com/go-faster/errors"
@@ -4610,6 +4611,15 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *ReadCoreV1NamespacedPodLogOKTextPlain:
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
+		if _, err := io.Copy(w, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil

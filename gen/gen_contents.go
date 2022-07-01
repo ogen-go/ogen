@@ -252,12 +252,27 @@ func (g *Generator) generateContents(
 				return nil
 
 			case "application/octet-stream":
-				if media.Schema != nil && !isBinary(media.Schema) {
-					return errors.Errorf("octet stream with %q schema not supported", media.Schema.Type)
+				if s := media.Schema; s != nil && !isBinary(s) {
+					return errors.Wrapf(
+						&ErrNotImplemented{Name: "complex application/octet-stream"},
+						"generate %q", s.Type,
+					)
 				}
 
 				t := ir.Stream(typeName)
 				result[ir.ContentTypeOctetStream] = t
+				return ctx.saveType(t)
+
+			case "text/plain":
+				if s := media.Schema; s != nil && s.Type != "string" {
+					return errors.Wrapf(
+						&ErrNotImplemented{Name: "complex text/plain"},
+						"generate %q", s.Type,
+					)
+				}
+
+				t := ir.Stream(typeName)
+				result[ir.ContentTypeTextPlain] = t
 				return ctx.saveType(t)
 
 			default:

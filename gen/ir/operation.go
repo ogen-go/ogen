@@ -110,6 +110,8 @@ const (
 	ContentTypeMultipart ContentType = "multipart/form-data"
 	// ContentTypeOctetStream is ContentType for binary.
 	ContentTypeOctetStream ContentType = "application/octet-stream"
+	// ContentTypeTextPlain is ContentType for text.
+	ContentTypeTextPlain ContentType = "text/plain"
 )
 
 func (t ContentType) String() string { return string(t) }
@@ -124,11 +126,13 @@ func (t ContentType) MultipartForm() bool { return t == ContentTypeMultipart }
 
 func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }
 
+func (t ContentType) TextPlain() bool { return t == ContentTypeTextPlain }
+
 func (t ContentType) EncodedDataTypeGo() string {
 	switch t {
 	case ContentTypeJSON:
 		return "*jx.Encoder"
-	case ContentTypeOctetStream:
+	case ContentTypeOctetStream, ContentTypeTextPlain:
 		return "io.Reader"
 	default:
 		return "io.Reader"

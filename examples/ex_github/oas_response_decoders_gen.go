@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -16241,6 +16242,29 @@ func decodeMetaGetResponse(resp *http.Response, span trace.Span) (res MetaGetRes
 		}
 	case 304:
 		return &NotModified{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeMetaGetZenResponse(resp *http.Response, span trace.Span) (res MetaGetZenOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "text/plain":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			response := MetaGetZenOK{Data: bytes.NewReader(b)}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
 	default:
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}

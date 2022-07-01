@@ -3044,6 +3044,12 @@ type Handler interface {
 	//
 	// GET /meta
 	MetaGet(ctx context.Context) (MetaGetRes, error)
+	// MetaGetZen implements meta/get-zen operation.
+	//
+	// Get a random sentence from the Zen of GitHub.
+	//
+	// GET /zen
+	MetaGetZen(ctx context.Context) (MetaGetZenOK, error)
 	// MetaRoot implements meta/root operation.
 	//
 	// Get Hypermedia links to resources accessible in GitHub's REST API.
