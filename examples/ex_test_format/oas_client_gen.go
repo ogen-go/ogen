@@ -1230,8 +1230,8 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestQueryParameterRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestQueryParameterRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1275,8 +1275,8 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	u.Path += "/test_request_Any"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestAnyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestAnyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1320,8 +1320,8 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	u.Path += "/test_request_boolean"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestBooleanRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestBooleanRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1365,8 +1365,8 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	u.Path += "/test_request_boolean_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestBooleanArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestBooleanArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1432,8 +1432,8 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	u.Path += "/test_request_boolean_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestBooleanArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestBooleanArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1477,8 +1477,8 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	u.Path += "/test_request_boolean_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestBooleanNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestBooleanNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1522,8 +1522,8 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	u.Path += "/test_request_boolean_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestBooleanNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestBooleanNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1589,8 +1589,8 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_boolean_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestBooleanNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestBooleanNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1634,8 +1634,8 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	u.Path += "/test_request_EmptyStruct"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestEmptyStructRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestEmptyStructRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1694,8 +1694,8 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	u.Path += "/test_request_FormatTest"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestFormatTestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestFormatTestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1739,8 +1739,8 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	u.Path += "/test_request_integer"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1784,8 +1784,8 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	u.Path += "/test_request_integer_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1851,8 +1851,8 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	u.Path += "/test_request_integer_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1896,8 +1896,8 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	u.Path += "/test_request_integer_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1941,8 +1941,8 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	u.Path += "/test_request_integer_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2008,8 +2008,8 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_integer_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2053,8 +2053,8 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	u.Path += "/test_request_integer_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2098,8 +2098,8 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2165,8 +2165,8 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_integer_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2210,8 +2210,8 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	u.Path += "/test_request_integer_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2255,8 +2255,8 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	u.Path += "/test_request_integer_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2322,8 +2322,8 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_integer_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2367,8 +2367,8 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	u.Path += "/test_request_integer_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2412,8 +2412,8 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2479,8 +2479,8 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_integer_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2524,8 +2524,8 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	u.Path += "/test_request_integer_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2569,8 +2569,8 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	u.Path += "/test_request_integer_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2636,8 +2636,8 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestIntegerNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestIntegerNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2681,8 +2681,8 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	u.Path += "/test_request_null"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNullRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNullRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2726,8 +2726,8 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	u.Path += "/test_request_null_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNullArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNullArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2793,8 +2793,8 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 	u.Path += "/test_request_null_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNullArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNullArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2838,8 +2838,8 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	u.Path += "/test_request_null_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNullNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNullNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2883,8 +2883,8 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	u.Path += "/test_request_null_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNullNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNullNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2950,8 +2950,8 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_null_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNullNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNullNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3010,8 +3010,8 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	u.Path += "/test_request_number"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3077,8 +3077,8 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	u.Path += "/test_request_number_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3161,8 +3161,8 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	u.Path += "/test_request_number_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3221,8 +3221,8 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	u.Path += "/test_request_number_double"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberDoubleRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberDoubleRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3288,8 +3288,8 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	u.Path += "/test_request_number_double_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberDoubleArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberDoubleArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3372,8 +3372,8 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_number_double_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberDoubleArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberDoubleArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3432,8 +3432,8 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	u.Path += "/test_request_number_double_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberDoubleNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberDoubleNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3499,8 +3499,8 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	u.Path += "/test_request_number_double_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberDoubleNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberDoubleNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3583,8 +3583,8 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_number_double_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberDoubleNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3643,8 +3643,8 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	u.Path += "/test_request_number_float"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberFloatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberFloatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3710,8 +3710,8 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	u.Path += "/test_request_number_float_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberFloatArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberFloatArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3794,8 +3794,8 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_number_float_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberFloatArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberFloatArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3854,8 +3854,8 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	u.Path += "/test_request_number_float_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberFloatNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberFloatNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3921,8 +3921,8 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	u.Path += "/test_request_number_float_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberFloatNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberFloatNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4005,8 +4005,8 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_number_float_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberFloatNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4050,8 +4050,8 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	u.Path += "/test_request_number_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4095,8 +4095,8 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	u.Path += "/test_request_number_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4162,8 +4162,8 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_number_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4207,8 +4207,8 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_number_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4252,8 +4252,8 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_number_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4319,8 +4319,8 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_number_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4364,8 +4364,8 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	u.Path += "/test_request_number_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4409,8 +4409,8 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	u.Path += "/test_request_number_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4476,8 +4476,8 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_number_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4521,8 +4521,8 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_number_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4566,8 +4566,8 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_number_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4633,8 +4633,8 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_number_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4693,8 +4693,8 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	u.Path += "/test_request_number_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4760,8 +4760,8 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 	u.Path += "/test_request_number_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4844,8 +4844,8 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_number_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestNumberNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestNumberNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4889,8 +4889,8 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	u.Path += "/test_request_required_Any"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredAnyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredAnyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4934,8 +4934,8 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	u.Path += "/test_request_required_boolean"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredBooleanRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredBooleanRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4987,8 +4987,8 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	u.Path += "/test_request_required_boolean_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredBooleanArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredBooleanArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5057,8 +5057,8 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_required_boolean_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredBooleanArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredBooleanArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5102,8 +5102,8 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	u.Path += "/test_request_required_boolean_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredBooleanNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredBooleanNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5155,8 +5155,8 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	u.Path += "/test_request_required_boolean_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredBooleanNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredBooleanNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5225,8 +5225,8 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_boolean_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredBooleanNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5270,8 +5270,8 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	u.Path += "/test_request_required_EmptyStruct"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredEmptyStructRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredEmptyStructRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5323,8 +5323,8 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	u.Path += "/test_request_required_FormatTest"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredFormatTestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredFormatTestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5368,8 +5368,8 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	u.Path += "/test_request_required_integer"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5421,8 +5421,8 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	u.Path += "/test_request_required_integer_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5491,8 +5491,8 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_required_integer_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5536,8 +5536,8 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	u.Path += "/test_request_required_integer_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5589,8 +5589,8 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	u.Path += "/test_request_required_integer_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5659,8 +5659,8 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_integer_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5704,8 +5704,8 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	u.Path += "/test_request_required_integer_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5757,8 +5757,8 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5827,8 +5827,8 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_integer_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5872,8 +5872,8 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	u.Path += "/test_request_required_integer_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5925,8 +5925,8 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	u.Path += "/test_request_required_integer_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5995,8 +5995,8 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_integer_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6040,8 +6040,8 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	u.Path += "/test_request_required_integer_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6093,8 +6093,8 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6163,8 +6163,8 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_integer_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6208,8 +6208,8 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	u.Path += "/test_request_required_integer_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6261,8 +6261,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	u.Path += "/test_request_required_integer_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6331,8 +6331,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredIntegerNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6376,8 +6376,8 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	u.Path += "/test_request_required_null"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNullRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNullRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6429,8 +6429,8 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 	u.Path += "/test_request_required_null_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNullArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNullArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6499,8 +6499,8 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_required_null_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNullArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNullArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6544,8 +6544,8 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	u.Path += "/test_request_required_null_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNullNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNullNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6597,8 +6597,8 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 	u.Path += "/test_request_required_null_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNullNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNullNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6667,8 +6667,8 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_null_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNullNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNullNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6720,8 +6720,8 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	u.Path += "/test_request_required_number"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6790,8 +6790,8 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	u.Path += "/test_request_required_number_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6877,8 +6877,8 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_required_number_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6930,8 +6930,8 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	u.Path += "/test_request_required_number_double"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberDoubleRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberDoubleRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7000,8 +7000,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	u.Path += "/test_request_required_number_double_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberDoubleArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberDoubleArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7087,8 +7087,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_number_double_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberDoubleArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberDoubleArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7140,8 +7140,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	u.Path += "/test_request_required_number_double_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberDoubleNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberDoubleNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7210,8 +7210,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	u.Path += "/test_request_required_number_double_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberDoubleNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7297,8 +7297,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_number_double_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7350,8 +7350,8 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	u.Path += "/test_request_required_number_float"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberFloatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberFloatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7420,8 +7420,8 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	u.Path += "/test_request_required_number_float_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberFloatArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberFloatArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7507,8 +7507,8 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_number_float_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberFloatArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberFloatArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7560,8 +7560,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	u.Path += "/test_request_required_number_float_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberFloatNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberFloatNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7630,8 +7630,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	u.Path += "/test_request_required_number_float_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberFloatNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7717,8 +7717,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_number_float_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7762,8 +7762,8 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	u.Path += "/test_request_required_number_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7815,8 +7815,8 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	u.Path += "/test_request_required_number_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7885,8 +7885,8 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_number_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7930,8 +7930,8 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_number_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7983,8 +7983,8 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	u.Path += "/test_request_required_number_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8053,8 +8053,8 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_number_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8098,8 +8098,8 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	u.Path += "/test_request_required_number_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8151,8 +8151,8 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	u.Path += "/test_request_required_number_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8221,8 +8221,8 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_number_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8266,8 +8266,8 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_number_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8319,8 +8319,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	u.Path += "/test_request_required_number_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8389,8 +8389,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_number_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8442,8 +8442,8 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	u.Path += "/test_request_required_number_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8512,8 +8512,8 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	u.Path += "/test_request_required_number_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8599,8 +8599,8 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_required_number_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredNumberNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8644,8 +8644,8 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	u.Path += "/test_request_required_string"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8697,8 +8697,8 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	u.Path += "/test_request_required_string_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8767,8 +8767,8 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_required_string_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8812,8 +8812,8 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	u.Path += "/test_request_required_string_binary"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringBinaryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringBinaryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8865,8 +8865,8 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	u.Path += "/test_request_required_string_binary_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringBinaryArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringBinaryArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8935,8 +8935,8 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_string_binary_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringBinaryArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringBinaryArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8980,8 +8980,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	u.Path += "/test_request_required_string_binary_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringBinaryNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringBinaryNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9033,8 +9033,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	u.Path += "/test_request_required_string_binary_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringBinaryNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9103,8 +9103,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_string_binary_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9148,8 +9148,8 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	u.Path += "/test_request_required_string_byte"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringByteRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringByteRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9201,8 +9201,8 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_byte_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringByteArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringByteArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9271,8 +9271,8 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_byte_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringByteArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringByteArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9316,8 +9316,8 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_byte_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringByteNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringByteNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9369,8 +9369,8 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_byte_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringByteNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringByteNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9439,8 +9439,8 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_byte_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringByteNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringByteNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9484,8 +9484,8 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	u.Path += "/test_request_required_string_date"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9537,8 +9537,8 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_date_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9607,8 +9607,8 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_date_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9652,8 +9652,8 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_date_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9705,8 +9705,8 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_date_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9775,8 +9775,8 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_date_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9820,8 +9820,8 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	u.Path += "/test_request_required_string_date-time"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateTimeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateTimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9873,8 +9873,8 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_date-time_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateTimeArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateTimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9943,8 +9943,8 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_date-time_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateTimeArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateTimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9988,8 +9988,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_date-time_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateTimeNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateTimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10041,8 +10041,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_date-time_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateTimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10111,8 +10111,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_date-time_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10156,8 +10156,8 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	u.Path += "/test_request_required_string_duration"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDurationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDurationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10209,8 +10209,8 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_duration_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDurationArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDurationArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10279,8 +10279,8 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_duration_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDurationArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDurationArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10324,8 +10324,8 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_duration_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDurationNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDurationNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10377,8 +10377,8 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_duration_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDurationNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10447,8 +10447,8 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_duration_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10508,8 +10508,8 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	u.Path += "/test_request_required_string_email"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringEmailRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringEmailRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10586,8 +10586,8 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	u.Path += "/test_request_required_string_email_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringEmailArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringEmailArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10681,8 +10681,8 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_email_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringEmailArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringEmailArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10742,8 +10742,8 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	u.Path += "/test_request_required_string_email_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringEmailNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringEmailNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10820,8 +10820,8 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	u.Path += "/test_request_required_string_email_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringEmailNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10915,8 +10915,8 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_string_email_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10976,8 +10976,8 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	u.Path += "/test_request_required_string_hostname"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringHostnameRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringHostnameRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11054,8 +11054,8 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_hostname_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringHostnameArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringHostnameArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11149,8 +11149,8 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_hostname_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringHostnameArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringHostnameArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11210,8 +11210,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_hostname_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringHostnameNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringHostnameNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11288,8 +11288,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_hostname_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringHostnameNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11383,8 +11383,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_hostname_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11428,8 +11428,8 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	u.Path += "/test_request_required_string_ip"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIPRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIPRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11481,8 +11481,8 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	u.Path += "/test_request_required_string_ip_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIPArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIPArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11551,8 +11551,8 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	u.Path += "/test_request_required_string_ip_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIPArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIPArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11596,8 +11596,8 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	u.Path += "/test_request_required_string_ip_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIPNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIPNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11649,8 +11649,8 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_ip_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIPNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIPNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11719,8 +11719,8 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	u.Path += "/test_request_required_string_ip_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIPNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11764,8 +11764,8 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	u.Path += "/test_request_required_string_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11817,8 +11817,8 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 	u.Path += "/test_request_required_string_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11887,8 +11887,8 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11932,8 +11932,8 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_string_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11985,8 +11985,8 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 	u.Path += "/test_request_required_string_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12055,8 +12055,8 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_string_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12100,8 +12100,8 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	u.Path += "/test_request_required_string_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12153,8 +12153,8 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 	u.Path += "/test_request_required_string_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12223,8 +12223,8 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12268,8 +12268,8 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_string_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12321,8 +12321,8 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 	u.Path += "/test_request_required_string_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12391,8 +12391,8 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_string_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12436,8 +12436,8 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	u.Path += "/test_request_required_string_ipv4"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv4RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv4Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12489,8 +12489,8 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	u.Path += "/test_request_required_string_ipv4_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv4ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv4ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12559,8 +12559,8 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_ipv4_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv4ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12604,8 +12604,8 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_ipv4_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv4NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv4NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12657,8 +12657,8 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_ipv4_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv4NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12727,8 +12727,8 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_ipv4_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12772,8 +12772,8 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	u.Path += "/test_request_required_string_ipv6"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv6RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv6Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12825,8 +12825,8 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	u.Path += "/test_request_required_string_ipv6_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv6ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv6ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12895,8 +12895,8 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_ipv6_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv6ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12940,8 +12940,8 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_ipv6_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv6NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv6NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12993,8 +12993,8 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_ipv6_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv6NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13063,8 +13063,8 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_ipv6_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13108,8 +13108,8 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	u.Path += "/test_request_required_string_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13161,8 +13161,8 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13231,8 +13231,8 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13276,8 +13276,8 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	u.Path += "/test_request_required_string_password"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringPasswordRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringPasswordRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13329,8 +13329,8 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_password_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringPasswordArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringPasswordArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13399,8 +13399,8 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_password_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringPasswordArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringPasswordArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13444,8 +13444,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_password_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringPasswordNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringPasswordNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13497,8 +13497,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_password_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringPasswordNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13567,8 +13567,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_password_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13612,8 +13612,8 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	u.Path += "/test_request_required_string_time"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringTimeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringTimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13665,8 +13665,8 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_time_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringTimeArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringTimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13735,8 +13735,8 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_time_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringTimeArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringTimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13780,8 +13780,8 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_time_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringTimeNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringTimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13833,8 +13833,8 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_time_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringTimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13903,8 +13903,8 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_time_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13948,8 +13948,8 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	u.Path += "/test_request_required_string_uri"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringURIRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringURIRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14001,8 +14001,8 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	u.Path += "/test_request_required_string_uri_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringURIArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringURIArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14071,8 +14071,8 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_uri_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringURIArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringURIArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14116,8 +14116,8 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	u.Path += "/test_request_required_string_uri_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringURINullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringURINullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14169,8 +14169,8 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	u.Path += "/test_request_required_string_uri_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringURINullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringURINullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14239,8 +14239,8 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	u.Path += "/test_request_required_string_uri_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringURINullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14284,8 +14284,8 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	u.Path += "/test_request_required_string_uuid"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUUIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUUIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14337,8 +14337,8 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_uuid_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUUIDArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUUIDArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14407,8 +14407,8 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_uuid_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUUIDArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUUIDArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14452,8 +14452,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_uuid_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUUIDNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUUIDNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14505,8 +14505,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_uuid_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUUIDNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14575,8 +14575,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_uuid_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14620,8 +14620,8 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	u.Path += "/test_request_required_string_unix"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14673,8 +14673,8 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_unix_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14743,8 +14743,8 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_unix_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14788,8 +14788,8 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	u.Path += "/test_request_required_string_unix-micro"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMicroRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMicroRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14841,8 +14841,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_unix-micro_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMicroArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMicroArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14911,8 +14911,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_string_unix-micro_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMicroArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMicroArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14956,8 +14956,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	u.Path += "/test_request_required_string_unix-micro_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMicroNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15009,8 +15009,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 	u.Path += "/test_request_required_string_unix-micro_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15079,8 +15079,8 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 	u.Path += "/test_request_required_string_unix-micro_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15124,8 +15124,8 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	u.Path += "/test_request_required_string_unix-milli"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMilliRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMilliRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15177,8 +15177,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_unix-milli_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMilliArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMilliArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15247,8 +15247,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_string_unix-milli_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMilliArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMilliArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15292,8 +15292,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	u.Path += "/test_request_required_string_unix-milli_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMilliNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15345,8 +15345,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 	u.Path += "/test_request_required_string_unix-milli_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15415,8 +15415,8 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 	u.Path += "/test_request_required_string_unix-milli_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15460,8 +15460,8 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	u.Path += "/test_request_required_string_unix-nano"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNanoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNanoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15513,8 +15513,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_unix-nano_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNanoArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNanoArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15583,8 +15583,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_unix-nano_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNanoArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNanoArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15628,8 +15628,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_unix-nano_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNanoNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15681,8 +15681,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_unix-nano_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15751,8 +15751,8 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_unix-nano_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15796,8 +15796,8 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_unix_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15849,8 +15849,8 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_unix_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15919,8 +15919,8 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_unix_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15964,8 +15964,8 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	u.Path += "/test_request_required_string_unix-seconds"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixSecondsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixSecondsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16017,8 +16017,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 	u.Path += "/test_request_required_string_unix-seconds_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixSecondsArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixSecondsArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16087,8 +16087,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 	u.Path += "/test_request_required_string_unix-seconds_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixSecondsArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16132,8 +16132,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	u.Path += "/test_request_required_string_unix-seconds_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixSecondsNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16185,8 +16185,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16255,8 +16255,8 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16300,8 +16300,8 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	u.Path += "/test_request_string"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16345,8 +16345,8 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	u.Path += "/test_request_string_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16412,8 +16412,8 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	u.Path += "/test_request_string_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16457,8 +16457,8 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	u.Path += "/test_request_string_binary"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringBinaryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringBinaryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16502,8 +16502,8 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	u.Path += "/test_request_string_binary_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringBinaryArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringBinaryArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16569,8 +16569,8 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_string_binary_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringBinaryArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringBinaryArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16614,8 +16614,8 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	u.Path += "/test_request_string_binary_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringBinaryNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringBinaryNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16659,8 +16659,8 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	u.Path += "/test_request_string_binary_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringBinaryNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringBinaryNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16726,8 +16726,8 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_string_binary_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringBinaryNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16771,8 +16771,8 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	u.Path += "/test_request_string_byte"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringByteRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringByteRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16816,8 +16816,8 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	u.Path += "/test_request_string_byte_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringByteArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringByteArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16883,8 +16883,8 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_byte_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringByteArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringByteArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16928,8 +16928,8 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_byte_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringByteNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringByteNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16973,8 +16973,8 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_byte_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringByteNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringByteNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17040,8 +17040,8 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_byte_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringByteNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringByteNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17085,8 +17085,8 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	u.Path += "/test_request_string_date"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17130,8 +17130,8 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	u.Path += "/test_request_string_date_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17197,8 +17197,8 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_date_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17242,8 +17242,8 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_date_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17287,8 +17287,8 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_date_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17354,8 +17354,8 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_date_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17399,8 +17399,8 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	u.Path += "/test_request_string_date-time"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateTimeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateTimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17444,8 +17444,8 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	u.Path += "/test_request_string_date-time_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateTimeArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateTimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17511,8 +17511,8 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_date-time_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateTimeArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateTimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17556,8 +17556,8 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_date-time_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateTimeNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateTimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17601,8 +17601,8 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_date-time_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateTimeNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateTimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17668,8 +17668,8 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_date-time_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDateTimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17713,8 +17713,8 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	u.Path += "/test_request_string_duration"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDurationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDurationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17758,8 +17758,8 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	u.Path += "/test_request_string_duration_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDurationArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDurationArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17825,8 +17825,8 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_duration_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDurationArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDurationArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17870,8 +17870,8 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_duration_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDurationNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDurationNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17915,8 +17915,8 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_duration_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDurationNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDurationNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17982,8 +17982,8 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_duration_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringDurationNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringDurationNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18050,8 +18050,8 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	u.Path += "/test_request_string_email"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringEmailRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringEmailRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18125,8 +18125,8 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	u.Path += "/test_request_string_email_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringEmailArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringEmailArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18217,8 +18217,8 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_string_email_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringEmailArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringEmailArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18285,8 +18285,8 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	u.Path += "/test_request_string_email_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringEmailNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringEmailNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18360,8 +18360,8 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	u.Path += "/test_request_string_email_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringEmailNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringEmailNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18452,8 +18452,8 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_string_email_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringEmailNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringEmailNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18520,8 +18520,8 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	u.Path += "/test_request_string_hostname"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringHostnameRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringHostnameRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18595,8 +18595,8 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	u.Path += "/test_request_string_hostname_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringHostnameArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringHostnameArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18687,8 +18687,8 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_hostname_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringHostnameArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringHostnameArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18755,8 +18755,8 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_hostname_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringHostnameNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringHostnameNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18830,8 +18830,8 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_hostname_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringHostnameNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringHostnameNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18922,8 +18922,8 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_hostname_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringHostnameNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18967,8 +18967,8 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	u.Path += "/test_request_string_ip"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIPRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIPRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19012,8 +19012,8 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	u.Path += "/test_request_string_ip_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIPArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIPArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19079,8 +19079,8 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	u.Path += "/test_request_string_ip_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIPArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIPArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19124,8 +19124,8 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	u.Path += "/test_request_string_ip_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIPNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIPNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19169,8 +19169,8 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	u.Path += "/test_request_string_ip_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIPNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIPNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19236,8 +19236,8 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	u.Path += "/test_request_string_ip_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIPNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIPNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19281,8 +19281,8 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	u.Path += "/test_request_string_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19326,8 +19326,8 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	u.Path += "/test_request_string_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19393,8 +19393,8 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_string_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19438,8 +19438,8 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_string_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19483,8 +19483,8 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_string_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19550,8 +19550,8 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_string_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19595,8 +19595,8 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	u.Path += "/test_request_string_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19640,8 +19640,8 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	u.Path += "/test_request_string_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19707,8 +19707,8 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_string_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19752,8 +19752,8 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_string_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19797,8 +19797,8 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_string_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19864,8 +19864,8 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_string_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19909,8 +19909,8 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	u.Path += "/test_request_string_ipv4"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv4RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv4Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19954,8 +19954,8 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	u.Path += "/test_request_string_ipv4_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv4ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv4ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20021,8 +20021,8 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_ipv4_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv4ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv4ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20066,8 +20066,8 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_ipv4_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv4NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv4NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20111,8 +20111,8 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_ipv4_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv4NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv4NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20178,8 +20178,8 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_ipv4_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv4NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20223,8 +20223,8 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	u.Path += "/test_request_string_ipv6"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv6RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv6Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20268,8 +20268,8 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	u.Path += "/test_request_string_ipv6_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv6ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv6ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20335,8 +20335,8 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_ipv6_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv6ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv6ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20380,8 +20380,8 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_ipv6_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv6NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv6NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20425,8 +20425,8 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_ipv6_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv6NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv6NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20492,8 +20492,8 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_ipv6_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringIpv6NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20537,8 +20537,8 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	u.Path += "/test_request_string_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20582,8 +20582,8 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	u.Path += "/test_request_string_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20649,8 +20649,8 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20694,8 +20694,8 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	u.Path += "/test_request_string_password"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringPasswordRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringPasswordRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20739,8 +20739,8 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	u.Path += "/test_request_string_password_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringPasswordArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringPasswordArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20806,8 +20806,8 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_password_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringPasswordArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringPasswordArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20851,8 +20851,8 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_password_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringPasswordNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringPasswordNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20896,8 +20896,8 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_password_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringPasswordNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringPasswordNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20963,8 +20963,8 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_password_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringPasswordNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21008,8 +21008,8 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	u.Path += "/test_request_string_time"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringTimeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringTimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21053,8 +21053,8 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	u.Path += "/test_request_string_time_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringTimeArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringTimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21120,8 +21120,8 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_time_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringTimeArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringTimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21165,8 +21165,8 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_time_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringTimeNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringTimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21210,8 +21210,8 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_time_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringTimeNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringTimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21277,8 +21277,8 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_time_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringTimeNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringTimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21322,8 +21322,8 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	u.Path += "/test_request_string_uri"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringURIRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringURIRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21367,8 +21367,8 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	u.Path += "/test_request_string_uri_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringURIArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringURIArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21434,8 +21434,8 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	u.Path += "/test_request_string_uri_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringURIArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringURIArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21479,8 +21479,8 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	u.Path += "/test_request_string_uri_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringURINullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringURINullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21524,8 +21524,8 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	u.Path += "/test_request_string_uri_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringURINullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringURINullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21591,8 +21591,8 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	u.Path += "/test_request_string_uri_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringURINullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringURINullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21636,8 +21636,8 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	u.Path += "/test_request_string_uuid"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUUIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUUIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21681,8 +21681,8 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	u.Path += "/test_request_string_uuid_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUUIDArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUUIDArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21748,8 +21748,8 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_uuid_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUUIDArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUUIDArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21793,8 +21793,8 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_uuid_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUUIDNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUUIDNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21838,8 +21838,8 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_uuid_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUUIDNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUUIDNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21905,8 +21905,8 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_uuid_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUUIDNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21950,8 +21950,8 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptUnixSecon
 	u.Path += "/test_request_string_unix"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21995,8 +21995,8 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	u.Path += "/test_request_string_unix_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22062,8 +22062,8 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_unix_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22107,8 +22107,8 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptUnix
 	u.Path += "/test_request_string_unix-micro"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMicroRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMicroRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22152,8 +22152,8 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	u.Path += "/test_request_string_unix-micro_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMicroArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMicroArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22219,8 +22219,8 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_string_unix-micro_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMicroArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMicroArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22264,8 +22264,8 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	u.Path += "/test_request_string_unix-micro_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMicroNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMicroNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22309,8 +22309,8 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	u.Path += "/test_request_string_unix-micro_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMicroNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMicroNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22376,8 +22376,8 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_string_unix-micro_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMicroNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22421,8 +22421,8 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptUnix
 	u.Path += "/test_request_string_unix-milli"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMilliRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMilliRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22466,8 +22466,8 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	u.Path += "/test_request_string_unix-milli_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMilliArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMilliArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22533,8 +22533,8 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_string_unix-milli_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMilliArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMilliArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22578,8 +22578,8 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	u.Path += "/test_request_string_unix-milli_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMilliNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMilliNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22623,8 +22623,8 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	u.Path += "/test_request_string_unix-milli_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMilliNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMilliNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22690,8 +22690,8 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_string_unix-milli_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixMilliNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22735,8 +22735,8 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptUnixN
 	u.Path += "/test_request_string_unix-nano"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNanoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNanoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22780,8 +22780,8 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	u.Path += "/test_request_string_unix-nano_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNanoArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNanoArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22847,8 +22847,8 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_unix-nano_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNanoArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNanoArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22892,8 +22892,8 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_unix-nano_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNanoNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNanoNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22937,8 +22937,8 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_unix-nano_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNanoNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNanoNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23004,8 +23004,8 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_unix-nano_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNanoNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23049,8 +23049,8 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_unix_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23094,8 +23094,8 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_unix_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23161,8 +23161,8 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_unix_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23206,8 +23206,8 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptUn
 	u.Path += "/test_request_string_unix-seconds"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixSecondsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixSecondsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23251,8 +23251,8 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	u.Path += "/test_request_string_unix-seconds_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixSecondsArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixSecondsArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23318,8 +23318,8 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 	u.Path += "/test_request_string_unix-seconds_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixSecondsArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixSecondsArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23363,8 +23363,8 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	u.Path += "/test_request_string_unix-seconds_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixSecondsNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixSecondsNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23408,8 +23408,8 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	u.Path += "/test_request_string_unix-seconds_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixSecondsNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23475,8 +23475,8 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 	u.Path += "/test_request_string_unix-seconds_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestRequestStringUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23520,8 +23520,8 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	u.Path += "/test_response_Any"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseAnyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseAnyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23565,8 +23565,8 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	u.Path += "/test_response_boolean"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseBooleanRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseBooleanRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23610,8 +23610,8 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	u.Path += "/test_response_boolean_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseBooleanArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseBooleanArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23655,8 +23655,8 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	u.Path += "/test_response_boolean_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseBooleanArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseBooleanArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23700,8 +23700,8 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	u.Path += "/test_response_boolean_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseBooleanNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseBooleanNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23745,8 +23745,8 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	u.Path += "/test_response_boolean_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseBooleanNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseBooleanNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23790,8 +23790,8 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_boolean_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseBooleanNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseBooleanNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23835,8 +23835,8 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	u.Path += "/test_response_EmptyStruct"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseEmptyStructRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseEmptyStructRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23880,8 +23880,8 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	u.Path += "/test_response_FormatTest"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseFormatTestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseFormatTestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23925,8 +23925,8 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	u.Path += "/test_response_integer"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23970,8 +23970,8 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	u.Path += "/test_response_integer_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24015,8 +24015,8 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	u.Path += "/test_response_integer_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24060,8 +24060,8 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	u.Path += "/test_response_integer_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24105,8 +24105,8 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	u.Path += "/test_response_integer_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24150,8 +24150,8 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	u.Path += "/test_response_integer_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24195,8 +24195,8 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	u.Path += "/test_response_integer_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24240,8 +24240,8 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24285,8 +24285,8 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_integer_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24330,8 +24330,8 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	u.Path += "/test_response_integer_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24375,8 +24375,8 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	u.Path += "/test_response_integer_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24420,8 +24420,8 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	u.Path += "/test_response_integer_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24465,8 +24465,8 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	u.Path += "/test_response_integer_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24510,8 +24510,8 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24555,8 +24555,8 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_integer_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24600,8 +24600,8 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	u.Path += "/test_response_integer_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24645,8 +24645,8 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	u.Path += "/test_response_integer_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24690,8 +24690,8 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseIntegerNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseIntegerNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24735,8 +24735,8 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	u.Path += "/test_response_null"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNullRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNullRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24780,8 +24780,8 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	u.Path += "/test_response_null_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNullArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNullArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24825,8 +24825,8 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	u.Path += "/test_response_null_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNullArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNullArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24870,8 +24870,8 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	u.Path += "/test_response_null_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNullNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNullNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24915,8 +24915,8 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	u.Path += "/test_response_null_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNullNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNullNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24960,8 +24960,8 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	u.Path += "/test_response_null_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNullNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNullNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25005,8 +25005,8 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	u.Path += "/test_response_number"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25050,8 +25050,8 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25095,8 +25095,8 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	u.Path += "/test_response_number_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25140,8 +25140,8 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	u.Path += "/test_response_number_double"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberDoubleRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberDoubleRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25185,8 +25185,8 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	u.Path += "/test_response_number_double_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberDoubleArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberDoubleArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25230,8 +25230,8 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	u.Path += "/test_response_number_double_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberDoubleArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberDoubleArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25275,8 +25275,8 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	u.Path += "/test_response_number_double_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberDoubleNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberDoubleNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25320,8 +25320,8 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	u.Path += "/test_response_number_double_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberDoubleNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberDoubleNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25365,8 +25365,8 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_number_double_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberDoubleNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberDoubleNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25410,8 +25410,8 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_float"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberFloatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberFloatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25455,8 +25455,8 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	u.Path += "/test_response_number_float_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberFloatArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberFloatArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25500,8 +25500,8 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_number_float_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberFloatArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberFloatArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25545,8 +25545,8 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	u.Path += "/test_response_number_float_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberFloatNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberFloatNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25590,8 +25590,8 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	u.Path += "/test_response_number_float_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberFloatNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberFloatNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25635,8 +25635,8 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_number_float_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberFloatNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberFloatNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25680,8 +25680,8 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25725,8 +25725,8 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	u.Path += "/test_response_number_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25770,8 +25770,8 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_number_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25815,8 +25815,8 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	u.Path += "/test_response_number_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25860,8 +25860,8 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_number_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25905,8 +25905,8 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_number_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25950,8 +25950,8 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25995,8 +25995,8 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	u.Path += "/test_response_number_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26040,8 +26040,8 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_number_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26085,8 +26085,8 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	u.Path += "/test_response_number_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26130,8 +26130,8 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_number_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26175,8 +26175,8 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_number_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26220,8 +26220,8 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	u.Path += "/test_response_number_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26265,8 +26265,8 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	u.Path += "/test_response_number_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26310,8 +26310,8 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_number_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseNumberNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseNumberNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26355,8 +26355,8 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	u.Path += "/test_response_string"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26400,8 +26400,8 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26445,8 +26445,8 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	u.Path += "/test_response_string_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26490,8 +26490,8 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	u.Path += "/test_response_string_binary"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringBinaryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringBinaryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26535,8 +26535,8 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	u.Path += "/test_response_string_binary_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringBinaryArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringBinaryArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26580,8 +26580,8 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	u.Path += "/test_response_string_binary_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringBinaryArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringBinaryArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26625,8 +26625,8 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	u.Path += "/test_response_string_binary_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringBinaryNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringBinaryNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26670,8 +26670,8 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	u.Path += "/test_response_string_binary_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringBinaryNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringBinaryNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26715,8 +26715,8 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_string_binary_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringBinaryNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringBinaryNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26760,8 +26760,8 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_byte"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringByteRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringByteRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26805,8 +26805,8 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	u.Path += "/test_response_string_byte_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringByteArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringByteArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26850,8 +26850,8 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_byte_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringByteArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringByteArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26895,8 +26895,8 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_byte_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringByteNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringByteNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26940,8 +26940,8 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_byte_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringByteNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringByteNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26985,8 +26985,8 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_byte_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringByteNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringByteNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27030,8 +27030,8 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_date"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27075,8 +27075,8 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	u.Path += "/test_response_string_date_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27120,8 +27120,8 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_date_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27165,8 +27165,8 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_date_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27210,8 +27210,8 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_date_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27255,8 +27255,8 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_date_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27300,8 +27300,8 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	u.Path += "/test_response_string_date-time"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateTimeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateTimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27345,8 +27345,8 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	u.Path += "/test_response_string_date-time_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateTimeArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateTimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27390,8 +27390,8 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_date-time_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateTimeArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateTimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27435,8 +27435,8 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	u.Path += "/test_response_string_date-time_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateTimeNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateTimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27480,8 +27480,8 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_date-time_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateTimeNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateTimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27525,8 +27525,8 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_date-time_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDateTimeNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDateTimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27570,8 +27570,8 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	u.Path += "/test_response_string_duration"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDurationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDurationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27615,8 +27615,8 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	u.Path += "/test_response_string_duration_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDurationArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDurationArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27660,8 +27660,8 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_duration_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDurationArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDurationArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27705,8 +27705,8 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	u.Path += "/test_response_string_duration_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDurationNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDurationNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27750,8 +27750,8 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_duration_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDurationNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDurationNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27795,8 +27795,8 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_duration_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringDurationNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringDurationNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27840,8 +27840,8 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_email"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringEmailRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringEmailRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27885,8 +27885,8 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	u.Path += "/test_response_string_email_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringEmailArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringEmailArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27930,8 +27930,8 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_string_email_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringEmailArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringEmailArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27975,8 +27975,8 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	u.Path += "/test_response_string_email_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringEmailNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringEmailNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28020,8 +28020,8 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	u.Path += "/test_response_string_email_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringEmailNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringEmailNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28065,8 +28065,8 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_string_email_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringEmailNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringEmailNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28110,8 +28110,8 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	u.Path += "/test_response_string_hostname"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringHostnameRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringHostnameRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28155,8 +28155,8 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	u.Path += "/test_response_string_hostname_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringHostnameArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringHostnameArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28200,8 +28200,8 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_hostname_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringHostnameArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringHostnameArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28245,8 +28245,8 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	u.Path += "/test_response_string_hostname_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringHostnameNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringHostnameNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28290,8 +28290,8 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_hostname_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringHostnameNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringHostnameNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28335,8 +28335,8 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_hostname_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringHostnameNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringHostnameNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28380,8 +28380,8 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	u.Path += "/test_response_string_ip"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIPRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIPRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28425,8 +28425,8 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	u.Path += "/test_response_string_ip_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIPArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIPArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28470,8 +28470,8 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	u.Path += "/test_response_string_ip_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIPArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIPArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28515,8 +28515,8 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	u.Path += "/test_response_string_ip_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIPNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIPNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28560,8 +28560,8 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	u.Path += "/test_response_string_ip_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIPNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIPNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28605,8 +28605,8 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	u.Path += "/test_response_string_ip_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIPNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIPNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28650,8 +28650,8 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_int32"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt32RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt32Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28695,8 +28695,8 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	u.Path += "/test_response_string_int32_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt32ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt32ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28740,8 +28740,8 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_string_int32_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt32ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt32ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28785,8 +28785,8 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	u.Path += "/test_response_string_int32_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt32NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt32NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28830,8 +28830,8 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_string_int32_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt32NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt32NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28875,8 +28875,8 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_string_int32_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt32NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt32NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28920,8 +28920,8 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_int64"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt64RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt64Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28965,8 +28965,8 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	u.Path += "/test_response_string_int64_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt64ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt64ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29010,8 +29010,8 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_string_int64_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt64ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt64ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29055,8 +29055,8 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	u.Path += "/test_response_string_int64_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt64NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt64NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29100,8 +29100,8 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_string_int64_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt64NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt64NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29145,8 +29145,8 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_string_int64_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringInt64NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringInt64NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29190,8 +29190,8 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_ipv4"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv4RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv4Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29235,8 +29235,8 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	u.Path += "/test_response_string_ipv4_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv4ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv4ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29280,8 +29280,8 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_ipv4_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv4ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv4ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29325,8 +29325,8 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	u.Path += "/test_response_string_ipv4_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv4NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv4NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29370,8 +29370,8 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_ipv4_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv4NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv4NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29415,8 +29415,8 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_ipv4_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv4NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv4NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29460,8 +29460,8 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_ipv6"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv6RequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv6Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29505,8 +29505,8 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	u.Path += "/test_response_string_ipv6_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv6ArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv6ArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29550,8 +29550,8 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_ipv6_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv6ArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv6ArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29595,8 +29595,8 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	u.Path += "/test_response_string_ipv6_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv6NullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv6NullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29640,8 +29640,8 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_ipv6_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv6NullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv6NullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29685,8 +29685,8 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_ipv6_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringIpv6NullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringIpv6NullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29730,8 +29730,8 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	u.Path += "/test_response_string_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29775,8 +29775,8 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	u.Path += "/test_response_string_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29820,8 +29820,8 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29865,8 +29865,8 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	u.Path += "/test_response_string_password"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringPasswordRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringPasswordRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29910,8 +29910,8 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	u.Path += "/test_response_string_password_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringPasswordArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringPasswordArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29955,8 +29955,8 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_password_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringPasswordArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringPasswordArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30000,8 +30000,8 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	u.Path += "/test_response_string_password_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringPasswordNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringPasswordNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30045,8 +30045,8 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_password_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringPasswordNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringPasswordNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30090,8 +30090,8 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_password_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringPasswordNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringPasswordNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30135,8 +30135,8 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_time"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringTimeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringTimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30180,8 +30180,8 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	u.Path += "/test_response_string_time_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringTimeArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringTimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30225,8 +30225,8 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_time_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringTimeArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringTimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30270,8 +30270,8 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_time_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringTimeNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringTimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30315,8 +30315,8 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_time_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringTimeNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringTimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30360,8 +30360,8 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_time_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringTimeNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringTimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30405,8 +30405,8 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	u.Path += "/test_response_string_uri"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringURIRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringURIRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30450,8 +30450,8 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	u.Path += "/test_response_string_uri_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringURIArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringURIArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30495,8 +30495,8 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	u.Path += "/test_response_string_uri_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringURIArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringURIArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30540,8 +30540,8 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	u.Path += "/test_response_string_uri_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringURINullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringURINullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30585,8 +30585,8 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	u.Path += "/test_response_string_uri_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringURINullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringURINullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30630,8 +30630,8 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	u.Path += "/test_response_string_uri_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringURINullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringURINullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30675,8 +30675,8 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_uuid"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUUIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUUIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30720,8 +30720,8 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	u.Path += "/test_response_string_uuid_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUUIDArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUUIDArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30765,8 +30765,8 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_uuid_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUUIDArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUUIDArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30810,8 +30810,8 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_uuid_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUUIDNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUUIDNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30855,8 +30855,8 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_uuid_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUUIDNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUUIDNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30900,8 +30900,8 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_uuid_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUUIDNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUUIDNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30945,8 +30945,8 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_unix"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30990,8 +30990,8 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	u.Path += "/test_response_string_unix_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31035,8 +31035,8 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_unix_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31080,8 +31080,8 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	u.Path += "/test_response_string_unix-micro"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMicroRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMicroRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31125,8 +31125,8 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	u.Path += "/test_response_string_unix-micro_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMicroArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMicroArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31170,8 +31170,8 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_string_unix-micro_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMicroArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMicroArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31215,8 +31215,8 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	u.Path += "/test_response_string_unix-micro_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMicroNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMicroNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31260,8 +31260,8 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	u.Path += "/test_response_string_unix-micro_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMicroNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMicroNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31305,8 +31305,8 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	u.Path += "/test_response_string_unix-micro_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMicroNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMicroNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31350,8 +31350,8 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	u.Path += "/test_response_string_unix-milli"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMilliRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMilliRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31395,8 +31395,8 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	u.Path += "/test_response_string_unix-milli_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMilliArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMilliArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31440,8 +31440,8 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_string_unix-milli_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMilliArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMilliArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31485,8 +31485,8 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	u.Path += "/test_response_string_unix-milli_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMilliNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMilliNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31530,8 +31530,8 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	u.Path += "/test_response_string_unix-milli_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMilliNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMilliNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31575,8 +31575,8 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	u.Path += "/test_response_string_unix-milli_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixMilliNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixMilliNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31620,8 +31620,8 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	u.Path += "/test_response_string_unix-nano"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNanoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNanoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31665,8 +31665,8 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	u.Path += "/test_response_string_unix-nano_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNanoArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNanoArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31710,8 +31710,8 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_unix-nano_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNanoArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNanoArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31755,8 +31755,8 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	u.Path += "/test_response_string_unix-nano_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNanoNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNanoNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31800,8 +31800,8 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_unix-nano_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNanoNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNanoNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31845,8 +31845,8 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_unix-nano_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNanoNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNanoNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31890,8 +31890,8 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_unix_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31935,8 +31935,8 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_unix_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31980,8 +31980,8 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_unix_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32025,8 +32025,8 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	u.Path += "/test_response_string_unix-seconds"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixSecondsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixSecondsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32070,8 +32070,8 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	u.Path += "/test_response_string_unix-seconds_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixSecondsArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixSecondsArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32115,8 +32115,8 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	u.Path += "/test_response_string_unix-seconds_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixSecondsArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixSecondsArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32160,8 +32160,8 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	u.Path += "/test_response_string_unix-seconds_nullable"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixSecondsNullableRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixSecondsNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32205,8 +32205,8 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	u.Path += "/test_response_string_unix-seconds_nullable_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixSecondsNullableArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixSecondsNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32250,8 +32250,8 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	u.Path += "/test_response_string_unix-seconds_nullable_array_array"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestResponseStringUnixSecondsNullableArrayArrayRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestResponseStringUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

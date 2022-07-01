@@ -861,8 +861,8 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOrdersLimitOrderPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrdersLimitOrderPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	if err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err != nil {
@@ -951,8 +951,8 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOrdersMarketOrderPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrdersMarketOrderPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	if err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err != nil {
@@ -1222,8 +1222,8 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSandboxCurrenciesBalancePostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSandboxCurrenciesBalancePostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	if err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err != nil {
@@ -1298,8 +1298,8 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSandboxPositionsBalancePostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSandboxPositionsBalancePostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	if err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err != nil {
@@ -1362,8 +1362,8 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	u.Path += "/sandbox/register"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSandboxRegisterPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSandboxRegisterPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	if err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); err != nil {

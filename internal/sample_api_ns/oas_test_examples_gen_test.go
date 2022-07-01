@@ -293,6 +293,78 @@ func TestMaxPropertiesTest_EncodeDecode(t *testing.T) {
 	var typ2 MaxPropertiesTest
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestMultipleRequestBodiesApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ MultipleRequestBodiesApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultipleRequestBodiesApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMultipleRequestBodiesApplicationXWwwFormUrlencoded_EncodeDecode(t *testing.T) {
+	var typ MultipleRequestBodiesApplicationXWwwFormUrlencoded
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultipleRequestBodiesApplicationXWwwFormUrlencoded
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMultipleRequestBodiesMultipartFormData_EncodeDecode(t *testing.T) {
+	var typ MultipleRequestBodiesMultipartFormData
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultipleRequestBodiesMultipartFormData
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMultipleRequestBodiesOptionalApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ MultipleRequestBodiesOptionalApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultipleRequestBodiesOptionalApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded_EncodeDecode(t *testing.T) {
+	var typ MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMultipleRequestBodiesOptionalMultipartFormData_EncodeDecode(t *testing.T) {
+	var typ MultipleRequestBodiesOptionalMultipartFormData
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultipleRequestBodiesOptionalMultipartFormData
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestNoAdditionalPropertiesTest_EncodeDecode(t *testing.T) {
 	var typ NoAdditionalPropertiesTest
 	typ.SetFake()

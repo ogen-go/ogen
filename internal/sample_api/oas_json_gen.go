@@ -2823,6 +2823,240 @@ func (s *MaxPropertiesTest) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes MultipleRequestBodiesApplicationJSON as json.
+func (s MultipleRequestBodiesApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := DescriptionSimple(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MultipleRequestBodiesApplicationJSON from json.
+func (s *MultipleRequestBodiesApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleRequestBodiesApplicationJSON to nil")
+	}
+	var unwrapped DescriptionSimple
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleRequestBodiesApplicationJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleRequestBodiesApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleRequestBodiesApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleRequestBodiesApplicationXWwwFormUrlencoded as json.
+func (s MultipleRequestBodiesApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
+	unwrapped := DescriptionSimple(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MultipleRequestBodiesApplicationXWwwFormUrlencoded from json.
+func (s *MultipleRequestBodiesApplicationXWwwFormUrlencoded) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleRequestBodiesApplicationXWwwFormUrlencoded to nil")
+	}
+	var unwrapped DescriptionSimple
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleRequestBodiesApplicationXWwwFormUrlencoded) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleRequestBodiesApplicationXWwwFormUrlencoded) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleRequestBodiesMultipartFormData as json.
+func (s MultipleRequestBodiesMultipartFormData) Encode(e *jx.Encoder) {
+	unwrapped := DescriptionSimple(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes MultipleRequestBodiesMultipartFormData from json.
+func (s *MultipleRequestBodiesMultipartFormData) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleRequestBodiesMultipartFormData to nil")
+	}
+	var unwrapped DescriptionSimple
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleRequestBodiesMultipartFormData(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleRequestBodiesMultipartFormData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleRequestBodiesMultipartFormData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleRequestBodiesOptionalApplicationJSON as json.
+func (s MultipleRequestBodiesOptionalApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := OptDescriptionSimple(s)
+	if unwrapped.Set {
+		unwrapped.Encode(e)
+	}
+}
+
+// Decode decodes MultipleRequestBodiesOptionalApplicationJSON from json.
+func (s *MultipleRequestBodiesOptionalApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleRequestBodiesOptionalApplicationJSON to nil")
+	}
+	var unwrapped OptDescriptionSimple
+	if err := func() error {
+		unwrapped.Reset()
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleRequestBodiesOptionalApplicationJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleRequestBodiesOptionalApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleRequestBodiesOptionalApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded as json.
+func (s MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
+	unwrapped := OptDescriptionSimple(s)
+	if unwrapped.Set {
+		unwrapped.Encode(e)
+	}
+}
+
+// Decode decodes MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded from json.
+func (s *MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded to nil")
+	}
+	var unwrapped OptDescriptionSimple
+	if err := func() error {
+		unwrapped.Reset()
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleRequestBodiesOptionalMultipartFormData as json.
+func (s MultipleRequestBodiesOptionalMultipartFormData) Encode(e *jx.Encoder) {
+	unwrapped := OptDescriptionSimple(s)
+	if unwrapped.Set {
+		unwrapped.Encode(e)
+	}
+}
+
+// Decode decodes MultipleRequestBodiesOptionalMultipartFormData from json.
+func (s *MultipleRequestBodiesOptionalMultipartFormData) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleRequestBodiesOptionalMultipartFormData to nil")
+	}
+	var unwrapped OptDescriptionSimple
+	if err := func() error {
+		unwrapped.Reset()
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleRequestBodiesOptionalMultipartFormData(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleRequestBodiesOptionalMultipartFormData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleRequestBodiesOptionalMultipartFormData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes int as json.
 func (o NilInt) Encode(e *jx.Encoder) {
 	if o.Null {
@@ -4975,6 +5209,39 @@ func (s OptDefaultTestEnum) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptDefaultTestEnum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes DescriptionSimple as json.
+func (o OptDescriptionSimple) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes DescriptionSimple from json.
+func (o *OptDescriptionSimple) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDescriptionSimple to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptDescriptionSimple) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptDescriptionSimple) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

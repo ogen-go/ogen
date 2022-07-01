@@ -251,6 +251,22 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
+func decodeMultipleRequestBodiesResponse(resp *http.Response, span trace.Span) (res MultipleRequestBodiesOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return MultipleRequestBodiesOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeMultipleRequestBodiesOptionalResponse(resp *http.Response, span trace.Span) (res MultipleRequestBodiesOptionalOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return MultipleRequestBodiesOptionalOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
 func decodeNoAdditionalPropertiesTestResponse(resp *http.Response, span trace.Span) (res NoAdditionalPropertiesTest, err error) {
 	switch resp.StatusCode {
 	case 200:

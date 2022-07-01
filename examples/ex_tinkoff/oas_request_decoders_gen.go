@@ -71,7 +71,6 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -134,7 +133,6 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -197,7 +195,6 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -260,7 +257,6 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -334,7 +330,6 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

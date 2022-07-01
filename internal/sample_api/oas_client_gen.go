@@ -225,8 +225,8 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDefaultTestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDefaultTestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -405,8 +405,8 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	u.Path += "/foobar"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeFoobarPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeFoobarPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -512,6 +512,124 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	defer resp.Body.Close()
 
 	result, err := decodeGetHeaderResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MultipleRequestBodies invokes multipleRequestBodies operation.
+//
+// POST /multipleRequestBodies
+func (c *Client) MultipleRequestBodies(ctx context.Context, request MultipleRequestBodiesReq) (res MultipleRequestBodiesOK, err error) {
+	switch request := request.(type) {
+	case *MultipleRequestBodiesApplicationJSON:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesReqApplicationOctetStream:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesMultipartFormData:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesReqTextPlain:
+		// Validation is not required for this type.
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("multipleRequestBodies"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "MultipleRequestBodies",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/multipleRequestBodies"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeMultipleRequestBodiesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMultipleRequestBodiesResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MultipleRequestBodiesOptional invokes multipleRequestBodiesOptional operation.
+//
+// POST /multipleRequestBodiesOptional
+func (c *Client) MultipleRequestBodiesOptional(ctx context.Context, request MultipleRequestBodiesOptionalReq) (res MultipleRequestBodiesOptionalOK, err error) {
+	switch request := request.(type) {
+	case *MultipleRequestBodiesOptionalApplicationJSON:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesOptionalReqApplicationOctetStream:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesOptionalMultipartFormData:
+		// Validation is not required for this type.
+	case *MultipleRequestBodiesOptionalReqTextPlain:
+		// Validation is not required for this type.
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("multipleRequestBodiesOptional"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "MultipleRequestBodiesOptional",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/multipleRequestBodiesOptional"
+
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeMultipleRequestBodiesOptionalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeMultipleRequestBodiesOptionalResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -638,8 +756,8 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	u.Path += "/oneofBug"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOneofBugRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOneofBugRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -740,8 +858,8 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	u.Path += "/pet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePetCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1206,8 +1324,8 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	u.Path += "/pet/updateNameAlias"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetUpdateNameAliasPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePetUpdateNameAliasPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1272,8 +1390,8 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	u.Path += "/pet/updateName"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetUpdateNamePostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePetUpdateNamePostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1335,8 +1453,8 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetUploadAvatarByIDRequestOctetStream(request, r); err != nil {
-		return res, err
+	if err := encodePetUploadAvatarByIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1618,8 +1736,8 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	u.Path += "/testFloatValidation"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestFloatValidationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestFloatValidationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1663,8 +1781,8 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	u.Path += "/testFormURLEncoded"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestFormURLEncodedRequestFormURLEncoded(request, r); err != nil {
-		return res, err
+	if err := encodeTestFormURLEncodedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1709,7 +1827,7 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestMultipartRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1762,7 +1880,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestMultipartUploadRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1934,17 +2052,8 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	u.Path += "/testShareFormSchema"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	switch req := request.(type) {
-	case *SharedRequest:
-		if err := encodeTestShareFormSchemaRequestJSON(*req, r); err != nil {
-			return res, err
-		}
-	case *SharedRequestForm:
-		if err := encodeTestShareFormSchemaRequest(*req, r); err != nil {
-			return res, err
-		}
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+	if err := encodeTestShareFormSchemaRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

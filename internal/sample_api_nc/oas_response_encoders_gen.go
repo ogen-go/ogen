@@ -143,6 +143,18 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 
 }
+func encodeMultipleRequestBodiesResponse(response MultipleRequestBodiesOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}
+func encodeMultipleRequestBodiesOptionalResponse(response MultipleRequestBodiesOptionalOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}
 func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

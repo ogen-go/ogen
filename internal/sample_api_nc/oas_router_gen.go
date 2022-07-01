@@ -531,6 +531,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+			case 'm': // Prefix: "multipleRequestBodies"
+				if l := len("multipleRequestBodies"); len(elem) >= l && elem[0:l] == "multipleRequestBodies" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleMultipleRequestBodiesRequest([0]string{}, w, r)
+
+					return
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: MultipleRequestBodiesOptional
+						s.handleMultipleRequestBodiesOptionalRequest([0]string{}, w, r)
+
+						return
+					}
+				}
 			case 'o': // Prefix: "oneofBug"
 				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
 					elem = elem[l:]
@@ -1271,6 +1298,35 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+			case 'm': // Prefix: "multipleRequestBodies"
+				if l := len("multipleRequestBodies"); len(elem) >= l && elem[0:l] == "multipleRequestBodies" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					r.name = "MultipleRequestBodies"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: MultipleRequestBodiesOptional
+						r.name = "MultipleRequestBodiesOptional"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			case 'o': // Prefix: "oneofBug"
 				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {

@@ -86,8 +86,8 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	u.Path += "/snapshot/create"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeCreateSnapshotRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreateSnapshotRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -141,8 +141,8 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	u.Path += "/actions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeCreateSyncActionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreateSyncActionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -411,8 +411,8 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	u.Path += "/snapshot/load"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeLoadSnapshotRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeLoadSnapshotRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -456,8 +456,8 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	u.Path += "/mmds/config"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeMmdsConfigPutRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMmdsConfigPutRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -543,8 +543,8 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	u.Path += "/mmds"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeMmdsPatchRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMmdsPatchRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -588,8 +588,8 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	u.Path += "/mmds"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeMmdsPutRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMmdsPutRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -636,8 +636,8 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	u.Path += "/balloon"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePatchBalloonRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePatchBalloonRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -684,8 +684,8 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	u.Path += "/balloon/statistics"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePatchBalloonStatsIntervalRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePatchBalloonStatsIntervalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -754,8 +754,8 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePatchGuestDriveByIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePatchGuestDriveByIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -823,8 +823,8 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePatchGuestNetworkInterfaceByIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePatchGuestNetworkInterfaceByIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -886,8 +886,8 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	u.Path += "/machine-config"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePatchMachineConfigurationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePatchMachineConfigurationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -941,8 +941,8 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	u.Path += "/vm"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePatchVmRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePatchVmRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -989,8 +989,8 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	u.Path += "/balloon"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutBalloonRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutBalloonRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1037,8 +1037,8 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	u.Path += "/boot-source"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutGuestBootSourceRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutGuestBootSourceRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1107,8 +1107,8 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutGuestDriveByIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutGuestDriveByIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1176,8 +1176,8 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutGuestNetworkInterfaceByIDRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutGuestNetworkInterfaceByIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1232,8 +1232,8 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	u.Path += "/vsock"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutGuestVsockRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutGuestVsockRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1287,8 +1287,8 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	u.Path += "/logger"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutLoggerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutLoggerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1352,8 +1352,8 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	u.Path += "/machine-config"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutMachineConfigurationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutMachineConfigurationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1399,8 +1399,8 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	u.Path += "/metrics"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePutMetricsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePutMetricsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

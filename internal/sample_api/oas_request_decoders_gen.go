@@ -76,7 +76,6 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -150,8 +149,316 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeMultipleRequestBodiesRequest(r *http.Request, span trace.Span) (
+	req MultipleRequestBodiesReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request MultipleRequestBodiesApplicationJSON
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return &request, close, nil
+	case "application/octet-stream":
+		request := MultipleRequestBodiesReqApplicationOctetStream{Data: r.Body}
+		return &request, close, nil
+	case "application/x-www-form-urlencoded":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+		if err := r.ParseForm(); err != nil {
+			return req, close, errors.Wrap(err, "parse form")
+		}
+		form := r.PostForm
+
+		var request MultipleRequestBodiesApplicationXWwwFormUrlencoded
+		{
+			var unwrapped DescriptionSimple
+			q := uri.NewQueryDecoder(form)
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "description",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						unwrapped.Description = c
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"description\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
+				}
+			}
+			request = MultipleRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
+		}
+		return &request, close, nil
+	case "multipart/form-data":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, close, errors.Wrap(err, "parse multipart form")
+		}
+		form := url.Values(r.MultipartForm.Value)
+
+		var request MultipleRequestBodiesMultipartFormData
+		{
+			var unwrapped DescriptionSimple
+			q := uri.NewQueryDecoder(form)
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "description",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						unwrapped.Description = c
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"description\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
+				}
+			}
+			request = MultipleRequestBodiesMultipartFormData(unwrapped)
+		}
+		return &request, close, nil
+	case "text/plain":
+		request := MultipleRequestBodiesReqTextPlain{Data: r.Body}
+		return &request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeMultipleRequestBodiesOptionalRequest(r *http.Request, span trace.Span) (
+	req MultipleRequestBodiesOptionalReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request MultipleRequestBodiesOptionalApplicationJSON
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return &request, close, nil
+	case "application/octet-stream":
+		request := MultipleRequestBodiesOptionalReqApplicationOctetStream{Data: r.Body}
+		return &request, close, nil
+	case "application/x-www-form-urlencoded":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+		if err := r.ParseForm(); err != nil {
+			return req, close, errors.Wrap(err, "parse form")
+		}
+		form := r.PostForm
+
+		var request MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded
+		{
+			var unwrapped OptDescriptionSimple
+			{
+				var optForm DescriptionSimple
+				q := uri.NewQueryDecoder(form)
+				{
+					cfg := uri.QueryParameterDecodingConfig{
+						Name:    "description",
+						Style:   uri.QueryStyleForm,
+						Explode: true,
+					}
+					if err := q.HasParam(cfg); err == nil {
+						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optForm.Description = c
+							return nil
+						}); err != nil {
+							return req, close, errors.Wrap(err, "decode \"description\"")
+						}
+					} else {
+						return req, close, errors.Wrap(err, "query")
+					}
+				}
+				unwrapped = OptDescriptionSimple{
+					Value: optForm,
+					Set:   true,
+				}
+			}
+			request = MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
+		}
+		return &request, close, nil
+	case "multipart/form-data":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, close, errors.Wrap(err, "parse multipart form")
+		}
+		form := url.Values(r.MultipartForm.Value)
+
+		var request MultipleRequestBodiesOptionalMultipartFormData
+		{
+			var unwrapped OptDescriptionSimple
+			{
+				var optForm DescriptionSimple
+				q := uri.NewQueryDecoder(form)
+				{
+					cfg := uri.QueryParameterDecodingConfig{
+						Name:    "description",
+						Style:   uri.QueryStyleForm,
+						Explode: true,
+					}
+					if err := q.HasParam(cfg); err == nil {
+						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optForm.Description = c
+							return nil
+						}); err != nil {
+							return req, close, errors.Wrap(err, "decode \"description\"")
+						}
+					} else {
+						return req, close, errors.Wrap(err, "query")
+					}
+				}
+				unwrapped = OptDescriptionSimple{
+					Value: optForm,
+					Set:   true,
+				}
+			}
+			request = MultipleRequestBodiesOptionalMultipartFormData(unwrapped)
+		}
+		return &request, close, nil
+	case "text/plain":
+		request := MultipleRequestBodiesOptionalReqTextPlain{Data: r.Body}
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -213,7 +520,6 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -287,7 +593,6 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -361,7 +666,6 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -443,7 +747,6 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -478,7 +781,8 @@ func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Sp
 	}
 	switch ct {
 	case "application/octet-stream":
-		return PetUploadAvatarByIDReq{Data: r.Body}, close, nil
+		request := PetUploadAvatarByIDReq{Data: r.Body}
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -540,7 +844,6 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1202,7 +1505,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return &request, close, nil
 	case "multipart/form-data":
 		if r.ContentLength == 0 {

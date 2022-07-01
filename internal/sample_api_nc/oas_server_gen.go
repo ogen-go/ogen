@@ -50,6 +50,14 @@ type Handler interface {
 	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
+	// MultipleRequestBodies implements multipleRequestBodies operation.
+	//
+	// POST /multipleRequestBodies
+	MultipleRequestBodies(ctx context.Context, req MultipleRequestBodiesReq) (MultipleRequestBodiesOK, error)
+	// MultipleRequestBodiesOptional implements multipleRequestBodiesOptional operation.
+	//
+	// POST /multipleRequestBodiesOptional
+	MultipleRequestBodiesOptional(ctx context.Context, req MultipleRequestBodiesOptionalReq) (MultipleRequestBodiesOptionalOK, error)
 	// NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 	//
 	// GET /noAdditionalPropertiesTest

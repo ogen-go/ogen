@@ -506,6 +506,77 @@ type MaxPropertiesTest struct {
 	OptionalC OptInt "json:\"optional_c\""
 }
 
+type MultipleRequestBodiesApplicationJSON DescriptionSimple
+
+func (*MultipleRequestBodiesApplicationJSON) multipleRequestBodiesReq() {}
+
+type MultipleRequestBodiesApplicationXWwwFormUrlencoded DescriptionSimple
+
+func (*MultipleRequestBodiesApplicationXWwwFormUrlencoded) multipleRequestBodiesReq() {}
+
+type MultipleRequestBodiesMultipartFormData DescriptionSimple
+
+func (*MultipleRequestBodiesMultipartFormData) multipleRequestBodiesReq() {}
+
+// MultipleRequestBodiesOK is response for MultipleRequestBodies operation.
+type MultipleRequestBodiesOK struct{}
+
+type MultipleRequestBodiesOptionalApplicationJSON OptDescriptionSimple
+
+func (*MultipleRequestBodiesOptionalApplicationJSON) multipleRequestBodiesOptionalReq() {}
+
+type MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded OptDescriptionSimple
+
+func (*MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded) multipleRequestBodiesOptionalReq() {
+}
+
+type MultipleRequestBodiesOptionalMultipartFormData OptDescriptionSimple
+
+func (*MultipleRequestBodiesOptionalMultipartFormData) multipleRequestBodiesOptionalReq() {}
+
+// MultipleRequestBodiesOptionalOK is response for MultipleRequestBodiesOptional operation.
+type MultipleRequestBodiesOptionalOK struct{}
+
+type MultipleRequestBodiesOptionalReqApplicationOctetStream struct {
+	Data io.Reader
+}
+
+func (s MultipleRequestBodiesOptionalReqApplicationOctetStream) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*MultipleRequestBodiesOptionalReqApplicationOctetStream) multipleRequestBodiesOptionalReq() {}
+
+type MultipleRequestBodiesOptionalReqTextPlain struct {
+	Data io.Reader
+}
+
+func (s MultipleRequestBodiesOptionalReqTextPlain) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*MultipleRequestBodiesOptionalReqTextPlain) multipleRequestBodiesOptionalReq() {}
+
+type MultipleRequestBodiesReqApplicationOctetStream struct {
+	Data io.Reader
+}
+
+func (s MultipleRequestBodiesReqApplicationOctetStream) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*MultipleRequestBodiesReqApplicationOctetStream) multipleRequestBodiesReq() {}
+
+type MultipleRequestBodiesReqTextPlain struct {
+	Data io.Reader
+}
+
+func (s MultipleRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*MultipleRequestBodiesReqTextPlain) multipleRequestBodiesReq() {}
+
 // NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
@@ -1689,6 +1760,52 @@ func (o OptDefaultTestEnum) Get() (v DefaultTestEnum, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptDefaultTestEnum) Or(d DefaultTestEnum) DefaultTestEnum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDescriptionSimple returns new OptDescriptionSimple with value set to v.
+func NewOptDescriptionSimple(v DescriptionSimple) OptDescriptionSimple {
+	return OptDescriptionSimple{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDescriptionSimple is optional DescriptionSimple.
+type OptDescriptionSimple struct {
+	Value DescriptionSimple
+	Set   bool
+}
+
+// IsSet returns true if OptDescriptionSimple was set.
+func (o OptDescriptionSimple) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDescriptionSimple) Reset() {
+	var v DescriptionSimple
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDescriptionSimple) SetTo(v DescriptionSimple) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDescriptionSimple) Get() (v DescriptionSimple, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDescriptionSimple) Or(d DescriptionSimple) DescriptionSimple {
 	if v, ok := o.Get(); ok {
 		return v
 	}

@@ -469,6 +469,60 @@ func (s *MaxPropertiesTest) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *MultipleRequestBodiesApplicationJSON) SetFake() {
+	var unwrapped DescriptionSimple
+	{
+		unwrapped.SetFake()
+	}
+	*s = MultipleRequestBodiesApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *MultipleRequestBodiesApplicationXWwwFormUrlencoded) SetFake() {
+	var unwrapped DescriptionSimple
+	{
+		unwrapped.SetFake()
+	}
+	*s = MultipleRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *MultipleRequestBodiesMultipartFormData) SetFake() {
+	var unwrapped DescriptionSimple
+	{
+		unwrapped.SetFake()
+	}
+	*s = MultipleRequestBodiesMultipartFormData(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *MultipleRequestBodiesOptionalApplicationJSON) SetFake() {
+	var unwrapped OptDescriptionSimple
+	{
+		unwrapped.SetFake()
+	}
+	*s = MultipleRequestBodiesOptionalApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded) SetFake() {
+	var unwrapped OptDescriptionSimple
+	{
+		unwrapped.SetFake()
+	}
+	*s = MultipleRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *MultipleRequestBodiesOptionalMultipartFormData) SetFake() {
+	var unwrapped OptDescriptionSimple
+	{
+		unwrapped.SetFake()
+	}
+	*s = MultipleRequestBodiesOptionalMultipartFormData(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *NilInt) SetFake() {
 	s.Null = true
 }
@@ -809,6 +863,15 @@ func (s *OptDateTime) SetFake() {
 // SetFake set fake values.
 func (s *OptDefaultTestEnum) SetFake() {
 	var elem DefaultTestEnum
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptDescriptionSimple) SetFake() {
+	var elem DescriptionSimple
 	{
 		elem.SetFake()
 	}

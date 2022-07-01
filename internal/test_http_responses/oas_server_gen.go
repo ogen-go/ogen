@@ -44,6 +44,10 @@ type Handler interface {
 	//
 	// GET /octetStreamEmptySchema
 	OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error)
+	// TextPlainBinaryStringSchema implements textPlainBinaryStringSchema operation.
+	//
+	// GET /textPlainBinaryStringSchema
+	TextPlainBinaryStringSchema(ctx context.Context) (TextPlainBinaryStringSchemaOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

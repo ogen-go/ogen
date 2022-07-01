@@ -293,3 +293,26 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
+func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res TextPlainBinaryStringSchemaOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "text/plain":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			response := TextPlainBinaryStringSchemaOK{Data: bytes.NewReader(b)}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
