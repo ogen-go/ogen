@@ -23,6 +23,23 @@
         }
       }
     },
+    "/textPlainBinaryStringSchema": {
+      "get": {
+        "operationId": "textPlainBinaryStringSchema",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/octetStreamEmptySchema": {
       "get": {
         "operationId": "octetStreamEmptySchema",
