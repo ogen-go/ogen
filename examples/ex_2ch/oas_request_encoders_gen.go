@@ -3,11 +3,10 @@
 package api
 
 import (
-	"io"
 	"mime/multipart"
+	"net/http"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -16,15 +15,11 @@ import (
 
 func encodeUserPassloginPostRequest(
 	req OptUserPassloginPostReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	request := req.Value
 
@@ -39,28 +34,25 @@ func encodeUserPassloginPostRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(request.Passcode))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
 func encodeUserPostingPostRequest(
 	req OptUserPostingPostReqForm,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	request := req.Value
 
@@ -75,7 +67,7 @@ func encodeUserPostingPostRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(request.Board))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -88,7 +80,7 @@ func encodeUserPostingPostRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(string(request.CaptchaType)))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -104,7 +96,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -120,7 +112,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -142,7 +134,7 @@ func encodeUserPostingPostRequest(
 				return nil
 			})
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -158,7 +150,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -174,7 +166,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -190,7 +182,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -206,7 +198,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -222,7 +214,7 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -238,28 +230,25 @@ func encodeUserPostingPostRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
 func encodeUserReportPostRequest(
 	req OptUserReportPostReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	request := req.Value
 
@@ -274,7 +263,7 @@ func encodeUserReportPostRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(request.Board))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -287,7 +276,7 @@ func encodeUserReportPostRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(request.Comment))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -309,7 +298,7 @@ func encodeUserReportPostRequest(
 				return nil
 			})
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -322,14 +311,15 @@ func encodeUserReportPostRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.IntToString(request.Thread))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }

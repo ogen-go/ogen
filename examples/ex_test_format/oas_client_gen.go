@@ -5,8 +5,6 @@ package api
 import (
 	"context"
 	"fmt"
-	"io"
-	"net/http"
 	"net/netip"
 	"net/url"
 	"time"
@@ -1231,30 +1229,9 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 	}
 	u.RawQuery = q.Values().Encode()
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestQueryParameterRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestQueryParameterRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1297,30 +1274,9 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_Any"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestAnyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestAnyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1363,30 +1319,9 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestBooleanRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestBooleanRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1429,30 +1364,9 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestBooleanArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestBooleanArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1517,30 +1431,9 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestBooleanArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestBooleanArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1583,30 +1476,9 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestBooleanNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestBooleanNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1649,30 +1521,9 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestBooleanNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestBooleanNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1737,30 +1588,9 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestBooleanNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestBooleanNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1803,30 +1633,9 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_EmptyStruct"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestEmptyStructRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestEmptyStructRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1884,30 +1693,9 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_FormatTest"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestFormatTestRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestFormatTestRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1950,30 +1738,9 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2016,30 +1783,9 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2104,30 +1850,9 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2170,30 +1895,9 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2236,30 +1940,9 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2324,30 +2007,9 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2390,30 +2052,9 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2456,30 +2097,9 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2544,30 +2164,9 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2610,30 +2209,9 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2676,30 +2254,9 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2764,30 +2321,9 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2830,30 +2366,9 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2896,30 +2411,9 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2984,30 +2478,9 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3050,30 +2523,9 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3116,30 +2568,9 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3204,30 +2635,9 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestIntegerNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3270,30 +2680,9 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_null"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNullRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNullRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3336,30 +2725,9 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_null_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNullArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNullArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3424,30 +2792,9 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_null_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNullArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNullArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3490,30 +2837,9 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_null_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNullNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNullNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3556,30 +2882,9 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_null_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNullNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNullNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3644,30 +2949,9 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_null_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNullNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNullNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3725,30 +3009,9 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3813,30 +3076,9 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3918,30 +3160,9 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3999,30 +3220,9 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberDoubleRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberDoubleRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4087,30 +3287,9 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberDoubleArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberDoubleArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4192,30 +3371,9 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberDoubleArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberDoubleArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4273,30 +3431,9 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberDoubleNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberDoubleNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4361,30 +3498,9 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberDoubleNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberDoubleNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4466,30 +3582,9 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4547,30 +3642,9 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberFloatRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberFloatRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4635,30 +3709,9 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberFloatArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberFloatArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4740,30 +3793,9 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberFloatArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberFloatArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4821,30 +3853,9 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberFloatNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberFloatNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4909,30 +3920,9 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberFloatNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberFloatNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5014,30 +4004,9 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5080,30 +4049,9 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5146,30 +4094,9 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5234,30 +4161,9 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5300,30 +4206,9 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5366,30 +4251,9 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5454,30 +4318,9 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5520,30 +4363,9 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5586,30 +4408,9 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5674,30 +4475,9 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5740,30 +4520,9 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5806,30 +4565,9 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5894,30 +4632,9 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -5975,30 +4692,9 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6063,30 +4759,9 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6168,30 +4843,9 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestNumberNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestNumberNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6234,30 +4888,9 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_Any"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredAnyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredAnyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6300,30 +4933,9 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredBooleanRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredBooleanRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6374,30 +4986,9 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredBooleanArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredBooleanArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6465,30 +5056,9 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredBooleanArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredBooleanArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6531,30 +5101,9 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredBooleanNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredBooleanNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6605,30 +5154,9 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredBooleanNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredBooleanNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6696,30 +5224,9 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6762,30 +5269,9 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_EmptyStruct"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredEmptyStructRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredEmptyStructRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6836,30 +5322,9 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_FormatTest"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredFormatTestRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredFormatTestRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6902,30 +5367,9 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6976,30 +5420,9 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7067,30 +5490,9 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7133,30 +5535,9 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7207,30 +5588,9 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7298,30 +5658,9 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7364,30 +5703,9 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7438,30 +5756,9 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7529,30 +5826,9 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7595,30 +5871,9 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7669,30 +5924,9 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7760,30 +5994,9 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7826,30 +6039,9 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7900,30 +6092,9 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7991,30 +6162,9 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8057,30 +6207,9 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8131,30 +6260,9 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8222,30 +6330,9 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8288,30 +6375,9 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_null"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNullRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNullRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8362,30 +6428,9 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_null_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNullArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNullArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8453,30 +6498,9 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_null_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNullArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNullArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8519,30 +6543,9 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_null_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNullNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNullNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8593,30 +6596,9 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_null_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNullNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNullNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8684,30 +6666,9 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_null_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNullNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNullNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8758,30 +6719,9 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8849,30 +6789,9 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -8957,30 +6876,9 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9031,30 +6929,9 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberDoubleRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberDoubleRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9122,30 +6999,9 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberDoubleArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberDoubleArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9230,30 +7086,9 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberDoubleArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberDoubleArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9304,30 +7139,9 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberDoubleNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberDoubleNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9395,30 +7209,9 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9503,30 +7296,9 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9577,30 +7349,9 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberFloatRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberFloatRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9668,30 +7419,9 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberFloatArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberFloatArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9776,30 +7506,9 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberFloatArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberFloatArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9850,30 +7559,9 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberFloatNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberFloatNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9941,30 +7629,9 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10049,30 +7716,9 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10115,30 +7761,9 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10189,30 +7814,9 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10280,30 +7884,9 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10346,30 +7929,9 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10420,30 +7982,9 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10511,30 +8052,9 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10577,30 +8097,9 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10651,30 +8150,9 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10742,30 +8220,9 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10808,30 +8265,9 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10882,30 +8318,9 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10973,30 +8388,9 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11047,30 +8441,9 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11138,30 +8511,9 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11246,30 +8598,9 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11312,30 +8643,9 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11386,30 +8696,9 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11477,30 +8766,9 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11543,30 +8811,9 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringBinaryRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringBinaryRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11617,30 +8864,9 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringBinaryArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringBinaryArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11708,30 +8934,9 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringBinaryArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringBinaryArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11774,30 +8979,9 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringBinaryNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringBinaryNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11848,30 +9032,9 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11939,30 +9102,9 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12005,30 +9147,9 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringByteRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringByteRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12079,30 +9200,9 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringByteArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringByteArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12170,30 +9270,9 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringByteArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringByteArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12236,30 +9315,9 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringByteNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringByteNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12310,30 +9368,9 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringByteNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringByteNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12401,30 +9438,9 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringByteNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringByteNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12467,30 +9483,9 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12541,30 +9536,9 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12632,30 +9606,9 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12698,30 +9651,9 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12772,30 +9704,9 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12863,30 +9774,9 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12929,30 +9819,9 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateTimeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateTimeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13003,30 +9872,9 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateTimeArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateTimeArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13094,30 +9942,9 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateTimeArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateTimeArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13160,30 +9987,9 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateTimeNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateTimeNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13234,30 +10040,9 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13325,30 +10110,9 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13391,30 +10155,9 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDurationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDurationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13465,30 +10208,9 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDurationArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDurationArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13556,30 +10278,9 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDurationArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDurationArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13622,30 +10323,9 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDurationNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDurationNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13696,30 +10376,9 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13787,30 +10446,9 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13869,30 +10507,9 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringEmailRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringEmailRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13968,30 +10585,9 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringEmailArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringEmailArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14084,30 +10680,9 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringEmailArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringEmailArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14166,30 +10741,9 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringEmailNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringEmailNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14265,30 +10819,9 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14381,30 +10914,9 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14463,30 +10975,9 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringHostnameRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringHostnameRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14562,30 +11053,9 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringHostnameArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringHostnameArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14678,30 +11148,9 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringHostnameArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringHostnameArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14760,30 +11209,9 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringHostnameNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringHostnameNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14859,30 +11287,9 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14975,30 +11382,9 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15041,30 +11427,9 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIPRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIPRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15115,30 +11480,9 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIPArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIPArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15206,30 +11550,9 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIPArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIPArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15272,30 +11595,9 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIPNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIPNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15346,30 +11648,9 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIPNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIPNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15437,30 +11718,9 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15503,30 +11763,9 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15577,30 +11816,9 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15668,30 +11886,9 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15734,30 +11931,9 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15808,30 +11984,9 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15899,30 +12054,9 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15965,30 +12099,9 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16039,30 +12152,9 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16130,30 +12222,9 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16196,30 +12267,9 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16270,30 +12320,9 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16361,30 +12390,9 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16427,30 +12435,9 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv4RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv4RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16501,30 +12488,9 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv4ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv4ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16592,30 +12558,9 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16658,30 +12603,9 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv4NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv4NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16732,30 +12656,9 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16823,30 +12726,9 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16889,30 +12771,9 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv6RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv6RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16963,30 +12824,9 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv6ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv6ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17054,30 +12894,9 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17120,30 +12939,9 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv6NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv6NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17194,30 +12992,9 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17285,30 +13062,9 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17351,30 +13107,9 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17425,30 +13160,9 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17516,30 +13230,9 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17582,30 +13275,9 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringPasswordRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringPasswordRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17656,30 +13328,9 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringPasswordArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringPasswordArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17747,30 +13398,9 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringPasswordArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringPasswordArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17813,30 +13443,9 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringPasswordNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringPasswordNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17887,30 +13496,9 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17978,30 +13566,9 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18044,30 +13611,9 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringTimeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringTimeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18118,30 +13664,9 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringTimeArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringTimeArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18209,30 +13734,9 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringTimeArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringTimeArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18275,30 +13779,9 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringTimeNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringTimeNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18349,30 +13832,9 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18440,30 +13902,9 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18506,30 +13947,9 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringURIRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringURIRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18580,30 +14000,9 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringURIArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringURIArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18671,30 +14070,9 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringURIArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringURIArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18737,30 +14115,9 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringURINullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringURINullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18811,30 +14168,9 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringURINullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringURINullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18902,30 +14238,9 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18968,30 +14283,9 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUUIDRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUUIDRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19042,30 +14336,9 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUUIDArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUUIDArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19133,30 +14406,9 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUUIDArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUUIDArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19199,30 +14451,9 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUUIDNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUUIDNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19273,30 +14504,9 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19364,30 +14574,9 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19430,30 +14619,9 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19504,30 +14672,9 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19595,30 +14742,9 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19661,30 +14787,9 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-micro"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMicroRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMicroRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19735,30 +14840,9 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-micro_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMicroArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMicroArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19826,30 +14910,9 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-micro_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMicroArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMicroArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19892,30 +14955,9 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-micro_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19966,30 +15008,9 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-micro_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20057,30 +15078,9 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-micro_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20123,30 +15123,9 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-milli"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMilliRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMilliRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20197,30 +15176,9 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-milli_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMilliArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMilliArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20288,30 +15246,9 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-milli_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMilliArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMilliArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20354,30 +15291,9 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-milli_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20428,30 +15344,9 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-milli_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20519,30 +15414,9 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-milli_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20585,30 +15459,9 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-nano"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNanoRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNanoRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20659,30 +15512,9 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-nano_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNanoArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNanoArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20750,30 +15582,9 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-nano_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNanoArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNanoArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20816,30 +15627,9 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-nano_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20890,30 +15680,9 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-nano_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20981,30 +15750,9 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-nano_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21047,30 +15795,9 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21121,30 +15848,9 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21212,30 +15918,9 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21278,30 +15963,9 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-seconds"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixSecondsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixSecondsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21352,30 +16016,9 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-seconds_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixSecondsArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixSecondsArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21443,30 +16086,9 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-seconds_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixSecondsArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixSecondsArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21509,30 +16131,9 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-seconds_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21583,30 +16184,9 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21674,30 +16254,9 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21740,30 +16299,9 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21806,30 +16344,9 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21894,30 +16411,9 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21960,30 +16456,9 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringBinaryRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringBinaryRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22026,30 +16501,9 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringBinaryArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringBinaryArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22114,30 +16568,9 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringBinaryArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringBinaryArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22180,30 +16613,9 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringBinaryNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringBinaryNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22246,30 +16658,9 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringBinaryNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringBinaryNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22334,30 +16725,9 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22400,30 +16770,9 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringByteRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringByteRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22466,30 +16815,9 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringByteArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringByteArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22554,30 +16882,9 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringByteArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringByteArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22620,30 +16927,9 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringByteNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringByteNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22686,30 +16972,9 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringByteNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringByteNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22774,30 +17039,9 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringByteNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringByteNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22840,30 +17084,9 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22906,30 +17129,9 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22994,30 +17196,9 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23060,30 +17241,9 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23126,30 +17286,9 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23214,30 +17353,9 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23280,30 +17398,9 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateTimeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateTimeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23346,30 +17443,9 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateTimeArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateTimeArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23434,30 +17510,9 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateTimeArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateTimeArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23500,30 +17555,9 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateTimeNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateTimeNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23566,30 +17600,9 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateTimeNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateTimeNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23654,30 +17667,9 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23720,30 +17712,9 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDurationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDurationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23786,30 +17757,9 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDurationArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDurationArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23874,30 +17824,9 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDurationArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDurationArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23940,30 +17869,9 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDurationNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDurationNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24006,30 +17914,9 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDurationNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDurationNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24094,30 +17981,9 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringDurationNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringDurationNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24183,30 +18049,9 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringEmailRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringEmailRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24279,30 +18124,9 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringEmailArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringEmailArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24392,30 +18216,9 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringEmailArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringEmailArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24481,30 +18284,9 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringEmailNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringEmailNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24577,30 +18359,9 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringEmailNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringEmailNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24690,30 +18451,9 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringEmailNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringEmailNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24779,30 +18519,9 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringHostnameRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringHostnameRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24875,30 +18594,9 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringHostnameArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringHostnameArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -24988,30 +18686,9 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringHostnameArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringHostnameArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25077,30 +18754,9 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringHostnameNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringHostnameNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25173,30 +18829,9 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringHostnameNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringHostnameNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25286,30 +18921,9 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25352,30 +18966,9 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIPRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIPRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25418,30 +19011,9 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIPArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIPArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25506,30 +19078,9 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIPArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIPArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25572,30 +19123,9 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIPNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIPNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25638,30 +19168,9 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIPNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIPNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25726,30 +19235,9 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIPNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIPNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25792,30 +19280,9 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25858,30 +19325,9 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25946,30 +19392,9 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26012,30 +19437,9 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26078,30 +19482,9 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26166,30 +19549,9 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26232,30 +19594,9 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26298,30 +19639,9 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26386,30 +19706,9 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26452,30 +19751,9 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26518,30 +19796,9 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26606,30 +19863,9 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26672,30 +19908,9 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv4RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv4RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26738,30 +19953,9 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv4ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv4ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26826,30 +20020,9 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv4ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv4ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26892,30 +20065,9 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv4NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv4NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26958,30 +20110,9 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv4NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv4NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27046,30 +20177,9 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27112,30 +20222,9 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv6RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv6RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27178,30 +20267,9 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv6ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv6ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27266,30 +20334,9 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv6ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv6ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27332,30 +20379,9 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv6NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv6NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27398,30 +20424,9 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv6NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv6NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27486,30 +20491,9 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27552,30 +20536,9 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27618,30 +20581,9 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27706,30 +20648,9 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27772,30 +20693,9 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringPasswordRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringPasswordRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27838,30 +20738,9 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringPasswordArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringPasswordArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27926,30 +20805,9 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringPasswordArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringPasswordArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27992,30 +20850,9 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringPasswordNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringPasswordNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28058,30 +20895,9 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringPasswordNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringPasswordNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28146,30 +20962,9 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28212,30 +21007,9 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringTimeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringTimeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28278,30 +21052,9 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringTimeArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringTimeArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28366,30 +21119,9 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringTimeArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringTimeArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28432,30 +21164,9 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringTimeNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringTimeNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28498,30 +21209,9 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringTimeNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringTimeNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28586,30 +21276,9 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringTimeNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringTimeNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28652,30 +21321,9 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringURIRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringURIRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28718,30 +21366,9 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringURIArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringURIArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28806,30 +21433,9 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringURIArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringURIArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28872,30 +21478,9 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringURINullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringURINullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28938,30 +21523,9 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringURINullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringURINullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29026,30 +21590,9 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringURINullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringURINullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29092,30 +21635,9 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUUIDRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUUIDRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29158,30 +21680,9 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUUIDArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUUIDArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29246,30 +21747,9 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUUIDArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUUIDArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29312,30 +21792,9 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUUIDNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUUIDNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29378,30 +21837,9 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUUIDNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUUIDNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29466,30 +21904,9 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29532,30 +21949,9 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptUnixSecon
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29598,30 +21994,9 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29686,30 +22061,9 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29752,30 +22106,9 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptUnix
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-micro"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMicroRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMicroRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29818,30 +22151,9 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-micro_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMicroArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMicroArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29906,30 +22218,9 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-micro_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMicroArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMicroArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29972,30 +22263,9 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-micro_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMicroNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMicroNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30038,30 +22308,9 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-micro_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMicroNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMicroNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30126,30 +22375,9 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-micro_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30192,30 +22420,9 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptUnix
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-milli"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMilliRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMilliRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30258,30 +22465,9 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-milli_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMilliArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMilliArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30346,30 +22532,9 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-milli_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMilliArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMilliArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30412,30 +22577,9 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-milli_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMilliNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMilliNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30478,30 +22622,9 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-milli_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMilliNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMilliNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30566,30 +22689,9 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-milli_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30632,30 +22734,9 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptUnixN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-nano"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNanoRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNanoRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30698,30 +22779,9 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-nano_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNanoArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNanoArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30786,30 +22846,9 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-nano_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNanoArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNanoArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30852,30 +22891,9 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-nano_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNanoNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNanoNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30918,30 +22936,9 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-nano_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNanoNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNanoNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31006,30 +23003,9 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-nano_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31072,30 +23048,9 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31138,30 +23093,9 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31226,30 +23160,9 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31292,30 +23205,9 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptUn
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-seconds"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixSecondsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixSecondsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31358,30 +23250,9 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-seconds_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixSecondsArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixSecondsArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31446,30 +23317,9 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-seconds_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixSecondsArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixSecondsArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31512,30 +23362,9 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-seconds_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixSecondsNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixSecondsNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31578,30 +23407,9 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-seconds_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31666,30 +23474,9 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_unix-seconds_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31732,30 +23519,9 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_Any"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseAnyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseAnyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31798,30 +23564,9 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseBooleanRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseBooleanRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31864,30 +23609,9 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseBooleanArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseBooleanArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31930,30 +23654,9 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseBooleanArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseBooleanArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31996,30 +23699,9 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseBooleanNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseBooleanNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32062,30 +23744,9 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseBooleanNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseBooleanNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32128,30 +23789,9 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseBooleanNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseBooleanNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32194,30 +23834,9 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_EmptyStruct"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseEmptyStructRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseEmptyStructRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32260,30 +23879,9 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_FormatTest"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseFormatTestRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseFormatTestRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32326,30 +23924,9 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32392,30 +23969,9 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32458,30 +24014,9 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32524,30 +24059,9 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32590,30 +24104,9 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32656,30 +24149,9 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32722,30 +24194,9 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32788,30 +24239,9 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32854,30 +24284,9 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32920,30 +24329,9 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32986,30 +24374,9 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33052,30 +24419,9 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33118,30 +24464,9 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33184,30 +24509,9 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33250,30 +24554,9 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33316,30 +24599,9 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33382,30 +24644,9 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33448,30 +24689,9 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseIntegerNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33514,30 +24734,9 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_null"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNullRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNullRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33580,30 +24779,9 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_null_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNullArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNullArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33646,30 +24824,9 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_null_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNullArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNullArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33712,30 +24869,9 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_null_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNullNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNullNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33778,30 +24914,9 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_null_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNullNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNullNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33844,30 +24959,9 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_null_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNullNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNullNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33910,30 +25004,9 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -33976,30 +25049,9 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34042,30 +25094,9 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34108,30 +25139,9 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberDoubleRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberDoubleRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34174,30 +25184,9 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberDoubleArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberDoubleArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34240,30 +25229,9 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberDoubleArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberDoubleArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34306,30 +25274,9 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberDoubleNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberDoubleNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34372,30 +25319,9 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberDoubleNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberDoubleNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34438,30 +25364,9 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberDoubleNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberDoubleNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34504,30 +25409,9 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberFloatRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberFloatRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34570,30 +25454,9 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberFloatArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberFloatArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34636,30 +25499,9 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberFloatArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberFloatArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34702,30 +25544,9 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberFloatNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberFloatNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34768,30 +25589,9 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberFloatNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberFloatNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34834,30 +25634,9 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberFloatNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberFloatNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34900,30 +25679,9 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34966,30 +25724,9 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35032,30 +25769,9 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35098,30 +25814,9 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35164,30 +25859,9 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35230,30 +25904,9 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35296,30 +25949,9 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35362,30 +25994,9 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35428,30 +26039,9 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35494,30 +26084,9 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35560,30 +26129,9 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35626,30 +26174,9 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35692,30 +26219,9 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35758,30 +26264,9 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35824,30 +26309,9 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseNumberNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseNumberNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35890,30 +26354,9 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35956,30 +26399,9 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36022,30 +26444,9 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36088,30 +26489,9 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringBinaryRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringBinaryRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36154,30 +26534,9 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringBinaryArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringBinaryArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36220,30 +26579,9 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringBinaryArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringBinaryArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36286,30 +26624,9 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringBinaryNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringBinaryNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36352,30 +26669,9 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringBinaryNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringBinaryNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36418,30 +26714,9 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringBinaryNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringBinaryNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36484,30 +26759,9 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringByteRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringByteRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36550,30 +26804,9 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringByteArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringByteArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36616,30 +26849,9 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringByteArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringByteArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36682,30 +26894,9 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringByteNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringByteNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36748,30 +26939,9 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringByteNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringByteNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36814,30 +26984,9 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringByteNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringByteNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36880,30 +27029,9 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36946,30 +27074,9 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37012,30 +27119,9 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37078,30 +27164,9 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37144,30 +27209,9 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37210,30 +27254,9 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37276,30 +27299,9 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateTimeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateTimeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37342,30 +27344,9 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateTimeArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateTimeArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37408,30 +27389,9 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateTimeArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateTimeArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37474,30 +27434,9 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateTimeNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateTimeNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37540,30 +27479,9 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateTimeNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateTimeNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37606,30 +27524,9 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDateTimeNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDateTimeNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37672,30 +27569,9 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDurationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDurationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37738,30 +27614,9 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDurationArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDurationArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37804,30 +27659,9 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDurationArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDurationArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37870,30 +27704,9 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDurationNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDurationNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37936,30 +27749,9 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDurationNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDurationNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38002,30 +27794,9 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringDurationNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringDurationNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38068,30 +27839,9 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringEmailRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringEmailRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38134,30 +27884,9 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringEmailArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringEmailArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38200,30 +27929,9 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringEmailArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringEmailArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38266,30 +27974,9 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringEmailNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringEmailNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38332,30 +28019,9 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringEmailNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringEmailNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38398,30 +28064,9 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringEmailNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringEmailNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38464,30 +28109,9 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringHostnameRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringHostnameRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38530,30 +28154,9 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringHostnameArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringHostnameArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38596,30 +28199,9 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringHostnameArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringHostnameArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38662,30 +28244,9 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringHostnameNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringHostnameNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38728,30 +28289,9 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringHostnameNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringHostnameNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38794,30 +28334,9 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringHostnameNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringHostnameNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38860,30 +28379,9 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIPRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIPRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38926,30 +28424,9 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIPArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIPArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38992,30 +28469,9 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIPArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIPArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39058,30 +28514,9 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIPNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIPNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39124,30 +28559,9 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIPNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIPNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39190,30 +28604,9 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIPNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIPNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39256,30 +28649,9 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int32"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt32RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt32RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39322,30 +28694,9 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int32_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt32ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt32ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39388,30 +28739,9 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int32_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt32ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt32ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39454,30 +28784,9 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int32_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt32NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt32NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39520,30 +28829,9 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int32_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt32NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt32NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39586,30 +28874,9 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int32_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt32NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt32NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39652,30 +28919,9 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int64"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt64RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt64RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39718,30 +28964,9 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int64_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt64ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt64ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39784,30 +29009,9 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int64_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt64ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt64ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39850,30 +29054,9 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int64_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt64NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt64NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39916,30 +29099,9 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int64_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt64NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt64NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39982,30 +29144,9 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_int64_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringInt64NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringInt64NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40048,30 +29189,9 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv4RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv4RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40114,30 +29234,9 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv4ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv4ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40180,30 +29279,9 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv4ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv4ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40246,30 +29324,9 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv4NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv4NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40312,30 +29369,9 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv4NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv4NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40378,30 +29414,9 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv4NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv4NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40444,30 +29459,9 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv6RequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv6RequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40510,30 +29504,9 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv6ArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv6ArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40576,30 +29549,9 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv6ArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv6ArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40642,30 +29594,9 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv6NullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv6NullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40708,30 +29639,9 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv6NullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv6NullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40774,30 +29684,9 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringIpv6NullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringIpv6NullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40840,30 +29729,9 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40906,30 +29774,9 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40972,30 +29819,9 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41038,30 +29864,9 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringPasswordRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringPasswordRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41104,30 +29909,9 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringPasswordArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringPasswordArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41170,30 +29954,9 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringPasswordArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringPasswordArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41236,30 +29999,9 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringPasswordNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringPasswordNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41302,30 +30044,9 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringPasswordNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringPasswordNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41368,30 +30089,9 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringPasswordNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringPasswordNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41434,30 +30134,9 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringTimeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringTimeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41500,30 +30179,9 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringTimeArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringTimeArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41566,30 +30224,9 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringTimeArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringTimeArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41632,30 +30269,9 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringTimeNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringTimeNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41698,30 +30314,9 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringTimeNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringTimeNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41764,30 +30359,9 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringTimeNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringTimeNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41830,30 +30404,9 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringURIRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringURIRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41896,30 +30449,9 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringURIArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringURIArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41962,30 +30494,9 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringURIArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringURIArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42028,30 +30539,9 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringURINullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringURINullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42094,30 +30584,9 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringURINullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringURINullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42160,30 +30629,9 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringURINullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringURINullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42226,30 +30674,9 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUUIDRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUUIDRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42292,30 +30719,9 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUUIDArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUUIDArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42358,30 +30764,9 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUUIDArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUUIDArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42424,30 +30809,9 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUUIDNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUUIDNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42490,30 +30854,9 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUUIDNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUUIDNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42556,30 +30899,9 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUUIDNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUUIDNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42622,30 +30944,9 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42688,30 +30989,9 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42754,30 +31034,9 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42820,30 +31079,9 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-micro"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMicroRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMicroRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42886,30 +31124,9 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-micro_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMicroArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMicroArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42952,30 +31169,9 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-micro_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMicroArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMicroArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43018,30 +31214,9 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-micro_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMicroNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMicroNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43084,30 +31259,9 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-micro_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMicroNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMicroNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43150,30 +31304,9 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-micro_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMicroNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMicroNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43216,30 +31349,9 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-milli"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMilliRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMilliRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43282,30 +31394,9 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-milli_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMilliArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMilliArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43348,30 +31439,9 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-milli_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMilliArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMilliArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43414,30 +31484,9 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-milli_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMilliNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMilliNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43480,30 +31529,9 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-milli_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMilliNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMilliNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43546,30 +31574,9 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-milli_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixMilliNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixMilliNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43612,30 +31619,9 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-nano"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNanoRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNanoRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43678,30 +31664,9 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-nano_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNanoArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNanoArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43744,30 +31709,9 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-nano_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNanoArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNanoArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43810,30 +31754,9 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-nano_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNanoNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNanoNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43876,30 +31799,9 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-nano_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNanoNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNanoNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43942,30 +31844,9 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-nano_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNanoNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNanoNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44008,30 +31889,9 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44074,30 +31934,9 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44140,30 +31979,9 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44206,30 +32024,9 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-seconds"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixSecondsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixSecondsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44272,30 +32069,9 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-seconds_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixSecondsArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixSecondsArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44338,30 +32114,9 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-seconds_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixSecondsArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixSecondsArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44404,30 +32159,9 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-seconds_nullable"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixSecondsNullableRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixSecondsNullableRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44470,30 +32204,9 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-seconds_nullable_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixSecondsNullableArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixSecondsNullableArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44536,30 +32249,9 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_unix-seconds_nullable_array_array"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTestResponseStringUnixSecondsNullableArrayArrayRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseStringUnixSecondsNullableArrayArrayRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)

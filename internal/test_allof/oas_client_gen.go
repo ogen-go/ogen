@@ -4,8 +4,6 @@ package api
 
 import (
 	"context"
-	"io"
-	"net/http"
 	"net/url"
 	"time"
 
@@ -95,30 +93,9 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 	u := uri.Clone(c.serverURL)
 	u.Path += "/nullableStrings"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeNullableStringsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeNullableStringsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -171,30 +148,9 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/objectsWithConflictingArrayProperty"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeObjectsWithConflictingArrayPropertyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeObjectsWithConflictingArrayPropertyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -247,30 +203,9 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	u := uri.Clone(c.serverURL)
 	u.Path += "/objectsWithConflictingProperties"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeObjectsWithConflictingPropertiesRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeObjectsWithConflictingPropertiesRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -337,43 +272,18 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	u := uri.Clone(c.serverURL)
 	u.Path += "/referencedAllof"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
+	r := ht.NewRequest(ctx, "POST", u, nil)
 	switch req := request.(type) {
 	case *ReferencedAllofApplicationJSON:
-		contentType = "application/json"
-		fn, err := encodeReferencedAllofRequestJSON(*req, span)
-		if err != nil {
+		if err := encodeReferencedAllofRequestJSON(*req, r); err != nil {
 			return res, err
 		}
-		reqBody = fn
 	case *ReferencedAllofMultipartFormData:
-		contentType = "multipart/form-data"
-		fn, ct, err := encodeReferencedAllofRequest(*req, span)
-		if err != nil {
+		if err := encodeReferencedAllofRequest(*req, r); err != nil {
 			return res, err
 		}
-		reqBody = fn
-		contentType = ct
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)
-	}
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -440,43 +350,18 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	u := uri.Clone(c.serverURL)
 	u.Path += "/referencedAllofOptional"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
+	r := ht.NewRequest(ctx, "POST", u, nil)
 	switch req := request.(type) {
 	case *ReferencedAllofOptionalApplicationJSON:
-		contentType = "application/json"
-		fn, err := encodeReferencedAllofOptionalRequestJSON(*req, span)
-		if err != nil {
+		if err := encodeReferencedAllofOptionalRequestJSON(*req, r); err != nil {
 			return res, err
 		}
-		reqBody = fn
 	case *ReferencedAllofOptionalMultipartFormData:
-		contentType = "multipart/form-data"
-		fn, ct, err := encodeReferencedAllofOptionalRequest(*req, span)
-		if err != nil {
+		if err := encodeReferencedAllofOptionalRequest(*req, r); err != nil {
 			return res, err
 		}
-		reqBody = fn
-		contentType = ct
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)
-	}
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -538,30 +423,9 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	u := uri.Clone(c.serverURL)
 	u.Path += "/simpleInteger"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeSimpleIntegerRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeSimpleIntegerRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -606,30 +470,9 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/simpleObjects"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeSimpleObjectsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeSimpleObjectsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)

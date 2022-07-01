@@ -4,8 +4,6 @@ package api
 
 import (
 	"context"
-	"io"
-	"net/http"
 	"net/url"
 	"time"
 
@@ -649,30 +647,9 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -807,30 +784,9 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -980,30 +936,9 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1373,30 +1308,9 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}
 	u.Path += "/actions/runner-groups"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6540,30 +6454,9 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	}
 	u.Path += "/pending_deployments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsReviewPendingDeploymentsForRunRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeActionsReviewPendingDeploymentsForRunRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6633,30 +6526,9 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6740,30 +6612,9 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6836,30 +6687,9 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	}
 	u.Path += "/actions/permissions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6948,30 +6778,9 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	}
 	u.Path += "/actions/permissions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7059,30 +6868,9 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}
 	u.Path += "/repositories"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7169,30 +6957,9 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	}
 	u.Path += "/repositories"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7265,30 +7032,9 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	}
 	u.Path += "/actions/permissions/repositories"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7375,30 +7121,9 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	}
 	u.Path += "/runners"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7484,30 +7209,9 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9637,30 +9341,9 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActivityMarkNotificationsAsReadRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActivityMarkNotificationsAsReadRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9741,30 +9424,9 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	}
 	u.Path += "/notifications"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9900,30 +9562,9 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	}
 	u.Path += "/subscription"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActivitySetRepoSubscriptionRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActivitySetRepoSubscriptionRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9990,30 +9631,9 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	}
 	u.Path += "/subscription"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeActivitySetThreadSubscriptionRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeActivitySetThreadSubscriptionRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10304,30 +9924,9 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	}
 	u.Path += "/token"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsCheckTokenRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeAppsCheckTokenRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10434,30 +10033,9 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	}
 	u.Path += "/attachments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsCreateContentAttachmentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeAppsCreateContentAttachmentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10520,30 +10098,9 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	}
 	u.Path += "/conversions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsCreateFromManifestRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeAppsCreateFromManifestRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10627,30 +10184,9 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	}
 	u.Path += "/access_tokens"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsCreateInstallationAccessTokenRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeAppsCreateInstallationAccessTokenRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10719,30 +10255,9 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	}
 	u.Path += "/grant"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsDeleteAuthorizationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeAppsDeleteAuthorizationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10868,30 +10383,9 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	}
 	u.Path += "/token"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsDeleteTokenRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeAppsDeleteTokenRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12326,30 +11820,9 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	}
 	u.Path += "/token"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsResetTokenRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeAppsResetTokenRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12475,30 +11948,9 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	}
 	u.Path += "/token/scoped"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsScopeTokenRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeAppsScopeTokenRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12688,30 +12140,9 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/config"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13370,30 +12801,9 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	}
 	u.Path += "/check-suites"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeChecksCreateSuiteRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeChecksCreateSuiteRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14425,30 +13835,9 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	}
 	u.Path += "/check-suites/preferences"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeChecksSetSuitesPreferencesRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeChecksSetSuitesPreferencesRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15557,30 +14946,9 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeCodeScanningUpdateAlertRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeCodeScanningUpdateAlertRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15689,30 +15057,9 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	}
 	u.Path += "/code-scanning/sarifs"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeCodeScanningUploadSarifRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeCodeScanningUploadSarifRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -16243,30 +15590,9 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	}
 	u.Path += "/actions/runner-groups"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18249,30 +17575,9 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	}
 	u.Path += "/Groups"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18346,30 +17651,9 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	}
 	u.Path += "/Users"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18615,30 +17899,9 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	}
 	u.Path += "/actions/permissions/selected-actions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18707,30 +17970,9 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	}
 	u.Path += "/actions/permissions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18818,30 +18060,9 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18932,30 +18153,9 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19040,30 +18240,9 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}
 	u.Path += "/organizations"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19135,30 +18314,9 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	}
 	u.Path += "/actions/permissions/organizations"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19242,30 +18400,9 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	}
 	u.Path += "/runners"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19352,30 +18489,9 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19477,30 +18593,9 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19590,30 +18685,9 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19727,30 +18801,9 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGistsCreateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGistsCreateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -19818,30 +18871,9 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	}
 	u.Path += "/comments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGistsCreateCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGistsCreateCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21129,30 +20161,9 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGistsUpdateCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeGistsUpdateCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21227,30 +20238,9 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	}
 	u.Path += "/git/blobs"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGitCreateBlobRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGitCreateBlobRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21358,30 +20348,9 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	}
 	u.Path += "/git/commits"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGitCreateCommitRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGitCreateCommitRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21458,30 +20427,9 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	}
 	u.Path += "/git/refs"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGitCreateRefRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGitCreateRefRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21600,30 +20548,9 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	}
 	u.Path += "/git/tags"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGitCreateTagRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGitCreateTagRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21712,30 +20639,9 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	}
 	u.Path += "/git/trees"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGitCreateTreeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeGitCreateTreeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22584,30 +21490,9 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeGitUpdateRefRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeGitUpdateRefRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22948,30 +21833,9 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/interaction-limits"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23042,30 +21906,9 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	}
 	u.Path += "/interaction-limits"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeInteractionsSetRestrictionsForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeInteractionsSetRestrictionsForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23151,30 +21994,9 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	}
 	u.Path += "/interaction-limits"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23264,30 +22086,9 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	}
 	u.Path += "/assignees"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesAddAssigneesRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeIssuesAddAssigneesRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23462,30 +22263,9 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	}
 	u.Path += "/issues"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesCreateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeIssuesCreateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23581,30 +22361,9 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	}
 	u.Path += "/comments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesCreateCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeIssuesCreateCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23679,30 +22438,9 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	}
 	u.Path += "/labels"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesCreateLabelRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeIssuesCreateLabelRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -23785,30 +22523,9 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	}
 	u.Path += "/milestones"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesCreateMilestoneRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeIssuesCreateMilestoneRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26611,30 +25328,9 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	}
 	u.Path += "/lock"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesLockRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeIssuesLockRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26813,30 +25509,9 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	}
 	u.Path += "/assignees"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesRemoveAssigneesRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeIssuesRemoveAssigneesRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27133,30 +25808,9 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesUpdateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeIssuesUpdateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27245,30 +25899,9 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesUpdateCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeIssuesUpdateCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27357,30 +25990,9 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesUpdateLabelRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeIssuesUpdateLabelRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27484,30 +26096,9 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeIssuesUpdateMilestoneRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeIssuesUpdateMilestoneRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29183,30 +27774,9 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeMigrationsMapCommitAuthorRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeMigrationsMapCommitAuthorRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29292,30 +27862,9 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	}
 	u.Path += "/import/lfs"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeMigrationsSetLfsPreferenceRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeMigrationsSetLfsPreferenceRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29368,30 +27917,9 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeMigrationsStartForAuthenticatedUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeMigrationsStartForAuthenticatedUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29459,30 +27987,9 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	}
 	u.Path += "/migrations"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeMigrationsStartForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeMigrationsStartForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29565,30 +28072,9 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	}
 	u.Path += "/import"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeMigrationsStartImportRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeMigrationsStartImportRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29834,30 +28320,9 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	}
 	u.Path += "/import"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeMigrationsUpdateImportRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeMigrationsUpdateImportRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29946,30 +28411,9 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30335,30 +28779,9 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30463,30 +28886,9 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -30794,30 +29196,9 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31345,30 +29726,9 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	}
 	u.Path += "/invitations"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOrgsCreateInvitationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeOrgsCreateInvitationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -31436,30 +29796,9 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	}
 	u.Path += "/hooks"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOrgsCreateWebhookRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeOrgsCreateWebhookRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34136,30 +32475,9 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOrgsSetMembershipForUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeOrgsSetMembershipForUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34376,30 +32694,9 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34492,30 +32789,9 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOrgsUpdateWebhookRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeOrgsUpdateWebhookRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -34609,30 +32885,9 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	}
 	u.Path += "/config"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37158,30 +35413,9 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsAddCollaboratorRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeProjectsAddCollaboratorRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37241,30 +35475,9 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	}
 	u.Path += "/columns"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsCreateColumnRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeProjectsCreateColumnRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37309,30 +35522,9 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/projects"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37394,30 +35586,9 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	}
 	u.Path += "/projects"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsCreateForOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeProjectsCreateForOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37494,30 +35665,9 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	}
 	u.Path += "/projects"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsCreateForRepoRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeProjectsCreateForRepoRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38689,30 +36839,9 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	}
 	u.Path += "/moves"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsMoveCardRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeProjectsMoveCardRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38780,30 +36909,9 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	}
 	u.Path += "/moves"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsMoveColumnRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeProjectsMoveColumnRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38953,30 +37061,9 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsUpdateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeProjectsUpdateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39035,30 +37122,9 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsUpdateCardRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeProjectsUpdateCardRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39117,30 +37183,9 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeProjectsUpdateColumnRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeProjectsUpdateColumnRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39319,30 +37364,9 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	}
 	u.Path += "/pulls"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsCreateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodePullsCreateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39456,30 +37480,9 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	}
 	u.Path += "/replies"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsCreateReplyForReviewCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodePullsCreateReplyForReviewCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39602,30 +37605,9 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	}
 	u.Path += "/reviews"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsCreateReviewRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodePullsCreateReviewRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39742,30 +37724,9 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	}
 	u.Path += "/comments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsCreateReviewCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodePullsCreateReviewCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40063,30 +38024,9 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	}
 	u.Path += "/dismissals"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsDismissReviewRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodePullsDismissReviewRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41689,30 +39629,9 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	}
 	u.Path += "/merge"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsMergeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodePullsMergeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41810,30 +39729,9 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	}
 	u.Path += "/requested_reviewers"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsRemoveRequestedReviewersRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodePullsRemoveRequestedReviewersRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41946,30 +39844,9 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	}
 	u.Path += "/events"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsSubmitReviewRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodePullsSubmitReviewRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42080,30 +39957,9 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsUpdateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodePullsUpdateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42194,30 +40050,9 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	}
 	u.Path += "/update-branch"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsUpdateBranchRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodePullsUpdateBranchRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42321,30 +40156,9 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsUpdateReviewRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodePullsUpdateReviewRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42433,30 +40247,9 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodePullsUpdateReviewCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodePullsUpdateReviewCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42603,30 +40396,9 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForCommitCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForCommitCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42725,30 +40497,9 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForIssueRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForIssueRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42848,30 +40599,9 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForIssueCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForIssueCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -42971,30 +40701,9 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForPullRequestReviewCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForPullRequestReviewCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43093,30 +40802,9 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForReleaseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForReleaseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43235,30 +40923,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43366,30 +41033,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43492,30 +41138,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43607,30 +41232,9 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	}
 	u.Path += "/reactions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45685,30 +43289,9 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	}
 	u.Path += "/protection/restrictions/apps"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposAddAppAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposAddAppAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45831,30 +43414,9 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposAddCollaboratorRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposAddCollaboratorRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45963,30 +43525,9 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposAddStatusCheckContextsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposAddStatusCheckContextsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -46103,30 +43644,9 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/teams"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposAddTeamAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposAddTeamAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -46242,30 +43762,9 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/users"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposAddUserAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposAddUserAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -46685,30 +44184,9 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	}
 	u.Path += "/autolinks"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateAutolinkRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateAutolinkRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -46805,30 +44283,9 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/comments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateCommitCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateCommitCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47022,30 +44479,9 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateCommitStatusRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateCommitStatusRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47120,30 +44556,9 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	}
 	u.Path += "/keys"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateDeployKeyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateDeployKeyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47271,30 +44686,9 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	}
 	u.Path += "/deployments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateDeploymentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateDeploymentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47394,30 +44788,9 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	}
 	u.Path += "/statuses"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateDeploymentStatusRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateDeploymentStatusRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47515,30 +44888,9 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/dispatches"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateDispatchEventRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateDispatchEventRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47589,30 +44941,9 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repos"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateForAuthenticatedUserRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateForAuthenticatedUserRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47690,30 +45021,9 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	}
 	u.Path += "/forks"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateForkRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateForkRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47788,30 +45098,9 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	}
 	u.Path += "/repos"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -47900,30 +45189,9 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateOrUpdateFileContentsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposCreateOrUpdateFileContentsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -48007,30 +45275,9 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	}
 	u.Path += "/pages"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreatePagesSiteRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreatePagesSiteRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -48112,30 +45359,9 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	}
 	u.Path += "/releases"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateReleaseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateReleaseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -48221,30 +45447,9 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	}
 	u.Path += "/generate"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateUsingTemplateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateUsingTemplateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -48336,30 +45541,9 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	}
 	u.Path += "/hooks"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposCreateWebhookRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposCreateWebhookRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -49417,30 +46601,9 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposDeleteFileRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeReposDeleteFileRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58167,30 +55330,9 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	}
 	u.Path += "/merges"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposMergeRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposMergeRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58266,30 +55408,9 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	}
 	u.Path += "/merge-upstream"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposMergeUpstreamRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposMergeUpstreamRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58600,30 +55721,9 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	}
 	u.Path += "/protection/restrictions/apps"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposRemoveAppAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeReposRemoveAppAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58820,30 +55920,9 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposRemoveStatusCheckContextsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeReposRemoveStatusCheckContextsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59053,30 +56132,9 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	}
 	u.Path += "/protection/restrictions/teams"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposRemoveTeamAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeReposRemoveTeamAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59192,30 +56250,9 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	}
 	u.Path += "/protection/restrictions/users"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposRemoveUserAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeReposRemoveUserAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59317,30 +56354,9 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	}
 	u.Path += "/rename"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposRenameBranchRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposRenameBranchRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59423,30 +56439,9 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	}
 	u.Path += "/topics"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposReplaceAllTopicsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposReplaceAllTopicsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59739,30 +56734,9 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	}
 	u.Path += "/protection/restrictions/apps"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposSetAppAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposSetAppAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59871,30 +56845,9 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	}
 	u.Path += "/protection/required_status_checks/contexts"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposSetStatusCheckContextsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposSetStatusCheckContextsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60012,30 +56965,9 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/teams"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposSetTeamAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposSetTeamAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60152,30 +57084,9 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	}
 	u.Path += "/protection/restrictions/users"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposSetUserAccessRestrictionsRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposSetUserAccessRestrictionsRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60346,30 +57257,9 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	}
 	u.Path += "/transfer"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposTransferRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeReposTransferRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60459,30 +57349,9 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60587,30 +57456,9 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	}
 	u.Path += "/protection"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateBranchProtectionRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeReposUpdateBranchProtectionRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60699,30 +57547,9 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateCommitCommentRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateCommitCommentRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60826,30 +57653,9 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateInvitationRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateInvitationRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60946,30 +57752,9 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	}
 	u.Path += "/protection/required_pull_request_reviews"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdatePullRequestReviewProtectionRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdatePullRequestReviewProtectionRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61058,30 +57843,9 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateReleaseRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateReleaseRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61170,30 +57934,9 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateReleaseAssetRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateReleaseAssetRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61289,30 +58032,9 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	}
 	u.Path += "/protection/required_status_checks"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateStatusCheckProtectionRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateStatusCheckProtectionRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61419,30 +58141,9 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateWebhookRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateWebhookRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61551,30 +58252,9 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	}
 	u.Path += "/config"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -63097,30 +59777,9 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeSecretScanningUpdateAlertRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeSecretScanningUpdateAlertRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -63339,30 +59998,9 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -63477,30 +60115,9 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -63608,30 +60225,9 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -63728,30 +60324,9 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -63881,30 +60456,9 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -64021,30 +60575,9 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PUT", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PUT", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -64498,30 +61031,9 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	}
 	u.Path += "/teams"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTeamsCreateRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -64621,30 +61133,9 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	}
 	u.Path += "/comments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -64732,30 +61223,9 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	}
 	u.Path += "/comments"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -64840,30 +61310,9 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	}
 	u.Path += "/discussions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -64936,30 +61385,9 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	}
 	u.Path += "/discussions"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -65041,30 +61469,9 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	}
 	u.Path += "/team-sync/group-mappings"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -65143,30 +61550,9 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	}
 	u.Path += "/team-sync/group-mappings"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69275,30 +65661,9 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69393,30 +65758,9 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69509,30 +65853,9 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69613,30 +65936,9 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69727,30 +66029,9 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsUpdateInOrgRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsUpdateInOrgRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69823,30 +66104,9 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 		u.Path += e.Result()
 	}
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeTeamsUpdateLegacyRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeTeamsUpdateLegacyRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -69906,30 +66166,9 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUsersAddEmailForAuthenticatedRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeUsersAddEmailForAuthenticatedRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -70223,30 +66462,9 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -70301,30 +66519,9 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "POST", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "POST", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -70384,30 +66581,9 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUsersDeleteEmailForAuthenticatedRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err := encodeUsersDeleteEmailForAuthenticatedRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "DELETE", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "DELETE", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -71981,30 +68157,9 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/email/visibility"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -72168,30 +68323,9 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user"
 
-	var (
-		contentType string
-		reqBody     func() (io.ReadCloser, error) // nil, if request type is optional and value is not set.
-	)
-	contentType = "application/json"
-	fn, err := encodeUsersUpdateAuthenticatedRequestJSON(request, span)
-	if err != nil {
+	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err := encodeUsersUpdateAuthenticatedRequestJSON(request, r); err != nil {
 		return res, err
-	}
-	reqBody = fn
-
-	var r *http.Request
-	if reqBody != nil {
-		body, err := reqBody()
-		if err != nil {
-			return res, errors.Wrap(err, "request body")
-		}
-		defer body.Close()
-
-		r = ht.NewRequest(ctx, "PATCH", u, body)
-		r.GetBody = reqBody
-		r.Header.Set("Content-Type", contentType)
-	} else {
-		r = ht.NewRequest(ctx, "PATCH", u, nil)
 	}
 
 	resp, err := c.cfg.Client.Do(r)

@@ -4,13 +4,12 @@ package api
 
 import (
 	"bytes"
-	"io"
 	"mime/multipart"
+	"net/http"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -19,147 +18,112 @@ import (
 
 func encodeDefaultTestRequestJSON(
 	req DefaultTest,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeFoobarPostRequestJSON(
 	req OptPet,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeOneofBugRequestJSON(
 	req OneOfBugs,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePetCreateRequestJSON(
 	req OptPet,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePetUpdateNameAliasPostRequestJSON(
 	req OptPetName,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePetUpdateNamePostRequestJSON(
 	req OptString,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	if !req.Set {
-		// Return nil callback if value is not set.
-		return
+		// Keep request with empty body if value is not set.
+		return nil
 	}
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodePetUploadAvatarByIDRequestOctetStream(
 	req PetUploadAvatarByIDReq,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(req), nil
-	}, nil
+	r *http.Request,
+) error {
+	ht.SetBody(r, req, "application/octet-stream")
+	return nil
 }
 func encodeTestFloatValidationRequestJSON(
 	req TestFloatValidation,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeTestFormURLEncodedRequestFormURLEncoded(
 	req TestForm,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -176,7 +140,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			}
 			return nil
 		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -192,7 +156,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			}
 			return nil
 		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -205,7 +169,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(request.Description))
 		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -227,7 +191,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 				return nil
 			})
 		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -243,7 +207,7 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			}
 			return nil
 		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -259,22 +223,17 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(
 			}
 			return nil
 		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	encoded := q.Values().Encode()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(strings.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, strings.NewReader(encoded), "application/x-www-form-urlencoded")
+	return nil
 }
 func encodeTestMultipartRequest(
 	req TestForm,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -291,7 +250,7 @@ func encodeTestMultipartRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -307,7 +266,7 @@ func encodeTestMultipartRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -320,7 +279,7 @@ func encodeTestMultipartRequest(
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(request.Description))
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -342,7 +301,7 @@ func encodeTestMultipartRequest(
 				return nil
 			})
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -358,7 +317,7 @@ func encodeTestMultipartRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -374,25 +333,22 @@ func encodeTestMultipartRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
 func encodeTestMultipartUploadRequest(
 	req TestMultipartUploadReqForm,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -409,7 +365,7 @@ func encodeTestMultipartUploadRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
@@ -425,10 +381,10 @@ func encodeTestMultipartUploadRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := request.File.WriteMultipart("file", w); err != nil {
 			return errors.Wrap(err, "write \"file\"")
 		}
@@ -452,31 +408,24 @@ func encodeTestMultipartUploadRequest(
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
 func encodeTestShareFormSchemaRequestJSON(
 	req SharedRequest,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	encoded := e.Bytes()
-	return func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(encoded)), nil
-	}, nil
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
 }
 func encodeTestShareFormSchemaRequest(
 	req SharedRequestForm,
-	span trace.Span,
-) (
-	data func() (io.ReadCloser, error),
-	contentType string,
-	rerr error,
-) {
+	r *http.Request,
+) error {
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -493,10 +442,10 @@ func encodeTestShareFormSchemaRequest(
 			}
 			return nil
 		}); err != nil {
-			return data, "", errors.Wrap(err, "encode query")
+			return errors.Wrap(err, "encode query")
 		}
 	}
-	getBody, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if val, ok := request.File.Get(); ok {
 			if err := val.WriteMultipart("file", w); err != nil {
 				return errors.Wrap(err, "write \"file\"")
@@ -507,5 +456,6 @@ func encodeTestShareFormSchemaRequest(
 		}
 		return nil
 	})
-	return getBody, contentType, nil
+	ht.SetBody(r, body, contentType)
+	return nil
 }
