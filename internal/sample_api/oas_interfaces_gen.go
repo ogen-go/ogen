@@ -9,14 +9,6 @@ type FoobarPostRes interface {
 	foobarPostRes()
 }
 
-type MultipleRequestBodiesOptionalReq interface {
-	multipleRequestBodiesOptionalReq()
-}
-
-type MultipleRequestBodiesReq interface {
-	multipleRequestBodiesReq()
-}
-
 type PetGetAvatarByIDRes interface {
 	petGetAvatarByIDRes()
 }

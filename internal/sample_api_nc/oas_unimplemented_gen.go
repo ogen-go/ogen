@@ -72,20 +72,6 @@ func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParam
 	return r, ht.ErrNotImplemented
 }
 
-// MultipleRequestBodies implements multipleRequestBodies operation.
-//
-// POST /multipleRequestBodies
-func (UnimplementedHandler) MultipleRequestBodies(ctx context.Context, req MultipleRequestBodiesReq) (r MultipleRequestBodiesOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// MultipleRequestBodiesOptional implements multipleRequestBodiesOptional operation.
-//
-// POST /multipleRequestBodiesOptional
-func (UnimplementedHandler) MultipleRequestBodiesOptional(ctx context.Context, req MultipleRequestBodiesOptionalReq) (r MultipleRequestBodiesOptionalOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
 // NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
