@@ -38,7 +38,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 {{- range $contentType, $t := $op.Request.Contents }}
 	case {{ quote $contentType }}:
 	{{- if $t.IsStream }}
-		return {{ $op.Request.Type.Go }}{Data: r.Body}, close, nil
+		request := {{ $t.Go }}{Data: r.Body}
 	{{- else if $contentType.JSON }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
@@ -77,8 +77,6 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 			return req, close, errors.Wrap(err, "validate")
 		}
 		{{- end }}
-
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
     {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
@@ -100,12 +98,12 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		form := url.Values(r.MultipartForm.Value)
         {{- end }}
 
-		var request {{ $t.Go -}}
-		{{ template "decode_form_request" elem $t "request" }}
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
+		var request {{ $t.Go }}
+		{{- template "decode_form_request" elem $t "request" }}
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
+	return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
 {{- end }}
 	default:
 		return req, close, validate.InvalidContentType(ct)
