@@ -104,7 +104,9 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 
 	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
 	{{- if $op.Request }}
-	{{- template "encode_request_body" $op }}
+	if err := encode{{ $op.Name }}Request(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
 	{{- end }}
 
 	{{- if $op.HasHeaderParams }}
@@ -132,32 +134,6 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	return result, nil
 }
 {{ end }}
-{{ end }}
-
-{{ define "encode_request_body" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
-{{- $requestsLength := len $.Request.Contents }}
-
-{{- if eq $requestsLength 1 }}
-	{{- range $contentType, $type := $.Request.Contents }}
-	if err := encode{{ $.Name }}Request{{ $contentType.Name }}(request, r); err != nil {
-		return res, err
-	}
-	{{- end }}
-{{- else }}
-	{{- /* Multiple requests */}}
-	switch req := request.(type) {
-	{{- range $contentType, $type := $.Request.Contents }}
-	case *{{ $type.Go }}:
-		if err := encode{{ $.Name }}Request{{ $contentType.Name }}(*req, r); err != nil {
-			return res, err
-		}
-	{{- end }}
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
-	}
-{{- end }}
-
 {{ end }}
 
 {{ define "encode_cookie_params" }}
