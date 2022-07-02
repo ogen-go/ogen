@@ -78,8 +78,8 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	u.Path += "/pets"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCreatePetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreatePetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -140,8 +140,8 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	u.Path += "/categories"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCreatePetCategoriesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreatePetCategoriesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -202,8 +202,8 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	u.Path += "/friends"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCreatePetFriendsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreatePetFriendsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -264,8 +264,8 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	u.Path += "/owner"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCreatePetOwnerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreatePetOwnerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -829,8 +829,8 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeUpdatePetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUpdatePetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

@@ -78,8 +78,8 @@ func (c *Client) AddPet(ctx context.Context, request NewPet) (res AddPetRes, err
 	u.Path += "/pets"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAddPetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAddPetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

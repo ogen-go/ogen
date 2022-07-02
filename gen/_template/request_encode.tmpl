@@ -4,79 +4,106 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}{{ if $op.Request }}
-{{- range $contentType, $type := $op.Request.Contents }}
-func encode{{ $op.Name }}Request{{ $contentType.Name }}(
-	req {{ $type.Go }},
+func encode{{ $op.Name }}Request(
+	req {{ $op.Request.Type.Go }},
 	r *http.Request,
 ) error {
-	{{- $unaliased := $type }}{{- if $type.IsAlias }}{{ $unaliased = $type.AliasTo }}{{- end }}
-	{{- if $unaliased.GenericVariant.Optional }}
+{{- $contents := $op.Request.Contents }}
+{{- $requestsLength := len $contents }}
+
+{{- if eq $requestsLength 1 }}
+	{{- range $contentType, $type := $contents }}
+		{{- template "encode_request" ir_media $contentType $type }}
+	{{- end }}
+{{- else }}
+	{{- /* Multiple requests */}}
+	switch req := req.(type) {
+	{{- range $contentType, $type := $contents }}
+	case *{{ $type.Go }}:
+    	{{- template "encode_request" ir_media $contentType $type }}
+	{{- end }}
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+{{- end }}
+}
+{{- end }}{{ end }}
+{{ end }}
+
+{{- define "encode_request" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Media*/ -}}
+{{- $type := $.Type }}
+{{- $contentType := $.Encoding }}
+{{- $unaliased := $type }}{{- if $type.IsAlias }}{{ $unaliased = $type.AliasTo }}{{- end }}
+
+{{- if $unaliased.GenericVariant.Optional }}
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
 	}
+{{- end }}
+
+{{- if $type.IsStream }}
+	ht.SetBody(r, req, {{ quote $contentType }})
+	return nil
+{{- else if $contentType.JSON }}
+	e := jx.GetEncoder()
+	{
+	   {{- template "json/enc" elem $type "req" }}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), {{ quote $contentType }})
+	return nil
+{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
+	{{- if $unaliased.IsGeneric }}
+		request := req.Value
+		{{ $type = $unaliased.GenericOf }}
+	{{- else if $unaliased.IsStruct }}
+		request := req
+        {{ $type = $unaliased }}
+	{{- else }}
+        {{- errorf "unexpected type: %s" $unaliased }}
 	{{- end }}
-	{{- if $type.IsStream }}
-		ht.SetBody(r, req, {{ quote $contentType }})
-		return nil
-	{{- else if $contentType.JSON }}
-		e := jx.GetEncoder()
-        {{ template "json/enc" elem $type "req" }}
-		encoded := e.Bytes()
-		ht.SetBody(r, bytes.NewReader(encoded), {{ quote $contentType }})
-		return nil
-	{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
-		{{- if $unaliased.IsGeneric }}
-			request := req.Value
-			{{ $type = $unaliased.GenericOf }}
-		{{- else if $unaliased.IsStruct }}
-			request := req
-            {{ $type = $unaliased }}
-		{{- else }}
-            {{- errorf "unexpected type: %s" $unaliased }}
-		{{- end }}
-		q := uri.NewQueryEncoder()
-		{{- range $param := $type.FormParameters }}
-		{
-			// Encode {{ quote $param.Spec.Name }} form field.
-			cfg := uri.QueryParameterEncodingConfig{
-				Name:    {{ quote $param.Spec.Name }},
-				Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
-				Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
-			}
-			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-				{{- template "uri/encode" elem $param.Type (printf "request.%s" $param.Name) }}
-			}); err != nil {
-				return errors.Wrap(err, "encode query")
-			}
+	q := uri.NewQueryEncoder()
+	{{- range $param := $type.FormParameters }}
+	{
+		// Encode {{ quote $param.Spec.Name }} form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    {{ quote $param.Spec.Name }},
+			Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
+			Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 		}
-		{{- end }}
-		{{- if $contentType.FormURLEncoded }}
-			encoded := q.Values().Encode()
-			ht.SetBody(r, strings.NewReader(encoded), {{ quote $contentType }})
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			{{- template "uri/encode" elem $param.Type (printf "request.%s" $param.Name) }}
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	{{- end }}
+	{{- if $contentType.FormURLEncoded }}
+		encoded := q.Values().Encode()
+		ht.SetBody(r, strings.NewReader(encoded), {{ quote $contentType }})
+		return nil
+	{{- else if $contentType.MultipartForm }}
+		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+        	{{- range $param := $type.FileParameters }}
+				{{- template "encode_multipart_file_param" $param }}
+			{{- end }}
+			if err := q.WriteMultipart(w); err != nil {
+				return errors.Wrap(err, "write multipart")
+			}
 			return nil
-		{{- else if $contentType.MultipartForm }}
-			body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-            	{{- range $param := $type.FileParameters }}
-					{{- template "encode_multipart_file_param" $param }}
-				{{- end }}
-				if err := q.WriteMultipart(w); err != nil {
-					return errors.Wrap(err, "write multipart")
-				}
-				return nil
-			})
-			ht.SetBody(r, body, contentType)
-			return nil
-		{{- else }}
-			{{- errorf "%s encoder not implemented" $contentType }}
-		{{- end }}
+		})
+		ht.SetBody(r, body, contentType)
+		return nil
 	{{- else }}
 		{{- errorf "%s encoder not implemented" $contentType }}
 	{{- end }}
-}
+{{- else }}
+	{{- errorf "%s encoder not implemented" $contentType }}
 {{- end }}
-{{- end }}{{ end }}
-{{ end }}
+
+{{- end }}
 
 {{- define "encode_multipart_file_param" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}

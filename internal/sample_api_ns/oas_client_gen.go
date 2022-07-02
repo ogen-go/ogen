@@ -225,8 +225,8 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDefaultTestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDefaultTestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -405,8 +405,8 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	u.Path += "/foobar"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeFoobarPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeFoobarPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -638,8 +638,8 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	u.Path += "/oneofBug"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOneofBugRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOneofBugRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -740,8 +740,8 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	u.Path += "/pet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePetCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1206,8 +1206,8 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	u.Path += "/pet/updateNameAlias"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetUpdateNameAliasPostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePetUpdateNameAliasPostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1272,8 +1272,8 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	u.Path += "/pet/updateName"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetUpdateNamePostRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePetUpdateNamePostRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1335,8 +1335,8 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePetUploadAvatarByIDRequestOctetStream(request, r); err != nil {
-		return res, err
+	if err := encodePetUploadAvatarByIDRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1618,8 +1618,8 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	u.Path += "/testFloatValidation"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestFloatValidationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTestFloatValidationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1663,8 +1663,8 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	u.Path += "/testFormURLEncoded"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTestFormURLEncodedRequestFormURLEncoded(request, r); err != nil {
-		return res, err
+	if err := encodeTestFormURLEncodedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1709,7 +1709,7 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestMultipartRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1762,7 +1762,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestMultipartUploadRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1934,17 +1934,8 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	u.Path += "/testShareFormSchema"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	switch req := request.(type) {
-	case *SharedRequest:
-		if err := encodeTestShareFormSchemaRequestJSON(*req, r); err != nil {
-			return res, err
-		}
-	case *SharedRequestForm:
-		if err := encodeTestShareFormSchemaRequest(*req, r); err != nil {
-			return res, err
-		}
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+	if err := encodeTestShareFormSchemaRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

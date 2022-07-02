@@ -76,7 +76,6 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -150,7 +149,6 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -213,7 +211,6 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -287,7 +284,6 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -361,7 +357,6 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -443,7 +438,6 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -478,7 +472,8 @@ func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Sp
 	}
 	switch ct {
 	case "application/octet-stream":
-		return PetUploadAvatarByIDReq{Data: r.Body}, close, nil
+		request := PetUploadAvatarByIDReq{Data: r.Body}
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -540,7 +535,6 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1202,7 +1196,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return &request, close, nil
 	case "multipart/form-data":
 		if r.ContentLength == 0 {

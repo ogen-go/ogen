@@ -981,7 +981,7 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeUserPassloginPostRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1041,7 +1041,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeUserPostingPostRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1086,7 +1086,7 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeUserReportPostRequest(request, r); err != nil {
-		return res, err
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

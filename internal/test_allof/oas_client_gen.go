@@ -94,8 +94,8 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 	u.Path += "/nullableStrings"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeNullableStringsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeNullableStringsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -149,8 +149,8 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	u.Path += "/objectsWithConflictingArrayProperty"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeObjectsWithConflictingArrayPropertyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeObjectsWithConflictingArrayPropertyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -204,8 +204,8 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	u.Path += "/objectsWithConflictingProperties"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeObjectsWithConflictingPropertiesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeObjectsWithConflictingPropertiesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -273,17 +273,8 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	u.Path += "/referencedAllof"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	switch req := request.(type) {
-	case *ReferencedAllofApplicationJSON:
-		if err := encodeReferencedAllofRequestJSON(*req, r); err != nil {
-			return res, err
-		}
-	case *ReferencedAllofMultipartFormData:
-		if err := encodeReferencedAllofRequest(*req, r); err != nil {
-			return res, err
-		}
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+	if err := encodeReferencedAllofRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -351,17 +342,8 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	u.Path += "/referencedAllofOptional"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	switch req := request.(type) {
-	case *ReferencedAllofOptionalApplicationJSON:
-		if err := encodeReferencedAllofOptionalRequestJSON(*req, r); err != nil {
-			return res, err
-		}
-	case *ReferencedAllofOptionalMultipartFormData:
-		if err := encodeReferencedAllofOptionalRequest(*req, r); err != nil {
-			return res, err
-		}
-	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+	if err := encodeReferencedAllofOptionalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -424,8 +406,8 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	u.Path += "/simpleInteger"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSimpleIntegerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSimpleIntegerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -471,8 +453,8 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	u.Path += "/simpleObjects"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSimpleObjectsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSimpleObjectsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

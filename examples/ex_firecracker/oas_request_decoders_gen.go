@@ -71,7 +71,6 @@ func (s *Server) decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -134,7 +133,6 @@ func (s *Server) decodeCreateSyncActionRequest(r *http.Request, span trace.Span)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -189,7 +187,6 @@ func (s *Server) decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -244,7 +241,6 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -305,7 +301,6 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -366,7 +361,6 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -421,7 +415,6 @@ func (s *Server) decodePatchBalloonRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -476,7 +469,6 @@ func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request, span tr
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -539,7 +531,6 @@ func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -602,7 +593,6 @@ func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, sp
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -676,7 +666,6 @@ func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request, span tr
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -739,7 +728,6 @@ func (s *Server) decodePatchVmRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -794,7 +782,6 @@ func (s *Server) decodePutBalloonRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -849,7 +836,6 @@ func (s *Server) decodePutGuestBootSourceRequest(r *http.Request, span trace.Spa
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -912,7 +898,6 @@ func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -975,7 +960,6 @@ func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1038,7 +1022,6 @@ func (s *Server) decodePutGuestVsockRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1101,7 +1084,6 @@ func (s *Server) decodePutLoggerRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1175,7 +1157,6 @@ func (s *Server) decodePutMachineConfigurationRequest(r *http.Request, span trac
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1230,7 +1211,6 @@ func (s *Server) decodePutMetricsRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

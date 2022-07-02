@@ -77,8 +77,8 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 	u.Path += "/data"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDataCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDataCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

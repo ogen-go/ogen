@@ -11,51 +11,55 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
-func encodeOrdersLimitOrderPostRequestJSON(
+func encodeOrdersLimitOrderPostRequest(
 	req LimitOrderRequest,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOrdersMarketOrderPostRequestJSON(
+func encodeOrdersMarketOrderPostRequest(
 	req MarketOrderRequest,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeSandboxCurrenciesBalancePostRequestJSON(
+func encodeSandboxCurrenciesBalancePostRequest(
 	req SandboxSetCurrencyBalanceRequest,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeSandboxPositionsBalancePostRequestJSON(
+func encodeSandboxPositionsBalancePostRequest(
 	req SandboxSetPositionBalanceRequest,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeSandboxRegisterPostRequestJSON(
+func encodeSandboxRegisterPostRequest(
 	req OptSandboxRegisterRequest,
 	r *http.Request,
 ) error {
@@ -64,8 +68,10 @@ func encodeSandboxRegisterPostRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")

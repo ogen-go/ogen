@@ -648,8 +648,8 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsCreateOrUpdateEnvironmentSecretRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -785,8 +785,8 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsCreateOrUpdateOrgSecretRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsCreateOrUpdateOrgSecretRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -937,8 +937,8 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsCreateOrUpdateRepoSecretRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsCreateOrUpdateRepoSecretRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1309,8 +1309,8 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	u.Path += "/actions/runner-groups"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6455,8 +6455,8 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	u.Path += "/pending_deployments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeActionsReviewPendingDeploymentsForRunRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsReviewPendingDeploymentsForRunRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6527,8 +6527,8 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	u.Path += "/actions/permissions/selected-actions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetAllowedActionsOrganizationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetAllowedActionsOrganizationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6613,8 +6613,8 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	u.Path += "/actions/permissions/selected-actions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetAllowedActionsRepositoryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetAllowedActionsRepositoryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6688,8 +6688,8 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	u.Path += "/actions/permissions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6779,8 +6779,8 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	u.Path += "/actions/permissions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6869,8 +6869,8 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	u.Path += "/repositories"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -6958,8 +6958,8 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	u.Path += "/repositories"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetSelectedReposForOrgSecretRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetSelectedReposForOrgSecretRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7033,8 +7033,8 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	u.Path += "/actions/permissions/repositories"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7122,8 +7122,8 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	u.Path += "/runners"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -7210,8 +7210,8 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9342,8 +9342,8 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	u.Path += "/notifications"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActivityMarkNotificationsAsReadRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActivityMarkNotificationsAsReadRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9425,8 +9425,8 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	u.Path += "/notifications"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActivityMarkRepoNotificationsAsReadRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActivityMarkRepoNotificationsAsReadRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9563,8 +9563,8 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	u.Path += "/subscription"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActivitySetRepoSubscriptionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActivitySetRepoSubscriptionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9632,8 +9632,8 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	u.Path += "/subscription"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeActivitySetThreadSubscriptionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeActivitySetThreadSubscriptionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -9925,8 +9925,8 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	u.Path += "/token"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAppsCheckTokenRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsCheckTokenRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10034,8 +10034,8 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	u.Path += "/attachments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAppsCreateContentAttachmentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsCreateContentAttachmentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10099,8 +10099,8 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	u.Path += "/conversions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAppsCreateFromManifestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsCreateFromManifestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10185,8 +10185,8 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	u.Path += "/access_tokens"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAppsCreateInstallationAccessTokenRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsCreateInstallationAccessTokenRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10256,8 +10256,8 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	u.Path += "/grant"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeAppsDeleteAuthorizationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsDeleteAuthorizationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -10384,8 +10384,8 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	u.Path += "/token"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeAppsDeleteTokenRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsDeleteTokenRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11821,8 +11821,8 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	u.Path += "/token"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeAppsResetTokenRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsResetTokenRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -11949,8 +11949,8 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	u.Path += "/token/scoped"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAppsScopeTokenRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsScopeTokenRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12141,8 +12141,8 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	u.Path += "/app/hook/config"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeAppsUpdateWebhookConfigForAppRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAppsUpdateWebhookConfigForAppRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -12802,8 +12802,8 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	u.Path += "/check-suites"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeChecksCreateSuiteRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeChecksCreateSuiteRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -13836,8 +13836,8 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	u.Path += "/check-suites/preferences"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeChecksSetSuitesPreferencesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeChecksSetSuitesPreferencesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -14947,8 +14947,8 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeCodeScanningUpdateAlertRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCodeScanningUpdateAlertRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15058,8 +15058,8 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	u.Path += "/code-scanning/sarifs"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCodeScanningUploadSarifRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCodeScanningUploadSarifRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -15591,8 +15591,8 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	u.Path += "/actions/runner-groups"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17576,8 +17576,8 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	u.Path += "/Groups"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17652,8 +17652,8 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	u.Path += "/Users"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17900,8 +17900,8 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	u.Path += "/actions/permissions/selected-actions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -17971,8 +17971,8 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	u.Path += "/actions/permissions"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18061,8 +18061,8 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18154,8 +18154,8 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18241,8 +18241,8 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	u.Path += "/organizations"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18315,8 +18315,8 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	u.Path += "/actions/permissions/organizations"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18401,8 +18401,8 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	u.Path += "/runners"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18490,8 +18490,8 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18594,8 +18594,8 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18686,8 +18686,8 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18802,8 +18802,8 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	u.Path += "/gists"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGistsCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGistsCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -18872,8 +18872,8 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	u.Path += "/comments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGistsCreateCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGistsCreateCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20162,8 +20162,8 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeGistsUpdateCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGistsUpdateCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20239,8 +20239,8 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	u.Path += "/git/blobs"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGitCreateBlobRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGitCreateBlobRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20349,8 +20349,8 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	u.Path += "/git/commits"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGitCreateCommitRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGitCreateCommitRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20428,8 +20428,8 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	u.Path += "/git/refs"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGitCreateRefRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGitCreateRefRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20549,8 +20549,8 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	u.Path += "/git/tags"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGitCreateTagRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGitCreateTagRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -20640,8 +20640,8 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	u.Path += "/git/trees"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGitCreateTreeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGitCreateTreeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21491,8 +21491,8 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeGitUpdateRefRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGitUpdateRefRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21834,8 +21834,8 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	u.Path += "/user/interaction-limits"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21907,8 +21907,8 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	u.Path += "/interaction-limits"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeInteractionsSetRestrictionsForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeInteractionsSetRestrictionsForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -21995,8 +21995,8 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	u.Path += "/interaction-limits"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeInteractionsSetRestrictionsForRepoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeInteractionsSetRestrictionsForRepoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22087,8 +22087,8 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	u.Path += "/assignees"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeIssuesAddAssigneesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesAddAssigneesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22264,8 +22264,8 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	u.Path += "/issues"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeIssuesCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22362,8 +22362,8 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	u.Path += "/comments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeIssuesCreateCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesCreateCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22439,8 +22439,8 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	u.Path += "/labels"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeIssuesCreateLabelRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesCreateLabelRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -22524,8 +22524,8 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	u.Path += "/milestones"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeIssuesCreateMilestoneRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesCreateMilestoneRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25329,8 +25329,8 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	u.Path += "/lock"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeIssuesLockRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesLockRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25510,8 +25510,8 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	u.Path += "/assignees"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeIssuesRemoveAssigneesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesRemoveAssigneesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25809,8 +25809,8 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeIssuesUpdateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesUpdateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25900,8 +25900,8 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeIssuesUpdateCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesUpdateCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -25991,8 +25991,8 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeIssuesUpdateLabelRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesUpdateLabelRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -26097,8 +26097,8 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeIssuesUpdateMilestoneRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeIssuesUpdateMilestoneRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27819,8 +27819,8 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeMigrationsMapCommitAuthorRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMigrationsMapCommitAuthorRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27907,8 +27907,8 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	u.Path += "/import/lfs"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeMigrationsSetLfsPreferenceRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMigrationsSetLfsPreferenceRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -27962,8 +27962,8 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	u.Path += "/user/migrations"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeMigrationsStartForAuthenticatedUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMigrationsStartForAuthenticatedUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28032,8 +28032,8 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	u.Path += "/migrations"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeMigrationsStartForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMigrationsStartForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28117,8 +28117,8 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	u.Path += "/import"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeMigrationsStartImportRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMigrationsStartImportRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28365,8 +28365,8 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	u.Path += "/import"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeMigrationsUpdateImportRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeMigrationsUpdateImportRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28456,8 +28456,8 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	u.Path += "/authorizations"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOAuthAuthorizationsCreateAuthorizationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28824,8 +28824,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -28931,8 +28931,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29241,8 +29241,8 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOAuthAuthorizationsUpdateAuthorizationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29771,8 +29771,8 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	u.Path += "/invitations"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOrgsCreateInvitationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrgsCreateInvitationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -29841,8 +29841,8 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	u.Path += "/hooks"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeOrgsCreateWebhookRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrgsCreateWebhookRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32520,8 +32520,8 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeOrgsSetMembershipForUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrgsSetMembershipForUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32739,8 +32739,8 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrgsUpdateMembershipForAuthenticatedUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32834,8 +32834,8 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeOrgsUpdateWebhookRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrgsUpdateWebhookRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -32930,8 +32930,8 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	u.Path += "/config"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeOrgsUpdateWebhookConfigForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeOrgsUpdateWebhookConfigForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35458,8 +35458,8 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeProjectsAddCollaboratorRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsAddCollaboratorRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35520,8 +35520,8 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	u.Path += "/columns"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeProjectsCreateColumnRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsCreateColumnRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35567,8 +35567,8 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	u.Path += "/user/projects"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeProjectsCreateForAuthenticatedUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsCreateForAuthenticatedUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35631,8 +35631,8 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	u.Path += "/projects"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeProjectsCreateForOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsCreateForOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -35710,8 +35710,8 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	u.Path += "/projects"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeProjectsCreateForRepoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsCreateForRepoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36884,8 +36884,8 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	u.Path += "/moves"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeProjectsMoveCardRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsMoveCardRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -36954,8 +36954,8 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	u.Path += "/moves"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeProjectsMoveColumnRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsMoveColumnRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37106,8 +37106,8 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeProjectsUpdateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsUpdateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37167,8 +37167,8 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeProjectsUpdateCardRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsUpdateCardRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37228,8 +37228,8 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeProjectsUpdateColumnRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeProjectsUpdateColumnRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37409,8 +37409,8 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	u.Path += "/pulls"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePullsCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37525,8 +37525,8 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	u.Path += "/replies"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePullsCreateReplyForReviewCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsCreateReplyForReviewCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37650,8 +37650,8 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	u.Path += "/reviews"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePullsCreateReviewRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsCreateReviewRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -37769,8 +37769,8 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	u.Path += "/comments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePullsCreateReviewCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsCreateReviewCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -38069,8 +38069,8 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	u.Path += "/dismissals"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePullsDismissReviewRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsDismissReviewRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39674,8 +39674,8 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	u.Path += "/merge"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePullsMergeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsMergeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39774,8 +39774,8 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	u.Path += "/requested_reviewers"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodePullsRemoveRequestedReviewersRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsRemoveRequestedReviewersRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -39889,8 +39889,8 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	u.Path += "/events"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePullsSubmitReviewRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsSubmitReviewRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40002,8 +40002,8 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePullsUpdateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsUpdateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40095,8 +40095,8 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	u.Path += "/update-branch"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePullsUpdateBranchRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsUpdateBranchRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40201,8 +40201,8 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodePullsUpdateReviewRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsUpdateReviewRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40292,8 +40292,8 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodePullsUpdateReviewCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePullsUpdateReviewCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40441,8 +40441,8 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForCommitCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForCommitCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40542,8 +40542,8 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForIssueRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForIssueRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40644,8 +40644,8 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForIssueCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForIssueCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40746,8 +40746,8 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForPullRequestReviewCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForPullRequestReviewCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40847,8 +40847,8 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForReleaseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForReleaseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -40968,8 +40968,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41078,8 +41078,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41183,8 +41183,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForTeamDiscussionInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -41277,8 +41277,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	u.Path += "/reactions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReactionsCreateForTeamDiscussionLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43334,8 +43334,8 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	u.Path += "/protection/restrictions/apps"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposAddAppAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposAddAppAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43459,8 +43459,8 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposAddCollaboratorRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposAddCollaboratorRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43570,8 +43570,8 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	u.Path += "/protection/required_status_checks/contexts"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposAddStatusCheckContextsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposAddStatusCheckContextsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43689,8 +43689,8 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/teams"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposAddTeamAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposAddTeamAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -43807,8 +43807,8 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/users"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposAddUserAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposAddUserAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44229,8 +44229,8 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	u.Path += "/autolinks"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateAutolinkRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateAutolinkRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44328,8 +44328,8 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	u.Path += "/comments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateCommitCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateCommitCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44524,8 +44524,8 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	}
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateCommitStatusRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateCommitStatusRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44601,8 +44601,8 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	u.Path += "/keys"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateDeployKeyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateDeployKeyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44731,8 +44731,8 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	u.Path += "/deployments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateDeploymentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateDeploymentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44833,8 +44833,8 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	u.Path += "/statuses"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateDeploymentStatusRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateDeploymentStatusRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44933,8 +44933,8 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	u.Path += "/dispatches"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateDispatchEventRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateDispatchEventRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -44986,8 +44986,8 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	u.Path += "/user/repos"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateForAuthenticatedUserRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateForAuthenticatedUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45066,8 +45066,8 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	u.Path += "/forks"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateForkRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateForkRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45143,8 +45143,8 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	u.Path += "/repos"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45234,8 +45234,8 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposCreateOrUpdateFileContentsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateOrUpdateFileContentsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45320,8 +45320,8 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	u.Path += "/pages"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreatePagesSiteRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreatePagesSiteRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45404,8 +45404,8 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	u.Path += "/releases"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateReleaseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateReleaseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45492,8 +45492,8 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	u.Path += "/generate"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateUsingTemplateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateUsingTemplateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -45586,8 +45586,8 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	u.Path += "/hooks"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposCreateWebhookRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposCreateWebhookRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -46646,8 +46646,8 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	}
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeReposDeleteFileRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposDeleteFileRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -55375,8 +55375,8 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	u.Path += "/merges"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposMergeRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposMergeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -55453,8 +55453,8 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	u.Path += "/merge-upstream"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposMergeUpstreamRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposMergeUpstreamRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -55766,8 +55766,8 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	u.Path += "/protection/restrictions/apps"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeReposRemoveAppAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposRemoveAppAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -55965,8 +55965,8 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	u.Path += "/protection/required_status_checks/contexts"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeReposRemoveStatusCheckContextsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposRemoveStatusCheckContextsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -56177,8 +56177,8 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	u.Path += "/protection/restrictions/teams"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeReposRemoveTeamAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposRemoveTeamAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -56295,8 +56295,8 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	u.Path += "/protection/restrictions/users"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeReposRemoveUserAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposRemoveUserAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -56399,8 +56399,8 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	u.Path += "/rename"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposRenameBranchRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposRenameBranchRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -56484,8 +56484,8 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	u.Path += "/topics"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposReplaceAllTopicsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposReplaceAllTopicsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -56779,8 +56779,8 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	u.Path += "/protection/restrictions/apps"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposSetAppAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposSetAppAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -56890,8 +56890,8 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	u.Path += "/protection/required_status_checks/contexts"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposSetStatusCheckContextsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposSetStatusCheckContextsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57010,8 +57010,8 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/teams"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposSetTeamAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposSetTeamAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57129,8 +57129,8 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/users"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposSetUserAccessRestrictionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposSetUserAccessRestrictionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57302,8 +57302,8 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	u.Path += "/transfer"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeReposTransferRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposTransferRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57394,8 +57394,8 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57501,8 +57501,8 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	u.Path += "/protection"
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeReposUpdateBranchProtectionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateBranchProtectionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57592,8 +57592,8 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateCommitCommentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateCommitCommentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57698,8 +57698,8 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateInvitationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateInvitationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57797,8 +57797,8 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	u.Path += "/protection/required_pull_request_reviews"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdatePullRequestReviewProtectionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdatePullRequestReviewProtectionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57888,8 +57888,8 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateReleaseRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateReleaseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -57979,8 +57979,8 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateReleaseAssetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateReleaseAssetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58077,8 +58077,8 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	u.Path += "/protection/required_status_checks"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateStatusCheckProtectionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateStatusCheckProtectionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58186,8 +58186,8 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateWebhookRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateWebhookRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -58297,8 +58297,8 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	u.Path += "/config"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeReposUpdateWebhookConfigForRepoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeReposUpdateWebhookConfigForRepoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -59822,8 +59822,8 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeSecretScanningUpdateAlertRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSecretScanningUpdateAlertRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60043,8 +60043,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60160,8 +60160,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60270,8 +60270,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60369,8 +60369,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60501,8 +60501,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -60620,8 +60620,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
-	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61076,8 +61076,8 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	u.Path += "/teams"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTeamsCreateRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61178,8 +61178,8 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	u.Path += "/comments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTeamsCreateDiscussionCommentInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateDiscussionCommentInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61268,8 +61268,8 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	u.Path += "/comments"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTeamsCreateDiscussionCommentLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateDiscussionCommentLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61355,8 +61355,8 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	u.Path += "/discussions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTeamsCreateDiscussionInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateDiscussionInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61430,8 +61430,8 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	u.Path += "/discussions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeTeamsCreateDiscussionLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateDiscussionLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61514,8 +61514,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	u.Path += "/team-sync/group-mappings"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -61595,8 +61595,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	u.Path += "/team-sync/group-mappings"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -65706,8 +65706,8 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsUpdateDiscussionCommentInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -65803,8 +65803,8 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsUpdateDiscussionCommentLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -65898,8 +65898,8 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsUpdateDiscussionInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsUpdateDiscussionInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -65981,8 +65981,8 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsUpdateDiscussionLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsUpdateDiscussionLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -66074,8 +66074,8 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsUpdateInOrgRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsUpdateInOrgRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -66149,8 +66149,8 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	}
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeTeamsUpdateLegacyRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeTeamsUpdateLegacyRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -66211,8 +66211,8 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	u.Path += "/user/emails"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUsersAddEmailForAuthenticatedRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUsersAddEmailForAuthenticatedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -66507,8 +66507,8 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	u.Path += "/user/gpg_keys"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUsersCreateGpgKeyForAuthenticatedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -66564,8 +66564,8 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	u.Path += "/user/keys"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -66626,8 +66626,8 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	u.Path += "/user/emails"
 
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
-	if err := encodeUsersDeleteEmailForAuthenticatedRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUsersDeleteEmailForAuthenticatedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -68202,8 +68202,8 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	u.Path += "/user/email/visibility"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -68368,8 +68368,8 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	u.Path += "/user"
 
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
-	if err := encodeUsersUpdateAuthenticatedRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUsersUpdateAuthenticatedRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

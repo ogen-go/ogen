@@ -83,8 +83,8 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 	u.Path += "/addStickerToSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAddStickerToSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAddStickerToSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -136,8 +136,8 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 	u.Path += "/answerCallbackQuery"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAnswerCallbackQueryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAnswerCallbackQueryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -189,8 +189,8 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 	u.Path += "/answerInlineQuery"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAnswerInlineQueryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAnswerInlineQueryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -234,8 +234,8 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	u.Path += "/answerPreCheckoutQuery"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAnswerPreCheckoutQueryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAnswerPreCheckoutQueryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -287,8 +287,8 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	u.Path += "/answerShippingQuery"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeAnswerShippingQueryRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeAnswerShippingQueryRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -332,8 +332,8 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChat
 	u.Path += "/approveChatJoinRequest"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeApproveChatJoinRequestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeApproveChatJoinRequestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -377,8 +377,8 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	u.Path += "/banChatMember"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeBanChatMemberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeBanChatMemberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -422,8 +422,8 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderCha
 	u.Path += "/banChatSenderChat"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeBanChatSenderChatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeBanChatSenderChatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -517,8 +517,8 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 	u.Path += "/copyMessage"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCopyMessageRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCopyMessageRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -570,8 +570,8 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 	u.Path += "/createChatInviteLink"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCreateChatInviteLinkRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreateChatInviteLinkRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -623,8 +623,8 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	u.Path += "/createNewStickerSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeCreateNewStickerSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeCreateNewStickerSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -668,8 +668,8 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChat
 	u.Path += "/declineChatJoinRequest"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeclineChatJoinRequestRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeclineChatJoinRequestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -713,8 +713,8 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	u.Path += "/deleteChatPhoto"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeleteChatPhotoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeleteChatPhotoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -758,8 +758,8 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	u.Path += "/deleteChatStickerSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeleteChatStickerSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeleteChatStickerSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -803,8 +803,8 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	u.Path += "/deleteMessage"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeleteMessageRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeleteMessageRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -848,8 +848,8 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 	u.Path += "/deleteMyCommands"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeleteMyCommandsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeleteMyCommandsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -893,8 +893,8 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	u.Path += "/deleteStickerFromSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeleteStickerFromSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeleteStickerFromSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -938,8 +938,8 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 	u.Path += "/deleteWebhook"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeDeleteWebhookRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeDeleteWebhookRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -991,8 +991,8 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 	u.Path += "/editChatInviteLink"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEditChatInviteLinkRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEditChatInviteLinkRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1044,8 +1044,8 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 	u.Path += "/editMessageCaption"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEditMessageCaptionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEditMessageCaptionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1097,8 +1097,8 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 	u.Path += "/editMessageLiveLocation"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEditMessageLiveLocationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEditMessageLiveLocationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1150,8 +1150,8 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 	u.Path += "/editMessageMedia"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEditMessageMediaRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEditMessageMediaRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1203,8 +1203,8 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 	u.Path += "/editMessageReplyMarkup"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEditMessageReplyMarkupRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEditMessageReplyMarkupRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1256,8 +1256,8 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 	u.Path += "/editMessageText"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeEditMessageTextRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeEditMessageTextRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1301,8 +1301,8 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	u.Path += "/exportChatInviteLink"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeExportChatInviteLinkRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeExportChatInviteLinkRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1346,8 +1346,8 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	u.Path += "/forwardMessage"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeForwardMessageRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeForwardMessageRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1391,8 +1391,8 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, 
 	u.Path += "/getChat"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetChatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetChatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1436,8 +1436,8 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	u.Path += "/getChatAdministrators"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetChatAdministratorsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetChatAdministratorsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1481,8 +1481,8 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	u.Path += "/getChatMember"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetChatMemberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetChatMemberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1526,8 +1526,8 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	u.Path += "/getChatMemberCount"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetChatMemberCountRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetChatMemberCountRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1571,8 +1571,8 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res Result, err 
 	u.Path += "/getFile"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetFileRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetFileRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1616,8 +1616,8 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	u.Path += "/getGameHighScores"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetGameHighScoresRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetGameHighScoresRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1703,8 +1703,8 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	u.Path += "/getMyCommands"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetMyCommandsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetMyCommandsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1748,8 +1748,8 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	u.Path += "/getStickerSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetStickerSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetStickerSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1808,8 +1808,8 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 	u.Path += "/getUpdates"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetUpdatesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetUpdatesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1861,8 +1861,8 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 	u.Path += "/getUserProfilePhotos"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeGetUserProfilePhotosRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeGetUserProfilePhotosRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -1948,8 +1948,8 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, 
 	u.Path += "/leaveChat"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeLeaveChatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeLeaveChatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2035,8 +2035,8 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	u.Path += "/pinChatMessage"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePinChatMessageRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePinChatMessageRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2080,8 +2080,8 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	u.Path += "/promoteChatMember"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodePromoteChatMemberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodePromoteChatMemberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2125,8 +2125,8 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	u.Path += "/restrictChatMember"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeRestrictChatMemberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeRestrictChatMemberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2170,8 +2170,8 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	u.Path += "/revokeChatInviteLink"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeRevokeChatInviteLinkRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeRevokeChatInviteLinkRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2223,8 +2223,8 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 	u.Path += "/sendAnimation"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendAnimationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendAnimationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2276,8 +2276,8 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMe
 	u.Path += "/sendAudio"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendAudioRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendAudioRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2321,8 +2321,8 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	u.Path += "/sendChatAction"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendChatActionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendChatActionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2374,8 +2374,8 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 	u.Path += "/sendContact"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendContactRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendContactRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2427,8 +2427,8 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMess
 	u.Path += "/sendDice"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendDiceRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendDiceRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2480,8 +2480,8 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 	u.Path += "/sendDocument"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendDocumentRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendDocumentRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2533,8 +2533,8 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMess
 	u.Path += "/sendGame"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendGameRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendGameRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2586,8 +2586,8 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 	u.Path += "/sendInvoice"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendInvoiceRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendInvoiceRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2639,8 +2639,8 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 	u.Path += "/sendLocation"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendLocationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendLocationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2692,8 +2692,8 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 	u.Path += "/sendMediaGroup"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendMediaGroupRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendMediaGroupRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2745,8 +2745,8 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 	u.Path += "/sendMessage"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendMessageRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendMessageRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2798,8 +2798,8 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMe
 	u.Path += "/sendPhoto"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendPhotoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendPhotoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2851,8 +2851,8 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMess
 	u.Path += "/sendPoll"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendPollRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendPollRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2904,8 +2904,8 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 	u.Path += "/sendSticker"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendStickerRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendStickerRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -2957,8 +2957,8 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMe
 	u.Path += "/sendVenue"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendVenueRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendVenueRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3010,8 +3010,8 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMe
 	u.Path += "/sendVideo"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendVideoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendVideoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3063,8 +3063,8 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 	u.Path += "/sendVideoNote"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendVideoNoteRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendVideoNoteRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3116,8 +3116,8 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMe
 	u.Path += "/sendVoice"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSendVoiceRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSendVoiceRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3169,8 +3169,8 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 	u.Path += "/setChatAdministratorCustomTitle"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetChatAdministratorCustomTitleRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetChatAdministratorCustomTitleRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3222,8 +3222,8 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	u.Path += "/setChatDescription"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetChatDescriptionRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetChatDescriptionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3267,8 +3267,8 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	u.Path += "/setChatPermissions"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetChatPermissionsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetChatPermissionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3312,8 +3312,8 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Re
 	u.Path += "/setChatPhoto"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetChatPhotoRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetChatPhotoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3357,8 +3357,8 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	u.Path += "/setChatStickerSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetChatStickerSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetChatStickerSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3410,8 +3410,8 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Re
 	u.Path += "/setChatTitle"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetChatTitleRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetChatTitleRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3455,8 +3455,8 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 	u.Path += "/setGameScore"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetGameScoreRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetGameScoreRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3508,8 +3508,8 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	u.Path += "/setMyCommands"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetMyCommandsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetMyCommandsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3561,8 +3561,8 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 	u.Path += "/setPassportDataErrors"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetPassportDataErrorsRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetPassportDataErrorsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3606,8 +3606,8 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	u.Path += "/setStickerPositionInSet"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetStickerPositionInSetRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetStickerPositionInSetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3651,8 +3651,8 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	u.Path += "/setStickerSetThumb"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetStickerSetThumbRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetStickerSetThumbRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3696,8 +3696,8 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 	u.Path += "/setWebhook"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeSetWebhookRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeSetWebhookRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3749,8 +3749,8 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 	u.Path += "/stopMessageLiveLocation"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeStopMessageLiveLocationRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeStopMessageLiveLocationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3802,8 +3802,8 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll
 	u.Path += "/stopPoll"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeStopPollRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeStopPollRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3847,8 +3847,8 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	u.Path += "/unbanChatMember"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUnbanChatMemberRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUnbanChatMemberRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3892,8 +3892,8 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSende
 	u.Path += "/unbanChatSenderChat"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUnbanChatSenderChatRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUnbanChatSenderChatRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3937,8 +3937,8 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	u.Path += "/unpinAllChatMessages"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUnpinAllChatMessagesRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUnpinAllChatMessagesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -3982,8 +3982,8 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	u.Path += "/unpinChatMessage"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUnpinChatMessageRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUnpinChatMessageRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
@@ -4027,8 +4027,8 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 	u.Path += "/uploadStickerFile"
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
-	if err := encodeUploadStickerFileRequestJSON(request, r); err != nil {
-		return res, err
+	if err := encodeUploadStickerFileRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)

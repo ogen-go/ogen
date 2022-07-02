@@ -165,6 +165,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 't': // Prefix: "textPlainBinaryStringSchema"
+				if l := len("textPlainBinaryStringSchema"); len(elem) >= l && elem[0:l] == "textPlainBinaryStringSchema" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: TextPlainBinaryStringSchema
+					s.handleTextPlainBinaryStringSchemaRequest([0]string{}, w, r)
+
+					return
+				}
 			}
 		}
 	}
@@ -353,6 +366,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						r.count = 0
 						return r, true
 					}
+				}
+			case 't': // Prefix: "textPlainBinaryStringSchema"
+				if l := len("textPlainBinaryStringSchema"); len(elem) >= l && elem[0:l] == "textPlainBinaryStringSchema" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: TextPlainBinaryStringSchema
+					r.name = "TextPlainBinaryStringSchema"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			}
 		}

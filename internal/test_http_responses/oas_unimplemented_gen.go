@@ -68,3 +68,10 @@ func (UnimplementedHandler) OctetStreamBinaryStringSchema(ctx context.Context) (
 func (UnimplementedHandler) OctetStreamEmptySchema(ctx context.Context) (r OctetStreamEmptySchemaOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
+
+// TextPlainBinaryStringSchema implements textPlainBinaryStringSchema operation.
+//
+// GET /textPlainBinaryStringSchema
+func (UnimplementedHandler) TextPlainBinaryStringSchema(ctx context.Context) (r TextPlainBinaryStringSchemaOK, _ error) {
+	return r, ht.ErrNotImplemented
+}

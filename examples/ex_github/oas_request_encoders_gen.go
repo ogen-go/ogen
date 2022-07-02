@@ -11,62 +11,67 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
-func encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(
+func encodeActionsCreateOrUpdateEnvironmentSecretRequest(
 	req ActionsCreateOrUpdateEnvironmentSecretReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsCreateOrUpdateOrgSecretRequestJSON(
+func encodeActionsCreateOrUpdateOrgSecretRequest(
 	req ActionsCreateOrUpdateOrgSecretReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsCreateOrUpdateRepoSecretRequestJSON(
+func encodeActionsCreateOrUpdateRepoSecretRequest(
 	req ActionsCreateOrUpdateRepoSecretReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(
+func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(
 	req ActionsCreateSelfHostedRunnerGroupForOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsReviewPendingDeploymentsForRunRequestJSON(
+func encodeActionsReviewPendingDeploymentsForRunRequest(
 	req ActionsReviewPendingDeploymentsForRunReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetAllowedActionsOrganizationRequestJSON(
+func encodeActionsSetAllowedActionsOrganizationRequest(
 	req OptSelectedActions,
 	r *http.Request,
 ) error {
@@ -75,14 +80,16 @@ func encodeActionsSetAllowedActionsOrganizationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetAllowedActionsRepositoryRequestJSON(
+func encodeActionsSetAllowedActionsRepositoryRequest(
 	req OptSelectedActions,
 	r *http.Request,
 ) error {
@@ -91,91 +98,100 @@ func encodeActionsSetAllowedActionsRepositoryRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(
+func encodeActionsSetGithubActionsPermissionsOrganizationRequest(
 	req ActionsSetGithubActionsPermissionsOrganizationReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(
+func encodeActionsSetGithubActionsPermissionsRepositoryRequest(
 	req ActionsSetGithubActionsPermissionsRepositoryReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetSelectedReposForOrgSecretRequestJSON(
+func encodeActionsSetSelectedReposForOrgSecretRequest(
 	req ActionsSetSelectedReposForOrgSecretReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(
 	req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(
+func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(
 	req ActionsSetSelfHostedRunnersInGroupForOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(
+func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(
 	req ActionsUpdateSelfHostedRunnerGroupForOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActivityMarkNotificationsAsReadRequestJSON(
+func encodeActivityMarkNotificationsAsReadRequest(
 	req OptActivityMarkNotificationsAsReadReq,
 	r *http.Request,
 ) error {
@@ -184,14 +200,16 @@ func encodeActivityMarkNotificationsAsReadRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActivityMarkRepoNotificationsAsReadRequestJSON(
+func encodeActivityMarkRepoNotificationsAsReadRequest(
 	req OptActivityMarkRepoNotificationsAsReadReq,
 	r *http.Request,
 ) error {
@@ -200,14 +218,16 @@ func encodeActivityMarkRepoNotificationsAsReadRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActivitySetRepoSubscriptionRequestJSON(
+func encodeActivitySetRepoSubscriptionRequest(
 	req OptActivitySetRepoSubscriptionReq,
 	r *http.Request,
 ) error {
@@ -216,14 +236,16 @@ func encodeActivitySetRepoSubscriptionRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeActivitySetThreadSubscriptionRequestJSON(
+func encodeActivitySetThreadSubscriptionRequest(
 	req OptActivitySetThreadSubscriptionReq,
 	r *http.Request,
 ) error {
@@ -232,48 +254,54 @@ func encodeActivitySetThreadSubscriptionRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeAppsCheckTokenRequestJSON(
+func encodeAppsCheckTokenRequest(
 	req AppsCheckTokenReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeAppsCreateContentAttachmentRequestJSON(
-	req AppsCreateContentAttachmentReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeAppsCreateFromManifestRequestJSON(
-	req *AppsCreateFromManifestReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-	if req != nil {
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeAppsCreateInstallationAccessTokenRequestJSON(
+func encodeAppsCreateContentAttachmentRequest(
+	req AppsCreateContentAttachmentReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeAppsCreateFromManifestRequest(
+	req *AppsCreateFromManifestReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeAppsCreateInstallationAccessTokenRequest(
 	req OptAppsCreateInstallationAccessTokenReq,
 	r *http.Request,
 ) error {
@@ -282,58 +310,64 @@ func encodeAppsCreateInstallationAccessTokenRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeAppsDeleteAuthorizationRequest(
+	req AppsDeleteAuthorizationReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeAppsDeleteAuthorizationRequestJSON(
-	req AppsDeleteAuthorizationReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeAppsDeleteTokenRequestJSON(
+func encodeAppsDeleteTokenRequest(
 	req AppsDeleteTokenReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeAppsResetTokenRequestJSON(
+func encodeAppsResetTokenRequest(
 	req AppsResetTokenReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeAppsScopeTokenRequestJSON(
+func encodeAppsScopeTokenRequest(
 	req AppsScopeTokenReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeAppsUpdateWebhookConfigForAppRequestJSON(
+func encodeAppsUpdateWebhookConfigForAppRequest(
 	req OptAppsUpdateWebhookConfigForAppReq,
 	r *http.Request,
 ) error {
@@ -342,190 +376,208 @@ func encodeAppsUpdateWebhookConfigForAppRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeChecksCreateSuiteRequest(
+	req ChecksCreateSuiteReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeChecksCreateSuiteRequestJSON(
-	req ChecksCreateSuiteReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeChecksSetSuitesPreferencesRequestJSON(
+func encodeChecksSetSuitesPreferencesRequest(
 	req ChecksSetSuitesPreferencesReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeCodeScanningUpdateAlertRequestJSON(
+func encodeCodeScanningUpdateAlertRequest(
 	req CodeScanningUpdateAlertReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeCodeScanningUploadSarifRequestJSON(
+func encodeCodeScanningUploadSarifRequest(
 	req CodeScanningUploadSarifReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(
+func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(
 	req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(
 	req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(
 	req EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(
+func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(
 	req SelectedActions,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(
 	req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(
 	req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(
 	req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(
 	req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(
 	req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(
 	req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(
 	req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(
 	req EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(
+func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(
 	req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq,
 	r *http.Request,
 ) error {
@@ -534,146 +586,160 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeGistsCreateRequest(
+	req GistsCreateReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGistsCreateRequestJSON(
-	req GistsCreateReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeGistsCreateCommentRequestJSON(
+func encodeGistsCreateCommentRequest(
 	req GistsCreateCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGistsUpdateCommentRequestJSON(
+func encodeGistsUpdateCommentRequest(
 	req GistsUpdateCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGitCreateBlobRequestJSON(
+func encodeGitCreateBlobRequest(
 	req GitCreateBlobReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGitCreateCommitRequestJSON(
+func encodeGitCreateCommitRequest(
 	req GitCreateCommitReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGitCreateRefRequestJSON(
+func encodeGitCreateRefRequest(
 	req GitCreateRefReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGitCreateTagRequestJSON(
+func encodeGitCreateTagRequest(
 	req GitCreateTagReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGitCreateTreeRequestJSON(
+func encodeGitCreateTreeRequest(
 	req GitCreateTreeReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeGitUpdateRefRequestJSON(
+func encodeGitUpdateRefRequest(
 	req GitUpdateRefReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(
+func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(
 	req InteractionLimit,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeInteractionsSetRestrictionsForOrgRequestJSON(
+func encodeInteractionsSetRestrictionsForOrgRequest(
 	req InteractionLimit,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeInteractionsSetRestrictionsForRepoRequestJSON(
+func encodeInteractionsSetRestrictionsForRepoRequest(
 	req InteractionLimit,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesAddAssigneesRequestJSON(
+func encodeIssuesAddAssigneesRequest(
 	req OptIssuesAddAssigneesReq,
 	r *http.Request,
 ) error {
@@ -682,58 +748,64 @@ func encodeIssuesAddAssigneesRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeIssuesCreateRequest(
+	req IssuesCreateReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesCreateRequestJSON(
-	req IssuesCreateReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeIssuesCreateCommentRequestJSON(
+func encodeIssuesCreateCommentRequest(
 	req IssuesCreateCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesCreateLabelRequestJSON(
+func encodeIssuesCreateLabelRequest(
 	req IssuesCreateLabelReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesCreateMilestoneRequestJSON(
+func encodeIssuesCreateMilestoneRequest(
 	req IssuesCreateMilestoneReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesLockRequestJSON(
+func encodeIssuesLockRequest(
 	req OptNilIssuesLockReq,
 	r *http.Request,
 ) error {
@@ -742,14 +814,16 @@ func encodeIssuesLockRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesRemoveAssigneesRequestJSON(
+func encodeIssuesRemoveAssigneesRequest(
 	req OptIssuesRemoveAssigneesReq,
 	r *http.Request,
 ) error {
@@ -758,14 +832,16 @@ func encodeIssuesRemoveAssigneesRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesUpdateRequestJSON(
+func encodeIssuesUpdateRequest(
 	req OptIssuesUpdateReq,
 	r *http.Request,
 ) error {
@@ -774,25 +850,28 @@ func encodeIssuesUpdateRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeIssuesUpdateCommentRequest(
+	req IssuesUpdateCommentReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesUpdateCommentRequestJSON(
-	req IssuesUpdateCommentReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeIssuesUpdateLabelRequestJSON(
+func encodeIssuesUpdateLabelRequest(
 	req OptIssuesUpdateLabelReq,
 	r *http.Request,
 ) error {
@@ -801,14 +880,16 @@ func encodeIssuesUpdateLabelRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeIssuesUpdateMilestoneRequestJSON(
+func encodeIssuesUpdateMilestoneRequest(
 	req OptIssuesUpdateMilestoneReq,
 	r *http.Request,
 ) error {
@@ -817,14 +898,16 @@ func encodeIssuesUpdateMilestoneRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMigrationsMapCommitAuthorRequestJSON(
+func encodeMigrationsMapCommitAuthorRequest(
 	req OptMigrationsMapCommitAuthorReq,
 	r *http.Request,
 ) error {
@@ -833,58 +916,64 @@ func encodeMigrationsMapCommitAuthorRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeMigrationsSetLfsPreferenceRequest(
+	req MigrationsSetLfsPreferenceReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMigrationsSetLfsPreferenceRequestJSON(
-	req MigrationsSetLfsPreferenceReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeMigrationsStartForAuthenticatedUserRequestJSON(
+func encodeMigrationsStartForAuthenticatedUserRequest(
 	req MigrationsStartForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMigrationsStartForOrgRequestJSON(
+func encodeMigrationsStartForOrgRequest(
 	req MigrationsStartForOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMigrationsStartImportRequestJSON(
+func encodeMigrationsStartImportRequest(
 	req MigrationsStartImportReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMigrationsUpdateImportRequestJSON(
+func encodeMigrationsUpdateImportRequest(
 	req OptNilMigrationsUpdateImportReq,
 	r *http.Request,
 ) error {
@@ -893,14 +982,16 @@ func encodeMigrationsUpdateImportRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(
+func encodeOAuthAuthorizationsCreateAuthorizationRequest(
 	req OptOAuthAuthorizationsCreateAuthorizationReq,
 	r *http.Request,
 ) error {
@@ -909,36 +1000,40 @@ func encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
+	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(
-	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(
+func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(
 	req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(
+func encodeOAuthAuthorizationsUpdateAuthorizationRequest(
 	req OptOAuthAuthorizationsUpdateAuthorizationReq,
 	r *http.Request,
 ) error {
@@ -947,14 +1042,16 @@ func encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOrgsCreateInvitationRequestJSON(
+func encodeOrgsCreateInvitationRequest(
 	req OptOrgsCreateInvitationReq,
 	r *http.Request,
 ) error {
@@ -963,25 +1060,28 @@ func encodeOrgsCreateInvitationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeOrgsCreateWebhookRequest(
+	req OrgsCreateWebhookReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOrgsCreateWebhookRequestJSON(
-	req OrgsCreateWebhookReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeOrgsSetMembershipForUserRequestJSON(
+func encodeOrgsSetMembershipForUserRequest(
 	req OptOrgsSetMembershipForUserReq,
 	r *http.Request,
 ) error {
@@ -990,25 +1090,28 @@ func encodeOrgsSetMembershipForUserRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeOrgsUpdateMembershipForAuthenticatedUserRequest(
+	req OrgsUpdateMembershipForAuthenticatedUserReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(
-	req OrgsUpdateMembershipForAuthenticatedUserReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeOrgsUpdateWebhookRequestJSON(
+func encodeOrgsUpdateWebhookRequest(
 	req OptOrgsUpdateWebhookReq,
 	r *http.Request,
 ) error {
@@ -1017,14 +1120,16 @@ func encodeOrgsUpdateWebhookRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(
+func encodeOrgsUpdateWebhookConfigForOrgRequest(
 	req OptOrgsUpdateWebhookConfigForOrgReq,
 	r *http.Request,
 ) error {
@@ -1033,14 +1138,16 @@ func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsAddCollaboratorRequestJSON(
+func encodeProjectsAddCollaboratorRequest(
 	req OptNilProjectsAddCollaboratorReq,
 	r *http.Request,
 ) error {
@@ -1049,80 +1156,88 @@ func encodeProjectsAddCollaboratorRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeProjectsCreateColumnRequest(
+	req ProjectsCreateColumnReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsCreateColumnRequestJSON(
-	req ProjectsCreateColumnReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeProjectsCreateForAuthenticatedUserRequestJSON(
+func encodeProjectsCreateForAuthenticatedUserRequest(
 	req ProjectsCreateForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsCreateForOrgRequestJSON(
+func encodeProjectsCreateForOrgRequest(
 	req ProjectsCreateForOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsCreateForRepoRequestJSON(
+func encodeProjectsCreateForRepoRequest(
 	req ProjectsCreateForRepoReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsMoveCardRequestJSON(
+func encodeProjectsMoveCardRequest(
 	req ProjectsMoveCardReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsMoveColumnRequestJSON(
+func encodeProjectsMoveColumnRequest(
 	req ProjectsMoveColumnReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsUpdateRequestJSON(
+func encodeProjectsUpdateRequest(
 	req OptProjectsUpdateReq,
 	r *http.Request,
 ) error {
@@ -1131,14 +1246,16 @@ func encodeProjectsUpdateRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsUpdateCardRequestJSON(
+func encodeProjectsUpdateCardRequest(
 	req OptProjectsUpdateCardReq,
 	r *http.Request,
 ) error {
@@ -1147,47 +1264,52 @@ func encodeProjectsUpdateCardRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeProjectsUpdateColumnRequest(
+	req ProjectsUpdateColumnReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeProjectsUpdateColumnRequestJSON(
-	req ProjectsUpdateColumnReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodePullsCreateRequestJSON(
+func encodePullsCreateRequest(
 	req PullsCreateReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsCreateReplyForReviewCommentRequestJSON(
+func encodePullsCreateReplyForReviewCommentRequest(
 	req PullsCreateReplyForReviewCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsCreateReviewRequestJSON(
+func encodePullsCreateReviewRequest(
 	req OptPullsCreateReviewReq,
 	r *http.Request,
 ) error {
@@ -1196,36 +1318,40 @@ func encodePullsCreateReviewRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodePullsCreateReviewCommentRequest(
+	req PullsCreateReviewCommentReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsCreateReviewCommentRequestJSON(
-	req PullsCreateReviewCommentReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodePullsDismissReviewRequestJSON(
+func encodePullsDismissReviewRequest(
 	req PullsDismissReviewReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsMergeRequestJSON(
+func encodePullsMergeRequest(
 	req OptNilPullsMergeReq,
 	r *http.Request,
 ) error {
@@ -1234,36 +1360,40 @@ func encodePullsMergeRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodePullsRemoveRequestedReviewersRequest(
+	req PullsRemoveRequestedReviewersReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsRemoveRequestedReviewersRequestJSON(
-	req PullsRemoveRequestedReviewersReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodePullsSubmitReviewRequestJSON(
+func encodePullsSubmitReviewRequest(
 	req PullsSubmitReviewReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsUpdateRequestJSON(
+func encodePullsUpdateRequest(
 	req OptPullsUpdateReq,
 	r *http.Request,
 ) error {
@@ -1272,14 +1402,16 @@ func encodePullsUpdateRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsUpdateBranchRequestJSON(
+func encodePullsUpdateBranchRequest(
 	req OptNilPullsUpdateBranchReq,
 	r *http.Request,
 ) error {
@@ -1288,135 +1420,148 @@ func encodePullsUpdateBranchRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodePullsUpdateReviewRequest(
+	req PullsUpdateReviewReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePullsUpdateReviewRequestJSON(
-	req PullsUpdateReviewReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodePullsUpdateReviewCommentRequestJSON(
+func encodePullsUpdateReviewCommentRequest(
 	req PullsUpdateReviewCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForCommitCommentRequestJSON(
+func encodeReactionsCreateForCommitCommentRequest(
 	req ReactionsCreateForCommitCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForIssueRequestJSON(
+func encodeReactionsCreateForIssueRequest(
 	req ReactionsCreateForIssueReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForIssueCommentRequestJSON(
+func encodeReactionsCreateForIssueCommentRequest(
 	req ReactionsCreateForIssueCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForPullRequestReviewCommentRequestJSON(
+func encodeReactionsCreateForPullRequestReviewCommentRequest(
 	req ReactionsCreateForPullRequestReviewCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForReleaseRequestJSON(
+func encodeReactionsCreateForReleaseRequest(
 	req ReactionsCreateForReleaseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(
+func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(
 	req ReactionsCreateForTeamDiscussionCommentInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(
+func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(
 	req ReactionsCreateForTeamDiscussionCommentLegacyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(
+func encodeReactionsCreateForTeamDiscussionInOrgRequest(
 	req ReactionsCreateForTeamDiscussionInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(
+func encodeReactionsCreateForTeamDiscussionLegacyRequest(
 	req ReactionsCreateForTeamDiscussionLegacyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposAddAppAccessRestrictionsRequestJSON(
+func encodeReposAddAppAccessRestrictionsRequest(
 	req OptReposAddAppAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1425,14 +1570,16 @@ func encodeReposAddAppAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposAddCollaboratorRequestJSON(
+func encodeReposAddCollaboratorRequest(
 	req OptReposAddCollaboratorReq,
 	r *http.Request,
 ) error {
@@ -1441,14 +1588,16 @@ func encodeReposAddCollaboratorRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposAddStatusCheckContextsRequestJSON(
+func encodeReposAddStatusCheckContextsRequest(
 	req OptReposAddStatusCheckContextsReq,
 	r *http.Request,
 ) error {
@@ -1457,14 +1606,16 @@ func encodeReposAddStatusCheckContextsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposAddTeamAccessRestrictionsRequestJSON(
+func encodeReposAddTeamAccessRestrictionsRequest(
 	req OptReposAddTeamAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1473,14 +1624,16 @@ func encodeReposAddTeamAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposAddUserAccessRestrictionsRequestJSON(
+func encodeReposAddUserAccessRestrictionsRequest(
 	req OptReposAddUserAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1489,102 +1642,112 @@ func encodeReposAddUserAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeReposCreateAutolinkRequest(
+	req ReposCreateAutolinkReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateAutolinkRequestJSON(
-	req ReposCreateAutolinkReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReposCreateCommitCommentRequestJSON(
+func encodeReposCreateCommitCommentRequest(
 	req ReposCreateCommitCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateCommitStatusRequestJSON(
+func encodeReposCreateCommitStatusRequest(
 	req ReposCreateCommitStatusReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateDeployKeyRequestJSON(
+func encodeReposCreateDeployKeyRequest(
 	req ReposCreateDeployKeyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateDeploymentRequestJSON(
+func encodeReposCreateDeploymentRequest(
 	req ReposCreateDeploymentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateDeploymentStatusRequestJSON(
+func encodeReposCreateDeploymentStatusRequest(
 	req ReposCreateDeploymentStatusReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateDispatchEventRequestJSON(
+func encodeReposCreateDispatchEventRequest(
 	req ReposCreateDispatchEventReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateForAuthenticatedUserRequestJSON(
+func encodeReposCreateForAuthenticatedUserRequest(
 	req ReposCreateForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateForkRequestJSON(
+func encodeReposCreateForkRequest(
 	req OptNilReposCreateForkReq,
 	r *http.Request,
 ) error {
@@ -1593,69 +1756,76 @@ func encodeReposCreateForkRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeReposCreateInOrgRequest(
+	req ReposCreateInOrgReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateInOrgRequestJSON(
-	req ReposCreateInOrgReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReposCreateOrUpdateFileContentsRequestJSON(
+func encodeReposCreateOrUpdateFileContentsRequest(
 	req ReposCreateOrUpdateFileContentsReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreatePagesSiteRequestJSON(
+func encodeReposCreatePagesSiteRequest(
 	req NilReposCreatePagesSiteReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateReleaseRequestJSON(
+func encodeReposCreateReleaseRequest(
 	req ReposCreateReleaseReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateUsingTemplateRequestJSON(
+func encodeReposCreateUsingTemplateRequest(
 	req ReposCreateUsingTemplateReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposCreateWebhookRequestJSON(
+func encodeReposCreateWebhookRequest(
 	req OptNilReposCreateWebhookReq,
 	r *http.Request,
 ) error {
@@ -1664,47 +1834,52 @@ func encodeReposCreateWebhookRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeReposDeleteFileRequest(
+	req ReposDeleteFileReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposDeleteFileRequestJSON(
-	req ReposDeleteFileReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReposMergeRequestJSON(
+func encodeReposMergeRequest(
 	req ReposMergeReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposMergeUpstreamRequestJSON(
+func encodeReposMergeUpstreamRequest(
 	req ReposMergeUpstreamReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposRemoveAppAccessRestrictionsRequestJSON(
+func encodeReposRemoveAppAccessRestrictionsRequest(
 	req OptReposRemoveAppAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1713,14 +1888,16 @@ func encodeReposRemoveAppAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposRemoveStatusCheckContextsRequestJSON(
+func encodeReposRemoveStatusCheckContextsRequest(
 	req OptReposRemoveStatusCheckContextsReq,
 	r *http.Request,
 ) error {
@@ -1729,14 +1906,16 @@ func encodeReposRemoveStatusCheckContextsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposRemoveTeamAccessRestrictionsRequestJSON(
+func encodeReposRemoveTeamAccessRestrictionsRequest(
 	req OptReposRemoveTeamAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1745,14 +1924,16 @@ func encodeReposRemoveTeamAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposRemoveUserAccessRestrictionsRequestJSON(
+func encodeReposRemoveUserAccessRestrictionsRequest(
 	req OptReposRemoveUserAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1761,14 +1942,16 @@ func encodeReposRemoveUserAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposRenameBranchRequestJSON(
+func encodeReposRenameBranchRequest(
 	req OptReposRenameBranchReq,
 	r *http.Request,
 ) error {
@@ -1777,25 +1960,28 @@ func encodeReposRenameBranchRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeReposReplaceAllTopicsRequest(
+	req ReposReplaceAllTopicsReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposReplaceAllTopicsRequestJSON(
-	req ReposReplaceAllTopicsReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReposSetAppAccessRestrictionsRequestJSON(
+func encodeReposSetAppAccessRestrictionsRequest(
 	req OptReposSetAppAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1804,14 +1990,16 @@ func encodeReposSetAppAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposSetStatusCheckContextsRequestJSON(
+func encodeReposSetStatusCheckContextsRequest(
 	req OptReposSetStatusCheckContextsReq,
 	r *http.Request,
 ) error {
@@ -1820,14 +2008,16 @@ func encodeReposSetStatusCheckContextsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposSetTeamAccessRestrictionsRequestJSON(
+func encodeReposSetTeamAccessRestrictionsRequest(
 	req OptReposSetTeamAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1836,14 +2026,16 @@ func encodeReposSetTeamAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposSetUserAccessRestrictionsRequestJSON(
+func encodeReposSetUserAccessRestrictionsRequest(
 	req OptReposSetUserAccessRestrictionsReq,
 	r *http.Request,
 ) error {
@@ -1852,25 +2044,28 @@ func encodeReposSetUserAccessRestrictionsRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeReposTransferRequest(
+	req ReposTransferReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposTransferRequestJSON(
-	req ReposTransferReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReposUpdateRequestJSON(
+func encodeReposUpdateRequest(
 	req OptReposUpdateReq,
 	r *http.Request,
 ) error {
@@ -1879,36 +2074,40 @@ func encodeReposUpdateRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeReposUpdateBranchProtectionRequest(
+	req ReposUpdateBranchProtectionReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateBranchProtectionRequestJSON(
-	req ReposUpdateBranchProtectionReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReposUpdateCommitCommentRequestJSON(
+func encodeReposUpdateCommitCommentRequest(
 	req ReposUpdateCommitCommentReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateInvitationRequestJSON(
+func encodeReposUpdateInvitationRequest(
 	req OptReposUpdateInvitationReq,
 	r *http.Request,
 ) error {
@@ -1917,14 +2116,16 @@ func encodeReposUpdateInvitationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdatePullRequestReviewProtectionRequestJSON(
+func encodeReposUpdatePullRequestReviewProtectionRequest(
 	req OptReposUpdatePullRequestReviewProtectionReq,
 	r *http.Request,
 ) error {
@@ -1933,14 +2134,16 @@ func encodeReposUpdatePullRequestReviewProtectionRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateReleaseRequestJSON(
+func encodeReposUpdateReleaseRequest(
 	req OptReposUpdateReleaseReq,
 	r *http.Request,
 ) error {
@@ -1949,14 +2152,16 @@ func encodeReposUpdateReleaseRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateReleaseAssetRequestJSON(
+func encodeReposUpdateReleaseAssetRequest(
 	req OptReposUpdateReleaseAssetReq,
 	r *http.Request,
 ) error {
@@ -1965,14 +2170,16 @@ func encodeReposUpdateReleaseAssetRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateStatusCheckProtectionRequestJSON(
+func encodeReposUpdateStatusCheckProtectionRequest(
 	req OptReposUpdateStatusCheckProtectionReq,
 	r *http.Request,
 ) error {
@@ -1981,14 +2188,16 @@ func encodeReposUpdateStatusCheckProtectionRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateWebhookRequestJSON(
+func encodeReposUpdateWebhookRequest(
 	req OptReposUpdateWebhookReq,
 	r *http.Request,
 ) error {
@@ -1997,14 +2206,16 @@ func encodeReposUpdateWebhookRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeReposUpdateWebhookConfigForRepoRequestJSON(
+func encodeReposUpdateWebhookConfigForRepoRequest(
 	req OptReposUpdateWebhookConfigForRepoReq,
 	r *http.Request,
 ) error {
@@ -2013,25 +2224,28 @@ func encodeReposUpdateWebhookConfigForRepoRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeSecretScanningUpdateAlertRequest(
+	req SecretScanningUpdateAlertReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeSecretScanningUpdateAlertRequestJSON(
-	req SecretScanningUpdateAlertReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(
+func encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(
 	req OptTeamsAddOrUpdateMembershipForUserInOrgReq,
 	r *http.Request,
 ) error {
@@ -2040,14 +2254,16 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(
+func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(
 	req OptTeamsAddOrUpdateMembershipForUserLegacyReq,
 	r *http.Request,
 ) error {
@@ -2056,14 +2272,16 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(
+func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(
 	req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq,
 	r *http.Request,
 ) error {
@@ -2072,14 +2290,16 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(
+func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(
 	req OptTeamsAddOrUpdateProjectPermissionsLegacyReq,
 	r *http.Request,
 ) error {
@@ -2088,14 +2308,16 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(
 	req OptTeamsAddOrUpdateRepoPermissionsInOrgReq,
 	r *http.Request,
 ) error {
@@ -2104,14 +2326,16 @@ func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(
+func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(
 	req OptTeamsAddOrUpdateRepoPermissionsLegacyReq,
 	r *http.Request,
 ) error {
@@ -2120,113 +2344,124 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeTeamsCreateRequest(
+	req TeamsCreateReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsCreateRequestJSON(
-	req TeamsCreateReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeTeamsCreateDiscussionCommentInOrgRequestJSON(
+func encodeTeamsCreateDiscussionCommentInOrgRequest(
 	req TeamsCreateDiscussionCommentInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsCreateDiscussionCommentLegacyRequestJSON(
+func encodeTeamsCreateDiscussionCommentLegacyRequest(
 	req TeamsCreateDiscussionCommentLegacyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsCreateDiscussionInOrgRequestJSON(
+func encodeTeamsCreateDiscussionInOrgRequest(
 	req TeamsCreateDiscussionInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsCreateDiscussionLegacyRequestJSON(
+func encodeTeamsCreateDiscussionLegacyRequest(
 	req TeamsCreateDiscussionLegacyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(
 	req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(
 	req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(
+func encodeTeamsUpdateDiscussionCommentInOrgRequest(
 	req TeamsUpdateDiscussionCommentInOrgReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(
+func encodeTeamsUpdateDiscussionCommentLegacyRequest(
 	req TeamsUpdateDiscussionCommentLegacyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsUpdateDiscussionInOrgRequestJSON(
+func encodeTeamsUpdateDiscussionInOrgRequest(
 	req OptTeamsUpdateDiscussionInOrgReq,
 	r *http.Request,
 ) error {
@@ -2235,14 +2470,16 @@ func encodeTeamsUpdateDiscussionInOrgRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsUpdateDiscussionLegacyRequestJSON(
+func encodeTeamsUpdateDiscussionLegacyRequest(
 	req OptTeamsUpdateDiscussionLegacyReq,
 	r *http.Request,
 ) error {
@@ -2251,14 +2488,16 @@ func encodeTeamsUpdateDiscussionLegacyRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsUpdateInOrgRequestJSON(
+func encodeTeamsUpdateInOrgRequest(
 	req OptTeamsUpdateInOrgReq,
 	r *http.Request,
 ) error {
@@ -2267,25 +2506,28 @@ func encodeTeamsUpdateInOrgRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeTeamsUpdateLegacyRequest(
+	req TeamsUpdateLegacyReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTeamsUpdateLegacyRequestJSON(
-	req TeamsUpdateLegacyReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeUsersAddEmailForAuthenticatedRequestJSON(
+func encodeUsersAddEmailForAuthenticatedRequest(
 	req OptUsersAddEmailForAuthenticatedReq,
 	r *http.Request,
 ) error {
@@ -2294,36 +2536,40 @@ func encodeUsersAddEmailForAuthenticatedRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeUsersCreateGpgKeyForAuthenticatedRequest(
+	req UsersCreateGpgKeyForAuthenticatedReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(
-	req UsersCreateGpgKeyForAuthenticatedReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(
+func encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(
 	req UsersCreatePublicSSHKeyForAuthenticatedReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeUsersDeleteEmailForAuthenticatedRequestJSON(
+func encodeUsersDeleteEmailForAuthenticatedRequest(
 	req OptUsersDeleteEmailForAuthenticatedReq,
 	r *http.Request,
 ) error {
@@ -2332,25 +2578,28 @@ func encodeUsersDeleteEmailForAuthenticatedRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	return nil
+}
+func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(
+	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
+	r *http.Request,
+) error {
+	e := jx.GetEncoder()
+	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(
-	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeUsersUpdateAuthenticatedRequestJSON(
+func encodeUsersUpdateAuthenticatedRequest(
 	req OptUsersUpdateAuthenticatedReq,
 	r *http.Request,
 ) error {
@@ -2359,8 +2608,10 @@ func encodeUsersUpdateAuthenticatedRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")

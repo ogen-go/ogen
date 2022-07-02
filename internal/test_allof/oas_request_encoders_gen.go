@@ -15,197 +15,206 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func encodeNullableStringsRequestJSON(
+func encodeNullableStringsRequest(
 	req string,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	e.Str(req)
+	{
+		e.Str(req)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeObjectsWithConflictingArrayPropertyRequestJSON(
+func encodeObjectsWithConflictingArrayPropertyRequest(
 	req ObjectsWithConflictingArrayPropertyReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeObjectsWithConflictingPropertiesRequestJSON(
+func encodeObjectsWithConflictingPropertiesRequest(
 	req ObjectsWithConflictingPropertiesReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
-func encodeReferencedAllofRequestJSON(
-	req ReferencedAllofApplicationJSON,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
 func encodeReferencedAllofRequest(
-	req ReferencedAllofMultipartFormData,
+	req ReferencedAllofReq,
 	r *http.Request,
 ) error {
-	request := req
-
-	q := uri.NewQueryEncoder()
-	{
-		// Encode "state" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "state",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
+	switch req := req.(type) {
+	case *ReferencedAllofApplicationJSON:
+		e := jx.GetEncoder()
+		{
+			req.Encode(e)
 		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(string(request.State)))
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
-		// Encode "id" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "id",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.UUIDToString(request.ID))
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
-		// Encode "location" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "location",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return request.Location.EncodeURI(e)
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-		if err := q.WriteMultipart(w); err != nil {
-			return errors.Wrap(err, "write multipart")
-		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 		return nil
-	})
-	ht.SetBody(r, body, contentType)
-	return nil
-}
-func encodeReferencedAllofOptionalRequestJSON(
-	req ReferencedAllofOptionalApplicationJSON,
-	r *http.Request,
-) error {
-	if !req.Set {
-		// Keep request with empty body if value is not set.
-		return nil
-	}
-	e := jx.GetEncoder()
+	case *ReferencedAllofMultipartFormData:
+		request := req
 
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
+		q := uri.NewQueryEncoder()
+		{
+			// Encode "state" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "state",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(string(request.State)))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		{
+			// Encode "id" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "id",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.UUIDToString(request.ID))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		{
+			// Encode "location" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "location",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				return request.Location.EncodeURI(e)
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+			if err := q.WriteMultipart(w); err != nil {
+				return errors.Wrap(err, "write multipart")
+			}
+			return nil
+		})
+		ht.SetBody(r, body, contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
 }
 func encodeReferencedAllofOptionalRequest(
-	req ReferencedAllofOptionalMultipartFormData,
+	req ReferencedAllofOptionalReq,
 	r *http.Request,
 ) error {
-	if !req.Set {
-		// Keep request with empty body if value is not set.
+	switch req := req.(type) {
+	case *ReferencedAllofOptionalApplicationJSON:
+		if !req.Set {
+			// Keep request with empty body if value is not set.
+			return nil
+		}
+		e := jx.GetEncoder()
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 		return nil
-	}
-	request := req.Value
+	case *ReferencedAllofOptionalMultipartFormData:
+		if !req.Set {
+			// Keep request with empty body if value is not set.
+			return nil
+		}
+		request := req.Value
 
-	q := uri.NewQueryEncoder()
-	{
-		// Encode "state" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "state",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
+		q := uri.NewQueryEncoder()
+		{
+			// Encode "state" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "state",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(string(request.State)))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
 		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(string(request.State)))
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
+		{
+			// Encode "id" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "id",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.UUIDToString(request.ID))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
 		}
-	}
-	{
-		// Encode "id" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "id",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
+		{
+			// Encode "location" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "location",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				return request.Location.EncodeURI(e)
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
 		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.UUIDToString(request.ID))
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
-		// Encode "location" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "location",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return request.Location.EncodeURI(e)
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-		if err := q.WriteMultipart(w); err != nil {
-			return errors.Wrap(err, "write multipart")
-		}
+		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+			if err := q.WriteMultipart(w); err != nil {
+				return errors.Wrap(err, "write multipart")
+			}
+			return nil
+		})
+		ht.SetBody(r, body, contentType)
 		return nil
-	})
-	ht.SetBody(r, body, contentType)
-	return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
 }
-func encodeSimpleIntegerRequestJSON(
+func encodeSimpleIntegerRequest(
 	req int,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	e.Int(req)
+	{
+		e.Int(req)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeSimpleObjectsRequestJSON(
+func encodeSimpleObjectsRequest(
 	req SimpleObjectsReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil

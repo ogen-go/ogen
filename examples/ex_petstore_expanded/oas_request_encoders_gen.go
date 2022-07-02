@@ -11,13 +11,14 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
-func encodeAddPetRequestJSON(
+func encodeAddPetRequest(
 	req NewPet,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil

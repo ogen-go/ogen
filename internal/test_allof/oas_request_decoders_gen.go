@@ -84,7 +84,6 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -147,7 +146,6 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -210,7 +208,6 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request, 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -273,7 +270,6 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request, span trace.Span) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return &request, close, nil
 	case "multipart/form-data":
 		if r.ContentLength == 0 {
@@ -442,7 +438,6 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return &request, close, nil
 	case "multipart/form-data":
 		if r.ContentLength == 0 {
@@ -626,7 +621,6 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -681,7 +675,6 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request, span trace.Span) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
-
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

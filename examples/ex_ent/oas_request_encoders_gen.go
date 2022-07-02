@@ -11,57 +11,62 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
-func encodeCreatePetRequestJSON(
+func encodeCreatePetRequest(
 	req CreatePetReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeCreatePetCategoriesRequestJSON(
+func encodeCreatePetCategoriesRequest(
 	req CreatePetCategoriesReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeCreatePetFriendsRequestJSON(
+func encodeCreatePetFriendsRequest(
 	req CreatePetFriendsReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeCreatePetOwnerRequestJSON(
+func encodeCreatePetOwnerRequest(
 	req CreatePetOwnerReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeUpdatePetRequestJSON(
+func encodeUpdatePetRequest(
 	req UpdatePetReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil

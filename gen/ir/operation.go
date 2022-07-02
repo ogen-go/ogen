@@ -128,28 +128,9 @@ func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }
 
 func (t ContentType) TextPlain() bool { return t == ContentTypeTextPlain }
 
-func (t ContentType) EncodedDataTypeGo() string {
-	switch t {
-	case ContentTypeJSON:
-		return "*jx.Encoder"
-	case ContentTypeOctetStream, ContentTypeTextPlain:
-		return "io.Reader"
-	default:
-		return "io.Reader"
-	}
-}
-
-func (t ContentType) Name() string {
-	switch t {
-	case ContentTypeJSON:
-		return "JSON"
-	case ContentTypeOctetStream:
-		return "OctetStream"
-	case ContentTypeFormURLEncoded:
-		return "FormURLEncoded"
-	default:
-		return ""
-	}
+type Media struct {
+	Encoding ContentType
+	Type     *Type
 }
 
 type Responses struct {

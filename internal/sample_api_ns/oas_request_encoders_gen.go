@@ -16,18 +16,19 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func encodeDefaultTestRequestJSON(
+func encodeDefaultTestRequest(
 	req DefaultTest,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeFoobarPostRequestJSON(
+func encodeFoobarPostRequest(
 	req OptPet,
 	r *http.Request,
 ) error {
@@ -36,25 +37,28 @@ func encodeFoobarPostRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeOneofBugRequestJSON(
+func encodeOneofBugRequest(
 	req OneOfBugs,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePetCreateRequestJSON(
+func encodePetCreateRequest(
 	req OptPet,
 	r *http.Request,
 ) error {
@@ -63,14 +67,16 @@ func encodePetCreateRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePetUpdateNameAliasPostRequestJSON(
+func encodePetUpdateNameAliasPostRequest(
 	req OptPetName,
 	r *http.Request,
 ) error {
@@ -79,14 +85,16 @@ func encodePetUpdateNameAliasPostRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePetUpdateNamePostRequestJSON(
+func encodePetUpdateNamePostRequest(
 	req OptString,
 	r *http.Request,
 ) error {
@@ -95,32 +103,35 @@ func encodePetUpdateNamePostRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePetUploadAvatarByIDRequestOctetStream(
+func encodePetUploadAvatarByIDRequest(
 	req PetUploadAvatarByIDReq,
 	r *http.Request,
 ) error {
 	ht.SetBody(r, req, "application/octet-stream")
 	return nil
 }
-func encodeTestFloatValidationRequestJSON(
+func encodeTestFloatValidationRequest(
 	req TestFloatValidation,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeTestFormURLEncodedRequestFormURLEncoded(
+func encodeTestFormURLEncodedRequest(
 	req TestForm,
 	r *http.Request,
 ) error {
@@ -411,51 +422,53 @@ func encodeTestMultipartUploadRequest(
 	ht.SetBody(r, body, contentType)
 	return nil
 }
-func encodeTestShareFormSchemaRequestJSON(
-	req SharedRequest,
-	r *http.Request,
-) error {
-	e := jx.GetEncoder()
-
-	req.Encode(e)
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
-	return nil
-}
 func encodeTestShareFormSchemaRequest(
-	req SharedRequestForm,
+	req TestShareFormSchemaReq,
 	r *http.Request,
 ) error {
-	request := req
-
-	q := uri.NewQueryEncoder()
-	{
-		// Encode "filename" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "filename",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
+	switch req := req.(type) {
+	case *SharedRequest:
+		e := jx.GetEncoder()
+		{
+			req.Encode(e)
 		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Filename.Get(); ok {
-				return e.EncodeValue(conv.StringToString(val))
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+		return nil
+	case *SharedRequestForm:
+		request := req
+
+		q := uri.NewQueryEncoder()
+		{
+			// Encode "filename" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "filename",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := request.Filename.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+			if val, ok := request.File.Get(); ok {
+				if err := val.WriteMultipart("file", w); err != nil {
+					return errors.Wrap(err, "write \"file\"")
+				}
+			}
+			if err := q.WriteMultipart(w); err != nil {
+				return errors.Wrap(err, "write multipart")
 			}
 			return nil
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
-		if val, ok := request.File.Get(); ok {
-			if err := val.WriteMultipart("file", w); err != nil {
-				return errors.Wrap(err, "write \"file\"")
-			}
-		}
-		if err := q.WriteMultipart(w); err != nil {
-			return errors.Wrap(err, "write multipart")
-		}
+		})
+		ht.SetBody(r, body, contentType)
 		return nil
-	})
-	ht.SetBody(r, body, contentType)
-	return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
 }

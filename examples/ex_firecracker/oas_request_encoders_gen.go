@@ -11,119 +11,131 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
-func encodeCreateSnapshotRequestJSON(
+func encodeCreateSnapshotRequest(
 	req SnapshotCreateParams,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeCreateSyncActionRequestJSON(
+func encodeCreateSyncActionRequest(
 	req InstanceActionInfo,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeLoadSnapshotRequestJSON(
+func encodeLoadSnapshotRequest(
 	req SnapshotLoadParams,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMmdsConfigPutRequestJSON(
+func encodeMmdsConfigPutRequest(
 	req MmdsConfig,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMmdsPatchRequestJSON(
+func encodeMmdsPatchRequest(
 	req *MmdsPatchReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-	if req != nil {
-		req.Encode(e)
+	{
+		if req != nil {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodeMmdsPutRequestJSON(
+func encodeMmdsPutRequest(
 	req *MmdsPutReq,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-	if req != nil {
-		req.Encode(e)
+	{
+		if req != nil {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePatchBalloonRequestJSON(
+func encodePatchBalloonRequest(
 	req BalloonUpdate,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePatchBalloonStatsIntervalRequestJSON(
+func encodePatchBalloonStatsIntervalRequest(
 	req BalloonStatsUpdate,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePatchGuestDriveByIDRequestJSON(
+func encodePatchGuestDriveByIDRequest(
 	req PartialDrive,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePatchGuestNetworkInterfaceByIDRequestJSON(
+func encodePatchGuestNetworkInterfaceByIDRequest(
 	req PartialNetworkInterface,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePatchMachineConfigurationRequestJSON(
+func encodePatchMachineConfigurationRequest(
 	req OptMachineConfiguration,
 	r *http.Request,
 ) error {
@@ -132,91 +144,100 @@ func encodePatchMachineConfigurationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePatchVmRequestJSON(
+func encodePatchVmRequest(
 	req VM,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutBalloonRequestJSON(
+func encodePutBalloonRequest(
 	req Balloon,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutGuestBootSourceRequestJSON(
+func encodePutGuestBootSourceRequest(
 	req BootSource,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutGuestDriveByIDRequestJSON(
+func encodePutGuestDriveByIDRequest(
 	req Drive,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutGuestNetworkInterfaceByIDRequestJSON(
+func encodePutGuestNetworkInterfaceByIDRequest(
 	req NetworkInterface,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutGuestVsockRequestJSON(
+func encodePutGuestVsockRequest(
 	req Vsock,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutLoggerRequestJSON(
+func encodePutLoggerRequest(
 	req Logger,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutMachineConfigurationRequestJSON(
+func encodePutMachineConfigurationRequest(
 	req OptMachineConfiguration,
 	r *http.Request,
 ) error {
@@ -225,20 +246,23 @@ func encodePutMachineConfigurationRequestJSON(
 		return nil
 	}
 	e := jx.GetEncoder()
-	if req.Set {
-		req.Encode(e)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil
 }
-func encodePutMetricsRequestJSON(
+func encodePutMetricsRequest(
 	req Metrics,
 	r *http.Request,
 ) error {
 	e := jx.GetEncoder()
-
-	req.Encode(e)
+	{
+		req.Encode(e)
+	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 	return nil

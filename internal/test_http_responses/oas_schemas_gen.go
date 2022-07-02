@@ -149,3 +149,11 @@ type OctetStreamEmptySchemaOK struct {
 func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
+
+type TextPlainBinaryStringSchemaOK struct {
+	Data io.Reader
+}
+
+func (s TextPlainBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
