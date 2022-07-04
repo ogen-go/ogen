@@ -1,7 +1,7 @@
 package openapi
 
 import (
-	"encoding/json"
+	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -9,7 +9,7 @@ import (
 // MediaType is Media Type Object.
 type MediaType struct {
 	Schema   *jsonschema.Schema
-	Example  json.RawMessage
+	Example  json.RawValue
 	Examples map[string]*Example
 	Encoding map[string]*Encoding
 }

@@ -2,26 +2,47 @@ package ogen
 
 import (
 	"bytes"
-	"encoding/json"
 
 	"github.com/go-faster/errors"
+	"github.com/go-json-experiment/json"
 )
 
-func wrapLineOffset(data []byte, err error) error {
-	loc, ok := errors.Into[*json.UnmarshalTypeError](err)
-	if !ok {
+func unmarshal(data []byte, out any) error {
+	begin := int64(-1)
+	opts := json.UnmarshalOptions{
+		Unmarshalers: json.NewUnmarshalers(
+			json.UnmarshalFuncV2(func(opts json.UnmarshalOptions, d *json.Decoder, t any) (rerr error) {
+				begin = d.InputOffset()
+				return json.SkipFunc
+			}),
+		),
+	}
+
+	if err := opts.Unmarshal(json.DecodeOptions{}, data, out); err != nil {
+		return wrapLineOffset(begin, data, err)
+	}
+	return nil
+}
+
+func wrapLineOffset(offset int64, data []byte, err error) error {
+	if offset < 0 || int64(len(data)) <= offset {
 		return err
 	}
 
-	if loc.Offset < 0 || int64(len(data)) <= loc.Offset {
-		return err
+	{
+		unread := data[offset:]
+		trimmed := bytes.TrimLeft(unread, "\x20\t\r\n,:")
+		if len(trimmed) != len(unread) {
+			// Skip leading whitespace, because decoder does not do it.
+			offset += int64(len(unread) - len(trimmed))
+		}
 	}
 
-	lines := data[:loc.Offset]
+	lines := data[:offset]
 	// Lines count from 1.
 	line := bytes.Count(lines, []byte("\n")) + 1
 	lastNL := int64(bytes.LastIndexByte(lines, '\n'))
-	column := loc.Offset - lastNL
+	column := offset - lastNL
 
 	return errors.Wrapf(err, "line %d:%d", line, column)
 }

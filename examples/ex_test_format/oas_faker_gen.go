@@ -497,1194 +497,6 @@ func (s *TestRequestEmptyStructReq) SetFake() {
 func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
-			s.RequiredAny = []byte("null")
-		}
-	}
-	{
-		{
-			s.RequiredArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem jx.Raw
-				{
-					elem = []byte("null")
-				}
-				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem bool
-				{
-					elem = true
-				}
-				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem int
-				{
-					elem = int(0)
-				}
-				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem struct{}
-				{
-					elem = struct{}{}
-				}
-				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem float32
-				{
-					elem = float32(0)
-				}
-				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayString = append(s.RequiredArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem []byte
-				{
-					elem = []byte("[]byte")
-				}
-				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Duration
-				{
-					elem = time.Duration(5 * time.Second)
-				}
-				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem url.URL
-				{
-					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-				}
-				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem uuid.UUID
-				{
-					elem = uuid.New()
-				}
-				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredBoolean = true
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem []jx.Raw
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem jx.Raw
-						{
-							elemElem = []byte("null")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem []bool
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem bool
-						{
-							elemElem = true
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem []int
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int
-						{
-							elemElem = int(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem []struct{}
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem struct{}
-						{
-							elemElem = struct{}{}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem []float32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float32
-						{
-							elemElem = float32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem [][]byte
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem []byte
-						{
-							elemElem = []byte("[]byte")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Duration
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Duration
-						{
-							elemElem = time.Duration(5 * time.Second)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem []url.URL
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem url.URL
-						{
-							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem []uuid.UUID
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem uuid.UUID
-						{
-							elemElem = uuid.New()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredInteger = int(0)
-		}
-	}
-	{
-		{
-			s.RequiredIntegerInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredIntegerInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNull = struct{}{}
-		}
-	}
-	{
-		{
-			s.RequiredNumber = float64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberDouble = float64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberFloat = float32(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredString = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringBinary = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringByte = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.RequiredStringDate = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringDateMinusTime = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringDuration = time.Duration(5 * time.Second)
-		}
-	}
-	{
-		{
-			s.RequiredStringEmail = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringHostname = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredStringInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringPassword = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringTime = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnix = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusMicro = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusMilli = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusNano = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusSeconds = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-		}
-	}
-	{
-		{
-			s.RequiredStringUUID = uuid.New()
-		}
-	}
-	{
-		{
 			s.OptionalAny = []byte("null")
 		}
 	}
@@ -2869,6 +1681,1194 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringUUID.SetFake()
+		}
+	}
+	{
+		{
+			s.RequiredAny = []byte("null")
+		}
+	}
+	{
+		{
+			s.RequiredArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+				{
+					elem = []byte("null")
+				}
+				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+				{
+					elem = true
+				}
+				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayString = append(s.RequiredArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+				{
+					elem = uuid.New()
+				}
+				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredBoolean = true
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredInteger = int(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNull = struct{}{}
+		}
+	}
+	{
+		{
+			s.RequiredNumber = float64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberDouble = float64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberFloat = float32(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredString = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringBinary = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringByte = []byte("[]byte")
+		}
+	}
+	{
+		{
+			s.RequiredStringDate = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDateMinusTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDuration = time.Duration(5 * time.Second)
+		}
+	}
+	{
+		{
+			s.RequiredStringEmail = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringPassword = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnix = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusMicro = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusMilli = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusNano = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+		}
+	}
+	{
+		{
+			s.RequiredStringUUID = uuid.New()
 		}
 	}
 }
@@ -2881,1194 +2881,6 @@ func (s *TestRequestRequiredEmptyStructReq) SetFake() {
 func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
-			s.RequiredAny = []byte("null")
-		}
-	}
-	{
-		{
-			s.RequiredArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem jx.Raw
-				{
-					elem = []byte("null")
-				}
-				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem bool
-				{
-					elem = true
-				}
-				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem int
-				{
-					elem = int(0)
-				}
-				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem struct{}
-				{
-					elem = struct{}{}
-				}
-				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem float32
-				{
-					elem = float32(0)
-				}
-				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayString = append(s.RequiredArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem []byte
-				{
-					elem = []byte("[]byte")
-				}
-				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Duration
-				{
-					elem = time.Duration(5 * time.Second)
-				}
-				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem url.URL
-				{
-					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-				}
-				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem uuid.UUID
-				{
-					elem = uuid.New()
-				}
-				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredBoolean = true
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem []jx.Raw
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem jx.Raw
-						{
-							elemElem = []byte("null")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem []bool
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem bool
-						{
-							elemElem = true
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem []int
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int
-						{
-							elemElem = int(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem []struct{}
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem struct{}
-						{
-							elemElem = struct{}{}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem []float32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float32
-						{
-							elemElem = float32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem [][]byte
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem []byte
-						{
-							elemElem = []byte("[]byte")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Duration
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Duration
-						{
-							elemElem = time.Duration(5 * time.Second)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem []url.URL
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem url.URL
-						{
-							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem []uuid.UUID
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem uuid.UUID
-						{
-							elemElem = uuid.New()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredInteger = int(0)
-		}
-	}
-	{
-		{
-			s.RequiredIntegerInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredIntegerInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNull = struct{}{}
-		}
-	}
-	{
-		{
-			s.RequiredNumber = float64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberDouble = float64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberFloat = float32(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredString = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringBinary = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringByte = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.RequiredStringDate = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringDateMinusTime = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringDuration = time.Duration(5 * time.Second)
-		}
-	}
-	{
-		{
-			s.RequiredStringEmail = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringHostname = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredStringInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringPassword = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringTime = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnix = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusMicro = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusMilli = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusNano = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusSeconds = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-		}
-	}
-	{
-		{
-			s.RequiredStringUUID = uuid.New()
-		}
-	}
-	{
-		{
 			s.OptionalAny = []byte("null")
 		}
 	}
@@ -5253,6 +4065,1194 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringUUID.SetFake()
+		}
+	}
+	{
+		{
+			s.RequiredAny = []byte("null")
+		}
+	}
+	{
+		{
+			s.RequiredArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+				{
+					elem = []byte("null")
+				}
+				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+				{
+					elem = true
+				}
+				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayString = append(s.RequiredArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+				{
+					elem = uuid.New()
+				}
+				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredBoolean = true
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredInteger = int(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNull = struct{}{}
+		}
+	}
+	{
+		{
+			s.RequiredNumber = float64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberDouble = float64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberFloat = float32(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredString = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringBinary = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringByte = []byte("[]byte")
+		}
+	}
+	{
+		{
+			s.RequiredStringDate = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDateMinusTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDuration = time.Duration(5 * time.Second)
+		}
+	}
+	{
+		{
+			s.RequiredStringEmail = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringPassword = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnix = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusMicro = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusMilli = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusNano = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+		}
+	}
+	{
+		{
+			s.RequiredStringUUID = uuid.New()
 		}
 	}
 }
@@ -5265,1194 +5265,6 @@ func (s *TestResponseEmptyStructOK) SetFake() {
 func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
-			s.RequiredAny = []byte("null")
-		}
-	}
-	{
-		{
-			s.RequiredArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem jx.Raw
-				{
-					elem = []byte("null")
-				}
-				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem bool
-				{
-					elem = true
-				}
-				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem int
-				{
-					elem = int(0)
-				}
-				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem struct{}
-				{
-					elem = struct{}{}
-				}
-				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem float32
-				{
-					elem = float32(0)
-				}
-				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayString = append(s.RequiredArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem []byte
-				{
-					elem = []byte("[]byte")
-				}
-				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Duration
-				{
-					elem = time.Duration(5 * time.Second)
-				}
-				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem url.URL
-				{
-					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-				}
-				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem uuid.UUID
-				{
-					elem = uuid.New()
-				}
-				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredBoolean = true
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem []jx.Raw
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem jx.Raw
-						{
-							elemElem = []byte("null")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem []bool
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem bool
-						{
-							elemElem = true
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem []int
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int
-						{
-							elemElem = int(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem []struct{}
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem struct{}
-						{
-							elemElem = struct{}{}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem []float32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float32
-						{
-							elemElem = float32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem [][]byte
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem []byte
-						{
-							elemElem = []byte("[]byte")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Duration
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Duration
-						{
-							elemElem = time.Duration(5 * time.Second)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem []url.URL
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem url.URL
-						{
-							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredDoubleArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem []uuid.UUID
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem uuid.UUID
-						{
-							elemElem = uuid.New()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.RequiredInteger = int(0)
-		}
-	}
-	{
-		{
-			s.RequiredIntegerInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredIntegerInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNull = struct{}{}
-		}
-	}
-	{
-		{
-			s.RequiredNumber = float64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberDouble = float64(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberFloat = float32(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredNumberInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredString = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringBinary = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringByte = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.RequiredStringDate = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringDateMinusTime = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringDuration = time.Duration(5 * time.Second)
-		}
-	}
-	{
-		{
-			s.RequiredStringEmail = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringHostname = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringInt32 = int32(0)
-		}
-	}
-	{
-		{
-			s.RequiredStringInt64 = int64(0)
-		}
-	}
-	{
-		{
-			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
-		}
-	}
-	{
-		{
-			s.RequiredStringPassword = "string"
-		}
-	}
-	{
-		{
-			s.RequiredStringTime = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnix = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusMicro = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusMilli = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusNano = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringUnixMinusSeconds = time.Now()
-		}
-	}
-	{
-		{
-			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-		}
-	}
-	{
-		{
-			s.RequiredStringUUID = uuid.New()
-		}
-	}
-	{
-		{
 			s.OptionalAny = []byte("null")
 		}
 	}
@@ -7637,6 +6449,1194 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringUUID.SetFake()
+		}
+	}
+	{
+		{
+			s.RequiredAny = []byte("null")
+		}
+	}
+	{
+		{
+			s.RequiredArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+				{
+					elem = []byte("null")
+				}
+				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+				{
+					elem = true
+				}
+				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayString = append(s.RequiredArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+				{
+					elem = uuid.New()
+				}
+				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredBoolean = true
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredInteger = int(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredIntegerInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNull = struct{}{}
+		}
+	}
+	{
+		{
+			s.RequiredNumber = float64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberDouble = float64(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberFloat = float32(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredNumberInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredString = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringBinary = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringByte = []byte("[]byte")
+		}
+	}
+	{
+		{
+			s.RequiredStringDate = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDateMinusTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDuration = time.Duration(5 * time.Second)
+		}
+	}
+	{
+		{
+			s.RequiredStringEmail = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt64 = int64(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
+		}
+	}
+	{
+		{
+			s.RequiredStringPassword = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnix = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusMicro = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusMilli = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusNano = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+		}
+	}
+	{
+		{
+			s.RequiredStringUUID = uuid.New()
 		}
 	}
 }

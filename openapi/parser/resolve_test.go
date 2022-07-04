@@ -2,11 +2,11 @@ package parser
 
 import (
 	"context"
-	"encoding/json"
 	"sort"
 	"testing"
 
 	"github.com/go-faster/errors"
+	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
@@ -25,7 +25,7 @@ func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 }
 
 func TestExternalReference(t *testing.T) {
-	exampleValue := json.RawMessage(`"value"`)
+	exampleValue := json.RawValue(`"value"`)
 
 	root := &ogen.Spec{
 		Paths: map[string]*ogen.PathItem{
@@ -183,7 +183,7 @@ func TestExternalReference(t *testing.T) {
 		schema = &jsonschema.Schema{
 			Ref:      "root.json#",
 			Type:     "string",
-			Examples: []json.RawMessage{exampleValue},
+			Examples: []json.RawValue{exampleValue},
 		}
 		param = &openapi.Parameter{
 			Ref:     "#/components/parameters/LocalParameter",
@@ -225,7 +225,7 @@ func TestExternalReference(t *testing.T) {
 				"application/json": {
 					Schema: &jsonschema.Schema{
 						Type:     "string",
-						Examples: []json.RawMessage{exampleValue},
+						Examples: []json.RawValue{exampleValue},
 					},
 					Examples: map[string]*openapi.Example{
 						"ref": {

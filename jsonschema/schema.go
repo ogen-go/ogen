@@ -1,8 +1,9 @@
 package jsonschema
 
 import (
-	"encoding/json"
 	"regexp"
+
+	"github.com/go-json-experiment/json"
 )
 
 // SchemaType is a JSON Schema type.
@@ -76,14 +77,14 @@ type Schema struct {
 	MaxProperties *uint64
 	MinProperties *uint64
 
-	Examples []json.RawMessage
+	Examples []json.RawValue
 	// Default schema value.
 	Default    interface{}
 	DefaultSet bool
 }
 
 // AddExample adds example for this Schema.
-func (s *Schema) AddExample(r json.RawMessage) {
+func (s *Schema) AddExample(r json.RawValue) {
 	if s != nil && len(r) > 0 {
 		s.Examples = append(s.Examples, r)
 	}
