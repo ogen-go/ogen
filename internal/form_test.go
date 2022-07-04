@@ -18,7 +18,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	ht "github.com/ogen-go/ogen/http"
-	api "github.com/ogen-go/ogen/internal/sample_api"
+	api "github.com/ogen-go/ogen/internal/test_form"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -50,9 +50,10 @@ func checkTestFormValues(a *assert.Assertions, form url.Values) {
 	a.Equal("10", form.Get("deepObject[max]"))
 }
 
+var _ api.Handler = (*testFormServer)(nil)
+
 type testFormServer struct {
 	a *assert.Assertions
-	*sampleAPIServer
 }
 
 func (s testFormServer) TestFormURLEncoded(ctx context.Context, req api.TestForm) (r api.TestFormURLEncodedOK, _ error) {
@@ -108,6 +109,13 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMul
 	return r, nil
 }
 
+func (s testFormServer) TestShareFormSchema(
+	ctx context.Context,
+	req api.TestShareFormSchemaReq,
+) (api.TestShareFormSchemaOK, error) {
+	return api.TestShareFormSchemaOK{}, nil
+}
+
 func TestURIEncodingE2E(t *testing.T) {
 	tests := []struct {
 		name        string
@@ -143,10 +151,9 @@ func TestURIEncodingE2E(t *testing.T) {
 			defer cancel()
 
 			handler := &testFormServer{
-				a:               a,
-				sampleAPIServer: new(sampleAPIServer),
+				a: a,
 			}
-			apiServer, err := api.NewServer(handler, handler)
+			apiServer, err := api.NewServer(handler)
 			require.NoError(t, err)
 
 			s := tt.serverSetup(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
@@ -156,7 +163,7 @@ func TestURIEncodingE2E(t *testing.T) {
 			}))
 			defer s.Close()
 
-			client, err := api.NewClient(s.URL, handler)
+			client, err := api.NewClient(s.URL)
 			require.NoError(t, err)
 
 			_, err = client.TestFormURLEncoded(ctx, testForm())
@@ -171,10 +178,9 @@ func TestMultipartEncodingE2E(t *testing.T) {
 	defer cancel()
 
 	handler := &testFormServer{
-		a:               a,
-		sampleAPIServer: new(sampleAPIServer),
+		a: a,
 	}
-	apiServer, err := api.NewServer(handler, handler)
+	apiServer, err := api.NewServer(handler)
 	require.NoError(t, err)
 
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
@@ -185,7 +191,7 @@ func TestMultipartEncodingE2E(t *testing.T) {
 	}))
 	defer s.Close()
 
-	client, err := api.NewClient(s.URL, handler)
+	client, err := api.NewClient(s.URL)
 	require.NoError(t, err)
 
 	_, err = client.TestMultipart(ctx, testForm())
@@ -198,16 +204,15 @@ func TestMultipartUploadE2E(t *testing.T) {
 	defer cancel()
 
 	handler := &testFormServer{
-		a:               a,
-		sampleAPIServer: new(sampleAPIServer),
+		a: a,
 	}
-	apiServer, err := api.NewServer(handler, handler)
+	apiServer, err := api.NewServer(handler)
 	require.NoError(t, err)
 
 	s := httptest.NewServer(apiServer)
 	defer s.Close()
 
-	client, err := api.NewClient(s.URL, handler)
+	client, err := api.NewClient(s.URL)
 	require.NoError(t, err)
 
 	tests := []struct {

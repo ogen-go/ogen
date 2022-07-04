@@ -8,7 +8,7 @@ import (
 
 // Generate schemas:
 
-//go:generate go run github.com/ogen-go/ogen/tools/mkformattest --output ../_testdata/positive/test_format.json
+//go:generate go run github.com/ogen-go/ogen/tools/mkformattest --output ../_testdata/positive/format_gen.json
 
 // Generate JSON Schema:
 

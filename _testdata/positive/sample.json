@@ -619,133 +619,6 @@
         }
       }
     },
-    "/testFormURLEncoded": {
-      "post": {
-        "operationId": "testFormURLEncoded",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "encoding": {
-                "deepObject": {
-                  "style": "deepObject"
-                }
-              },
-              "schema": {
-                "$ref": "#/components/schemas/TestForm"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Ok"
-          }
-        }
-      }
-    },
-    "/testMultipart": {
-      "post": {
-        "operationId": "testMultipart",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "deepObject": {
-                  "style": "deepObject"
-                }
-              },
-              "schema": {
-                "$ref": "#/components/schemas/TestForm"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Ok"
-          }
-        }
-      }
-    },
-    "/testMultipartUpload": {
-      "post": {
-        "operationId": "testMultipartUpload",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "file",
-                  "files"
-                ],
-                "properties": {
-                  "orderId": {
-                    "type": "integer"
-                  },
-                  "userId": {
-                    "type": "integer"
-                  },
-                  "file": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "optional_file": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "files": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "format": "binary"
-                    },
-                    "maxItems": 5
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "file",
-                    "files"
-                  ],
-                  "properties": {
-                    "file": {
-                      "type": "string",
-                      "format": "binary"
-                    },
-                    "optional_file": {
-                      "type": "string",
-                      "format": "binary"
-                    },
-                    "files": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "format": "binary"
-                      },
-                      "maxItems": 5
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/oneofBug": {
       "post": {
         "operationId": "oneofBug",
@@ -986,31 +859,6 @@
         }
       }
     },
-    "/testShareFormSchema": {
-      "post": {
-        "operationId": "testShareFormSchema",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SharedRequest"
-              }
-            },
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/SharedRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Ok"
-          }
-        }
-      }
-    },
     "/testNullableOneofs": {
       "get": {
         "operationId": "testNullableOneofs",
@@ -1087,58 +935,6 @@
         "properties": {
           "description": {
             "type": "string"
-          }
-        }
-      },
-      "TestForm": {
-        "type": "object",
-        "required": [
-          "description"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "uuid": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "description": {
-            "type": "string"
-          },
-          "array": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "object": {
-            "type": "object",
-            "required": [
-              "max"
-            ],
-            "properties": {
-              "min": {
-                "type": "integer"
-              },
-              "max": {
-                "type": "integer"
-              }
-            }
-          },
-          "deepObject": {
-            "type": "object",
-            "required": [
-              "max"
-            ],
-            "properties": {
-              "min": {
-                "type": "integer"
-              },
-              "max": {
-                "type": "integer"
-              }
-            }
           }
         }
       },
@@ -2001,18 +1797,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "SharedRequest": {
-        "type": "object",
-        "properties": {
-          "filename": {
-            "type": "string"
-          },
-          "file": {
-            "type": "string",
-            "format": "binary"
-          }
-        }
       }
     },
     "parameters": {
