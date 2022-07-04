@@ -1,0 +1,35 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/healthz/{param}": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Parameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Parameter": {
+        "name": "parm",
+        "in": "path",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

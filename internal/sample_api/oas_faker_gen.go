@@ -1340,20 +1340,6 @@ func (s *RecursiveMapAdditional) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *SharedRequest) SetFake() {
-	{
-		{
-			s.Filename.SetFake()
-		}
-	}
-	{
-		{
-			s.File.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
 func (s *StringIntMap) SetFake() {
 	{
 		{
@@ -1445,32 +1431,6 @@ func (s *TestFloatValidation) SetFake() {
 	{
 		{
 			s.MultipleOf = float64(0)
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *TestMultipartUploadOK) SetFake() {
-	{
-		{
-			s.File = "string"
-		}
-	}
-	{
-		{
-			s.OptionalFile.SetFake()
-		}
-	}
-	{
-		{
-			s.Files = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.Files = append(s.Files, elem)
-			}
 		}
 	}
 }

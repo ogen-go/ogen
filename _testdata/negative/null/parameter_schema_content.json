@@ -1,0 +1,33 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Parameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Parameter": {
+        "name": "foo",
+        "in": "query",
+        "schema": null,
+        "content": null
+      }
+    }
+  }
+}

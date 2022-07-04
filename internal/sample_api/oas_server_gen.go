@@ -146,18 +146,6 @@ type Handler interface {
 	//
 	// POST /testFloatValidation
 	TestFloatValidation(ctx context.Context, req TestFloatValidation) (TestFloatValidationOK, error)
-	// TestFormURLEncoded implements testFormURLEncoded operation.
-	//
-	// POST /testFormURLEncoded
-	TestFormURLEncoded(ctx context.Context, req TestForm) (TestFormURLEncodedOK, error)
-	// TestMultipart implements testMultipart operation.
-	//
-	// POST /testMultipart
-	TestMultipart(ctx context.Context, req TestForm) (TestMultipartOK, error)
-	// TestMultipartUpload implements testMultipartUpload operation.
-	//
-	// POST /testMultipartUpload
-	TestMultipartUpload(ctx context.Context, req TestMultipartUploadReqForm) (TestMultipartUploadOK, error)
 	// TestNullableOneofs implements testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
@@ -166,10 +154,6 @@ type Handler interface {
 	//
 	// GET /testObjectQueryParameter
 	TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (TestObjectQueryParameterOK, error)
-	// TestShareFormSchema implements testShareFormSchema operation.
-	//
-	// POST /testShareFormSchema
-	TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) (TestShareFormSchemaOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

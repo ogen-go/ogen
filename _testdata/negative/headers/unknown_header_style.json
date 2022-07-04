@@ -1,0 +1,26 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "get": {
+        "responses": {
+          "200": {
+            "headers": {
+              "X-FooBar": {
+                "style": "matrix",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "User info"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "get": {
+        "responses": {
+          "200": {
+            "headers": {
+              "X-FooBar": {
+                "$ref": "#/components/headers/Header"
+              }
+            },
+            "description": "User info"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "headers": {
+      "Header": null
+    }
+  }
+}

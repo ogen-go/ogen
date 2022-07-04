@@ -610,95 +610,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 't': // Prefix: "test"
-				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
+			case 't': // Prefix: "testFloatValidation"
+				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'F': // Prefix: "F"
-					if l := len("F"); len(elem) >= l && elem[0:l] == "F" {
-						elem = elem[l:]
-					} else {
-						break
-					}
+					// Leaf: TestFloatValidation
+					s.handleTestFloatValidationRequest([0]string{}, w, r)
 
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'l': // Prefix: "loatValidation"
-						if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: TestFloatValidation
-							s.handleTestFloatValidationRequest([0]string{}, w, r)
-
-							return
-						}
-					case 'o': // Prefix: "ormURLEncoded"
-						if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: TestFormURLEncoded
-							s.handleTestFormURLEncodedRequest([0]string{}, w, r)
-
-							return
-						}
-					}
-				case 'M': // Prefix: "Multipart"
-					if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleTestMultipartRequest([0]string{}, w, r)
-
-						return
-					}
-					switch elem[0] {
-					case 'U': // Prefix: "Upload"
-						if l := len("Upload"); len(elem) >= l && elem[0:l] == "Upload" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: TestMultipartUpload
-							s.handleTestMultipartUploadRequest([0]string{}, w, r)
-
-							return
-						}
-					}
-				case 'S': // Prefix: "ShareFormSchema"
-					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: TestShareFormSchema
-						s.handleTestShareFormSchemaRequest([0]string{}, w, r)
-
-						return
-					}
+					return
 				}
 			}
 		}
@@ -1356,100 +1279,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 't': // Prefix: "test"
-				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
+			case 't': // Prefix: "testFloatValidation"
+				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'F': // Prefix: "F"
-					if l := len("F"); len(elem) >= l && elem[0:l] == "F" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'l': // Prefix: "loatValidation"
-						if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: TestFloatValidation
-							r.name = "TestFloatValidation"
-							r.args = args
-							r.count = 0
-							return r, true
-						}
-					case 'o': // Prefix: "ormURLEncoded"
-						if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: TestFormURLEncoded
-							r.name = "TestFormURLEncoded"
-							r.args = args
-							r.count = 0
-							return r, true
-						}
-					}
-				case 'M': // Prefix: "Multipart"
-					if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						r.name = "TestMultipart"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-					switch elem[0] {
-					case 'U': // Prefix: "Upload"
-						if l := len("Upload"); len(elem) >= l && elem[0:l] == "Upload" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: TestMultipartUpload
-							r.name = "TestMultipartUpload"
-							r.args = args
-							r.count = 0
-							return r, true
-						}
-					}
-				case 'S': // Prefix: "ShareFormSchema"
-					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: TestShareFormSchema
-						r.name = "TestShareFormSchema"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
+					// Leaf: TestFloatValidation
+					r.name = "TestFloatValidation"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			}
 		}
