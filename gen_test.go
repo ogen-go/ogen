@@ -2,8 +2,7 @@ package ogen_test
 
 import (
 	"embed"
-	"io/fs"
-	"path/filepath"
+	"path"
 	"runtime/debug"
 	"strings"
 	"testing"
@@ -19,54 +18,108 @@ import (
 //go:embed _testdata
 var testdata embed.FS
 
-func testGenerate(name string, ignore ...string) func(t *testing.T) {
+func walkTestdata(t *testing.T, root string, cb func(t *testing.T, file string, data []byte)) {
+	t.Helper()
+
+	dir, err := testdata.ReadDir(root)
+	require.NoError(t, err)
+
+	for _, e := range dir {
+		entryName := e.Name()
+		filePath := path.Join(root, entryName)
+		if e.IsDir() {
+			t.Run(entryName, func(t *testing.T) {
+				walkTestdata(t, filePath, cb)
+			})
+			continue
+		}
+
+		testName := strings.TrimSuffix(entryName, ".json")
+		testName = strings.TrimSuffix(testName, ".yml")
+		testName = strings.TrimSuffix(testName, ".yaml")
+
+		t.Run(testName, func(t *testing.T) {
+			data, err := testdata.ReadFile(filePath)
+			require.NoError(t, err)
+			cb(t, filePath, data)
+		})
+	}
+}
+
+func testGenerate(t *testing.T, data []byte, ignore ...string) {
+	t.Helper()
+	t.Parallel()
+	log := zaptest.NewLogger(t)
+
+	spec, err := ogen.Parse(data)
+	require.NoError(t, err)
+
+	notImplemented := map[string]struct{}{}
+	opt := gen.Options{
+		InferSchemaType:      true,
+		IgnoreNotImplemented: ignore,
+		NotImplementedHook: func(name string, err error) {
+			notImplemented[name] = struct{}{}
+		},
+		Logger: log,
+	}
+	t.Run("Gen", func(t *testing.T) {
+		defer func() {
+			if rr := recover(); rr != nil {
+				t.Fatalf("panic: %+v\n%s", rr, debug.Stack())
+			}
+		}()
+
+		g, err := gen.NewGenerator(spec, opt)
+		require.NoError(t, err)
+		require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
+	})
+	if len(opt.IgnoreNotImplemented) > 0 {
+		// Check that all ignore rules are necessary.
+		for _, feature := range ignore {
+			if _, ok := notImplemented[feature]; !ok {
+				t.Errorf("Ignore rule %q hasn't been used", feature)
+			}
+		}
+
+		t.Run("Full", func(t *testing.T) {
+			t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
+		})
+	}
+}
+
+func runPositive(root string, skipSets map[string][]string) func(t *testing.T) {
 	return func(t *testing.T) {
 		t.Helper()
-		t.Parallel()
-		log := zaptest.NewLogger(t)
 
-		data, err := testdata.ReadFile(name)
-		require.NoError(t, err)
-		spec, err := ogen.Parse(data)
-		require.NoError(t, err)
-
-		notImplemented := map[string]struct{}{}
-		opt := gen.Options{
-			InferSchemaType:      true,
-			IgnoreNotImplemented: ignore,
-			NotImplementedHook: func(name string, err error) {
-				notImplemented[name] = struct{}{}
-			},
-			Logger: log,
+		// Ensure that all skipSets schemas are present.
+		for file := range skipSets {
+			_, err := testdata.ReadFile(path.Join(root, file))
+			require.NoErrorf(t, err, "skip file %s", file)
 		}
-		t.Run("Gen", func(t *testing.T) {
-			defer func() {
-				if rr := recover(); rr != nil {
-					t.Fatalf("panic: %+v\n%s", rr, debug.Stack())
-				}
-			}()
 
-			g, err := gen.NewGenerator(spec, opt)
-			require.NoError(t, err)
-			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
+		walkTestdata(t, root, func(t *testing.T, file string, data []byte) {
+			file = strings.TrimPrefix(file, root+"/")
+			skip := skipSets[file]
+			testGenerate(t, data, skip...)
 		})
-		if len(opt.IgnoreNotImplemented) > 0 {
-			// Check that all ignore rules are necessary.
-			for _, feature := range ignore {
-				if _, ok := notImplemented[feature]; !ok {
-					t.Errorf("Ignore rule %q hasn't been used", feature)
-				}
-			}
-
-			t.Run("Full", func(t *testing.T) {
-				t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
-			})
-		}
 	}
 }
 
 func TestGenerate(t *testing.T) {
-	skipSets := map[string][]string{
+	t.Run("Positive", runPositive("_testdata/positive", map[string][]string{
+		"sample.json": {
+			"enum format",
+		},
+		"content_header_response.json": {
+			"parameter content encoding",
+		},
+		"content_path_parameter.yml": {
+			"parameter content encoding",
+		},
+	}))
+
+	t.Run("Examples", runPositive("_testdata/examples", map[string][]string{
 		"autorest/additionalProperties.json": {},
 		"autorest/ApiManagementClient-openapi.json": {
 			"oauth2 security",
@@ -82,80 +135,28 @@ func TestGenerate(t *testing.T) {
 			"sum type parameter",
 			"unsupported content types",
 		},
-		"sample.json": {
-			"enum format",
-		},
 		"manga.json":            {},
 		"telegram_bot_api.json": {},
 		"gotd_bot_api.json":     {},
 		"k8s.json": {
 			"unsupported content types",
 		},
-		"test_content_header_response.json": {
-			"parameter content encoding",
-		},
-		"test_content_path_parameter.yml": {
-			"parameter content encoding",
-		},
 		"petstore-expanded.yml": {},
 		"redoc/discriminator.json": {
 			"unsupported content types",
 		},
-		"superset.json": {},
-	}
-
-	testDataPath := "_testdata/positive"
-	if err := fs.WalkDir(testdata, testDataPath, func(path string, d fs.DirEntry, err error) error {
-		if err != nil || d == nil || d.IsDir() {
-			return err
-		}
-
-		file := strings.TrimPrefix(path, testDataPath+"/")
-		skip := skipSets[file]
-		delete(skipSets, file)
-
-		testName := file
-		testName = strings.TrimSuffix(testName, ".json")
-		testName = strings.TrimSuffix(testName, ".yml")
-		testName = strings.TrimSuffix(testName, ".yaml")
-
-		t.Run(testName, testGenerate(path, skip...))
-		return nil
-	}); err != nil {
-		t.Fatal(err)
-	}
-
-	// Check that skipSets needs update.
-	if len(skipSets) > 0 {
-		var schemas []string
-		for k := range skipSets {
-			schemas = append(schemas, k)
-		}
-		t.Fatalf("Schema ignore rules %+v have not been used.", schemas)
-	}
+	}))
 }
 
 func TestNegative(t *testing.T) {
-	if err := fs.WalkDir(testdata, "_testdata/negative", func(path string, d fs.DirEntry, err error) error {
-		if err != nil || d == nil || d.IsDir() {
-			return err
-		}
-		_, file := filepath.Split(path)
+	walkTestdata(t, "_testdata/negative", func(t *testing.T, file string, data []byte) {
+		a := require.New(t)
 
-		t.Run(strings.TrimSuffix(file, ".json"), func(t *testing.T) {
-			a := require.New(t)
-			data, err := testdata.ReadFile(path)
-			a.NoError(err)
+		spec, err := ogen.Parse(data)
+		a.NoError(err)
 
-			spec, err := ogen.Parse(data)
-			a.NoError(err)
-
-			_, err = gen.NewGenerator(spec, gen.Options{})
-			a.Error(err)
-			t.Log(err.Error())
-		})
-		return nil
-	}); err != nil {
-		t.Fatal(err)
-	}
+		_, err = gen.NewGenerator(spec, gen.Options{})
+		a.Error(err)
+		t.Log(err.Error())
+	})
 }
