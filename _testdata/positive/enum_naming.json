@@ -15,13 +15,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/VeryBadEnum"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -29,23 +26,6 @@
   },
   "components": {
     "schemas": {
-      "Error": {
-        "description": "Represents error object",
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "message": {
-            "$ref": "#/components/schemas/VeryBadEnum"
-          }
-        },
-        "required": [
-          "code",
-          "message"
-        ]
-      },
       "VeryBadEnum": {
         "type": "string",
         "enum": [
@@ -156,18 +136,6 @@
           "multiValueExtendedProperties",
           "singleValueExtendedProperties"
         ]
-      }
-    },
-    "responses": {
-      "Error": {
-        "description": "General Error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
       }
     }
   }
