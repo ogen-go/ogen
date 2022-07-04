@@ -5,6 +5,7 @@ import (
 	"os"
 	"sort"
 
+	"github.com/go-faster/errors"
 	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen"
@@ -245,16 +246,19 @@ func run() error {
 
 	spec := generateSpec()
 
-	f, err := os.Create(*output)
+	data, err := json.Marshal(spec)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "marshal spec")
 	}
-	defer func() {
-		_ = f.Close()
-	}()
+	val := json.RawValue(data)
+	if err := val.Canonicalize(); err != nil {
+		return errors.Wrap(err, "canonicalize")
+	}
+	if err := val.Indent("", "\t"); err != nil {
+		return errors.Wrap(err, "indent")
+	}
 
-	opts := json.MarshalOptions{}
-	return opts.MarshalFull(json.EncodeOptions{Indent: "\t"}, f, spec)
+	return os.WriteFile(*output, val, 0o600)
 }
 
 func main() {
