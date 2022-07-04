@@ -20,7 +20,7 @@ type parser struct {
 		parameters      map[string]*openapi.Parameter
 		headers         map[string]*openapi.Header
 		examples        map[string]*openapi.Example
-		securitySchemes map[string]*ogen.SecuritySchema
+		securitySchemes map[string]*ogen.SecurityScheme
 	}
 
 	external   jsonschema.ExternalResolver
@@ -44,14 +44,14 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			parameters      map[string]*openapi.Parameter
 			headers         map[string]*openapi.Header
 			examples        map[string]*openapi.Example
-			securitySchemes map[string]*ogen.SecuritySchema
+			securitySchemes map[string]*ogen.SecurityScheme
 		}{
 			requestBodies:   map[string]*openapi.RequestBody{},
 			responses:       map[string]*openapi.Response{},
 			parameters:      map[string]*openapi.Parameter{},
 			headers:         map[string]*openapi.Header{},
 			examples:        map[string]*openapi.Example{},
-			securitySchemes: map[string]*ogen.SecuritySchema{},
+			securitySchemes: map[string]*ogen.SecurityScheme{},
 		},
 		external: s.External,
 		schemas: map[string][]byte{

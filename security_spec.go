@@ -1,7 +1,7 @@
 package ogen
 
-// SecuritySchema defines a security scheme that can be used by the operations.
-type SecuritySchema struct {
+// SecurityScheme defines a security scheme that can be used by the operations.
+type SecurityScheme struct {
 	Ref string `json:"ref,omitempty"`
 	// The type of the security scheme. Valid values are "apiKey", "http", "mutualTLS", "oauth2", "openIdConnect".
 	Type string `json:"type"`
@@ -38,13 +38,17 @@ type OAuthFlows struct {
 
 // OAuthFlow is configuration details for a supported OAuth Flow.
 type OAuthFlow struct {
-	// The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
+	// The authorization URL to be used for this flow.
+	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
 	AuthorizationURL string `json:"authorizationUrl"`
-	// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
+	// The token URL to be used for this flow.
+	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
 	TokenURL string `json:"tokenUrl"`
-	// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
+	// The URL to be used for obtaining refresh tokens.
+	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
 	RefreshURL string `json:"refreshUrl,omitempty"`
-	// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty.
+	// The available scopes for the OAuth2 security scheme.
+	// A map between the scope name and a short description for it. The map MAY be empty.
 	Scopes map[string]string `json:"scopes"`
 }
 

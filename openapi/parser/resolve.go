@@ -256,7 +256,7 @@ func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, 
 	return ex, nil
 }
 
-func (p *parser) resolveSecuritySchema(ref string, ctx *resolveCtx) (*ogen.SecuritySchema, error) {
+func (p *parser) resolveSecurityScheme(ref string, ctx *resolveCtx) (*ogen.SecurityScheme, error) {
 	const prefix = "#/components/securitySchemes/"
 
 	if r, ok := p.refs.securitySchemes[ref]; ok {
@@ -271,7 +271,7 @@ func (p *parser) resolveSecuritySchema(ref string, ctx *resolveCtx) (*ogen.Secur
 		ctx.delete(key)
 	}()
 
-	var component *ogen.SecuritySchema
+	var component *ogen.SecurityScheme
 	if key.loc == "" && ctx.lastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.SecuritySchemes[name]

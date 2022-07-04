@@ -171,7 +171,7 @@ type Components struct {
 	Headers         map[string]*Header         `json:"headers,omitempty"`
 	Examples        map[string]*Example        `json:"examples,omitempty"`
 	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty"`
-	SecuritySchemes map[string]*SecuritySchema `json:"securitySchemes,omitempty"`
+	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitempty"`
 	// Links           map[string]Link            `json:"links"`
 	// Callbacks       map[string]Callback        `json:"callback"`
 }

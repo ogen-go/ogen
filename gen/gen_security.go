@@ -69,7 +69,6 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequireme
 		return sec, nil
 	}
 	security := spec.Security
-	flows := security.Flows
 
 	typeName, err := pascalNonEmpty(spec.Name)
 	if err != nil {
@@ -99,29 +98,6 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequireme
 		}
 		fallthrough
 	case "oauth2":
-		checkScopes := func(flow *openapi.OAuthFlow) error {
-			if flow == nil {
-				return nil
-			}
-			for _, scope := range spec.Scopes {
-				if _, ok := flow.Scopes[scope]; !ok {
-					return errors.Errorf("unknown scope %q", scope)
-				}
-			}
-			return nil
-		}
-
-		for flowName, flow := range map[string]*openapi.OAuthFlow{
-			"implicit":          flows.Implicit,
-			"password":          flows.Password,
-			"clientCredentials": flows.ClientCredentials,
-			"authorizationCode": flows.AuthorizationCode,
-		} {
-			if err := checkScopes(flow); err != nil {
-				return nil, errors.Wrapf(err, "flow %q", flowName)
-			}
-		}
-
 		return nil, &ErrNotImplemented{Name: "oauth2 security"}
 	case "apiKey":
 		return g.generateSecurityAPIKey(s, spec)
