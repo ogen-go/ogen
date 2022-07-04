@@ -298,6 +298,7 @@ func (r *RawPatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *
 		return err
 	}
 
+	*r = patternProperties
 	return nil
 }
 

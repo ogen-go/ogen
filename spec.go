@@ -759,5 +759,6 @@ func (r *PatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *jso
 		return err
 	}
 
+	*r = patternProperties
 	return nil
 }
