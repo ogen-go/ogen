@@ -5,6 +5,6 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": null
+    "/foo": null
   }
 }

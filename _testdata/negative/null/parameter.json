@@ -5,7 +5,7 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": {
+    "/foo": {
       "get": {
         "parameters": [
           null

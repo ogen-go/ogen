@@ -5,7 +5,7 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": {
+    "/foo": {
       "get": {
         "parameters": [
           {
@@ -14,14 +14,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User info",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "User info"
           }
         }
       }
@@ -33,14 +26,14 @@
         "name": "foo",
         "in": "query",
         "schema": {
-            "type": "string"
+          "type": "string"
         },
         "content": {
-            "application/json": {
-                "schema": {
-                    "type": "string"
-                }
+          "application/json": {
+            "schema": {
+              "type": "string"
             }
+          }
         }
       }
     }

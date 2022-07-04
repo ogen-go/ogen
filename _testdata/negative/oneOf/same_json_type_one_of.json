@@ -5,10 +5,8 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": {
+    "/foo": {
       "get": {
-        "operationId": "probeLiveness",
-        "description": "Liveness probe for kubernetes",
         "responses": {
           "200": {
             "description": "User info",

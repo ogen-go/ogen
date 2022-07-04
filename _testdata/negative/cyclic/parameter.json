@@ -5,10 +5,8 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": {
+    "/foo": {
       "get": {
-        "operationId": "probeLiveness",
-        "description": "Liveness probe for kubernetes",
         "parameters": [
           {
             "$ref": "#/components/parameters/Parameter"
@@ -16,57 +14,16 @@
         ],
         "responses": {
           "200": {
-            "description": "User info",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/Error"
+            "description": "User info"
           }
         }
       }
     }
   },
   "components": {
-    "schemas": {
-      "Error": {
-        "description": "Represents error object",
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "code",
-          "message"
-        ]
-      }
-    },
     "parameters": {
       "Parameter": {
         "$ref": "#/components/parameters/Parameter"
-      }
-    },
-    "responses": {
-      "Error": {
-        "description": "General Error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
       }
     }
   }

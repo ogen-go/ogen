@@ -5,7 +5,7 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": {
+    "/foo": {
       "get": {
         "parameters": [
           {
@@ -17,14 +17,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User info",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "User info"
           }
         }
       }

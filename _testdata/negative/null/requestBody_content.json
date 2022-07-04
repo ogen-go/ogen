@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.0.3",
   "info": {
     "title": "title",
     "version": "v0.1.0"
@@ -11,15 +11,8 @@
           "$ref": "#/components/requestBodies/Foo"
         },
         "responses": {
-          "default": {
-            "description": "default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "200": {
+            "description": "default"
           }
         }
       }
