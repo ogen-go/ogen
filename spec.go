@@ -597,7 +597,7 @@ type Property struct {
 	Schema *Schema
 }
 
-// Properties represent JSON Schema properties validator description.
+// Properties is unparsed JSON Schema properties validator description.
 type Properties []Property
 
 // MarshalNextJSON implements json.MarshalerV2.
@@ -620,9 +620,10 @@ func (p Properties) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) e
 }
 
 // UnmarshalNextJSON implements json.UnmarshalerV2.
-func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) (rerr error) {
+func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	offset := d.InputOffset()
-	if kind := d.PeekKind(); kind != '{' {
+	// Check Kind for invalid, next call will return error.
+	if kind := d.PeekKind(); kind != '{' && kind != 0 {
 		return &json.SemanticError{
 			ByteOffset:  offset,
 			JSONPointer: d.StackPointer(),
@@ -631,7 +632,6 @@ func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decod
 			Err:         errors.Errorf("unexpected type %s", kind.String()),
 		}
 	}
-
 	// Read the opening brace.
 	if _, err := d.ReadToken(); err != nil {
 		return err
@@ -639,7 +639,7 @@ func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decod
 
 	// Keep non-nil value, to distinguish from not set object.
 	properties := Properties{}
-	for d.PeekKind() != '}' {
+	for d.PeekKind() == '"' {
 		var (
 			name   string
 			schema *Schema
@@ -661,7 +661,7 @@ func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decod
 	return nil
 }
 
-// AdditionalProperties represent JSON Schema additionalProperties validator description.
+// AdditionalProperties is JSON Schema additionalProperties validator description.
 type AdditionalProperties struct {
 	Bool   *bool
 	Schema Schema
@@ -700,7 +700,7 @@ type PatternProperty struct {
 	Schema  *Schema
 }
 
-// PatternProperties represent JSON Schema patternProperties validator description.
+// PatternProperties is unparsed JSON Schema patternProperties validator description.
 type PatternProperties []PatternProperty
 
 // MarshalNextJSON implements json.MarshalerV2.
@@ -725,7 +725,8 @@ func (r PatternProperties) MarshalNextJSON(opts json.MarshalOptions, e *json.Enc
 // UnmarshalNextJSON implements json.UnmarshalerV2.
 func (r *PatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	offset := d.InputOffset()
-	if kind := d.PeekKind(); kind != '{' {
+	// Check Kind for invalid, next call will return error.
+	if kind := d.PeekKind(); kind != '{' && kind != 0 {
 		return &json.SemanticError{
 			ByteOffset:  offset,
 			JSONPointer: d.StackPointer(),
@@ -741,7 +742,7 @@ func (r *PatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *jso
 
 	// Keep non-nil value, to distinguish from not set object.
 	patternProperties := PatternProperties{}
-	for d.PeekKind() != '}' {
+	for d.PeekKind() == '"' {
 		var (
 			pattern string
 			schema  *Schema
