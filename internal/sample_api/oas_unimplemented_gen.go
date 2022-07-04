@@ -228,27 +228,6 @@ func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req TestFlo
 	return r, ht.ErrNotImplemented
 }
 
-// TestFormURLEncoded implements testFormURLEncoded operation.
-//
-// POST /testFormURLEncoded
-func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req TestForm) (r TestFormURLEncodedOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// TestMultipart implements testMultipart operation.
-//
-// POST /testMultipart
-func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) (r TestMultipartOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// TestMultipartUpload implements testMultipartUpload operation.
-//
-// POST /testMultipartUpload
-func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMultipartUploadReqForm) (r TestMultipartUploadOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
 // TestNullableOneofs implements testNullableOneofs operation.
 //
 // GET /testNullableOneofs
@@ -260,12 +239,5 @@ func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNulla
 //
 // GET /testObjectQueryParameter
 func (UnimplementedHandler) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (r TestObjectQueryParameterOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// TestShareFormSchema implements testShareFormSchema operation.
-//
-// POST /testShareFormSchema
-func (UnimplementedHandler) TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) (r TestShareFormSchemaOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

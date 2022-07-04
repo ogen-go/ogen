@@ -671,18 +671,6 @@ func TestRecursiveMapAdditional_EncodeDecode(t *testing.T) {
 	typ2 = make(RecursiveMapAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestSharedRequest_EncodeDecode(t *testing.T) {
-	var typ SharedRequest
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 SharedRequest
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestStringIntMap_EncodeDecode(t *testing.T) {
 	var typ StringIntMap
 	typ.SetFake()
@@ -773,18 +761,6 @@ func TestTestFloatValidation_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestFloatValidation
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTestMultipartUploadOK_EncodeDecode(t *testing.T) {
-	var typ TestMultipartUploadOK
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TestMultipartUploadOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTestNullableOneofsApplicationJSONCreated_EncodeDecode(t *testing.T) {

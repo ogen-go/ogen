@@ -13,10 +13,13 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-// EncodeURI encodes TestObjectQueryParameterDeepObject as URI form.
-func (s TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
+// EncodeURI encodes TestFormDeepObject as URI form.
+func (s TestFormDeepObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.IntToString(s.Min))
+		if val, ok := s.Min.Get(); ok {
+			return e.EncodeValue(conv.IntToString(val))
+		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "encode field \"min\"")
 	}
@@ -25,43 +28,43 @@ func (s TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "encode field \"max\"")
 	}
-	if err := e.EncodeField("filter", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.StringToString(s.Filter))
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"filter\"")
-	}
 	return nil
 }
 
-var uriFieldsNameOfTestObjectQueryParameterDeepObject = [3]string{
+var uriFieldsNameOfTestFormDeepObject = [2]string{
 	0: "min",
 	1: "max",
-	2: "filter",
 }
 
-// DecodeURI decodes TestObjectQueryParameterDeepObject from URI form.
-func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
+// DecodeURI decodes TestFormDeepObject from URI form.
+func (s *TestFormDeepObject) DecodeURI(d uri.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode TestObjectQueryParameterDeepObject to nil")
+		return errors.New("invalid: unable to decode TestFormDeepObject to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
 		switch k {
 		case "min":
-			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
+				var sDotMinVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					sDotMinVal = c
+					return nil
+				}(); err != nil {
 					return err
 				}
-
-				c, err := conv.ToInt(val)
-				if err != nil {
-					return err
-				}
-
-				s.Min = c
+				s.Min.SetTo(sDotMinVal)
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"min\"")
@@ -84,35 +87,17 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"max\"")
 			}
-		case "filter":
-			requiredBitSet[0] |= 1 << 2
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				s.Filter = c
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"filter\"")
-			}
 		default:
 			return nil
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode TestObjectQueryParameterDeepObject")
+		return errors.Wrap(err, "decode TestFormDeepObject")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00000010,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -124,8 +109,8 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(uriFieldsNameOfTestObjectQueryParameterDeepObject) {
-					name = uriFieldsNameOfTestObjectQueryParameterDeepObject[fieldIdx]
+				if fieldIdx < len(uriFieldsNameOfTestFormDeepObject) {
+					name = uriFieldsNameOfTestFormDeepObject[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -145,10 +130,13 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 	return nil
 }
 
-// EncodeURI encodes TestObjectQueryParameterFormObject as URI form.
-func (s TestObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
+// EncodeURI encodes TestFormObject as URI form.
+func (s TestFormObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.IntToString(s.Min))
+		if val, ok := s.Min.Get(); ok {
+			return e.EncodeValue(conv.IntToString(val))
+		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "encode field \"min\"")
 	}
@@ -157,43 +145,43 @@ func (s TestObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "encode field \"max\"")
 	}
-	if err := e.EncodeField("filter", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.StringToString(s.Filter))
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"filter\"")
-	}
 	return nil
 }
 
-var uriFieldsNameOfTestObjectQueryParameterFormObject = [3]string{
+var uriFieldsNameOfTestFormObject = [2]string{
 	0: "min",
 	1: "max",
-	2: "filter",
 }
 
-// DecodeURI decodes TestObjectQueryParameterFormObject from URI form.
-func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
+// DecodeURI decodes TestFormObject from URI form.
+func (s *TestFormObject) DecodeURI(d uri.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode TestObjectQueryParameterFormObject to nil")
+		return errors.New("invalid: unable to decode TestFormObject to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
 		switch k {
 		case "min":
-			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
+				var sDotMinVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					sDotMinVal = c
+					return nil
+				}(); err != nil {
 					return err
 				}
-
-				c, err := conv.ToInt(val)
-				if err != nil {
-					return err
-				}
-
-				s.Min = c
+				s.Min.SetTo(sDotMinVal)
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"min\"")
@@ -216,35 +204,17 @@ func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"max\"")
 			}
-		case "filter":
-			requiredBitSet[0] |= 1 << 2
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				s.Filter = c
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"filter\"")
-			}
 		default:
 			return nil
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode TestObjectQueryParameterFormObject")
+		return errors.Wrap(err, "decode TestFormObject")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00000010,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -256,8 +226,8 @@ func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(uriFieldsNameOfTestObjectQueryParameterFormObject) {
-					name = uriFieldsNameOfTestObjectQueryParameterFormObject[fieldIdx]
+				if fieldIdx < len(uriFieldsNameOfTestFormObject) {
+					name = uriFieldsNameOfTestFormObject[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
