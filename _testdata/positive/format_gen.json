@@ -45,7 +45,6 @@
 	"paths": {
 		"/test_query_parameter": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_query_parameter",
 				"parameters": [
 					{
@@ -704,11 +703,12 @@
 		},
 		"/test_request_Any": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_Any",
 				"requestBody": {
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {}
+						}
 					},
 					"description": "Optional request body"
 				},
@@ -721,7 +721,6 @@
 		},
 		"/test_request_EmptyStruct": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_EmptyStruct",
 				"requestBody": {
 					"content": {
@@ -742,7 +741,6 @@
 		},
 		"/test_request_FormatTest": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_FormatTest",
 				"requestBody": {
 					"content": {
@@ -751,6 +749,7 @@
 								"properties": {
 									"optional_any": {},
 									"optional_array_any": {
+										"items": {},
 										"type": "array"
 									},
 									"optional_array_boolean": {
@@ -977,6 +976,7 @@
 									},
 									"optional_double_array_any": {
 										"items": {
+											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -1418,6 +1418,7 @@
 									},
 									"required_any": {},
 									"required_array_any": {
+										"items": {},
 										"type": "array"
 									},
 									"required_array_boolean": {
@@ -1644,6 +1645,7 @@
 									},
 									"required_double_array_any": {
 										"items": {
+											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -2200,7 +2202,6 @@
 		},
 		"/test_request_boolean": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_boolean",
 				"requestBody": {
 					"content": {
@@ -2221,7 +2222,6 @@
 		},
 		"/test_request_boolean_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_boolean_array",
 				"requestBody": {
 					"content": {
@@ -2245,7 +2245,6 @@
 		},
 		"/test_request_boolean_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_boolean_array_array",
 				"requestBody": {
 					"content": {
@@ -2272,7 +2271,6 @@
 		},
 		"/test_request_boolean_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_boolean_nullable",
 				"requestBody": {
 					"content": {
@@ -2294,7 +2292,6 @@
 		},
 		"/test_request_boolean_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_boolean_nullable_array",
 				"requestBody": {
 					"content": {
@@ -2319,7 +2316,6 @@
 		},
 		"/test_request_boolean_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_boolean_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -2347,7 +2343,6 @@
 		},
 		"/test_request_integer": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer",
 				"requestBody": {
 					"content": {
@@ -2368,7 +2363,6 @@
 		},
 		"/test_request_integer_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_array",
 				"requestBody": {
 					"content": {
@@ -2392,7 +2386,6 @@
 		},
 		"/test_request_integer_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_array_array",
 				"requestBody": {
 					"content": {
@@ -2419,7 +2412,6 @@
 		},
 		"/test_request_integer_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int32",
 				"requestBody": {
 					"content": {
@@ -2441,7 +2433,6 @@
 		},
 		"/test_request_integer_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int32_array",
 				"requestBody": {
 					"content": {
@@ -2466,7 +2457,6 @@
 		},
 		"/test_request_integer_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int32_array_array",
 				"requestBody": {
 					"content": {
@@ -2494,7 +2484,6 @@
 		},
 		"/test_request_integer_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int32_nullable",
 				"requestBody": {
 					"content": {
@@ -2517,7 +2506,6 @@
 		},
 		"/test_request_integer_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int32_nullable_array",
 				"requestBody": {
 					"content": {
@@ -2543,7 +2531,6 @@
 		},
 		"/test_request_integer_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int32_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -2572,7 +2559,6 @@
 		},
 		"/test_request_integer_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int64",
 				"requestBody": {
 					"content": {
@@ -2594,7 +2580,6 @@
 		},
 		"/test_request_integer_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int64_array",
 				"requestBody": {
 					"content": {
@@ -2619,7 +2604,6 @@
 		},
 		"/test_request_integer_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int64_array_array",
 				"requestBody": {
 					"content": {
@@ -2647,7 +2631,6 @@
 		},
 		"/test_request_integer_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int64_nullable",
 				"requestBody": {
 					"content": {
@@ -2670,7 +2653,6 @@
 		},
 		"/test_request_integer_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int64_nullable_array",
 				"requestBody": {
 					"content": {
@@ -2696,7 +2678,6 @@
 		},
 		"/test_request_integer_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_int64_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -2725,7 +2706,6 @@
 		},
 		"/test_request_integer_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_nullable",
 				"requestBody": {
 					"content": {
@@ -2747,7 +2727,6 @@
 		},
 		"/test_request_integer_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_nullable_array",
 				"requestBody": {
 					"content": {
@@ -2772,7 +2751,6 @@
 		},
 		"/test_request_integer_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_integer_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -2800,7 +2778,6 @@
 		},
 		"/test_request_null": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_null",
 				"requestBody": {
 					"content": {
@@ -2821,7 +2798,6 @@
 		},
 		"/test_request_null_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_null_array",
 				"requestBody": {
 					"content": {
@@ -2845,7 +2821,6 @@
 		},
 		"/test_request_null_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_null_array_array",
 				"requestBody": {
 					"content": {
@@ -2872,7 +2847,6 @@
 		},
 		"/test_request_null_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_null_nullable",
 				"requestBody": {
 					"content": {
@@ -2894,7 +2868,6 @@
 		},
 		"/test_request_null_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_null_nullable_array",
 				"requestBody": {
 					"content": {
@@ -2919,7 +2892,6 @@
 		},
 		"/test_request_null_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_null_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -2947,7 +2919,6 @@
 		},
 		"/test_request_number": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number",
 				"requestBody": {
 					"content": {
@@ -2968,7 +2939,6 @@
 		},
 		"/test_request_number_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_array",
 				"requestBody": {
 					"content": {
@@ -2992,7 +2962,6 @@
 		},
 		"/test_request_number_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_array_array",
 				"requestBody": {
 					"content": {
@@ -3019,7 +2988,6 @@
 		},
 		"/test_request_number_double": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_double",
 				"requestBody": {
 					"content": {
@@ -3041,7 +3009,6 @@
 		},
 		"/test_request_number_double_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_double_array",
 				"requestBody": {
 					"content": {
@@ -3066,7 +3033,6 @@
 		},
 		"/test_request_number_double_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_double_array_array",
 				"requestBody": {
 					"content": {
@@ -3094,7 +3060,6 @@
 		},
 		"/test_request_number_double_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_double_nullable",
 				"requestBody": {
 					"content": {
@@ -3117,7 +3082,6 @@
 		},
 		"/test_request_number_double_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_double_nullable_array",
 				"requestBody": {
 					"content": {
@@ -3143,7 +3107,6 @@
 		},
 		"/test_request_number_double_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_double_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -3172,7 +3135,6 @@
 		},
 		"/test_request_number_float": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_float",
 				"requestBody": {
 					"content": {
@@ -3194,7 +3156,6 @@
 		},
 		"/test_request_number_float_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_float_array",
 				"requestBody": {
 					"content": {
@@ -3219,7 +3180,6 @@
 		},
 		"/test_request_number_float_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_float_array_array",
 				"requestBody": {
 					"content": {
@@ -3247,7 +3207,6 @@
 		},
 		"/test_request_number_float_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_float_nullable",
 				"requestBody": {
 					"content": {
@@ -3270,7 +3229,6 @@
 		},
 		"/test_request_number_float_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_float_nullable_array",
 				"requestBody": {
 					"content": {
@@ -3296,7 +3254,6 @@
 		},
 		"/test_request_number_float_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_float_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -3325,7 +3282,6 @@
 		},
 		"/test_request_number_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int32",
 				"requestBody": {
 					"content": {
@@ -3347,7 +3303,6 @@
 		},
 		"/test_request_number_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int32_array",
 				"requestBody": {
 					"content": {
@@ -3372,7 +3327,6 @@
 		},
 		"/test_request_number_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int32_array_array",
 				"requestBody": {
 					"content": {
@@ -3400,7 +3354,6 @@
 		},
 		"/test_request_number_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int32_nullable",
 				"requestBody": {
 					"content": {
@@ -3423,7 +3376,6 @@
 		},
 		"/test_request_number_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int32_nullable_array",
 				"requestBody": {
 					"content": {
@@ -3449,7 +3401,6 @@
 		},
 		"/test_request_number_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int32_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -3478,7 +3429,6 @@
 		},
 		"/test_request_number_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int64",
 				"requestBody": {
 					"content": {
@@ -3500,7 +3450,6 @@
 		},
 		"/test_request_number_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int64_array",
 				"requestBody": {
 					"content": {
@@ -3525,7 +3474,6 @@
 		},
 		"/test_request_number_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int64_array_array",
 				"requestBody": {
 					"content": {
@@ -3553,7 +3501,6 @@
 		},
 		"/test_request_number_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int64_nullable",
 				"requestBody": {
 					"content": {
@@ -3576,7 +3523,6 @@
 		},
 		"/test_request_number_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int64_nullable_array",
 				"requestBody": {
 					"content": {
@@ -3602,7 +3548,6 @@
 		},
 		"/test_request_number_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_int64_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -3631,7 +3576,6 @@
 		},
 		"/test_request_number_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_nullable",
 				"requestBody": {
 					"content": {
@@ -3653,7 +3597,6 @@
 		},
 		"/test_request_number_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_nullable_array",
 				"requestBody": {
 					"content": {
@@ -3678,7 +3621,6 @@
 		},
 		"/test_request_number_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_number_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -3706,11 +3648,12 @@
 		},
 		"/test_request_required_Any": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_Any",
 				"requestBody": {
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {}
+						}
 					},
 					"description": "Required request body",
 					"required": true
@@ -3724,7 +3667,6 @@
 		},
 		"/test_request_required_EmptyStruct": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_EmptyStruct",
 				"requestBody": {
 					"content": {
@@ -3746,7 +3688,6 @@
 		},
 		"/test_request_required_FormatTest": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_FormatTest",
 				"requestBody": {
 					"content": {
@@ -3755,6 +3696,7 @@
 								"properties": {
 									"optional_any": {},
 									"optional_array_any": {
+										"items": {},
 										"type": "array"
 									},
 									"optional_array_boolean": {
@@ -3981,6 +3923,7 @@
 									},
 									"optional_double_array_any": {
 										"items": {
+											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -4422,6 +4365,7 @@
 									},
 									"required_any": {},
 									"required_array_any": {
+										"items": {},
 										"type": "array"
 									},
 									"required_array_boolean": {
@@ -4648,6 +4592,7 @@
 									},
 									"required_double_array_any": {
 										"items": {
+											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -5205,7 +5150,6 @@
 		},
 		"/test_request_required_boolean": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_boolean",
 				"requestBody": {
 					"content": {
@@ -5227,7 +5171,6 @@
 		},
 		"/test_request_required_boolean_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_boolean_array",
 				"requestBody": {
 					"content": {
@@ -5252,7 +5195,6 @@
 		},
 		"/test_request_required_boolean_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_boolean_array_array",
 				"requestBody": {
 					"content": {
@@ -5280,7 +5222,6 @@
 		},
 		"/test_request_required_boolean_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_boolean_nullable",
 				"requestBody": {
 					"content": {
@@ -5303,7 +5244,6 @@
 		},
 		"/test_request_required_boolean_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_boolean_nullable_array",
 				"requestBody": {
 					"content": {
@@ -5329,7 +5269,6 @@
 		},
 		"/test_request_required_boolean_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_boolean_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -5358,7 +5297,6 @@
 		},
 		"/test_request_required_integer": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer",
 				"requestBody": {
 					"content": {
@@ -5380,7 +5318,6 @@
 		},
 		"/test_request_required_integer_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_array",
 				"requestBody": {
 					"content": {
@@ -5405,7 +5342,6 @@
 		},
 		"/test_request_required_integer_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_array_array",
 				"requestBody": {
 					"content": {
@@ -5433,7 +5369,6 @@
 		},
 		"/test_request_required_integer_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int32",
 				"requestBody": {
 					"content": {
@@ -5456,7 +5391,6 @@
 		},
 		"/test_request_required_integer_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int32_array",
 				"requestBody": {
 					"content": {
@@ -5482,7 +5416,6 @@
 		},
 		"/test_request_required_integer_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int32_array_array",
 				"requestBody": {
 					"content": {
@@ -5511,7 +5444,6 @@
 		},
 		"/test_request_required_integer_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int32_nullable",
 				"requestBody": {
 					"content": {
@@ -5535,7 +5467,6 @@
 		},
 		"/test_request_required_integer_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int32_nullable_array",
 				"requestBody": {
 					"content": {
@@ -5562,7 +5493,6 @@
 		},
 		"/test_request_required_integer_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int32_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -5592,7 +5522,6 @@
 		},
 		"/test_request_required_integer_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int64",
 				"requestBody": {
 					"content": {
@@ -5615,7 +5544,6 @@
 		},
 		"/test_request_required_integer_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int64_array",
 				"requestBody": {
 					"content": {
@@ -5641,7 +5569,6 @@
 		},
 		"/test_request_required_integer_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int64_array_array",
 				"requestBody": {
 					"content": {
@@ -5670,7 +5597,6 @@
 		},
 		"/test_request_required_integer_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int64_nullable",
 				"requestBody": {
 					"content": {
@@ -5694,7 +5620,6 @@
 		},
 		"/test_request_required_integer_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int64_nullable_array",
 				"requestBody": {
 					"content": {
@@ -5721,7 +5646,6 @@
 		},
 		"/test_request_required_integer_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_int64_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -5751,7 +5675,6 @@
 		},
 		"/test_request_required_integer_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_nullable",
 				"requestBody": {
 					"content": {
@@ -5774,7 +5697,6 @@
 		},
 		"/test_request_required_integer_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_nullable_array",
 				"requestBody": {
 					"content": {
@@ -5800,7 +5722,6 @@
 		},
 		"/test_request_required_integer_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_integer_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -5829,7 +5750,6 @@
 		},
 		"/test_request_required_null": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_null",
 				"requestBody": {
 					"content": {
@@ -5851,7 +5771,6 @@
 		},
 		"/test_request_required_null_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_null_array",
 				"requestBody": {
 					"content": {
@@ -5876,7 +5795,6 @@
 		},
 		"/test_request_required_null_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_null_array_array",
 				"requestBody": {
 					"content": {
@@ -5904,7 +5822,6 @@
 		},
 		"/test_request_required_null_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_null_nullable",
 				"requestBody": {
 					"content": {
@@ -5927,7 +5844,6 @@
 		},
 		"/test_request_required_null_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_null_nullable_array",
 				"requestBody": {
 					"content": {
@@ -5953,7 +5869,6 @@
 		},
 		"/test_request_required_null_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_null_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -5982,7 +5897,6 @@
 		},
 		"/test_request_required_number": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number",
 				"requestBody": {
 					"content": {
@@ -6004,7 +5918,6 @@
 		},
 		"/test_request_required_number_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_array",
 				"requestBody": {
 					"content": {
@@ -6029,7 +5942,6 @@
 		},
 		"/test_request_required_number_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_array_array",
 				"requestBody": {
 					"content": {
@@ -6057,7 +5969,6 @@
 		},
 		"/test_request_required_number_double": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_double",
 				"requestBody": {
 					"content": {
@@ -6080,7 +5991,6 @@
 		},
 		"/test_request_required_number_double_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_double_array",
 				"requestBody": {
 					"content": {
@@ -6106,7 +6016,6 @@
 		},
 		"/test_request_required_number_double_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_double_array_array",
 				"requestBody": {
 					"content": {
@@ -6135,7 +6044,6 @@
 		},
 		"/test_request_required_number_double_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_double_nullable",
 				"requestBody": {
 					"content": {
@@ -6159,7 +6067,6 @@
 		},
 		"/test_request_required_number_double_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_double_nullable_array",
 				"requestBody": {
 					"content": {
@@ -6186,7 +6093,6 @@
 		},
 		"/test_request_required_number_double_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_double_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -6216,7 +6122,6 @@
 		},
 		"/test_request_required_number_float": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_float",
 				"requestBody": {
 					"content": {
@@ -6239,7 +6144,6 @@
 		},
 		"/test_request_required_number_float_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_float_array",
 				"requestBody": {
 					"content": {
@@ -6265,7 +6169,6 @@
 		},
 		"/test_request_required_number_float_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_float_array_array",
 				"requestBody": {
 					"content": {
@@ -6294,7 +6197,6 @@
 		},
 		"/test_request_required_number_float_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_float_nullable",
 				"requestBody": {
 					"content": {
@@ -6318,7 +6220,6 @@
 		},
 		"/test_request_required_number_float_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_float_nullable_array",
 				"requestBody": {
 					"content": {
@@ -6345,7 +6246,6 @@
 		},
 		"/test_request_required_number_float_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_float_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -6375,7 +6275,6 @@
 		},
 		"/test_request_required_number_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int32",
 				"requestBody": {
 					"content": {
@@ -6398,7 +6297,6 @@
 		},
 		"/test_request_required_number_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int32_array",
 				"requestBody": {
 					"content": {
@@ -6424,7 +6322,6 @@
 		},
 		"/test_request_required_number_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int32_array_array",
 				"requestBody": {
 					"content": {
@@ -6453,7 +6350,6 @@
 		},
 		"/test_request_required_number_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int32_nullable",
 				"requestBody": {
 					"content": {
@@ -6477,7 +6373,6 @@
 		},
 		"/test_request_required_number_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int32_nullable_array",
 				"requestBody": {
 					"content": {
@@ -6504,7 +6399,6 @@
 		},
 		"/test_request_required_number_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int32_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -6534,7 +6428,6 @@
 		},
 		"/test_request_required_number_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int64",
 				"requestBody": {
 					"content": {
@@ -6557,7 +6450,6 @@
 		},
 		"/test_request_required_number_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int64_array",
 				"requestBody": {
 					"content": {
@@ -6583,7 +6475,6 @@
 		},
 		"/test_request_required_number_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int64_array_array",
 				"requestBody": {
 					"content": {
@@ -6612,7 +6503,6 @@
 		},
 		"/test_request_required_number_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int64_nullable",
 				"requestBody": {
 					"content": {
@@ -6636,7 +6526,6 @@
 		},
 		"/test_request_required_number_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int64_nullable_array",
 				"requestBody": {
 					"content": {
@@ -6663,7 +6552,6 @@
 		},
 		"/test_request_required_number_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_int64_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -6693,7 +6581,6 @@
 		},
 		"/test_request_required_number_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_nullable",
 				"requestBody": {
 					"content": {
@@ -6716,7 +6603,6 @@
 		},
 		"/test_request_required_number_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_nullable_array",
 				"requestBody": {
 					"content": {
@@ -6742,7 +6628,6 @@
 		},
 		"/test_request_required_number_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_number_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -6771,7 +6656,6 @@
 		},
 		"/test_request_required_string": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string",
 				"requestBody": {
 					"content": {
@@ -6793,7 +6677,6 @@
 		},
 		"/test_request_required_string_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_array",
 				"requestBody": {
 					"content": {
@@ -6818,7 +6701,6 @@
 		},
 		"/test_request_required_string_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_array_array",
 				"requestBody": {
 					"content": {
@@ -6846,7 +6728,6 @@
 		},
 		"/test_request_required_string_binary": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_binary",
 				"requestBody": {
 					"content": {
@@ -6869,7 +6750,6 @@
 		},
 		"/test_request_required_string_binary_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_binary_array",
 				"requestBody": {
 					"content": {
@@ -6895,7 +6775,6 @@
 		},
 		"/test_request_required_string_binary_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_binary_array_array",
 				"requestBody": {
 					"content": {
@@ -6924,7 +6803,6 @@
 		},
 		"/test_request_required_string_binary_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_binary_nullable",
 				"requestBody": {
 					"content": {
@@ -6948,7 +6826,6 @@
 		},
 		"/test_request_required_string_binary_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_binary_nullable_array",
 				"requestBody": {
 					"content": {
@@ -6975,7 +6852,6 @@
 		},
 		"/test_request_required_string_binary_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_binary_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7005,7 +6881,6 @@
 		},
 		"/test_request_required_string_byte": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_byte",
 				"requestBody": {
 					"content": {
@@ -7028,7 +6903,6 @@
 		},
 		"/test_request_required_string_byte_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_byte_array",
 				"requestBody": {
 					"content": {
@@ -7054,7 +6928,6 @@
 		},
 		"/test_request_required_string_byte_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_byte_array_array",
 				"requestBody": {
 					"content": {
@@ -7083,7 +6956,6 @@
 		},
 		"/test_request_required_string_byte_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_byte_nullable",
 				"requestBody": {
 					"content": {
@@ -7107,7 +6979,6 @@
 		},
 		"/test_request_required_string_byte_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_byte_nullable_array",
 				"requestBody": {
 					"content": {
@@ -7134,7 +7005,6 @@
 		},
 		"/test_request_required_string_byte_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_byte_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7164,7 +7034,6 @@
 		},
 		"/test_request_required_string_date": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date",
 				"requestBody": {
 					"content": {
@@ -7187,7 +7056,6 @@
 		},
 		"/test_request_required_string_date-time": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date-time",
 				"requestBody": {
 					"content": {
@@ -7210,7 +7078,6 @@
 		},
 		"/test_request_required_string_date-time_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date-time_array",
 				"requestBody": {
 					"content": {
@@ -7236,7 +7103,6 @@
 		},
 		"/test_request_required_string_date-time_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date-time_array_array",
 				"requestBody": {
 					"content": {
@@ -7265,7 +7131,6 @@
 		},
 		"/test_request_required_string_date-time_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date-time_nullable",
 				"requestBody": {
 					"content": {
@@ -7289,7 +7154,6 @@
 		},
 		"/test_request_required_string_date-time_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date-time_nullable_array",
 				"requestBody": {
 					"content": {
@@ -7316,7 +7180,6 @@
 		},
 		"/test_request_required_string_date-time_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date-time_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7346,7 +7209,6 @@
 		},
 		"/test_request_required_string_date_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date_array",
 				"requestBody": {
 					"content": {
@@ -7372,7 +7234,6 @@
 		},
 		"/test_request_required_string_date_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date_array_array",
 				"requestBody": {
 					"content": {
@@ -7401,7 +7262,6 @@
 		},
 		"/test_request_required_string_date_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date_nullable",
 				"requestBody": {
 					"content": {
@@ -7425,7 +7285,6 @@
 		},
 		"/test_request_required_string_date_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date_nullable_array",
 				"requestBody": {
 					"content": {
@@ -7452,7 +7311,6 @@
 		},
 		"/test_request_required_string_date_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_date_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7482,7 +7340,6 @@
 		},
 		"/test_request_required_string_duration": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_duration",
 				"requestBody": {
 					"content": {
@@ -7505,7 +7362,6 @@
 		},
 		"/test_request_required_string_duration_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_duration_array",
 				"requestBody": {
 					"content": {
@@ -7531,7 +7387,6 @@
 		},
 		"/test_request_required_string_duration_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_duration_array_array",
 				"requestBody": {
 					"content": {
@@ -7560,7 +7415,6 @@
 		},
 		"/test_request_required_string_duration_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_duration_nullable",
 				"requestBody": {
 					"content": {
@@ -7584,7 +7438,6 @@
 		},
 		"/test_request_required_string_duration_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_duration_nullable_array",
 				"requestBody": {
 					"content": {
@@ -7611,7 +7464,6 @@
 		},
 		"/test_request_required_string_duration_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_duration_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7641,7 +7493,6 @@
 		},
 		"/test_request_required_string_email": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_email",
 				"requestBody": {
 					"content": {
@@ -7664,7 +7515,6 @@
 		},
 		"/test_request_required_string_email_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_email_array",
 				"requestBody": {
 					"content": {
@@ -7690,7 +7540,6 @@
 		},
 		"/test_request_required_string_email_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_email_array_array",
 				"requestBody": {
 					"content": {
@@ -7719,7 +7568,6 @@
 		},
 		"/test_request_required_string_email_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_email_nullable",
 				"requestBody": {
 					"content": {
@@ -7743,7 +7591,6 @@
 		},
 		"/test_request_required_string_email_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_email_nullable_array",
 				"requestBody": {
 					"content": {
@@ -7770,7 +7617,6 @@
 		},
 		"/test_request_required_string_email_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_email_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7800,7 +7646,6 @@
 		},
 		"/test_request_required_string_hostname": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_hostname",
 				"requestBody": {
 					"content": {
@@ -7823,7 +7668,6 @@
 		},
 		"/test_request_required_string_hostname_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_hostname_array",
 				"requestBody": {
 					"content": {
@@ -7849,7 +7693,6 @@
 		},
 		"/test_request_required_string_hostname_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_hostname_array_array",
 				"requestBody": {
 					"content": {
@@ -7878,7 +7721,6 @@
 		},
 		"/test_request_required_string_hostname_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_hostname_nullable",
 				"requestBody": {
 					"content": {
@@ -7902,7 +7744,6 @@
 		},
 		"/test_request_required_string_hostname_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_hostname_nullable_array",
 				"requestBody": {
 					"content": {
@@ -7929,7 +7770,6 @@
 		},
 		"/test_request_required_string_hostname_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_hostname_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -7959,7 +7799,6 @@
 		},
 		"/test_request_required_string_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int32",
 				"requestBody": {
 					"content": {
@@ -7982,7 +7821,6 @@
 		},
 		"/test_request_required_string_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int32_array",
 				"requestBody": {
 					"content": {
@@ -8008,7 +7846,6 @@
 		},
 		"/test_request_required_string_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int32_array_array",
 				"requestBody": {
 					"content": {
@@ -8037,7 +7874,6 @@
 		},
 		"/test_request_required_string_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int32_nullable",
 				"requestBody": {
 					"content": {
@@ -8061,7 +7897,6 @@
 		},
 		"/test_request_required_string_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int32_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8088,7 +7923,6 @@
 		},
 		"/test_request_required_string_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int32_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8118,7 +7952,6 @@
 		},
 		"/test_request_required_string_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int64",
 				"requestBody": {
 					"content": {
@@ -8141,7 +7974,6 @@
 		},
 		"/test_request_required_string_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int64_array",
 				"requestBody": {
 					"content": {
@@ -8167,7 +7999,6 @@
 		},
 		"/test_request_required_string_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int64_array_array",
 				"requestBody": {
 					"content": {
@@ -8196,7 +8027,6 @@
 		},
 		"/test_request_required_string_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int64_nullable",
 				"requestBody": {
 					"content": {
@@ -8220,7 +8050,6 @@
 		},
 		"/test_request_required_string_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int64_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8247,7 +8076,6 @@
 		},
 		"/test_request_required_string_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_int64_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8277,7 +8105,6 @@
 		},
 		"/test_request_required_string_ip": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ip",
 				"requestBody": {
 					"content": {
@@ -8300,7 +8127,6 @@
 		},
 		"/test_request_required_string_ip_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ip_array",
 				"requestBody": {
 					"content": {
@@ -8326,7 +8152,6 @@
 		},
 		"/test_request_required_string_ip_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ip_array_array",
 				"requestBody": {
 					"content": {
@@ -8355,7 +8180,6 @@
 		},
 		"/test_request_required_string_ip_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ip_nullable",
 				"requestBody": {
 					"content": {
@@ -8379,7 +8203,6 @@
 		},
 		"/test_request_required_string_ip_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ip_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8406,7 +8229,6 @@
 		},
 		"/test_request_required_string_ip_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ip_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8436,7 +8258,6 @@
 		},
 		"/test_request_required_string_ipv4": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv4",
 				"requestBody": {
 					"content": {
@@ -8459,7 +8280,6 @@
 		},
 		"/test_request_required_string_ipv4_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv4_array",
 				"requestBody": {
 					"content": {
@@ -8485,7 +8305,6 @@
 		},
 		"/test_request_required_string_ipv4_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv4_array_array",
 				"requestBody": {
 					"content": {
@@ -8514,7 +8333,6 @@
 		},
 		"/test_request_required_string_ipv4_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv4_nullable",
 				"requestBody": {
 					"content": {
@@ -8538,7 +8356,6 @@
 		},
 		"/test_request_required_string_ipv4_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv4_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8565,7 +8382,6 @@
 		},
 		"/test_request_required_string_ipv4_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv4_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8595,7 +8411,6 @@
 		},
 		"/test_request_required_string_ipv6": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv6",
 				"requestBody": {
 					"content": {
@@ -8618,7 +8433,6 @@
 		},
 		"/test_request_required_string_ipv6_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv6_array",
 				"requestBody": {
 					"content": {
@@ -8644,7 +8458,6 @@
 		},
 		"/test_request_required_string_ipv6_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv6_array_array",
 				"requestBody": {
 					"content": {
@@ -8673,7 +8486,6 @@
 		},
 		"/test_request_required_string_ipv6_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv6_nullable",
 				"requestBody": {
 					"content": {
@@ -8697,7 +8509,6 @@
 		},
 		"/test_request_required_string_ipv6_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv6_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8724,7 +8535,6 @@
 		},
 		"/test_request_required_string_ipv6_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_ipv6_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8754,7 +8564,6 @@
 		},
 		"/test_request_required_string_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_nullable",
 				"requestBody": {
 					"content": {
@@ -8777,7 +8586,6 @@
 		},
 		"/test_request_required_string_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8803,7 +8611,6 @@
 		},
 		"/test_request_required_string_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8832,7 +8639,6 @@
 		},
 		"/test_request_required_string_password": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_password",
 				"requestBody": {
 					"content": {
@@ -8855,7 +8661,6 @@
 		},
 		"/test_request_required_string_password_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_password_array",
 				"requestBody": {
 					"content": {
@@ -8881,7 +8686,6 @@
 		},
 		"/test_request_required_string_password_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_password_array_array",
 				"requestBody": {
 					"content": {
@@ -8910,7 +8714,6 @@
 		},
 		"/test_request_required_string_password_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_password_nullable",
 				"requestBody": {
 					"content": {
@@ -8934,7 +8737,6 @@
 		},
 		"/test_request_required_string_password_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_password_nullable_array",
 				"requestBody": {
 					"content": {
@@ -8961,7 +8763,6 @@
 		},
 		"/test_request_required_string_password_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_password_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -8991,7 +8792,6 @@
 		},
 		"/test_request_required_string_time": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_time",
 				"requestBody": {
 					"content": {
@@ -9014,7 +8814,6 @@
 		},
 		"/test_request_required_string_time_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_time_array",
 				"requestBody": {
 					"content": {
@@ -9040,7 +8839,6 @@
 		},
 		"/test_request_required_string_time_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_time_array_array",
 				"requestBody": {
 					"content": {
@@ -9069,7 +8867,6 @@
 		},
 		"/test_request_required_string_time_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_time_nullable",
 				"requestBody": {
 					"content": {
@@ -9093,7 +8890,6 @@
 		},
 		"/test_request_required_string_time_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_time_nullable_array",
 				"requestBody": {
 					"content": {
@@ -9120,7 +8916,6 @@
 		},
 		"/test_request_required_string_time_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_time_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -9150,7 +8945,6 @@
 		},
 		"/test_request_required_string_unix": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix",
 				"requestBody": {
 					"content": {
@@ -9173,7 +8967,6 @@
 		},
 		"/test_request_required_string_unix-micro": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-micro",
 				"requestBody": {
 					"content": {
@@ -9196,7 +8989,6 @@
 		},
 		"/test_request_required_string_unix-micro_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-micro_array",
 				"requestBody": {
 					"content": {
@@ -9222,7 +9014,6 @@
 		},
 		"/test_request_required_string_unix-micro_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-micro_array_array",
 				"requestBody": {
 					"content": {
@@ -9251,7 +9042,6 @@
 		},
 		"/test_request_required_string_unix-micro_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-micro_nullable",
 				"requestBody": {
 					"content": {
@@ -9275,7 +9065,6 @@
 		},
 		"/test_request_required_string_unix-micro_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-micro_nullable_array",
 				"requestBody": {
 					"content": {
@@ -9302,7 +9091,6 @@
 		},
 		"/test_request_required_string_unix-micro_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-micro_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -9332,7 +9120,6 @@
 		},
 		"/test_request_required_string_unix-milli": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-milli",
 				"requestBody": {
 					"content": {
@@ -9355,7 +9142,6 @@
 		},
 		"/test_request_required_string_unix-milli_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-milli_array",
 				"requestBody": {
 					"content": {
@@ -9381,7 +9167,6 @@
 		},
 		"/test_request_required_string_unix-milli_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-milli_array_array",
 				"requestBody": {
 					"content": {
@@ -9410,7 +9195,6 @@
 		},
 		"/test_request_required_string_unix-milli_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-milli_nullable",
 				"requestBody": {
 					"content": {
@@ -9434,7 +9218,6 @@
 		},
 		"/test_request_required_string_unix-milli_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-milli_nullable_array",
 				"requestBody": {
 					"content": {
@@ -9461,7 +9244,6 @@
 		},
 		"/test_request_required_string_unix-milli_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-milli_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -9491,7 +9273,6 @@
 		},
 		"/test_request_required_string_unix-nano": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-nano",
 				"requestBody": {
 					"content": {
@@ -9514,7 +9295,6 @@
 		},
 		"/test_request_required_string_unix-nano_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-nano_array",
 				"requestBody": {
 					"content": {
@@ -9540,7 +9320,6 @@
 		},
 		"/test_request_required_string_unix-nano_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-nano_array_array",
 				"requestBody": {
 					"content": {
@@ -9569,7 +9348,6 @@
 		},
 		"/test_request_required_string_unix-nano_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-nano_nullable",
 				"requestBody": {
 					"content": {
@@ -9593,7 +9371,6 @@
 		},
 		"/test_request_required_string_unix-nano_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-nano_nullable_array",
 				"requestBody": {
 					"content": {
@@ -9620,7 +9397,6 @@
 		},
 		"/test_request_required_string_unix-nano_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-nano_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -9650,7 +9426,6 @@
 		},
 		"/test_request_required_string_unix-seconds": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-seconds",
 				"requestBody": {
 					"content": {
@@ -9673,7 +9448,6 @@
 		},
 		"/test_request_required_string_unix-seconds_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-seconds_array",
 				"requestBody": {
 					"content": {
@@ -9699,7 +9473,6 @@
 		},
 		"/test_request_required_string_unix-seconds_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-seconds_array_array",
 				"requestBody": {
 					"content": {
@@ -9728,7 +9501,6 @@
 		},
 		"/test_request_required_string_unix-seconds_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-seconds_nullable",
 				"requestBody": {
 					"content": {
@@ -9752,7 +9524,6 @@
 		},
 		"/test_request_required_string_unix-seconds_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-seconds_nullable_array",
 				"requestBody": {
 					"content": {
@@ -9779,7 +9550,6 @@
 		},
 		"/test_request_required_string_unix-seconds_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix-seconds_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -9809,7 +9579,6 @@
 		},
 		"/test_request_required_string_unix_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix_array",
 				"requestBody": {
 					"content": {
@@ -9835,7 +9604,6 @@
 		},
 		"/test_request_required_string_unix_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix_array_array",
 				"requestBody": {
 					"content": {
@@ -9864,7 +9632,6 @@
 		},
 		"/test_request_required_string_unix_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix_nullable",
 				"requestBody": {
 					"content": {
@@ -9888,7 +9655,6 @@
 		},
 		"/test_request_required_string_unix_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix_nullable_array",
 				"requestBody": {
 					"content": {
@@ -9915,7 +9681,6 @@
 		},
 		"/test_request_required_string_unix_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_unix_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -9945,7 +9710,6 @@
 		},
 		"/test_request_required_string_uri": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uri",
 				"requestBody": {
 					"content": {
@@ -9968,7 +9732,6 @@
 		},
 		"/test_request_required_string_uri_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uri_array",
 				"requestBody": {
 					"content": {
@@ -9994,7 +9757,6 @@
 		},
 		"/test_request_required_string_uri_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uri_array_array",
 				"requestBody": {
 					"content": {
@@ -10023,7 +9785,6 @@
 		},
 		"/test_request_required_string_uri_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uri_nullable",
 				"requestBody": {
 					"content": {
@@ -10047,7 +9808,6 @@
 		},
 		"/test_request_required_string_uri_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uri_nullable_array",
 				"requestBody": {
 					"content": {
@@ -10074,7 +9834,6 @@
 		},
 		"/test_request_required_string_uri_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uri_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -10104,7 +9863,6 @@
 		},
 		"/test_request_required_string_uuid": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uuid",
 				"requestBody": {
 					"content": {
@@ -10127,7 +9885,6 @@
 		},
 		"/test_request_required_string_uuid_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uuid_array",
 				"requestBody": {
 					"content": {
@@ -10153,7 +9910,6 @@
 		},
 		"/test_request_required_string_uuid_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uuid_array_array",
 				"requestBody": {
 					"content": {
@@ -10182,7 +9938,6 @@
 		},
 		"/test_request_required_string_uuid_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uuid_nullable",
 				"requestBody": {
 					"content": {
@@ -10206,7 +9961,6 @@
 		},
 		"/test_request_required_string_uuid_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uuid_nullable_array",
 				"requestBody": {
 					"content": {
@@ -10233,7 +9987,6 @@
 		},
 		"/test_request_required_string_uuid_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_required_string_uuid_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -10263,7 +10016,6 @@
 		},
 		"/test_request_string": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string",
 				"requestBody": {
 					"content": {
@@ -10284,7 +10036,6 @@
 		},
 		"/test_request_string_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_array",
 				"requestBody": {
 					"content": {
@@ -10308,7 +10059,6 @@
 		},
 		"/test_request_string_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_array_array",
 				"requestBody": {
 					"content": {
@@ -10335,7 +10085,6 @@
 		},
 		"/test_request_string_binary": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_binary",
 				"requestBody": {
 					"content": {
@@ -10357,7 +10106,6 @@
 		},
 		"/test_request_string_binary_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_binary_array",
 				"requestBody": {
 					"content": {
@@ -10382,7 +10130,6 @@
 		},
 		"/test_request_string_binary_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_binary_array_array",
 				"requestBody": {
 					"content": {
@@ -10410,7 +10157,6 @@
 		},
 		"/test_request_string_binary_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_binary_nullable",
 				"requestBody": {
 					"content": {
@@ -10433,7 +10179,6 @@
 		},
 		"/test_request_string_binary_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_binary_nullable_array",
 				"requestBody": {
 					"content": {
@@ -10459,7 +10204,6 @@
 		},
 		"/test_request_string_binary_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_binary_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -10488,7 +10232,6 @@
 		},
 		"/test_request_string_byte": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_byte",
 				"requestBody": {
 					"content": {
@@ -10510,7 +10253,6 @@
 		},
 		"/test_request_string_byte_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_byte_array",
 				"requestBody": {
 					"content": {
@@ -10535,7 +10277,6 @@
 		},
 		"/test_request_string_byte_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_byte_array_array",
 				"requestBody": {
 					"content": {
@@ -10563,7 +10304,6 @@
 		},
 		"/test_request_string_byte_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_byte_nullable",
 				"requestBody": {
 					"content": {
@@ -10586,7 +10326,6 @@
 		},
 		"/test_request_string_byte_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_byte_nullable_array",
 				"requestBody": {
 					"content": {
@@ -10612,7 +10351,6 @@
 		},
 		"/test_request_string_byte_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_byte_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -10641,7 +10379,6 @@
 		},
 		"/test_request_string_date": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date",
 				"requestBody": {
 					"content": {
@@ -10663,7 +10400,6 @@
 		},
 		"/test_request_string_date-time": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date-time",
 				"requestBody": {
 					"content": {
@@ -10685,7 +10421,6 @@
 		},
 		"/test_request_string_date-time_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date-time_array",
 				"requestBody": {
 					"content": {
@@ -10710,7 +10445,6 @@
 		},
 		"/test_request_string_date-time_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date-time_array_array",
 				"requestBody": {
 					"content": {
@@ -10738,7 +10472,6 @@
 		},
 		"/test_request_string_date-time_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date-time_nullable",
 				"requestBody": {
 					"content": {
@@ -10761,7 +10494,6 @@
 		},
 		"/test_request_string_date-time_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date-time_nullable_array",
 				"requestBody": {
 					"content": {
@@ -10787,7 +10519,6 @@
 		},
 		"/test_request_string_date-time_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date-time_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -10816,7 +10547,6 @@
 		},
 		"/test_request_string_date_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date_array",
 				"requestBody": {
 					"content": {
@@ -10841,7 +10571,6 @@
 		},
 		"/test_request_string_date_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date_array_array",
 				"requestBody": {
 					"content": {
@@ -10869,7 +10598,6 @@
 		},
 		"/test_request_string_date_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date_nullable",
 				"requestBody": {
 					"content": {
@@ -10892,7 +10620,6 @@
 		},
 		"/test_request_string_date_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date_nullable_array",
 				"requestBody": {
 					"content": {
@@ -10918,7 +10645,6 @@
 		},
 		"/test_request_string_date_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_date_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -10947,7 +10673,6 @@
 		},
 		"/test_request_string_duration": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_duration",
 				"requestBody": {
 					"content": {
@@ -10969,7 +10694,6 @@
 		},
 		"/test_request_string_duration_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_duration_array",
 				"requestBody": {
 					"content": {
@@ -10994,7 +10718,6 @@
 		},
 		"/test_request_string_duration_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_duration_array_array",
 				"requestBody": {
 					"content": {
@@ -11022,7 +10745,6 @@
 		},
 		"/test_request_string_duration_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_duration_nullable",
 				"requestBody": {
 					"content": {
@@ -11045,7 +10767,6 @@
 		},
 		"/test_request_string_duration_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_duration_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11071,7 +10792,6 @@
 		},
 		"/test_request_string_duration_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_duration_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -11100,7 +10820,6 @@
 		},
 		"/test_request_string_email": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_email",
 				"requestBody": {
 					"content": {
@@ -11122,7 +10841,6 @@
 		},
 		"/test_request_string_email_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_email_array",
 				"requestBody": {
 					"content": {
@@ -11147,7 +10865,6 @@
 		},
 		"/test_request_string_email_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_email_array_array",
 				"requestBody": {
 					"content": {
@@ -11175,7 +10892,6 @@
 		},
 		"/test_request_string_email_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_email_nullable",
 				"requestBody": {
 					"content": {
@@ -11198,7 +10914,6 @@
 		},
 		"/test_request_string_email_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_email_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11224,7 +10939,6 @@
 		},
 		"/test_request_string_email_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_email_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -11253,7 +10967,6 @@
 		},
 		"/test_request_string_hostname": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_hostname",
 				"requestBody": {
 					"content": {
@@ -11275,7 +10988,6 @@
 		},
 		"/test_request_string_hostname_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_hostname_array",
 				"requestBody": {
 					"content": {
@@ -11300,7 +11012,6 @@
 		},
 		"/test_request_string_hostname_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_hostname_array_array",
 				"requestBody": {
 					"content": {
@@ -11328,7 +11039,6 @@
 		},
 		"/test_request_string_hostname_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_hostname_nullable",
 				"requestBody": {
 					"content": {
@@ -11351,7 +11061,6 @@
 		},
 		"/test_request_string_hostname_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_hostname_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11377,7 +11086,6 @@
 		},
 		"/test_request_string_hostname_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_hostname_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -11406,7 +11114,6 @@
 		},
 		"/test_request_string_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int32",
 				"requestBody": {
 					"content": {
@@ -11428,7 +11135,6 @@
 		},
 		"/test_request_string_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int32_array",
 				"requestBody": {
 					"content": {
@@ -11453,7 +11159,6 @@
 		},
 		"/test_request_string_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int32_array_array",
 				"requestBody": {
 					"content": {
@@ -11481,7 +11186,6 @@
 		},
 		"/test_request_string_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int32_nullable",
 				"requestBody": {
 					"content": {
@@ -11504,7 +11208,6 @@
 		},
 		"/test_request_string_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int32_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11530,7 +11233,6 @@
 		},
 		"/test_request_string_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int32_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -11559,7 +11261,6 @@
 		},
 		"/test_request_string_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int64",
 				"requestBody": {
 					"content": {
@@ -11581,7 +11282,6 @@
 		},
 		"/test_request_string_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int64_array",
 				"requestBody": {
 					"content": {
@@ -11606,7 +11306,6 @@
 		},
 		"/test_request_string_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int64_array_array",
 				"requestBody": {
 					"content": {
@@ -11634,7 +11333,6 @@
 		},
 		"/test_request_string_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int64_nullable",
 				"requestBody": {
 					"content": {
@@ -11657,7 +11355,6 @@
 		},
 		"/test_request_string_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int64_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11683,7 +11380,6 @@
 		},
 		"/test_request_string_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_int64_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -11712,7 +11408,6 @@
 		},
 		"/test_request_string_ip": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ip",
 				"requestBody": {
 					"content": {
@@ -11734,7 +11429,6 @@
 		},
 		"/test_request_string_ip_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ip_array",
 				"requestBody": {
 					"content": {
@@ -11759,7 +11453,6 @@
 		},
 		"/test_request_string_ip_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ip_array_array",
 				"requestBody": {
 					"content": {
@@ -11787,7 +11480,6 @@
 		},
 		"/test_request_string_ip_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ip_nullable",
 				"requestBody": {
 					"content": {
@@ -11810,7 +11502,6 @@
 		},
 		"/test_request_string_ip_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ip_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11836,7 +11527,6 @@
 		},
 		"/test_request_string_ip_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ip_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -11865,7 +11555,6 @@
 		},
 		"/test_request_string_ipv4": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv4",
 				"requestBody": {
 					"content": {
@@ -11887,7 +11576,6 @@
 		},
 		"/test_request_string_ipv4_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv4_array",
 				"requestBody": {
 					"content": {
@@ -11912,7 +11600,6 @@
 		},
 		"/test_request_string_ipv4_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv4_array_array",
 				"requestBody": {
 					"content": {
@@ -11940,7 +11627,6 @@
 		},
 		"/test_request_string_ipv4_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv4_nullable",
 				"requestBody": {
 					"content": {
@@ -11963,7 +11649,6 @@
 		},
 		"/test_request_string_ipv4_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv4_nullable_array",
 				"requestBody": {
 					"content": {
@@ -11989,7 +11674,6 @@
 		},
 		"/test_request_string_ipv4_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv4_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12018,7 +11702,6 @@
 		},
 		"/test_request_string_ipv6": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv6",
 				"requestBody": {
 					"content": {
@@ -12040,7 +11723,6 @@
 		},
 		"/test_request_string_ipv6_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv6_array",
 				"requestBody": {
 					"content": {
@@ -12065,7 +11747,6 @@
 		},
 		"/test_request_string_ipv6_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv6_array_array",
 				"requestBody": {
 					"content": {
@@ -12093,7 +11774,6 @@
 		},
 		"/test_request_string_ipv6_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv6_nullable",
 				"requestBody": {
 					"content": {
@@ -12116,7 +11796,6 @@
 		},
 		"/test_request_string_ipv6_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv6_nullable_array",
 				"requestBody": {
 					"content": {
@@ -12142,7 +11821,6 @@
 		},
 		"/test_request_string_ipv6_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_ipv6_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12171,7 +11849,6 @@
 		},
 		"/test_request_string_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_nullable",
 				"requestBody": {
 					"content": {
@@ -12193,7 +11870,6 @@
 		},
 		"/test_request_string_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_nullable_array",
 				"requestBody": {
 					"content": {
@@ -12218,7 +11894,6 @@
 		},
 		"/test_request_string_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12246,7 +11921,6 @@
 		},
 		"/test_request_string_password": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_password",
 				"requestBody": {
 					"content": {
@@ -12268,7 +11942,6 @@
 		},
 		"/test_request_string_password_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_password_array",
 				"requestBody": {
 					"content": {
@@ -12293,7 +11966,6 @@
 		},
 		"/test_request_string_password_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_password_array_array",
 				"requestBody": {
 					"content": {
@@ -12321,7 +11993,6 @@
 		},
 		"/test_request_string_password_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_password_nullable",
 				"requestBody": {
 					"content": {
@@ -12344,7 +12015,6 @@
 		},
 		"/test_request_string_password_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_password_nullable_array",
 				"requestBody": {
 					"content": {
@@ -12370,7 +12040,6 @@
 		},
 		"/test_request_string_password_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_password_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12399,7 +12068,6 @@
 		},
 		"/test_request_string_time": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_time",
 				"requestBody": {
 					"content": {
@@ -12421,7 +12089,6 @@
 		},
 		"/test_request_string_time_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_time_array",
 				"requestBody": {
 					"content": {
@@ -12446,7 +12113,6 @@
 		},
 		"/test_request_string_time_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_time_array_array",
 				"requestBody": {
 					"content": {
@@ -12474,7 +12140,6 @@
 		},
 		"/test_request_string_time_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_time_nullable",
 				"requestBody": {
 					"content": {
@@ -12497,7 +12162,6 @@
 		},
 		"/test_request_string_time_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_time_nullable_array",
 				"requestBody": {
 					"content": {
@@ -12523,7 +12187,6 @@
 		},
 		"/test_request_string_time_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_time_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12552,7 +12215,6 @@
 		},
 		"/test_request_string_unix": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix",
 				"requestBody": {
 					"content": {
@@ -12574,7 +12236,6 @@
 		},
 		"/test_request_string_unix-micro": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-micro",
 				"requestBody": {
 					"content": {
@@ -12596,7 +12257,6 @@
 		},
 		"/test_request_string_unix-micro_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-micro_array",
 				"requestBody": {
 					"content": {
@@ -12621,7 +12281,6 @@
 		},
 		"/test_request_string_unix-micro_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-micro_array_array",
 				"requestBody": {
 					"content": {
@@ -12649,7 +12308,6 @@
 		},
 		"/test_request_string_unix-micro_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-micro_nullable",
 				"requestBody": {
 					"content": {
@@ -12672,7 +12330,6 @@
 		},
 		"/test_request_string_unix-micro_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-micro_nullable_array",
 				"requestBody": {
 					"content": {
@@ -12698,7 +12355,6 @@
 		},
 		"/test_request_string_unix-micro_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-micro_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12727,7 +12383,6 @@
 		},
 		"/test_request_string_unix-milli": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-milli",
 				"requestBody": {
 					"content": {
@@ -12749,7 +12404,6 @@
 		},
 		"/test_request_string_unix-milli_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-milli_array",
 				"requestBody": {
 					"content": {
@@ -12774,7 +12428,6 @@
 		},
 		"/test_request_string_unix-milli_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-milli_array_array",
 				"requestBody": {
 					"content": {
@@ -12802,7 +12455,6 @@
 		},
 		"/test_request_string_unix-milli_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-milli_nullable",
 				"requestBody": {
 					"content": {
@@ -12825,7 +12477,6 @@
 		},
 		"/test_request_string_unix-milli_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-milli_nullable_array",
 				"requestBody": {
 					"content": {
@@ -12851,7 +12502,6 @@
 		},
 		"/test_request_string_unix-milli_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-milli_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -12880,7 +12530,6 @@
 		},
 		"/test_request_string_unix-nano": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-nano",
 				"requestBody": {
 					"content": {
@@ -12902,7 +12551,6 @@
 		},
 		"/test_request_string_unix-nano_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-nano_array",
 				"requestBody": {
 					"content": {
@@ -12927,7 +12575,6 @@
 		},
 		"/test_request_string_unix-nano_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-nano_array_array",
 				"requestBody": {
 					"content": {
@@ -12955,7 +12602,6 @@
 		},
 		"/test_request_string_unix-nano_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-nano_nullable",
 				"requestBody": {
 					"content": {
@@ -12978,7 +12624,6 @@
 		},
 		"/test_request_string_unix-nano_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-nano_nullable_array",
 				"requestBody": {
 					"content": {
@@ -13004,7 +12649,6 @@
 		},
 		"/test_request_string_unix-nano_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-nano_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -13033,7 +12677,6 @@
 		},
 		"/test_request_string_unix-seconds": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-seconds",
 				"requestBody": {
 					"content": {
@@ -13055,7 +12698,6 @@
 		},
 		"/test_request_string_unix-seconds_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-seconds_array",
 				"requestBody": {
 					"content": {
@@ -13080,7 +12722,6 @@
 		},
 		"/test_request_string_unix-seconds_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-seconds_array_array",
 				"requestBody": {
 					"content": {
@@ -13108,7 +12749,6 @@
 		},
 		"/test_request_string_unix-seconds_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-seconds_nullable",
 				"requestBody": {
 					"content": {
@@ -13131,7 +12771,6 @@
 		},
 		"/test_request_string_unix-seconds_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-seconds_nullable_array",
 				"requestBody": {
 					"content": {
@@ -13157,7 +12796,6 @@
 		},
 		"/test_request_string_unix-seconds_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix-seconds_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -13186,7 +12824,6 @@
 		},
 		"/test_request_string_unix_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix_array",
 				"requestBody": {
 					"content": {
@@ -13211,7 +12848,6 @@
 		},
 		"/test_request_string_unix_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix_array_array",
 				"requestBody": {
 					"content": {
@@ -13239,7 +12875,6 @@
 		},
 		"/test_request_string_unix_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix_nullable",
 				"requestBody": {
 					"content": {
@@ -13262,7 +12897,6 @@
 		},
 		"/test_request_string_unix_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix_nullable_array",
 				"requestBody": {
 					"content": {
@@ -13288,7 +12922,6 @@
 		},
 		"/test_request_string_unix_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_unix_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -13317,7 +12950,6 @@
 		},
 		"/test_request_string_uri": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uri",
 				"requestBody": {
 					"content": {
@@ -13339,7 +12971,6 @@
 		},
 		"/test_request_string_uri_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uri_array",
 				"requestBody": {
 					"content": {
@@ -13364,7 +12995,6 @@
 		},
 		"/test_request_string_uri_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uri_array_array",
 				"requestBody": {
 					"content": {
@@ -13392,7 +13022,6 @@
 		},
 		"/test_request_string_uri_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uri_nullable",
 				"requestBody": {
 					"content": {
@@ -13415,7 +13044,6 @@
 		},
 		"/test_request_string_uri_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uri_nullable_array",
 				"requestBody": {
 					"content": {
@@ -13441,7 +13069,6 @@
 		},
 		"/test_request_string_uri_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uri_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -13470,7 +13097,6 @@
 		},
 		"/test_request_string_uuid": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uuid",
 				"requestBody": {
 					"content": {
@@ -13492,7 +13118,6 @@
 		},
 		"/test_request_string_uuid_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uuid_array",
 				"requestBody": {
 					"content": {
@@ -13517,7 +13142,6 @@
 		},
 		"/test_request_string_uuid_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uuid_array_array",
 				"requestBody": {
 					"content": {
@@ -13545,7 +13169,6 @@
 		},
 		"/test_request_string_uuid_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uuid_nullable",
 				"requestBody": {
 					"content": {
@@ -13568,7 +13191,6 @@
 		},
 		"/test_request_string_uuid_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uuid_nullable_array",
 				"requestBody": {
 					"content": {
@@ -13594,7 +13216,6 @@
 		},
 		"/test_request_string_uuid_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_request_string_uuid_nullable_array_array",
 				"requestBody": {
 					"content": {
@@ -13623,7 +13244,6 @@
 		},
 		"/test_response_Any": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_Any",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -13631,7 +13251,9 @@
 				"responses": {
 					"200": {
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {}
+							}
 						},
 						"description": "Response"
 					}
@@ -13640,7 +13262,6 @@
 		},
 		"/test_response_EmptyStruct": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_EmptyStruct",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -13661,7 +13282,6 @@
 		},
 		"/test_response_FormatTest": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_FormatTest",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -13674,6 +13294,7 @@
 									"properties": {
 										"optional_any": {},
 										"optional_array_any": {
+											"items": {},
 											"type": "array"
 										},
 										"optional_array_boolean": {
@@ -13900,6 +13521,7 @@
 										},
 										"optional_double_array_any": {
 											"items": {
+												"items": {},
 												"type": "array"
 											},
 											"type": "array"
@@ -14341,6 +13963,7 @@
 										},
 										"required_any": {},
 										"required_array_any": {
+											"items": {},
 											"type": "array"
 										},
 										"required_array_boolean": {
@@ -14567,6 +14190,7 @@
 										},
 										"required_double_array_any": {
 											"items": {
+												"items": {},
 												"type": "array"
 											},
 											"type": "array"
@@ -15119,7 +14743,6 @@
 		},
 		"/test_response_boolean": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_boolean",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15140,7 +14763,6 @@
 		},
 		"/test_response_boolean_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_boolean_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15164,7 +14786,6 @@
 		},
 		"/test_response_boolean_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_boolean_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15191,7 +14812,6 @@
 		},
 		"/test_response_boolean_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_boolean_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15213,7 +14833,6 @@
 		},
 		"/test_response_boolean_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_boolean_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15238,7 +14857,6 @@
 		},
 		"/test_response_boolean_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_boolean_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15266,7 +14884,6 @@
 		},
 		"/test_response_integer": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15287,7 +14904,6 @@
 		},
 		"/test_response_integer_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15311,7 +14927,6 @@
 		},
 		"/test_response_integer_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15338,7 +14953,6 @@
 		},
 		"/test_response_integer_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int32",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15360,7 +14974,6 @@
 		},
 		"/test_response_integer_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int32_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15385,7 +14998,6 @@
 		},
 		"/test_response_integer_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int32_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15413,7 +15025,6 @@
 		},
 		"/test_response_integer_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int32_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15436,7 +15047,6 @@
 		},
 		"/test_response_integer_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int32_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15462,7 +15072,6 @@
 		},
 		"/test_response_integer_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int32_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15491,7 +15100,6 @@
 		},
 		"/test_response_integer_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int64",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15513,7 +15121,6 @@
 		},
 		"/test_response_integer_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int64_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15538,7 +15145,6 @@
 		},
 		"/test_response_integer_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int64_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15566,7 +15172,6 @@
 		},
 		"/test_response_integer_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int64_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15589,7 +15194,6 @@
 		},
 		"/test_response_integer_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int64_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15615,7 +15219,6 @@
 		},
 		"/test_response_integer_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_int64_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15644,7 +15247,6 @@
 		},
 		"/test_response_integer_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15666,7 +15268,6 @@
 		},
 		"/test_response_integer_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15691,7 +15292,6 @@
 		},
 		"/test_response_integer_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_integer_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15719,7 +15319,6 @@
 		},
 		"/test_response_null": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_null",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15740,7 +15339,6 @@
 		},
 		"/test_response_null_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_null_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15764,7 +15362,6 @@
 		},
 		"/test_response_null_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_null_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15791,7 +15388,6 @@
 		},
 		"/test_response_null_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_null_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15813,7 +15409,6 @@
 		},
 		"/test_response_null_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_null_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15838,7 +15433,6 @@
 		},
 		"/test_response_null_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_null_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15866,7 +15460,6 @@
 		},
 		"/test_response_number": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15887,7 +15480,6 @@
 		},
 		"/test_response_number_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15911,7 +15503,6 @@
 		},
 		"/test_response_number_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15938,7 +15529,6 @@
 		},
 		"/test_response_number_double": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_double",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15960,7 +15550,6 @@
 		},
 		"/test_response_number_double_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_double_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -15985,7 +15574,6 @@
 		},
 		"/test_response_number_double_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_double_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16013,7 +15601,6 @@
 		},
 		"/test_response_number_double_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_double_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16036,7 +15623,6 @@
 		},
 		"/test_response_number_double_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_double_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16062,7 +15648,6 @@
 		},
 		"/test_response_number_double_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_double_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16091,7 +15676,6 @@
 		},
 		"/test_response_number_float": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_float",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16113,7 +15697,6 @@
 		},
 		"/test_response_number_float_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_float_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16138,7 +15721,6 @@
 		},
 		"/test_response_number_float_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_float_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16166,7 +15748,6 @@
 		},
 		"/test_response_number_float_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_float_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16189,7 +15770,6 @@
 		},
 		"/test_response_number_float_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_float_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16215,7 +15795,6 @@
 		},
 		"/test_response_number_float_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_float_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16244,7 +15823,6 @@
 		},
 		"/test_response_number_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int32",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16266,7 +15844,6 @@
 		},
 		"/test_response_number_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int32_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16291,7 +15868,6 @@
 		},
 		"/test_response_number_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int32_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16319,7 +15895,6 @@
 		},
 		"/test_response_number_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int32_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16342,7 +15917,6 @@
 		},
 		"/test_response_number_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int32_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16368,7 +15942,6 @@
 		},
 		"/test_response_number_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int32_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16397,7 +15970,6 @@
 		},
 		"/test_response_number_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int64",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16419,7 +15991,6 @@
 		},
 		"/test_response_number_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int64_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16444,7 +16015,6 @@
 		},
 		"/test_response_number_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int64_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16472,7 +16042,6 @@
 		},
 		"/test_response_number_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int64_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16495,7 +16064,6 @@
 		},
 		"/test_response_number_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int64_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16521,7 +16089,6 @@
 		},
 		"/test_response_number_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_int64_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16550,7 +16117,6 @@
 		},
 		"/test_response_number_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16572,7 +16138,6 @@
 		},
 		"/test_response_number_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16597,7 +16162,6 @@
 		},
 		"/test_response_number_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_number_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16625,7 +16189,6 @@
 		},
 		"/test_response_string": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16646,7 +16209,6 @@
 		},
 		"/test_response_string_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16670,7 +16232,6 @@
 		},
 		"/test_response_string_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16697,7 +16258,6 @@
 		},
 		"/test_response_string_binary": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_binary",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16719,7 +16279,6 @@
 		},
 		"/test_response_string_binary_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_binary_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16744,7 +16303,6 @@
 		},
 		"/test_response_string_binary_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_binary_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16772,7 +16330,6 @@
 		},
 		"/test_response_string_binary_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_binary_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16795,7 +16352,6 @@
 		},
 		"/test_response_string_binary_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_binary_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16821,7 +16377,6 @@
 		},
 		"/test_response_string_binary_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_binary_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16850,7 +16405,6 @@
 		},
 		"/test_response_string_byte": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_byte",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16872,7 +16426,6 @@
 		},
 		"/test_response_string_byte_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_byte_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16897,7 +16450,6 @@
 		},
 		"/test_response_string_byte_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_byte_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16925,7 +16477,6 @@
 		},
 		"/test_response_string_byte_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_byte_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16948,7 +16499,6 @@
 		},
 		"/test_response_string_byte_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_byte_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -16974,7 +16524,6 @@
 		},
 		"/test_response_string_byte_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_byte_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17003,7 +16552,6 @@
 		},
 		"/test_response_string_date": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17025,7 +16573,6 @@
 		},
 		"/test_response_string_date-time": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date-time",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17047,7 +16594,6 @@
 		},
 		"/test_response_string_date-time_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date-time_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17072,7 +16618,6 @@
 		},
 		"/test_response_string_date-time_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date-time_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17100,7 +16645,6 @@
 		},
 		"/test_response_string_date-time_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date-time_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17123,7 +16667,6 @@
 		},
 		"/test_response_string_date-time_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date-time_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17149,7 +16692,6 @@
 		},
 		"/test_response_string_date-time_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date-time_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17178,7 +16720,6 @@
 		},
 		"/test_response_string_date_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17203,7 +16744,6 @@
 		},
 		"/test_response_string_date_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17231,7 +16771,6 @@
 		},
 		"/test_response_string_date_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17254,7 +16793,6 @@
 		},
 		"/test_response_string_date_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17280,7 +16818,6 @@
 		},
 		"/test_response_string_date_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_date_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17309,7 +16846,6 @@
 		},
 		"/test_response_string_duration": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_duration",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17331,7 +16867,6 @@
 		},
 		"/test_response_string_duration_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_duration_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17356,7 +16891,6 @@
 		},
 		"/test_response_string_duration_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_duration_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17384,7 +16918,6 @@
 		},
 		"/test_response_string_duration_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_duration_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17407,7 +16940,6 @@
 		},
 		"/test_response_string_duration_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_duration_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17433,7 +16965,6 @@
 		},
 		"/test_response_string_duration_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_duration_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17462,7 +16993,6 @@
 		},
 		"/test_response_string_email": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_email",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17484,7 +17014,6 @@
 		},
 		"/test_response_string_email_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_email_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17509,7 +17038,6 @@
 		},
 		"/test_response_string_email_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_email_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17537,7 +17065,6 @@
 		},
 		"/test_response_string_email_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_email_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17560,7 +17087,6 @@
 		},
 		"/test_response_string_email_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_email_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17586,7 +17112,6 @@
 		},
 		"/test_response_string_email_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_email_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17615,7 +17140,6 @@
 		},
 		"/test_response_string_hostname": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_hostname",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17637,7 +17161,6 @@
 		},
 		"/test_response_string_hostname_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_hostname_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17662,7 +17185,6 @@
 		},
 		"/test_response_string_hostname_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_hostname_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17690,7 +17212,6 @@
 		},
 		"/test_response_string_hostname_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_hostname_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17713,7 +17234,6 @@
 		},
 		"/test_response_string_hostname_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_hostname_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17739,7 +17259,6 @@
 		},
 		"/test_response_string_hostname_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_hostname_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17768,7 +17287,6 @@
 		},
 		"/test_response_string_int32": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int32",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17790,7 +17308,6 @@
 		},
 		"/test_response_string_int32_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int32_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17815,7 +17332,6 @@
 		},
 		"/test_response_string_int32_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int32_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17843,7 +17359,6 @@
 		},
 		"/test_response_string_int32_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int32_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17866,7 +17381,6 @@
 		},
 		"/test_response_string_int32_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int32_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17892,7 +17406,6 @@
 		},
 		"/test_response_string_int32_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int32_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17921,7 +17434,6 @@
 		},
 		"/test_response_string_int64": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int64",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17943,7 +17455,6 @@
 		},
 		"/test_response_string_int64_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int64_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17968,7 +17479,6 @@
 		},
 		"/test_response_string_int64_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int64_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -17996,7 +17506,6 @@
 		},
 		"/test_response_string_int64_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int64_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18019,7 +17528,6 @@
 		},
 		"/test_response_string_int64_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int64_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18045,7 +17553,6 @@
 		},
 		"/test_response_string_int64_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_int64_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18074,7 +17581,6 @@
 		},
 		"/test_response_string_ip": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ip",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18096,7 +17602,6 @@
 		},
 		"/test_response_string_ip_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ip_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18121,7 +17626,6 @@
 		},
 		"/test_response_string_ip_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ip_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18149,7 +17653,6 @@
 		},
 		"/test_response_string_ip_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ip_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18172,7 +17675,6 @@
 		},
 		"/test_response_string_ip_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ip_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18198,7 +17700,6 @@
 		},
 		"/test_response_string_ip_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ip_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18227,7 +17728,6 @@
 		},
 		"/test_response_string_ipv4": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv4",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18249,7 +17749,6 @@
 		},
 		"/test_response_string_ipv4_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv4_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18274,7 +17773,6 @@
 		},
 		"/test_response_string_ipv4_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv4_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18302,7 +17800,6 @@
 		},
 		"/test_response_string_ipv4_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv4_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18325,7 +17822,6 @@
 		},
 		"/test_response_string_ipv4_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv4_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18351,7 +17847,6 @@
 		},
 		"/test_response_string_ipv4_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv4_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18380,7 +17875,6 @@
 		},
 		"/test_response_string_ipv6": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv6",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18402,7 +17896,6 @@
 		},
 		"/test_response_string_ipv6_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv6_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18427,7 +17920,6 @@
 		},
 		"/test_response_string_ipv6_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv6_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18455,7 +17947,6 @@
 		},
 		"/test_response_string_ipv6_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv6_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18478,7 +17969,6 @@
 		},
 		"/test_response_string_ipv6_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv6_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18504,7 +17994,6 @@
 		},
 		"/test_response_string_ipv6_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_ipv6_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18533,7 +18022,6 @@
 		},
 		"/test_response_string_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18555,7 +18043,6 @@
 		},
 		"/test_response_string_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18580,7 +18067,6 @@
 		},
 		"/test_response_string_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18608,7 +18094,6 @@
 		},
 		"/test_response_string_password": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_password",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18630,7 +18115,6 @@
 		},
 		"/test_response_string_password_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_password_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18655,7 +18139,6 @@
 		},
 		"/test_response_string_password_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_password_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18683,7 +18166,6 @@
 		},
 		"/test_response_string_password_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_password_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18706,7 +18188,6 @@
 		},
 		"/test_response_string_password_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_password_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18732,7 +18213,6 @@
 		},
 		"/test_response_string_password_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_password_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18761,7 +18241,6 @@
 		},
 		"/test_response_string_time": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_time",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18783,7 +18262,6 @@
 		},
 		"/test_response_string_time_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_time_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18808,7 +18286,6 @@
 		},
 		"/test_response_string_time_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_time_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18836,7 +18313,6 @@
 		},
 		"/test_response_string_time_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_time_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18859,7 +18335,6 @@
 		},
 		"/test_response_string_time_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_time_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18885,7 +18360,6 @@
 		},
 		"/test_response_string_time_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_time_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18914,7 +18388,6 @@
 		},
 		"/test_response_string_unix": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18936,7 +18409,6 @@
 		},
 		"/test_response_string_unix-micro": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-micro",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18958,7 +18430,6 @@
 		},
 		"/test_response_string_unix-micro_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-micro_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -18983,7 +18454,6 @@
 		},
 		"/test_response_string_unix-micro_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-micro_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19011,7 +18481,6 @@
 		},
 		"/test_response_string_unix-micro_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-micro_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19034,7 +18503,6 @@
 		},
 		"/test_response_string_unix-micro_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-micro_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19060,7 +18528,6 @@
 		},
 		"/test_response_string_unix-micro_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-micro_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19089,7 +18556,6 @@
 		},
 		"/test_response_string_unix-milli": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-milli",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19111,7 +18577,6 @@
 		},
 		"/test_response_string_unix-milli_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-milli_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19136,7 +18601,6 @@
 		},
 		"/test_response_string_unix-milli_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-milli_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19164,7 +18628,6 @@
 		},
 		"/test_response_string_unix-milli_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-milli_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19187,7 +18650,6 @@
 		},
 		"/test_response_string_unix-milli_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-milli_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19213,7 +18675,6 @@
 		},
 		"/test_response_string_unix-milli_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-milli_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19242,7 +18703,6 @@
 		},
 		"/test_response_string_unix-nano": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-nano",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19264,7 +18724,6 @@
 		},
 		"/test_response_string_unix-nano_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-nano_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19289,7 +18748,6 @@
 		},
 		"/test_response_string_unix-nano_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-nano_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19317,7 +18775,6 @@
 		},
 		"/test_response_string_unix-nano_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-nano_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19340,7 +18797,6 @@
 		},
 		"/test_response_string_unix-nano_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-nano_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19366,7 +18822,6 @@
 		},
 		"/test_response_string_unix-nano_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-nano_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19395,7 +18850,6 @@
 		},
 		"/test_response_string_unix-seconds": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-seconds",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19417,7 +18871,6 @@
 		},
 		"/test_response_string_unix-seconds_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-seconds_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19442,7 +18895,6 @@
 		},
 		"/test_response_string_unix-seconds_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-seconds_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19470,7 +18922,6 @@
 		},
 		"/test_response_string_unix-seconds_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-seconds_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19493,7 +18944,6 @@
 		},
 		"/test_response_string_unix-seconds_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-seconds_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19519,7 +18969,6 @@
 		},
 		"/test_response_string_unix-seconds_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix-seconds_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19548,7 +18997,6 @@
 		},
 		"/test_response_string_unix_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19573,7 +19021,6 @@
 		},
 		"/test_response_string_unix_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19601,7 +19048,6 @@
 		},
 		"/test_response_string_unix_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19624,7 +19070,6 @@
 		},
 		"/test_response_string_unix_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19650,7 +19095,6 @@
 		},
 		"/test_response_string_unix_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_unix_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19679,7 +19123,6 @@
 		},
 		"/test_response_string_uri": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uri",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19701,7 +19144,6 @@
 		},
 		"/test_response_string_uri_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uri_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19726,7 +19168,6 @@
 		},
 		"/test_response_string_uri_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uri_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19754,7 +19195,6 @@
 		},
 		"/test_response_string_uri_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uri_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19777,7 +19217,6 @@
 		},
 		"/test_response_string_uri_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uri_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19803,7 +19242,6 @@
 		},
 		"/test_response_string_uri_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uri_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19832,7 +19270,6 @@
 		},
 		"/test_response_string_uuid": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uuid",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19854,7 +19291,6 @@
 		},
 		"/test_response_string_uuid_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uuid_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19879,7 +19315,6 @@
 		},
 		"/test_response_string_uuid_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uuid_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19907,7 +19342,6 @@
 		},
 		"/test_response_string_uuid_nullable": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uuid_nullable",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19930,7 +19364,6 @@
 		},
 		"/test_response_string_uuid_nullable_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uuid_nullable_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
@@ -19956,7 +19389,6 @@
 		},
 		"/test_response_string_uuid_nullable_array_array": {
 			"post": {
-				"deprecated": false,
 				"operationId": "test_response_string_uuid_nullable_array_array",
 				"requestBody": {
 					"$ref": "#/components/requestBodies/defaultBody"
