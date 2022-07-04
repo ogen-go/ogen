@@ -22,7 +22,7 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 
 func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*ir.Type, error) {
 	if !t.Is(ir.KindPrimitive) {
-		return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
+		return nil, errors.Wrapf(&ErrNotImplemented{"complex enum type"}, "type %s", t.String())
 	}
 	if f := schema.Format; f != "" && !t.IsNumeric() {
 		return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)

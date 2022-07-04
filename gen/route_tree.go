@@ -42,7 +42,7 @@ func longestPrefix(k1, k2 string) int {
 
 func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 	if !utf8.ValidString(path) {
-		return errors.Errorf("invalid path: path must be valid UTF-8 string")
+		return errors.New("invalid path: path must be valid UTF-8 string")
 	}
 
 	n := t.Root
