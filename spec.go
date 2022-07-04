@@ -250,11 +250,11 @@ type Parameter struct {
 	// If the parameter location is "path", this property is REQUIRED
 	// and its value MUST be true.
 	// Otherwise, the property MAY be included and its default value is false.
-	Required bool `json:"required,omitempty"`
+	Required bool `json:"required,omitzero"`
 
 	// Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
 	// Default value is false.
-	Deprecated bool `json:"deprecated,omitempty"`
+	Deprecated bool `json:"deprecated,omitzero"`
 
 	// For more complex scenarios, the content property can define the media type and schema of the parameter.
 	// A parameter MUST contain either a schema property, or a content property, but not both.
@@ -292,7 +292,7 @@ type RequestBody struct {
 	Content map[string]Media `json:"content,omitempty"`
 
 	// Determines if the request body is required in the request. Defaults to false.
-	Required bool `json:"required,omitempty"`
+	Required bool `json:"required,omitzero"`
 }
 
 // Responses is a container for the expected responses of an operation.
@@ -356,7 +356,7 @@ type Encoding struct {
 	// RFC3986 :/?#[]@!$&'()*+,;= to be included without percent-encoding.
 	// The default value is false. This property SHALL be ignored if the request body media type
 	// is not application/x-www-form-urlencoded.
-	AllowReserved bool `json:"allowReserved,omitempty"`
+	AllowReserved bool `json:"allowReserved,omitzero"`
 }
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.
@@ -413,7 +413,7 @@ type Schema struct {
 	// and therefore may disallow the use of null as a value.
 	// A false value leaves the specified or default type unmodified.
 	// The default value is false.
-	Nullable bool `json:"nullable,omitempty"`
+	Nullable bool `json:"nullable,omitzero"`
 
 	// AllOf takes an array of object definitions that are used
 	// for independent validation but together compose a single object.
@@ -458,7 +458,7 @@ type Schema struct {
 	// equal to the value specified in "maximum".  If "exclusiveMaximum" is
 	// false (or not specified), then a numeric instance MAY be equal to the
 	// value of "maximum".
-	ExclusiveMaximum bool `json:"exclusiveMaximum,omitempty"`
+	ExclusiveMaximum bool `json:"exclusiveMaximum,omitzero"`
 
 	// The value of "minimum" MUST be a number, representing a lower limit
 	// for a numeric instance.
@@ -477,7 +477,7 @@ type Schema struct {
 	// equal to the value specified in "minimum".  If "exclusiveMinimum" is
 	// false (or not specified), then a numeric instance MAY be equal to the
 	// value of "minimum".
-	ExclusiveMinimum bool `json:"exclusiveMinimum,omitempty"`
+	ExclusiveMinimum bool `json:"exclusiveMinimum,omitzero"`
 
 	// The value of this keyword MUST be a non-negative integer.
 	//
@@ -538,7 +538,7 @@ type Schema struct {
 	//
 	// If not present, this keyword may be considered present with boolean
 	// value false.
-	UniqueItems bool `json:"uniqueItems,omitempty"`
+	UniqueItems bool `json:"uniqueItems,omitzero"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
@@ -567,7 +567,7 @@ type Schema struct {
 
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.
-	Deprecated bool `json:"deprecated,omitempty"`
+	Deprecated bool `json:"deprecated,omitzero"`
 
 	// If the instance value is a string, this property defines that the
 	// string SHOULD be interpreted as binary data and decoded using the

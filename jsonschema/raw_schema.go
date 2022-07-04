@@ -52,7 +52,7 @@ type RawSchema struct {
 	PatternProperties    RawPatternProperties     `json:"patternProperties,omitempty"`
 	Required             []string                 `json:"required,omitempty"`
 	Items                *RawSchema               `json:"items,omitempty"`
-	Nullable             bool                     `json:"nullable,omitempty"`
+	Nullable             bool                     `json:"nullable,omitzero"`
 	AllOf                []*RawSchema             `json:"allOf,omitempty"`
 	OneOf                []*RawSchema             `json:"oneOf,omitempty"`
 	AnyOf                []*RawSchema             `json:"anyOf,omitempty"`
@@ -60,20 +60,20 @@ type RawSchema struct {
 	Enum                 Enum                     `json:"enum,omitempty"`
 	MultipleOf           Num                      `json:"multipleOf,omitempty"`
 	Maximum              Num                      `json:"maximum,omitempty"`
-	ExclusiveMaximum     bool                     `json:"exclusiveMaximum,omitempty"`
+	ExclusiveMaximum     bool                     `json:"exclusiveMaximum,omitzero"`
 	Minimum              Num                      `json:"minimum,omitempty"`
-	ExclusiveMinimum     bool                     `json:"exclusiveMinimum,omitempty"`
+	ExclusiveMinimum     bool                     `json:"exclusiveMinimum,omitzero"`
 	MaxLength            *uint64                  `json:"maxLength,omitempty"`
 	MinLength            *uint64                  `json:"minLength,omitempty"`
 	Pattern              string                   `json:"pattern,omitempty"`
 	MaxItems             *uint64                  `json:"maxItems,omitempty"`
 	MinItems             *uint64                  `json:"minItems,omitempty"`
-	UniqueItems          bool                     `json:"uniqueItems,omitempty"`
+	UniqueItems          bool                     `json:"uniqueItems,omitzero"`
 	MaxProperties        *uint64                  `json:"maxProperties,omitempty"`
 	MinProperties        *uint64                  `json:"minProperties,omitempty"`
 	Default              json.RawValue            `json:"default,omitempty"`
 	Example              json.RawValue            `json:"example,omitempty"`
-	Deprecated           bool                     `json:"deprecated,omitempty"`
+	Deprecated           bool                     `json:"deprecated,omitzero"`
 	ContentEncoding      string                   `json:"contentEncoding,omitempty"`
 	ContentMediaType     string                   `json:"contentMediaType,omitempty"`
 	XAnnotations         map[string]json.RawValue `json:",inline"`
