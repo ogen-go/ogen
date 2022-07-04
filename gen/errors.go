@@ -12,6 +12,25 @@ type unimplementedError interface {
 	error
 }
 
+var (
+	_ = []interface {
+		error
+		errors.Wrapper
+		errors.Formatter
+	}{
+		(*ErrParseSpec)(nil),
+		(*ErrBuildRouter)(nil),
+		(*ErrGoFormat)(nil),
+	}
+	_ = []interface {
+		error
+		unimplementedError
+	}{
+		(*ErrNotImplemented)(nil),
+		(*ErrUnsupportedContentTypes)(nil),
+	}
+)
+
 // ErrNotImplemented reports that feature is not implemented.
 type ErrNotImplemented struct {
 	Name string
@@ -79,6 +98,12 @@ func (e *ErrParseSpec) Unwrap() error {
 	return e.err
 }
 
+// FormatError implements errors.Formatter.
+func (e *ErrParseSpec) FormatError(p errors.Printer) (next error) {
+	p.Print("parse spec")
+	return e.err
+}
+
 // Error implements error.
 func (e *ErrParseSpec) Error() string {
 	return fmt.Sprintf("parse spec: %s", e.err)
@@ -94,6 +119,12 @@ func (e *ErrBuildRouter) Unwrap() error {
 	return e.err
 }
 
+// FormatError implements errors.Formatter.
+func (e *ErrBuildRouter) FormatError(p errors.Printer) (next error) {
+	p.Print("build router")
+	return e.err
+}
+
 // Error implements error.
 func (e *ErrBuildRouter) Error() string {
 	return fmt.Sprintf("build router: %s", e.err)
@@ -106,6 +137,12 @@ type ErrGoFormat struct {
 
 // Unwrap implements errors.Wrapper.
 func (e *ErrGoFormat) Unwrap() error {
+	return e.err
+}
+
+// FormatError implements errors.Formatter.
+func (e *ErrGoFormat) FormatError(p errors.Printer) (next error) {
+	p.Print("goimports")
 	return e.err
 }
 
