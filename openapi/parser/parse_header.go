@@ -16,7 +16,7 @@ func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *resolveCtx) 
 	for name, m := range headers {
 		result[name], err = p.parseHeader(name, m, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, name)
+			return nil, errors.Wrapf(err, "header %q", name)
 		}
 	}
 
