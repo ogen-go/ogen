@@ -16,7 +16,7 @@ import (
 
 // Fully supported:
 
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --target ex_test_format --clean --generate-tests ../_testdata/positive/test_format.json
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --target ex_test_format --clean --generate-tests ../_testdata/positive/format_gen.json
 
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --target ex_petstore --clean --generate-tests  ../_testdata/examples/petstore.yml
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --target ex_firecracker --clean --generate-tests  ../_testdata/examples/firecracker.json
