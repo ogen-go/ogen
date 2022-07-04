@@ -1,10 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"os"
 	"sort"
+
+	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -252,9 +253,8 @@ func run() error {
 		_ = f.Close()
 	}()
 
-	e := json.NewEncoder(f)
-	e.SetIndent("", "\t")
-	return e.Encode(spec)
+	opts := json.MarshalOptions{}
+	return opts.MarshalFull(json.EncodeOptions{Indent: "\t"}, f, spec)
 }
 
 func main() {

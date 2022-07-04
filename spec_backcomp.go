@@ -1,7 +1,7 @@
 package ogen
 
 import (
-	"github.com/go-faster/jx"
+	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -55,7 +55,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		Deprecated:           s.Deprecated,
 		ContentEncoding:      s.ContentEncoding,
 		ContentMediaType:     s.ContentMediaType,
-		XAnnotations:         map[string]jx.Raw{},
+		XAnnotations:         map[string]json.RawValue{},
 	}
 }
 

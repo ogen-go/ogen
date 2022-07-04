@@ -9,11 +9,11 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/internal/ogenzap"
-	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 

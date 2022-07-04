@@ -1,10 +1,10 @@
 package ogen
 
 import (
-	"encoding/json"
+	"reflect"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
+	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -41,17 +41,21 @@ type Spec struct {
 	Raw []byte `json:"-"`
 }
 
-// UnmarshalJSON implements json.Unmarshaler.
-func (s *Spec) UnmarshalJSON(bytes []byte) error {
+// UnmarshalNextJSON implements json.UnmarshalerV2.
+func (s *Spec) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	type Alias Spec
 	var a Alias
 
-	if err := json.Unmarshal(bytes, &a); err != nil {
+	value, err := d.ReadValue()
+	if err != nil {
 		return err
 	}
-	a.Raw = append(a.Raw, bytes...)
-	*s = Spec(a)
+	if err := opts.Unmarshal(json.DecodeOptions{}, value, &a); err != nil {
+		return errors.Wrap(err, "spec")
+	}
 
+	a.Raw = append(a.Raw, value...)
+	*s = Spec(a)
 	return nil
 }
 
@@ -83,11 +87,11 @@ func (s *Spec) Init() {
 //
 // https://swagger.io/specification/#example-object
 type Example struct {
-	Ref           string          `json:"$ref,omitempty"` // ref object
-	Summary       string          `json:"summary,omitempty"`
-	Description   string          `json:"description,omitempty"`
-	Value         json.RawMessage `json:"value,omitempty"`
-	ExternalValue string          `json:"externalValue,omitempty"`
+	Ref           string        `json:"$ref,omitempty"` // ref object
+	Summary       string        `json:"summary,omitempty"`
+	Description   string        `json:"description,omitempty"`
+	Value         json.RawValue `json:"value,omitempty"`
+	ExternalValue string        `json:"externalValue,omitempty"`
 }
 
 // Tag object.
@@ -272,7 +276,7 @@ type Parameter struct {
 	// For other types of parameters this property has no effect.
 	Explode *bool `json:"explode,omitempty"`
 
-	Example  json.RawMessage     `json:"example,omitempty"`
+	Example  json.RawValue       `json:"example,omitempty"`
 	Examples map[string]*Example `json:"examples,omitempty"`
 }
 
@@ -319,7 +323,7 @@ type Header = Parameter
 type Media struct {
 	// The schema defining the content of the request, response, or parameter.
 	Schema   *Schema             `json:"schema,omitempty"`
-	Example  json.RawMessage     `json:"example,omitempty"`
+	Example  json.RawValue       `json:"example,omitempty"`
 	Examples map[string]*Example `json:"examples,omitempty"`
 
 	// A map between a property name and its encoding information. The key, being the property name, MUST exist in
@@ -554,12 +558,12 @@ type Schema struct {
 	MinProperties *uint64 `json:"minProperties,omitempty"`
 
 	// Default value.
-	Default json.RawMessage `json:"default,omitempty"`
+	Default json.RawValue `json:"default,omitempty"`
 
 	// A free-form property to include an example of an instance for this schema.
 	// To represent examples that cannot be naturally represented in JSON or YAML,
 	// a string value can be used to contain the example with escaping where necessary.
-	Example json.RawMessage `json:"example,omitempty"`
+	Example json.RawValue `json:"example,omitempty"`
 
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.
@@ -596,44 +600,65 @@ type Property struct {
 // Properties represent JSON Schema properties validator description.
 type Properties []Property
 
-// MarshalJSON implements json.Marshaler.
-func (p Properties) MarshalJSON() ([]byte, error) {
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
-
-	e.ObjStart()
-	for _, prop := range p {
-		e.FieldStart(prop.Name)
-		b, err := json.Marshal(prop.Schema)
-		if err != nil {
-			return nil, errors.Wrap(err, "marshal")
-		}
-		e.Raw(b)
+// MarshalNextJSON implements json.MarshalerV2.
+func (p Properties) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
+	if err := e.WriteToken(json.ObjectStart); err != nil {
+		return err
 	}
-	e.ObjEnd()
-	return e.Bytes(), nil
+	for _, member := range p {
+		if err := opts.MarshalNext(e, member.Name); err != nil {
+			return err
+		}
+		if err := opts.MarshalNext(e, member.Schema); err != nil {
+			return err
+		}
+	}
+	if err := e.WriteToken(json.ObjectEnd); err != nil {
+		return err
+	}
+	return nil
 }
 
-// UnmarshalJSON implements json.Unmarshaler.
-func (p *Properties) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return d.Obj(func(d *jx.Decoder, key string) error {
-		s := new(Schema)
-		b, err := d.Raw()
-		if err != nil {
+// UnmarshalNextJSON implements json.UnmarshalerV2.
+func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) (rerr error) {
+	offset := d.InputOffset()
+	if kind := d.PeekKind(); kind != '{' {
+		return &json.SemanticError{
+			ByteOffset:  offset,
+			JSONPointer: d.StackPointer(),
+			JSONKind:    kind,
+			GoType:      reflect.TypeOf(p),
+			Err:         errors.Errorf("unexpected type %s", kind.String()),
+		}
+	}
+
+	// Read the opening brace.
+	if _, err := d.ReadToken(); err != nil {
+		return err
+	}
+
+	// Keep non-nil value, to distinguish from not set object.
+	properties := Properties{}
+	for d.PeekKind() != '}' {
+		var (
+			name   string
+			schema *Schema
+		)
+		if err := opts.UnmarshalNext(d, &name); err != nil {
 			return err
 		}
-
-		if err := json.Unmarshal(b, s); err != nil {
+		if err := opts.UnmarshalNext(d, &schema); err != nil {
 			return err
 		}
+		properties = append(properties, Property{Name: name, Schema: schema})
+	}
+	// Read the closing brace.
+	if _, err := d.ReadToken(); err != nil {
+		return err
+	}
 
-		*p = append(*p, Property{
-			Name:   key,
-			Schema: s,
-		})
-		return nil
-	})
+	*p = properties
+	return nil
 }
 
 // AdditionalProperties represent JSON Schema additionalProperties validator description.
@@ -642,40 +667,31 @@ type AdditionalProperties struct {
 	Schema Schema
 }
 
-// MarshalJSON implements json.Marshaler.
-func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
+// MarshalNextJSON implements json.MarshalerV2.
+func (p AdditionalProperties) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
 	if p.Bool != nil {
-		return json.Marshal(p.Bool)
+		return opts.MarshalNext(e, p.Bool)
 	}
-	return json.Marshal(p.Schema)
+	return opts.MarshalNext(e, p.Schema)
 }
 
-// UnmarshalJSON implements json.Unmarshaler.
-func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	switch tt := d.Next(); tt {
-	case jx.Object:
-	case jx.Bool:
-		val, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		p.Bool = &val
-		return nil
+// UnmarshalNextJSON implements json.UnmarshalerV2.
+func (p *AdditionalProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
+	offset := d.InputOffset()
+	switch kind := d.PeekKind(); kind {
+	case 't', 'f':
+		return opts.UnmarshalNext(d, &p.Bool)
+	case '{':
+		return opts.UnmarshalNext(d, &p.Schema)
 	default:
-		return errors.Errorf("unexpected type %s", tt.String())
+		return &json.SemanticError{
+			ByteOffset:  offset,
+			JSONPointer: d.StackPointer(),
+			JSONKind:    kind,
+			GoType:      reflect.TypeOf(p),
+			Err:         errors.Errorf("unexpected type %s", kind.String()),
+		}
 	}
-
-	s := Schema{}
-	b, err := d.Raw()
-	if err != nil {
-		return err
-	}
-	if err := json.Unmarshal(b, &s); err != nil {
-		return err
-	}
-	p.Schema = s
-	return nil
 }
 
 // PatternProperty is item of PatternProperties.
@@ -687,40 +703,61 @@ type PatternProperty struct {
 // PatternProperties represent JSON Schema patternProperties validator description.
 type PatternProperties []PatternProperty
 
-// MarshalJSON implements json.Marshaler.
-func (r PatternProperties) MarshalJSON() ([]byte, error) {
-	var e jx.Encoder
-	e.ObjStart()
-	for _, prop := range r {
-		e.FieldStart(prop.Pattern)
-		b, err := json.Marshal(prop.Schema)
-		if err != nil {
-			return nil, errors.Wrap(err, "marshal")
-		}
-		e.Raw(b)
+// MarshalNextJSON implements json.MarshalerV2.
+func (r PatternProperties) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
+	if err := e.WriteToken(json.ObjectStart); err != nil {
+		return err
 	}
-	e.ObjEnd()
-	return e.Bytes(), nil
+	for _, member := range r {
+		if err := opts.MarshalNext(e, member.Pattern); err != nil {
+			return err
+		}
+		if err := opts.MarshalNext(e, member.Schema); err != nil {
+			return err
+		}
+	}
+	if err := e.WriteToken(json.ObjectEnd); err != nil {
+		return err
+	}
+	return nil
 }
 
-// UnmarshalJSON implements json.Unmarshaler.
-func (r *PatternProperties) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return d.Obj(func(d *jx.Decoder, key string) error {
-		s := new(Schema)
-		b, err := d.Raw()
-		if err != nil {
+// UnmarshalNextJSON implements json.UnmarshalerV2.
+func (r *PatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
+	offset := d.InputOffset()
+	if kind := d.PeekKind(); kind != '{' {
+		return &json.SemanticError{
+			ByteOffset:  offset,
+			JSONPointer: d.StackPointer(),
+			JSONKind:    kind,
+			GoType:      reflect.TypeOf(r),
+			Err:         errors.Errorf("unexpected type %s", kind.String()),
+		}
+	}
+	// Read the opening brace.
+	if _, err := d.ReadToken(); err != nil {
+		return err
+	}
+
+	// Keep non-nil value, to distinguish from not set object.
+	patternProperties := PatternProperties{}
+	for d.PeekKind() != '}' {
+		var (
+			pattern string
+			schema  *Schema
+		)
+		if err := opts.UnmarshalNext(d, &pattern); err != nil {
 			return err
 		}
-
-		if err := json.Unmarshal(b, s); err != nil {
+		if err := opts.UnmarshalNext(d, &schema); err != nil {
 			return err
 		}
+		patternProperties = append(patternProperties, PatternProperty{Pattern: pattern, Schema: schema})
+	}
+	// Read the closing brace.
+	if _, err := d.ReadToken(); err != nil {
+		return err
+	}
 
-		*r = append(*r, PatternProperty{
-			Pattern: key,
-			Schema:  s,
-		})
-		return nil
-	})
+	return nil
 }

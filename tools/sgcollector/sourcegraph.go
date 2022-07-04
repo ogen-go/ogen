@@ -3,8 +3,9 @@ package main
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"net/http"
+
+	"github.com/go-json-experiment/json"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap/zapcore"
@@ -170,7 +171,7 @@ func querySourcegraph(ctx context.Context, q GraphQLQuery) (SearchResult, error)
 	}
 
 	var r Response
-	if err := json.NewDecoder(resp.Body).Decode(&r); err != nil {
+	if err := json.UnmarshalFull(resp.Body, &r); err != nil {
 		return SearchResult{}, errors.Wrap(err, "parse")
 	}
 

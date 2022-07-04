@@ -8,11 +8,11 @@ import (
 	"testing"
 
 	"github.com/go-faster/errors"
+	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap/zaptest"
 
 	"github.com/ogen-go/ogen/gen/genfs"
-	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 

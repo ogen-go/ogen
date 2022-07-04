@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
 )
 
-func TestEnum_UnmarshalJSON(t *testing.T) {
+func TestEnum_UnmarshalNextJSON(t *testing.T) {
 	tests := []struct {
 		data    string
 		wantErr bool
@@ -22,11 +23,43 @@ func TestEnum_UnmarshalJSON(t *testing.T) {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			var e Enum
-			if err := e.UnmarshalJSON([]byte(tt.data)); tt.wantErr {
+			if err := json.Unmarshal([]byte(tt.data), &e); tt.wantErr {
 				require.Error(t, err)
 			} else {
 				require.NoError(t, err)
 			}
+		})
+	}
+}
+
+func TestAdditionalProperties_UnmarshalNextJSON(t *testing.T) {
+	tests := []struct {
+		data    string
+		value   AdditionalProperties
+		wantErr bool
+	}{
+		{`{"type":"string"}`, AdditionalProperties{Schema: RawSchema{Type: "string"}}, false},
+		{`false`, AdditionalProperties{Bool: new(bool)}, false},
+		{`0`, AdditionalProperties{}, true},
+	}
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			a := require.New(t)
+
+			var val AdditionalProperties
+			err := json.Unmarshal([]byte(tt.data), &val)
+			if tt.wantErr {
+				a.Error(err)
+				return
+			}
+			a.NoError(err)
+			a.Equal(tt.value, val)
+
+			var s RawSchema
+			err = json.Unmarshal([]byte(fmt.Sprintf(`{"additionalProperties":%s}`, tt.data)), &s)
+			a.NoError(err)
+			a.Equal(&tt.value, s.AdditionalProperties)
 		})
 	}
 }

@@ -1,7 +1,6 @@
 package ogen
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 	"testing"
@@ -10,23 +9,48 @@ import (
 )
 
 func Test_wrapLineOffset(t *testing.T) {
+	const testdata = `{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API",
+    "version": "0.1.0"
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Thomas A. Anderson",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}`
 	tests := []struct {
 		input        string
 		target       func([]byte) error
-		line, offset int
+		line, column int
 	}{
 		{"{\n\t\"a\":1,\n\t\"b\":2\n}", func(input []byte) error {
 			var target struct {
 				A int  `json:"a"`
 				B bool `json:"b"`
 			}
-			return json.Unmarshal(input, &target)
-		}, 3, 7},
+			return unmarshal(input, &target)
+		}, 3, 6},
 
 		{"[\n0,\ntrue\n]", func(input []byte) error {
 			var target []int
-			return json.Unmarshal(input, &target)
-		}, 3, 5},
+			return unmarshal(input, &target)
+		}, 3, 1},
+		{testdata, func(input []byte) error {
+			var target *Spec
+			return unmarshal(input, &target)
+		}, 15, 25},
 	}
 	for i, tt := range tests {
 		tt := tt
@@ -37,12 +61,9 @@ func Test_wrapLineOffset(t *testing.T) {
 			err := tt.target(input)
 			a.Error(err)
 
-			err = wrapLineOffset(input, err)
-			a.Error(err)
-
 			msg := err.Error()
-			prefix := fmt.Sprintf("line %d:%d", tt.line, tt.offset)
-			a.Truef(strings.HasPrefix(msg, prefix), "prefix: %s, msg: %s", prefix, msg)
+			prefix := fmt.Sprintf("line %d:%d", tt.line, tt.column)
+			a.Truef(strings.HasPrefix(msg, prefix), "prefix: %q, msg: %q", prefix, msg)
 		})
 	}
 }

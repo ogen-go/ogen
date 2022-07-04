@@ -6,6 +6,7 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v0.38.0
+	github.com/go-json-experiment/json v0.0.0-20220620174529-794765d0bd38
 	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.8.0
 	github.com/valyala/fasthttp v1.38.0
