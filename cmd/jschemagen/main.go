@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -136,6 +137,7 @@ func run() error {
 
 func main() {
 	if err := run(); err != nil {
-		panic(err)
+		_, _ = fmt.Fprintf(os.Stderr, "%+v\n", err)
+		os.Exit(1)
 	}
 }
