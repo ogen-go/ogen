@@ -1,7 +1,6 @@
 package ogen_test
 
 import (
-	"embed"
 	"path"
 	"runtime/debug"
 	"strings"
@@ -14,37 +13,6 @@ import (
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
 )
-
-//go:embed _testdata
-var testdata embed.FS
-
-func walkTestdata(t *testing.T, root string, cb func(t *testing.T, file string, data []byte)) {
-	t.Helper()
-
-	dir, err := testdata.ReadDir(root)
-	require.NoError(t, err)
-
-	for _, e := range dir {
-		entryName := e.Name()
-		filePath := path.Join(root, entryName)
-		if e.IsDir() {
-			t.Run(entryName, func(t *testing.T) {
-				walkTestdata(t, filePath, cb)
-			})
-			continue
-		}
-
-		testName := strings.TrimSuffix(entryName, ".json")
-		testName = strings.TrimSuffix(testName, ".yml")
-		testName = strings.TrimSuffix(testName, ".yaml")
-
-		t.Run(testName, func(t *testing.T) {
-			data, err := testdata.ReadFile(filePath)
-			require.NoError(t, err)
-			cb(t, filePath, data)
-		})
-	}
-}
 
 func testGenerate(t *testing.T, data []byte, ignore ...string) {
 	t.Helper()

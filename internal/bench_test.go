@@ -1,4 +1,4 @@
-package ogen
+package internal
 
 import (
 	"context"

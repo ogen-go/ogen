@@ -1,12 +1,13 @@
-package ogen
+package internal
 
 import (
 	"context"
 	"net/http/httptest"
 	"testing"
 
-	api "github.com/ogen-go/ogen/internal/test_allof"
 	"github.com/stretchr/testify/require"
+
+	api "github.com/ogen-go/ogen/internal/test_allof"
 )
 
 type allofTestServer struct {
