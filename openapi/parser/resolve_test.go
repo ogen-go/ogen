@@ -78,9 +78,9 @@ func TestExternalReference(t *testing.T) {
 					Ref: "foo.json#/components/requestBodies/RemoteRequestBody",
 				},
 			},
-			SecuritySchemes: map[string]*ogen.SecuritySchema{
-				"LocalSecuritySchema": {
-					Ref: "foo.json#/components/securitySchemes/RemoteSecuritySchema",
+			SecuritySchemes: map[string]*ogen.SecurityScheme{
+				"LocalSecurityScheme": {
+					Ref: "foo.json#/components/securitySchemes/RemoteSecurityScheme",
 				},
 			},
 		},

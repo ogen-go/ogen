@@ -10,13 +10,17 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseSecuritySchema(s *ogen.SecuritySchema, scopes []string, ctx *resolveCtx) (*ogen.SecuritySchema, error) {
+func (p *parser) parseSecurityScheme(
+	s *ogen.SecurityScheme,
+	scopes []string,
+	ctx *resolveCtx,
+) (*ogen.SecurityScheme, error) {
 	if s == nil {
-		return nil, errors.New("securitySchema object is empty or null")
+		return nil, errors.New("securityScheme is empty or null")
 	}
 
 	if ref := s.Ref; ref != "" {
-		sch, err := p.resolveSecuritySchema(ref, ctx)
+		sch, err := p.resolveSecurityScheme(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "resolve security schema")
 		}
@@ -160,9 +164,9 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 				return nil, errors.Errorf("unknown security schema %q", requirementName)
 			}
 
-			spec, err := p.parseSecuritySchema(v, newResolveCtx(p.depthLimit))
+			spec, err := p.parseSecurityScheme(v, scopes, newResolveCtx(p.depthLimit))
 			if err != nil {
-				return nil, errors.Wrapf(err, "resolve %q", requirementName)
+				return nil, errors.Wrapf(err, "parse security scheme %q", requirementName)
 			}
 
 			var flows ogen.OAuthFlows
