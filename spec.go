@@ -22,20 +22,20 @@ type Spec struct {
 	// of the OpenAPI Specification version that the OpenAPI document uses.
 	OpenAPI    string               `json:"openapi"`
 	Info       Info                 `json:"info"`
-	Servers    []Server             `json:"servers,omitempty"`
-	Paths      Paths                `json:"paths,omitempty"`
-	Components *Components          `json:"components,omitempty"`
-	Security   SecurityRequirements `json:"security,omitempty"`
+	Servers    []Server             `json:"servers,omitzero"`
+	Paths      Paths                `json:"paths,omitzero"`
+	Components *Components          `json:"components,omitzero"`
+	Security   SecurityRequirements `json:"security,omitzero"`
 
 	// A list of tags used by the specification with additional metadata.
 	// The order of the tags can be used to reflect on their order by the parsing
 	// tools. Not all tags that are used by the Operation Object must be declared.
 	// The tags that are not declared MAY be organized randomly or based on the tools' logic.
 	// Each tag name in the list MUST be unique.
-	Tags []Tag `json:"tags,omitempty"`
+	Tags []Tag `json:"tags,omitzero"`
 
 	// Additional external documentation.
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero"`
 
 	// Raw JSON value. Used by JSON Schema resolver.
 	Raw []byte `json:"-"`
@@ -87,11 +87,11 @@ func (s *Spec) Init() {
 //
 // https://swagger.io/specification/#example-object
 type Example struct {
-	Ref           string        `json:"$ref,omitempty"` // ref object
-	Summary       string        `json:"summary,omitempty"`
-	Description   string        `json:"description,omitempty"`
-	Value         json.RawValue `json:"value,omitempty"`
-	ExternalValue string        `json:"externalValue,omitempty"`
+	Ref           string        `json:"$ref,omitzero"` // ref object
+	Summary       string        `json:"summary,omitzero"`
+	Description   string        `json:"description,omitzero"`
+	Value         json.RawValue `json:"value,omitzero"`
+	ExternalValue string        `json:"externalValue,omitzero"`
 }
 
 // Tag object.
@@ -99,8 +99,8 @@ type Example struct {
 // https://swagger.io/specification/#tag-object
 type Tag struct {
 	Name         string                 `json:"name"`
-	Description  string                 `json:"description,omitempty"`
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+	Description  string                 `json:"description,omitzero"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero"`
 }
 
 // Info provides metadata about the API.
@@ -111,31 +111,31 @@ type Info struct {
 	// REQUIRED. The title of the API.
 	Title string `json:"title"`
 	// A short summary of the API.
-	Summary string `json:"summary,omitempty"`
+	Summary string `json:"summary,omitzero"`
 	// A short description of the API.
 	// CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitzero"`
 	// A URL to the Terms of Service for the API. MUST be in the format of a URL.
-	TermsOfService string `json:"termsOfService,omitempty"`
+	TermsOfService string `json:"termsOfService,omitzero"`
 	// The contact information for the exposed API.
-	Contact *Contact `json:"contact,omitempty"`
+	Contact *Contact `json:"contact,omitzero"`
 	// The license information for the exposed API.
-	License *License `json:"license,omitempty"`
+	License *License `json:"license,omitzero"`
 	// REQUIRED. The version of the OpenAPI document.
 	Version string `json:"version"`
 }
 
 // Contact information for the exposed API.
 type Contact struct {
-	Name  string `json:"name,omitempty"`
-	URL   string `json:"url,omitempty"`
-	Email string `json:"email,omitempty"`
+	Name  string `json:"name,omitzero"`
+	URL   string `json:"url,omitzero"`
+	Email string `json:"email,omitzero"`
 }
 
 // License information for the exposed API.
 type License struct {
-	Name string `json:"name,omitempty"`
-	URL  string `json:"url,omitempty"`
+	Name string `json:"name,omitzero"`
+	URL  string `json:"url,omitzero"`
 }
 
 // Server represents a Server.
@@ -146,9 +146,9 @@ type Server struct {
 	URL string `json:"url"`
 	// An optional string describing the host designated by the URL.
 	// CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitzero"`
 	// A map between a variable name and its value. The value is used for substitution in the server's URL template.
-	Variables map[string]ServerVariable `json:"variables,omitempty"`
+	Variables map[string]ServerVariable `json:"variables,omitzero"`
 }
 
 // ServerVariable describes an object representing a Server Variable for server URL template substitution.
@@ -156,26 +156,26 @@ type ServerVariable struct {
 	// An enumeration of string values to be used if the substitution options are from a limited set.
 	//
 	// The array MUST NOT be empty.
-	Enum []string `json:"enum,omitempty"`
+	Enum []string `json:"enum,omitzero"`
 	// REQUIRED. The default value to use for substitution, which SHALL be sent if an alternate value is not supplied.
 	// Note this behavior is different than the Schema Object’s treatment of default values, because in those
 	// cases parameter values are optional. If the enum is defined, the value MUST exist in the enum’s values.
 	Default string `json:"default"`
 	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitzero"`
 }
 
 // Components hold a set of reusable objects for different aspects of the OAS.
 // All objects defined within the components object will have no effect on the API
 // unless they are explicitly referenced from properties outside the components object.
 type Components struct {
-	Schemas         map[string]*Schema         `json:"schemas,omitempty"`
-	Responses       map[string]*Response       `json:"responses,omitempty"`
-	Parameters      map[string]*Parameter      `json:"parameters,omitempty"`
-	Headers         map[string]*Header         `json:"headers,omitempty"`
-	Examples        map[string]*Example        `json:"examples,omitempty"`
-	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty"`
-	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitempty"`
+	Schemas         map[string]*Schema         `json:"schemas,omitzero"`
+	Responses       map[string]*Response       `json:"responses,omitzero"`
+	Parameters      map[string]*Parameter      `json:"parameters,omitzero"`
+	Headers         map[string]*Header         `json:"headers,omitzero"`
+	Examples        map[string]*Example        `json:"examples,omitzero"`
+	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitzero"`
+	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitzero"`
 	// Links           map[string]Link            `json:"links"`
 	// Callbacks       map[string]Callback        `json:"callback"`
 }
@@ -194,43 +194,43 @@ type PathItem struct {
 	// The referenced structure MUST be in the format of a Path Item Object.
 	// In case a Path Item Object field appears both
 	// in the defined object and the referenced object, the behavior is undefined.
-	Ref         string       `json:"$ref,omitempty"`
-	Summary     string       `json:"summary,omitempty"`
-	Description string       `json:"description,omitempty"`
-	Get         *Operation   `json:"get,omitempty"`
-	Put         *Operation   `json:"put,omitempty"`
-	Post        *Operation   `json:"post,omitempty"`
-	Delete      *Operation   `json:"delete,omitempty"`
-	Options     *Operation   `json:"options,omitempty"`
-	Head        *Operation   `json:"head,omitempty"`
-	Patch       *Operation   `json:"patch,omitempty"`
-	Trace       *Operation   `json:"trace,omitempty"`
-	Servers     []Server     `json:"servers,omitempty"`
-	Parameters  []*Parameter `json:"parameters,omitempty"`
+	Ref         string       `json:"$ref,omitzero"`
+	Summary     string       `json:"summary,omitzero"`
+	Description string       `json:"description,omitzero"`
+	Get         *Operation   `json:"get,omitzero"`
+	Put         *Operation   `json:"put,omitzero"`
+	Post        *Operation   `json:"post,omitzero"`
+	Delete      *Operation   `json:"delete,omitzero"`
+	Options     *Operation   `json:"options,omitzero"`
+	Head        *Operation   `json:"head,omitzero"`
+	Patch       *Operation   `json:"patch,omitzero"`
+	Trace       *Operation   `json:"trace,omitzero"`
+	Servers     []Server     `json:"servers,omitzero"`
+	Parameters  []*Parameter `json:"parameters,omitzero"`
 }
 
 // Operation describes a single API operation on a path.
 type Operation struct {
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitzero"`
 
-	Summary      string                 `json:"summary,omitempty"`
-	Description  string                 `json:"description,omitempty"`
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+	Summary      string                 `json:"summary,omitzero"`
+	Description  string                 `json:"description,omitzero"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero"`
 
-	OperationID string               `json:"operationId,omitempty"`
-	Parameters  []*Parameter         `json:"parameters,omitempty"`
-	RequestBody *RequestBody         `json:"requestBody,omitempty"`
-	Responses   Responses            `json:"responses,omitempty"`
-	Security    SecurityRequirements `json:"security,omitempty"`
-	Deprecated  bool                 `json:"deprecated,omitempty"`
+	OperationID string               `json:"operationId,omitzero"`
+	Parameters  []*Parameter         `json:"parameters,omitzero"`
+	RequestBody *RequestBody         `json:"requestBody,omitzero"`
+	Responses   Responses            `json:"responses,omitzero"`
+	Security    SecurityRequirements `json:"security,omitzero"`
+	Deprecated  bool                 `json:"deprecated,omitzero"`
 }
 
 // ExternalDocumentation describes a reference to external resource for extended documentation.
 type ExternalDocumentation struct {
 	// A description of the target documentation. CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitzero"`
 	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
 	URL string `json:"url"`
 }
@@ -238,13 +238,13 @@ type ExternalDocumentation struct {
 // Parameter describes a single operation parameter.
 // A unique parameter is defined by a combination of a name and location.
 type Parameter struct {
-	Ref  string `json:"$ref,omitempty"`
+	Ref  string `json:"$ref,omitzero"`
 	Name string `json:"name"`
 
 	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
 	In          string  `json:"in"`
-	Description string  `json:"description,omitempty"`
-	Schema      *Schema `json:"schema,omitempty"`
+	Description string  `json:"description,omitzero"`
+	Schema      *Schema `json:"schema,omitzero"`
 
 	// Determines whether this parameter is mandatory.
 	// If the parameter location is "path", this property is REQUIRED
@@ -264,32 +264,32 @@ type Parameter struct {
 	// A map containing the representations for the parameter.
 	// The key is the media type and the value describes it.
 	// The map MUST only contain one entry.
-	Content map[string]Media `json:"content,omitempty"`
+	Content map[string]Media `json:"content,omitzero"`
 
 	// Describes how the parameter value will be serialized
 	// depending on the type of the parameter value.
-	Style string `json:"style,omitempty"`
+	Style string `json:"style,omitzero"`
 
 	// When this is true, parameter values of type array or object
 	// generate separate parameters for each value of the array
 	// or key-value pair of the map.
 	// For other types of parameters this property has no effect.
-	Explode *bool `json:"explode,omitempty"`
+	Explode *bool `json:"explode,omitzero"`
 
-	Example  json.RawValue       `json:"example,omitempty"`
-	Examples map[string]*Example `json:"examples,omitempty"`
+	Example  json.RawValue       `json:"example,omitzero"`
+	Examples map[string]*Example `json:"examples,omitzero"`
 }
 
 // RequestBody describes a single request body.
 type RequestBody struct {
-	Ref         string `json:"$ref,omitempty"`
-	Description string `json:"description,omitempty"`
+	Ref         string `json:"$ref,omitzero"`
+	Description string `json:"description,omitzero"`
 
 	// The content of the request body.
 	// The key is a media type or media type range and the value describes it.
 	// For requests that match multiple keys, only the most specific key is applicable.
 	// e.g. text/plain overrides text/*
-	Content map[string]Media `json:"content,omitempty"`
+	Content map[string]Media `json:"content,omitzero"`
 
 	// Determines if the request body is required in the request. Defaults to false.
 	Required bool `json:"required,omitzero"`
@@ -302,11 +302,11 @@ type Responses map[string]*Response
 // Response describes a single response from an API Operation,
 // including design-time, static links to operations based on the response.
 type Response struct {
-	Ref         string                 `json:"$ref,omitempty"`
-	Description string                 `json:"description,omitempty"`
-	Headers     map[string]*Header     `json:"headers,omitempty"`
-	Content     map[string]Media       `json:"content,omitempty"`
-	Links       map[string]interface{} `json:"links,omitempty"` // TODO: implement
+	Ref         string                 `json:"$ref,omitzero"`
+	Description string                 `json:"description,omitzero"`
+	Headers     map[string]*Header     `json:"headers,omitzero"`
+	Content     map[string]Media       `json:"content,omitzero"`
+	Links       map[string]interface{} `json:"links,omitzero"` // TODO: implement
 }
 
 // Header describes header response.
@@ -322,35 +322,35 @@ type Header = Parameter
 // Media provides schema and examples for the media type identified by its key.
 type Media struct {
 	// The schema defining the content of the request, response, or parameter.
-	Schema   *Schema             `json:"schema,omitempty"`
-	Example  json.RawValue       `json:"example,omitempty"`
-	Examples map[string]*Example `json:"examples,omitempty"`
+	Schema   *Schema             `json:"schema,omitzero"`
+	Example  json.RawValue       `json:"example,omitzero"`
+	Examples map[string]*Example `json:"examples,omitzero"`
 
 	// A map between a property name and its encoding information. The key, being the property name, MUST exist in
 	// the schema as a property. The encoding object SHALL only apply to requestBody objects when the media
 	// type is multipart or application/x-www-form-urlencoded.
-	Encoding map[string]Encoding `json:"encoding,omitempty"`
+	Encoding map[string]Encoding `json:"encoding,omitzero"`
 }
 
 // Encoding describes single encoding definition applied to a single schema property.
 type Encoding struct {
 	// The Content-Type for encoding a specific property.
-	ContentType string `json:"contentType,omitempty"`
+	ContentType string `json:"contentType,omitzero"`
 
 	// A map allowing additional information to be provided as headers, for example Content-Disposition.
 	// Content-Type is described separately and SHALL be ignored in this section. This property SHALL be
 	// ignored if the request body media type is not a multipart.
-	Headers map[string]*Header `json:"headers,omitempty"`
+	Headers map[string]*Header `json:"headers,omitzero"`
 
 	// Describes how the parameter value will be serialized
 	// depending on the type of the parameter value.
-	Style string `json:"style,omitempty"`
+	Style string `json:"style,omitzero"`
 
 	// When this is true, parameter values of type array or object
 	// generate separate parameters for each value of the array
 	// or key-value pair of the map.
 	// For other types of parameters this property has no effect.
-	Explode *bool `json:"explode,omitempty"`
+	Explode *bool `json:"explode,omitzero"`
 
 	// Determines whether the parameter value SHOULD allow reserved characters, as defined by
 	// RFC3986 :/?#[]@!$&'()*+,;= to be included without percent-encoding.
@@ -362,50 +362,50 @@ type Encoding struct {
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.
 type Discriminator struct {
 	PropertyName string            `json:"propertyName"`
-	Mapping      map[string]string `json:"mapping,omitempty"`
+	Mapping      map[string]string `json:"mapping,omitzero"`
 }
 
 // The Schema Object allows the definition of input and output data types.
 // These types can be objects, but also primitives and arrays.
 type Schema struct {
-	Ref         string `json:"$ref,omitempty"` // ref object
-	Summary     string `json:"summary,omitempty"`
-	Description string `json:"description,omitempty"`
+	Ref         string `json:"$ref,omitzero"` // ref object
+	Summary     string `json:"summary,omitzero"`
+	Description string `json:"description,omitzero"`
 
 	// Additional external documentation for this schema.
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
-	Type string `json:"type,omitempty"`
+	Type string `json:"type,omitzero"`
 
 	// See Data Type Formats for further details (https://swagger.io/specification/#data-type-format).
 	// While relying on JSON Schema's defined formats,
 	// the OAS offers a few additional predefined formats.
-	Format string `json:"format,omitempty"`
+	Format string `json:"format,omitzero"`
 
 	// Property definitions MUST be a Schema Object and not a standard JSON Schema
 	// (inline or referenced).
-	Properties Properties `json:"properties,omitempty"`
+	Properties Properties `json:"properties,omitzero"`
 
 	// Value can be boolean or object. Inline or referenced schema MUST be of a Schema Object
 	// and not a standard JSON Schema. Consistent with JSON Schema, additionalProperties defaults to true.
-	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty"`
+	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitzero"`
 
 	// The value of "patternProperties" MUST be an object. Each property
 	// name of this object SHOULD be a valid regular expression, according
 	// to the ECMA-262 regular expression dialect. Each property value of
 	// this object MUST be a valid JSON Schema.
-	PatternProperties PatternProperties `json:"patternProperties,omitempty"`
+	PatternProperties PatternProperties `json:"patternProperties,omitzero"`
 
 	// The value of this keyword MUST be an array.
 	// This array MUST have at least one element.
 	// Elements of this array MUST be strings, and MUST be unique.
-	Required []string `json:"required,omitempty"`
+	Required []string `json:"required,omitzero"`
 
 	// Value MUST be an object and not an array.
 	// Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
 	// MUST be present if the Type is "array".
-	Items *Schema `json:"items,omitempty"`
+	Items *Schema `json:"items,omitzero"`
 
 	// A true value adds "null" to the allowed type specified by the type keyword,
 	// only if type is explicitly defined within the same Schema Object.
@@ -419,27 +419,27 @@ type Schema struct {
 	// for independent validation but together compose a single object.
 	// Still, it does not imply a hierarchy between the models.
 	// For that purpose, you should include the discriminator.
-	AllOf []*Schema `json:"allOf,omitempty"` // TODO: implement.
+	AllOf []*Schema `json:"allOf,omitzero"` // TODO: implement.
 
 	// OneOf validates the value against exactly one of the subschemas
-	OneOf []*Schema `json:"oneOf,omitempty"`
+	OneOf []*Schema `json:"oneOf,omitzero"`
 
 	// AnyOf validates the value against any (one or more) of the subschemas
-	AnyOf []*Schema `json:"anyOf,omitempty"`
+	AnyOf []*Schema `json:"anyOf,omitzero"`
 
 	// Discriminator for subschemas.
-	Discriminator *Discriminator `json:"discriminator,omitempty"`
+	Discriminator *Discriminator `json:"discriminator,omitzero"`
 
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
 	// Elements in the array SHOULD be unique.
-	Enum Enum `json:"enum,omitempty"`
+	Enum Enum `json:"enum,omitzero"`
 
 	// The value of "multipleOf" MUST be a number, strictly greater than 0.
 	//
 	// A numeric instance is only valid if division by this keyword's value
 	// results in an integer.
-	MultipleOf Num `json:"multipleOf,omitempty"`
+	MultipleOf Num `json:"multipleOf,omitzero"`
 
 	// The value of "maximum" MUST be a number, representing an upper limit
 	// for a numeric instance.
@@ -448,7 +448,7 @@ type Schema struct {
 	// "exclusiveMaximum" is true and instance is less than the provided
 	// value, or else if the instance is less than or exactly equal to the
 	// provided value.
-	Maximum Num `json:"maximum,omitempty"`
+	Maximum Num `json:"maximum,omitzero"`
 
 	// The value of "exclusiveMaximum" MUST be a boolean, representing
 	// whether the limit in "maximum" is exclusive or not.  An undefined
@@ -467,7 +467,7 @@ type Schema struct {
 	// "exclusiveMinimum" is true and instance is greater than the provided
 	// value, or else if the instance is greater than or exactly equal to
 	// the provided value.
-	Minimum Num `json:"minimum,omitempty"`
+	Minimum Num `json:"minimum,omitzero"`
 
 	// The value of "exclusiveMinimum" MUST be a boolean, representing
 	// whether the limit in "minimum" is exclusive or not.  An undefined
@@ -489,7 +489,7 @@ type Schema struct {
 	//
 	// The length of a string instance is defined as the number of its
 	// characters as defined by RFC 7159 [RFC7159].
-	MaxLength *uint64 `json:"maxLength,omitempty"`
+	MaxLength *uint64 `json:"maxLength,omitzero"`
 
 	// A string instance is valid against this keyword if its length is
 	// greater than, or equal to, the value of this keyword.
@@ -502,7 +502,7 @@ type Schema struct {
 	//
 	// "minLength", if absent, may be considered as being present with
 	// integer value 0.
-	MinLength *uint64 `json:"minLength,omitempty"`
+	MinLength *uint64 `json:"minLength,omitzero"`
 
 	// The value of this keyword MUST be a string.  This string SHOULD be a
 	// valid regular expression, according to the ECMA 262 regular
@@ -511,14 +511,14 @@ type Schema struct {
 	// A string instance is considered valid if the regular expression
 	// matches the instance successfully. Recall: regular expressions are
 	// not implicitly anchored.
-	Pattern string `json:"pattern,omitempty"`
+	Pattern string `json:"pattern,omitzero"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
 	//
 	// An array instance is valid against "maxItems" if its size is less
 	// than, or equal to, the value of this keyword.
-	MaxItems *uint64 `json:"maxItems,omitempty"`
+	MaxItems *uint64 `json:"maxItems,omitzero"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
@@ -528,7 +528,7 @@ type Schema struct {
 	//
 	// If this keyword is not present, it may be considered present with a
 	// value of 0.
-	MinItems *uint64 `json:"minItems,omitempty"`
+	MinItems *uint64 `json:"minItems,omitzero"`
 
 	// The value of this keyword MUST be a boolean.
 	//
@@ -545,7 +545,7 @@ type Schema struct {
 	//
 	// An object instance is valid against "maxProperties" if its number of
 	// properties is less than, or equal to, the value of this keyword.
-	MaxProperties *uint64 `json:"maxProperties,omitempty"`
+	MaxProperties *uint64 `json:"maxProperties,omitzero"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
@@ -555,15 +555,15 @@ type Schema struct {
 	//
 	// If this keyword is not present, it may be considered present with a
 	// value of 0.
-	MinProperties *uint64 `json:"minProperties,omitempty"`
+	MinProperties *uint64 `json:"minProperties,omitzero"`
 
 	// Default value.
-	Default json.RawValue `json:"default,omitempty"`
+	Default json.RawValue `json:"default,omitzero"`
 
 	// A free-form property to include an example of an instance for this schema.
 	// To represent examples that cannot be naturally represented in JSON or YAML,
 	// a string value can be used to contain the example with escaping where necessary.
-	Example json.RawValue `json:"example,omitempty"`
+	Example json.RawValue `json:"example,omitzero"`
 
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.
@@ -578,7 +578,7 @@ type Schema struct {
 	//
 	// The value of this property SHOULD be ignored if the instance
 	// described is not a string.
-	ContentEncoding string `json:"contentEncoding,omitempty"`
+	ContentEncoding string `json:"contentEncoding,omitzero"`
 
 	// The value of this property must be a media type, as defined by RFC
 	// 2046. This property defines the media type of instances
@@ -588,7 +588,7 @@ type Schema struct {
 	//
 	// The value of this property SHOULD be ignored if the instance
 	// described is not a string.
-	ContentMediaType string `json:"contentMediaType,omitempty"`
+	ContentMediaType string `json:"contentMediaType,omitzero"`
 }
 
 // Property is item of Properties.

@@ -42,40 +42,40 @@ func (n *Num) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) err
 
 // RawSchema is unparsed JSON Schema.
 type RawSchema struct {
-	Ref                  string                   `json:"$ref,omitempty"`
-	Summary              string                   `json:"summary,omitempty"`
-	Description          string                   `json:"description,omitempty"`
-	Type                 string                   `json:"type,omitempty"`
-	Format               string                   `json:"format,omitempty"`
-	Properties           RawProperties            `json:"properties,omitempty"`
-	AdditionalProperties *AdditionalProperties    `json:"additionalProperties,omitempty"`
-	PatternProperties    RawPatternProperties     `json:"patternProperties,omitempty"`
-	Required             []string                 `json:"required,omitempty"`
-	Items                *RawSchema               `json:"items,omitempty"`
+	Ref                  string                   `json:"$ref,omitzero"`
+	Summary              string                   `json:"summary,omitzero"`
+	Description          string                   `json:"description,omitzero"`
+	Type                 string                   `json:"type,omitzero"`
+	Format               string                   `json:"format,omitzero"`
+	Properties           RawProperties            `json:"properties,omitzero"`
+	AdditionalProperties *AdditionalProperties    `json:"additionalProperties,omitzero"`
+	PatternProperties    RawPatternProperties     `json:"patternProperties,omitzero"`
+	Required             []string                 `json:"required,omitzero"`
+	Items                *RawSchema               `json:"items,omitzero"`
 	Nullable             bool                     `json:"nullable,omitzero"`
-	AllOf                []*RawSchema             `json:"allOf,omitempty"`
-	OneOf                []*RawSchema             `json:"oneOf,omitempty"`
-	AnyOf                []*RawSchema             `json:"anyOf,omitempty"`
-	Discriminator        *Discriminator           `json:"discriminator,omitempty"`
-	Enum                 Enum                     `json:"enum,omitempty"`
-	MultipleOf           Num                      `json:"multipleOf,omitempty"`
-	Maximum              Num                      `json:"maximum,omitempty"`
+	AllOf                []*RawSchema             `json:"allOf,omitzero"`
+	OneOf                []*RawSchema             `json:"oneOf,omitzero"`
+	AnyOf                []*RawSchema             `json:"anyOf,omitzero"`
+	Discriminator        *Discriminator           `json:"discriminator,omitzero"`
+	Enum                 Enum                     `json:"enum,omitzero"`
+	MultipleOf           Num                      `json:"multipleOf,omitzero"`
+	Maximum              Num                      `json:"maximum,omitzero"`
 	ExclusiveMaximum     bool                     `json:"exclusiveMaximum,omitzero"`
-	Minimum              Num                      `json:"minimum,omitempty"`
+	Minimum              Num                      `json:"minimum,omitzero"`
 	ExclusiveMinimum     bool                     `json:"exclusiveMinimum,omitzero"`
-	MaxLength            *uint64                  `json:"maxLength,omitempty"`
-	MinLength            *uint64                  `json:"minLength,omitempty"`
-	Pattern              string                   `json:"pattern,omitempty"`
-	MaxItems             *uint64                  `json:"maxItems,omitempty"`
-	MinItems             *uint64                  `json:"minItems,omitempty"`
+	MaxLength            *uint64                  `json:"maxLength,omitzero"`
+	MinLength            *uint64                  `json:"minLength,omitzero"`
+	Pattern              string                   `json:"pattern,omitzero"`
+	MaxItems             *uint64                  `json:"maxItems,omitzero"`
+	MinItems             *uint64                  `json:"minItems,omitzero"`
 	UniqueItems          bool                     `json:"uniqueItems,omitzero"`
-	MaxProperties        *uint64                  `json:"maxProperties,omitempty"`
-	MinProperties        *uint64                  `json:"minProperties,omitempty"`
-	Default              json.RawValue            `json:"default,omitempty"`
-	Example              json.RawValue            `json:"example,omitempty"`
+	MaxProperties        *uint64                  `json:"maxProperties,omitzero"`
+	MinProperties        *uint64                  `json:"minProperties,omitzero"`
+	Default              json.RawValue            `json:"default,omitzero"`
+	Example              json.RawValue            `json:"example,omitzero"`
 	Deprecated           bool                     `json:"deprecated,omitzero"`
-	ContentEncoding      string                   `json:"contentEncoding,omitempty"`
-	ContentMediaType     string                   `json:"contentMediaType,omitempty"`
+	ContentEncoding      string                   `json:"contentEncoding,omitzero"`
+	ContentMediaType     string                   `json:"contentMediaType,omitzero"`
 	XAnnotations         map[string]json.RawValue `json:",inline"`
 }
 
@@ -304,5 +304,5 @@ func (r *RawPatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *
 // Discriminator is JSON Schema discriminator description.
 type Discriminator struct {
 	PropertyName string            `json:"propertyName"`
-	Mapping      map[string]string `json:"mapping,omitempty"`
+	Mapping      map[string]string `json:"mapping,omitzero"`
 }
