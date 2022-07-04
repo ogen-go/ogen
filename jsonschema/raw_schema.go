@@ -21,7 +21,8 @@ func (n Num) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
 // UnmarshalNextJSON implements json.UnmarshalerV2.
 func (n *Num) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	offset := d.InputOffset()
-	if kind := d.PeekKind(); kind != '0' {
+	// Check Kind for invalid, next call will return error.
+	if kind := d.PeekKind(); kind != '0' && kind != 0 {
 		return &json.SemanticError{
 			ByteOffset:  offset,
 			JSONPointer: d.StackPointer(),
@@ -85,7 +86,8 @@ type Enum []json.RawValue
 // UnmarshalNextJSON implements json.UnmarshalerV2.
 func (n *Enum) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	offset := d.InputOffset()
-	if kind := d.PeekKind(); kind != '[' {
+	// Check Kind for invalid, next call will return error.
+	if kind := d.PeekKind(); kind != '[' && kind != 0 {
 		return &json.SemanticError{
 			ByteOffset:  offset,
 			JSONPointer: d.StackPointer(),
@@ -101,7 +103,10 @@ func (n *Enum) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) er
 
 	// Keep non-nil value, to distinguish from not set array.
 	values := Enum{}
-	for d.PeekKind() != ']' {
+	for {
+		if kind := d.PeekKind(); kind == ']' || kind == 0 {
+			break
+		}
 		var (
 			val    json.RawValue
 			offset = d.InputOffset()
@@ -162,7 +167,8 @@ func (p RawProperties) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder
 // UnmarshalNextJSON implements json.UnmarshalerV2.
 func (p *RawProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	offset := d.InputOffset()
-	if kind := d.PeekKind(); kind != '{' {
+	// Check Kind for invalid, next call will return error.
+	if kind := d.PeekKind(); kind != '{' && kind != 0 {
 		return &json.SemanticError{
 			ByteOffset:  offset,
 			JSONPointer: d.StackPointer(),
@@ -178,7 +184,7 @@ func (p *RawProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.De
 
 	// Keep non-nil value, to distinguish from not set object.
 	properties := RawProperties{}
-	for d.PeekKind() != '}' {
+	for d.PeekKind() == '"' {
 		var (
 			name   string
 			schema *RawSchema
@@ -264,7 +270,8 @@ func (r RawPatternProperties) MarshalNextJSON(opts json.MarshalOptions, e *json.
 // UnmarshalNextJSON implements json.UnmarshalerV2.
 func (r *RawPatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
 	offset := d.InputOffset()
-	if kind := d.PeekKind(); kind != '{' {
+	// Check Kind for invalid, next call will return error.
+	if kind := d.PeekKind(); kind != '{' && kind != 0 {
 		return &json.SemanticError{
 			ByteOffset:  offset,
 			JSONPointer: d.StackPointer(),
@@ -280,7 +287,7 @@ func (r *RawPatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *
 
 	// Keep non-nil value, to distinguish from not set object.
 	patternProperties := RawPatternProperties{}
-	for d.PeekKind() != '}' {
+	for d.PeekKind() == '"' {
 		var (
 			pattern string
 			schema  *RawSchema
