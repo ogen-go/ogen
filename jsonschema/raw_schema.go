@@ -36,8 +36,7 @@ func (n *Num) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) err
 	if err != nil {
 		return err
 	}
-
-	*n = Num(val)
+	*n = append((*n)[:0], val...)
 	return nil
 }
 

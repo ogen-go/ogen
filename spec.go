@@ -38,7 +38,7 @@ type Spec struct {
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero"`
 
 	// Raw JSON value. Used by JSON Schema resolver.
-	Raw []byte `json:"-"`
+	Raw json.RawValue `json:"-"`
 }
 
 // UnmarshalNextJSON implements json.UnmarshalerV2.
@@ -54,7 +54,7 @@ func (s *Spec) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) er
 		return errors.Wrap(err, "spec")
 	}
 
-	a.Raw = append(a.Raw, value...)
+	a.Raw = append(a.Raw[:0], value...)
 	*s = Spec(a)
 	return nil
 }
