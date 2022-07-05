@@ -1,10 +1,10 @@
 package ogen
 
 import (
-	"bytes"
-
 	"github.com/go-faster/errors"
 	"github.com/go-json-experiment/json"
+
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 func unmarshal(data []byte, out any) error {
@@ -15,6 +15,7 @@ func unmarshal(data []byte, out any) error {
 				begin = d.InputOffset()
 				return json.SkipFunc
 			}),
+			ogenjson.LocationUnmarshaler(data),
 		),
 	}
 
@@ -25,24 +26,9 @@ func unmarshal(data []byte, out any) error {
 }
 
 func wrapLineOffset(offset int64, data []byte, err error) error {
-	if offset < 0 || int64(len(data)) <= offset {
+	line, column, ok := ogenjson.LineColumn(offset, data)
+	if !ok {
 		return err
 	}
-
-	{
-		unread := data[offset:]
-		trimmed := bytes.TrimLeft(unread, "\x20\t\r\n,:")
-		if len(trimmed) != len(unread) {
-			// Skip leading whitespace, because decoder does not do it.
-			offset += int64(len(unread) - len(trimmed))
-		}
-	}
-
-	lines := data[:offset]
-	// Lines count from 1.
-	line := bytes.Count(lines, []byte("\n")) + 1
-	lastNL := int64(bytes.LastIndexByte(lines, '\n'))
-	column := offset - lastNL
-
 	return errors.Wrapf(err, "line %d:%d", line, column)
 }

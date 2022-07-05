@@ -10,7 +10,12 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func (p *parser) parseSchema(schema *ogen.Schema, ctx *resolveCtx) (*jsonschema.Schema, error) {
+func (p *parser) parseSchema(schema *ogen.Schema, ctx *resolveCtx) (_ *jsonschema.Schema, rerr error) {
+	if schema != nil {
+		defer func() {
+			rerr = p.wrapLocation(schema, rerr)
+		}()
+	}
 	s := schema.ToJSONSchema()
 	if loc := ctx.lastLoc(); s != nil && s.Ref != "" && loc != "" {
 		base, err := url.Parse(loc)

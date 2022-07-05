@@ -11,31 +11,34 @@ import (
 )
 
 func (p *parser) parseSecurityScheme(
-	s *ogen.SecurityScheme,
+	scheme *ogen.SecurityScheme,
 	scopes []string,
 	ctx *resolveCtx,
-) (*ogen.SecurityScheme, error) {
-	if s == nil {
+) (_ *ogen.SecurityScheme, rerr error) {
+	if scheme == nil {
 		return nil, errors.New("securityScheme is empty or null")
 	}
 
-	if ref := s.Ref; ref != "" {
+	if ref := scheme.Ref; ref != "" {
 		sch, err := p.resolveSecurityScheme(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "resolve security schema")
 		}
 		return sch, nil
 	}
+	defer func() {
+		rerr = p.wrapLocation(scheme, rerr)
+	}()
 
 	if err := func() error {
-		switch s.Type {
+		switch scheme.Type {
 		case "apiKey":
-			switch s.In {
+			switch scheme.In {
 			case "query", "header", "cookie":
 			default:
-				return errors.Errorf(`invalid "in": %q`, s.In)
+				return errors.Errorf(`invalid "in": %q`, scheme.In)
 			}
-			if s.Name == "" {
+			if scheme.Name == "" {
 				return errors.New(`"name" is required and MUST be a non-empty string`)
 			}
 			return nil
@@ -45,7 +48,7 @@ func (p *parser) parseSecurityScheme(
 			// 	Probably such validation is too strict.
 
 			// Values from https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml.
-			switch strings.ToLower(s.Scheme) {
+			switch strings.ToLower(scheme.Scheme) {
 			case "basic",
 				"bearer",
 				"digest",
@@ -57,26 +60,26 @@ func (p *parser) parseSecurityScheme(
 				"scram-sha-256",
 				"vapid":
 			default:
-				return errors.Errorf(`invalid "scheme": %q`, s.Scheme)
+				return errors.Errorf(`invalid "scheme": %q`, scheme.Scheme)
 			}
 			return nil
 		case "mutualTLS":
 			return nil
 		case "oauth2":
-			return validateOAuthFlows(scopes, s.Flows)
+			return validateOAuthFlows(scopes, scheme.Flows)
 		case "openIdConnect":
-			if _, err := url.ParseRequestURI(s.OpenIDConnectURL); err != nil {
+			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				return errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
 			}
 			return nil
 		default:
-			return errors.Errorf("unknown security scheme type %q", s.Type)
+			return errors.Errorf("unknown security scheme type %q", scheme.Type)
 		}
 	}(); err != nil {
-		return nil, errors.Wrap(err, s.Type)
+		return nil, errors.Wrap(err, scheme.Type)
 	}
 
-	return s, nil
+	return scheme, nil
 }
 
 func validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows) error {

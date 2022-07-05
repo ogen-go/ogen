@@ -34,7 +34,6 @@ func resolvePointer(root []byte, ptr string, to interface{}) error {
 	if err != nil {
 		return err
 	}
-
 	return json.Unmarshal(data, to)
 }
 

@@ -22,6 +22,8 @@ type SecurityScheme struct {
 	// OpenId Connect URL to discover OAuth2 configuration values.
 	// This MUST be in the form of a URL. The OpenID Connect standard requires the use of TLS.
 	OpenIDConnectURL string `json:"openIdConnectUrl,omitempty"`
+
+	Locator `json:"-"`
 }
 
 // OAuthFlows allows configuration of the supported OAuth Flows.
@@ -34,6 +36,8 @@ type OAuthFlows struct {
 	ClientCredentials *OAuthFlow `json:"clientCredentials"`
 	// Configuration for the OAuth Authorization Code flow. Previously called accessCode in OpenAPI 2.0.
 	AuthorizationCode *OAuthFlow `json:"authorizationCode"`
+
+	Locator `json:"-"`
 }
 
 // OAuthFlow is configuration details for a supported OAuth Flow.
@@ -50,6 +54,8 @@ type OAuthFlow struct {
 	// The available scopes for the OAuth2 security scheme.
 	// A map between the scope name and a short description for it. The map MAY be empty.
 	Scopes map[string]string `json:"scopes"`
+
+	Locator `json:"-"`
 }
 
 // SecurityRequirements lists the required security schemes to execute this operation.

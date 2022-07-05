@@ -7,6 +7,11 @@ type Settings struct {
 	// External is external JSON Schema resolver. If nil, NoExternal resolver is used.
 	External jsonschema.ExternalResolver
 
+	// Filename is a name of the file being parsed.
+	//
+	// Used for error messages.
+	Filename string
+
 	// DepthLimit limits the number of nested references. Default is 1000.
 	DepthLimit int
 

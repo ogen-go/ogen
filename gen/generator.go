@@ -49,6 +49,10 @@ type Options struct {
 	AllowRemote bool
 	// Remote is remote reference resolver options.
 	Remote RemoteOptions
+	// Filename is a name of the spec file.
+	//
+	// Used for error messages.
+	Filename string
 	// Filters contains filters to skip operations.
 	Filters Filters
 	// IgnoreNotImplemented contains ErrNotImplemented messages to ignore.
@@ -98,6 +102,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 	api, err := parser.Parse(spec, parser.Settings{
 		External:   external,
+		Filename:   opts.Filename,
 		InferTypes: opts.InferSchemaType,
 	})
 	if err != nil {

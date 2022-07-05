@@ -23,7 +23,7 @@ func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *resolveCtx) 
 	return result, nil
 }
 
-func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) (*openapi.Header, error) {
+func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) (_ *openapi.Header, rerr error) {
 	if header == nil {
 		return nil, errors.New("header object is empty or null")
 	}
@@ -34,6 +34,9 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		}
 		return parsed, nil
 	}
+	defer func() {
+		rerr = p.wrapLocation(header, rerr)
+	}()
 
 	if header.In != "" {
 		return nil, errors.Errorf(`"in" MUST NOT be specified, got %q`, header.In)

@@ -119,12 +119,15 @@ func TestGenerate(t *testing.T) {
 func TestNegative(t *testing.T) {
 	walkTestdata(t, "_testdata/negative", func(t *testing.T, file string, data []byte) {
 		a := require.New(t)
+		_, name := path.Split(file)
 
 		spec, err := ogen.Parse(data)
 		a.NoError(err)
 
-		_, err = gen.NewGenerator(spec, gen.Options{})
+		_, err = gen.NewGenerator(spec, gen.Options{
+			Filename: name,
+		})
 		a.Error(err)
-		t.Log(err.Error())
+		t.Logf("%+v", err)
 	})
 }

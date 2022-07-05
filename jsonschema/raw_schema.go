@@ -36,48 +36,50 @@ func (n *Num) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) err
 	if err != nil {
 		return err
 	}
-
-	*n = Num(val)
+	*n = append((*n)[:0], val...)
 	return nil
 }
 
 // RawSchema is unparsed JSON Schema.
 type RawSchema struct {
-	Ref                  string                   `json:"$ref,omitzero"`
-	Summary              string                   `json:"summary,omitzero"`
-	Description          string                   `json:"description,omitzero"`
-	Type                 string                   `json:"type,omitzero"`
-	Format               string                   `json:"format,omitzero"`
-	Properties           RawProperties            `json:"properties,omitzero"`
-	AdditionalProperties *AdditionalProperties    `json:"additionalProperties,omitzero"`
-	PatternProperties    RawPatternProperties     `json:"patternProperties,omitzero"`
-	Required             []string                 `json:"required,omitzero"`
-	Items                *RawSchema               `json:"items,omitzero"`
-	Nullable             bool                     `json:"nullable,omitzero"`
-	AllOf                []*RawSchema             `json:"allOf,omitzero"`
-	OneOf                []*RawSchema             `json:"oneOf,omitzero"`
-	AnyOf                []*RawSchema             `json:"anyOf,omitzero"`
-	Discriminator        *Discriminator           `json:"discriminator,omitzero"`
-	Enum                 Enum                     `json:"enum,omitzero"`
-	MultipleOf           Num                      `json:"multipleOf,omitzero"`
-	Maximum              Num                      `json:"maximum,omitzero"`
-	ExclusiveMaximum     bool                     `json:"exclusiveMaximum,omitzero"`
-	Minimum              Num                      `json:"minimum,omitzero"`
-	ExclusiveMinimum     bool                     `json:"exclusiveMinimum,omitzero"`
-	MaxLength            *uint64                  `json:"maxLength,omitzero"`
-	MinLength            *uint64                  `json:"minLength,omitzero"`
-	Pattern              string                   `json:"pattern,omitzero"`
-	MaxItems             *uint64                  `json:"maxItems,omitzero"`
-	MinItems             *uint64                  `json:"minItems,omitzero"`
-	UniqueItems          bool                     `json:"uniqueItems,omitzero"`
-	MaxProperties        *uint64                  `json:"maxProperties,omitzero"`
-	MinProperties        *uint64                  `json:"minProperties,omitzero"`
-	Default              json.RawValue            `json:"default,omitzero"`
-	Example              json.RawValue            `json:"example,omitzero"`
-	Deprecated           bool                     `json:"deprecated,omitzero"`
-	ContentEncoding      string                   `json:"contentEncoding,omitzero"`
-	ContentMediaType     string                   `json:"contentMediaType,omitzero"`
-	XAnnotations         map[string]json.RawValue `json:",inline"`
+	Ref                  string                `json:"$ref,omitzero"`
+	Summary              string                `json:"summary,omitzero"`
+	Description          string                `json:"description,omitzero"`
+	Type                 string                `json:"type,omitzero"`
+	Format               string                `json:"format,omitzero"`
+	Properties           RawProperties         `json:"properties,omitzero"`
+	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitzero"`
+	PatternProperties    RawPatternProperties  `json:"patternProperties,omitzero"`
+	Required             []string              `json:"required,omitzero"`
+	Items                *RawSchema            `json:"items,omitzero"`
+	Nullable             bool                  `json:"nullable,omitzero"`
+	AllOf                []*RawSchema          `json:"allOf,omitzero"`
+	OneOf                []*RawSchema          `json:"oneOf,omitzero"`
+	AnyOf                []*RawSchema          `json:"anyOf,omitzero"`
+	Discriminator        *Discriminator        `json:"discriminator,omitzero"`
+	Enum                 Enum                  `json:"enum,omitzero"`
+	MultipleOf           Num                   `json:"multipleOf,omitzero"`
+	Maximum              Num                   `json:"maximum,omitzero"`
+	ExclusiveMaximum     bool                  `json:"exclusiveMaximum,omitzero"`
+	Minimum              Num                   `json:"minimum,omitzero"`
+	ExclusiveMinimum     bool                  `json:"exclusiveMinimum,omitzero"`
+	MaxLength            *uint64               `json:"maxLength,omitzero"`
+	MinLength            *uint64               `json:"minLength,omitzero"`
+	Pattern              string                `json:"pattern,omitzero"`
+	MaxItems             *uint64               `json:"maxItems,omitzero"`
+	MinItems             *uint64               `json:"minItems,omitzero"`
+	UniqueItems          bool                  `json:"uniqueItems,omitzero"`
+	MaxProperties        *uint64               `json:"maxProperties,omitzero"`
+	MinProperties        *uint64               `json:"minProperties,omitzero"`
+	Default              json.RawValue         `json:"default,omitzero"`
+	Example              json.RawValue         `json:"example,omitzero"`
+	Deprecated           bool                  `json:"deprecated,omitzero"`
+	ContentEncoding      string                `json:"contentEncoding,omitzero"`
+	ContentMediaType     string                `json:"contentMediaType,omitzero"`
+
+	XAnnotations map[string]json.RawValue `json:",inline"`
+
+	ogenjson.Locator `json:"-"`
 }
 
 // Enum is JSON Schema enum validator description.

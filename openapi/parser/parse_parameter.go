@@ -73,7 +73,7 @@ func validateParameter(name string, locatedIn openapi.ParameterLocation, param *
 	return nil
 }
 
-func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openapi.Parameter, error) {
+func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *openapi.Parameter, rerr error) {
 	if param == nil {
 		return nil, errors.New("parameter object is empty or null")
 	}
@@ -84,6 +84,9 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (*openap
 		}
 		return parsed, nil
 	}
+	defer func() {
+		rerr = p.wrapLocation(param, rerr)
+	}()
 
 	types := map[string]openapi.ParameterLocation{
 		"query":  openapi.LocationQuery,

@@ -56,6 +56,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		ContentEncoding:      s.ContentEncoding,
 		ContentMediaType:     s.ContentMediaType,
 		XAnnotations:         map[string]json.RawValue{},
+		Locator:              s.Locator,
 	}
 }
 
@@ -94,8 +95,8 @@ func (p *AdditionalProperties) ToJSONSchema() *jsonschema.AdditionalProperties {
 }
 
 // ToJSONSchema converts PatternProperties to jsonschema.RawPatternProperties.
-func (r PatternProperties) ToJSONSchema() (result jsonschema.RawPatternProperties) {
-	for _, val := range r {
+func (p PatternProperties) ToJSONSchema() (result jsonschema.RawPatternProperties) {
+	for _, val := range p {
 		result = append(result, jsonschema.RawPatternProperty{
 			Pattern: val.Pattern,
 			Schema:  val.Schema.ToJSONSchema(),
