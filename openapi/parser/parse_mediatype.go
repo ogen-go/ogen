@@ -56,7 +56,11 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resol
 	panic("unreachable")
 }
 
-func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (*openapi.MediaType, error) {
+func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
+	defer func() {
+		rerr = p.wrapLocation(&m, rerr)
+	}()
+
 	s, err := p.parseSchema(m.Schema, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")

@@ -7,7 +7,7 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (*openapi.Example, error) {
+func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (_ *openapi.Example, rerr error) {
 	if e == nil {
 		return nil, nil
 	}
@@ -19,6 +19,9 @@ func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (*openapi.Exampl
 		}
 		return ex, nil
 	}
+	defer func() {
+		rerr = p.wrapLocation(e, rerr)
+	}()
 
 	return &openapi.Example{
 		Summary:       e.Summary,

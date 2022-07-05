@@ -38,7 +38,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (_ map[string]*openapi
 	return result, nil
 }
 
-func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (*openapi.Response, error) {
+func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi.Response, rerr error) {
 	if resp == nil {
 		return nil, errors.New("response object is empty or null")
 	}
@@ -50,6 +50,9 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (*openapi.R
 
 		return resp, nil
 	}
+	defer func() {
+		rerr = p.wrapLocation(resp, rerr)
+	}()
 
 	content, err := p.parseContent(resp.Content, ctx)
 	if err != nil {
