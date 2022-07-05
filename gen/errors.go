@@ -14,9 +14,10 @@ type unimplementedError interface {
 
 var (
 	_ = []interface {
-		error
 		errors.Wrapper
 		errors.Formatter
+		fmt.Formatter
+		error
 	}{
 		(*ErrParseSpec)(nil),
 		(*ErrBuildRouter)(nil),
@@ -104,6 +105,11 @@ func (e *ErrParseSpec) FormatError(p errors.Printer) (next error) {
 	return e.err
 }
 
+// Format implements fmt.Formatter.
+func (e *ErrParseSpec) Format(s fmt.State, verb rune) {
+	errors.FormatError(e, s, verb)
+}
+
 // Error implements error.
 func (e *ErrParseSpec) Error() string {
 	return fmt.Sprintf("parse spec: %s", e.err)
@@ -125,6 +131,11 @@ func (e *ErrBuildRouter) FormatError(p errors.Printer) (next error) {
 	return e.err
 }
 
+// Format implements fmt.Formatter.
+func (e *ErrBuildRouter) Format(s fmt.State, verb rune) {
+	errors.FormatError(e, s, verb)
+}
+
 // Error implements error.
 func (e *ErrBuildRouter) Error() string {
 	return fmt.Sprintf("build router: %s", e.err)
@@ -144,6 +155,11 @@ func (e *ErrGoFormat) Unwrap() error {
 func (e *ErrGoFormat) FormatError(p errors.Printer) (next error) {
 	p.Print("goimports")
 	return e.err
+}
+
+// Format implements fmt.Formatter.
+func (e *ErrGoFormat) Format(s fmt.State, verb rune) {
+	errors.FormatError(e, s, verb)
 }
 
 // Error implements error.
