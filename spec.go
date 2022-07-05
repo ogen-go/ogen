@@ -173,6 +173,8 @@ type Components struct {
 	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitzero"`
 	// Links           map[string]Link            `json:"links"`
 	// Callbacks       map[string]Callback        `json:"callback"`
+
+	Locator `json:"-"`
 }
 
 // Init initializes all fields.
