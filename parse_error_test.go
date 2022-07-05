@@ -30,11 +30,26 @@ func Test_wrapLineOffset(t *testing.T) {
     }
   }
 }`
+	ubool := func(input []byte) error {
+		var target bool
+		return unmarshal(input, &target)
+	}
 	tests := []struct {
 		input        string
 		target       func([]byte) error
 		line, column int
 	}{
+		{"{}", ubool, 1, 1},
+		{"{}\n", ubool, 1, 1},
+		{"\x20{}", ubool, 1, 2},
+		{"\x20{}\n", ubool, 1, 2},
+		{"\n{}", ubool, 2, 1},
+		{"\n{}\n", ubool, 2, 1},
+		{"\n\n{}", ubool, 3, 1},
+		{"\n\n{}\n", ubool, 3, 1},
+		{"\x20\n{}", ubool, 2, 1},
+		{"\x20\n{}\n", ubool, 2, 1},
+
 		{"{\n\t\"a\":1,\n\t\"b\":2\n}", func(input []byte) error {
 			var target struct {
 				A int  `json:"a"`
@@ -47,6 +62,7 @@ func Test_wrapLineOffset(t *testing.T) {
 			var target []int
 			return unmarshal(input, &target)
 		}, 3, 1},
+
 		{testdata, func(input []byte) error {
 			var target *Spec
 			return unmarshal(input, &target)
@@ -63,7 +79,7 @@ func Test_wrapLineOffset(t *testing.T) {
 
 			msg := err.Error()
 			prefix := fmt.Sprintf("line %d:%d", tt.line, tt.column)
-			a.Truef(strings.HasPrefix(msg, prefix), "prefix: %q, msg: %q", prefix, msg)
+			a.Truef(strings.HasPrefix(msg, prefix), "input: %q,\nprefix: %q,\nmsg: %q", tt.input, prefix, msg)
 		})
 	}
 }
