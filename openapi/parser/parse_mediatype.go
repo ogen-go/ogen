@@ -73,7 +73,11 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 			names[prop.Name] = prop
 		}
 
-		parseEncoding := func(name string, e ogen.Encoding) error {
+		parseEncoding := func(name string, e ogen.Encoding) (rerr error) {
+			defer func() {
+				rerr = p.wrapLocation(&e, rerr)
+			}()
+
 			prop, ok := names[name]
 			if !ok {
 				return errors.New("unknown prop")
