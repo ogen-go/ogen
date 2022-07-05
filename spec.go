@@ -230,6 +230,8 @@ type PathItem struct {
 	Trace       *Operation   `json:"trace,omitzero"`
 	Servers     []Server     `json:"servers,omitzero"`
 	Parameters  []*Parameter `json:"parameters,omitzero"`
+
+	Locator `json:"-"`
 }
 
 // Operation describes a single API operation on a path.

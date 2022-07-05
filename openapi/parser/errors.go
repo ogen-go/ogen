@@ -56,8 +56,8 @@ func (e *LocationError) Error() string {
 }
 
 func (p *parser) wrapLocation(l ogenjson.Locatable, err error) error {
-	if err == nil {
-		return nil
+	if err == nil || l == nil || p == nil {
+		return err
 	}
 	loc, ok := l.Location()
 	if !ok {
