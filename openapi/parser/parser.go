@@ -104,12 +104,12 @@ func (p *parser) parsePath(path string, item *ogen.PathItem, operationIDs map[st
 	if item == nil {
 		return errors.New("pathItem object is empty or null")
 	}
-	if item.Ref != "" {
-		return errors.New("referenced pathItem not supported")
-	}
 	defer func() {
 		rerr = p.wrapLocation(item, rerr)
 	}()
+	if item.Ref != "" {
+		return errors.New("referenced pathItem not supported")
+	}
 
 	itemParams, err := p.parseParams(item.Parameters)
 	if err != nil {

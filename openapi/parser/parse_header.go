@@ -27,6 +27,9 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 	if header == nil {
 		return nil, errors.New("header object is empty or null")
 	}
+	defer func() {
+		rerr = p.wrapLocation(header, rerr)
+	}()
 	if ref := header.Ref; ref != "" {
 		parsed, err := p.resolveHeader(name, ref, ctx)
 		if err != nil {
@@ -34,9 +37,6 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		}
 		return parsed, nil
 	}
-	defer func() {
-		rerr = p.wrapLocation(header, rerr)
-	}()
 
 	if header.In != "" {
 		return nil, errors.Errorf(`"in" MUST NOT be specified, got %q`, header.In)

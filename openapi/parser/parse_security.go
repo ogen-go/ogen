@@ -18,6 +18,9 @@ func (p *parser) parseSecurityScheme(
 	if scheme == nil {
 		return nil, errors.New("securityScheme is empty or null")
 	}
+	defer func() {
+		rerr = p.wrapLocation(scheme, rerr)
+	}()
 
 	if ref := scheme.Ref; ref != "" {
 		sch, err := p.resolveSecurityScheme(ref, ctx)
@@ -26,9 +29,6 @@ func (p *parser) parseSecurityScheme(
 		}
 		return sch, nil
 	}
-	defer func() {
-		rerr = p.wrapLocation(scheme, rerr)
-	}()
 
 	if err := func() error {
 		switch scheme.Type {
