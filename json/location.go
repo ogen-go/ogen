@@ -46,7 +46,7 @@ func (l Location) String() string {
 	if l.Line == 0 {
 		return strconv.Quote(l.JSONPointer)
 	}
-	return fmt.Sprintf("line %d:%d", l.Line, l.Column)
+	return fmt.Sprintf("%d:%d", l.Line, l.Column)
 }
 
 // Locatable is an interface for JSON value location store.

@@ -114,6 +114,7 @@ func run() error {
 	if flag.NArg() == 0 || specPath == "" {
 		return errors.New("no spec provided")
 	}
+	specPath = filepath.Clean(specPath)
 
 	switch files, err := os.ReadDir(*targetDir); {
 	case os.IsNotExist(err):
@@ -138,6 +139,7 @@ func run() error {
 		_ = logger.Sync()
 	}()
 
+	_, fileName := filepath.Split(specPath)
 	opts := gen.Options{
 		NoClient:             *noClient,
 		NoServer:             *noServer,
@@ -146,6 +148,7 @@ func run() error {
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
 		AllowRemote:          *allowRemote,
+		Filename:             fileName,
 		Filters: gen.Filters{
 			PathRegex: filterPath,
 			Methods:   filterMethods,

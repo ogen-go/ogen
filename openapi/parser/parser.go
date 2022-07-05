@@ -26,6 +26,7 @@ type parser struct {
 	external   jsonschema.ExternalResolver
 	schemas    map[string][]byte
 	depthLimit int
+	filename   string // optional, used for error messages
 
 	schemaParser *jsonschema.Parser
 }
@@ -58,6 +59,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			"": spec.Raw,
 		},
 		depthLimit: s.DepthLimit,
+		filename:   s.Filename,
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
 			External: s.External,
 			Resolver: componentsResolver{
