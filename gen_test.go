@@ -125,6 +125,6 @@ func TestNegative(t *testing.T) {
 
 		_, err = gen.NewGenerator(spec, gen.Options{})
 		a.Error(err)
-		t.Log(err.Error())
+		t.Logf("%+v", err)
 	})
 }
