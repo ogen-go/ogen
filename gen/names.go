@@ -49,16 +49,16 @@ func (g *nameGen) generate() (string, error) {
 		if !ok {
 			pushPart()
 
-			name := strings.Join(g.parts, "")
-			// FIXME(tdakkota): choose prefix according to context
-			if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
-				name = "R" + name
+			var name strings.Builder
+			if len(g.parts) > 0 && g.parts[0] >= "0" && g.parts[0] <= "9" {
+				name.WriteString("R")
 			}
-			if !token.IsIdentifier(name) {
+			name.WriteString(strings.Join(g.parts, ""))
+			if !token.IsIdentifier(name.String()) {
 				return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"},
 					"can't generate valid name: %+v", g.parts)
 			}
-			return name, nil
+			return name.String(), nil
 		}
 
 		if g.isAllowed(r) {
