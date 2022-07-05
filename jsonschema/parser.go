@@ -10,10 +10,13 @@ import (
 
 // Parser parses JSON schemas.
 type Parser struct {
-	external   ExternalResolver
-	schemas    map[string]ReferenceResolver
-	refcache   map[refKey]*Schema
+	external ExternalResolver
+	schemas  map[string]ReferenceResolver
+	refcache map[refKey]*Schema
+
 	depthLimit int
+	filename   string // optional, used for error messages
+
 	inferTypes bool
 }
 
@@ -27,6 +30,7 @@ func NewParser(s Settings) *Parser {
 		},
 		refcache:   map[refKey]*Schema{},
 		depthLimit: s.DepthLimit,
+		filename:   s.Filename,
 		inferTypes: s.InferTypes,
 	}
 }
@@ -41,7 +45,12 @@ func (p *Parser) Resolve(ref string) (*Schema, error) {
 	return p.resolve(ref, newResolveCtx(p.depthLimit))
 }
 
-func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (*Schema, error) {
+func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (_ *Schema, rerr error) {
+	if schema != nil {
+		defer func() {
+			rerr = p.wrapLocation(schema, rerr)
+		}()
+	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
 		return p.extendInfo(schema, s)
 	})

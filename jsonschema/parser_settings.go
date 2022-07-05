@@ -10,6 +10,11 @@ type Settings struct {
 	// Resolver is a root resolver.
 	Resolver ReferenceResolver
 
+	// Filename is a name of the file being parsed.
+	//
+	// Used for error messages.
+	Filename string
+
 	// DepthLimit limits the number of nested references. Default is 1000.
 	DepthLimit int
 

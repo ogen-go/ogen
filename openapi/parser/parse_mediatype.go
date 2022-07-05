@@ -80,7 +80,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 
 			prop, ok := names[name]
 			if !ok {
-				return errors.New("unknown prop")
+				return errors.Errorf("unknown property %q", name)
 			}
 
 			encoding := &openapi.Encoding{

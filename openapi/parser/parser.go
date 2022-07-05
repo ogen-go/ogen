@@ -66,6 +66,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 				components: spec.Components.Schemas,
 				root:       jsonschema.NewRootResolver(spec.Raw),
 			},
+			Filename:   s.Filename,
 			DepthLimit: s.DepthLimit,
 			InferTypes: s.InferTypes,
 		}),
