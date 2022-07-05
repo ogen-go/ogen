@@ -15,7 +15,7 @@ func unmarshal(data []byte, out any) error {
 				begin = d.InputOffset()
 				return json.SkipFunc
 			}),
-			ogenjson.LocationUnmarshaler(),
+			ogenjson.LocationUnmarshaler(data),
 		),
 	}
 

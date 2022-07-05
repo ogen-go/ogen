@@ -2,6 +2,8 @@ package json
 
 import (
 	"bytes"
+	"fmt"
+	"strconv"
 
 	"github.com/go-json-experiment/json"
 )
@@ -34,18 +36,17 @@ func LineColumn(offset int64, data []byte) (line, column int64, ok bool) {
 
 // Location is a JSON value location.
 type Location struct {
-	JSONPointer string `json:"-"`
-	Offset      int64  `json:"-"`
+	JSONPointer  string `json:"-"`
+	Offset       int64  `json:"-"`
+	Line, Column int64  `json:"-"`
 }
 
-// IsZero implements the json. interface.
-func (l Location) IsZero() bool {
-	return true // always zero, do not marshal it.
-}
-
-// LineColumn returns the line and column of the location.
-func (l Location) LineColumn(data []byte) (line, column int64, ok bool) {
-	return LineColumn(l.Offset, data)
+// String implements fmt.Stringer.
+func (l Location) String() string {
+	if l.Line == 0 {
+		return strconv.Quote(l.JSONPointer)
+	}
+	return fmt.Sprintf("line %d:%d", l.Line, l.Column)
 }
 
 // Locatable is an interface for JSON value location store.
@@ -71,14 +72,19 @@ func (l Locator) Location() (Location, bool) {
 }
 
 // LocationUnmarshaler is json.Unmarshalers that sets the location.
-func LocationUnmarshaler() *json.Unmarshalers {
+func LocationUnmarshaler(data []byte) *json.Unmarshalers {
 	return json.UnmarshalFuncV2(func(opts json.UnmarshalOptions, d *json.Decoder, l Locatable) error {
 		if _, ok := l.(*Locator); ok {
 			return nil
 		}
+
+		offset := d.InputOffset()
+		line, column, _ := LineColumn(offset, data)
 		l.setLocation(Location{
 			JSONPointer: d.StackPointer(),
-			Offset:      d.InputOffset(),
+			Offset:      offset,
+			Line:        line,
+			Column:      column,
 		})
 		return json.SkipFunc
 	})
