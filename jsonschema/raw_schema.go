@@ -110,7 +110,6 @@ func (n *Enum) UnmarshalYAML(node *yaml.Node) error {
 			return err
 		}
 		*n = append(*n, raw)
-		return nil
 	}
 	return nil
 }
