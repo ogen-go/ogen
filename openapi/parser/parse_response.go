@@ -66,8 +66,9 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi
 
 	return &openapi.Response{
 		Description: resp.Description,
-		Content:     content,
 		Headers:     headers,
+		Content:     content,
+		Locator:     resp.Locator,
 	}, nil
 }
 

@@ -11,6 +11,28 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter {
+	lookupOp := func(name string, in openapi.ParameterLocation) bool {
+		for _, param := range opParams {
+			if param.Name == name && param.In == in {
+				return true
+			}
+		}
+		return false
+	}
+
+	for _, param := range itemParams {
+		// Param defined in operation take precedence over param defined in pathItem.
+		if lookupOp(param.Name, param.In) {
+			continue
+		}
+
+		opParams = append(opParams, param)
+	}
+
+	return opParams
+}
+
 func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, error) {
 	// Unique parameter is defined by a combination of a name and location.
 	type pnameLoc struct {

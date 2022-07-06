@@ -28,5 +28,6 @@ func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (_ *openapi.Exam
 		Description:   e.Description,
 		Value:         e.Value,
 		ExternalValue: e.ExternalValue,
+		Locator:       e.Locator,
 	}, nil
 }

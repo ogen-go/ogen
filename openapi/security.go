@@ -1,5 +1,9 @@
 package openapi
 
+import (
+	ogenjson "github.com/ogen-go/ogen/json"
+)
+
 // SecurityRequirements is parsed security requirements.
 type SecurityRequirements struct {
 	Scopes   []string
@@ -17,6 +21,8 @@ type Security struct {
 	BearerFormat     string
 	Flows            OAuthFlows
 	OpenIDConnectURL string
+
+	ogenjson.Locator
 }
 
 // OAuthFlows allows configuration of the supported OAuth Flows.
@@ -25,6 +31,8 @@ type OAuthFlows struct {
 	Password          *OAuthFlow
 	ClientCredentials *OAuthFlow
 	AuthorizationCode *OAuthFlow
+
+	ogenjson.Locator
 }
 
 // OAuthFlow is configuration details for a supported OAuth Flow.
@@ -33,4 +41,6 @@ type OAuthFlow struct {
 	TokenURL         string
 	RefreshURL       string
 	Scopes           map[string]string // name -> description
+
+	ogenjson.Locator
 }

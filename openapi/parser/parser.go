@@ -153,6 +153,7 @@ func (p *parser) parseOp(
 		Description: spec.Description,
 		Deprecated:  spec.Deprecated,
 		HTTPMethod:  httpMethod,
+		Locator:     spec.Locator,
 	}
 
 	opParams, err := p.parseParams(spec.Parameters)
@@ -197,24 +198,26 @@ func (p *parser) parseOp(
 	return op, nil
 }
 
-func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter {
-	lookupOp := func(name string, in openapi.ParameterLocation) bool {
-		for _, param := range opParams {
-			if param.Name == name && param.In == in {
-				return true
-			}
-		}
-		return false
-	}
-
-	for _, param := range itemParams {
-		// Param defined in operation take precedence over param defined in pathItem.
-		if lookupOp(param.Name, param.In) {
-			continue
+func forEachOps(item *ogen.PathItem, f func(method string, op ogen.Operation) error) error {
+	var err error
+	handle := func(method string, op *ogen.Operation) {
+		if err != nil || op == nil {
+			return
 		}
 
-		opParams = append(opParams, param)
+		err = f(method, *op)
+		if err != nil {
+			err = errors.Wrap(err, method)
+		}
 	}
 
-	return opParams
+	handle("get", item.Get)
+	handle("put", item.Put)
+	handle("post", item.Post)
+	handle("delete", item.Delete)
+	handle("options", item.Options)
+	handle("head", item.Head)
+	handle("patch", item.Patch)
+	handle("trace", item.Trace)
+	return err
 }

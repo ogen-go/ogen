@@ -63,13 +63,14 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 	op := &openapi.Header{
 		Name:        name,
 		Description: header.Description,
+		Deprecated:  header.Deprecated,
 		Schema:      schema,
 		Content:     content,
 		In:          locatedIn,
 		Style:       inferParamStyle(locatedIn, header.Style),
 		Explode:     inferParamExplode(locatedIn, header.Explode),
 		Required:    header.Required,
-		Deprecated:  header.Deprecated,
+		Locator:     header.Locator,
 	}
 
 	if header.Content != nil {

@@ -89,6 +89,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 				Style:         inferParamStyle(openapi.LocationQuery, e.Style),
 				Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
 				AllowReserved: e.AllowReserved,
+				Locator:       e.Locator,
 			}
 			encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 			if err != nil {
@@ -143,5 +144,6 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 		Example:  m.Example,
 		Examples: examples,
 		Encoding: encodings,
+		Locator:  m.Locator,
 	}, nil
 }
