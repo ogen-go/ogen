@@ -14,6 +14,11 @@ type (
 	Num = jsonschema.Num
 	// Enum is JSON Schema enum validator description.
 	Enum = jsonschema.Enum
+	// Default is a default value.
+	Default = jsonschema.Default
+	// ExampleValue is an example value.
+	ExampleValue = jsonschema.Example
+
 	// Locator stores location of JSON value.
 	Locator = ogenjson.Locator
 )

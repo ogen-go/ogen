@@ -5,12 +5,25 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-json-experiment/json"
+	"gopkg.in/yaml.v3"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 // Num represents JSON number.
 type Num json.RawValue
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (n *Num) UnmarshalYAML(node *yaml.Node) error {
+	if t := node.Tag; t != "!!int" && t != "!!float" {
+		return errors.Errorf("unexpected tag %s", t)
+	}
+	val, err := convertYAMLtoRawJSON(node)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(val, n)
+}
 
 // MarshalNextJSON implements json.MarshalerV2.
 func (n Num) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
@@ -71,8 +84,8 @@ type RawSchema struct {
 	UniqueItems          bool                  `json:"uniqueItems,omitzero"`
 	MaxProperties        *uint64               `json:"maxProperties,omitzero"`
 	MinProperties        *uint64               `json:"minProperties,omitzero"`
-	Default              json.RawValue         `json:"default,omitzero"`
-	Example              json.RawValue         `json:"example,omitzero"`
+	Default              Default               `json:"default,omitzero"`
+	Example              Example               `json:"example,omitzero"`
 	Deprecated           bool                  `json:"deprecated,omitzero"`
 	ContentEncoding      string                `json:"contentEncoding,omitzero"`
 	ContentMediaType     string                `json:"contentMediaType,omitzero"`
@@ -84,6 +97,23 @@ type RawSchema struct {
 
 // Enum is JSON Schema enum validator description.
 type Enum []json.RawValue
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (n *Enum) UnmarshalYAML(node *yaml.Node) error {
+	if node.Tag != "!!seq" {
+		return errors.Errorf("unexpected tag %s", node.Tag)
+	}
+	*n = (*n)[:0]
+	for _, val := range node.Content {
+		raw, err := convertYAMLtoRawJSON(val)
+		if err != nil {
+			return err
+		}
+		*n = append(*n, raw)
+		return nil
+	}
+	return nil
+}
 
 // UnmarshalNextJSON implements json.UnmarshalerV2.
 func (n *Enum) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {

@@ -968,7 +968,7 @@ func (s *Schema) SetMinProperties(m *uint64) *Schema {
 
 // SetDefault sets the Default of the Schema.
 func (s *Schema) SetDefault(d jsonv1.RawMessage) *Schema {
-	s.Default = jsonv2.RawValue(d)
+	s.Default = Default(d)
 	return s
 }
 
@@ -1033,7 +1033,7 @@ func (s *Schema) AsArray() *Schema {
 func (s *Schema) AsEnum(def jsonv1.RawMessage, values ...jsonv1.RawMessage) *Schema {
 	return &Schema{
 		Type:    s.Type,
-		Default: jsonv2.RawValue(def),
+		Default: Default(def),
 		Enum: func() (r []jsonv2.RawValue) {
 			for _, val := range values {
 				r = append(r, jsonv2.RawValue(val))

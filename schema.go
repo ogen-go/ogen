@@ -203,12 +203,12 @@ type Schema struct {
 	MinProperties *uint64 `json:"minProperties,omitzero" yaml:"minProperties,omitempty"`
 
 	// Default value.
-	Default json.RawValue `json:"default,omitzero" yaml:"default,omitempty"`
+	Default Default `json:"default,omitzero" yaml:"default,omitempty"`
 
 	// A free-form property to include an example of an instance for this schema.
 	// To represent examples that cannot be naturally represented in JSON or YAML,
 	// a string value can be used to contain the example with escaping where necessary.
-	Example json.RawValue `json:"example,omitzero" yaml:"example,omitempty"`
+	Example ExampleValue `json:"example,omitzero" yaml:"example,omitempty"`
 
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.

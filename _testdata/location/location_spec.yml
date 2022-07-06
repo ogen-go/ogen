@@ -28,4 +28,9 @@ components:
       type: object
       properties:
         name:
-          type: string
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+          minimum: 2
