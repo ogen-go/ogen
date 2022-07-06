@@ -64,7 +64,7 @@ type Schema struct {
 	// for independent validation but together compose a single object.
 	// Still, it does not imply a hierarchy between the models.
 	// For that purpose, you should include the discriminator.
-	AllOf []*Schema `json:"allOf,omitzero"` // TODO: implement yaml:"allOf,omitempty"` // TODO: implement.
+	AllOf []*Schema `json:"allOf,omitzero" yaml:"allOf,omitempty"`
 
 	// OneOf validates the value against exactly one of the subschemas
 	OneOf []*Schema `json:"oneOf,omitzero" yaml:"oneOf,omitempty"`
