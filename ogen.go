@@ -2,7 +2,6 @@
 package ogen
 
 import (
-	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 )
@@ -11,14 +10,13 @@ import (
 func Parse(data []byte) (s *Spec, err error) {
 	s = &Spec{}
 	if !jx.Valid(data) {
-		d, err := yaml.YAMLToJSON(data)
-		if err != nil {
+		if err := unmarshalYAML(data, s); err != nil {
 			return nil, errors.Wrap(err, "yaml")
 		}
-		data = d
-	}
-	if err := unmarshal(data, s); err != nil {
-		return nil, errors.Wrap(err, "json")
+	} else {
+		if err := unmarshalJSON(data, s); err != nil {
+			return nil, errors.Wrap(err, "json")
+		}
 	}
 	return s, nil
 }

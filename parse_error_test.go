@@ -1,14 +1,17 @@
 package ogen
 
 import (
+	_ "embed"
 	"fmt"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
-func Test_wrapLineOffset(t *testing.T) {
+func Test_unmarshalJSON(t *testing.T) {
 	const testdata = `{
   "openapi": "3.1.0",
   "info": {
@@ -32,7 +35,7 @@ func Test_wrapLineOffset(t *testing.T) {
 }`
 	ubool := func(input []byte) error {
 		var target bool
-		return unmarshal(input, &target)
+		return unmarshalJSON(input, &target)
 	}
 	tests := []struct {
 		input        string
@@ -55,17 +58,17 @@ func Test_wrapLineOffset(t *testing.T) {
 				A int  `json:"a"`
 				B bool `json:"b"`
 			}
-			return unmarshal(input, &target)
+			return unmarshalJSON(input, &target)
 		}, 3, 6},
 
 		{"[\n0,\ntrue\n]", func(input []byte) error {
 			var target []int
-			return unmarshal(input, &target)
+			return unmarshalJSON(input, &target)
 		}, 3, 1},
 
 		{testdata, func(input []byte) error {
 			var target *Spec
-			return unmarshal(input, &target)
+			return unmarshalJSON(input, &target)
 		}, 15, 25},
 	}
 	for i, tt := range tests {

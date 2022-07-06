@@ -5,49 +5,52 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-json-experiment/json"
+	"gopkg.in/yaml.v3"
+
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 // The Schema Object allows the definition of input and output data types.
 // These types can be objects, but also primitives and arrays.
 type Schema struct {
-	Ref         string `json:"$ref,omitzero"` // ref object
-	Summary     string `json:"summary,omitzero"`
-	Description string `json:"description,omitzero"`
+	Ref         string `json:"$ref,omitzero" yaml:"$ref,omitempty"` // ref object
+	Summary     string `json:"summary,omitzero" yaml:"summary,omitempty"`
+	Description string `json:"description,omitzero" yaml:"description,omitempty"`
 
 	// Additional external documentation for this schema.
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero" yaml:"externalDocs,omitempty"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
-	Type string `json:"type,omitzero"`
+	Type string `json:"type,omitzero" yaml:"type,omitempty"`
 
 	// See Data Type Formats for further details (https://swagger.io/specification/#data-type-format).
 	// While relying on JSON Schema's defined formats,
 	// the OAS offers a few additional predefined formats.
-	Format string `json:"format,omitzero"`
+	Format string `json:"format,omitzero" yaml:"format,omitempty"`
 
 	// Property definitions MUST be a Schema Object and not a standard JSON Schema
 	// (inline or referenced).
-	Properties Properties `json:"properties,omitzero"`
+	Properties Properties `json:"properties,omitzero" yaml:"properties,omitempty"`
 
 	// Value can be boolean or object. Inline or referenced schema MUST be of a Schema Object
 	// and not a standard JSON Schema. Consistent with JSON Schema, additionalProperties defaults to true.
-	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitzero"`
+	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitzero" yaml:"additionalProperties,omitempty"`
 
 	// The value of "patternProperties" MUST be an object. Each property
 	// name of this object SHOULD be a valid regular expression, according
 	// to the ECMA-262 regular expression dialect. Each property value of
 	// this object MUST be a valid JSON Schema.
-	PatternProperties PatternProperties `json:"patternProperties,omitzero"`
+	PatternProperties PatternProperties `json:"patternProperties,omitzero" yaml:"patternProperties,omitempty"`
 
 	// The value of this keyword MUST be an array.
 	// This array MUST have at least one element.
 	// Elements of this array MUST be strings, and MUST be unique.
-	Required []string `json:"required,omitzero"`
+	Required []string `json:"required,omitzero" yaml:"required,omitempty"`
 
 	// Value MUST be an object and not an array.
 	// Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
 	// MUST be present if the Type is "array".
-	Items *Schema `json:"items,omitzero"`
+	Items *Schema `json:"items,omitzero" yaml:"items,omitempty"`
 
 	// A true value adds "null" to the allowed type specified by the type keyword,
 	// only if type is explicitly defined within the same Schema Object.
@@ -55,33 +58,33 @@ type Schema struct {
 	// and therefore may disallow the use of null as a value.
 	// A false value leaves the specified or default type unmodified.
 	// The default value is false.
-	Nullable bool `json:"nullable,omitzero"`
+	Nullable bool `json:"nullable,omitzero" yaml:"nullable,omitempty"`
 
 	// AllOf takes an array of object definitions that are used
 	// for independent validation but together compose a single object.
 	// Still, it does not imply a hierarchy between the models.
 	// For that purpose, you should include the discriminator.
-	AllOf []*Schema `json:"allOf,omitzero"` // TODO: implement.
+	AllOf []*Schema `json:"allOf,omitzero"` // TODO: implement yaml:"allOf,omitempty"` // TODO: implement.
 
 	// OneOf validates the value against exactly one of the subschemas
-	OneOf []*Schema `json:"oneOf,omitzero"`
+	OneOf []*Schema `json:"oneOf,omitzero" yaml:"oneOf,omitempty"`
 
 	// AnyOf validates the value against any (one or more) of the subschemas
-	AnyOf []*Schema `json:"anyOf,omitzero"`
+	AnyOf []*Schema `json:"anyOf,omitzero" yaml:"anyOf,omitempty"`
 
 	// Discriminator for subschemas.
-	Discriminator *Discriminator `json:"discriminator,omitzero"`
+	Discriminator *Discriminator `json:"discriminator,omitzero" yaml:"discriminator,omitempty"`
 
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
 	// Elements in the array SHOULD be unique.
-	Enum Enum `json:"enum,omitzero"`
+	Enum Enum `json:"enum,omitzero" yaml:"enum,omitempty"`
 
 	// The value of "multipleOf" MUST be a number, strictly greater than 0.
 	//
 	// A numeric instance is only valid if division by this keyword's value
 	// results in an integer.
-	MultipleOf Num `json:"multipleOf,omitzero"`
+	MultipleOf Num `json:"multipleOf,omitzero" yaml:"multipleOf,omitempty"`
 
 	// The value of "maximum" MUST be a number, representing an upper limit
 	// for a numeric instance.
@@ -90,7 +93,7 @@ type Schema struct {
 	// "exclusiveMaximum" is true and instance is less than the provided
 	// value, or else if the instance is less than or exactly equal to the
 	// provided value.
-	Maximum Num `json:"maximum,omitzero"`
+	Maximum Num `json:"maximum,omitzero" yaml:"maximum,omitempty"`
 
 	// The value of "exclusiveMaximum" MUST be a boolean, representing
 	// whether the limit in "maximum" is exclusive or not.  An undefined
@@ -100,7 +103,7 @@ type Schema struct {
 	// equal to the value specified in "maximum".  If "exclusiveMaximum" is
 	// false (or not specified), then a numeric instance MAY be equal to the
 	// value of "maximum".
-	ExclusiveMaximum bool `json:"exclusiveMaximum,omitzero"`
+	ExclusiveMaximum bool `json:"exclusiveMaximum,omitzero" yaml:"exclusiveMaximum,omitempty"`
 
 	// The value of "minimum" MUST be a number, representing a lower limit
 	// for a numeric instance.
@@ -109,7 +112,7 @@ type Schema struct {
 	// "exclusiveMinimum" is true and instance is greater than the provided
 	// value, or else if the instance is greater than or exactly equal to
 	// the provided value.
-	Minimum Num `json:"minimum,omitzero"`
+	Minimum Num `json:"minimum,omitzero" yaml:"minimum,omitempty"`
 
 	// The value of "exclusiveMinimum" MUST be a boolean, representing
 	// whether the limit in "minimum" is exclusive or not.  An undefined
@@ -119,7 +122,7 @@ type Schema struct {
 	// equal to the value specified in "minimum".  If "exclusiveMinimum" is
 	// false (or not specified), then a numeric instance MAY be equal to the
 	// value of "minimum".
-	ExclusiveMinimum bool `json:"exclusiveMinimum,omitzero"`
+	ExclusiveMinimum bool `json:"exclusiveMinimum,omitzero" yaml:"exclusiveMinimum,omitempty"`
 
 	// The value of this keyword MUST be a non-negative integer.
 	//
@@ -131,7 +134,7 @@ type Schema struct {
 	//
 	// The length of a string instance is defined as the number of its
 	// characters as defined by RFC 7159 [RFC7159].
-	MaxLength *uint64 `json:"maxLength,omitzero"`
+	MaxLength *uint64 `json:"maxLength,omitzero" yaml:"maxLength,omitempty"`
 
 	// A string instance is valid against this keyword if its length is
 	// greater than, or equal to, the value of this keyword.
@@ -144,7 +147,7 @@ type Schema struct {
 	//
 	// "minLength", if absent, may be considered as being present with
 	// integer value 0.
-	MinLength *uint64 `json:"minLength,omitzero"`
+	MinLength *uint64 `json:"minLength,omitzero" yaml:"minLength,omitempty"`
 
 	// The value of this keyword MUST be a string.  This string SHOULD be a
 	// valid regular expression, according to the ECMA 262 regular
@@ -153,14 +156,14 @@ type Schema struct {
 	// A string instance is considered valid if the regular expression
 	// matches the instance successfully. Recall: regular expressions are
 	// not implicitly anchored.
-	Pattern string `json:"pattern,omitzero"`
+	Pattern string `json:"pattern,omitzero" yaml:"pattern,omitempty"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
 	//
 	// An array instance is valid against "maxItems" if its size is less
 	// than, or equal to, the value of this keyword.
-	MaxItems *uint64 `json:"maxItems,omitzero"`
+	MaxItems *uint64 `json:"maxItems,omitzero" yaml:"maxItems,omitempty"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
@@ -170,7 +173,7 @@ type Schema struct {
 	//
 	// If this keyword is not present, it may be considered present with a
 	// value of 0.
-	MinItems *uint64 `json:"minItems,omitzero"`
+	MinItems *uint64 `json:"minItems,omitzero" yaml:"minItems,omitempty"`
 
 	// The value of this keyword MUST be a boolean.
 	//
@@ -180,14 +183,14 @@ type Schema struct {
 	//
 	// If not present, this keyword may be considered present with boolean
 	// value false.
-	UniqueItems bool `json:"uniqueItems,omitzero"`
+	UniqueItems bool `json:"uniqueItems,omitzero" yaml:"uniqueItems,omitempty"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
 	//
 	// An object instance is valid against "maxProperties" if its number of
 	// properties is less than, or equal to, the value of this keyword.
-	MaxProperties *uint64 `json:"maxProperties,omitzero"`
+	MaxProperties *uint64 `json:"maxProperties,omitzero" yaml:"maxProperties,omitempty"`
 
 	// The value of this keyword MUST be an integer.  This integer MUST be
 	// greater than, or equal to, 0.
@@ -197,19 +200,19 @@ type Schema struct {
 	//
 	// If this keyword is not present, it may be considered present with a
 	// value of 0.
-	MinProperties *uint64 `json:"minProperties,omitzero"`
+	MinProperties *uint64 `json:"minProperties,omitzero" yaml:"minProperties,omitempty"`
 
 	// Default value.
-	Default json.RawValue `json:"default,omitzero"`
+	Default json.RawValue `json:"default,omitzero" yaml:"default,omitempty"`
 
 	// A free-form property to include an example of an instance for this schema.
 	// To represent examples that cannot be naturally represented in JSON or YAML,
 	// a string value can be used to contain the example with escaping where necessary.
-	Example json.RawValue `json:"example,omitzero"`
+	Example json.RawValue `json:"example,omitzero" yaml:"example,omitempty"`
 
 	// Specifies that a schema is deprecated and SHOULD be transitioned out
 	// of usage.
-	Deprecated bool `json:"deprecated,omitzero"`
+	Deprecated bool `json:"deprecated,omitzero" yaml:"deprecated,omitempty"`
 
 	// If the instance value is a string, this property defines that the
 	// string SHOULD be interpreted as binary data and decoded using the
@@ -220,7 +223,7 @@ type Schema struct {
 	//
 	// The value of this property SHOULD be ignored if the instance
 	// described is not a string.
-	ContentEncoding string `json:"contentEncoding,omitzero"`
+	ContentEncoding string `json:"contentEncoding,omitzero" yaml:"contentEncoding,omitempty"`
 
 	// The value of this property must be a media type, as defined by RFC
 	// 2046. This property defines the media type of instances
@@ -230,9 +233,28 @@ type Schema struct {
 	//
 	// The value of this property SHOULD be ignored if the instance
 	// described is not a string.
-	ContentMediaType string `json:"contentMediaType,omitzero"`
+	ContentMediaType string `json:"contentMediaType,omitzero" yaml:"contentMediaType,omitempty"`
 
-	Locator `json:"-"`
+	Locator `json:"-" yaml:"-"`
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (s *Schema) UnmarshalYAML(n *yaml.Node) error {
+	type Alias Schema
+	var a Alias
+
+	if err := n.Decode(&a); err != nil {
+		return err
+	}
+	a.SetLocation(ogenjson.Location{
+		// FIXME(tdakkota): For some reason, the line number is off by 1.
+		//  And the column number is off by 2.
+		Line:   int64(n.Line) - 1,
+		Column: int64(n.Column) - 2,
+	})
+
+	*s = Schema(a)
+	return nil
 }
 
 // Property is item of Properties.
@@ -305,6 +327,28 @@ func (p *Properties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decod
 	return nil
 }
 
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (p *Properties) UnmarshalYAML(node *yaml.Node) error {
+	if node.Kind != yaml.MappingNode {
+		return errors.Errorf("unexpected YAML kind %v", node.Kind)
+	}
+	for i := 0; i < len(node.Content); i += 2 {
+		var (
+			key    = node.Content[i]
+			value  = node.Content[i+1]
+			schema *Schema
+		)
+		if err := value.Decode(&schema); err != nil {
+			return err
+		}
+		*p = append(*p, Property{
+			Name:   key.Value,
+			Schema: schema,
+		})
+	}
+	return nil
+}
+
 // AdditionalProperties is JSON Schema additionalProperties validator description.
 type AdditionalProperties struct {
 	Bool   *bool
@@ -335,6 +379,18 @@ func (p *AdditionalProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *
 			GoType:      reflect.TypeOf(p),
 			Err:         errors.Errorf("unexpected type %s", kind.String()),
 		}
+	}
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (p *AdditionalProperties) UnmarshalYAML(node *yaml.Node) error {
+	switch node.Kind {
+	case yaml.ScalarNode:
+		return node.Decode(&p.Bool)
+	case yaml.MappingNode:
+		return node.Decode(&p.Schema)
+	default:
+		return errors.Errorf("unexpected YAML kind %v", node.Kind)
 	}
 }
 
@@ -405,5 +461,27 @@ func (p *PatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *jso
 	}
 
 	*p = patternProperties
+	return nil
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (p *PatternProperties) UnmarshalYAML(node *yaml.Node) error {
+	if node.Kind != yaml.MappingNode {
+		return errors.Errorf("unexpected YAML kind %v", node.Kind)
+	}
+	for i := 0; i < len(node.Content); i += 2 {
+		var (
+			key    = node.Content[i]
+			value  = node.Content[i+1]
+			schema *Schema
+		)
+		if err := value.Decode(&schema); err != nil {
+			return err
+		}
+		*p = append(*p, PatternProperty{
+			Pattern: key.Value,
+			Schema:  schema,
+		})
+	}
 	return nil
 }
