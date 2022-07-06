@@ -185,6 +185,10 @@ func TestExternalReference(t *testing.T) {
 			Type:     "string",
 			Examples: []json.RawValue{exampleValue},
 		}
+		localExample = &openapi.Example{
+			Ref:   "#/components/examples/LocalExample",
+			Value: exampleValue,
+		}
 		param = &openapi.Parameter{
 			Ref:     "#/components/parameters/LocalParameter",
 			Name:    "parameter",
@@ -228,10 +232,7 @@ func TestExternalReference(t *testing.T) {
 						Examples: []json.RawValue{exampleValue},
 					},
 					Examples: map[string]*openapi.Example{
-						"ref": {
-							Ref:   "foo.json#/components/examples/RemoteExample",
-							Value: exampleValue,
-						},
+						"ref": localExample,
 					},
 					Encoding: map[string]*openapi.Encoding{},
 				},
@@ -257,17 +258,20 @@ func TestExternalReference(t *testing.T) {
 			},
 		},
 		Components: &openapi.Components{
-			Parameters: map[string]*openapi.Parameter{
-				"LocalParameter": param,
-			},
 			Schemas: map[string]*jsonschema.Schema{
 				"LocalSchema": schema,
 			},
-			RequestBodies: map[string]*openapi.RequestBody{
-				"LocalRequestBody": requestBody,
-			},
 			Responses: map[string]*openapi.Response{
 				"LocalResponse": response,
+			},
+			Parameters: map[string]*openapi.Parameter{
+				"LocalParameter": param,
+			},
+			Examples: map[string]*openapi.Example{
+				"LocalExample": localExample,
+			},
+			RequestBodies: map[string]*openapi.RequestBody{
+				"LocalRequestBody": requestBody,
 			},
 		},
 	}, spec)
@@ -491,10 +495,11 @@ func TestComplicatedReference(t *testing.T) {
 			testPost,
 		},
 		Components: &openapi.Components{
-			Parameters:    map[string]*openapi.Parameter{},
 			Schemas:       map[string]*jsonschema.Schema{},
-			RequestBodies: map[string]*openapi.RequestBody{},
 			Responses:     map[string]*openapi.Response{},
+			Parameters:    map[string]*openapi.Parameter{},
+			Examples:      map[string]*openapi.Example{},
+			RequestBodies: map[string]*openapi.RequestBody{},
 		},
 	}, spec)
 }

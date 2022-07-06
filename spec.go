@@ -173,6 +173,8 @@ type Components struct {
 	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitzero"`
 	// Links           map[string]Link            `json:"links"`
 	// Callbacks       map[string]Callback        `json:"callback"`
+
+	Locator `json:"-"`
 }
 
 // Init initializes all fields.
@@ -230,6 +232,8 @@ type PathItem struct {
 	Trace       *Operation   `json:"trace,omitzero"`
 	Servers     []Server     `json:"servers,omitzero"`
 	Parameters  []*Parameter `json:"parameters,omitzero"`
+
+	Locator `json:"-"`
 }
 
 // Operation describes a single API operation on a path.

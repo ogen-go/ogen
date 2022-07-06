@@ -18,6 +18,9 @@ func (p *parser) parseSecurityScheme(
 	if scheme == nil {
 		return nil, errors.New("securityScheme is empty or null")
 	}
+	defer func() {
+		rerr = p.wrapLocation(scheme, rerr)
+	}()
 
 	if ref := scheme.Ref; ref != "" {
 		sch, err := p.resolveSecurityScheme(ref, ctx)
@@ -26,9 +29,6 @@ func (p *parser) parseSecurityScheme(
 		}
 		return sch, nil
 	}
-	defer func() {
-		rerr = p.wrapLocation(scheme, rerr)
-	}()
 
 	if err := func() error {
 		switch scheme.Type {
@@ -66,7 +66,7 @@ func (p *parser) parseSecurityScheme(
 		case "mutualTLS":
 			return nil
 		case "oauth2":
-			return validateOAuthFlows(scopes, scheme.Flows)
+			return p.validateOAuthFlows(scopes, scheme.Flows)
 		case "openIdConnect":
 			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				return errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
@@ -82,15 +82,21 @@ func (p *parser) parseSecurityScheme(
 	return scheme, nil
 }
 
-func validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows) error {
+func (p *parser) validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows) (rerr error) {
 	if flows == nil {
 		return errors.New("oAuthFlows is empty or null")
 	}
+	defer func() {
+		rerr = p.wrapLocation(flows, rerr)
+	}()
 
-	check := func(flow *ogen.OAuthFlow, authURL, tokenURL bool) error {
+	check := func(flow *ogen.OAuthFlow, authURL, tokenURL bool) (rerr error) {
 		if flow == nil {
 			return nil
 		}
+		defer func() {
+			rerr = p.wrapLocation(flow, rerr)
+		}()
 
 		if tokenURL {
 			if _, err := url.ParseRequestURI(flow.TokenURL); err != nil {

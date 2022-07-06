@@ -11,6 +11,9 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 	if body == nil {
 		return nil, errors.New("requestBody object is empty or null")
 	}
+	defer func() {
+		rerr = p.wrapLocation(body, rerr)
+	}()
 	if ref := body.Ref; ref != "" {
 		reqBody, err := p.resolveRequestBody(ref, ctx)
 		if err != nil {
@@ -19,9 +22,6 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 
 		return reqBody, nil
 	}
-	defer func() {
-		rerr = p.wrapLocation(body, rerr)
-	}()
 
 	if len(body.Content) < 1 {
 		// See https://github.com/OAI/OpenAPI-Specification/discussions/2875.

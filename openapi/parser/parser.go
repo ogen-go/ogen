@@ -66,6 +66,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 				components: spec.Components.Schemas,
 				root:       jsonschema.NewRootResolver(spec.Raw),
 			},
+			Filename:   s.Filename,
 			DepthLimit: s.DepthLimit,
 			InferTypes: s.InferTypes,
 		}),
@@ -80,7 +81,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 		return nil, errors.Wrap(err, "parse components")
 	}
 
-	if err := p.parseOps(); err != nil {
+	if err := p.parsePathItems(); err != nil {
 		return nil, errors.Wrap(err, "parse operations")
 	}
 
@@ -90,48 +91,58 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 	}, nil
 }
 
-func (p *parser) parseOps() error {
+func (p *parser) parsePathItems() error {
 	operationIDs := make(map[string]struct{})
 	for path, item := range p.spec.Paths {
-		if item == nil {
-			return errors.Errorf("%s: pathItem object is empty or null", path)
-		}
-		if item.Ref != "" {
-			return errors.Errorf("%s: referenced pathItem not supported", path)
-		}
-
-		itemParams, err := p.parseParams(item.Parameters)
-		if err != nil {
-			return errors.Wrapf(err, "%s: parameters", path)
-		}
-
-		if err := forEachOps(item, func(method string, op ogen.Operation) error {
-			if id := op.OperationID; id != "" {
-				if _, ok := operationIDs[id]; ok {
-					return errors.Errorf("duplicate operationId: %q", id)
-				}
-				operationIDs[id] = struct{}{}
-			}
-
-			parsedOp, err := p.parseOp(path, method, op, itemParams)
-			if err != nil {
-				if op.OperationID != "" {
-					return errors.Wrapf(err, "operation %q", op.OperationID)
-				}
-				return err
-			}
-
-			p.operations = append(p.operations, parsedOp)
-			return nil
-		}); err != nil {
-			return errors.Wrapf(err, "paths: %s", path)
+		if err := p.parsePath(path, item, operationIDs); err != nil {
+			return errors.Wrapf(err, "path %q", path)
 		}
 	}
-
 	return nil
 }
 
-func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*openapi.Parameter) (_ *openapi.Operation, err error) {
+func (p *parser) parsePath(path string, item *ogen.PathItem, operationIDs map[string]struct{}) (rerr error) {
+	if item == nil {
+		return errors.New("pathItem object is empty or null")
+	}
+	defer func() {
+		rerr = p.wrapLocation(item, rerr)
+	}()
+	if item.Ref != "" {
+		return errors.New("referenced pathItem not supported")
+	}
+
+	itemParams, err := p.parseParams(item.Parameters)
+	if err != nil {
+		return errors.Wrap(err, "parameters")
+	}
+
+	return forEachOps(item, func(method string, op ogen.Operation) error {
+		if id := op.OperationID; id != "" {
+			if _, ok := operationIDs[id]; ok {
+				return errors.Errorf("duplicate operationId: %q", id)
+			}
+			operationIDs[id] = struct{}{}
+		}
+
+		parsedOp, err := p.parseOp(path, method, op, itemParams)
+		if err != nil {
+			if op.OperationID != "" {
+				return errors.Wrapf(err, "operation %q", op.OperationID)
+			}
+			return err
+		}
+
+		p.operations = append(p.operations, parsedOp)
+		return nil
+	})
+}
+
+func (p *parser) parseOp(
+	path, httpMethod string,
+	spec ogen.Operation,
+	itemParams []*openapi.Parameter,
+) (_ *openapi.Operation, err error) {
 	defer func() {
 		err = p.wrapLocation(&spec, err)
 	}()

@@ -1,4 +1,4 @@
-package parser
+package jsonschema
 
 import (
 	"fmt"
@@ -34,7 +34,7 @@ func (e *LocationError) fileName() string {
 			// Line is set, so return "${filename}:".
 			filename += ":"
 		case e.loc.JSONPointer != "":
-			// Line is not set, but JSONPointer is set, so return "${filename}#${JSONPointer}".
+			// Line is not set, but JSONPointer is set, so return "${filename}#".
 			filename += "#"
 		default:
 			// Neither line nor JSONPointer is set, so return empty string.
@@ -55,7 +55,7 @@ func (e *LocationError) Error() string {
 	return fmt.Sprintf("at %s%s: %s", e.fileName(), e.loc, e.err)
 }
 
-func (p *parser) wrapLocation(l ogenjson.Locatable, err error) error {
+func (p *Parser) wrapLocation(l ogenjson.Locatable, err error) error {
 	if err == nil || l == nil || p == nil {
 		return err
 	}

@@ -8,6 +8,9 @@ import (
 )
 
 func unmarshal(data []byte, out any) error {
+	var lines ogenjson.Lines
+	lines.Collect(data)
+
 	begin := int64(-1)
 	opts := json.UnmarshalOptions{
 		Unmarshalers: json.NewUnmarshalers(
@@ -15,18 +18,18 @@ func unmarshal(data []byte, out any) error {
 				begin = d.InputOffset()
 				return json.SkipFunc
 			}),
-			ogenjson.LocationUnmarshaler(data),
+			ogenjson.LocationUnmarshaler(lines),
 		),
 	}
 
 	if err := opts.Unmarshal(json.DecodeOptions{}, data, out); err != nil {
-		return wrapLineOffset(begin, data, err)
+		return wrapLineOffset(begin, lines, err)
 	}
 	return nil
 }
 
-func wrapLineOffset(offset int64, data []byte, err error) error {
-	line, column, ok := ogenjson.LineColumn(offset, data)
+func wrapLineOffset(offset int64, lines ogenjson.Lines, err error) error {
+	line, column, ok := lines.LineColumn(offset)
 	if !ok {
 		return err
 	}

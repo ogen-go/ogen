@@ -11,8 +11,9 @@ type API struct {
 
 // Components represent parsed components of OpenAPI spec.
 type Components struct {
-	Parameters    map[string]*Parameter
 	Schemas       map[string]*jsonschema.Schema
-	RequestBodies map[string]*RequestBody
 	Responses     map[string]*Response
+	Parameters    map[string]*Parameter
+	Examples      map[string]*Example
+	RequestBodies map[string]*RequestBody
 }
