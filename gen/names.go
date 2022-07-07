@@ -115,13 +115,9 @@ func (g *nameGen) clean() string {
 }
 
 func (g *nameGen) isAllowed(r rune) bool {
-	const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
-	for _, c := range alphabet {
-		if c == unicode.ToLower(r) {
-			return true
-		}
-	}
-	return false
+	r = unicode.ToLower(r)
+	return (r >= 'a' && r <= 'z') ||
+		(r >= '0' && r <= '9')
 }
 
 func (g *nameGen) checkPart(part string) string {
