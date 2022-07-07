@@ -33,6 +33,9 @@ type parser struct {
 
 // Parse parses raw Spec into
 func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
+	if spec == nil {
+		return nil, errors.New("spec is nil")
+	}
 	spec.Init()
 
 	s.setDefaults()

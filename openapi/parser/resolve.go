@@ -250,7 +250,9 @@ func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, 
 		return nil, err
 	}
 
-	ex.Ref = ref
+	if ex != nil {
+		ex.Ref = ref
+	}
 	p.refs.examples[ref] = ex
 	return ex, nil
 }
