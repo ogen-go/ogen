@@ -4,9 +4,16 @@ import (
 	"fmt"
 	"net/http"
 
+	"go.uber.org/zap"
+
 	"github.com/ogen-go/ogen/gen/ir"
+	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonschema"
 )
+
+func unreachable(v interface{}) string {
+	return fmt.Sprintf("unreachable: %v", v)
+}
 
 func isBinary(s *jsonschema.Schema) bool {
 	if s == nil {
@@ -66,4 +73,24 @@ func statusText(code int) string {
 		return r
 	}
 	return fmt.Sprintf("Code%d", code)
+}
+
+func (g *Generator) zapLocation(l interface {
+	Location() (ogenjson.Location, bool)
+}) zap.Field {
+	loc, ok := l.Location()
+	if !ok {
+		return zap.Skip()
+	}
+	return zap.String("at", loc.WithFilename(g.opt.Filename))
+}
+
+func (g *schemaGen) zapLocation(l interface {
+	Location() (ogenjson.Location, bool)
+}) zap.Field {
+	loc, ok := l.Location()
+	if !ok {
+		return zap.Skip()
+	}
+	return zap.String("at", loc.WithFilename(g.filename))
 }
