@@ -167,10 +167,7 @@ func pascalSpecial(strs ...string) (string, error) {
 
 func pascalNonEmpty(strs ...string) (string, error) {
 	r, err := pascal(strs...)
-	if err != nil {
-		return "", err
-	}
-	if r != "" {
+	if err == nil && r != "" {
 		return r, nil
 	}
 
