@@ -395,6 +395,8 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 			Mapping:      d.Mapping,
 		}
 	}
+
+	s.Locator = schema.Locator
 	return s
 }
 
