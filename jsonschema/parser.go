@@ -277,9 +277,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 				return nil, errors.Wrapf(err, "property %q", propSpec.Name)
 			}
 
+			var description string
+			if s := propSpec.Schema; s != nil {
+				description = s.Description
+			}
+
 			s.Properties = append(s.Properties, Property{
 				Name:        propSpec.Name,
-				Description: propSpec.Schema.Description,
+				Description: description,
 				Schema:      prop,
 				Required:    required(propSpec.Name),
 			})
