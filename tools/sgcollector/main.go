@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"os"
 	"os/signal"
 	"runtime"
@@ -196,6 +197,7 @@ func main() {
 	defer cancel()
 
 	if err := run(ctx); err != nil {
-		panic(err)
+		_, _ = fmt.Fprintf(os.Stderr, "%+v\n", err)
+		os.Exit(1)
 	}
 }
