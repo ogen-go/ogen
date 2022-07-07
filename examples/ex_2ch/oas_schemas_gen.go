@@ -21,43 +21,43 @@ type APICaptchaRecaptchaMobileGetOK struct{}
 // Модель доски.
 // Ref: #/components/schemas/Board
 type Board struct {
-	BumpLimit        int      "json:\"bump_limit\""
-	Category         string   "json:\"category\""
-	DefaultName      string   "json:\"default_name\""
-	EnableDices      bool     "json:\"enable_dices\""
-	EnableFlags      bool     "json:\"enable_flags\""
-	EnableIcons      bool     "json:\"enable_icons\""
-	EnableLikes      bool     "json:\"enable_likes\""
-	EnableNames      bool     "json:\"enable_names\""
-	EnableOekaki     bool     "json:\"enable_oekaki\""
-	EnablePosting    bool     "json:\"enable_posting\""
-	EnableSage       bool     "json:\"enable_sage\""
-	EnableShield     bool     "json:\"enable_shield\""
-	EnableSubject    bool     "json:\"enable_subject\""
-	EnableThreadTags bool     "json:\"enable_thread_tags\""
-	EnableTrips      bool     "json:\"enable_trips\""
-	FileTypes        []string "json:\"file_types\""
-	// Массив иконок, которые доступны на этой доске, если
-	// они включены.
-	Icons []BoardIconsItem "json:\"icons\""
-	ID    string           "json:\"id\""
+	ID       string "json:\"id\""
+	Name     string "json:\"name\""
+	Category string "json:\"category\""
 	// Информация о доске.
 	Info string "json:\"info\""
 	// Информация о доске для главной.
-	InfoOuter    string "json:\"info_outer\""
-	MaxComment   int    "json:\"max_comment\""
-	MaxFilesSize int    "json:\"max_files_size\""
-	MaxPages     int    "json:\"max_pages\""
-	Name         string "json:\"name\""
+	InfoOuter        string   "json:\"info_outer\""
+	ThreadsPerPage   int      "json:\"threads_per_page\""
+	BumpLimit        int      "json:\"bump_limit\""
+	MaxPages         int      "json:\"max_pages\""
+	DefaultName      string   "json:\"default_name\""
+	EnableNames      bool     "json:\"enable_names\""
+	EnableTrips      bool     "json:\"enable_trips\""
+	EnableSubject    bool     "json:\"enable_subject\""
+	EnableSage       bool     "json:\"enable_sage\""
+	EnableIcons      bool     "json:\"enable_icons\""
+	EnableFlags      bool     "json:\"enable_flags\""
+	EnableDices      bool     "json:\"enable_dices\""
+	EnableShield     bool     "json:\"enable_shield\""
+	EnableThreadTags bool     "json:\"enable_thread_tags\""
+	EnablePosting    bool     "json:\"enable_posting\""
+	EnableLikes      bool     "json:\"enable_likes\""
+	EnableOekaki     bool     "json:\"enable_oekaki\""
+	FileTypes        []string "json:\"file_types\""
+	MaxComment       int      "json:\"max_comment\""
+	MaxFilesSize     int      "json:\"max_files_size\""
 	// Массив тегов, которые доступны на этой доске, если они
 	// включены.
-	Tags           []string "json:\"tags\""
-	ThreadsPerPage int      "json:\"threads_per_page\""
+	Tags []string "json:\"tags\""
+	// Массив иконок, которые доступны на этой доске, если
+	// они включены.
+	Icons []BoardIconsItem "json:\"icons\""
 }
 
 type BoardIconsItem struct {
-	Name OptString "json:\"name\""
 	Num  OptInt    "json:\"num\""
+	Name OptString "json:\"name\""
 	URL  OptString "json:\"url\""
 }
 
@@ -65,11 +65,13 @@ type Boards []Board
 
 // Ref: #/components/schemas/Captcha
 type Captcha struct {
-	Error OptError "json:\"error\""
+	Result int         "json:\"result\""
+	Error  OptError    "json:\"error\""
+	Type   CaptchaType "json:\"type\""
+	ID     string      "json:\"id\""
 	// Время в секундах после которого id перестанет
 	// действовать.
 	Expires OptInt "json:\"expires\""
-	ID      string "json:\"id\""
 	// Тип текста, изображённого на картинке капчи.
 	// Возможные варианты:
 	// * numeric - только цифры. (0123456789)
@@ -78,9 +80,7 @@ type Captcha struct {
 	// (0123456789абвгдеёжзийклмнопрстуфхцчшщъыьэюя)
 	// * all - цифры, русские и английские буквы.
 	// (0123456789abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя).
-	Input  OptString   "json:\"input\""
-	Result int         "json:\"result\""
-	Type   CaptchaType "json:\"type\""
+	Input OptString "json:\"input\""
 }
 
 // Каждый тип капчи так же требует дополнительные
@@ -213,34 +213,34 @@ const (
 // Модель файла.
 // Ref: #/components/schemas/File
 type File struct {
-	Displayname string "json:\"displayname\""
+	Name        string    "json:\"name\""
+	Fullname    string    "json:\"fullname\""
+	Displayname string    "json:\"displayname\""
+	Path        string    "json:\"path\""
+	Thumbnail   string    "json:\"thumbnail\""
+	MD5         OptString "json:\"md5\""
+	Type        FileType  "json:\"type\""
+	// Размер файла, в КБ.
+	Size     int "json:\"size\""
+	Width    int "json:\"width\""
+	Height   int "json:\"height\""
+	TnWidth  int "json:\"tn_width\""
+	TnHeight int "json:\"tn_height\""
+	// Если >= 0, файл содержит NSFW контент, в данный момент
+	// реализовано не на всех досках.
+	Nsfw OptInt "json:\"nsfw\""
 	// В случае видео/аудио файла, содержит
 	// продолжительность в формате XX:XX:XX.
 	Duration OptString "json:\"duration\""
 	// В случае видео/аудио файла, содержит
 	// продолжительность в секундах.
 	DurationSecs OptInt "json:\"duration_secs\""
-	Fullname     string "json:\"fullname\""
-	Height       int    "json:\"height\""
-	// В случае стикера, содержит ссылку на установку.
-	Install OptString "json:\"install\""
-	MD5     OptString "json:\"md5\""
-	Name    string    "json:\"name\""
-	// Если >= 0, файл содержит NSFW контент, в данный момент
-	// реализовано не на всех досках.
-	Nsfw OptInt "json:\"nsfw\""
 	// В случае стикера, содержит ID стикер пака.
 	Pack OptString "json:\"pack\""
-	Path string    "json:\"path\""
-	// Размер файла, в КБ.
-	Size int "json:\"size\""
 	// В случае стикера, содержит ID стикера.
-	Sticker   OptString "json:\"sticker\""
-	Thumbnail string    "json:\"thumbnail\""
-	TnHeight  int       "json:\"tn_height\""
-	TnWidth   int       "json:\"tn_width\""
-	Type      FileType  "json:\"type\""
-	Width     int       "json:\"width\""
+	Sticker OptString "json:\"sticker\""
+	// В случае стикера, содержит ссылку на установку.
+	Install OptString "json:\"install\""
 }
 
 // * 0 FileTypeNone
@@ -273,36 +273,36 @@ const (
 
 // Ref: #/components/schemas/Like
 type Like struct {
-	Error  OptError "json:\"error\""
 	Result OptInt   "json:\"result\""
+	Error  OptError "json:\"error\""
 }
 
 // Ref: #/components/schemas/MobilePost
 type MobilePost struct {
+	Result OptInt   "json:\"result\""
 	Error  OptError "json:\"error\""
 	Post   OptPost  "json:\"post\""
-	Result OptInt   "json:\"result\""
 }
 
 // Ref: #/components/schemas/MobileThreadLastInfo
 type MobileThreadLastInfo struct {
-	Error  OptError                      "json:\"error\""
 	Result OptInt                        "json:\"result\""
+	Error  OptError                      "json:\"error\""
 	Thread OptMobileThreadLastInfoThread "json:\"thread\""
 }
 
 type MobileThreadLastInfoThread struct {
 	Num       OptInt "json:\"num\""
-	Posts     OptInt "json:\"posts\""
 	Timestamp OptInt "json:\"timestamp\""
+	Posts     OptInt "json:\"posts\""
 }
 
 // Ref: #/components/schemas/MobileThreadPostsAfter
 type MobileThreadPostsAfter struct {
-	Error         OptError "json:\"error\""
-	Posts         []Post   "json:\"posts\""
 	Result        OptInt   "json:\"result\""
+	Error         OptError "json:\"error\""
 	UniquePosters OptInt   "json:\"unique_posters\""
+	Posts         []Post   "json:\"posts\""
 }
 
 // NewOptError returns new OptError with value set to v.
@@ -813,64 +813,64 @@ func (o OptUserReportPostReq) Or(d UserReportPostReq) UserReportPostReq {
 
 // Ref: #/components/schemas/Passcode
 type Passcode struct {
+	Result   OptInt              "json:\"result\""
 	Error    OptError            "json:\"error\""
 	Passcode OptPasscodePasscode "json:\"passcode\""
-	Result   OptInt              "json:\"result\""
 }
 
 type PasscodePasscode struct {
-	Expires OptInt    "json:\"expires\""
 	Type    OptString "json:\"type\""
+	Expires OptInt    "json:\"expires\""
 }
 
 // Модель поста.
 // Ref: #/components/schemas/Post
 type Post struct {
-	Banned    int       "json:\"banned\""
-	Board     string    "json:\"board\""
-	Closed    int       "json:\"closed\""
-	Comment   string    "json:\"comment\""
-	Date      string    "json:\"date\""
-	Dislikes  OptInt    "json:\"dislikes\""
-	Email     OptString "json:\"email\""
-	Endless   int       "json:\"endless\""
-	Files     []File    "json:\"files\""
-	Icon      OptString "json:\"icon\""
-	Lasthit   int       "json:\"lasthit\""
-	Likes     OptInt    "json:\"likes\""
-	Name      OptString "json:\"name\""
 	Num       int       "json:\"num\""
-	Op        int       "json:\"op\""
 	Parent    int       "json:\"parent\""
-	Sticky    int       "json:\"sticky\""
-	Subject   OptString "json:\"subject\""
-	Tags      OptString "json:\"tags\""
+	Board     string    "json:\"board\""
 	Timestamp int       "json:\"timestamp\""
+	Lasthit   int       "json:\"lasthit\""
+	Date      string    "json:\"date\""
+	Email     OptString "json:\"email\""
+	Subject   OptString "json:\"subject\""
+	Comment   string    "json:\"comment\""
+	Files     []File    "json:\"files\""
+	Views     int       "json:\"views\""
+	Sticky    int       "json:\"sticky\""
+	Endless   int       "json:\"endless\""
+	Closed    int       "json:\"closed\""
+	Banned    int       "json:\"banned\""
+	Op        int       "json:\"op\""
+	Name      OptString "json:\"name\""
+	Icon      OptString "json:\"icon\""
 	Trip      OptString "json:\"trip\""
 	TripStyle OptString "json:\"trip_style\""
-	Views     int       "json:\"views\""
+	Tags      OptString "json:\"tags\""
+	Likes     OptInt    "json:\"likes\""
+	Dislikes  OptInt    "json:\"dislikes\""
 }
 
 // Ref: #/components/schemas/PostingNewPost
 type PostingNewPost struct {
-	Error OptError "json:\"error\""
+	Result OptInt   "json:\"result\""
+	Error  OptError "json:\"error\""
 	// Номер нового поста.
-	Num    OptInt "json:\"num\""
-	Result OptInt "json:\"result\""
+	Num OptInt "json:\"num\""
 }
 
 // Ref: #/components/schemas/PostingNewThread
 type PostingNewThread struct {
-	Error  OptError "json:\"error\""
 	Result OptInt   "json:\"result\""
+	Error  OptError "json:\"error\""
 	// Номер нового треда.
 	Thread OptInt "json:\"thread\""
 }
 
 // Ref: #/components/schemas/Report
 type Report struct {
-	Error  OptError "json:\"error\""
 	Result OptInt   "json:\"result\""
+	Error  OptError "json:\"error\""
 }
 
 type UserPassloginPostReq struct {
@@ -944,33 +944,33 @@ func NewPostingNewPostUserPostingPostOK(v PostingNewPost) UserPostingPostOK {
 }
 
 type UserPostingPostReq struct {
-	Board       string      "json:\"board\""
 	CaptchaType CaptchaType "json:\"captcha_type\""
-	Comment     OptString   "json:\"comment\""
-	// Если не включено в настройках доски - поле будет
-	// проигнорировано.
-	Email OptString "json:\"email\""
-	File  []string  "json:\"file[]\""
-	Icon  OptInt    "json:\"icon\""
+	Board       string      "json:\"board\""
+	// Если не указано, будет создан тред.
+	Thread OptInt "json:\"thread\""
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
 	Name OptString "json:\"name\""
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	OpMark OptInt "json:\"op_mark\""
-	// Если не включено в настройках доски - поле будет
-	// проигнорировано.
-	Subject OptString "json:\"subject\""
+	Email OptString "json:\"email\""
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
 	Tags OptString "json:\"tags\""
-	// Если не указано, будет создан тред.
-	Thread OptInt "json:\"thread\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	Subject OptString "json:\"subject\""
+	Comment OptString "json:\"comment\""
+	Icon    OptInt    "json:\"icon\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	OpMark OptInt   "json:\"op_mark\""
+	File   []string "json:\"file[]\""
 }
 
 type UserReportPostReq struct {
 	Board   string "json:\"board\""
-	Comment string "json:\"comment\""
-	Post    []int  "json:\"post\""
 	Thread  int    "json:\"thread\""
+	Post    []int  "json:\"post\""
+	Comment string "json:\"comment\""
 }

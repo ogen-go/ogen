@@ -40,6 +40,25 @@ func (s Location) Validate() error {
 func (s ObjectsWithConflictingArrayPropertyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Foo == nil {
+			return errors.New("nil is invalid value")
+		}
+		if err := (validate.Array{
+			MinLength:    1,
+			MinLengthSet: true,
+			MaxLength:    5,
+			MaxLengthSet: true,
+		}).ValidateLength(len(s.Foo)); err != nil {
+			return errors.Wrap(err, "array")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "foo",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if err := (validate.Int{
 			MinSet:        true,
 			Min:           1,
@@ -59,17 +78,24 @@ func (s ObjectsWithConflictingArrayPropertyReq) Validate() error {
 			Error: err,
 		})
 	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ObjectsWithConflictingPropertiesReq) Validate() error {
+	var failures []validate.FieldError
 	if err := func() error {
-		if s.Foo == nil {
-			return errors.New("nil is invalid value")
-		}
-		if err := (validate.Array{
-			MinLength:    1,
+		if err := (validate.String{
+			MinLength:    10,
 			MinLengthSet: true,
-			MaxLength:    5,
-			MaxLengthSet: true,
-		}).ValidateLength(len(s.Foo)); err != nil {
-			return errors.Wrap(err, "array")
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Foo)); err != nil {
+			return errors.Wrap(err, "string")
 		}
 		return nil
 	}(); err != nil {
@@ -78,13 +104,6 @@ func (s ObjectsWithConflictingArrayPropertyReq) Validate() error {
 			Error: err,
 		})
 	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ObjectsWithConflictingPropertiesReq) Validate() error {
-	var failures []validate.FieldError
 	if err := func() error {
 		if s.Bar.Set {
 			if err := func() error {
@@ -109,25 +128,6 @@ func (s ObjectsWithConflictingPropertiesReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "bar",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.String{
-			MinLength:    10,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
-		}).Validate(string(s.Foo)); err != nil {
-			return errors.Wrap(err, "string")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "foo",
 			Error: err,
 		})
 	}

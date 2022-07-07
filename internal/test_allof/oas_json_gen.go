@@ -139,11 +139,6 @@ func (s ObjectsWithConflictingArrayPropertyReq) Encode(e *jx.Encoder) {
 func (s ObjectsWithConflictingArrayPropertyReq) encodeFields(e *jx.Encoder) {
 	{
 
-		e.FieldStart("bar")
-		e.Int(s.Bar)
-	}
-	{
-
 		e.FieldStart("foo")
 		e.ArrStart()
 		for _, elem := range s.Foo {
@@ -151,11 +146,16 @@ func (s ObjectsWithConflictingArrayPropertyReq) encodeFields(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
+	{
+
+		e.FieldStart("bar")
+		e.Int(s.Bar)
+	}
 }
 
 var jsonFieldsNameOfObjectsWithConflictingArrayPropertyReq = [2]string{
-	0: "bar",
-	1: "foo",
+	0: "foo",
+	1: "bar",
 }
 
 // Decode decodes ObjectsWithConflictingArrayPropertyReq from json.
@@ -167,20 +167,8 @@ func (s *ObjectsWithConflictingArrayPropertyReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "bar":
-			requiredBitSet[0] |= 1 << 0
-			if err := func() error {
-				v, err := d.Int()
-				s.Bar = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"bar\"")
-			}
 		case "foo":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
 				s.Foo = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -198,6 +186,18 @@ func (s *ObjectsWithConflictingArrayPropertyReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"foo\"")
+			}
+		case "bar":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Int()
+				s.Bar = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bar\"")
 			}
 		default:
 			return d.Skip()
@@ -265,21 +265,21 @@ func (s ObjectsWithConflictingPropertiesReq) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s ObjectsWithConflictingPropertiesReq) encodeFields(e *jx.Encoder) {
 	{
+
+		e.FieldStart("foo")
+		e.Str(s.Foo)
+	}
+	{
 		if s.Bar.Set {
 			e.FieldStart("bar")
 			s.Bar.Encode(e)
 		}
 	}
-	{
-
-		e.FieldStart("foo")
-		e.Str(s.Foo)
-	}
 }
 
 var jsonFieldsNameOfObjectsWithConflictingPropertiesReq = [2]string{
-	0: "bar",
-	1: "foo",
+	0: "foo",
+	1: "bar",
 }
 
 // Decode decodes ObjectsWithConflictingPropertiesReq from json.
@@ -291,18 +291,8 @@ func (s *ObjectsWithConflictingPropertiesReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "bar":
-			if err := func() error {
-				s.Bar.Reset()
-				if err := s.Bar.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"bar\"")
-			}
 		case "foo":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
 				v, err := d.Str()
 				s.Foo = string(v)
@@ -312,6 +302,16 @@ func (s *ObjectsWithConflictingPropertiesReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"foo\"")
+			}
+		case "bar":
+			if err := func() error {
+				s.Bar.Reset()
+				if err := s.Bar.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bar\"")
 			}
 		default:
 			return d.Skip()
@@ -323,7 +323,7 @@ func (s *ObjectsWithConflictingPropertiesReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000010,
+		0b00000001,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

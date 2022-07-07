@@ -23,102 +23,18 @@ func (s Board) Encode(e *jx.Encoder) {
 func (s Board) encodeFields(e *jx.Encoder) {
 	{
 
-		e.FieldStart("bump_limit")
-		e.Int(s.BumpLimit)
+		e.FieldStart("id")
+		e.Str(s.ID)
+	}
+	{
+
+		e.FieldStart("name")
+		e.Str(s.Name)
 	}
 	{
 
 		e.FieldStart("category")
 		e.Str(s.Category)
-	}
-	{
-
-		e.FieldStart("default_name")
-		e.Str(s.DefaultName)
-	}
-	{
-
-		e.FieldStart("enable_dices")
-		e.Bool(s.EnableDices)
-	}
-	{
-
-		e.FieldStart("enable_flags")
-		e.Bool(s.EnableFlags)
-	}
-	{
-
-		e.FieldStart("enable_icons")
-		e.Bool(s.EnableIcons)
-	}
-	{
-
-		e.FieldStart("enable_likes")
-		e.Bool(s.EnableLikes)
-	}
-	{
-
-		e.FieldStart("enable_names")
-		e.Bool(s.EnableNames)
-	}
-	{
-
-		e.FieldStart("enable_oekaki")
-		e.Bool(s.EnableOekaki)
-	}
-	{
-
-		e.FieldStart("enable_posting")
-		e.Bool(s.EnablePosting)
-	}
-	{
-
-		e.FieldStart("enable_sage")
-		e.Bool(s.EnableSage)
-	}
-	{
-
-		e.FieldStart("enable_shield")
-		e.Bool(s.EnableShield)
-	}
-	{
-
-		e.FieldStart("enable_subject")
-		e.Bool(s.EnableSubject)
-	}
-	{
-
-		e.FieldStart("enable_thread_tags")
-		e.Bool(s.EnableThreadTags)
-	}
-	{
-
-		e.FieldStart("enable_trips")
-		e.Bool(s.EnableTrips)
-	}
-	{
-
-		e.FieldStart("file_types")
-		e.ArrStart()
-		for _, elem := range s.FileTypes {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-		if s.Icons != nil {
-			e.FieldStart("icons")
-			e.ArrStart()
-			for _, elem := range s.Icons {
-				elem.Encode(e)
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-
-		e.FieldStart("id")
-		e.Str(s.ID)
 	}
 	{
 
@@ -132,13 +48,13 @@ func (s Board) encodeFields(e *jx.Encoder) {
 	}
 	{
 
-		e.FieldStart("max_comment")
-		e.Int(s.MaxComment)
+		e.FieldStart("threads_per_page")
+		e.Int(s.ThreadsPerPage)
 	}
 	{
 
-		e.FieldStart("max_files_size")
-		e.Int(s.MaxFilesSize)
+		e.FieldStart("bump_limit")
+		e.Int(s.BumpLimit)
 	}
 	{
 
@@ -147,8 +63,87 @@ func (s Board) encodeFields(e *jx.Encoder) {
 	}
 	{
 
-		e.FieldStart("name")
-		e.Str(s.Name)
+		e.FieldStart("default_name")
+		e.Str(s.DefaultName)
+	}
+	{
+
+		e.FieldStart("enable_names")
+		e.Bool(s.EnableNames)
+	}
+	{
+
+		e.FieldStart("enable_trips")
+		e.Bool(s.EnableTrips)
+	}
+	{
+
+		e.FieldStart("enable_subject")
+		e.Bool(s.EnableSubject)
+	}
+	{
+
+		e.FieldStart("enable_sage")
+		e.Bool(s.EnableSage)
+	}
+	{
+
+		e.FieldStart("enable_icons")
+		e.Bool(s.EnableIcons)
+	}
+	{
+
+		e.FieldStart("enable_flags")
+		e.Bool(s.EnableFlags)
+	}
+	{
+
+		e.FieldStart("enable_dices")
+		e.Bool(s.EnableDices)
+	}
+	{
+
+		e.FieldStart("enable_shield")
+		e.Bool(s.EnableShield)
+	}
+	{
+
+		e.FieldStart("enable_thread_tags")
+		e.Bool(s.EnableThreadTags)
+	}
+	{
+
+		e.FieldStart("enable_posting")
+		e.Bool(s.EnablePosting)
+	}
+	{
+
+		e.FieldStart("enable_likes")
+		e.Bool(s.EnableLikes)
+	}
+	{
+
+		e.FieldStart("enable_oekaki")
+		e.Bool(s.EnableOekaki)
+	}
+	{
+
+		e.FieldStart("file_types")
+		e.ArrStart()
+		for _, elem := range s.FileTypes {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("max_comment")
+		e.Int(s.MaxComment)
+	}
+	{
+
+		e.FieldStart("max_files_size")
+		e.Int(s.MaxFilesSize)
 	}
 	{
 		if s.Tags != nil {
@@ -161,39 +156,44 @@ func (s Board) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		e.FieldStart("threads_per_page")
-		e.Int(s.ThreadsPerPage)
+		if s.Icons != nil {
+			e.FieldStart("icons")
+			e.ArrStart()
+			for _, elem := range s.Icons {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
 	}
 }
 
 var jsonFieldsNameOfBoard = [26]string{
-	0:  "bump_limit",
-	1:  "category",
-	2:  "default_name",
-	3:  "enable_dices",
-	4:  "enable_flags",
-	5:  "enable_icons",
-	6:  "enable_likes",
-	7:  "enable_names",
-	8:  "enable_oekaki",
-	9:  "enable_posting",
-	10: "enable_sage",
-	11: "enable_shield",
-	12: "enable_subject",
-	13: "enable_thread_tags",
-	14: "enable_trips",
-	15: "file_types",
-	16: "icons",
-	17: "id",
-	18: "info",
-	19: "info_outer",
-	20: "max_comment",
-	21: "max_files_size",
-	22: "max_pages",
-	23: "name",
+	0:  "id",
+	1:  "name",
+	2:  "category",
+	3:  "info",
+	4:  "info_outer",
+	5:  "threads_per_page",
+	6:  "bump_limit",
+	7:  "max_pages",
+	8:  "default_name",
+	9:  "enable_names",
+	10: "enable_trips",
+	11: "enable_subject",
+	12: "enable_sage",
+	13: "enable_icons",
+	14: "enable_flags",
+	15: "enable_dices",
+	16: "enable_shield",
+	17: "enable_thread_tags",
+	18: "enable_posting",
+	19: "enable_likes",
+	20: "enable_oekaki",
+	21: "file_types",
+	22: "max_comment",
+	23: "max_files_size",
 	24: "tags",
-	25: "threads_per_page",
+	25: "icons",
 }
 
 // Decode decodes Board from json.
@@ -205,20 +205,32 @@ func (s *Board) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "bump_limit":
+		case "id":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				v, err := d.Int()
-				s.BumpLimit = int(v)
+				v, err := d.Str()
+				s.ID = string(v)
 				if err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"bump_limit\"")
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "name":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Name = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "category":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Category = string(v)
@@ -229,8 +241,68 @@ func (s *Board) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"category\"")
 			}
+		case "info":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.Info = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"info\"")
+			}
+		case "info_outer":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				v, err := d.Str()
+				s.InfoOuter = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"info_outer\"")
+			}
+		case "threads_per_page":
+			requiredBitSet[0] |= 1 << 5
+			if err := func() error {
+				v, err := d.Int()
+				s.ThreadsPerPage = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"threads_per_page\"")
+			}
+		case "bump_limit":
+			requiredBitSet[0] |= 1 << 6
+			if err := func() error {
+				v, err := d.Int()
+				s.BumpLimit = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bump_limit\"")
+			}
+		case "max_pages":
+			requiredBitSet[0] |= 1 << 7
+			if err := func() error {
+				v, err := d.Int()
+				s.MaxPages = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"max_pages\"")
+			}
 		case "default_name":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
 				v, err := d.Str()
 				s.DefaultName = string(v)
@@ -241,56 +313,8 @@ func (s *Board) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"default_name\"")
 			}
-		case "enable_dices":
-			requiredBitSet[0] |= 1 << 3
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableDices = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_dices\"")
-			}
-		case "enable_flags":
-			requiredBitSet[0] |= 1 << 4
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableFlags = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_flags\"")
-			}
-		case "enable_icons":
-			requiredBitSet[0] |= 1 << 5
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableIcons = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_icons\"")
-			}
-		case "enable_likes":
-			requiredBitSet[0] |= 1 << 6
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableLikes = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_likes\"")
-			}
 		case "enable_names":
-			requiredBitSet[0] |= 1 << 7
+			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
 				v, err := d.Bool()
 				s.EnableNames = bool(v)
@@ -301,80 +325,8 @@ func (s *Board) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"enable_names\"")
 			}
-		case "enable_oekaki":
-			requiredBitSet[1] |= 1 << 0
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableOekaki = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_oekaki\"")
-			}
-		case "enable_posting":
-			requiredBitSet[1] |= 1 << 1
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnablePosting = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_posting\"")
-			}
-		case "enable_sage":
-			requiredBitSet[1] |= 1 << 2
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableSage = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_sage\"")
-			}
-		case "enable_shield":
-			requiredBitSet[1] |= 1 << 3
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableShield = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_shield\"")
-			}
-		case "enable_subject":
-			requiredBitSet[1] |= 1 << 4
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableSubject = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_subject\"")
-			}
-		case "enable_thread_tags":
-			requiredBitSet[1] |= 1 << 5
-			if err := func() error {
-				v, err := d.Bool()
-				s.EnableThreadTags = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"enable_thread_tags\"")
-			}
 		case "enable_trips":
-			requiredBitSet[1] |= 1 << 6
+			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
 				v, err := d.Bool()
 				s.EnableTrips = bool(v)
@@ -385,8 +337,128 @@ func (s *Board) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"enable_trips\"")
 			}
-		case "file_types":
+		case "enable_subject":
+			requiredBitSet[1] |= 1 << 3
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableSubject = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_subject\"")
+			}
+		case "enable_sage":
+			requiredBitSet[1] |= 1 << 4
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableSage = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_sage\"")
+			}
+		case "enable_icons":
+			requiredBitSet[1] |= 1 << 5
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableIcons = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_icons\"")
+			}
+		case "enable_flags":
+			requiredBitSet[1] |= 1 << 6
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableFlags = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_flags\"")
+			}
+		case "enable_dices":
 			requiredBitSet[1] |= 1 << 7
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableDices = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_dices\"")
+			}
+		case "enable_shield":
+			requiredBitSet[2] |= 1 << 0
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableShield = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_shield\"")
+			}
+		case "enable_thread_tags":
+			requiredBitSet[2] |= 1 << 1
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableThreadTags = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_thread_tags\"")
+			}
+		case "enable_posting":
+			requiredBitSet[2] |= 1 << 2
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnablePosting = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_posting\"")
+			}
+		case "enable_likes":
+			requiredBitSet[2] |= 1 << 3
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableLikes = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_likes\"")
+			}
+		case "enable_oekaki":
+			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				v, err := d.Bool()
+				s.EnableOekaki = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_oekaki\"")
+			}
+		case "file_types":
+			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
 				s.FileTypes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -405,61 +477,8 @@ func (s *Board) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"file_types\"")
 			}
-		case "icons":
-			if err := func() error {
-				s.Icons = make([]BoardIconsItem, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem BoardIconsItem
-					if err := elem.Decode(d); err != nil {
-						return err
-					}
-					s.Icons = append(s.Icons, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"icons\"")
-			}
-		case "id":
-			requiredBitSet[2] |= 1 << 1
-			if err := func() error {
-				v, err := d.Str()
-				s.ID = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"id\"")
-			}
-		case "info":
-			requiredBitSet[2] |= 1 << 2
-			if err := func() error {
-				v, err := d.Str()
-				s.Info = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"info\"")
-			}
-		case "info_outer":
-			requiredBitSet[2] |= 1 << 3
-			if err := func() error {
-				v, err := d.Str()
-				s.InfoOuter = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"info_outer\"")
-			}
 		case "max_comment":
-			requiredBitSet[2] |= 1 << 4
+			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
 				v, err := d.Int()
 				s.MaxComment = int(v)
@@ -471,7 +490,7 @@ func (s *Board) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"max_comment\"")
 			}
 		case "max_files_size":
-			requiredBitSet[2] |= 1 << 5
+			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
 				v, err := d.Int()
 				s.MaxFilesSize = int(v)
@@ -481,30 +500,6 @@ func (s *Board) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"max_files_size\"")
-			}
-		case "max_pages":
-			requiredBitSet[2] |= 1 << 6
-			if err := func() error {
-				v, err := d.Int()
-				s.MaxPages = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"max_pages\"")
-			}
-		case "name":
-			requiredBitSet[2] |= 1 << 7
-			if err := func() error {
-				v, err := d.Str()
-				s.Name = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "tags":
 			if err := func() error {
@@ -525,17 +520,22 @@ func (s *Board) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"tags\"")
 			}
-		case "threads_per_page":
-			requiredBitSet[3] |= 1 << 1
+		case "icons":
 			if err := func() error {
-				v, err := d.Int()
-				s.ThreadsPerPage = int(v)
-				if err != nil {
+				s.Icons = make([]BoardIconsItem, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem BoardIconsItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Icons = append(s.Icons, elem)
+					return nil
+				}); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"threads_per_page\"")
+				return errors.Wrap(err, "decode field \"icons\"")
 			}
 		default:
 			return d.Skip()
@@ -549,8 +549,8 @@ func (s *Board) Decode(d *jx.Decoder) error {
 	for i, mask := range [4]uint8{
 		0b11111111,
 		0b11111111,
-		0b11111110,
-		0b00000010,
+		0b11111111,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -606,15 +606,15 @@ func (s BoardIconsItem) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s BoardIconsItem) encodeFields(e *jx.Encoder) {
 	{
-		if s.Name.Set {
-			e.FieldStart("name")
-			s.Name.Encode(e)
-		}
-	}
-	{
 		if s.Num.Set {
 			e.FieldStart("num")
 			s.Num.Encode(e)
+		}
+	}
+	{
+		if s.Name.Set {
+			e.FieldStart("name")
+			s.Name.Encode(e)
 		}
 	}
 	{
@@ -626,8 +626,8 @@ func (s BoardIconsItem) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfBoardIconsItem = [3]string{
-	0: "name",
-	1: "num",
+	0: "num",
+	1: "name",
 	2: "url",
 }
 
@@ -639,16 +639,6 @@ func (s *BoardIconsItem) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "name":
-			if err := func() error {
-				s.Name.Reset()
-				if err := s.Name.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"name\"")
-			}
 		case "num":
 			if err := func() error {
 				s.Num.Reset()
@@ -658,6 +648,16 @@ func (s *BoardIconsItem) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"num\"")
+			}
+		case "name":
+			if err := func() error {
+				s.Name.Reset()
+				if err := s.Name.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "url":
 			if err := func() error {
@@ -753,10 +753,25 @@ func (s Captcha) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s Captcha) encodeFields(e *jx.Encoder) {
 	{
+
+		e.FieldStart("result")
+		e.Int(s.Result)
+	}
+	{
 		if s.Error.Set {
 			e.FieldStart("error")
 			s.Error.Encode(e)
 		}
+	}
+	{
+
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
+
+		e.FieldStart("id")
+		e.Str(s.ID)
 	}
 	{
 		if s.Expires.Set {
@@ -765,35 +780,20 @@ func (s Captcha) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		e.FieldStart("id")
-		e.Str(s.ID)
-	}
-	{
 		if s.Input.Set {
 			e.FieldStart("input")
 			s.Input.Encode(e)
 		}
 	}
-	{
-
-		e.FieldStart("result")
-		e.Int(s.Result)
-	}
-	{
-
-		e.FieldStart("type")
-		s.Type.Encode(e)
-	}
 }
 
 var jsonFieldsNameOfCaptcha = [6]string{
-	0: "error",
-	1: "expires",
-	2: "id",
-	3: "input",
-	4: "result",
-	5: "type",
+	0: "result",
+	1: "error",
+	2: "type",
+	3: "id",
+	4: "expires",
+	5: "input",
 }
 
 // Decode decodes Captcha from json.
@@ -805,6 +805,18 @@ func (s *Captcha) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.Result = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"result\"")
+			}
 		case "error":
 			if err := func() error {
 				s.Error.Reset()
@@ -814,6 +826,28 @@ func (s *Captcha) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"error\"")
+			}
+		case "type":
+			requiredBitSet[0] |= 1 << 2
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.ID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "expires":
 			if err := func() error {
@@ -825,18 +859,6 @@ func (s *Captcha) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"expires\"")
 			}
-		case "id":
-			requiredBitSet[0] |= 1 << 2
-			if err := func() error {
-				v, err := d.Str()
-				s.ID = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"id\"")
-			}
 		case "input":
 			if err := func() error {
 				s.Input.Reset()
@@ -846,28 +868,6 @@ func (s *Captcha) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input\"")
-			}
-		case "result":
-			requiredBitSet[0] |= 1 << 4
-			if err := func() error {
-				v, err := d.Int()
-				s.Result = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"result\"")
-			}
-		case "type":
-			requiredBitSet[0] |= 1 << 5
-			if err := func() error {
-				if err := s.Type.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"type\"")
 			}
 		default:
 			return d.Skip()
@@ -879,7 +879,7 @@ func (s *Captcha) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00110100,
+		0b00001101,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1098,8 +1098,70 @@ func (s File) Encode(e *jx.Encoder) {
 func (s File) encodeFields(e *jx.Encoder) {
 	{
 
+		e.FieldStart("name")
+		e.Str(s.Name)
+	}
+	{
+
+		e.FieldStart("fullname")
+		e.Str(s.Fullname)
+	}
+	{
+
 		e.FieldStart("displayname")
 		e.Str(s.Displayname)
+	}
+	{
+
+		e.FieldStart("path")
+		e.Str(s.Path)
+	}
+	{
+
+		e.FieldStart("thumbnail")
+		e.Str(s.Thumbnail)
+	}
+	{
+		if s.MD5.Set {
+			e.FieldStart("md5")
+			s.MD5.Encode(e)
+		}
+	}
+	{
+
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
+
+		e.FieldStart("size")
+		e.Int(s.Size)
+	}
+	{
+
+		e.FieldStart("width")
+		e.Int(s.Width)
+	}
+	{
+
+		e.FieldStart("height")
+		e.Int(s.Height)
+	}
+	{
+
+		e.FieldStart("tn_width")
+		e.Int(s.TnWidth)
+	}
+	{
+
+		e.FieldStart("tn_height")
+		e.Int(s.TnHeight)
+	}
+	{
+		if s.Nsfw.Set {
+			e.FieldStart("nsfw")
+			s.Nsfw.Encode(e)
+		}
 	}
 	{
 		if s.Duration.Set {
@@ -1114,53 +1176,10 @@ func (s File) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		e.FieldStart("fullname")
-		e.Str(s.Fullname)
-	}
-	{
-
-		e.FieldStart("height")
-		e.Int(s.Height)
-	}
-	{
-		if s.Install.Set {
-			e.FieldStart("install")
-			s.Install.Encode(e)
-		}
-	}
-	{
-		if s.MD5.Set {
-			e.FieldStart("md5")
-			s.MD5.Encode(e)
-		}
-	}
-	{
-
-		e.FieldStart("name")
-		e.Str(s.Name)
-	}
-	{
-		if s.Nsfw.Set {
-			e.FieldStart("nsfw")
-			s.Nsfw.Encode(e)
-		}
-	}
-	{
 		if s.Pack.Set {
 			e.FieldStart("pack")
 			s.Pack.Encode(e)
 		}
-	}
-	{
-
-		e.FieldStart("path")
-		e.Str(s.Path)
-	}
-	{
-
-		e.FieldStart("size")
-		e.Int(s.Size)
 	}
 	{
 		if s.Sticker.Set {
@@ -1169,51 +1188,32 @@ func (s File) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		e.FieldStart("thumbnail")
-		e.Str(s.Thumbnail)
-	}
-	{
-
-		e.FieldStart("tn_height")
-		e.Int(s.TnHeight)
-	}
-	{
-
-		e.FieldStart("tn_width")
-		e.Int(s.TnWidth)
-	}
-	{
-
-		e.FieldStart("type")
-		s.Type.Encode(e)
-	}
-	{
-
-		e.FieldStart("width")
-		e.Int(s.Width)
+		if s.Install.Set {
+			e.FieldStart("install")
+			s.Install.Encode(e)
+		}
 	}
 }
 
 var jsonFieldsNameOfFile = [18]string{
-	0:  "displayname",
-	1:  "duration",
-	2:  "duration_secs",
-	3:  "fullname",
-	4:  "height",
-	5:  "install",
-	6:  "md5",
-	7:  "name",
-	8:  "nsfw",
-	9:  "pack",
-	10: "path",
-	11: "size",
-	12: "sticker",
-	13: "thumbnail",
-	14: "tn_height",
-	15: "tn_width",
-	16: "type",
-	17: "width",
+	0:  "name",
+	1:  "fullname",
+	2:  "displayname",
+	3:  "path",
+	4:  "thumbnail",
+	5:  "md5",
+	6:  "type",
+	7:  "size",
+	8:  "width",
+	9:  "height",
+	10: "tn_width",
+	11: "tn_height",
+	12: "nsfw",
+	13: "duration",
+	14: "duration_secs",
+	15: "pack",
+	16: "sticker",
+	17: "install",
 }
 
 // Decode decodes File from json.
@@ -1225,8 +1225,32 @@ func (s *File) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "displayname":
+		case "name":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Name = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
+			}
+		case "fullname":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Fullname = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"fullname\"")
+			}
+		case "displayname":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Displayname = string(v)
@@ -1236,6 +1260,120 @@ func (s *File) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"displayname\"")
+			}
+		case "path":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.Path = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"path\"")
+			}
+		case "thumbnail":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				v, err := d.Str()
+				s.Thumbnail = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"thumbnail\"")
+			}
+		case "md5":
+			if err := func() error {
+				s.MD5.Reset()
+				if err := s.MD5.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"md5\"")
+			}
+		case "type":
+			requiredBitSet[0] |= 1 << 6
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "size":
+			requiredBitSet[0] |= 1 << 7
+			if err := func() error {
+				v, err := d.Int()
+				s.Size = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"size\"")
+			}
+		case "width":
+			requiredBitSet[1] |= 1 << 0
+			if err := func() error {
+				v, err := d.Int()
+				s.Width = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"width\"")
+			}
+		case "height":
+			requiredBitSet[1] |= 1 << 1
+			if err := func() error {
+				v, err := d.Int()
+				s.Height = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"height\"")
+			}
+		case "tn_width":
+			requiredBitSet[1] |= 1 << 2
+			if err := func() error {
+				v, err := d.Int()
+				s.TnWidth = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"tn_width\"")
+			}
+		case "tn_height":
+			requiredBitSet[1] |= 1 << 3
+			if err := func() error {
+				v, err := d.Int()
+				s.TnHeight = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"tn_height\"")
+			}
+		case "nsfw":
+			if err := func() error {
+				s.Nsfw.Reset()
+				if err := s.Nsfw.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"nsfw\"")
 			}
 		case "duration":
 			if err := func() error {
@@ -1257,72 +1395,6 @@ func (s *File) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"duration_secs\"")
 			}
-		case "fullname":
-			requiredBitSet[0] |= 1 << 3
-			if err := func() error {
-				v, err := d.Str()
-				s.Fullname = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"fullname\"")
-			}
-		case "height":
-			requiredBitSet[0] |= 1 << 4
-			if err := func() error {
-				v, err := d.Int()
-				s.Height = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"height\"")
-			}
-		case "install":
-			if err := func() error {
-				s.Install.Reset()
-				if err := s.Install.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"install\"")
-			}
-		case "md5":
-			if err := func() error {
-				s.MD5.Reset()
-				if err := s.MD5.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"md5\"")
-			}
-		case "name":
-			requiredBitSet[0] |= 1 << 7
-			if err := func() error {
-				v, err := d.Str()
-				s.Name = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"name\"")
-			}
-		case "nsfw":
-			if err := func() error {
-				s.Nsfw.Reset()
-				if err := s.Nsfw.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"nsfw\"")
-			}
 		case "pack":
 			if err := func() error {
 				s.Pack.Reset()
@@ -1332,30 +1404,6 @@ func (s *File) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"pack\"")
-			}
-		case "path":
-			requiredBitSet[1] |= 1 << 2
-			if err := func() error {
-				v, err := d.Str()
-				s.Path = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"path\"")
-			}
-		case "size":
-			requiredBitSet[1] |= 1 << 3
-			if err := func() error {
-				v, err := d.Int()
-				s.Size = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"size\"")
 			}
 		case "sticker":
 			if err := func() error {
@@ -1367,63 +1415,15 @@ func (s *File) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"sticker\"")
 			}
-		case "thumbnail":
-			requiredBitSet[1] |= 1 << 5
+		case "install":
 			if err := func() error {
-				v, err := d.Str()
-				s.Thumbnail = string(v)
-				if err != nil {
+				s.Install.Reset()
+				if err := s.Install.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"thumbnail\"")
-			}
-		case "tn_height":
-			requiredBitSet[1] |= 1 << 6
-			if err := func() error {
-				v, err := d.Int()
-				s.TnHeight = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"tn_height\"")
-			}
-		case "tn_width":
-			requiredBitSet[1] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int()
-				s.TnWidth = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"tn_width\"")
-			}
-		case "type":
-			requiredBitSet[2] |= 1 << 0
-			if err := func() error {
-				if err := s.Type.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"type\"")
-			}
-		case "width":
-			requiredBitSet[2] |= 1 << 1
-			if err := func() error {
-				v, err := d.Int()
-				s.Width = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"width\"")
+				return errors.Wrap(err, "decode field \"install\"")
 			}
 		default:
 			return d.Skip()
@@ -1435,9 +1435,9 @@ func (s *File) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
-		0b10011001,
-		0b11101100,
-		0b00000011,
+		0b11011111,
+		0b00001111,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1525,22 +1525,22 @@ func (s Like) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s Like) encodeFields(e *jx.Encoder) {
 	{
-		if s.Error.Set {
-			e.FieldStart("error")
-			s.Error.Encode(e)
-		}
-	}
-	{
 		if s.Result.Set {
 			e.FieldStart("result")
 			s.Result.Encode(e)
 		}
 	}
+	{
+		if s.Error.Set {
+			e.FieldStart("error")
+			s.Error.Encode(e)
+		}
+	}
 }
 
 var jsonFieldsNameOfLike = [2]string{
-	0: "error",
-	1: "result",
+	0: "result",
+	1: "error",
 }
 
 // Decode decodes Like from json.
@@ -1551,16 +1551,6 @@ func (s *Like) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "error":
-			if err := func() error {
-				s.Error.Reset()
-				if err := s.Error.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"error\"")
-			}
 		case "result":
 			if err := func() error {
 				s.Result.Reset()
@@ -1570,6 +1560,16 @@ func (s *Like) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"result\"")
+			}
+		case "error":
+			if err := func() error {
+				s.Error.Reset()
+				if err := s.Error.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"error\"")
 			}
 		default:
 			return d.Skip()
@@ -1605,6 +1605,12 @@ func (s MobilePost) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s MobilePost) encodeFields(e *jx.Encoder) {
 	{
+		if s.Result.Set {
+			e.FieldStart("result")
+			s.Result.Encode(e)
+		}
+	}
+	{
 		if s.Error.Set {
 			e.FieldStart("error")
 			s.Error.Encode(e)
@@ -1616,18 +1622,12 @@ func (s MobilePost) encodeFields(e *jx.Encoder) {
 			s.Post.Encode(e)
 		}
 	}
-	{
-		if s.Result.Set {
-			e.FieldStart("result")
-			s.Result.Encode(e)
-		}
-	}
 }
 
 var jsonFieldsNameOfMobilePost = [3]string{
-	0: "error",
-	1: "post",
-	2: "result",
+	0: "result",
+	1: "error",
+	2: "post",
 }
 
 // Decode decodes MobilePost from json.
@@ -1638,6 +1638,16 @@ func (s *MobilePost) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			if err := func() error {
+				s.Result.Reset()
+				if err := s.Result.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"result\"")
+			}
 		case "error":
 			if err := func() error {
 				s.Error.Reset()
@@ -1657,16 +1667,6 @@ func (s *MobilePost) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"post\"")
-			}
-		case "result":
-			if err := func() error {
-				s.Result.Reset()
-				if err := s.Result.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"result\"")
 			}
 		default:
 			return d.Skip()
@@ -1702,15 +1702,15 @@ func (s MobileThreadLastInfo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s MobileThreadLastInfo) encodeFields(e *jx.Encoder) {
 	{
-		if s.Error.Set {
-			e.FieldStart("error")
-			s.Error.Encode(e)
-		}
-	}
-	{
 		if s.Result.Set {
 			e.FieldStart("result")
 			s.Result.Encode(e)
+		}
+	}
+	{
+		if s.Error.Set {
+			e.FieldStart("error")
+			s.Error.Encode(e)
 		}
 	}
 	{
@@ -1722,8 +1722,8 @@ func (s MobileThreadLastInfo) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfMobileThreadLastInfo = [3]string{
-	0: "error",
-	1: "result",
+	0: "result",
+	1: "error",
 	2: "thread",
 }
 
@@ -1735,16 +1735,6 @@ func (s *MobileThreadLastInfo) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "error":
-			if err := func() error {
-				s.Error.Reset()
-				if err := s.Error.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"error\"")
-			}
 		case "result":
 			if err := func() error {
 				s.Result.Reset()
@@ -1754,6 +1744,16 @@ func (s *MobileThreadLastInfo) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"result\"")
+			}
+		case "error":
+			if err := func() error {
+				s.Error.Reset()
+				if err := s.Error.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"error\"")
 			}
 		case "thread":
 			if err := func() error {
@@ -1805,23 +1805,23 @@ func (s MobileThreadLastInfoThread) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Posts.Set {
-			e.FieldStart("posts")
-			s.Posts.Encode(e)
-		}
-	}
-	{
 		if s.Timestamp.Set {
 			e.FieldStart("timestamp")
 			s.Timestamp.Encode(e)
+		}
+	}
+	{
+		if s.Posts.Set {
+			e.FieldStart("posts")
+			s.Posts.Encode(e)
 		}
 	}
 }
 
 var jsonFieldsNameOfMobileThreadLastInfoThread = [3]string{
 	0: "num",
-	1: "posts",
-	2: "timestamp",
+	1: "timestamp",
+	2: "posts",
 }
 
 // Decode decodes MobileThreadLastInfoThread from json.
@@ -1842,16 +1842,6 @@ func (s *MobileThreadLastInfoThread) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"num\"")
 			}
-		case "posts":
-			if err := func() error {
-				s.Posts.Reset()
-				if err := s.Posts.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"posts\"")
-			}
 		case "timestamp":
 			if err := func() error {
 				s.Timestamp.Reset()
@@ -1861,6 +1851,16 @@ func (s *MobileThreadLastInfoThread) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"timestamp\"")
+			}
+		case "posts":
+			if err := func() error {
+				s.Posts.Reset()
+				if err := s.Posts.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"posts\"")
 			}
 		default:
 			return d.Skip()
@@ -1896,9 +1896,21 @@ func (s MobileThreadPostsAfter) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s MobileThreadPostsAfter) encodeFields(e *jx.Encoder) {
 	{
+		if s.Result.Set {
+			e.FieldStart("result")
+			s.Result.Encode(e)
+		}
+	}
+	{
 		if s.Error.Set {
 			e.FieldStart("error")
 			s.Error.Encode(e)
+		}
+	}
+	{
+		if s.UniquePosters.Set {
+			e.FieldStart("unique_posters")
+			s.UniquePosters.Encode(e)
 		}
 	}
 	{
@@ -1911,25 +1923,13 @@ func (s MobileThreadPostsAfter) encodeFields(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	{
-		if s.Result.Set {
-			e.FieldStart("result")
-			s.Result.Encode(e)
-		}
-	}
-	{
-		if s.UniquePosters.Set {
-			e.FieldStart("unique_posters")
-			s.UniquePosters.Encode(e)
-		}
-	}
 }
 
 var jsonFieldsNameOfMobileThreadPostsAfter = [4]string{
-	0: "error",
-	1: "posts",
-	2: "result",
-	3: "unique_posters",
+	0: "result",
+	1: "error",
+	2: "unique_posters",
+	3: "posts",
 }
 
 // Decode decodes MobileThreadPostsAfter from json.
@@ -1940,6 +1940,16 @@ func (s *MobileThreadPostsAfter) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			if err := func() error {
+				s.Result.Reset()
+				if err := s.Result.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"result\"")
+			}
 		case "error":
 			if err := func() error {
 				s.Error.Reset()
@@ -1949,6 +1959,16 @@ func (s *MobileThreadPostsAfter) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"error\"")
+			}
+		case "unique_posters":
+			if err := func() error {
+				s.UniquePosters.Reset()
+				if err := s.UniquePosters.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"unique_posters\"")
 			}
 		case "posts":
 			if err := func() error {
@@ -1966,26 +1986,6 @@ func (s *MobileThreadPostsAfter) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"posts\"")
-			}
-		case "result":
-			if err := func() error {
-				s.Result.Reset()
-				if err := s.Result.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"result\"")
-			}
-		case "unique_posters":
-			if err := func() error {
-				s.UniquePosters.Reset()
-				if err := s.UniquePosters.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"unique_posters\"")
 			}
 		default:
 			return d.Skip()
@@ -2256,6 +2256,12 @@ func (s Passcode) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s Passcode) encodeFields(e *jx.Encoder) {
 	{
+		if s.Result.Set {
+			e.FieldStart("result")
+			s.Result.Encode(e)
+		}
+	}
+	{
 		if s.Error.Set {
 			e.FieldStart("error")
 			s.Error.Encode(e)
@@ -2267,18 +2273,12 @@ func (s Passcode) encodeFields(e *jx.Encoder) {
 			s.Passcode.Encode(e)
 		}
 	}
-	{
-		if s.Result.Set {
-			e.FieldStart("result")
-			s.Result.Encode(e)
-		}
-	}
 }
 
 var jsonFieldsNameOfPasscode = [3]string{
-	0: "error",
-	1: "passcode",
-	2: "result",
+	0: "result",
+	1: "error",
+	2: "passcode",
 }
 
 // Decode decodes Passcode from json.
@@ -2289,6 +2289,16 @@ func (s *Passcode) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			if err := func() error {
+				s.Result.Reset()
+				if err := s.Result.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"result\"")
+			}
 		case "error":
 			if err := func() error {
 				s.Error.Reset()
@@ -2308,16 +2318,6 @@ func (s *Passcode) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"passcode\"")
-			}
-		case "result":
-			if err := func() error {
-				s.Result.Reset()
-				if err := s.Result.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"result\"")
 			}
 		default:
 			return d.Skip()
@@ -2353,22 +2353,22 @@ func (s PasscodePasscode) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s PasscodePasscode) encodeFields(e *jx.Encoder) {
 	{
-		if s.Expires.Set {
-			e.FieldStart("expires")
-			s.Expires.Encode(e)
-		}
-	}
-	{
 		if s.Type.Set {
 			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
+	{
+		if s.Expires.Set {
+			e.FieldStart("expires")
+			s.Expires.Encode(e)
+		}
+	}
 }
 
 var jsonFieldsNameOfPasscodePasscode = [2]string{
-	0: "expires",
-	1: "type",
+	0: "type",
+	1: "expires",
 }
 
 // Decode decodes PasscodePasscode from json.
@@ -2379,16 +2379,6 @@ func (s *PasscodePasscode) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "expires":
-			if err := func() error {
-				s.Expires.Reset()
-				if err := s.Expires.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"expires\"")
-			}
 		case "type":
 			if err := func() error {
 				s.Type.Reset()
@@ -2398,6 +2388,16 @@ func (s *PasscodePasscode) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "expires":
+			if err := func() error {
+				s.Expires.Reset()
+				if err := s.Expires.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"expires\"")
 			}
 		default:
 			return d.Skip()
@@ -2434,8 +2434,13 @@ func (s Post) Encode(e *jx.Encoder) {
 func (s Post) encodeFields(e *jx.Encoder) {
 	{
 
-		e.FieldStart("banned")
-		e.Int(s.Banned)
+		e.FieldStart("num")
+		e.Int(s.Num)
+	}
+	{
+
+		e.FieldStart("parent")
+		e.Int(s.Parent)
 	}
 	{
 
@@ -2444,24 +2449,18 @@ func (s Post) encodeFields(e *jx.Encoder) {
 	}
 	{
 
-		e.FieldStart("closed")
-		e.Int(s.Closed)
+		e.FieldStart("timestamp")
+		e.Int(s.Timestamp)
 	}
 	{
 
-		e.FieldStart("comment")
-		e.Str(s.Comment)
+		e.FieldStart("lasthit")
+		e.Int(s.Lasthit)
 	}
 	{
 
 		e.FieldStart("date")
 		e.Str(s.Date)
-	}
-	{
-		if s.Dislikes.Set {
-			e.FieldStart("dislikes")
-			s.Dislikes.Encode(e)
-		}
 	}
 	{
 		if s.Email.Set {
@@ -2470,9 +2469,15 @@ func (s Post) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.Subject.Set {
+			e.FieldStart("subject")
+			s.Subject.Encode(e)
+		}
+	}
+	{
 
-		e.FieldStart("endless")
-		e.Int(s.Endless)
+		e.FieldStart("comment")
+		e.Str(s.Comment)
 	}
 	{
 		if s.Files != nil {
@@ -2485,21 +2490,34 @@ func (s Post) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Icon.Set {
-			e.FieldStart("icon")
-			s.Icon.Encode(e)
-		}
+
+		e.FieldStart("views")
+		e.Int(s.Views)
 	}
 	{
 
-		e.FieldStart("lasthit")
-		e.Int(s.Lasthit)
+		e.FieldStart("sticky")
+		e.Int(s.Sticky)
 	}
 	{
-		if s.Likes.Set {
-			e.FieldStart("likes")
-			s.Likes.Encode(e)
-		}
+
+		e.FieldStart("endless")
+		e.Int(s.Endless)
+	}
+	{
+
+		e.FieldStart("closed")
+		e.Int(s.Closed)
+	}
+	{
+
+		e.FieldStart("banned")
+		e.Int(s.Banned)
+	}
+	{
+
+		e.FieldStart("op")
+		e.Int(s.Op)
 	}
 	{
 		if s.Name.Set {
@@ -2508,41 +2526,10 @@ func (s Post) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		e.FieldStart("num")
-		e.Int(s.Num)
-	}
-	{
-
-		e.FieldStart("op")
-		e.Int(s.Op)
-	}
-	{
-
-		e.FieldStart("parent")
-		e.Int(s.Parent)
-	}
-	{
-
-		e.FieldStart("sticky")
-		e.Int(s.Sticky)
-	}
-	{
-		if s.Subject.Set {
-			e.FieldStart("subject")
-			s.Subject.Encode(e)
+		if s.Icon.Set {
+			e.FieldStart("icon")
+			s.Icon.Encode(e)
 		}
-	}
-	{
-		if s.Tags.Set {
-			e.FieldStart("tags")
-			s.Tags.Encode(e)
-		}
-	}
-	{
-
-		e.FieldStart("timestamp")
-		e.Int(s.Timestamp)
 	}
 	{
 		if s.Trip.Set {
@@ -2557,36 +2544,49 @@ func (s Post) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		e.FieldStart("views")
-		e.Int(s.Views)
+		if s.Tags.Set {
+			e.FieldStart("tags")
+			s.Tags.Encode(e)
+		}
+	}
+	{
+		if s.Likes.Set {
+			e.FieldStart("likes")
+			s.Likes.Encode(e)
+		}
+	}
+	{
+		if s.Dislikes.Set {
+			e.FieldStart("dislikes")
+			s.Dislikes.Encode(e)
+		}
 	}
 }
 
 var jsonFieldsNameOfPost = [23]string{
-	0:  "banned",
-	1:  "board",
-	2:  "closed",
-	3:  "comment",
-	4:  "date",
-	5:  "dislikes",
+	0:  "num",
+	1:  "parent",
+	2:  "board",
+	3:  "timestamp",
+	4:  "lasthit",
+	5:  "date",
 	6:  "email",
-	7:  "endless",
-	8:  "files",
-	9:  "icon",
-	10: "lasthit",
-	11: "likes",
-	12: "name",
-	13: "num",
-	14: "op",
-	15: "parent",
-	16: "sticky",
-	17: "subject",
-	18: "tags",
-	19: "timestamp",
-	20: "trip",
-	21: "trip_style",
-	22: "views",
+	7:  "subject",
+	8:  "comment",
+	9:  "files",
+	10: "views",
+	11: "sticky",
+	12: "endless",
+	13: "closed",
+	14: "banned",
+	15: "op",
+	16: "name",
+	17: "icon",
+	18: "trip",
+	19: "trip_style",
+	20: "tags",
+	21: "likes",
+	22: "dislikes",
 }
 
 // Decode decodes Post from json.
@@ -2598,20 +2598,32 @@ func (s *Post) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "banned":
+		case "num":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
 				v, err := d.Int()
-				s.Banned = int(v)
+				s.Num = int(v)
 				if err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"banned\"")
+				return errors.Wrap(err, "decode field \"num\"")
+			}
+		case "parent":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Int()
+				s.Parent = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"parent\"")
 			}
 		case "board":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Board = string(v)
@@ -2622,32 +2634,32 @@ func (s *Post) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"board\"")
 			}
-		case "closed":
-			requiredBitSet[0] |= 1 << 2
-			if err := func() error {
-				v, err := d.Int()
-				s.Closed = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"closed\"")
-			}
-		case "comment":
+		case "timestamp":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				v, err := d.Str()
-				s.Comment = string(v)
+				v, err := d.Int()
+				s.Timestamp = int(v)
 				if err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"comment\"")
+				return errors.Wrap(err, "decode field \"timestamp\"")
+			}
+		case "lasthit":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int()
+				s.Lasthit = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"lasthit\"")
 			}
 		case "date":
-			requiredBitSet[0] |= 1 << 4
+			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
 				v, err := d.Str()
 				s.Date = string(v)
@@ -2657,16 +2669,6 @@ func (s *Post) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"date\"")
-			}
-		case "dislikes":
-			if err := func() error {
-				s.Dislikes.Reset()
-				if err := s.Dislikes.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"dislikes\"")
 			}
 		case "email":
 			if err := func() error {
@@ -2678,17 +2680,27 @@ func (s *Post) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"email\"")
 			}
-		case "endless":
-			requiredBitSet[0] |= 1 << 7
+		case "subject":
 			if err := func() error {
-				v, err := d.Int()
-				s.Endless = int(v)
+				s.Subject.Reset()
+				if err := s.Subject.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"subject\"")
+			}
+		case "comment":
+			requiredBitSet[1] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Comment = string(v)
 				if err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"endless\"")
+				return errors.Wrap(err, "decode field \"comment\"")
 			}
 		case "files":
 			if err := func() error {
@@ -2707,37 +2719,77 @@ func (s *Post) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"files\"")
 			}
-		case "icon":
-			if err := func() error {
-				s.Icon.Reset()
-				if err := s.Icon.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"icon\"")
-			}
-		case "lasthit":
+		case "views":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int()
-				s.Lasthit = int(v)
+				s.Views = int(v)
 				if err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"lasthit\"")
+				return errors.Wrap(err, "decode field \"views\"")
 			}
-		case "likes":
+		case "sticky":
+			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.Likes.Reset()
-				if err := s.Likes.Decode(d); err != nil {
+				v, err := d.Int()
+				s.Sticky = int(v)
+				if err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"likes\"")
+				return errors.Wrap(err, "decode field \"sticky\"")
+			}
+		case "endless":
+			requiredBitSet[1] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int()
+				s.Endless = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"endless\"")
+			}
+		case "closed":
+			requiredBitSet[1] |= 1 << 5
+			if err := func() error {
+				v, err := d.Int()
+				s.Closed = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"closed\"")
+			}
+		case "banned":
+			requiredBitSet[1] |= 1 << 6
+			if err := func() error {
+				v, err := d.Int()
+				s.Banned = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"banned\"")
+			}
+		case "op":
+			requiredBitSet[1] |= 1 << 7
+			if err := func() error {
+				v, err := d.Int()
+				s.Op = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"op\"")
 			}
 		case "name":
 			if err := func() error {
@@ -2749,85 +2801,15 @@ func (s *Post) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
-		case "num":
-			requiredBitSet[1] |= 1 << 5
+		case "icon":
 			if err := func() error {
-				v, err := d.Int()
-				s.Num = int(v)
-				if err != nil {
+				s.Icon.Reset()
+				if err := s.Icon.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"num\"")
-			}
-		case "op":
-			requiredBitSet[1] |= 1 << 6
-			if err := func() error {
-				v, err := d.Int()
-				s.Op = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"op\"")
-			}
-		case "parent":
-			requiredBitSet[1] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int()
-				s.Parent = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"parent\"")
-			}
-		case "sticky":
-			requiredBitSet[2] |= 1 << 0
-			if err := func() error {
-				v, err := d.Int()
-				s.Sticky = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"sticky\"")
-			}
-		case "subject":
-			if err := func() error {
-				s.Subject.Reset()
-				if err := s.Subject.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"subject\"")
-			}
-		case "tags":
-			if err := func() error {
-				s.Tags.Reset()
-				if err := s.Tags.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"tags\"")
-			}
-		case "timestamp":
-			requiredBitSet[2] |= 1 << 3
-			if err := func() error {
-				v, err := d.Int()
-				s.Timestamp = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"timestamp\"")
+				return errors.Wrap(err, "decode field \"icon\"")
 			}
 		case "trip":
 			if err := func() error {
@@ -2849,17 +2831,35 @@ func (s *Post) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"trip_style\"")
 			}
-		case "views":
-			requiredBitSet[2] |= 1 << 6
+		case "tags":
 			if err := func() error {
-				v, err := d.Int()
-				s.Views = int(v)
-				if err != nil {
+				s.Tags.Reset()
+				if err := s.Tags.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"views\"")
+				return errors.Wrap(err, "decode field \"tags\"")
+			}
+		case "likes":
+			if err := func() error {
+				s.Likes.Reset()
+				if err := s.Likes.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"likes\"")
+			}
+		case "dislikes":
+			if err := func() error {
+				s.Dislikes.Reset()
+				if err := s.Dislikes.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"dislikes\"")
 			}
 		default:
 			return d.Skip()
@@ -2871,9 +2871,9 @@ func (s *Post) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
-		0b10011111,
-		0b11100100,
-		0b01001001,
+		0b00111111,
+		0b11111101,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -2929,6 +2929,12 @@ func (s PostingNewPost) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s PostingNewPost) encodeFields(e *jx.Encoder) {
 	{
+		if s.Result.Set {
+			e.FieldStart("result")
+			s.Result.Encode(e)
+		}
+	}
+	{
 		if s.Error.Set {
 			e.FieldStart("error")
 			s.Error.Encode(e)
@@ -2940,18 +2946,12 @@ func (s PostingNewPost) encodeFields(e *jx.Encoder) {
 			s.Num.Encode(e)
 		}
 	}
-	{
-		if s.Result.Set {
-			e.FieldStart("result")
-			s.Result.Encode(e)
-		}
-	}
 }
 
 var jsonFieldsNameOfPostingNewPost = [3]string{
-	0: "error",
-	1: "num",
-	2: "result",
+	0: "result",
+	1: "error",
+	2: "num",
 }
 
 // Decode decodes PostingNewPost from json.
@@ -2962,6 +2962,16 @@ func (s *PostingNewPost) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "result":
+			if err := func() error {
+				s.Result.Reset()
+				if err := s.Result.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"result\"")
+			}
 		case "error":
 			if err := func() error {
 				s.Error.Reset()
@@ -2981,16 +2991,6 @@ func (s *PostingNewPost) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"num\"")
-			}
-		case "result":
-			if err := func() error {
-				s.Result.Reset()
-				if err := s.Result.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"result\"")
 			}
 		default:
 			return d.Skip()
@@ -3026,15 +3026,15 @@ func (s PostingNewThread) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s PostingNewThread) encodeFields(e *jx.Encoder) {
 	{
-		if s.Error.Set {
-			e.FieldStart("error")
-			s.Error.Encode(e)
-		}
-	}
-	{
 		if s.Result.Set {
 			e.FieldStart("result")
 			s.Result.Encode(e)
+		}
+	}
+	{
+		if s.Error.Set {
+			e.FieldStart("error")
+			s.Error.Encode(e)
 		}
 	}
 	{
@@ -3046,8 +3046,8 @@ func (s PostingNewThread) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfPostingNewThread = [3]string{
-	0: "error",
-	1: "result",
+	0: "result",
+	1: "error",
 	2: "thread",
 }
 
@@ -3059,16 +3059,6 @@ func (s *PostingNewThread) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "error":
-			if err := func() error {
-				s.Error.Reset()
-				if err := s.Error.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"error\"")
-			}
 		case "result":
 			if err := func() error {
 				s.Result.Reset()
@@ -3078,6 +3068,16 @@ func (s *PostingNewThread) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"result\"")
+			}
+		case "error":
+			if err := func() error {
+				s.Error.Reset()
+				if err := s.Error.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"error\"")
 			}
 		case "thread":
 			if err := func() error {
@@ -3123,22 +3123,22 @@ func (s Report) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s Report) encodeFields(e *jx.Encoder) {
 	{
-		if s.Error.Set {
-			e.FieldStart("error")
-			s.Error.Encode(e)
-		}
-	}
-	{
 		if s.Result.Set {
 			e.FieldStart("result")
 			s.Result.Encode(e)
 		}
 	}
+	{
+		if s.Error.Set {
+			e.FieldStart("error")
+			s.Error.Encode(e)
+		}
+	}
 }
 
 var jsonFieldsNameOfReport = [2]string{
-	0: "error",
-	1: "result",
+	0: "result",
+	1: "error",
 }
 
 // Decode decodes Report from json.
@@ -3149,16 +3149,6 @@ func (s *Report) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "error":
-			if err := func() error {
-				s.Error.Reset()
-				if err := s.Error.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"error\"")
-			}
 		case "result":
 			if err := func() error {
 				s.Result.Reset()
@@ -3168,6 +3158,16 @@ func (s *Report) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"result\"")
+			}
+		case "error":
+			if err := func() error {
+				s.Error.Reset()
+				if err := s.Error.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"error\"")
 			}
 		default:
 			return d.Skip()

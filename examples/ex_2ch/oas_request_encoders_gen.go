@@ -58,19 +58,6 @@ func encodeUserPostingPostRequest(
 
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "board" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "board",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(request.Board))
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
 		// Encode "captcha_type" form field.
 		cfg := uri.QueryParameterEncodingConfig{
 			Name:    "captcha_type",
@@ -84,68 +71,27 @@ func encodeUserPostingPostRequest(
 		}
 	}
 	{
-		// Encode "comment" form field.
+		// Encode "board" form field.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "comment",
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Comment.Get(); ok {
-				return e.EncodeValue(conv.StringToString(val))
-			}
-			return nil
+			return e.EncodeValue(conv.StringToString(request.Board))
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}
 	}
 	{
-		// Encode "email" form field.
+		// Encode "thread" form field.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "email",
+			Name:    "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Email.Get(); ok {
-				return e.EncodeValue(conv.StringToString(val))
-			}
-			return nil
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
-		// Encode "file[]" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "file[]",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range request.File {
-					if err := func() error {
-						return e.EncodeValue(conv.StringToString(item))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
-					}
-				}
-				return nil
-			})
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
-		// Encode "icon" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "icon",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Icon.Get(); ok {
+			if val, ok := request.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
@@ -170,30 +116,14 @@ func encodeUserPostingPostRequest(
 		}
 	}
 	{
-		// Encode "op_mark" form field.
+		// Encode "email" form field.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "op_mark",
+			Name:    "email",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.OpMark.Get(); ok {
-				return e.EncodeValue(conv.IntToString(val))
-			}
-			return nil
-		}); err != nil {
-			return errors.Wrap(err, "encode query")
-		}
-	}
-	{
-		// Encode "subject" form field.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "subject",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Subject.Get(); ok {
+			if val, ok := request.Email.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
@@ -218,17 +148,87 @@ func encodeUserPostingPostRequest(
 		}
 	}
 	{
-		// Encode "thread" form field.
+		// Encode "subject" form field.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "thread",
+			Name:    "subject",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := request.Thread.Get(); ok {
+			if val, ok := request.Subject.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "comment" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "comment",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := request.Comment.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "icon" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "icon",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := request.Icon.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "op_mark" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "op_mark",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := request.OpMark.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "file[]" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "file[]",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range request.File {
+					if err := func() error {
+						return e.EncodeValue(conv.StringToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}
@@ -267,14 +267,14 @@ func encodeUserReportPostRequest(
 		}
 	}
 	{
-		// Encode "comment" form field.
+		// Encode "thread" form field.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "comment",
+			Name:    "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(request.Comment))
+			return e.EncodeValue(conv.IntToString(request.Thread))
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}
@@ -302,14 +302,14 @@ func encodeUserReportPostRequest(
 		}
 	}
 	{
-		// Encode "thread" form field.
+		// Encode "comment" form field.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "thread",
+			Name:    "comment",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.IntToString(request.Thread))
+			return e.EncodeValue(conv.StringToString(request.Comment))
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}

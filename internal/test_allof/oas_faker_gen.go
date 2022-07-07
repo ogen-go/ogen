@@ -24,11 +24,6 @@ func (s *Location) SetFake() {
 func (s *ObjectsWithConflictingArrayPropertyReq) SetFake() {
 	{
 		{
-			s.Bar = int(0)
-		}
-	}
-	{
-		{
 			s.Foo = nil
 			for i := 0; i < 1; i++ {
 				var elem int
@@ -39,18 +34,23 @@ func (s *ObjectsWithConflictingArrayPropertyReq) SetFake() {
 			}
 		}
 	}
+	{
+		{
+			s.Bar = int(0)
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *ObjectsWithConflictingPropertiesReq) SetFake() {
 	{
 		{
-			s.Bar.SetFake()
+			s.Foo = "string"
 		}
 	}
 	{
 		{
-			s.Foo = "string"
+			s.Bar.SetFake()
 		}
 	}
 }
