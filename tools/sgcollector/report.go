@@ -42,7 +42,12 @@ func (r *Reporter) run(ctx context.Context, path string) error {
 			if !r.stage.OnlyCounter() {
 				opts := json.MarshalOptions{}
 
-				data, err := opts.Marshal(json.EncodeOptions{Indent: "\t"}, report)
+				data, err := opts.Marshal(json.EncodeOptions{
+					Indent: "\t",
+					// Some schemas contain invalid UTF-8 -> invalid JSON, so we need to encode
+					// them anyway.
+					AllowInvalidUTF8: true,
+				}, report)
 				if err != nil {
 					return errors.Wrap(err, "encode error")
 				}
