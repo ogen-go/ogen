@@ -2,6 +2,7 @@ package parser
 
 import (
 	"context"
+	"fmt"
 	"sort"
 	"testing"
 
@@ -502,4 +503,72 @@ func TestComplicatedReference(t *testing.T) {
 			RequestBodies: map[string]*openapi.RequestBody{},
 		},
 	}, spec)
+}
+
+func TestParserNoPanic(t *testing.T) {
+	schema := func(s *ogen.Schema) *ogen.Spec {
+		return &ogen.Spec{
+			Components: &ogen.Components{
+				Schemas: map[string]*ogen.Schema{
+					"schema": s,
+				},
+			},
+		}
+	}
+
+	inputs := []*ogen.Spec{
+		nil,
+		{},
+		{
+			Paths: ogen.Paths{},
+		},
+		{
+			Components: &ogen.Components{},
+		},
+		{
+			Components: &ogen.Components{
+				Examples: map[string]*ogen.Example{
+					"example": nil,
+				},
+			},
+		},
+		schema(nil),
+		schema(&ogen.Schema{}),
+		schema(&ogen.Schema{
+			AllOf: []*ogen.Schema{nil},
+		}),
+		schema(&ogen.Schema{
+			OneOf: []*ogen.Schema{nil},
+		}),
+		schema(&ogen.Schema{
+			AnyOf: []*ogen.Schema{nil},
+		}),
+		schema(&ogen.Schema{
+			Type: "array",
+		}),
+		schema(&ogen.Schema{
+			Type: "object",
+			Properties: ogen.Properties{
+				{Name: "foo", Schema: nil},
+			},
+		}),
+		schema(&ogen.Schema{
+			Type: "object",
+			PatternProperties: ogen.PatternProperties{
+				{Pattern: "foo", Schema: nil},
+			},
+		}),
+	}
+	for i, tt := range inputs {
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			require.NotPanics(t, func() {
+				_, _ = Parse(tt, Settings{})
+			})
+			require.NotPanics(t, func() {
+				_, _ = Parse(tt, Settings{
+					InferTypes: true,
+				})
+			})
+		})
+	}
 }
