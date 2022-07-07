@@ -16,7 +16,6 @@ require (
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-json-experiment/json v0.0.0-20220620174529-794765d0bd38 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
@@ -25,7 +24,6 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f // indirect
 	golang.org/x/sys v0.0.0-20220622161953-175b2fd9d664 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 

@@ -20,9 +20,9 @@ type ObjectsWithConflictingArrayPropertyOK struct{}
 
 // Merged schema.
 type ObjectsWithConflictingArrayPropertyReq struct {
-	Bar int "json:\"bar\""
 	// Merged property.
 	Foo []int "json:\"foo\""
+	Bar int   "json:\"bar\""
 }
 
 // ObjectsWithConflictingPropertiesOK is response for ObjectsWithConflictingProperties operation.
@@ -30,9 +30,9 @@ type ObjectsWithConflictingPropertiesOK struct{}
 
 // Merged schema.
 type ObjectsWithConflictingPropertiesReq struct {
-	Bar OptInt "json:\"bar\""
 	// Merged property.
 	Foo string "json:\"foo\""
+	Bar OptInt "json:\"bar\""
 }
 
 // NewOptBool returns new OptBool with value set to v.

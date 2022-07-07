@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 const (
@@ -374,7 +375,7 @@ func TestBuilder(t *testing.T) {
 		UniqueItems:      true,
 		MaxProperties:    &umax,
 		MinProperties:    &umax,
-		Default:          jsonv2.RawValue("0"),
+		Default:          jsonschema.Default("0"),
 	}, ogen.NewSchema().
 		SetRef("ref").
 		SetDescription("desc").

@@ -3,11 +3,16 @@ package ogen
 import (
 	"github.com/go-faster/errors"
 	"github.com/go-json-experiment/json"
+	"gopkg.in/yaml.v3"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 )
 
-func unmarshal(data []byte, out any) error {
+func unmarshalYAML(data []byte, out any) error {
+	return yaml.Unmarshal(data, out)
+}
+
+func unmarshalJSON(data []byte, out any) error {
 	var lines ogenjson.Lines
 	lines.Collect(data)
 
@@ -23,15 +28,11 @@ func unmarshal(data []byte, out any) error {
 	}
 
 	if err := opts.Unmarshal(json.DecodeOptions{}, data, out); err != nil {
-		return wrapLineOffset(begin, lines, err)
+		line, column, ok := lines.LineColumn(begin)
+		if !ok {
+			return err
+		}
+		return errors.Wrapf(err, "line %d:%d", line, column)
 	}
 	return nil
-}
-
-func wrapLineOffset(offset int64, lines ogenjson.Lines, err error) error {
-	line, column, ok := lines.LineColumn(offset)
-	if !ok {
-		return err
-	}
-	return errors.Wrapf(err, "line %d:%d", line, column)
 }

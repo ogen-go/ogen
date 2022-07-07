@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"github.com/go-json-experiment/json"
 )
 
 // Parser parses JSON schemas.
@@ -72,7 +73,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 			handleNullableEnum(s)
 		}
 		if d := schema.Default; len(d) > 0 {
-			v, err := parseJSONValue(s, d)
+			v, err := parseJSONValue(s, json.RawValue(d))
 			if err != nil {
 				return nil, errors.Wrap(err, "parse default")
 			}
@@ -108,7 +109,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	}
 
 	if d := schema.Default; p.inferTypes && schema.Type == "" && len(d) > 0 {
-		typ, err := inferJSONType(d)
+		typ, err := inferJSONType(json.RawValue(d))
 		if err != nil {
 			return nil, errors.Wrap(err, "infer default type")
 		}
@@ -388,7 +389,7 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 	s.Summary = schema.Summary
 	s.Description = schema.Description
 	s.Deprecated = schema.Deprecated
-	s.AddExample(schema.Example)
+	s.AddExample(json.RawValue(schema.Example))
 
 	// Nullable enums will be handled later.
 	if len(s.Enum) < 1 {

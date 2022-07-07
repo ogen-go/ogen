@@ -6,7 +6,12 @@ package api
 func (s *Board) SetFake() {
 	{
 		{
-			s.BumpLimit = int(0)
+			s.ID = "string"
+		}
+	}
+	{
+		{
+			s.Name = "string"
 		}
 	}
 	{
@@ -16,27 +21,32 @@ func (s *Board) SetFake() {
 	}
 	{
 		{
+			s.Info = "string"
+		}
+	}
+	{
+		{
+			s.InfoOuter = "string"
+		}
+	}
+	{
+		{
+			s.ThreadsPerPage = int(0)
+		}
+	}
+	{
+		{
+			s.BumpLimit = int(0)
+		}
+	}
+	{
+		{
+			s.MaxPages = int(0)
+		}
+	}
+	{
+		{
 			s.DefaultName = "string"
-		}
-	}
-	{
-		{
-			s.EnableDices = true
-		}
-	}
-	{
-		{
-			s.EnableFlags = true
-		}
-	}
-	{
-		{
-			s.EnableIcons = true
-		}
-	}
-	{
-		{
-			s.EnableLikes = true
 		}
 	}
 	{
@@ -46,22 +56,7 @@ func (s *Board) SetFake() {
 	}
 	{
 		{
-			s.EnableOekaki = true
-		}
-	}
-	{
-		{
-			s.EnablePosting = true
-		}
-	}
-	{
-		{
-			s.EnableSage = true
-		}
-	}
-	{
-		{
-			s.EnableShield = true
+			s.EnableTrips = true
 		}
 	}
 	{
@@ -71,12 +66,47 @@ func (s *Board) SetFake() {
 	}
 	{
 		{
+			s.EnableSage = true
+		}
+	}
+	{
+		{
+			s.EnableIcons = true
+		}
+	}
+	{
+		{
+			s.EnableFlags = true
+		}
+	}
+	{
+		{
+			s.EnableDices = true
+		}
+	}
+	{
+		{
+			s.EnableShield = true
+		}
+	}
+	{
+		{
 			s.EnableThreadTags = true
 		}
 	}
 	{
 		{
-			s.EnableTrips = true
+			s.EnablePosting = true
+		}
+	}
+	{
+		{
+			s.EnableLikes = true
+		}
+	}
+	{
+		{
+			s.EnableOekaki = true
 		}
 	}
 	{
@@ -93,49 +123,12 @@ func (s *Board) SetFake() {
 	}
 	{
 		{
-			s.Icons = nil
-			for i := 0; i < 0; i++ {
-				var elem BoardIconsItem
-				{
-					elem.SetFake()
-				}
-				s.Icons = append(s.Icons, elem)
-			}
-		}
-	}
-	{
-		{
-			s.ID = "string"
-		}
-	}
-	{
-		{
-			s.Info = "string"
-		}
-	}
-	{
-		{
-			s.InfoOuter = "string"
-		}
-	}
-	{
-		{
 			s.MaxComment = int(0)
 		}
 	}
 	{
 		{
 			s.MaxFilesSize = int(0)
-		}
-	}
-	{
-		{
-			s.MaxPages = int(0)
-		}
-	}
-	{
-		{
-			s.Name = "string"
 		}
 	}
 	{
@@ -152,7 +145,14 @@ func (s *Board) SetFake() {
 	}
 	{
 		{
-			s.ThreadsPerPage = int(0)
+			s.Icons = nil
+			for i := 0; i < 0; i++ {
+				var elem BoardIconsItem
+				{
+					elem.SetFake()
+				}
+				s.Icons = append(s.Icons, elem)
+			}
 		}
 	}
 }
@@ -161,12 +161,12 @@ func (s *Board) SetFake() {
 func (s *BoardIconsItem) SetFake() {
 	{
 		{
-			s.Name.SetFake()
+			s.Num.SetFake()
 		}
 	}
 	{
 		{
-			s.Num.SetFake()
+			s.Name.SetFake()
 		}
 	}
 	{
@@ -196,12 +196,17 @@ func (s *Boards) SetFake() {
 func (s *Captcha) SetFake() {
 	{
 		{
+			s.Result = int(0)
+		}
+	}
+	{
+		{
 			s.Error.SetFake()
 		}
 	}
 	{
 		{
-			s.Expires.SetFake()
+			s.Type.SetFake()
 		}
 	}
 	{
@@ -211,17 +216,12 @@ func (s *Captcha) SetFake() {
 	}
 	{
 		{
+			s.Expires.SetFake()
+		}
+	}
+	{
+		{
 			s.Input.SetFake()
-		}
-	}
-	{
-		{
-			s.Result = int(0)
-		}
-	}
-	{
-		{
-			s.Type.SetFake()
 		}
 	}
 }
@@ -254,7 +254,67 @@ func (s *ErrorCode) SetFake() {
 func (s *File) SetFake() {
 	{
 		{
+			s.Name = "string"
+		}
+	}
+	{
+		{
+			s.Fullname = "string"
+		}
+	}
+	{
+		{
 			s.Displayname = "string"
+		}
+	}
+	{
+		{
+			s.Path = "string"
+		}
+	}
+	{
+		{
+			s.Thumbnail = "string"
+		}
+	}
+	{
+		{
+			s.MD5.SetFake()
+		}
+	}
+	{
+		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
+			s.Size = int(0)
+		}
+	}
+	{
+		{
+			s.Width = int(0)
+		}
+	}
+	{
+		{
+			s.Height = int(0)
+		}
+	}
+	{
+		{
+			s.TnWidth = int(0)
+		}
+	}
+	{
+		{
+			s.TnHeight = int(0)
+		}
+	}
+	{
+		{
+			s.Nsfw.SetFake()
 		}
 	}
 	{
@@ -269,47 +329,7 @@ func (s *File) SetFake() {
 	}
 	{
 		{
-			s.Fullname = "string"
-		}
-	}
-	{
-		{
-			s.Height = int(0)
-		}
-	}
-	{
-		{
-			s.Install.SetFake()
-		}
-	}
-	{
-		{
-			s.MD5.SetFake()
-		}
-	}
-	{
-		{
-			s.Name = "string"
-		}
-	}
-	{
-		{
-			s.Nsfw.SetFake()
-		}
-	}
-	{
-		{
 			s.Pack.SetFake()
-		}
-	}
-	{
-		{
-			s.Path = "string"
-		}
-	}
-	{
-		{
-			s.Size = int(0)
 		}
 	}
 	{
@@ -319,27 +339,7 @@ func (s *File) SetFake() {
 	}
 	{
 		{
-			s.Thumbnail = "string"
-		}
-	}
-	{
-		{
-			s.TnHeight = int(0)
-		}
-	}
-	{
-		{
-			s.TnWidth = int(0)
-		}
-	}
-	{
-		{
-			s.Type.SetFake()
-		}
-	}
-	{
-		{
-			s.Width = int(0)
+			s.Install.SetFake()
 		}
 	}
 }
@@ -353,18 +353,23 @@ func (s *FileType) SetFake() {
 func (s *Like) SetFake() {
 	{
 		{
-			s.Error.SetFake()
+			s.Result.SetFake()
 		}
 	}
 	{
 		{
-			s.Result.SetFake()
+			s.Error.SetFake()
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s *MobilePost) SetFake() {
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
 	{
 		{
 			s.Error.SetFake()
@@ -375,23 +380,18 @@ func (s *MobilePost) SetFake() {
 			s.Post.SetFake()
 		}
 	}
-	{
-		{
-			s.Result.SetFake()
-		}
-	}
 }
 
 // SetFake set fake values.
 func (s *MobileThreadLastInfo) SetFake() {
 	{
 		{
-			s.Error.SetFake()
+			s.Result.SetFake()
 		}
 	}
 	{
 		{
-			s.Result.SetFake()
+			s.Error.SetFake()
 		}
 	}
 	{
@@ -410,12 +410,12 @@ func (s *MobileThreadLastInfoThread) SetFake() {
 	}
 	{
 		{
-			s.Posts.SetFake()
+			s.Timestamp.SetFake()
 		}
 	}
 	{
 		{
-			s.Timestamp.SetFake()
+			s.Posts.SetFake()
 		}
 	}
 }
@@ -424,7 +424,17 @@ func (s *MobileThreadLastInfoThread) SetFake() {
 func (s *MobileThreadPostsAfter) SetFake() {
 	{
 		{
+			s.Result.SetFake()
+		}
+	}
+	{
+		{
 			s.Error.SetFake()
+		}
+	}
+	{
+		{
+			s.UniquePosters.SetFake()
 		}
 	}
 	{
@@ -437,16 +447,6 @@ func (s *MobileThreadPostsAfter) SetFake() {
 				}
 				s.Posts = append(s.Posts, elem)
 			}
-		}
-	}
-	{
-		{
-			s.Result.SetFake()
-		}
-	}
-	{
-		{
-			s.UniquePosters.SetFake()
 		}
 	}
 }
@@ -518,6 +518,11 @@ func (s *OptString) SetFake() {
 func (s *Passcode) SetFake() {
 	{
 		{
+			s.Result.SetFake()
+		}
+	}
+	{
+		{
 			s.Error.SetFake()
 		}
 	}
@@ -526,23 +531,18 @@ func (s *Passcode) SetFake() {
 			s.Passcode.SetFake()
 		}
 	}
-	{
-		{
-			s.Result.SetFake()
-		}
-	}
 }
 
 // SetFake set fake values.
 func (s *PasscodePasscode) SetFake() {
 	{
 		{
-			s.Expires.SetFake()
+			s.Type.SetFake()
 		}
 	}
 	{
 		{
-			s.Type.SetFake()
+			s.Expires.SetFake()
 		}
 	}
 }
@@ -551,7 +551,12 @@ func (s *PasscodePasscode) SetFake() {
 func (s *Post) SetFake() {
 	{
 		{
-			s.Banned = int(0)
+			s.Num = int(0)
+		}
+	}
+	{
+		{
+			s.Parent = int(0)
 		}
 	}
 	{
@@ -561,12 +566,12 @@ func (s *Post) SetFake() {
 	}
 	{
 		{
-			s.Closed = int(0)
+			s.Timestamp = int(0)
 		}
 	}
 	{
 		{
-			s.Comment = "string"
+			s.Lasthit = int(0)
 		}
 	}
 	{
@@ -576,17 +581,17 @@ func (s *Post) SetFake() {
 	}
 	{
 		{
-			s.Dislikes.SetFake()
-		}
-	}
-	{
-		{
 			s.Email.SetFake()
 		}
 	}
 	{
 		{
-			s.Endless = int(0)
+			s.Subject.SetFake()
+		}
+	}
+	{
+		{
+			s.Comment = "string"
 		}
 	}
 	{
@@ -603,37 +608,7 @@ func (s *Post) SetFake() {
 	}
 	{
 		{
-			s.Icon.SetFake()
-		}
-	}
-	{
-		{
-			s.Lasthit = int(0)
-		}
-	}
-	{
-		{
-			s.Likes.SetFake()
-		}
-	}
-	{
-		{
-			s.Name.SetFake()
-		}
-	}
-	{
-		{
-			s.Num = int(0)
-		}
-	}
-	{
-		{
-			s.Op = int(0)
-		}
-	}
-	{
-		{
-			s.Parent = int(0)
+			s.Views = int(0)
 		}
 	}
 	{
@@ -643,17 +618,32 @@ func (s *Post) SetFake() {
 	}
 	{
 		{
-			s.Subject.SetFake()
+			s.Endless = int(0)
 		}
 	}
 	{
 		{
-			s.Tags.SetFake()
+			s.Closed = int(0)
 		}
 	}
 	{
 		{
-			s.Timestamp = int(0)
+			s.Banned = int(0)
+		}
+	}
+	{
+		{
+			s.Op = int(0)
+		}
+	}
+	{
+		{
+			s.Name.SetFake()
+		}
+	}
+	{
+		{
+			s.Icon.SetFake()
 		}
 	}
 	{
@@ -668,13 +658,28 @@ func (s *Post) SetFake() {
 	}
 	{
 		{
-			s.Views = int(0)
+			s.Tags.SetFake()
+		}
+	}
+	{
+		{
+			s.Likes.SetFake()
+		}
+	}
+	{
+		{
+			s.Dislikes.SetFake()
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s *PostingNewPost) SetFake() {
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
 	{
 		{
 			s.Error.SetFake()
@@ -685,23 +690,18 @@ func (s *PostingNewPost) SetFake() {
 			s.Num.SetFake()
 		}
 	}
-	{
-		{
-			s.Result.SetFake()
-		}
-	}
 }
 
 // SetFake set fake values.
 func (s *PostingNewThread) SetFake() {
 	{
 		{
-			s.Error.SetFake()
+			s.Result.SetFake()
 		}
 	}
 	{
 		{
-			s.Result.SetFake()
+			s.Error.SetFake()
 		}
 	}
 	{
@@ -715,12 +715,12 @@ func (s *PostingNewThread) SetFake() {
 func (s *Report) SetFake() {
 	{
 		{
-			s.Error.SetFake()
+			s.Result.SetFake()
 		}
 	}
 	{
 		{
-			s.Result.SetFake()
+			s.Error.SetFake()
 		}
 	}
 }

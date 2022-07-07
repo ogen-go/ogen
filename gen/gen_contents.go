@@ -66,17 +66,27 @@ func (g *Generator) generateFormContent(
 		return nil, errors.Wrap(err, "generate schema")
 	}
 
-	structType := t
+	var (
+		complexTypeErr = func(bt *ir.Type) error {
+			impl := &ErrNotImplemented{"complex form schema"}
+			if bt != t {
+				return errors.Wrapf(impl, "%s -> %s", t, bt)
+			}
+			return errors.Wrapf(impl, "%s", bt)
+		}
+		structType = t
+	)
 	switch t.Kind {
 	case ir.KindStruct:
 	case ir.KindGeneric:
-		if v := t.GenericVariant; optional && v.OnlyOptional() && t.GenericOf.IsStruct() {
-			structType = t.GenericOf
+		generic := t.GenericOf
+		if v := t.GenericVariant; optional && v.OnlyOptional() && generic.IsStruct() {
+			structType = generic
 			break
 		}
-		fallthrough
+		return nil, complexTypeErr(generic)
 	default:
-		return nil, errors.Wrapf(&ErrNotImplemented{"complex form schema"}, "%s", t.Kind)
+		return nil, complexTypeErr(t)
 	}
 
 	for _, f := range structType.Fields {

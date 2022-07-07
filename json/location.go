@@ -120,7 +120,10 @@ func (l Location) WithFilename(filename string) string {
 
 // Locatable is an interface for JSON value location store.
 type Locatable interface {
-	setLocation(Location)
+	// SetLocation sets the location of the value.
+	SetLocation(Location)
+
+	// Location returns the location of the value if it is set.
 	Location() (Location, bool)
 }
 
@@ -130,7 +133,8 @@ type Locator struct {
 	set      bool
 }
 
-func (l *Locator) setLocation(loc Location) {
+// SetLocation sets the location of the value.
+func (l *Locator) SetLocation(loc Location) {
 	l.location = loc
 	l.set = true
 }
@@ -149,7 +153,7 @@ func LocationUnmarshaler(lines Lines) *json.Unmarshalers {
 
 		offset := d.InputOffset()
 		line, column, _ := lines.LineColumn(offset)
-		l.setLocation(Location{
+		l.SetLocation(Location{
 			JSONPointer: d.StackPointer(),
 			Offset:      offset,
 			Line:        line,
