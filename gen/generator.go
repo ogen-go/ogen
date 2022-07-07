@@ -138,14 +138,10 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 
 	for _, spec := range ops {
 		routePath := spec.Path.String()
-		log := g.log.With(
-			zap.String("path", routePath),
-			zap.String("method", spec.HTTPMethod),
-			zap.String("operationID", spec.OperationID),
-		)
+		log := g.log.With(g.zapLocation(spec))
 
 		if !g.opt.Filters.accept(spec) {
-			g.log.Info("Skipping filtered operation")
+			log.Info("Skipping filtered operation")
 			continue
 		}
 

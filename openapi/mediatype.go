@@ -3,6 +3,7 @@ package openapi
 import (
 	"github.com/go-json-experiment/json"
 
+	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -12,6 +13,8 @@ type MediaType struct {
 	Example  json.RawValue
 	Examples map[string]*Example
 	Encoding map[string]*Encoding
+
+	ogenjson.Locator
 }
 
 // Encoding is Encoding Type Object.
@@ -21,4 +24,6 @@ type Encoding struct {
 	Style         ParameterStyle
 	Explode       bool
 	AllowReserved bool
+
+	ogenjson.Locator
 }

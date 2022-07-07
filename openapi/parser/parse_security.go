@@ -149,6 +149,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 			TokenURL:         flow.TokenURL,
 			RefreshURL:       flow.RefreshURL,
 			Scopes:           make(map[string]string, len(flow.Scopes)),
+			Locator:          flow.Locator,
 		}
 		for k, v := range flow.Scopes {
 			r.Scopes[k] = v
@@ -161,6 +162,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 		Password:          cloneFlow(flows.Password),
 		ClientCredentials: cloneFlow(flows.ClientCredentials),
 		AuthorizationCode: cloneFlow(flows.AuthorizationCode),
+		Locator:           flows.Locator,
 	}
 }
 
@@ -195,6 +197,7 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 					BearerFormat:     spec.BearerFormat,
 					Flows:            cloneOAuthFlows(flows),
 					OpenIDConnectURL: spec.OpenIDConnectURL,
+					Locator:          spec.Locator,
 				},
 			})
 		}

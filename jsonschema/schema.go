@@ -4,6 +4,8 @@ import (
 	"regexp"
 
 	"github.com/go-json-experiment/json"
+
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 // SchemaType is a JSON Schema type.
@@ -81,6 +83,8 @@ type Schema struct {
 	// Default schema value.
 	Default    interface{}
 	DefaultSet bool
+
+	ogenjson.Locator
 }
 
 // AddExample adds example for this Schema.

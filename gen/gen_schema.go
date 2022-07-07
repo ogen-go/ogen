@@ -39,7 +39,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 }
 
 func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
-	gen := newSchemaGen(ctx.lookupRef)
+	gen := newSchemaGen(g.opt.Filename, ctx.lookupRef)
 	gen.log = g.log.Named("schemagen")
 
 	t, err := gen.generate(name, schema, optional)
@@ -99,7 +99,8 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 		local:   newTStorage(),
 	}
 
-	gen := newSchemaGen(func(ref string) (*ir.Type, bool) {
+	// TODO(tdakkota): pass input filename
+	gen := newSchemaGen("", func(ref string) (*ir.Type, bool) {
 		return nil, false
 	})
 	gen.log = opts.Logger.Named("schemagen")

@@ -7,7 +7,6 @@ import (
 	"github.com/go-faster/jx"
 	jsonv2 "github.com/go-json-experiment/json"
 
-	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -244,7 +243,7 @@ func (r *RequestBody) AddContent(mt string, s *Schema) *RequestBody {
 
 // SetJSONContent sets the given Schema under the JSON MediaType to the Content of the Response.
 func (r *RequestBody) SetJSONContent(s *Schema) *RequestBody {
-	return r.AddContent(string(ir.ContentTypeJSON), s)
+	return r.AddContent("application/json", s)
 }
 
 // initContent ensures the Content map is allocated.
@@ -597,7 +596,7 @@ func (p *Parameter) SetIn(i string) *Parameter {
 	return p
 }
 
-// InPath sets the In of the Parameter to "PathItem".
+// InPath sets the In of the Parameter to "path".
 func (p *Parameter) InPath() *Parameter {
 	return p.SetIn(string(openapi.LocationPath))
 }
@@ -724,7 +723,7 @@ func (r *Response) AddContent(mt string, s *Schema) *Response {
 
 // SetJSONContent sets the given Schema under the JSON MediaType to the Content of the Response.
 func (r *Response) SetJSONContent(s *Schema) *Response {
-	return r.AddContent(string(ir.ContentTypeJSON), s)
+	return r.AddContent("application/json", s)
 }
 
 // initContent ensures the Content map is allocated.

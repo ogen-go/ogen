@@ -1,5 +1,9 @@
 package openapi
 
+import (
+	ogenjson "github.com/ogen-go/ogen/json"
+)
+
 // Operation is an OpenAPI Operation.
 type Operation struct {
 	OperationID string // optional
@@ -23,6 +27,8 @@ type Operation struct {
 	//  * default
 	//  * 1XX, 2XX, 3XX, 4XX, 5XX
 	Responses map[string]*Response
+
+	ogenjson.Locator
 }
 
 // Path is an operation path.
@@ -52,6 +58,8 @@ type RequestBody struct {
 	Description string
 	Required    bool
 	Content     map[string]*MediaType
+
+	ogenjson.Locator
 }
 
 // Header is an OpenAPI Header definition.
@@ -64,4 +72,6 @@ type Response struct {
 	Headers     map[string]*Header
 	Content     map[string]*MediaType
 	// Links map[string]*Link
+
+	ogenjson.Locator
 }

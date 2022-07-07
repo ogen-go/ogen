@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"sort"
-	"strconv"
 
 	"github.com/go-json-experiment/json"
 )
@@ -94,9 +93,29 @@ type Location struct {
 // String implements fmt.Stringer.
 func (l Location) String() string {
 	if l.Line == 0 {
-		return strconv.Quote(l.JSONPointer)
+		return l.JSONPointer
 	}
 	return fmt.Sprintf("%d:%d", l.Line, l.Column)
+}
+
+// WithFilename prints the location with the given filename.
+//
+// If filename is empty, the location is printed as is.
+func (l Location) WithFilename(filename string) string {
+	if filename != "" {
+		switch {
+		case l.Line != 0:
+			// Line is set, so return "${filename}:".
+			filename += ":"
+		case l.JSONPointer != "":
+			// Line is not set, but JSONPointer is set, so return "${filename}#${JSONPointer}".
+			filename += "#"
+		default:
+			// Neither line nor JSONPointer is set, so return empty string.
+			return ""
+		}
+	}
+	return filename + l.String()
 }
 
 // Locatable is an interface for JSON value location store.

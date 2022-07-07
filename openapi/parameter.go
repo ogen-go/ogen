@@ -1,6 +1,9 @@
 package openapi
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/jsonschema"
+)
 
 // ParameterLocation defines where OpenAPI parameter is located.
 type ParameterLocation string
@@ -30,16 +33,19 @@ func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 
 // Parameter is an OpenAPI Operation Parameter.
 type Parameter struct {
-	Ref         string
+	Ref string
+
 	Name        string
 	Description string
+	Deprecated  bool
 	Schema      *jsonschema.Schema
 	Content     *ParameterContent
 	In          ParameterLocation
 	Style       ParameterStyle
 	Explode     bool
 	Required    bool
-	Deprecated  bool
+
+	ogenjson.Locator
 }
 
 // ParameterContent describes OpenAPI Parameter content field.
