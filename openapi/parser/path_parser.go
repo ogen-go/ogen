@@ -10,22 +10,42 @@ import (
 )
 
 type pathParser struct {
-	path   string               // immutable
-	params []*openapi.Parameter // immutable
+	path   string // immutable
+	lookup func(name string) (*openapi.Parameter, bool)
 
 	parts []openapi.PathPart // parsed parts
 	part  []rune             // current part
 	param bool               // current part is param name?
 }
 
-func parsePath(path string, params []*openapi.Parameter) ([]openapi.PathPart, error) {
+func pathID(path string) (string, error) {
+	p, err := (&pathParser{
+		path: path,
+		lookup: func(name string) (*openapi.Parameter, bool) {
+			return nil, true
+		},
+	}).Parse()
+	if err != nil {
+		return "", err
+	}
+	return p.ID(), nil
+}
+
+func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 	return (&pathParser{
-		path:   path,
-		params: params,
+		path: path,
+		lookup: func(name string) (*openapi.Parameter, bool) {
+			for _, p := range params {
+				if p.Name == name && p.In == openapi.LocationPath {
+					return p, true
+				}
+			}
+			return nil, false
+		},
 	}).Parse()
 }
 
-func (p *pathParser) Parse() ([]openapi.PathPart, error) {
+func (p *pathParser) Parse() (openapi.Path, error) {
 	err := p.parse()
 	return p.parts, err
 }
@@ -101,20 +121,11 @@ func (p *pathParser) push() error {
 		return nil
 	}
 
-	param, found := p.lookupParam(string(p.part))
+	param, found := p.lookup(string(p.part))
 	if !found {
 		return errors.Errorf("path parameter not specified: %q", string(p.part))
 	}
 
 	p.parts = append(p.parts, openapi.PathPart{Param: param})
 	return nil
-}
-
-func (p *pathParser) lookupParam(name string) (*openapi.Parameter, bool) {
-	for _, p := range p.params {
-		if p.Name == name && p.In == openapi.LocationPath {
-			return p, true
-		}
-	}
-	return nil, false
 }

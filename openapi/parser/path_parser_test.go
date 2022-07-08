@@ -27,13 +27,13 @@ func TestPathParser(t *testing.T) {
 	tests := []struct {
 		Path      string
 		Params    []*openapi.Parameter
-		Expect    []openapi.PathPart
+		Expect    openapi.Path
 		ExpectErr string
 	}{
 		{
 			Path:   "/foo/{bar}",
 			Params: []*openapi.Parameter{bar},
-			Expect: []openapi.PathPart{
+			Expect: openapi.Path{
 				{Raw: "/foo/"},
 				{Param: bar},
 			},
@@ -41,7 +41,7 @@ func TestPathParser(t *testing.T) {
 		{
 			Path:   "/foo.{bar}",
 			Params: []*openapi.Parameter{bar},
-			Expect: []openapi.PathPart{
+			Expect: openapi.Path{
 				{Raw: "/foo."},
 				{Param: bar},
 			},
@@ -49,7 +49,7 @@ func TestPathParser(t *testing.T) {
 		{
 			Path:   "/foo.{bar}.{baz}abc/def",
 			Params: []*openapi.Parameter{bar, baz},
-			Expect: []openapi.PathPart{
+			Expect: openapi.Path{
 				{Raw: "/foo."},
 				{Param: bar},
 				{Raw: "."},
@@ -59,7 +59,7 @@ func TestPathParser(t *testing.T) {
 		},
 		{
 			Path: "/foo%20bar",
-			Expect: []openapi.PathPart{
+			Expect: openapi.Path{
 				{Raw: "/foo bar"},
 			},
 		},

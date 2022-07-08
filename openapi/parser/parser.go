@@ -95,16 +95,39 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 }
 
 func (p *parser) parsePathItems() error {
-	operationIDs := make(map[string]struct{})
+	var (
+		// Maps to check for duplicate operationIds and paths.
+		operationIDs = map[string]struct{}{}
+		// paths contains simple paths, e.g. "/users/{id}" -> "/users/{}".
+		//
+		// OpenAPI spec says:
+		//
+		// 	Templated paths with the same hierarchy but different templated
+		//	names MUST NOT exist as they are identical.
+		//
+		paths = map[string]struct{}{}
+	)
 	for path, item := range p.spec.Paths {
-		if err := p.parsePath(path, item, operationIDs); err != nil {
+		if err := func() error {
+			id, err := pathID(path)
+			if err != nil {
+				return err
+			}
+
+			if _, ok := paths[id]; ok {
+				return errors.New("duplicate path")
+			}
+			paths[id] = struct{}{}
+
+			return p.parsePathItem(path, item, operationIDs)
+		}(); err != nil {
 			return errors.Wrapf(err, "path %q", path)
 		}
 	}
 	return nil
 }
 
-func (p *parser) parsePath(path string, item *ogen.PathItem, operationIDs map[string]struct{}) (rerr error) {
+func (p *parser) parsePathItem(path string, item *ogen.PathItem, operationIDs map[string]struct{}) (rerr error) {
 	if item == nil {
 		return errors.New("pathItem object is empty or null")
 	}
