@@ -147,6 +147,7 @@ func (g *Generator) generateContents(
 		result      = make(map[ir.ContentType]ir.Media, len(contents))
 		keys        = make([]string, 0, len(contents))
 		unsupported []string
+		lastErr     error
 	)
 	for k := range contents {
 		keys = append(keys, k)
@@ -335,11 +336,20 @@ func (g *Generator) generateContents(
 				return nil
 			}
 		}(); err != nil {
-			return nil, errors.Wrap(err, contentType)
+			err = errors.Wrapf(err, "media: %q", contentType)
+			if err := g.trySkip(err, "Skipping media", media); err != nil {
+				return nil, err
+			}
+			lastErr = err
+			unsupported = append(unsupported, contentType)
+			continue
 		}
 	}
 
 	if len(result) == 0 && len(unsupported) > 0 {
+		if lastErr != nil {
+			return nil, lastErr
+		}
 		return nil, &ErrUnsupportedContentTypes{ContentTypes: unsupported}
 	}
 

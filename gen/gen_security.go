@@ -1,7 +1,7 @@
 package gen
 
 import (
-	"net/url"
+	"fmt"
 
 	"github.com/go-faster/errors"
 
@@ -72,7 +72,7 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequireme
 
 	typeName, err := pascalNonEmpty(spec.Name)
 	if err != nil {
-		return nil, errors.Wrapf(err, "security name %q", spec.Name)
+		return nil, errors.Wrapf(err, "security name: %q", spec.Name)
 	}
 
 	t := &ir.Type{
@@ -92,19 +92,12 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequireme
 	}()
 
 	switch typ := security.Type; typ {
-	case "openIdConnect":
-		if _, err := url.Parse(security.OpenIDConnectURL); err != nil {
-			return nil, errors.Wrap(err, "invalid openIdConnectUrl")
-		}
-		fallthrough
-	case "oauth2":
-		return nil, &ErrNotImplemented{Name: "oauth2 security"}
 	case "apiKey":
 		return g.generateSecurityAPIKey(s, spec)
 	case "http":
 		return g.generateSecurityHTTP(s, spec)
-	case "mutualTLS":
-		return nil, &ErrNotImplemented{Name: "mutualTLS security"}
+	case "openIdConnect", "oauth2", "mutualTLS":
+		return nil, &ErrNotImplemented{Name: fmt.Sprintf("%s security", typ)}
 	default:
 		return nil, errors.Errorf("unknown security type %q", typ)
 	}
@@ -114,7 +107,14 @@ func (g *Generator) generateSecurities(ctx *genctx, spec []openapi.SecurityRequi
 	for idx, sr := range spec {
 		s, err := g.generateSecurity(ctx, sr)
 		if err != nil {
-			return nil, errors.Wrapf(err, "security %q (index %d)", sr.Name, idx)
+			err = errors.Wrapf(err,
+				"security %q [%d]",
+				sr.Name, idx,
+			)
+			if err := g.trySkip(err, "Skipping security", sr.Security); err != nil {
+				return nil, err
+			}
+			continue
 		}
 		g.securities[sr.Name] = s
 
