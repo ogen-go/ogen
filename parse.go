@@ -28,6 +28,10 @@ func unmarshalJSON(data []byte, out any) error {
 	}
 
 	if err := opts.Unmarshal(json.DecodeOptions{}, data, out); err != nil {
+		syntaxErr, ok := errors.Into[*json.SyntacticError](err)
+		if ok {
+			begin = syntaxErr.ByteOffset
+		}
 		line, column, ok := lines.LineColumn(begin)
 		if !ok {
 			return err
