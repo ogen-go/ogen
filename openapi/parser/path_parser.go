@@ -32,6 +32,13 @@ func (p *pathParser) Parse() ([]openapi.PathPart, error) {
 
 func (p *pathParser) parse() error {
 	// Validate and unescape path.
+	//
+	// FIXME(tdakkota): OpenAPI spec, as always, is not clear about path validation.
+	//  All we know is that it MUST start with a slash.
+	// 	At the same time, https://swagger.io/docs/specification/paths-and-operations/ says that
+	// 	paths must not include query parameters.
+	//  In summary, we do not pass URL scheme, user info, host or query string.
+	//
 	u, err := url.Parse(p.path)
 	if err != nil {
 		return err
@@ -39,12 +46,10 @@ func (p *pathParser) parse() error {
 	switch {
 	case u.IsAbs() || u.Host != "" || u.User != nil:
 		return errors.New("path MUST be relative")
-	case u.Path == "" || !strings.HasPrefix(u.Path, "/"):
+	case !strings.HasPrefix(u.Path, "/"):
 		return errors.New("path MUST begin with a forward slash")
 	case u.RawQuery != "":
 		return errors.New("path MUST NOT contain a query string")
-	case u.Fragment != "" || u.RawFragment != "":
-		return errors.New("path MUST NOT contain a fragment")
 	}
 
 	for _, r := range u.Path {

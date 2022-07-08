@@ -101,10 +101,6 @@ func TestPathParser(t *testing.T) {
 			ExpectErr: `path MUST NOT contain a query string`,
 		},
 		{
-			Path:      "/foo#frag",
-			ExpectErr: `path MUST NOT contain a fragment`,
-		},
-		{
 			Path:      "https://i-want-to-die.org/foo",
 			ExpectErr: `path MUST be relative`,
 		},
