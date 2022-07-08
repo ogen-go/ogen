@@ -23,7 +23,7 @@
   "components": {
     "parameters": {
       "Parameter": {
-        "name": "parm",
+        "name": "param",
         "in": "path",
         "required": false,
         "schema": {
