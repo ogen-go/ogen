@@ -29,20 +29,20 @@ type Spec struct {
 	// of the OpenAPI Specification version that the OpenAPI document uses.
 	OpenAPI    string               `json:"openapi" yaml:"openapi"`
 	Info       Info                 `json:"info" yaml:"info"`
-	Servers    []Server             `json:"servers,omitzero" yaml:"servers,omitempty"`
-	Paths      Paths                `json:"paths,omitzero" yaml:"paths,omitempty"`
-	Components *Components          `json:"components,omitzero" yaml:"components,omitempty"`
-	Security   SecurityRequirements `json:"security,omitzero" yaml:"security,omitempty"`
+	Servers    []Server             `json:"servers,omitempty,omitzero" yaml:"servers,omitempty"`
+	Paths      Paths                `json:"paths,omitempty,omitzero" yaml:"paths,omitempty"`
+	Components *Components          `json:"components,omitempty,omitzero" yaml:"components,omitempty"`
+	Security   SecurityRequirements `json:"security,omitempty,omitzero" yaml:"security,omitempty"`
 
 	// A list of tags used by the specification with additional metadata.
 	// The order of the tags can be used to reflect on their order by the parsing
 	// tools. Not all tags that are used by the Operation Object must be declared.
 	// The tags that are not declared MAY be organized randomly or based on the tools' logic.
 	// Each tag name in the list MUST be unique.
-	Tags []Tag `json:"tags,omitzero" yaml:"tags,omitempty"`
+	Tags []Tag `json:"tags,omitempty,omitzero" yaml:"tags,omitempty"`
 
 	// Additional external documentation.
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero" yaml:"externalDocs,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty,omitzero" yaml:"externalDocs,omitempty"`
 
 	// Raw JSON value. Used by JSON Schema resolver.
 	Raw json.RawValue `json:"-" yaml:"-"`
@@ -66,6 +66,12 @@ func (s *Spec) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) er
 	return nil
 }
 
+// UnmarshalJSON implements json.UnmarshalerV1.
+func (s *Spec) UnmarshalJSON(data []byte) error {
+	// Backward-compatibility with v1.
+	return json.Unmarshal(data, s)
+}
+
 // Init components of schema.
 func (s *Spec) Init() {
 	if s.Components == nil {
@@ -78,11 +84,11 @@ func (s *Spec) Init() {
 //
 // https://swagger.io/specification/#example-object
 type Example struct {
-	Ref           string        `json:"$ref,omitzero"` // ref objec yaml:"$ref,omitempty"` // ref object
-	Summary       string        `json:"summary,omitzero" yaml:"summary,omitempty"`
-	Description   string        `json:"description,omitzero" yaml:"description,omitempty"`
-	Value         json.RawValue `json:"value,omitzero" yaml:"value,omitempty"`
-	ExternalValue string        `json:"externalValue,omitzero" yaml:"externalValue,omitempty"`
+	Ref           string        `json:"$ref,omitempty,omitzero"` // ref objec yaml:"$ref,omitempty"` // ref object
+	Summary       string        `json:"summary,omitempty,omitzero" yaml:"summary,omitempty"`
+	Description   string        `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
+	Value         json.RawValue `json:"value,omitempty,omitzero" yaml:"value,omitempty"`
+	ExternalValue string        `json:"externalValue,omitempty,omitzero" yaml:"externalValue,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -111,8 +117,8 @@ func (e *Example) UnmarshalYAML(n *yaml.Node) error {
 // https://swagger.io/specification/#tag-object
 type Tag struct {
 	Name         string                 `json:"name" yaml:"name"`
-	Description  string                 `json:"description,omitzero" yaml:"description,omitempty"`
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero" yaml:"externalDocs,omitempty"`
+	Description  string                 `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty,omitzero" yaml:"externalDocs,omitempty"`
 }
 
 // Info provides metadata about the API.
@@ -123,31 +129,31 @@ type Info struct {
 	// REQUIRED. The title of the API.
 	Title string `json:"title" yaml:"title"`
 	// A short summary of the API.
-	Summary string `json:"summary,omitzero" yaml:"summary,omitempty"`
+	Summary string `json:"summary,omitempty,omitzero" yaml:"summary,omitempty"`
 	// A short description of the API.
 	// CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitzero" yaml:"description,omitempty"`
+	Description string `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
 	// A URL to the Terms of Service for the API. MUST be in the format of a URL.
-	TermsOfService string `json:"termsOfService,omitzero" yaml:"termsOfService,omitempty"`
+	TermsOfService string `json:"termsOfService,omitempty,omitzero" yaml:"termsOfService,omitempty"`
 	// The contact information for the exposed API.
-	Contact *Contact `json:"contact,omitzero" yaml:"contact,omitempty"`
+	Contact *Contact `json:"contact,omitempty,omitzero" yaml:"contact,omitempty"`
 	// The license information for the exposed API.
-	License *License `json:"license,omitzero" yaml:"license,omitempty"`
+	License *License `json:"license,omitempty,omitzero" yaml:"license,omitempty"`
 	// REQUIRED. The version of the OpenAPI document.
 	Version string `json:"version" yaml:"version"`
 }
 
 // Contact information for the exposed API.
 type Contact struct {
-	Name  string `json:"name,omitzero" yaml:"name,omitempty"`
-	URL   string `json:"url,omitzero" yaml:"url,omitempty"`
-	Email string `json:"email,omitzero" yaml:"email,omitempty"`
+	Name  string `json:"name,omitempty,omitzero" yaml:"name,omitempty"`
+	URL   string `json:"url,omitempty,omitzero" yaml:"url,omitempty"`
+	Email string `json:"email,omitempty,omitzero" yaml:"email,omitempty"`
 }
 
 // License information for the exposed API.
 type License struct {
-	Name string `json:"name,omitzero" yaml:"name,omitempty"`
-	URL  string `json:"url,omitzero" yaml:"url,omitempty"`
+	Name string `json:"name,omitempty,omitzero" yaml:"name,omitempty"`
+	URL  string `json:"url,omitempty,omitzero" yaml:"url,omitempty"`
 }
 
 // Server represents a Server.
@@ -158,9 +164,9 @@ type Server struct {
 	URL string `json:"url" yaml:"url"`
 	// An optional string describing the host designated by the URL.
 	// CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitzero" yaml:"description,omitempty"`
+	Description string `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
 	// A map between a variable name and its value. The value is used for substitution in the server's URL template.
-	Variables map[string]ServerVariable `json:"variables,omitzero" yaml:"variables,omitempty"`
+	Variables map[string]ServerVariable `json:"variables,omitempty,omitzero" yaml:"variables,omitempty"`
 }
 
 // ServerVariable describes an object representing a Server Variable for server URL template substitution.
@@ -168,19 +174,19 @@ type ServerVariable struct {
 	// An enumeration of string values to be used if the substitution options are from a limited set.
 	//
 	// The array MUST NOT be empty.
-	Enum []string `json:"enum,omitzero" yaml:"enum,omitempty"`
+	Enum []string `json:"enum,omitempty,omitzero" yaml:"enum,omitempty"`
 	// REQUIRED. The default value to use for substitution, which SHALL be sent if an alternate value is not supplied.
 	// Note this behavior is different than the Schema Object’s treatment of default values, because in those
 	// cases parameter values are optional. If the enum is defined, the value MUST exist in the enum’s values.
 	Default string `json:"default" yaml:"default"`
 	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitzero" yaml:"description,omitempty"`
+	Description string `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
 }
 
 // ExternalDocumentation describes a reference to external resource for extended documentation.
 type ExternalDocumentation struct {
 	// A description of the target documentation. CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitzero" yaml:"description,omitempty"`
+	Description string `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
 	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
 	URL string `json:"url" yaml:"url"`
 }
@@ -189,13 +195,13 @@ type ExternalDocumentation struct {
 // All objects defined within the components object will have no effect on the API
 // unless they are explicitly referenced from properties outside the components object.
 type Components struct {
-	Schemas         map[string]*Schema         `json:"schemas,omitzero" yaml:"schemas,omitempty"`
-	Responses       map[string]*Response       `json:"responses,omitzero" yaml:"responses,omitempty"`
-	Parameters      map[string]*Parameter      `json:"parameters,omitzero" yaml:"parameters,omitempty"`
-	Examples        map[string]*Example        `json:"examples,omitzero" yaml:"examples,omitempty"`
-	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitzero" yaml:"requestBodies,omitempty"`
-	Headers         map[string]*Header         `json:"headers,omitzero" yaml:"headers,omitempty"`
-	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitzero" yaml:"securitySchemes,omitempty"`
+	Schemas         map[string]*Schema         `json:"schemas,omitempty,omitzero" yaml:"schemas,omitempty"`
+	Responses       map[string]*Response       `json:"responses,omitempty,omitzero" yaml:"responses,omitempty"`
+	Parameters      map[string]*Parameter      `json:"parameters,omitempty,omitzero" yaml:"parameters,omitempty"`
+	Examples        map[string]*Example        `json:"examples,omitempty,omitzero" yaml:"examples,omitempty"`
+	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty,omitzero" yaml:"requestBodies,omitempty"`
+	Headers         map[string]*Header         `json:"headers,omitempty,omitzero" yaml:"headers,omitempty"`
+	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitempty,omitzero" yaml:"securitySchemes,omitempty"`
 	// Links           map[string]Link            `json:"links" yaml:"links"`
 	// Callbacks       map[string]Callback        `json:"callback" yaml:"callback"`
 
@@ -263,19 +269,19 @@ type PathItem struct {
 	// The referenced structure MUST be in the format of a Path Item Object.
 	// In case a Path Item Object field appears both
 	// in the defined object and the referenced object, the behavior is undefined.
-	Ref         string       `json:"$ref,omitzero" yaml:"$ref,omitempty"`
-	Summary     string       `json:"summary,omitzero" yaml:"summary,omitempty"`
-	Description string       `json:"description,omitzero" yaml:"description,omitempty"`
-	Get         *Operation   `json:"get,omitzero" yaml:"get,omitempty"`
-	Put         *Operation   `json:"put,omitzero" yaml:"put,omitempty"`
-	Post        *Operation   `json:"post,omitzero" yaml:"post,omitempty"`
-	Delete      *Operation   `json:"delete,omitzero" yaml:"delete,omitempty"`
-	Options     *Operation   `json:"options,omitzero" yaml:"options,omitempty"`
-	Head        *Operation   `json:"head,omitzero" yaml:"head,omitempty"`
-	Patch       *Operation   `json:"patch,omitzero" yaml:"patch,omitempty"`
-	Trace       *Operation   `json:"trace,omitzero" yaml:"trace,omitempty"`
-	Servers     []Server     `json:"servers,omitzero" yaml:"servers,omitempty"`
-	Parameters  []*Parameter `json:"parameters,omitzero" yaml:"parameters,omitempty"`
+	Ref         string       `json:"$ref,omitempty,omitzero" yaml:"$ref,omitempty"`
+	Summary     string       `json:"summary,omitempty,omitzero" yaml:"summary,omitempty"`
+	Description string       `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
+	Get         *Operation   `json:"get,omitempty,omitzero" yaml:"get,omitempty"`
+	Put         *Operation   `json:"put,omitempty,omitzero" yaml:"put,omitempty"`
+	Post        *Operation   `json:"post,omitempty,omitzero" yaml:"post,omitempty"`
+	Delete      *Operation   `json:"delete,omitempty,omitzero" yaml:"delete,omitempty"`
+	Options     *Operation   `json:"options,omitempty,omitzero" yaml:"options,omitempty"`
+	Head        *Operation   `json:"head,omitempty,omitzero" yaml:"head,omitempty"`
+	Patch       *Operation   `json:"patch,omitempty,omitzero" yaml:"patch,omitempty"`
+	Trace       *Operation   `json:"trace,omitempty,omitzero" yaml:"trace,omitempty"`
+	Servers     []Server     `json:"servers,omitempty,omitzero" yaml:"servers,omitempty"`
+	Parameters  []*Parameter `json:"parameters,omitempty,omitzero" yaml:"parameters,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -301,19 +307,19 @@ func (p *PathItem) UnmarshalYAML(n *yaml.Node) error {
 
 // Operation describes a single API operation on a path.
 type Operation struct {
-	OperationID string               `json:"operationId,omitzero" yaml:"operationId,omitempty"`
-	Security    SecurityRequirements `json:"security,omitzero" yaml:"security,omitempty"`
-	Parameters  []*Parameter         `json:"parameters,omitzero" yaml:"parameters,omitempty"`
-	RequestBody *RequestBody         `json:"requestBody,omitzero" yaml:"requestBody,omitempty"`
-	Responses   Responses            `json:"responses,omitzero" yaml:"responses,omitempty"`
+	OperationID string               `json:"operationId,omitempty,omitzero" yaml:"operationId,omitempty"`
+	Security    SecurityRequirements `json:"security,omitempty,omitzero" yaml:"security,omitempty"`
+	Parameters  []*Parameter         `json:"parameters,omitempty,omitzero" yaml:"parameters,omitempty"`
+	RequestBody *RequestBody         `json:"requestBody,omitempty,omitzero" yaml:"requestBody,omitempty"`
+	Responses   Responses            `json:"responses,omitempty,omitzero" yaml:"responses,omitempty"`
 
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
-	Tags         []string               `json:"tags,omitzero" yaml:"tags,omitempty"`
-	Summary      string                 `json:"summary,omitzero" yaml:"summary,omitempty"`
-	Description  string                 `json:"description,omitzero" yaml:"description,omitempty"`
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitzero" yaml:"externalDocs,omitempty"`
-	Deprecated   bool                   `json:"deprecated,omitzero" yaml:"deprecated,omitempty"`
+	Tags         []string               `json:"tags,omitempty,omitzero" yaml:"tags,omitempty"`
+	Summary      string                 `json:"summary,omitempty,omitzero" yaml:"summary,omitempty"`
+	Description  string                 `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty,omitzero" yaml:"externalDocs,omitempty"`
+	Deprecated   bool                   `json:"deprecated,omitempty,omitzero" yaml:"deprecated,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -340,23 +346,23 @@ func (o *Operation) UnmarshalYAML(n *yaml.Node) error {
 // Parameter describes a single operation parameter.
 // A unique parameter is defined by a combination of a name and location.
 type Parameter struct {
-	Ref  string `json:"$ref,omitzero" yaml:"$ref,omitempty"`
+	Ref  string `json:"$ref,omitempty,omitzero" yaml:"$ref,omitempty"`
 	Name string `json:"name" yaml:"name"`
 
 	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
 	In          string  `json:"in" yaml:"in"`
-	Description string  `json:"description,omitzero" yaml:"description,omitempty"`
-	Schema      *Schema `json:"schema,omitzero" yaml:"schema,omitempty"`
+	Description string  `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
+	Schema      *Schema `json:"schema,omitempty,omitzero" yaml:"schema,omitempty"`
 
 	// Determines whether this parameter is mandatory.
 	// If the parameter location is "path", this property is REQUIRED
 	// and its value MUST be true.
 	// Otherwise, the property MAY be included and its default value is false.
-	Required bool `json:"required,omitzero" yaml:"required,omitempty"`
+	Required bool `json:"required,omitempty,omitzero" yaml:"required,omitempty"`
 
 	// Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
 	// Default value is false.
-	Deprecated bool `json:"deprecated,omitzero" yaml:"deprecated,omitempty"`
+	Deprecated bool `json:"deprecated,omitempty,omitzero" yaml:"deprecated,omitempty"`
 
 	// For more complex scenarios, the content property can define the media type and schema of the parameter.
 	// A parameter MUST contain either a schema property, or a content property, but not both.
@@ -366,20 +372,20 @@ type Parameter struct {
 	// A map containing the representations for the parameter.
 	// The key is the media type and the value describes it.
 	// The map MUST only contain one entry.
-	Content map[string]Media `json:"content,omitzero" yaml:"content,omitempty"`
+	Content map[string]Media `json:"content,omitempty,omitzero" yaml:"content,omitempty"`
 
 	// Describes how the parameter value will be serialized
 	// depending on the type of the parameter value.
-	Style string `json:"style,omitzero" yaml:"style,omitempty"`
+	Style string `json:"style,omitempty,omitzero" yaml:"style,omitempty"`
 
 	// When this is true, parameter values of type array or object
 	// generate separate parameters for each value of the array
 	// or key-value pair of the map.
 	// For other types of parameters this property has no effect.
-	Explode *bool `json:"explode,omitzero" yaml:"explode,omitempty"`
+	Explode *bool `json:"explode,omitempty,omitzero" yaml:"explode,omitempty"`
 
-	Example  json.RawValue       `json:"example,omitzero" yaml:"example,omitempty"`
-	Examples map[string]*Example `json:"examples,omitzero" yaml:"examples,omitempty"`
+	Example  json.RawValue       `json:"example,omitempty,omitzero" yaml:"example,omitempty"`
+	Examples map[string]*Example `json:"examples,omitempty,omitzero" yaml:"examples,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -404,17 +410,17 @@ func (p *Parameter) UnmarshalYAML(n *yaml.Node) error {
 
 // RequestBody describes a single request body.
 type RequestBody struct {
-	Ref         string `json:"$ref,omitzero" yaml:"$ref,omitempty"`
-	Description string `json:"description,omitzero" yaml:"description,omitempty"`
+	Ref         string `json:"$ref,omitempty,omitzero" yaml:"$ref,omitempty"`
+	Description string `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
 
 	// The content of the request body.
 	// The key is a media type or media type range and the value describes it.
 	// For requests that match multiple keys, only the most specific key is applicable.
 	// e.g. text/plain overrides text/*
-	Content map[string]Media `json:"content,omitzero" yaml:"content,omitempty"`
+	Content map[string]Media `json:"content,omitempty,omitzero" yaml:"content,omitempty"`
 
 	// Determines if the request body is required in the request. Defaults to false.
-	Required bool `json:"required,omitzero" yaml:"required,omitempty"`
+	Required bool `json:"required,omitempty,omitzero" yaml:"required,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -445,11 +451,11 @@ type Responses map[string]*Response
 // Response describes a single response from an API Operation,
 // including design-time, static links to operations based on the response.
 type Response struct {
-	Ref         string                 `json:"$ref,omitzero" yaml:"$ref,omitempty"`
-	Description string                 `json:"description,omitzero" yaml:"description,omitempty"`
-	Headers     map[string]*Header     `json:"headers,omitzero" yaml:"headers,omitempty"`
-	Content     map[string]Media       `json:"content,omitzero" yaml:"content,omitempty"`
-	Links       map[string]interface{} `json:"links,omitzero" yaml:"links,omitempty"` // TODO: implement
+	Ref         string                 `json:"$ref,omitempty,omitzero" yaml:"$ref,omitempty"`
+	Description string                 `json:"description,omitempty,omitzero" yaml:"description,omitempty"`
+	Headers     map[string]*Header     `json:"headers,omitempty,omitzero" yaml:"headers,omitempty"`
+	Content     map[string]Media       `json:"content,omitempty,omitzero" yaml:"content,omitempty"`
+	Links       map[string]interface{} `json:"links,omitempty,omitzero" yaml:"links,omitempty"` // TODO: implement
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -487,13 +493,13 @@ type Header = Parameter
 type Media struct {
 	// The schema defining the content of the request, response, or parameter.
 	Schema   *Schema             `json:"schema,omitzero" yaml:"schema,omitempty"`
-	Example  json.RawValue       `json:"example,omitzero" yaml:"example,omitempty"`
-	Examples map[string]*Example `json:"examples,omitzero" yaml:"examples,omitempty"`
+	Example  json.RawValue       `json:"example,omitempty,omitzero" yaml:"example,omitempty"`
+	Examples map[string]*Example `json:"examples,omitempty,omitzero" yaml:"examples,omitempty"`
 
 	// A map between a property name and its encoding information. The key, being the property name, MUST exist in
 	// the schema as a property. The encoding object SHALL only apply to requestBody objects when the media
 	// type is multipart or application/x-www-form-urlencoded.
-	Encoding map[string]Encoding `json:"encoding,omitzero" yaml:"encoding,omitempty"`
+	Encoding map[string]Encoding `json:"encoding,omitempty,omitzero" yaml:"encoding,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -520,28 +526,28 @@ func (m *Media) UnmarshalYAML(n *yaml.Node) error {
 // Encoding describes single encoding definition applied to a single schema property.
 type Encoding struct {
 	// The Content-Type for encoding a specific property.
-	ContentType string `json:"contentType,omitzero" yaml:"contentType,omitempty"`
+	ContentType string `json:"contentType,omitempty,omitzero" yaml:"contentType,omitempty"`
 
 	// A map allowing additional information to be provided as headers, for example Content-Disposition.
 	// Content-Type is described separately and SHALL be ignored in this section. This property SHALL be
 	// ignored if the request body media type is not a multipart.
-	Headers map[string]*Header `json:"headers,omitzero" yaml:"headers,omitempty"`
+	Headers map[string]*Header `json:"headers,omitempty,omitzero" yaml:"headers,omitempty"`
 
 	// Describes how the parameter value will be serialized
 	// depending on the type of the parameter value.
-	Style string `json:"style,omitzero" yaml:"style,omitempty"`
+	Style string `json:"style,omitempty,omitzero" yaml:"style,omitempty"`
 
 	// When this is true, parameter values of type array or object
 	// generate separate parameters for each value of the array
 	// or key-value pair of the map.
 	// For other types of parameters this property has no effect.
-	Explode *bool `json:"explode,omitzero" yaml:"explode,omitempty"`
+	Explode *bool `json:"explode,omitempty,omitzero" yaml:"explode,omitempty"`
 
 	// Determines whether the parameter value SHOULD allow reserved characters, as defined by
 	// RFC3986 :/?#[]@!$&'()*+,;= to be included without percent-encoding.
 	// The default value is false. This property SHALL be ignored if the request body media type
 	// is not application/x-www-form-urlencoded.
-	AllowReserved bool `json:"allowReserved,omitzero" yaml:"allowReserved,omitempty"`
+	AllowReserved bool `json:"allowReserved,omitempty,omitzero" yaml:"allowReserved,omitempty"`
 
 	Locator `json:"-" yaml:"-"`
 }
@@ -568,5 +574,5 @@ func (e *Encoding) UnmarshalYAML(n *yaml.Node) error {
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.
 type Discriminator struct {
 	PropertyName string            `json:"propertyName" yaml:"propertyName"`
-	Mapping      map[string]string `json:"mapping,omitzero" yaml:"mapping,omitempty"`
+	Mapping      map[string]string `json:"mapping,omitempty,omitzero" yaml:"mapping,omitempty"`
 }

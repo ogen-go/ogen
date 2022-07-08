@@ -44,14 +44,21 @@ func walkTestdata(t *testing.T, root string, cb func(t *testing.T, file string, 
 
 func TestParse(t *testing.T) {
 	testcb := func(t *testing.T, file string, data []byte) {
+		t.Helper()
+		a := require.New(t)
+
 		_, err := ogen.Parse(data)
-		require.NoError(t, err)
+		a.NoError(err)
 	}
 
-	t.Run("Positive", func(t *testing.T) {
-		walkTestdata(t, "_testdata/positive", testcb)
-	})
-	t.Run("Examples", func(t *testing.T) {
-		walkTestdata(t, "_testdata/examples", testcb)
-	})
+	for _, dir := range []string{
+		"positive",
+		"negative",
+		"examples",
+	} {
+		dir := dir
+		t.Run(strings.ToTitle(dir[:1])+dir[1:], func(t *testing.T) {
+			walkTestdata(t, path.Join("_testdata", dir), testcb)
+		})
+	}
 }
