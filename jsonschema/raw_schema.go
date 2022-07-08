@@ -5,166 +5,50 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-json-experiment/json"
-	"gopkg.in/yaml.v3"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 )
 
-// Num represents JSON number.
-type Num json.RawValue
-
-// UnmarshalYAML implements yaml.Unmarshaler.
-func (n *Num) UnmarshalYAML(node *yaml.Node) error {
-	if t := node.Tag; t != "!!int" && t != "!!float" {
-		return errors.Errorf("unexpected tag %s", t)
-	}
-	val, err := convertYAMLtoRawJSON(node)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(val, n)
-}
-
-// MarshalNextJSON implements json.MarshalerV2.
-func (n Num) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
-	val := json.RawValue(n)
-	return opts.MarshalNext(e, val)
-}
-
-// UnmarshalNextJSON implements json.UnmarshalerV2.
-func (n *Num) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
-	offset := d.InputOffset()
-	// Check Kind for invalid, next call will return error.
-	if kind := d.PeekKind(); kind != '0' && kind != 0 {
-		return &json.SemanticError{
-			ByteOffset:  offset,
-			JSONPointer: d.StackPointer(),
-			JSONKind:    kind,
-			GoType:      reflect.TypeOf(n),
-			Err:         errors.Errorf("unexpected type %s", kind.String()),
-		}
-	}
-
-	val, err := d.ReadValue()
-	if err != nil {
-		return err
-	}
-	*n = append((*n)[:0], val...)
-	return nil
-}
-
 // RawSchema is unparsed JSON Schema.
 type RawSchema struct {
-	Ref                  string                `json:"$ref,omitzero"`
-	Summary              string                `json:"summary,omitzero"`
-	Description          string                `json:"description,omitzero"`
-	Type                 string                `json:"type,omitzero"`
-	Format               string                `json:"format,omitzero"`
-	Properties           RawProperties         `json:"properties,omitzero"`
-	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitzero"`
-	PatternProperties    RawPatternProperties  `json:"patternProperties,omitzero"`
-	Required             []string              `json:"required,omitzero"`
-	Items                *RawSchema            `json:"items,omitzero"`
-	Nullable             bool                  `json:"nullable,omitzero"`
-	AllOf                []*RawSchema          `json:"allOf,omitzero"`
-	OneOf                []*RawSchema          `json:"oneOf,omitzero"`
-	AnyOf                []*RawSchema          `json:"anyOf,omitzero"`
-	Discriminator        *Discriminator        `json:"discriminator,omitzero"`
-	Enum                 Enum                  `json:"enum,omitzero"`
-	MultipleOf           Num                   `json:"multipleOf,omitzero"`
-	Maximum              Num                   `json:"maximum,omitzero"`
-	ExclusiveMaximum     bool                  `json:"exclusiveMaximum,omitzero"`
-	Minimum              Num                   `json:"minimum,omitzero"`
-	ExclusiveMinimum     bool                  `json:"exclusiveMinimum,omitzero"`
-	MaxLength            *uint64               `json:"maxLength,omitzero"`
-	MinLength            *uint64               `json:"minLength,omitzero"`
-	Pattern              string                `json:"pattern,omitzero"`
-	MaxItems             *uint64               `json:"maxItems,omitzero"`
-	MinItems             *uint64               `json:"minItems,omitzero"`
-	UniqueItems          bool                  `json:"uniqueItems,omitzero"`
-	MaxProperties        *uint64               `json:"maxProperties,omitzero"`
-	MinProperties        *uint64               `json:"minProperties,omitzero"`
-	Default              Default               `json:"default,omitzero"`
-	Example              Example               `json:"example,omitzero"`
-	Deprecated           bool                  `json:"deprecated,omitzero"`
-	ContentEncoding      string                `json:"contentEncoding,omitzero"`
-	ContentMediaType     string                `json:"contentMediaType,omitzero"`
+	Ref                  string                `json:"$ref,omitempty,omitzero"`
+	Summary              string                `json:"summary,omitempty,omitzero"`
+	Description          string                `json:"description,omitempty,omitzero"`
+	Type                 string                `json:"type,omitempty,omitzero"`
+	Format               string                `json:"format,omitempty,omitzero"`
+	Properties           RawProperties         `json:"properties,omitempty,omitzero"`
+	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty,omitzero"`
+	PatternProperties    RawPatternProperties  `json:"patternProperties,omitempty,omitzero"`
+	Required             []string              `json:"required,omitempty,omitzero"`
+	Items                *RawSchema            `json:"items,omitempty,omitzero"`
+	Nullable             bool                  `json:"nullable,omitempty,omitzero"`
+	AllOf                []*RawSchema          `json:"allOf,omitempty,omitzero"`
+	OneOf                []*RawSchema          `json:"oneOf,omitempty,omitzero"`
+	AnyOf                []*RawSchema          `json:"anyOf,omitempty,omitzero"`
+	Discriminator        *Discriminator        `json:"discriminator,omitempty,omitzero"`
+	Enum                 Enum                  `json:"enum,omitempty,omitzero"`
+	MultipleOf           Num                   `json:"multipleOf,omitempty,omitzero"`
+	Maximum              Num                   `json:"maximum,omitempty,omitzero"`
+	ExclusiveMaximum     bool                  `json:"exclusiveMaximum,omitempty,omitzero"`
+	Minimum              Num                   `json:"minimum,omitempty,omitzero"`
+	ExclusiveMinimum     bool                  `json:"exclusiveMinimum,omitempty,omitzero"`
+	MaxLength            *uint64               `json:"maxLength,omitempty,omitzero"`
+	MinLength            *uint64               `json:"minLength,omitempty,omitzero"`
+	Pattern              string                `json:"pattern,omitempty,omitzero"`
+	MaxItems             *uint64               `json:"maxItems,omitempty,omitzero"`
+	MinItems             *uint64               `json:"minItems,omitempty,omitzero"`
+	UniqueItems          bool                  `json:"uniqueItems,omitempty,omitzero"`
+	MaxProperties        *uint64               `json:"maxProperties,omitempty,omitzero"`
+	MinProperties        *uint64               `json:"minProperties,omitempty,omitzero"`
+	Default              Default               `json:"default,omitempty,omitzero"`
+	Example              Example               `json:"example,omitempty,omitzero"`
+	Deprecated           bool                  `json:"deprecated,omitempty,omitzero"`
+	ContentEncoding      string                `json:"contentEncoding,omitempty,omitzero"`
+	ContentMediaType     string                `json:"contentMediaType,omitempty,omitzero"`
 
 	XAnnotations map[string]json.RawValue `json:",inline"`
 
 	ogenjson.Locator `json:"-"`
-}
-
-// Enum is JSON Schema enum validator description.
-type Enum []json.RawValue
-
-// UnmarshalYAML implements yaml.Unmarshaler.
-func (n *Enum) UnmarshalYAML(node *yaml.Node) error {
-	if node.Tag != "!!seq" {
-		return errors.Errorf("unexpected tag %s", node.Tag)
-	}
-	*n = (*n)[:0]
-	for _, val := range node.Content {
-		raw, err := convertYAMLtoRawJSON(val)
-		if err != nil {
-			return err
-		}
-		*n = append(*n, raw)
-	}
-	return nil
-}
-
-// UnmarshalNextJSON implements json.UnmarshalerV2.
-func (n *Enum) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
-	offset := d.InputOffset()
-	// Check Kind for invalid, next call will return error.
-	if kind := d.PeekKind(); kind != '[' && kind != 0 {
-		return &json.SemanticError{
-			ByteOffset:  offset,
-			JSONPointer: d.StackPointer(),
-			JSONKind:    kind,
-			GoType:      reflect.TypeOf(n),
-			Err:         errors.Errorf("unexpected type %s", kind.String()),
-		}
-	}
-	// Read the opening bracket.
-	if _, err := d.ReadToken(); err != nil {
-		return err
-	}
-
-	// Keep non-nil value, to distinguish from not set array.
-	values := Enum{}
-	for {
-		if kind := d.PeekKind(); kind == ']' || kind == 0 {
-			break
-		}
-		var (
-			val    json.RawValue
-			offset = d.InputOffset()
-		)
-		if err := opts.UnmarshalNext(d, &val); err != nil {
-			return err
-		}
-		for _, val2 := range values {
-			if ok, _ := ogenjson.Equal(val, val2); ok {
-				return &json.SemanticError{
-					ByteOffset:  offset,
-					JSONPointer: d.StackPointer(),
-					JSONKind:    val.Kind(),
-					GoType:      reflect.TypeOf(val),
-					Err:         errors.Errorf("duplicate value %s", val.String()),
-				}
-			}
-		}
-		values = append(values, val)
-	}
-	// Read the closing bracket.
-	if _, err := d.ReadToken(); err != nil {
-		return err
-	}
-
-	*n = values
-	return nil
 }
 
 // RawProperty is item of RawProperties.
@@ -343,5 +227,5 @@ func (r *RawPatternProperties) UnmarshalNextJSON(opts json.UnmarshalOptions, d *
 // Discriminator is JSON Schema discriminator description.
 type Discriminator struct {
 	PropertyName string            `json:"propertyName"`
-	Mapping      map[string]string `json:"mapping,omitzero"`
+	Mapping      map[string]string `json:"mapping,omitempty,omitzero"`
 }

@@ -749,7 +749,6 @@
 								"properties": {
 									"optional_any": {},
 									"optional_array_any": {
-										"items": {},
 										"type": "array"
 									},
 									"optional_array_boolean": {
@@ -976,7 +975,6 @@
 									},
 									"optional_double_array_any": {
 										"items": {
-											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -1418,7 +1416,6 @@
 									},
 									"required_any": {},
 									"required_array_any": {
-										"items": {},
 										"type": "array"
 									},
 									"required_array_boolean": {
@@ -1645,7 +1642,6 @@
 									},
 									"required_double_array_any": {
 										"items": {
-											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -3696,7 +3692,6 @@
 								"properties": {
 									"optional_any": {},
 									"optional_array_any": {
-										"items": {},
 										"type": "array"
 									},
 									"optional_array_boolean": {
@@ -3923,7 +3918,6 @@
 									},
 									"optional_double_array_any": {
 										"items": {
-											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -4365,7 +4359,6 @@
 									},
 									"required_any": {},
 									"required_array_any": {
-										"items": {},
 										"type": "array"
 									},
 									"required_array_boolean": {
@@ -4592,7 +4585,6 @@
 									},
 									"required_double_array_any": {
 										"items": {
-											"items": {},
 											"type": "array"
 										},
 										"type": "array"
@@ -13294,7 +13286,6 @@
 									"properties": {
 										"optional_any": {},
 										"optional_array_any": {
-											"items": {},
 											"type": "array"
 										},
 										"optional_array_boolean": {
@@ -13521,7 +13512,6 @@
 										},
 										"optional_double_array_any": {
 											"items": {
-												"items": {},
 												"type": "array"
 											},
 											"type": "array"
@@ -13963,7 +13953,6 @@
 										},
 										"required_any": {},
 										"required_array_any": {
-											"items": {},
 											"type": "array"
 										},
 										"required_array_boolean": {
@@ -14190,7 +14179,6 @@
 										},
 										"required_double_array_any": {
 											"items": {
-												"items": {},
 												"type": "array"
 											},
 											"type": "array"

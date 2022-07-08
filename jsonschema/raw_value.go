@@ -14,16 +14,6 @@ type (
 	Example = RawValue
 )
 
-// UnmarshalYAML implements yaml.Unmarshaler.
-func (n *RawValue) UnmarshalYAML(node *yaml.Node) error {
-	raw, err := convertYAMLtoRawJSON(node)
-	if err != nil {
-		return err
-	}
-	*n = RawValue(raw)
-	return nil
-}
-
 // MarshalNextJSON implements json.MarshalerV2.
 func (n RawValue) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
 	val := json.RawValue(n)
@@ -37,6 +27,28 @@ func (n *RawValue) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder
 		return err
 	}
 	*n = append((*n)[:0], val...)
+	return nil
+}
+
+// MarshalJSON implements json.MarshalerV1.
+func (n *RawValue) MarshalJSON() ([]byte, error) {
+	// Backward-compatibility with v1.
+	return json.Marshal(n)
+}
+
+// UnmarshalJSON implements json.UnmarshalerV1.
+func (n *RawValue) UnmarshalJSON(data []byte) error {
+	// Backward-compatibility with v1.
+	return json.Unmarshal(data, n)
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (n *RawValue) UnmarshalYAML(node *yaml.Node) error {
+	raw, err := convertYAMLtoRawJSON(node)
+	if err != nil {
+		return err
+	}
+	*n = RawValue(raw)
 	return nil
 }
 

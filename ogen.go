@@ -18,5 +18,6 @@ func Parse(data []byte) (s *Spec, err error) {
 			return nil, errors.Wrap(err, "json")
 		}
 	}
+	s.Init()
 	return s, nil
 }
