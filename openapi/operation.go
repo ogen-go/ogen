@@ -34,6 +34,20 @@ type Operation struct {
 // Path is an operation path.
 type Path []PathPart
 
+// ID returns path, but without parameter names.
+//
+// For example, if path is "/users/{id}", ID returns "/users/{}".
+func (p Path) ID() (path string) {
+	for _, part := range p {
+		if part.Raw != "" {
+			path += part.Raw
+			continue
+		}
+		path += "{}"
+	}
+	return
+}
+
 // String implements fmt.Stringer.
 func (p Path) String() (path string) {
 	for _, part := range p {
