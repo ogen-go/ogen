@@ -1,7 +1,7 @@
 package openapi
 
 import (
-	"github.com/go-json-experiment/json"
+	"encoding/json"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 )
@@ -12,7 +12,7 @@ type Example struct {
 
 	Summary       string
 	Description   string
-	Value         json.RawValue
+	Value         json.RawMessage
 	ExternalValue string
 
 	ogenjson.Locator

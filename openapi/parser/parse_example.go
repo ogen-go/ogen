@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"encoding/json"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
@@ -20,13 +22,13 @@ func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (_ *openapi.Exam
 		return ex, nil
 	}
 	defer func() {
-		rerr = p.wrapLocation(e, rerr)
+		rerr = p.wrapLocation(&e.Locator, rerr)
 	}()
 
 	return &openapi.Example{
 		Summary:       e.Summary,
 		Description:   e.Description,
-		Value:         e.Value,
+		Value:         json.RawMessage(e.Value),
 		ExternalValue: e.ExternalValue,
 		Locator:       e.Locator,
 	}, nil

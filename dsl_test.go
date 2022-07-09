@@ -1,10 +1,9 @@
 package ogen_test
 
 import (
-	jsonv1 "encoding/json"
+	"encoding/json"
 	"testing"
 
-	jsonv2 "github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/ogen-go/ogen"
@@ -58,9 +57,9 @@ var (
 				ogen.DateTime().ToProperty("required_DateTime"),
 				ogen.Password().ToProperty("required_Password"),
 				ogen.Int32().AsArray().ToProperty("required_array_Int32"),
-				ogen.Int32().AsEnum(jsonv1.RawMessage("0"), jsonv1.RawMessage("0"), jsonv1.RawMessage("1")).
+				ogen.Int32().AsEnum(json.RawMessage("0"), json.RawMessage("0"), json.RawMessage("1")).
 					ToProperty("required_enum_Int32"),
-				ogen.Int32().AsEnum(jsonv1.RawMessage(`"off"`), jsonv1.RawMessage(`"0"`), jsonv1.RawMessage(`"1"`)).
+				ogen.Int32().AsEnum(json.RawMessage(`"off"`), json.RawMessage(`"0"`), json.RawMessage(`"1"`)).
 					ToProperty("required_enum_String"),
 			).
 			AddOptionalProperties(
@@ -361,7 +360,7 @@ func TestBuilder(t *testing.T) {
 		OneOf:            []*ogen.Schema{ogen.NewSchema()},
 		AnyOf:            []*ogen.Schema{ogen.NewSchema()},
 		Discriminator:    &ogen.Discriminator{PropertyName: "prop"},
-		Enum:             []jsonv2.RawValue{jsonv2.RawValue("0"), jsonv2.RawValue("1")},
+		Enum:             []json.RawMessage{json.RawMessage("0"), json.RawMessage("1")},
 		MultipleOf:       mltStr,
 		Maximum:          maxStr,
 		ExclusiveMaximum: true,
@@ -389,7 +388,7 @@ func TestBuilder(t *testing.T) {
 		SetOneOf([]*ogen.Schema{ogen.NewSchema()}).
 		SetAnyOf([]*ogen.Schema{ogen.NewSchema()}).
 		SetDiscriminator(&ogen.Discriminator{PropertyName: "prop"}).
-		SetEnum([]jsonv1.RawMessage{jsonv1.RawMessage("0"), jsonv1.RawMessage("1")}).
+		SetEnum([]json.RawMessage{json.RawMessage("0"), json.RawMessage("1")}).
 		SetMultipleOf(&mlt).
 		SetMaximum(&max).
 		SetExclusiveMaximum(true).
@@ -403,6 +402,6 @@ func TestBuilder(t *testing.T) {
 		SetUniqueItems(true).
 		SetMaxProperties(&umax).
 		SetMinProperties(&umax).
-		SetDefault(jsonv1.RawMessage("0")),
+		SetDefault(json.RawMessage("0")),
 	)
 }

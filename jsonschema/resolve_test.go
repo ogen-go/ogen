@@ -2,11 +2,11 @@ package jsonschema
 
 import (
 	"context"
+	"encoding/json"
 	"testing"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
 )
 

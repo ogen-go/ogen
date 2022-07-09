@@ -14,6 +14,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "bar",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -31,10 +38,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "type": "string"
                 }
               }
             }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "User info"
           }
         }
       }

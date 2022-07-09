@@ -1,12 +1,13 @@
 package jsonschema
 
 import (
+	"encoding/json"
+
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"github.com/go-json-experiment/json"
 )
 
-func inferJSONType(v json.RawValue) (string, error) {
+func inferJSONType(v json.RawMessage) (string, error) {
 	d := jx.DecodeBytes(v)
 	switch tt := d.Next(); tt {
 	case jx.String:
@@ -22,7 +23,7 @@ func inferJSONType(v json.RawValue) (string, error) {
 	}
 }
 
-func parseEnumValues(s *Schema, rawValues []json.RawValue) ([]interface{}, error) {
+func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}
 		unique = map[interface{}]struct{}{}
@@ -43,7 +44,7 @@ func parseEnumValues(s *Schema, rawValues []json.RawValue) ([]interface{}, error
 	return values, nil
 }
 
-func parseJSONValue(root *Schema, v json.RawValue) (interface{}, error) {
+func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
 	var parse func(s *Schema, d *jx.Decoder) (interface{}, error)
 	parse = func(s *Schema, d *jx.Decoder) (interface{}, error) {
 		next := d.Next()

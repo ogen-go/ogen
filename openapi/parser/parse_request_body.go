@@ -12,7 +12,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 		return nil, errors.New("requestBody object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(body, rerr)
+		rerr = p.wrapLocation(&body.Locator, rerr)
 	}()
 	if ref := body.Ref; ref != "" {
 		reqBody, err := p.resolveRequestBody(ref, ctx)

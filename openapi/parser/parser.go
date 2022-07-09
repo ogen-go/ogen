@@ -132,7 +132,7 @@ func (p *parser) parsePathItem(path string, item *ogen.PathItem, operationIDs ma
 		return errors.New("pathItem object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(item, rerr)
+		rerr = p.wrapLocation(&item.Locator, rerr)
 	}()
 	if item.Ref != "" {
 		return errors.New("referenced pathItem not supported")
@@ -170,7 +170,7 @@ func (p *parser) parseOp(
 	itemParams []*openapi.Parameter,
 ) (_ *openapi.Operation, err error) {
 	defer func() {
-		err = p.wrapLocation(&spec, err)
+		err = p.wrapLocation(&spec.Locator, err)
 	}()
 
 	op := &openapi.Operation{

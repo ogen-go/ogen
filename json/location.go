@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/go-json-experiment/json"
+	"gopkg.in/yaml.v3"
 )
 
 // Lines is a sorted slice of newline offsets.
@@ -27,6 +27,31 @@ func (l Lines) Search(offset int64) int64 {
 		return lines[i] >= offset
 	})
 	return int64(idx)
+}
+
+// Line returns offset range of the line.
+//
+// NOTE: the line number is 1-based. Returns (-1, -1) if the line is invalid.
+func (l Lines) Line(n int) (start, end int64) {
+	n--
+	end = int64(len(l.data))
+	switch {
+	case n < 0:
+		// Line 0 is invalid.
+		return -1, -1
+	case n >= len(l.lines):
+		// Last line.
+		if len(l.lines) > 0 {
+			start = l.lines[len(l.lines)-1]
+		}
+		return start, end
+	default:
+		if n > 0 {
+			start = l.lines[n-1]
+		}
+		end = l.lines[n]
+		return start, end
+	}
 }
 
 // Collect fills the given slice with the offset of newlines.
@@ -85,17 +110,17 @@ func (l Lines) LineColumn(offset int64) (line, column int64, ok bool) {
 
 // Location is a JSON value location.
 type Location struct {
-	JSONPointer  string `json:"-"`
-	Offset       int64  `json:"-"`
-	Line, Column int64  `json:"-"`
+	Line, Column int64
+	Node         *yaml.Node
 }
 
 // String implements fmt.Stringer.
 func (l Location) String() string {
-	if l.Line == 0 {
-		return l.JSONPointer
+	n := l.Node
+	if n == nil {
+		return "<empty location>"
 	}
-	return fmt.Sprintf("%d:%d", l.Line, l.Column)
+	return fmt.Sprintf("%d:%d", n.Line, n.Column)
 }
 
 // WithFilename prints the location with the given filename.
@@ -103,17 +128,7 @@ func (l Location) String() string {
 // If filename is empty, the location is printed as is.
 func (l Location) WithFilename(filename string) string {
 	if filename != "" {
-		switch {
-		case l.Line != 0:
-			// Line is set, so return "${filename}:".
-			filename += ":"
-		case l.JSONPointer != "":
-			// Line is not set, but JSONPointer is set, so return "${filename}#${JSONPointer}".
-			filename += "#"
-		default:
-			// Neither line nor JSONPointer is set, so return empty string.
-			return ""
-		}
+		filename += ":"
 	}
 	return filename + l.String()
 }
@@ -144,21 +159,17 @@ func (l Locator) Location() (Location, bool) {
 	return l.location, l.set
 }
 
-// LocationUnmarshaler is json.Unmarshalers that sets the location.
-func LocationUnmarshaler(lines Lines) *json.Unmarshalers {
-	return json.UnmarshalFuncV2(func(opts json.UnmarshalOptions, d *json.Decoder, l Locatable) error {
-		if _, ok := l.(*Locator); ok {
-			return nil
-		}
+// MarshalYAML implements yaml.Marshaler.
+func (l *Locator) MarshalYAML(n *yaml.Node) error {
+	return nil
+}
 
-		offset := d.InputOffset()
-		line, column, _ := lines.LineColumn(offset)
-		l.SetLocation(Location{
-			JSONPointer: d.StackPointer(),
-			Offset:      offset,
-			Line:        line,
-			Column:      column,
-		})
-		return json.SkipFunc
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (l *Locator) UnmarshalYAML(n *yaml.Node) error {
+	l.SetLocation(Location{
+		Line:   int64(n.Line),
+		Column: int64(n.Column),
+		Node:   n,
 	})
+	return nil
 }

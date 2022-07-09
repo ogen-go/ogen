@@ -61,7 +61,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 		}
 		if _, ok := unique[ploc]; ok {
 			err = errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(spec, err)
+			return nil, p.wrapLocation(&spec.Locator, err)
 		}
 
 		unique[ploc] = struct{}{}
@@ -101,7 +101,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 		return nil, errors.New("parameter object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(param, rerr)
+		rerr = p.wrapLocation(&param.Locator, rerr)
 	}()
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)

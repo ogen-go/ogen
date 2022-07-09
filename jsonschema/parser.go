@@ -1,12 +1,12 @@
 package jsonschema
 
 import (
+	"encoding/json"
 	"math/big"
 	"regexp"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"github.com/go-json-experiment/json"
 )
 
 // Parser parses JSON schemas.
@@ -49,7 +49,7 @@ func (p *Parser) Resolve(ref string) (*Schema, error) {
 func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (_ *Schema, rerr error) {
 	if schema != nil {
 		defer func() {
-			rerr = p.wrapLocation(schema, rerr)
+			rerr = p.wrapLocation(&schema.Locator, rerr)
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
@@ -73,7 +73,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 			handleNullableEnum(s)
 		}
 		if d := schema.Default; len(d) > 0 {
-			v, err := parseJSONValue(s, json.RawValue(d))
+			v, err := parseJSONValue(s, json.RawMessage(d))
 			if err != nil {
 				return nil, errors.Wrap(err, "parse default")
 			}
@@ -109,7 +109,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	}
 
 	if d := schema.Default; p.inferTypes && schema.Type == "" && len(d) > 0 {
-		typ, err := inferJSONType(json.RawValue(d))
+		typ, err := inferJSONType(json.RawMessage(d))
 		if err != nil {
 			return nil, errors.Wrap(err, "infer default type")
 		}
@@ -389,7 +389,7 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 	s.Summary = schema.Summary
 	s.Description = schema.Description
 	s.Deprecated = schema.Deprecated
-	s.AddExample(json.RawValue(schema.Example))
+	s.AddExample(json.RawMessage(schema.Example))
 
 	// Nullable enums will be handled later.
 	if len(s.Enum) < 1 {

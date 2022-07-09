@@ -1,11 +1,10 @@
 package ogen
 
 import (
-	jsonv1 "encoding/json"
+	"encoding/json"
 	"strings"
 
 	"github.com/go-faster/jx"
-	jsonv2 "github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -865,9 +864,9 @@ func (s *Schema) SetDiscriminator(d *Discriminator) *Schema {
 }
 
 // SetEnum sets the Enum of the Schema.
-func (s *Schema) SetEnum(e []jsonv1.RawMessage) *Schema {
+func (s *Schema) SetEnum(e []json.RawMessage) *Schema {
 	for _, val := range e {
-		s.Enum = append(s.Enum, jsonv2.RawValue(val))
+		s.Enum = append(s.Enum, val)
 	}
 	return s
 }
@@ -966,7 +965,7 @@ func (s *Schema) SetMinProperties(m *uint64) *Schema {
 }
 
 // SetDefault sets the Default of the Schema.
-func (s *Schema) SetDefault(d jsonv1.RawMessage) *Schema {
+func (s *Schema) SetDefault(d json.RawMessage) *Schema {
 	s.Default = Default(d)
 	return s
 }
@@ -1029,16 +1028,11 @@ func (s *Schema) AsArray() *Schema {
 }
 
 // AsEnum returns a new "enum" Schema wrapping the receiver.
-func (s *Schema) AsEnum(def jsonv1.RawMessage, values ...jsonv1.RawMessage) *Schema {
+func (s *Schema) AsEnum(def json.RawMessage, values ...json.RawMessage) *Schema {
 	return &Schema{
 		Type:    s.Type,
 		Default: Default(def),
-		Enum: func() (r []jsonv2.RawValue) {
-			for _, val := range values {
-				r = append(r, jsonv2.RawValue(val))
-			}
-			return r
-		}(),
+		Enum:    append([]json.RawMessage{}, values...),
 	}
 }
 

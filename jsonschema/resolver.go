@@ -1,10 +1,10 @@
 package jsonschema
 
 import (
+	"encoding/json"
 	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/go-json-experiment/json"
 
 	"github.com/ogen-go/ogen/jsonpointer"
 )

@@ -26,33 +26,15 @@ func (e *LocationError) Unwrap() error {
 	return e.err
 }
 
-func (e *LocationError) fileName() string {
-	filename := e.file
-	if filename != "" {
-		switch {
-		case e.loc.Line != 0:
-			// Line is set, so return "${filename}:".
-			filename += ":"
-		case e.loc.JSONPointer != "":
-			// Line is not set, but JSONPointer is set, so return "${filename}#".
-			filename += "#"
-		default:
-			// Neither line nor JSONPointer is set, so return empty string.
-			return ""
-		}
-	}
-	return filename
-}
-
 // FormatError implements errors.Formatter.
 func (e *LocationError) FormatError(p errors.Printer) (next error) {
-	p.Printf("at %s%s", e.fileName(), e.loc)
+	p.Printf("at %s%s", e.loc.WithFilename(e.file))
 	return e.err
 }
 
 // Error implements error.
 func (e *LocationError) Error() string {
-	return fmt.Sprintf("at %s%s: %s", e.fileName(), e.loc, e.err)
+	return fmt.Sprintf("at %s: %s", e.loc.WithFilename(e.file), e.err)
 }
 
 func (p *Parser) wrapLocation(l ogenjson.Locatable, err error) error {

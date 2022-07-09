@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"encoding/json"
 	"mime"
 
 	"github.com/go-faster/errors"
@@ -58,7 +59,7 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resol
 
 func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
 	defer func() {
-		rerr = p.wrapLocation(&m, rerr)
+		rerr = p.wrapLocation(&m.Locator, rerr)
 	}()
 
 	s, err := p.parseSchema(m.Schema, ctx)
@@ -75,7 +76,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 
 		parseEncoding := func(name string, e ogen.Encoding) (rerr error) {
 			defer func() {
-				rerr = p.wrapLocation(&e, rerr)
+				rerr = p.wrapLocation(&e.Locator, rerr)
 			}()
 
 			prop, ok := names[name]
@@ -134,14 +135,14 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 	//
 	// Probably this will be rewritten later.
 	// Kept for backward compatibility.
-	s.AddExample(m.Example)
+	s.AddExample(json.RawMessage(m.Example))
 	for _, ex := range examples {
 		s.AddExample(ex.Value)
 	}
 
 	return &openapi.MediaType{
 		Schema:   s,
-		Example:  m.Example,
+		Example:  json.RawMessage(m.Example),
 		Examples: examples,
 		Encoding: encodings,
 		Locator:  m.Locator,

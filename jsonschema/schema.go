@@ -1,9 +1,8 @@
 package jsonschema
 
 import (
+	"encoding/json"
 	"regexp"
-
-	"github.com/go-json-experiment/json"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 )
@@ -79,7 +78,7 @@ type Schema struct {
 	MaxProperties *uint64
 	MinProperties *uint64
 
-	Examples []json.RawValue
+	Examples []json.RawMessage
 	// Default schema value.
 	Default    interface{}
 	DefaultSet bool
@@ -88,7 +87,7 @@ type Schema struct {
 }
 
 // AddExample adds example for this Schema.
-func (s *Schema) AddExample(r json.RawValue) {
+func (s *Schema) AddExample(r json.RawMessage) {
 	if s != nil && len(r) > 0 {
 		s.Examples = append(s.Examples, r)
 	}
