@@ -939,11 +939,11 @@ type Handler interface {
 	// LogFileHandler implements logFileHandler operation.
 	//
 	// GET /logs/{logpath}
-	LogFileHandler(ctx context.Context, params LogFileHandlerParams) (LogFileHandlerUnauthorized, error)
+	LogFileHandler(ctx context.Context, params LogFileHandlerParams) error
 	// LogFileListHandler implements logFileListHandler operation.
 	//
 	// GET /logs/
-	LogFileListHandler(ctx context.Context) (LogFileListHandlerUnauthorized, error)
+	LogFileListHandler(ctx context.Context) error
 	// ReadAdmissionregistrationV1MutatingWebhookConfiguration implements readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 	//
 	// Read the specified MutatingWebhookConfiguration.

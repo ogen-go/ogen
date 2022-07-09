@@ -587,14 +587,14 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	response, err := s.h.OneofBug(ctx, request)
+	err = s.h.OneofBug(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeOneofBugResponse(response, w, span); err != nil {
+	if err := encodeOneofBugResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -1609,14 +1609,14 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.TestFloatValidation(ctx, request)
+	err = s.h.TestFloatValidation(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeTestFloatValidationResponse(response, w, span); err != nil {
+	if err := encodeTestFloatValidationResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

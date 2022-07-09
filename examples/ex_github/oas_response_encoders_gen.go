@@ -15,7 +15,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -37,7 +37,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -232,61 +232,61 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	return nil
 
 }
-func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteArtifactResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteEnvironmentSecretResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteOrgSecretResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteRepoSecretResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteWorkflowRunResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteWorkflowRunLogsResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -367,7 +367,7 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkfl
 	return nil
 
 }
-func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -1062,7 +1062,7 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w 
 	return nil
 
 }
-func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -1084,7 +1084,7 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -1120,49 +1120,49 @@ func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, 
 	return nil
 
 }
-func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetAllowedActionsOrganizationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetAllowedActionsRepositoryResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetGithubActionsPermissionsOrganizationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetGithubActionsPermissionsRepositoryResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelectedReposForOrgSecretResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -1233,7 +1233,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		return errors.Errorf("/user/starred/{owner}/{repo}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityDeleteRepoSubscriptionResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -3458,7 +3458,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 		return errors.Errorf("/applications/{client_id}/token"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsRevokeInstallationAccessTokenResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -4502,13 +4502,13 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		return errors.Errorf("/emojis"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -4553,37 +4553,37 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	return nil
 
 }
-func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -4856,25 +4856,25 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 	return nil
 
 }
-func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -4906,19 +4906,19 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	return nil
 
 }
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -6662,13 +6662,13 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		return errors.Errorf("/gitignore/templates/{name}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -7113,13 +7113,13 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 		return errors.Errorf("/repos/{owner}/{repo}/milestones"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteCommentResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteLabelResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -8487,7 +8487,7 @@ func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span tra
 	return nil
 
 }
-func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsCancelImportResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -11327,7 +11327,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 		return errors.Errorf("/orgs/{org}/outside_collaborators/{username}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -11421,7 +11421,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 		return errors.Errorf("/orgs/{org}/public_members/{username}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsUnblockUserResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -15536,37 +15536,37 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 	return nil
 
 }
-func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForCommitCommentResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForIssueResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForIssueCommentResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForPullRequestCommentResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForTeamDiscussionResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForTeamDiscussionCommentResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17323,7 +17323,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		return errors.Errorf("/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAccessRestrictionsResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17352,7 +17352,7 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAnEnvironmentResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17450,7 +17450,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteDeployKeyResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17557,7 +17557,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return errors.Errorf("/repos/{owner}/{repo}/contents/{path}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteInvitationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17633,13 +17633,13 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteReleaseResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteReleaseAssetResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17668,19 +17668,19 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableAutomatedSecurityFixesResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableLfsForRepoResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableVulnerabilityAlertsResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17736,7 +17736,7 @@ func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArch
 	return nil
 
 }
-func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableAutomatedSecurityFixesResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -17765,7 +17765,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		return errors.Errorf("/repos/{owner}/{repo}/lfs"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableVulnerabilityAlertsResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -20594,7 +20594,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRemoveCollaboratorResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -20642,7 +20642,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRemoveStatusCheckProtectionResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -22070,7 +22070,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 		return errors.Errorf("/teams/{team_id}/projects/{project_id}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -22362,31 +22362,31 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 		return errors.Errorf("/teams/{team_id}/team-sync/group-mappings"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionCommentInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionCommentLegacyResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionLegacyResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -23462,7 +23462,7 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 		return errors.Errorf("/teams/{team_id}/memberships/{username}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveProjectInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
@@ -23515,13 +23515,13 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 		return errors.Errorf("/teams/{team_id}/projects/{project_id}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveRepoInOrgResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
-func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveRepoLegacyResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil

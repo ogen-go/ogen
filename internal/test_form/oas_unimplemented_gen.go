@@ -16,15 +16,15 @@ type UnimplementedHandler struct{}
 // TestFormURLEncoded implements testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
-func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req TestForm) (r TestFormURLEncodedOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req TestForm) error {
+	return ht.ErrNotImplemented
 }
 
 // TestMultipart implements testMultipart operation.
 //
 // POST /testMultipart
-func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) (r TestMultipartOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) error {
+	return ht.ErrNotImplemented
 }
 
 // TestMultipartUpload implements testMultipartUpload operation.
@@ -37,6 +37,6 @@ func (UnimplementedHandler) TestMultipartUpload(ctx context.Context, req TestMul
 // TestShareFormSchema implements testShareFormSchema operation.
 //
 // POST /testShareFormSchema
-func (UnimplementedHandler) TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) (r TestShareFormSchemaOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) error {
+	return ht.ErrNotImplemented
 }

@@ -67,14 +67,14 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.NullableStrings(ctx, request)
+	err = s.h.NullableStrings(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeNullableStringsResponse(response, w, span); err != nil {
+	if err := encodeNullableStringsResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -134,14 +134,14 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		}
 	}()
 
-	response, err := s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+	err = s.h.ObjectsWithConflictingArrayProperty(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeObjectsWithConflictingArrayPropertyResponse(response, w, span); err != nil {
+	if err := encodeObjectsWithConflictingArrayPropertyResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -201,14 +201,14 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		}
 	}()
 
-	response, err := s.h.ObjectsWithConflictingProperties(ctx, request)
+	err = s.h.ObjectsWithConflictingProperties(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeObjectsWithConflictingPropertiesResponse(response, w, span); err != nil {
+	if err := encodeObjectsWithConflictingPropertiesResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -268,14 +268,14 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.ReferencedAllof(ctx, request)
+	err = s.h.ReferencedAllof(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeReferencedAllofResponse(response, w, span); err != nil {
+	if err := encodeReferencedAllofResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -335,14 +335,14 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.ReferencedAllofOptional(ctx, request)
+	err = s.h.ReferencedAllofOptional(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeReferencedAllofOptionalResponse(response, w, span); err != nil {
+	if err := encodeReferencedAllofOptionalResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -402,14 +402,14 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SimpleInteger(ctx, request)
+	err = s.h.SimpleInteger(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeSimpleIntegerResponse(response, w, span); err != nil {
+	if err := encodeSimpleIntegerResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -469,14 +469,14 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SimpleObjects(ctx, request)
+	err = s.h.SimpleObjects(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeSimpleObjectsResponse(response, w, span); err != nil {
+	if err := encodeSimpleObjectsResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

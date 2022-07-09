@@ -66,7 +66,7 @@ func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response Captcha, w http.Re
 	return nil
 
 }
-func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response APICaptchaInvisibleRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
@@ -85,7 +85,7 @@ func encodeAPICaptchaRecaptchaIDGetResponse(response Captcha, w http.ResponseWri
 	return nil
 
 }
-func encodeAPICaptchaRecaptchaMobileGetResponse(response APICaptchaRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaRecaptchaMobileGetResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil

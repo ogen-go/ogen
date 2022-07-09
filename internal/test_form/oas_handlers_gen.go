@@ -67,14 +67,14 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.TestFormURLEncoded(ctx, request)
+	err = s.h.TestFormURLEncoded(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeTestFormURLEncodedResponse(response, w, span); err != nil {
+	if err := encodeTestFormURLEncodedResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -134,14 +134,14 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.TestMultipart(ctx, request)
+	err = s.h.TestMultipart(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeTestMultipartResponse(response, w, span); err != nil {
+	if err := encodeTestMultipartResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -268,14 +268,14 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.TestShareFormSchema(ctx, request)
+	err = s.h.TestShareFormSchema(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeTestShareFormSchemaResponse(response, w, span); err != nil {
+	if err := encodeTestShareFormSchemaResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

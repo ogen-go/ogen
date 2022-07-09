@@ -45,7 +45,7 @@ type Handler interface {
 	// Получение html страницы для решения капчи, CORS отключён.
 	//
 	// GET /api/captcha/invisible_recaptcha/mobile
-	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (APICaptchaInvisibleRecaptchaMobileGetOK, error)
+	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) error
 	// APICaptchaRecaptchaIDGet implements GET /api/captcha/recaptcha/id operation.
 	//
 	// Получение публичного ключа recaptcha v2.
@@ -57,7 +57,7 @@ type Handler interface {
 	// Получение html страницы для решения капчи, CORS отключён.
 	//
 	// GET /api/captcha/recaptcha/mobile
-	APICaptchaRecaptchaMobileGet(ctx context.Context) (APICaptchaRecaptchaMobileGetOK, error)
+	APICaptchaRecaptchaMobileGet(ctx context.Context) error
 	// APIDislikeGet implements GET /api/dislike operation.
 	//
 	// Добавление дизлайка на пост.

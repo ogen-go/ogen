@@ -9,43 +9,43 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeNullableStringsResponse(response NullableStringsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeNullableStringsResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 
 }
-func encodeObjectsWithConflictingArrayPropertyResponse(response ObjectsWithConflictingArrayPropertyOK, w http.ResponseWriter, span trace.Span) error {
+func encodeObjectsWithConflictingArrayPropertyResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 
 }
-func encodeObjectsWithConflictingPropertiesResponse(response ObjectsWithConflictingPropertiesOK, w http.ResponseWriter, span trace.Span) error {
+func encodeObjectsWithConflictingPropertiesResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 
 }
-func encodeReferencedAllofResponse(response ReferencedAllofOK, w http.ResponseWriter, span trace.Span) error {
+func encodeReferencedAllofResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 
 }
-func encodeReferencedAllofOptionalResponse(response ReferencedAllofOptionalOK, w http.ResponseWriter, span trace.Span) error {
+func encodeReferencedAllofOptionalResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 
 }
-func encodeSimpleIntegerResponse(response SimpleIntegerOK, w http.ResponseWriter, span trace.Span) error {
+func encodeSimpleIntegerResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 
 }
-func encodeSimpleObjectsResponse(response SimpleObjectsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeSimpleObjectsResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil

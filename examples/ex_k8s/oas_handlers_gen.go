@@ -10755,14 +10755,14 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.LogFileHandler(ctx, params)
+	err = s.h.LogFileHandler(ctx, params)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeLogFileHandlerResponse(response, w, span); err != nil {
+	if err := encodeLogFileHandlerResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -10818,14 +10818,14 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		return
 	}
 
-	response, err := s.h.LogFileListHandler(ctx)
+	err = s.h.LogFileListHandler(ctx)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeLogFileListHandlerResponse(response, w, span); err != nil {
+	if err := encodeLogFileListHandlerResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

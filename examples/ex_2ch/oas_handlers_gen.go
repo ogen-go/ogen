@@ -285,14 +285,14 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		err error
 	)
 
-	response, err := s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+	err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response, w, span); err != nil {
+	if err := encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -391,14 +391,14 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 		err error
 	)
 
-	response, err := s.h.APICaptchaRecaptchaMobileGet(ctx)
+	err = s.h.APICaptchaRecaptchaMobileGet(ctx)
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeAPICaptchaRecaptchaMobileGetResponse(response, w, span); err != nil {
+	if err := encodeAPICaptchaRecaptchaMobileGetResponse(w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

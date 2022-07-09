@@ -17,43 +17,43 @@ type Handler interface {
 	// Nullable strings.
 	//
 	// POST /nullableStrings
-	NullableStrings(ctx context.Context, req string) (NullableStringsOK, error)
+	NullableStrings(ctx context.Context, req string) error
 	// ObjectsWithConflictingArrayProperty implements objectsWithConflictingArrayProperty operation.
 	//
 	// Objects with conflicting array property.
 	//
 	// POST /objectsWithConflictingArrayProperty
-	ObjectsWithConflictingArrayProperty(ctx context.Context, req ObjectsWithConflictingArrayPropertyReq) (ObjectsWithConflictingArrayPropertyOK, error)
+	ObjectsWithConflictingArrayProperty(ctx context.Context, req ObjectsWithConflictingArrayPropertyReq) error
 	// ObjectsWithConflictingProperties implements objectsWithConflictingProperties operation.
 	//
 	// Objects with conflicting properties.
 	//
 	// POST /objectsWithConflictingProperties
-	ObjectsWithConflictingProperties(ctx context.Context, req ObjectsWithConflictingPropertiesReq) (ObjectsWithConflictingPropertiesOK, error)
+	ObjectsWithConflictingProperties(ctx context.Context, req ObjectsWithConflictingPropertiesReq) error
 	// ReferencedAllof implements referencedAllof operation.
 	//
 	// Referenced allOf.
 	//
 	// POST /referencedAllof
-	ReferencedAllof(ctx context.Context, req ReferencedAllofReq) (ReferencedAllofOK, error)
+	ReferencedAllof(ctx context.Context, req ReferencedAllofReq) error
 	// ReferencedAllofOptional implements referencedAllofOptional operation.
 	//
 	// Referenced allOf, but requestBody is not required.
 	//
 	// POST /referencedAllofOptional
-	ReferencedAllofOptional(ctx context.Context, req ReferencedAllofOptionalReq) (ReferencedAllofOptionalOK, error)
+	ReferencedAllofOptional(ctx context.Context, req ReferencedAllofOptionalReq) error
 	// SimpleInteger implements simpleInteger operation.
 	//
 	// Simple integers with validation.
 	//
 	// POST /simpleInteger
-	SimpleInteger(ctx context.Context, req int) (SimpleIntegerOK, error)
+	SimpleInteger(ctx context.Context, req int) error
 	// SimpleObjects implements simpleObjects operation.
 	//
 	// Simple objects.
 	//
 	// POST /simpleObjects
-	SimpleObjects(ctx context.Context, req SimpleObjectsReq) (SimpleObjectsOK, error)
+	SimpleObjects(ctx context.Context, req SimpleObjectsReq) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

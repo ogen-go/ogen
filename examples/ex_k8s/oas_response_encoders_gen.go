@@ -3554,13 +3554,13 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeLogFileHandlerResponse(response LogFileHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
+func encodeLogFileHandlerResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	span.SetStatus(codes.Error, http.StatusText(401))
 	return nil
 
 }
-func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
+func encodeLogFileListHandlerResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	span.SetStatus(codes.Error, http.StatusText(401))
 	return nil
