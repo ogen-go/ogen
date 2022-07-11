@@ -138,7 +138,7 @@ func (p *parser) parsePathItem(
 		return errors.New("pathItem object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), &item.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), item.Locator, rerr)
 	}()
 	if item.Ref != "" {
 		return errors.New("referenced pathItem not supported")
@@ -177,7 +177,7 @@ func (p *parser) parseOp(
 	ctx *resolveCtx,
 ) (_ *openapi.Operation, err error) {
 	defer func() {
-		err = p.wrapLocation(ctx.lastLoc(), &spec.Locator, err)
+		err = p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
 	}()
 
 	op := &openapi.Operation{

@@ -97,20 +97,20 @@ var (
 )
 
 func TestLocation(t *testing.T) {
-	createEqualLoc := func(a *assert.Assertions, data []byte) func(l ogenjson.Locatable, line, column int64) {
+	createEqualLoc := func(a *assert.Assertions, data []byte) func(l ogenjson.Locatable, line, column int) {
 		var lines ogenjson.Lines
 		lines.Collect(data)
-		return func(l ogenjson.Locatable, line, column int64) {
+		return func(l ogenjson.Locatable, line, column int) {
 			t.Helper()
 
 			loc, ok := l.Location()
 			a.True(ok)
 			type location struct {
-				Line, Column int64
+				Line, Column int
 				Data         string
 			}
-			getLine := func(n int64) string {
-				start, end := lines.Line(int(n))
+			getLine := func(n int) string {
+				start, end := lines.Line(n)
 				// Offset points exactly to the newline, trim it.
 				return strings.Trim(string(data[start:end]), "\n\r")
 			}

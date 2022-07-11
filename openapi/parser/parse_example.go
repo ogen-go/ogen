@@ -20,7 +20,7 @@ func (p *parser) parseExample(e *ogen.Example, ctx *resolveCtx) (_ *openapi.Exam
 		return ex, nil
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), &e.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), e.Locator, rerr)
 	}()
 
 	return &openapi.Example{

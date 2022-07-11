@@ -43,7 +43,7 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi
 		return nil, errors.New("response object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), &resp.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), resp.Locator, rerr)
 	}()
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref, ctx)

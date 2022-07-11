@@ -28,7 +28,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		return nil, errors.New("header object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), &header.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), header.Locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
 		parsed, err := p.resolveHeader(name, ref, ctx)
@@ -38,11 +38,18 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		return parsed, nil
 	}
 
-	if header.In != "" {
-		return nil, errors.Errorf(`"in" MUST NOT be specified, got %q`, header.In)
+	mustNotSpecified := func(name, got string) error {
+		if got == "" {
+			return nil
+		}
+		err := errors.Errorf(`"%q MUST NOT be specified, got %q`, name, got)
+		return p.wrapField(name, ctx.lastLoc(), header.Locator, err)
 	}
-	if header.Name != "" {
-		return nil, errors.Errorf(`"name" MUST NOT be specified, got %q`, header.Name)
+	if err := mustNotSpecified("in", header.In); err != nil {
+		return nil, err
+	}
+	if err := mustNotSpecified("name", header.Name); err != nil {
+		return nil, err
 	}
 	locatedIn := openapi.LocationHeader
 

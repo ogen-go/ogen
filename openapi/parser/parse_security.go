@@ -19,7 +19,7 @@ func (p *parser) parseSecurityScheme(
 		return nil, errors.New("securityScheme is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), &scheme.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), scheme.Locator, rerr)
 	}()
 
 	if ref := scheme.Ref; ref != "" {
@@ -87,7 +87,7 @@ func (p *parser) validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows, loc
 		return errors.New("oAuthFlows is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(loc, &flows.Locator, rerr)
+		rerr = p.wrapLocation(loc, flows.Locator, rerr)
 	}()
 
 	check := func(flow *ogen.OAuthFlow, authURL, tokenURL bool) (rerr error) {
@@ -95,7 +95,7 @@ func (p *parser) validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows, loc
 			return nil
 		}
 		defer func() {
-			rerr = p.wrapLocation(loc, &flow.Locator, rerr)
+			rerr = p.wrapLocation(loc, flow.Locator, rerr)
 		}()
 
 		if tokenURL {
