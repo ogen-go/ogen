@@ -411,7 +411,7 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 			return req, close, nil
 		}
 
-		var request OptRobot
+		var request ReferencedAllofOptionalApplicationJSON
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -423,7 +423,6 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}
@@ -432,15 +431,8 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
+			if err := request.Validate(); err != nil {
+				return err
 			}
 			return nil
 		}(); err != nil {
@@ -456,101 +448,105 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 		}
 		form := url.Values(r.MultipartForm.Value)
 
-		var request OptRobot
+		var request ReferencedAllofOptionalMultipartFormData
 		{
-			var optForm Robot
-			q := uri.NewQueryDecoder(form)
+			var unwrapped OptRobot
 			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "state",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
+				var optForm Robot
+				q := uri.NewQueryDecoder(form)
+				{
+					cfg := uri.QueryParameterDecodingConfig{
+						Name:    "state",
+						Style:   uri.QueryStyleForm,
+						Explode: true,
+					}
+					if err := q.HasParam(cfg); err == nil {
+						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							optForm.State = RobotState(c)
+							return nil
+						}); err != nil {
+							return req, close, errors.Wrap(err, "decode \"state\"")
+						}
+						if err := func() error {
+							if err := optForm.State.Validate(); err != nil {
+								return err
+							}
+							return nil
+						}(); err != nil {
+							return req, close, errors.Wrap(err, "validate")
+						}
+					} else {
+						return req, close, errors.Wrap(err, "query")
+					}
 				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						val, err := d.DecodeValue()
-						if err != nil {
-							return err
-						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						optForm.State = RobotState(c)
-						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"state\"")
+				{
+					cfg := uri.QueryParameterDecodingConfig{
+						Name:    "id",
+						Style:   uri.QueryStyleForm,
+						Explode: true,
 					}
-					if err := func() error {
-						if err := optForm.State.Validate(); err != nil {
-							return err
+					if err := q.HasParam(cfg); err == nil {
+						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToUUID(val)
+							if err != nil {
+								return err
+							}
+
+							optForm.ID = c
+							return nil
+						}); err != nil {
+							return req, close, errors.Wrap(err, "decode \"id\"")
 						}
-						return nil
-					}(); err != nil {
-						return req, close, errors.Wrap(err, "validate")
+					} else {
+						return req, close, errors.Wrap(err, "query")
 					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
+				}
+				{
+					cfg := uri.QueryParameterDecodingConfig{
+						Name:    "location",
+						Style:   uri.QueryStyleForm,
+						Explode: true,
+						Fields:  []uri.QueryParameterObjectField{{"lat", true}, {"lon", true}},
+					}
+					if err := q.HasParam(cfg); err == nil {
+						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+							return optForm.Location.DecodeURI(d)
+						}); err != nil {
+							return req, close, errors.Wrap(err, "decode \"location\"")
+						}
+						if err := func() error {
+							if err := optForm.Location.Validate(); err != nil {
+								return err
+							}
+							return nil
+						}(); err != nil {
+							return req, close, errors.Wrap(err, "validate")
+						}
+					} else {
+						return req, close, errors.Wrap(err, "query")
+					}
+				}
+				unwrapped = OptRobot{
+					Value: optForm,
+					Set:   true,
 				}
 			}
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "id",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						val, err := d.DecodeValue()
-						if err != nil {
-							return err
-						}
-
-						c, err := conv.ToUUID(val)
-						if err != nil {
-							return err
-						}
-
-						optForm.ID = c
-						return nil
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"id\"")
-					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
-				}
-			}
-			{
-				cfg := uri.QueryParameterDecodingConfig{
-					Name:    "location",
-					Style:   uri.QueryStyleForm,
-					Explode: true,
-					Fields:  []uri.QueryParameterObjectField{{"lat", true}, {"lon", true}},
-				}
-				if err := q.HasParam(cfg); err == nil {
-					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-						return optForm.Location.DecodeURI(d)
-					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"location\"")
-					}
-					if err := func() error {
-						if err := optForm.Location.Validate(); err != nil {
-							return err
-						}
-						return nil
-					}(); err != nil {
-						return req, close, errors.Wrap(err, "validate")
-					}
-				} else {
-					return req, close, errors.Wrap(err, "query")
-				}
-			}
-			request = OptRobot{
-				Value: optForm,
-				Set:   true,
-			}
+			request = ReferencedAllofOptionalMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
 	default:

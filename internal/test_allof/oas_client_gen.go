@@ -298,33 +298,19 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 // POST /referencedAllofOptional
 func (c *Client) ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res ReferencedAllofOptionalOK, err error) {
 	switch request := request.(type) {
-	case *OptRobot:
+	case *ReferencedAllofOptionalApplicationJSON:
 		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
+			if err := request.Validate(); err != nil {
+				return err
 			}
 			return nil
 		}(); err != nil {
 			return res, errors.Wrap(err, "validate")
 		}
-	case *OptRobot:
+	case *ReferencedAllofOptionalMultipartFormData:
 		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
+			if err := request.Validate(); err != nil {
+				return err
 			}
 			return nil
 		}(); err != nil {

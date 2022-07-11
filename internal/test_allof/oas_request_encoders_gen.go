@@ -124,21 +124,19 @@ func encodeReferencedAllofOptionalRequest(
 	r *http.Request,
 ) error {
 	switch req := req.(type) {
-	case *OptRobot:
+	case *ReferencedAllofOptionalApplicationJSON:
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil
 		}
 		e := jx.GetEncoder()
 		{
-			if req.Set {
-				req.Encode(e)
-			}
+			req.Encode(e)
 		}
 		encoded := e.Bytes()
 		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
 		return nil
-	case *OptRobot:
+	case *ReferencedAllofOptionalMultipartFormData:
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil

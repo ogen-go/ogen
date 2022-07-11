@@ -173,8 +173,6 @@ func (o OptRobot) Or(d Robot) Robot {
 	return d
 }
 
-func (*OptRobot) referencedAllofOptionalReq() {}
-
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -231,6 +229,14 @@ func (*ReferencedAllofMultipartFormData) referencedAllofReq() {}
 
 // ReferencedAllofOK is response for ReferencedAllof operation.
 type ReferencedAllofOK struct{}
+
+type ReferencedAllofOptionalApplicationJSON OptRobot
+
+func (*ReferencedAllofOptionalApplicationJSON) referencedAllofOptionalReq() {}
+
+type ReferencedAllofOptionalMultipartFormData OptRobot
+
+func (*ReferencedAllofOptionalMultipartFormData) referencedAllofOptionalReq() {}
 
 // ReferencedAllofOptionalOK is response for ReferencedAllofOptional operation.
 type ReferencedAllofOptionalOK struct{}

@@ -110,6 +110,24 @@ func (s *ReferencedAllofMultipartFormData) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ReferencedAllofOptionalApplicationJSON) SetFake() {
+	var unwrapped OptRobot
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReferencedAllofOptionalApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllofOptionalMultipartFormData) SetFake() {
+	var unwrapped OptRobot
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReferencedAllofOptionalMultipartFormData(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *Robot) SetFake() {
 	{
 		{
