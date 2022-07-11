@@ -18,7 +18,7 @@ type padLine struct {
 func log10(val int) (r int) {
 	for val >= 10 {
 		r++
-		val = val / 10
+		val /= 10
 	}
 	return r
 }
@@ -33,6 +33,9 @@ func (p padLine) Format(f fmt.State, verb rune) {
 	_, _ = f.Write(b)
 }
 
+// PrettyError prints given message with line number and file listing to the writer.
+//
+// The context parameter defines the number of lines to print before and after.
 func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, context int) error {
 	tw := w
 	const (
@@ -43,8 +46,8 @@ func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, cont
 	)
 
 	// Line starts from 1, but index starts from 0.
-	errLine := int(loc.Line) - 1
-	if len(l.data) == 0 || errLine <= 0 || errLine >= len(l.lines) {
+	errLine := loc.Line - 1
+	if len(l.data) == 0 || errLine < 0 || errLine >= len(l.lines) {
 		return errors.New("line number is out of range")
 	}
 	plainColor := color.New(color.Reset)
@@ -110,7 +113,7 @@ func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, cont
 			leftPad,
 			strings.Repeat(" ", padNum+1),
 			verticalBorder,
-			strings.Repeat(" ", int(loc.Column-1)),
+			strings.Repeat(" ", loc.Column-1),
 			verticalPointer,
 		); err != nil {
 			return err
