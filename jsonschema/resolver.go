@@ -6,7 +6,7 @@ import (
 	"github.com/go-faster/errors"
 	"gopkg.in/yaml.v3"
 
-	"github.com/ogen-go/ogen/jsonpointer"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 )
 
 // RootResolver is ReferenceResolver implementation.

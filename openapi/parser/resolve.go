@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/jsonpointer"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/openapi"
 )
 
