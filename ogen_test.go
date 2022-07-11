@@ -69,13 +69,13 @@ func TestParse(t *testing.T) {
 		a.NoError(err)
 
 		{
-			jsonToJsonOutput, err := json.Marshal(jsonSpec)
+			jsonOutput, err := json.Marshal(jsonSpec)
 			a.NoError(err)
 
-			yamlToJsonOutput, err := json.Marshal(yamlSpec)
+			yamlOutput, err := json.Marshal(yamlSpec)
 			a.NoError(err)
 
-			a.JSONEq(string(jsonToJsonOutput), string(yamlToJsonOutput))
+			a.JSONEq(string(jsonOutput), string(yamlOutput))
 		}
 	}
 

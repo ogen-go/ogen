@@ -1,10 +1,10 @@
 package ogen
 
 import (
+	"encoding/json"
 	"fmt"
 	"testing"
 
-	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v3"
 )

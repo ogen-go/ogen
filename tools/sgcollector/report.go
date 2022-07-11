@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"crypto/sha256"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"text/tabwriter"
 
 	"github.com/go-faster/errors"
-	"github.com/go-json-experiment/json"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -40,14 +40,7 @@ func (r *Reporter) run(ctx context.Context, path string) error {
 			}
 
 			if !r.stage.OnlyCounter() {
-				opts := json.MarshalOptions{}
-
-				data, err := opts.Marshal(json.EncodeOptions{
-					Indent: "\t",
-					// Some schemas contain invalid UTF-8 -> invalid JSON, so we need to encode
-					// them anyway.
-					AllowInvalidUTF8: true,
-				}, report)
+				data, err := json.MarshalIndent(report, "", "\t")
 				if err != nil {
 					return errors.Wrap(err, "encode error")
 				}
