@@ -14,9 +14,15 @@ type UnimplementedHandler struct {}
 //
 {{- template "godoc_def" $op.GoDoc }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.Type.Go }}, _ error) {
-	return r, ht.ErrNotImplemented
-}
+	{{- if $op.Responses.BlankType }}
+	func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (error) {
+		return ht.ErrNotImplemented
+	}
+	{{- else }}
+	func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.Type.Go }}, _ error) {
+		return r, ht.ErrNotImplemented
+	}
+	{{- end }}
 {{- end }}
 {{- if $.Error }}
 // NewError creates {{ $.ErrorType.Go }} from error returned by handler.

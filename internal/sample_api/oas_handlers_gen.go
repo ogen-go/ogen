@@ -420,7 +420,8 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	}
 	defer close()
 
-	response, err := s.h.OneofBug(ctx, request)
+	err = s.h.OneofBug(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -429,7 +430,8 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		return
 	}
 
-	if err := encodeOneofBugResponse(response, w, span); err != nil {
+	if err := encodeOneofBugResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -1152,7 +1154,8 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	}
 	defer close()
 
-	response, err := s.h.TestFloatValidation(ctx, request)
+	err = s.h.TestFloatValidation(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -1161,7 +1164,8 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		return
 	}
 
-	if err := encodeTestFloatValidationResponse(response, w, span); err != nil {
+	if err := encodeTestFloatValidationResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

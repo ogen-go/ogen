@@ -139,6 +139,25 @@ type Responses struct {
 	Default    *Response
 }
 
+func (r *Responses) BlankType() bool {
+	if r.Default != nil || len(r.StatusCode) > 1 {
+		return false
+	}
+
+	if len(r.StatusCode) == 0 {
+		panic("unreachable")
+	}
+
+	for _, r := range r.StatusCode {
+		tt := r.NoContent
+		if tt != nil && tt.IsStruct() && len(tt.Fields) == 0 {
+			return true
+		}
+	}
+
+	return false
+}
+
 type Response struct {
 	NoContent *Type
 	Contents  map[ContentType]*Type

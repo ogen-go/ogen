@@ -51,7 +51,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // TestFormURLEncoded invokes testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
-func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res TestFormURLEncodedOK, err error) {
+func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
@@ -76,27 +76,26 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestFormURLEncodedRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTestFormURLEncodedResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTestFormURLEncodedResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TestMultipart invokes testMultipart operation.
 //
 // POST /testMultipart
-func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestMultipartOK, err error) {
+func (c *Client) TestMultipart(ctx context.Context, request TestForm) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
@@ -121,21 +120,20 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestMultipartRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTestMultipartResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTestMultipartResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TestMultipartUpload invokes testMultipartUpload operation.
@@ -194,14 +192,14 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 // TestShareFormSchema invokes testShareFormSchema operation.
 //
 // POST /testShareFormSchema
-func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res TestShareFormSchemaOK, err error) {
+func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (err error) {
 	switch request := request.(type) {
 	case *SharedRequest:
 		// Validation is not required for this type.
 	case *SharedRequestForm:
 		// Validation is not required for this type.
 	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+		return errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -227,19 +225,18 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestShareFormSchemaRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTestShareFormSchemaResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTestShareFormSchemaResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }

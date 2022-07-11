@@ -24842,7 +24842,7 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 // LogFileHandler invokes logFileHandler operation.
 //
 // GET /logs/{logpath}
-func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (res LogFileHandlerUnauthorized, err error) {
+func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileHandler"),
@@ -24874,7 +24874,7 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Logpath))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -24882,27 +24882,26 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
 	if err := c.securityBearerToken(ctx, "LogFileHandler", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return errors.Wrap(err, "security")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeLogFileHandlerResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeLogFileHandlerResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // LogFileListHandler invokes logFileListHandler operation.
 //
 // GET /logs/
-func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerUnauthorized, err error) {
+func (c *Client) LogFileListHandler(ctx context.Context) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileListHandler"),
@@ -24928,21 +24927,20 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
 	if err := c.securityBearerToken(ctx, "LogFileListHandler", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return errors.Wrap(err, "security")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeLogFileListHandlerResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeLogFileListHandlerResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReadAdmissionregistrationV1MutatingWebhookConfiguration invokes readAdmissionregistrationV1MutatingWebhookConfiguration operation.

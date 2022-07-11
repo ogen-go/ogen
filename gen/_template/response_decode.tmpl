@@ -4,28 +4,53 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}
-func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Responses.Type.Go }}, err error) {
-	switch resp.StatusCode {
-	{{- range $statusCode, $response := $op.Responses.StatusCode }}{{/* Range over responses */}}
-	case {{ $statusCode }}:
-		{{- template "decode_response" response_elem $response $op.Responses.Type.IsInterface }}
-	{{- end }}
-	default:
-	{{- if $op.Responses.Default }}
-		{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.Type.IsInterface }}
-	{{- else if $.Error }}
-		defRes, err := func() (res {{ $.ErrorType.Go }}, err error) {
-			{{- template "decode_response" response_elem $.Error false }}
-		}()
-		if err != nil {
-			return res, errors.Wrap(err, "default")
+	{{- if $op.Responses.BlankType }}
+	func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (err error) {
+		switch resp.StatusCode {
+		{{- range $statusCode, $response := $op.Responses.StatusCode }}
+		case {{ $statusCode }}:
+			return nil
+		{{- end }}
+		default:
+		{{- if $op.Responses.Default }}
+			{{ errorf "unreachable" }}
+		{{- else if $.Error }}
+			defRes, err := func() (res {{ $.ErrorType.Go }}, err error) {
+				{{- template "decode_response" response_elem $.Error false }}
+			}()
+			if err != nil {
+				return errors.Wrap(err, "default")
+			}
+			return errors.Wrap(&defRes, "error")
+		{{- else }}
+			return validate.UnexpectedStatusCode(resp.StatusCode)
+		{{- end }}
 		}
-		return res, errors.Wrap(&defRes, "error")
-	{{- else }}
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
-	{{- end }}
 	}
-}
+	{{- else }}
+	func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Responses.Type.Go }}, err error) {
+		switch resp.StatusCode {
+		{{- range $statusCode, $response := $op.Responses.StatusCode }}{{/* Range over responses */}}
+		case {{ $statusCode }}:
+			{{- template "decode_response" response_elem $response $op.Responses.Type.IsInterface }}
+		{{- end }}
+		default:
+		{{- if $op.Responses.Default }}
+			{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.Type.IsInterface }}
+		{{- else if $.Error }}
+			defRes, err := func() (res {{ $.ErrorType.Go }}, err error) {
+				{{- template "decode_response" response_elem $.Error false }}
+			}()
+			if err != nil {
+				return res, errors.Wrap(err, "default")
+			}
+			return res, errors.Wrap(&defRes, "error")
+		{{- else }}
+			return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		{{- end }}
+		}
+	}
+	{{- end }}
 {{- end }}
 {{ end }}
 

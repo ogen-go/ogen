@@ -316,12 +316,12 @@ func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span)
 		}
 	}
 }
-func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugOK, err error) {
+func decodeOneofBugResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return OneofBugOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodePatternRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res PatternRecursiveMap, err error) {
@@ -876,12 +876,12 @@ func decodeTestContentParameterResponse(resp *http.Response, span trace.Span) (r
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (res TestFloatValidationOK, err error) {
+func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return TestFloatValidationOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeTestNullableOneofsResponse(resp *http.Response, span trace.Span) (res TestNullableOneofsRes, err error) {

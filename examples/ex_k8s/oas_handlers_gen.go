@@ -8017,7 +8017,8 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.LogFileHandler(ctx, params)
+	err = s.h.LogFileHandler(ctx, params)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -8026,7 +8027,8 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	if err := encodeLogFileHandlerResponse(response, w, span); err != nil {
+	if err := encodeLogFileHandlerResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -8063,7 +8065,8 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		return
 	}
 
-	response, err := s.h.LogFileListHandler(ctx)
+	err = s.h.LogFileListHandler(ctx)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -8072,7 +8075,8 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		return
 	}
 
-	if err := encodeLogFileListHandlerResponse(response, w, span); err != nil {
+	if err := encodeLogFileListHandlerResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

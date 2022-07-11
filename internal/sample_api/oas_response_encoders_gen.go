@@ -174,7 +174,7 @@ func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.Res
 	return nil
 
 }
-func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
+func encodeOneofBugResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
@@ -478,7 +478,7 @@ func encodeTestContentParameterResponse(response string, w http.ResponseWriter, 
 	return nil
 
 }
-func encodeTestFloatValidationResponse(response TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
+func encodeTestFloatValidationResponse(w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil

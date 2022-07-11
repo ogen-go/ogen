@@ -62,7 +62,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
@@ -94,7 +94,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -109,7 +109,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -124,7 +124,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -133,16 +133,15 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsAddSelectedRepoToOrgSecret invokes actions/add-selected-repo-to-org-secret operation.
@@ -247,7 +246,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
+func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
@@ -279,7 +278,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -294,7 +293,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -309,7 +308,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -318,16 +317,15 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsApproveWorkflowRun invokes actions/approve-workflow-run operation.
@@ -1334,7 +1332,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res ActionsDeleteArtifactNoContent, err error) {
+func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-artifact"),
@@ -1366,7 +1364,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1381,7 +1379,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1396,7 +1394,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ArtifactID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1405,16 +1403,15 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteArtifactResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteArtifactResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteEnvironmentSecret invokes actions/delete-environment-secret operation.
@@ -1424,7 +1421,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 // permission to use this endpoint.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
+func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-environment-secret"),
@@ -1456,7 +1453,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1471,7 +1468,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1486,7 +1483,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1495,16 +1492,15 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteEnvironmentSecretResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteEnvironmentSecretResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteOrgSecret invokes actions/delete-org-secret operation.
@@ -1514,7 +1510,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 // organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
-func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res ActionsDeleteOrgSecretNoContent, err error) {
+func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-org-secret"),
@@ -1546,7 +1542,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1561,7 +1557,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1570,16 +1566,15 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteOrgSecretResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteOrgSecretResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteRepoSecret invokes actions/delete-repo-secret operation.
@@ -1589,7 +1584,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 // permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res ActionsDeleteRepoSecretNoContent, err error) {
+func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-repo-secret"),
@@ -1621,7 +1616,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1636,7 +1631,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1651,7 +1646,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1660,16 +1655,15 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteRepoSecretResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteRepoSecretResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteSelfHostedRunnerFromOrg invokes actions/delete-self-hosted-runner-from-org operation.
@@ -1679,7 +1673,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
-func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
@@ -1711,7 +1705,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1726,7 +1720,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1735,16 +1729,15 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteSelfHostedRunnerFromRepo invokes actions/delete-self-hosted-runner-from-repo operation.
@@ -1755,7 +1748,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 // scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
@@ -1787,7 +1780,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1802,7 +1795,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1817,7 +1810,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1826,16 +1819,15 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteSelfHostedRunnerGroupFromOrg invokes actions/delete-self-hosted-runner-group-from-org operation.
@@ -1847,7 +1839,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
@@ -1879,7 +1871,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1894,7 +1886,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1903,16 +1895,15 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteWorkflowRun invokes actions/delete-workflow-run operation.
@@ -1924,7 +1915,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res ActionsDeleteWorkflowRunNoContent, err error) {
+func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run"),
@@ -1956,7 +1947,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1971,7 +1962,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1986,7 +1977,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -1995,16 +1986,15 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteWorkflowRunResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteWorkflowRunResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDeleteWorkflowRunLogs invokes actions/delete-workflow-run-logs operation.
@@ -2014,7 +2004,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 // endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
+func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
@@ -2046,7 +2036,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2061,7 +2051,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2076,7 +2066,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2086,16 +2076,15 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDeleteWorkflowRunLogsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDeleteWorkflowRunLogsResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDisableSelectedRepositoryGithubActionsOrganization invokes actions/disable-selected-repository-github-actions-organization operation.
@@ -2108,7 +2097,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
@@ -2140,7 +2129,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2155,7 +2144,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2164,16 +2153,15 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsDownloadArtifact invokes actions/download-artifact operation.
@@ -2485,7 +2473,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
@@ -2517,7 +2505,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2532,7 +2520,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -2541,16 +2529,15 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsGetAllowedActionsOrganization invokes actions/get-allowed-actions-organization operation.
@@ -6013,7 +6000,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
@@ -6045,7 +6032,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6060,7 +6047,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6075,7 +6062,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6084,16 +6071,15 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsRemoveSelectedRepoFromOrgSecret invokes actions/remove-selected-repo-from-org-secret operation.
@@ -6198,7 +6184,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
+func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
@@ -6230,7 +6216,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6245,7 +6231,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6260,7 +6246,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6269,16 +6255,15 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsRetryWorkflow invokes actions/retry-workflow operation.
@@ -6488,7 +6473,7 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
@@ -6520,7 +6505,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6528,21 +6513,20 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetAllowedActionsOrganizationRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetAllowedActionsOrganizationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetAllowedActionsOrganizationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetAllowedActionsRepository invokes actions/set-allowed-actions-repository operation.
@@ -6559,7 +6543,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
@@ -6591,7 +6575,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6606,7 +6590,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6614,21 +6598,20 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetAllowedActionsRepositoryRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetAllowedActionsRepositoryResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetAllowedActionsRepositoryResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetGithubActionsPermissionsOrganization invokes actions/set-github-actions-permissions-organization operation.
@@ -6641,14 +6624,14 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions
-func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -6681,7 +6664,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6689,21 +6672,20 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetGithubActionsPermissionsRepository invokes actions/set-github-actions-permissions-repository operation.
@@ -6717,14 +6699,14 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
-func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -6757,7 +6739,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6772,7 +6754,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6780,21 +6762,20 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -6807,14 +6788,14 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -6847,7 +6828,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6862,7 +6843,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6870,21 +6851,20 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetSelectedReposForOrgSecret invokes actions/set-selected-repos-for-org-secret operation.
@@ -6896,14 +6876,14 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
+func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -6936,7 +6916,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6951,7 +6931,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.SecretName))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -6959,21 +6939,20 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetSelectedReposForOrgSecretRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetSelectedReposForOrgSecretResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetSelectedReposForOrgSecretResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization invokes actions/set-selected-repositories-enabled-github-actions-organization operation.
@@ -6986,14 +6965,14 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
-func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -7026,7 +7005,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -7034,21 +7013,20 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsSetSelfHostedRunnersInGroupForOrg invokes actions/set-self-hosted-runners-in-group-for-org operation.
@@ -7060,14 +7038,14 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
+func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -7100,7 +7078,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -7115,7 +7093,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -7123,21 +7101,20 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActionsUpdateSelfHostedRunnerGroupForOrg invokes actions/update-self-hosted-runner-group-for-org operation.
@@ -7308,7 +7285,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 // manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
 //
 // DELETE /repos/{owner}/{repo}/subscription
-func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
+func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-repo-subscription"),
@@ -7340,7 +7317,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -7355,7 +7332,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -7365,16 +7342,15 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeActivityDeleteRepoSubscriptionResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeActivityDeleteRepoSubscriptionResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ActivityDeleteThreadSubscription invokes activity/delete-thread-subscription operation.
@@ -11853,7 +11829,7 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 // to access this endpoint.
 //
 // DELETE /installation/token
-func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
+func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/revoke-installation-access-token"),
@@ -11880,16 +11856,15 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAppsRevokeInstallationAccessTokenResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeAppsRevokeInstallationAccessTokenResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // AppsScopeToken invokes apps/scope-token operation.
@@ -15231,7 +15206,7 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
@@ -15263,7 +15238,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15278,7 +15253,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15293,7 +15268,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15302,16 +15277,15 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise invokes enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
@@ -15321,7 +15295,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 // scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
@@ -15353,7 +15327,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15368,7 +15342,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15383,7 +15357,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15392,16 +15366,15 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminCreateRegistrationTokenForEnterprise invokes enterprise-admin/create-registration-token-for-enterprise operation.
@@ -15615,7 +15588,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
@@ -15647,7 +15620,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15662,7 +15635,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.ScimGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15671,16 +15644,15 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
@@ -15690,7 +15662,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
@@ -15722,7 +15694,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15737,7 +15709,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15746,16 +15718,15 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise invokes enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
@@ -15764,7 +15735,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
@@ -15796,7 +15767,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15811,7 +15782,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15820,16 +15791,15 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminDeleteUserFromEnterprise invokes enterprise-admin/delete-user-from-enterprise operation.
@@ -15838,7 +15808,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
@@ -15870,7 +15840,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15885,7 +15855,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.ScimUserID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15894,16 +15864,15 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
@@ -15915,7 +15884,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
@@ -15947,7 +15916,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15962,7 +15931,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -15971,16 +15940,15 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise invokes enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
@@ -15992,7 +15960,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
@@ -16024,7 +15992,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -16039,7 +16007,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -16048,16 +16016,15 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminGetAllowedActionsEnterprise invokes enterprise-admin/get-allowed-actions-enterprise operation.
@@ -17679,7 +17646,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
@@ -17711,7 +17678,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17726,7 +17693,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17741,7 +17708,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.OrgID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17750,16 +17717,15 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise invokes enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
@@ -17769,7 +17735,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
@@ -17801,7 +17767,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17816,7 +17782,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17831,7 +17797,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17840,16 +17806,15 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminSetAllowedActionsEnterprise invokes enterprise-admin/set-allowed-actions-enterprise operation.
@@ -17861,7 +17826,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
@@ -17893,7 +17858,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17901,21 +17866,20 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminSetGithubActionsPermissionsEnterprise invokes enterprise-admin/set-github-actions-permissions-enterprise operation.
@@ -17924,14 +17888,14 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
-func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -17964,7 +17928,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -17972,21 +17936,20 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminSetInformationForProvisionedEnterpriseGroup invokes enterprise-admin/set-information-for-provisioned-enterprise-group operation.
@@ -18179,14 +18142,14 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -18219,7 +18182,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -18234,7 +18197,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -18242,21 +18205,20 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise invokes enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
@@ -18268,14 +18230,14 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
-func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -18308,7 +18270,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -18316,21 +18278,20 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise invokes enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
@@ -18339,14 +18300,14 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -18379,7 +18340,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Enterprise))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -18394,7 +18355,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RunnerGroupID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -18402,21 +18363,20 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // EnterpriseAdminUpdateAttributeForEnterpriseGroup invokes enterprise-admin/update-attribute-for-enterprise-group operation.
@@ -21619,7 +21579,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 // Removes any interaction restrictions from your public repositories.
 //
 // DELETE /user/interaction-limits
-func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
@@ -21646,16 +21606,15 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // InteractionsRemoveRestrictionsForOrg invokes interactions/remove-restrictions-for-org operation.
@@ -21664,7 +21623,7 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 // be an organization owner to remove restrictions.
 //
 // DELETE /orgs/{org}/interaction-limits
-func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
@@ -21696,7 +21655,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -21706,16 +21665,15 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeInteractionsRemoveRestrictionsForOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeInteractionsRemoveRestrictionsForOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // InteractionsRemoveRestrictionsForRepo invokes interactions/remove-restrictions-for-repo operation.
@@ -22547,7 +22505,7 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 // Delete an issue comment.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res IssuesDeleteCommentNoContent, err error) {
+func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-comment"),
@@ -22579,7 +22537,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -22594,7 +22552,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -22609,7 +22567,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -22618,16 +22576,15 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeIssuesDeleteCommentResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeIssuesDeleteCommentResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // IssuesDeleteLabel invokes issues/delete-label operation.
@@ -22635,7 +22592,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 // Delete a label.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
-func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res IssuesDeleteLabelNoContent, err error) {
+func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-label"),
@@ -22667,7 +22624,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -22682,7 +22639,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -22697,7 +22654,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Name))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -22706,16 +22663,15 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeIssuesDeleteLabelResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeIssuesDeleteLabelResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // IssuesDeleteMilestone invokes issues/delete-milestone operation.
@@ -26489,7 +26445,7 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 // Stop an import for a repository.
 //
 // DELETE /repos/{owner}/{repo}/import
-func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res MigrationsCancelImportNoContent, err error) {
+func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/cancel-import"),
@@ -26521,7 +26477,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -26536,7 +26492,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -26546,16 +26502,15 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeMigrationsCancelImportResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeMigrationsCancelImportResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // MigrationsDeleteArchiveForAuthenticatedUser invokes migrations/delete-archive-for-authenticated-user operation.
@@ -32287,7 +32242,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 // Remove public organization membership for the authenticated user.
 //
 // DELETE /orgs/{org}/public_members/{username}
-func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
+func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
@@ -32319,7 +32274,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -32334,7 +32289,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -32343,16 +32298,15 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // OrgsRemoveSamlSSOAuthorization invokes orgs/remove-saml-sso-authorization operation.
@@ -32620,7 +32574,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 // Unblock a user from an organization.
 //
 // DELETE /orgs/{org}/blocks/{username}
-func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res OrgsUnblockUserNoContent, err error) {
+func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/unblock-user"),
@@ -32652,7 +32606,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -32667,7 +32621,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -32676,16 +32630,15 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeOrgsUnblockUserResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeOrgsUnblockUserResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // OrgsUpdateMembershipForAuthenticatedUser invokes orgs/update-membership-for-authenticated-user operation.
@@ -41302,7 +41255,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 // Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res ReactionsDeleteForCommitCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
@@ -41334,7 +41287,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41349,7 +41302,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41364,7 +41317,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41379,7 +41332,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41388,16 +41341,15 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReactionsDeleteForCommitCommentResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReactionsDeleteForCommitCommentResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReactionsDeleteForIssue invokes reactions/delete-for-issue operation.
@@ -41407,7 +41359,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 // Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res ReactionsDeleteForIssueNoContent, err error) {
+func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue"),
@@ -41439,7 +41391,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41454,7 +41406,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41469,7 +41421,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.IssueNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41484,7 +41436,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41493,16 +41445,15 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReactionsDeleteForIssueResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReactionsDeleteForIssueResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReactionsDeleteForIssueComment invokes reactions/delete-for-issue-comment operation.
@@ -41512,7 +41463,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 // Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res ReactionsDeleteForIssueCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
@@ -41544,7 +41495,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41559,7 +41510,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41574,7 +41525,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41589,7 +41540,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41598,16 +41549,15 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReactionsDeleteForIssueCommentResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReactionsDeleteForIssueCommentResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReactionsDeleteForPullRequestComment invokes reactions/delete-for-pull-request-comment operation.
@@ -41618,7 +41568,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 // com/rest/reference/pulls#review-comments).
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
@@ -41650,7 +41600,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41665,7 +41615,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41680,7 +41630,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41695,7 +41645,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41704,16 +41654,15 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReactionsDeleteForPullRequestCommentResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReactionsDeleteForPullRequestCommentResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReactionsDeleteForTeamDiscussion invokes reactions/delete-for-team-discussion operation.
@@ -41726,7 +41675,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
+func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
@@ -41758,7 +41707,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41773,7 +41722,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41788,7 +41737,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41803,7 +41752,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41812,16 +41761,15 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReactionsDeleteForTeamDiscussionResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReactionsDeleteForTeamDiscussionResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReactionsDeleteForTeamDiscussionComment invokes reactions/delete-for-team-discussion-comment operation.
@@ -41834,7 +41782,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
@@ -41866,7 +41814,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41881,7 +41829,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41896,7 +41844,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41911,7 +41859,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41926,7 +41874,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReactionID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -41935,16 +41883,15 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReactionsDeleteForTeamDiscussionCommentResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReactionsDeleteForTeamDiscussionCommentResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReactionsDeleteLegacy invokes reactions/delete-legacy operation.
@@ -45748,7 +45695,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 // Disables the ability to restrict who can push to this branch.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res ReposDeleteAccessRestrictionsNoContent, err error) {
+func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-access-restrictions"),
@@ -45780,7 +45727,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -45795,7 +45742,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -45810,7 +45757,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -45820,16 +45767,15 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDeleteAccessRestrictionsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDeleteAccessRestrictionsResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDeleteAdminBranchProtection invokes repos/delete-admin-branch-protection operation.
@@ -45932,7 +45878,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 // You must authenticate using an access token with the repo scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
-func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res ReposDeleteAnEnvironmentNoContent, err error) {
+func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-an-environment"),
@@ -45964,7 +45910,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -45979,7 +45925,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -45994,7 +45940,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.EnvironmentName))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46003,16 +45949,15 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDeleteAnEnvironmentResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDeleteAnEnvironmentResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDeleteAutolink invokes repos/delete-autolink operation.
@@ -46387,7 +46332,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 // instead.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
-func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res ReposDeleteDeployKeyNoContent, err error) {
+func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deploy-key"),
@@ -46419,7 +46364,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46434,7 +46379,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46449,7 +46394,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.KeyID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46458,16 +46403,15 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDeleteDeployKeyResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDeleteDeployKeyResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDeleteDeployment invokes repos/delete-deployment operation.
@@ -46669,7 +46613,7 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 // Delete a repository invitation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res ReposDeleteInvitationNoContent, err error) {
+func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-invitation"),
@@ -46701,7 +46645,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46716,7 +46660,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46731,7 +46675,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.InvitationID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46740,16 +46684,15 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDeleteInvitationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDeleteInvitationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDeletePagesSite invokes repos/delete-pages-site operation.
@@ -46924,7 +46867,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 // Users with push access to the repository can delete a release.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
-func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res ReposDeleteReleaseNoContent, err error) {
+func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release"),
@@ -46956,7 +46899,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46971,7 +46914,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46986,7 +46929,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ReleaseID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -46995,16 +46938,15 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDeleteReleaseResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDeleteReleaseResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDeleteReleaseAsset invokes repos/delete-release-asset operation.
@@ -47012,7 +46954,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 // Delete a release asset.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res ReposDeleteReleaseAssetNoContent, err error) {
+func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release-asset"),
@@ -47044,7 +46986,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47059,7 +47001,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47074,7 +47016,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.AssetID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47083,16 +47025,15 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDeleteReleaseAssetResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDeleteReleaseAssetResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDeleteWebhook invokes repos/delete-webhook operation.
@@ -47190,7 +47131,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
-func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
+func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
@@ -47222,7 +47163,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47237,7 +47178,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47247,16 +47188,15 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDisableAutomatedSecurityFixesResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDisableAutomatedSecurityFixesResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDisableLfsForRepo invokes repos/disable-lfs-for-repo operation.
@@ -47264,7 +47204,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // DELETE /repos/{owner}/{repo}/lfs
-func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res ReposDisableLfsForRepoNoContent, err error) {
+func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
@@ -47296,7 +47236,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47311,7 +47251,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47321,16 +47261,15 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDisableLfsForRepoResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDisableLfsForRepoResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDisableVulnerabilityAlerts invokes repos/disable-vulnerability-alerts operation.
@@ -47341,7 +47280,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
-func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
+func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
@@ -47373,7 +47312,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47388,7 +47327,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47398,16 +47337,15 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposDisableVulnerabilityAlertsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposDisableVulnerabilityAlertsResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposDownloadTarballArchive invokes repos/download-tarball-archive operation.
@@ -47603,7 +47541,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
-func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
+func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
@@ -47635,7 +47573,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47650,7 +47588,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47660,16 +47598,15 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposEnableAutomatedSecurityFixesResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposEnableAutomatedSecurityFixesResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposEnableLfsForRepo invokes repos/enable-lfs-for-repo operation.
@@ -47754,7 +47691,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
-func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
+func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
@@ -47786,7 +47723,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47801,7 +47738,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -47811,16 +47748,15 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposEnableVulnerabilityAlertsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposEnableVulnerabilityAlertsResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposGet invokes repos/get operation.
@@ -55789,7 +55725,7 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 // Remove a repository collaborator.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
-func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res ReposRemoveCollaboratorNoContent, err error) {
+func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-collaborator"),
@@ -55821,7 +55757,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -55836,7 +55772,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -55851,7 +55787,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Username))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -55860,16 +55796,15 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposRemoveCollaboratorResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposRemoveCollaboratorResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposRemoveStatusCheckContexts invokes repos/remove-status-check-contexts operation.
@@ -55992,7 +55927,7 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
+func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-protection"),
@@ -56024,7 +55959,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -56039,7 +55974,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -56054,7 +55989,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Branch))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -56064,16 +55999,15 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReposRemoveStatusCheckProtectionResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReposRemoveStatusCheckProtectionResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReposRemoveTeamAccessRestrictions invokes repos/remove-team-access-restrictions operation.
@@ -60403,7 +60337,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 // com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -60417,7 +60351,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -60450,7 +60384,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -60465,7 +60399,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -60480,7 +60414,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -60495,28 +60429,27 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
 
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsAddOrUpdateRepoPermissionsLegacy invokes teams/add-or-update-repo-permissions-legacy operation.
@@ -61621,7 +61554,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
@@ -61653,7 +61586,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61668,7 +61601,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61683,7 +61616,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61698,7 +61631,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61707,16 +61640,15 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsDeleteDiscussionCommentInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsDeleteDiscussionCommentInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsDeleteDiscussionCommentLegacy invokes teams/delete-discussion-comment-legacy operation.
@@ -61730,7 +61662,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
@@ -61762,7 +61694,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61777,7 +61709,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61792,7 +61724,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.CommentNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61801,16 +61733,15 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsDeleteDiscussionCommentLegacyResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsDeleteDiscussionCommentLegacyResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsDeleteDiscussionInOrg invokes teams/delete-discussion-in-org operation.
@@ -61821,7 +61752,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-in-org"),
@@ -61853,7 +61784,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61868,7 +61799,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61883,7 +61814,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61892,16 +61823,15 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsDeleteDiscussionInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsDeleteDiscussionInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsDeleteDiscussionLegacy invokes teams/delete-discussion-legacy operation.
@@ -61915,7 +61845,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
-func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-legacy"),
@@ -61947,7 +61877,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61962,7 +61892,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.DiscussionNumber))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -61971,16 +61901,15 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsDeleteDiscussionLegacyResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsDeleteDiscussionLegacyResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsDeleteInOrg invokes teams/delete-in-org operation.
@@ -61992,7 +61921,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 // /organizations/{org_id}/team/{team_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
-func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res TeamsDeleteInOrgNoContent, err error) {
+func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-in-org"),
@@ -62024,7 +61953,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -62039,7 +61968,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -62048,16 +61977,15 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsDeleteInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsDeleteInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsDeleteLegacy invokes teams/delete-legacy operation.
@@ -65247,7 +65175,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res TeamsRemoveProjectInOrgNoContent, err error) {
+func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-in-org"),
@@ -65279,7 +65207,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65294,7 +65222,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65309,7 +65237,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.ProjectID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65318,16 +65246,15 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsRemoveProjectInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsRemoveProjectInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsRemoveProjectLegacy invokes teams/remove-project-legacy operation.
@@ -65421,7 +65348,7 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res TeamsRemoveRepoInOrgNoContent, err error) {
+func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-in-org"),
@@ -65453,7 +65380,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Org))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65468,7 +65395,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.TeamSlug))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65483,7 +65410,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65498,7 +65425,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65507,16 +65434,15 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsRemoveRepoInOrgResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsRemoveRepoInOrgResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsRemoveRepoLegacy invokes teams/remove-repo-legacy operation.
@@ -65532,7 +65458,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
-func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res TeamsRemoveRepoLegacyNoContent, err error) {
+func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-legacy"),
@@ -65564,7 +65490,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.TeamID))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65579,7 +65505,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Owner))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65594,7 +65520,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Repo))
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			return errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -65603,16 +65529,15 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTeamsRemoveRepoLegacyResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTeamsRemoveRepoLegacyResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TeamsUpdateDiscussionCommentInOrg invokes teams/update-discussion-comment-in-org operation.

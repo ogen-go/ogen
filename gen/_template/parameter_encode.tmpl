@@ -16,7 +16,7 @@ u := uri.Clone(c.serverURL)
 		if err := func() error {
 			{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
 		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
+			{{ template "client_return_stmt" $ }} errors.Wrap(err, "encode path")
 		}
 		u.Path += e.Result()
 	}
@@ -48,7 +48,7 @@ q := uri.NewQueryEncoder()
 		    {{- template "uri/encode" $el }}
 		{{- end }}
 	}); err != nil {
-		return res, errors.Wrap(err, "encode query")
+		{{ template "client_return_stmt" $ }} errors.Wrap(err, "encode query")
 	}
 }
 {{- end }}
@@ -75,7 +75,7 @@ h := uri.NewHeaderEncoder(r.Header)
 		    {{- template "uri/encode" $el }}
 		{{- end }}
 	}); err != nil {
-		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
+		{{ template "client_return_stmt" $ }} errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
 	}
 }
 {{- end }}

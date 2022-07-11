@@ -15,11 +15,11 @@ type Handler interface {
 	// TestFormURLEncoded implements testFormURLEncoded operation.
 	//
 	// POST /testFormURLEncoded
-	TestFormURLEncoded(ctx context.Context, req TestForm) (TestFormURLEncodedOK, error)
+	TestFormURLEncoded(ctx context.Context, req TestForm) error
 	// TestMultipart implements testMultipart operation.
 	//
 	// POST /testMultipart
-	TestMultipart(ctx context.Context, req TestForm) (TestMultipartOK, error)
+	TestMultipart(ctx context.Context, req TestForm) error
 	// TestMultipartUpload implements testMultipartUpload operation.
 	//
 	// POST /testMultipartUpload
@@ -27,7 +27,7 @@ type Handler interface {
 	// TestShareFormSchema implements testShareFormSchema operation.
 	//
 	// POST /testShareFormSchema
-	TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) (TestShareFormSchemaOK, error)
+	TestShareFormSchema(ctx context.Context, req TestShareFormSchemaReq) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

@@ -120,12 +120,12 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response, span t
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response, span trace.Span) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
+func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return APICaptchaInvisibleRecaptchaMobileGetOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response, span trace.Span) (res Captcha, err error) {
@@ -160,12 +160,12 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response, span trace.Span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response, span trace.Span) (res APICaptchaRecaptchaMobileGetOK, err error) {
+func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return APICaptchaRecaptchaMobileGetOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeAPIDislikeGetResponse(resp *http.Response, span trace.Span) (res Like, err error) {

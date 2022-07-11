@@ -45,7 +45,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 //
 {{- template "godoc_def" $op.GoDoc }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
+func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ if not $op.Responses.BlankType }}res {{ $op.Responses.Type.Go }}, {{ end }}err error) {
 	{{- if $op.Request }}{{/* Request validation */}}
 		{{- if $op.Request.Type.IsInterface }}
 			switch request := request.(type) {
@@ -55,21 +55,21 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 					if err := func() error {
 						{{- template "validate" elem $type "request" }}
 					}(); err != nil {
-						return res, errors.Wrap(err, "validate")
+						{{ template "client_return_stmt" $op }} errors.Wrap(err, "validate")
 					}
 				{{- else }}
 				// Validation is not required for this type.
 				{{- end }}
 			{{- end }}
 			default:
-				return res, errors.Errorf("unexpected request type: %T", request)
+				{{ template "client_return_stmt" $op }}  errors.Errorf("unexpected request type: %T", request)
 			}
 		{{- else }}
 			{{- if $op.Request.Type.NeedValidation }}
 				if err := func() error {
 					{{- template "validate" elem $op.Request.Type "request" }}
 				}(); err != nil {
-					return res, errors.Wrap(err, "validate")
+					{{ template "client_return_stmt" $op }} errors.Wrap(err, "validate")
 				}
 			{{- end }}
 		{{- end }}
@@ -105,7 +105,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
 	{{- if $op.Request }}
 	if err := encode{{ $op.Name }}Request(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		{{ template "client_return_stmt" $op }} errors.Wrap(err, "encode request")
 	}
 	{{- end }}
 
@@ -116,22 +116,30 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- template "encode_cookie_params" $op }}
 	{{- range $s := $op.Security }}
 	if err := c.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r); err != nil {
-		return res, errors.Wrap(err, "security")
+		{{ template "client_return_stmt" $op }} errors.Wrap(err, "security")
 	}
 	{{- end }}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		{{ template "client_return_stmt" $op }} errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	{{ if $op.Responses.BlankType }}
+	if err := decode{{ $op.Name }}Response(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
+	}
+
+	return nil
+	{{- else }}
 	result, err := decode{{ $op.Name }}Response(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
 
 	return result, nil
+	{{- end }}
 }
 {{ end }}
 {{ end }}
@@ -156,3 +164,8 @@ r.AddCookie(&http.Cookie{
 }
 {{- end }}{{/* Range over params */}}
 {{ end }}
+
+{{- define "client_return_stmt" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
+{{ if $.Responses.BlankType }}return {{ else }}return res, {{ end }}
+{{- end }}

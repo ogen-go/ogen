@@ -606,14 +606,14 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 // OneofBug invokes oneofBug operation.
 //
 // POST /oneofBug
-func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugOK, err error) {
+func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -639,21 +639,20 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeOneofBugRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeOneofBugResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeOneofBugResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // PatternRecursiveMapGet invokes GET /patternRecursiveMap operation.
@@ -1586,14 +1585,14 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 // TestFloatValidation invokes testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValidation) (res TestFloatValidationOK, err error) {
+func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValidation) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -1619,21 +1618,20 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeTestFloatValidationRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeTestFloatValidationResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeTestFloatValidationResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // TestNullableOneofs invokes testNullableOneofs operation.

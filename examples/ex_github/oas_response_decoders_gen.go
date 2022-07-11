@@ -17,12 +17,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
@@ -35,12 +35,12 @@ func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response, span t
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
+func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsAddSelfHostedRunnerToGroupForOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsApproveWorkflowRunRes, err error) {
@@ -421,84 +421,84 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response,
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDeleteArtifactNoContent, err error) {
+func decodeActionsDeleteArtifactResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteArtifactNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
+func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteEnvironmentSecretNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteOrgSecretNoContent, err error) {
+func decodeActionsDeleteOrgSecretResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteOrgSecretNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteRepoSecretResponse(resp *http.Response, span trace.Span) (res ActionsDeleteRepoSecretNoContent, err error) {
+func decodeActionsDeleteRepoSecretResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteRepoSecretNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteSelfHostedRunnerFromOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteSelfHostedRunnerFromRepoNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response, span trace.Span) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteWorkflowRunResponse(resp *http.Response, span trace.Span) (res ActionsDeleteWorkflowRunNoContent, err error) {
+func decodeActionsDeleteWorkflowRunResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteWorkflowRunNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
+func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDeleteWorkflowRunLogsNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsDownloadArtifactResponse(resp *http.Response, span trace.Span) (res ActionsDownloadArtifactFound, err error) {
@@ -621,12 +621,12 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response, span trace.Span) (res SelectedActions, err error) {
@@ -2168,12 +2168,12 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (r
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
@@ -2186,12 +2186,12 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response, s
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (res ActionsRetryWorkflowCreated, err error) {
@@ -2266,68 +2266,68 @@ func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response, sp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
+func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetAllowedActionsOrganizationNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response, span trace.Span) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
+func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetAllowedActionsRepositoryNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetGithubActionsPermissionsOrganizationNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response, span trace.Span) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetGithubActionsPermissionsRepositoryNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response, span trace.Span) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
+func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetSelectedReposForOrgSecretNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response, span trace.Span) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActionsSetSelfHostedRunnersInGroupForOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response, span trace.Span) (res RunnerGroupsOrg, err error) {
@@ -2450,12 +2450,12 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response, span trace.Span) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
+func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ActivityDeleteRepoSubscriptionNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span trace.Span) (res ActivityDeleteThreadSubscriptionRes, err error) {
@@ -6628,12 +6628,12 @@ func decodeAppsResetTokenResponse(resp *http.Response, span trace.Span) (res App
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response, span trace.Span) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
+func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return AppsRevokeInstallationAccessTokenNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeAppsScopeTokenResponse(resp *http.Response, span trace.Span) (res AppsScopeTokenRes, err error) {
@@ -8738,20 +8738,20 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *http.Response, span trace.Span) (res AuthenticationToken, err error) {
@@ -8850,52 +8850,52 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDeleteUserFromEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res SelectedActions, err error) {
@@ -9524,36 +9524,36 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetAllowedActionsEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp *http.Response, span trace.Span) (res ScimEnterpriseGroup, err error) {
@@ -9620,28 +9620,28 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response, span trace.Span) (res ScimEnterpriseGroup, err error) {
@@ -12846,20 +12846,20 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response, span trace.Span) (r
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return InteractionsRemoveRestrictionsForAuthenticatedUserNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return InteractionsRemoveRestrictionsForOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeInteractionsRemoveRestrictionsForRepoResponse(resp *http.Response, span trace.Span) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
@@ -13686,20 +13686,20 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response, span trace.Span) (
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeIssuesDeleteCommentResponse(resp *http.Response, span trace.Span) (res IssuesDeleteCommentNoContent, err error) {
+func decodeIssuesDeleteCommentResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return IssuesDeleteCommentNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeIssuesDeleteLabelResponse(resp *http.Response, span trace.Span) (res IssuesDeleteLabelNoContent, err error) {
+func decodeIssuesDeleteLabelResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return IssuesDeleteLabelNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeIssuesDeleteMilestoneResponse(resp *http.Response, span trace.Span) (res IssuesDeleteMilestoneRes, err error) {
@@ -16301,12 +16301,12 @@ func decodeMetaRootResponse(resp *http.Response, span trace.Span) (res MetaRootO
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeMigrationsCancelImportResponse(resp *http.Response, span trace.Span) (res MigrationsCancelImportNoContent, err error) {
+func decodeMigrationsCancelImportResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return MigrationsCancelImportNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
@@ -21495,12 +21495,12 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response, span trace
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return OrgsRemovePublicMembershipForAuthenticatedUserNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response, span trace.Span) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
@@ -21655,12 +21655,12 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeOrgsUnblockUserResponse(resp *http.Response, span trace.Span) (res OrgsUnblockUserNoContent, err error) {
+func decodeOrgsUnblockUserResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return OrgsUnblockUserNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response, span trace.Span) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
@@ -29589,52 +29589,52 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response, s
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForCommitCommentNoContent, err error) {
+func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForCommitCommentNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReactionsDeleteForIssueResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForIssueNoContent, err error) {
+func decodeReactionsDeleteForIssueResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForIssueNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForIssueCommentNoContent, err error) {
+func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForIssueCommentNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
+func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForPullRequestCommentNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForTeamDiscussionNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReactionsDeleteForTeamDiscussionCommentNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (res ReactionsDeleteLegacyRes, err error) {
@@ -32959,12 +32959,12 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposDeleteAccessRestrictionsNoContent, err error) {
+func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteAccessRestrictionsNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response, span trace.Span) (res ReposDeleteAdminBranchProtectionRes, err error) {
@@ -33001,12 +33001,12 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDeleteAnEnvironmentResponse(resp *http.Response, span trace.Span) (res ReposDeleteAnEnvironmentNoContent, err error) {
+func decodeReposDeleteAnEnvironmentResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteAnEnvironmentNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposDeleteAutolinkResponse(resp *http.Response, span trace.Span) (res ReposDeleteAutolinkRes, err error) {
@@ -33145,12 +33145,12 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response, spa
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDeleteDeployKeyResponse(resp *http.Response, span trace.Span) (res ReposDeleteDeployKeyNoContent, err error) {
+func decodeReposDeleteDeployKeyResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteDeployKeyNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposDeleteDeploymentResponse(resp *http.Response, span trace.Span) (res ReposDeleteDeploymentRes, err error) {
@@ -33349,12 +33349,12 @@ func decodeReposDeleteFileResponse(resp *http.Response, span trace.Span) (res Re
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDeleteInvitationResponse(resp *http.Response, span trace.Span) (res ReposDeleteInvitationNoContent, err error) {
+func decodeReposDeleteInvitationResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteInvitationNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposDeletePagesSiteResponse(resp *http.Response, span trace.Span) (res ReposDeletePagesSiteRes, err error) {
@@ -33477,20 +33477,20 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response, s
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDeleteReleaseResponse(resp *http.Response, span trace.Span) (res ReposDeleteReleaseNoContent, err error) {
+func decodeReposDeleteReleaseResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteReleaseNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDeleteReleaseAssetResponse(resp *http.Response, span trace.Span) (res ReposDeleteReleaseAssetNoContent, err error) {
+func decodeReposDeleteReleaseAssetResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDeleteReleaseAssetNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposDeleteWebhookResponse(resp *http.Response, span trace.Span) (res ReposDeleteWebhookRes, err error) {
@@ -33527,28 +33527,28 @@ func decodeReposDeleteWebhookResponse(resp *http.Response, span trace.Span) (res
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
+func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDisableAutomatedSecurityFixesNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDisableLfsForRepoResponse(resp *http.Response, span trace.Span) (res ReposDisableLfsForRepoNoContent, err error) {
+func decodeReposDisableLfsForRepoResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDisableLfsForRepoNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
+func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposDisableVulnerabilityAlertsNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposDownloadTarballArchiveResponse(resp *http.Response, span trace.Span) (res ReposDownloadTarballArchiveFound, err error) {
@@ -33631,12 +33631,12 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response, span trace.S
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
+func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposEnableAutomatedSecurityFixesNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (res ReposEnableLfsForRepoRes, err error) {
@@ -33673,12 +33673,12 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response, span trace.Span) (
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
+func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposEnableVulnerabilityAlertsNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetRes, err error) {
@@ -39132,12 +39132,12 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response, span tr
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span) (res ReposRemoveCollaboratorNoContent, err error) {
+func decodeReposRemoveCollaboratorResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposRemoveCollaboratorNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response, span trace.Span) (res ReposRemoveStatusCheckContextsRes, err error) {
@@ -39224,12 +39224,12 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response, span trac
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response, span trace.Span) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
+func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return ReposRemoveStatusCheckProtectionNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response, span trace.Span) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
@@ -41893,12 +41893,12 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response,
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsAddOrUpdateRepoPermissionsInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response, span trace.Span) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
@@ -42429,44 +42429,44 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Respo
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionCommentInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionCommentLegacyNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
+func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
+func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteDiscussionLegacyNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsDeleteInOrgResponse(resp *http.Response, span trace.Span) (res TeamsDeleteInOrgNoContent, err error) {
+func decodeTeamsDeleteInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsDeleteInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeTeamsDeleteLegacyResponse(resp *http.Response, span trace.Span) (res TeamsDeleteLegacyRes, err error) {
@@ -44490,12 +44490,12 @@ func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response, span 
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveProjectInOrgNoContent, err error) {
+func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsRemoveProjectInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response, span trace.Span) (res TeamsRemoveProjectLegacyRes, err error) {
@@ -44584,20 +44584,20 @@ func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response, span trace.Span
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoInOrgNoContent, err error) {
+func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsRemoveRepoInOrgNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response, span trace.Span) (res TeamsRemoveRepoLegacyNoContent, err error) {
+func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 204:
-		return TeamsRemoveRepoLegacyNoContent{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response, span trace.Span) (res TeamDiscussionComment, err error) {

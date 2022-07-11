@@ -11,7 +11,7 @@ type Handler interface {
 	//
 	{{- template "godoc_def" $op.GoDoc }}
 	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.Type.Go }}, error)
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ if not $op.Responses.BlankType }}{{ $op.Responses.Type.Go }}, {{ end }}error)
 {{- end }}
 {{- if $.Error }}
 	// NewError creates {{ $.ErrorType.Go }} from error returned by handler.

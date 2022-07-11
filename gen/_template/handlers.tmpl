@@ -61,7 +61,11 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	defer close()
 	{{- end }}
 
+	{{ if $op.Responses.BlankType }}
+	err = s.h.{{$op.Name}}(ctx{{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
+	{{ else }}
 	response, err := s.h.{{$op.Name}}(ctx{{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
+	{{- end }}
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		span.RecordError(err)
@@ -84,7 +88,11 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		return
 	}
 
+	{{ if $op.Responses.BlankType }}
+	if err := encode{{ $op.Name }}Response(w, span); err != nil {
+	{{ else }}
 	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
+	{{- end }}
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

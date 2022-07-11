@@ -10,59 +10,59 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeNullableStringsResponse(resp *http.Response, span trace.Span) (res NullableStringsOK, err error) {
+func decodeNullableStringsResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return NullableStringsOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response, span trace.Span) (res ObjectsWithConflictingArrayPropertyOK, err error) {
+func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return ObjectsWithConflictingArrayPropertyOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response, span trace.Span) (res ObjectsWithConflictingPropertiesOK, err error) {
+func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return ObjectsWithConflictingPropertiesOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReferencedAllofResponse(resp *http.Response, span trace.Span) (res ReferencedAllofOK, err error) {
+func decodeReferencedAllofResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return ReferencedAllofOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeReferencedAllofOptionalResponse(resp *http.Response, span trace.Span) (res ReferencedAllofOptionalOK, err error) {
+func decodeReferencedAllofOptionalResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return ReferencedAllofOptionalOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeSimpleIntegerResponse(resp *http.Response, span trace.Span) (res SimpleIntegerOK, err error) {
+func decodeSimpleIntegerResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return SimpleIntegerOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeSimpleObjectsResponse(resp *http.Response, span trace.Span) (res SimpleObjectsOK, err error) {
+func decodeSimpleObjectsResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return SimpleObjectsOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }

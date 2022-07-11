@@ -201,7 +201,8 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 
 	var err error
 
-	response, err := s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+	err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -210,7 +211,8 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		return
 	}
 
-	if err := encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response, w, span); err != nil {
+	if err := encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -278,7 +280,8 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 
 	var err error
 
-	response, err := s.h.APICaptchaRecaptchaMobileGet(ctx)
+	err = s.h.APICaptchaRecaptchaMobileGet(ctx)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -287,7 +290,8 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 		return
 	}
 
-	if err := encodeAPICaptchaRecaptchaMobileGetResponse(response, w, span); err != nil {
+	if err := encodeAPICaptchaRecaptchaMobileGetResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

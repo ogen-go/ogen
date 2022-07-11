@@ -3,24 +3,32 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $op := $.Operations }}{{/* Range over all methods */}}
-func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- if eq (len $op.ListResponseTypes) 1 }}
+{{- range $op := $.Operations }}
+	{{- if $op.Responses.BlankType }}
+	func encode{{ $op.Name }}Response(w http.ResponseWriter, span trace.Span) error {
 		{{- range $info := $op.ListResponseTypes }}
 			{{- template "respond" $info }}
 		{{- end }}
+	}
 	{{- else }}
-		switch response := response.(type) {
-		{{- range $info := $op.ListResponseTypes }}
-			case *{{ $info.Type.Name }}:
-			{{- template "respond" $info }}
+	func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
+		{{- if eq (len $op.ListResponseTypes) 1 }}
+			{{- range $info := $op.ListResponseTypes }}
+				{{- template "respond" $info }}
+			{{- end }}
+		{{- else }}
+			switch response := response.(type) {
+			{{- range $info := $op.ListResponseTypes }}
+				case *{{ $info.Type.Name }}:
+				{{- template "respond" $info }}
+			{{- end }}
+			default:
+			return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
+			}
 		{{- end }}
-		default:
-		return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
-		}
+	}
 	{{- end }}
-}
-{{- end }}{{/* Range over all methods */}}
+{{- end }}
 
 {{- if $.Error }}
 func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, span trace.Span) error {

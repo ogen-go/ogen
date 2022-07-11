@@ -42,7 +42,8 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	}
 	defer close()
 
-	response, err := s.h.TestFormURLEncoded(ctx, request)
+	err = s.h.TestFormURLEncoded(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -51,7 +52,8 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		return
 	}
 
-	if err := encodeTestFormURLEncodedResponse(response, w, span); err != nil {
+	if err := encodeTestFormURLEncodedResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -88,7 +90,8 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 	}
 	defer close()
 
-	response, err := s.h.TestMultipart(ctx, request)
+	err = s.h.TestMultipart(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -97,7 +100,8 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	if err := encodeTestMultipartResponse(response, w, span); err != nil {
+	if err := encodeTestMultipartResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -180,7 +184,8 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 	}
 	defer close()
 
-	response, err := s.h.TestShareFormSchema(ctx, request)
+	err = s.h.TestShareFormSchema(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -189,7 +194,8 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		return
 	}
 
-	if err := encodeTestShareFormSchemaResponse(response, w, span); err != nil {
+	if err := encodeTestShareFormSchemaResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

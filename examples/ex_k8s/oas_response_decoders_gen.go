@@ -5251,20 +5251,20 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeLogFileHandlerResponse(resp *http.Response, span trace.Span) (res LogFileHandlerUnauthorized, err error) {
+func decodeLogFileHandlerResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 401:
-		return LogFileHandlerUnauthorized{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (res LogFileListHandlerUnauthorized, err error) {
+func decodeLogFileListHandlerResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 401:
-		return LogFileListHandlerUnauthorized{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response, span trace.Span) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {

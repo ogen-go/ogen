@@ -58,8 +58,8 @@ func (UnimplementedHandler) APICaptchaInvisibleRecaptchaIDGet(ctx context.Contex
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
-func (UnimplementedHandler) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (r APICaptchaInvisibleRecaptchaMobileGetOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) error {
+	return ht.ErrNotImplemented
 }
 
 // APICaptchaRecaptchaIDGet implements GET /api/captcha/recaptcha/id operation.
@@ -76,8 +76,8 @@ func (UnimplementedHandler) APICaptchaRecaptchaIDGet(ctx context.Context, params
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
-func (UnimplementedHandler) APICaptchaRecaptchaMobileGet(ctx context.Context) (r APICaptchaRecaptchaMobileGetOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) APICaptchaRecaptchaMobileGet(ctx context.Context) error {
+	return ht.ErrNotImplemented
 }
 
 // APIDislikeGet implements GET /api/dislike operation.

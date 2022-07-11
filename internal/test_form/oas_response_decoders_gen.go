@@ -14,20 +14,20 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (res TestFormURLEncodedOK, err error) {
+func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return TestFormURLEncodedOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (res TestMultipartOK, err error) {
+func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return TestMultipartOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (res TestMultipartUploadOK, err error) {
@@ -62,11 +62,11 @@ func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (re
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodeTestShareFormSchemaResponse(resp *http.Response, span trace.Span) (res TestShareFormSchemaOK, err error) {
+func decodeTestShareFormSchemaResponse(resp *http.Response, span trace.Span) (err error) {
 	switch resp.StatusCode {
 	case 200:
-		return TestShareFormSchemaOK{}, nil
+		return nil
 	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }

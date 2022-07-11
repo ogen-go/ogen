@@ -364,7 +364,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
-func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
+func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaMobileGet",
@@ -389,16 +389,15 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // APICaptchaRecaptchaIDGet invokes GET /api/captcha/recaptcha/id operation.
@@ -484,7 +483,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
-func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
+func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaMobileGet",
@@ -509,16 +508,15 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeAPICaptchaRecaptchaMobileGetResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeAPICaptchaRecaptchaMobileGetResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // APIDislikeGet invokes GET /api/dislike operation.

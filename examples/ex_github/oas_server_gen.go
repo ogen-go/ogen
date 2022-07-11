@@ -25,7 +25,7 @@ type Handler interface {
 	// scope to use this endpoint.
 	//
 	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
+	ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) error
 	// ActionsAddSelectedRepoToOrgSecret implements actions/add-selected-repo-to-org-secret operation.
 	//
 	// Adds a repository to an organization secret when the `visibility` for repository access is set to
@@ -46,7 +46,7 @@ type Handler interface {
 	// scope to use this endpoint.
 	//
 	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (ActionsAddSelfHostedRunnerToGroupForOrgNoContent, error)
+	ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) error
 	// ActionsApproveWorkflowRun implements actions/approve-workflow-run operation.
 	//
 	// Approves a workflow run for a pull request from a public fork of a first time contributor. For
@@ -315,7 +315,7 @@ type Handler interface {
 	// this endpoint.
 	//
 	// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (ActionsDeleteArtifactNoContent, error)
+	ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) error
 	// ActionsDeleteEnvironmentSecret implements actions/delete-environment-secret operation.
 	//
 	// Deletes a secret in an environment using the secret name. You must authenticate using an access
@@ -323,7 +323,7 @@ type Handler interface {
 	// permission to use this endpoint.
 	//
 	// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (ActionsDeleteEnvironmentSecretNoContent, error)
+	ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) error
 	// ActionsDeleteOrgSecret implements actions/delete-org-secret operation.
 	//
 	// Deletes a secret in an organization using the secret name. You must authenticate using an access
@@ -331,7 +331,7 @@ type Handler interface {
 	// organization permission to use this endpoint.
 	//
 	// DELETE /orgs/{org}/actions/secrets/{secret_name}
-	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (ActionsDeleteOrgSecretNoContent, error)
+	ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) error
 	// ActionsDeleteRepoSecret implements actions/delete-repo-secret operation.
 	//
 	// Deletes a secret in a repository using the secret name. You must authenticate using an access
@@ -339,7 +339,7 @@ type Handler interface {
 	// permission to use this endpoint.
 	//
 	// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (ActionsDeleteRepoSecretNoContent, error)
+	ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) error
 	// ActionsDeleteSelfHostedRunnerFromOrg implements actions/delete-self-hosted-runner-from-org operation.
 	//
 	// Forces the removal of a self-hosted runner from an organization. You can use this endpoint to
@@ -347,7 +347,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// DELETE /orgs/{org}/actions/runners/{runner_id}
-	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (ActionsDeleteSelfHostedRunnerFromOrgNoContent, error)
+	ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) error
 	// ActionsDeleteSelfHostedRunnerFromRepo implements actions/delete-self-hosted-runner-from-repo operation.
 	//
 	// Forces the removal of a self-hosted runner from a repository. You can use this endpoint to
@@ -356,7 +356,7 @@ type Handler interface {
 	// scope to use this endpoint.
 	//
 	// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (ActionsDeleteSelfHostedRunnerFromRepoNoContent, error)
+	ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) error
 	// ActionsDeleteSelfHostedRunnerGroupFromOrg implements actions/delete-self-hosted-runner-group-from-org operation.
 	//
 	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
@@ -366,7 +366,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, error)
+	ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) error
 	// ActionsDeleteWorkflowRun implements actions/delete-workflow-run operation.
 	//
 	// Delete a specific workflow run. Anyone with write access to the repository can use this endpoint.
@@ -376,7 +376,7 @@ type Handler interface {
 	// this endpoint.
 	//
 	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (ActionsDeleteWorkflowRunNoContent, error)
+	ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) error
 	// ActionsDeleteWorkflowRunLogs implements actions/delete-workflow-run-logs operation.
 	//
 	// Deletes all logs for a workflow run. You must authenticate using an access token with the `repo`
@@ -384,7 +384,7 @@ type Handler interface {
 	// endpoint.
 	//
 	// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (ActionsDeleteWorkflowRunLogsNoContent, error)
+	ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) error
 	// ActionsDisableSelectedRepositoryGithubActionsOrganization implements actions/disable-selected-repository-github-actions-organization operation.
 	//
 	// Removes a repository from the list of selected repositories that are enabled for GitHub Actions in
@@ -395,7 +395,7 @@ type Handler interface {
 	// GitHub Apps must have the `administration` organization permission to use this API.
 	//
 	// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, error)
+	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error
 	// ActionsDownloadArtifact implements actions/download-artifact operation.
 	//
 	// Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
@@ -442,7 +442,7 @@ type Handler interface {
 	// GitHub Apps must have the `administration` organization permission to use this API.
 	//
 	// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, error)
+	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error
 	// ActionsGetAllowedActionsOrganization implements actions/get-allowed-actions-organization operation.
 	//
 	// Gets the selected actions that are allowed in an organization. To use this endpoint, the
@@ -777,7 +777,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
+	ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) error
 	// ActionsRemoveSelectedRepoFromOrgSecret implements actions/remove-selected-repo-from-org-secret operation.
 	//
 	// Removes a repository from an organization secret when the `visibility` for repository access is
@@ -798,7 +798,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, error)
+	ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) error
 	// ActionsRetryWorkflow implements actions/retry-workflow operation.
 	//
 	// Retry your workflow run using its `id`. You must authenticate using an access token with the
@@ -829,7 +829,7 @@ type Handler interface {
 	// GitHub Apps must have the `administration` organization permission to use this API.
 	//
 	// PUT /orgs/{org}/actions/permissions/selected-actions
-	ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (ActionsSetAllowedActionsOrganizationNoContent, error)
+	ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) error
 	// ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
 	//
 	// Sets the actions that are allowed in a repository. To use this endpoint, the repository permission
@@ -844,7 +844,7 @@ type Handler interface {
 	// Apps must have the `administration` repository permission to use this API.
 	//
 	// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-	ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (ActionsSetAllowedActionsRepositoryNoContent, error)
+	ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) error
 	// ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
 	//
 	// Sets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
@@ -855,7 +855,7 @@ type Handler interface {
 	// GitHub Apps must have the `administration` organization permission to use this API.
 	//
 	// PUT /orgs/{org}/actions/permissions
-	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (ActionsSetGithubActionsPermissionsOrganizationNoContent, error)
+	ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) error
 	// ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
 	//
 	// Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions in the
@@ -867,7 +867,7 @@ type Handler interface {
 	// Apps must have the `administration` repository permission to use this API.
 	//
 	// PUT /repos/{owner}/{repo}/actions/permissions
-	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (ActionsSetGithubActionsPermissionsRepositoryNoContent, error)
+	ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) error
 	// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
 	//
 	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
@@ -878,7 +878,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, error)
+	ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) error
 	// ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
 	//
 	// Replaces all repositories for an organization secret when the `visibility` for repository access
@@ -888,7 +888,7 @@ type Handler interface {
 	// GitHub Apps must have the `secrets` organization permission to use this endpoint.
 	//
 	// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (ActionsSetSelectedReposForOrgSecretNoContent, error)
+	ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) error
 	// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
 	//
 	// Replaces the list of selected repositories that are enabled for GitHub Actions in an organization.
@@ -899,7 +899,7 @@ type Handler interface {
 	// GitHub Apps must have the `administration` organization permission to use this API.
 	//
 	// PUT /orgs/{org}/actions/permissions/repositories
-	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, error)
+	ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) error
 	// ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
 	//
 	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
@@ -909,7 +909,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (ActionsSetSelfHostedRunnersInGroupForOrgNoContent, error)
+	ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) error
 	// ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
 	//
 	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
@@ -933,7 +933,7 @@ type Handler interface {
 	// manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
 	//
 	// DELETE /repos/{owner}/{repo}/subscription
-	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (ActivityDeleteRepoSubscriptionNoContent, error)
+	ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) error
 	// ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
 	//
 	// Mutes all future notifications for a conversation until you comment on the thread or get an
@@ -1455,7 +1455,7 @@ type Handler interface {
 	// to access this endpoint.
 	//
 	// DELETE /installation/token
-	AppsRevokeInstallationAccessToken(ctx context.Context) (AppsRevokeInstallationAccessTokenNoContent, error)
+	AppsRevokeInstallationAccessToken(ctx context.Context) error
 	// AppsScopeToken implements apps/scope-token operation.
 	//
 	// Use a non-scoped user-to-server OAuth access token to create a repository scoped and/or permission
@@ -1914,7 +1914,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
+	EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
 	// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise implements enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 	//
 	// Adds a self-hosted runner to a runner group configured in an enterprise.
@@ -1922,7 +1922,7 @@ type Handler interface {
 	// scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, error)
+	EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) error
 	// EnterpriseAdminCreateRegistrationTokenForEnterprise implements enterprise-admin/create-registration-token-for-enterprise operation.
 	//
 	// Returns a token that you can pass to the `config` script. The token expires after one hour.
@@ -1964,7 +1964,7 @@ type Handler interface {
 	// change.
 	//
 	// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, error)
+	EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) error
 	// EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise implements enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
 	//
 	// Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to
@@ -1972,21 +1972,21 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, error)
+	EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) error
 	// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise implements enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 	//
 	// Deletes a self-hosted runner group for an enterprise.
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, error)
+	EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) error
 	// EnterpriseAdminDeleteUserFromEnterprise implements enterprise-admin/delete-user-from-enterprise operation.
 	//
 	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 	// change.
 	//
 	// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (EnterpriseAdminDeleteUserFromEnterpriseNoContent, error)
+	EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) error
 	// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
 	//
 	// Removes an organization from the list of selected organizations that are enabled for GitHub
@@ -1996,7 +1996,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, error)
+	EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) error
 	// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 	//
 	// Adds an organization to the list of selected organizations that are enabled for GitHub Actions in
@@ -2006,7 +2006,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, error)
+	EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) error
 	// EnterpriseAdminGetAllowedActionsEnterprise implements enterprise-admin/get-allowed-actions-enterprise operation.
 	//
 	// Gets the selected actions that are allowed in an enterprise. To use this endpoint, the enterprise
@@ -2174,7 +2174,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
+	EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
 	// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise implements enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
 	//
 	// Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned
@@ -2182,7 +2182,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, error)
+	EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) error
 	// EnterpriseAdminSetAllowedActionsEnterprise implements enterprise-admin/set-allowed-actions-enterprise operation.
 	//
 	// Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise
@@ -2192,14 +2192,14 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (EnterpriseAdminSetAllowedActionsEnterpriseNoContent, error)
+	EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) error
 	// EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
 	//
 	// Sets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/permissions
-	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, error)
+	EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) error
 	// EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 	//
 	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
@@ -2234,7 +2234,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, error)
+	EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error
 	// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 	//
 	// Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise.
@@ -2244,14 +2244,14 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/permissions/organizations
-	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, error)
+	EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) error
 	// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 	//
 	// Replaces the list of self-hosted runners that are part of an enterprise runner group.
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, error)
+	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) error
 	// EnterpriseAdminUpdateAttributeForEnterpriseGroup implements enterprise-admin/update-attribute-for-enterprise-group operation.
 	//
 	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
@@ -2682,14 +2682,14 @@ type Handler interface {
 	// Removes any interaction restrictions from your public repositories.
 	//
 	// DELETE /user/interaction-limits
-	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, error)
+	InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) error
 	// InteractionsRemoveRestrictionsForOrg implements interactions/remove-restrictions-for-org operation.
 	//
 	// Removes all interaction restrictions from public repositories in the given organization. You must
 	// be an organization owner to remove restrictions.
 	//
 	// DELETE /orgs/{org}/interaction-limits
-	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (InteractionsRemoveRestrictionsForOrgNoContent, error)
+	InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) error
 	// InteractionsRemoveRestrictionsForRepo implements interactions/remove-restrictions-for-repo operation.
 	//
 	// Removes all interaction restrictions from the given repository. You must have owner or admin
@@ -2784,13 +2784,13 @@ type Handler interface {
 	// Delete an issue comment.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteCommentNoContent, error)
+	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) error
 	// IssuesDeleteLabel implements issues/delete-label operation.
 	//
 	// Delete a label.
 	//
 	// DELETE /repos/{owner}/{repo}/labels/{name}
-	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (IssuesDeleteLabelNoContent, error)
+	IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) error
 	// IssuesDeleteMilestone implements issues/delete-milestone operation.
 	//
 	// Delete a milestone.
@@ -3061,7 +3061,7 @@ type Handler interface {
 	// Stop an import for a repository.
 	//
 	// DELETE /repos/{owner}/{repo}/import
-	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (MigrationsCancelImportNoContent, error)
+	MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) error
 	// MigrationsDeleteArchiveForAuthenticatedUser implements migrations/delete-archive-for-authenticated-user operation.
 	//
 	// Deletes a previous migration archive. Downloadable migration archives are automatically deleted
@@ -3798,7 +3798,7 @@ type Handler interface {
 	// Remove public organization membership for the authenticated user.
 	//
 	// DELETE /orgs/{org}/public_members/{username}
-	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (OrgsRemovePublicMembershipForAuthenticatedUserNoContent, error)
+	OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) error
 	// OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
 	//
 	// Listing and deleting credential authorizations is available to organizations with GitHub
@@ -3845,7 +3845,7 @@ type Handler interface {
 	// Unblock a user from an organization.
 	//
 	// DELETE /orgs/{org}/blocks/{username}
-	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (OrgsUnblockUserNoContent, error)
+	OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) error
 	// OrgsUpdateMembershipForAuthenticatedUser implements orgs/update-membership-for-authenticated-user operation.
 	//
 	// Update an organization membership for the authenticated user.
@@ -4687,7 +4687,7 @@ type Handler interface {
 	// Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 	//
 	// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (ReactionsDeleteForCommitCommentNoContent, error)
+	ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) error
 	// ReactionsDeleteForIssue implements reactions/delete-for-issue operation.
 	//
 	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
@@ -4695,7 +4695,7 @@ type Handler interface {
 	// Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (ReactionsDeleteForIssueNoContent, error)
+	ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) error
 	// ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
 	//
 	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete
@@ -4703,7 +4703,7 @@ type Handler interface {
 	// Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 	//
 	// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (ReactionsDeleteForIssueCommentNoContent, error)
+	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) error
 	// ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
 	//
 	// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
@@ -4712,7 +4712,7 @@ type Handler interface {
 	// com/rest/reference/pulls#review-comments).
 	//
 	// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (ReactionsDeleteForPullRequestCommentNoContent, error)
+	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) error
 	// ReactionsDeleteForTeamDiscussion implements reactions/delete-for-team-discussion operation.
 	//
 	// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
@@ -4723,7 +4723,7 @@ type Handler interface {
 	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (ReactionsDeleteForTeamDiscussionNoContent, error)
+	ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) error
 	// ReactionsDeleteForTeamDiscussionComment implements reactions/delete-for-team-discussion-comment operation.
 	//
 	// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
@@ -4734,7 +4734,7 @@ type Handler interface {
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (ReactionsDeleteForTeamDiscussionCommentNoContent, error)
+	ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) error
 	// ReactionsDeleteLegacy implements reactions/delete-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions
@@ -5237,7 +5237,7 @@ type Handler interface {
 	// Disables the ability to restrict who can push to this branch.
 	//
 	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (ReposDeleteAccessRestrictionsNoContent, error)
+	ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) error
 	// ReposDeleteAdminBranchProtection implements repos/delete-admin-branch-protection operation.
 	//
 	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
@@ -5255,7 +5255,7 @@ type Handler interface {
 	// You must authenticate using an access token with the repo scope to use this endpoint.
 	//
 	// DELETE /repos/{owner}/{repo}/environments/{environment_name}
-	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (ReposDeleteAnEnvironmentNoContent, error)
+	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) error
 	// ReposDeleteAutolink implements repos/delete-autolink operation.
 	//
 	// This deletes a single autolink reference by ID that was configured for the given repository.
@@ -5298,7 +5298,7 @@ type Handler interface {
 	// instead.
 	//
 	// DELETE /repos/{owner}/{repo}/keys/{key_id}
-	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (ReposDeleteDeployKeyNoContent, error)
+	ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) error
 	// ReposDeleteDeployment implements repos/delete-deployment operation.
 	//
 	// To ensure there can always be an active deployment, you can only delete an _inactive_ deployment.
@@ -5331,7 +5331,7 @@ type Handler interface {
 	// Delete a repository invitation.
 	//
 	// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (ReposDeleteInvitationNoContent, error)
+	ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) error
 	// ReposDeletePagesSite implements repos/delete-pages-site operation.
 	//
 	// Delete a GitHub Pages site.
@@ -5353,13 +5353,13 @@ type Handler interface {
 	// Users with push access to the repository can delete a release.
 	//
 	// DELETE /repos/{owner}/{repo}/releases/{release_id}
-	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (ReposDeleteReleaseNoContent, error)
+	ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) error
 	// ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
 	//
 	// Delete a release asset.
 	//
 	// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (ReposDeleteReleaseAssetNoContent, error)
+	ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) error
 	// ReposDeleteWebhook implements repos/delete-webhook operation.
 	//
 	// Delete a repository webhook.
@@ -5373,13 +5373,13 @@ type Handler interface {
 	// github.com/en/articles/configuring-automated-security-fixes)".
 	//
 	// DELETE /repos/{owner}/{repo}/automated-security-fixes
-	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (ReposDisableAutomatedSecurityFixesNoContent, error)
+	ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) error
 	// ReposDisableLfsForRepo implements repos/disable-lfs-for-repo operation.
 	//
 	// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 	//
 	// DELETE /repos/{owner}/{repo}/lfs
-	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (ReposDisableLfsForRepoNoContent, error)
+	ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) error
 	// ReposDisableVulnerabilityAlerts implements repos/disable-vulnerability-alerts operation.
 	//
 	// Disables dependency alerts and the dependency graph for a repository. The authenticated user must
@@ -5388,7 +5388,7 @@ type Handler interface {
 	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 	//
 	// DELETE /repos/{owner}/{repo}/vulnerability-alerts
-	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (ReposDisableVulnerabilityAlertsNoContent, error)
+	ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) error
 	// ReposDownloadTarballArchive implements repos/download-tarball-archive operation.
 	//
 	// Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the
@@ -5418,7 +5418,7 @@ type Handler interface {
 	// github.com/en/articles/configuring-automated-security-fixes)".
 	//
 	// PUT /repos/{owner}/{repo}/automated-security-fixes
-	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (ReposEnableAutomatedSecurityFixesNoContent, error)
+	ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) error
 	// ReposEnableLfsForRepo implements repos/enable-lfs-for-repo operation.
 	//
 	// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
@@ -5433,7 +5433,7 @@ type Handler interface {
 	// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 	//
 	// PUT /repos/{owner}/{repo}/vulnerability-alerts
-	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (ReposEnableVulnerabilityAlertsNoContent, error)
+	ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) error
 	// ReposGet implements repos/get operation.
 	//
 	// The `parent` and `source` objects are present when the repository is a fork. `parent` is the
@@ -6147,7 +6147,7 @@ type Handler interface {
 	// Remove a repository collaborator.
 	//
 	// DELETE /repos/{owner}/{repo}/collaborators/{username}
-	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (ReposRemoveCollaboratorNoContent, error)
+	ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) error
 	// ReposRemoveStatusCheckContexts implements repos/remove-status-check-contexts operation.
 	//
 	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
@@ -6167,7 +6167,7 @@ type Handler interface {
 	// GitHub Help documentation.
 	//
 	// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (ReposRemoveStatusCheckProtectionNoContent, error)
+	ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) error
 	// ReposRemoveTeamAccessRestrictions implements repos/remove-team-access-restrictions operation.
 	//
 	// Protected branches are available in public repositories with GitHub Free and GitHub Free for
@@ -6732,7 +6732,7 @@ type Handler interface {
 	// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (TeamsAddOrUpdateRepoPermissionsInOrgNoContent, error)
+	TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) error
 	// TeamsAddOrUpdateRepoPermissionsLegacy implements teams/add-or-update-repo-permissions-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6924,7 +6924,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (TeamsDeleteDiscussionCommentInOrgNoContent, error)
+	TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) error
 	// TeamsDeleteDiscussionCommentLegacy implements teams/delete-discussion-comment-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6936,7 +6936,7 @@ type Handler interface {
 	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (TeamsDeleteDiscussionCommentLegacyNoContent, error)
+	TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) error
 	// TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
 	//
 	// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
@@ -6945,7 +6945,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (TeamsDeleteDiscussionInOrgNoContent, error)
+	TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) error
 	// TeamsDeleteDiscussionLegacy implements teams/delete-discussion-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6957,7 +6957,7 @@ type Handler interface {
 	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}/discussions/{discussion_number}
-	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (TeamsDeleteDiscussionLegacyNoContent, error)
+	TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) error
 	// TeamsDeleteInOrg implements teams/delete-in-org operation.
 	//
 	// To delete a team, the authenticated user must be an organization owner or team maintainer.
@@ -6967,7 +6967,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}`.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}
-	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (TeamsDeleteInOrgNoContent, error)
+	TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) error
 	// TeamsDeleteLegacy implements teams/delete-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -7351,7 +7351,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (TeamsRemoveProjectInOrgNoContent, error)
+	TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) error
 	// TeamsRemoveProjectLegacy implements teams/remove-project-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -7376,7 +7376,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 	//
 	// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (TeamsRemoveRepoInOrgNoContent, error)
+	TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) error
 	// TeamsRemoveRepoLegacy implements teams/remove-repo-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -7390,7 +7390,7 @@ type Handler interface {
 	// Deprecated: schema marks this operation as deprecated.
 	//
 	// DELETE /teams/{team_id}/repos/{owner}/{repo}
-	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (TeamsRemoveRepoLegacyNoContent, error)
+	TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) error
 	// TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.
 	//
 	// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`

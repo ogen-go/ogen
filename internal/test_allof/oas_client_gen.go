@@ -54,7 +54,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // Nullable strings.
 //
 // POST /nullableStrings
-func (c *Client) NullableStrings(ctx context.Context, request string) (res NullableStringsOK, err error) {
+func (c *Client) NullableStrings(ctx context.Context, request string) (err error) {
 	if err := func() error {
 		if err := (validate.String{
 			MinLength:    0,
@@ -69,7 +69,7 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -95,21 +95,20 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeNullableStringsRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeNullableStringsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeNullableStringsResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ObjectsWithConflictingArrayProperty invokes objectsWithConflictingArrayProperty operation.
@@ -117,14 +116,14 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 // Objects with conflicting array property.
 //
 // POST /objectsWithConflictingArrayProperty
-func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, request ObjectsWithConflictingArrayPropertyReq) (res ObjectsWithConflictingArrayPropertyOK, err error) {
+func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, request ObjectsWithConflictingArrayPropertyReq) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -150,21 +149,20 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeObjectsWithConflictingArrayPropertyRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeObjectsWithConflictingArrayPropertyResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeObjectsWithConflictingArrayPropertyResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ObjectsWithConflictingProperties invokes objectsWithConflictingProperties operation.
@@ -172,14 +170,14 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 // Objects with conflicting properties.
 //
 // POST /objectsWithConflictingProperties
-func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request ObjectsWithConflictingPropertiesReq) (res ObjectsWithConflictingPropertiesOK, err error) {
+func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request ObjectsWithConflictingPropertiesReq) (err error) {
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -205,21 +203,20 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeObjectsWithConflictingPropertiesRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeObjectsWithConflictingPropertiesResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeObjectsWithConflictingPropertiesResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReferencedAllof invokes referencedAllof operation.
@@ -227,7 +224,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 // Referenced allOf.
 //
 // POST /referencedAllof
-func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq) (res ReferencedAllofOK, err error) {
+func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq) (err error) {
 	switch request := request.(type) {
 	case *ReferencedAllofApplicationJSON:
 		if err := func() error {
@@ -236,7 +233,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "validate")
+			return errors.Wrap(err, "validate")
 		}
 	case *ReferencedAllofMultipartFormData:
 		if err := func() error {
@@ -245,10 +242,10 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "validate")
+			return errors.Wrap(err, "validate")
 		}
 	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+		return errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -274,21 +271,20 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeReferencedAllofRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReferencedAllofResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReferencedAllofResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // ReferencedAllofOptional invokes referencedAllofOptional operation.
@@ -296,7 +292,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 // Referenced allOf, but requestBody is not required.
 //
 // POST /referencedAllofOptional
-func (c *Client) ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res ReferencedAllofOptionalOK, err error) {
+func (c *Client) ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (err error) {
 	switch request := request.(type) {
 	case *ReferencedAllofOptionalApplicationJSON:
 		if err := func() error {
@@ -305,7 +301,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "validate")
+			return errors.Wrap(err, "validate")
 		}
 	case *ReferencedAllofOptionalMultipartFormData:
 		if err := func() error {
@@ -314,10 +310,10 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "validate")
+			return errors.Wrap(err, "validate")
 		}
 	default:
-		return res, errors.Errorf("unexpected request type: %T", request)
+		return errors.Errorf("unexpected request type: %T", request)
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -343,21 +339,20 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeReferencedAllofOptionalRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeReferencedAllofOptionalResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeReferencedAllofOptionalResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // SimpleInteger invokes simpleInteger operation.
@@ -365,7 +360,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 // Simple integers with validation.
 //
 // POST /simpleInteger
-func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleIntegerOK, err error) {
+func (c *Client) SimpleInteger(ctx context.Context, request int) (err error) {
 	if err := func() error {
 		if err := (validate.Int{
 			MinSet:        true,
@@ -381,7 +376,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 		}
 		return nil
 	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
+		return errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
@@ -407,21 +402,20 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeSimpleIntegerRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSimpleIntegerResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeSimpleIntegerResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }
 
 // SimpleObjects invokes simpleObjects operation.
@@ -429,7 +423,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 // Simple objects.
 //
 // POST /simpleObjects
-func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (res SimpleObjectsOK, err error) {
+func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
@@ -454,19 +448,18 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeSimpleObjectsRequest(request, r); err != nil {
-		return res, errors.Wrap(err, "encode request")
+		return errors.Wrap(err, "encode request")
 	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
-		return res, errors.Wrap(err, "do request")
+		return errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeSimpleObjectsResponse(resp, span)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
+	if err := decodeSimpleObjectsResponse(resp, span); err != nil {
+		return errors.Wrap(err, "decode response")
 	}
 
-	return result, nil
+	return nil
 }

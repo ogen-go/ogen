@@ -42,7 +42,8 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 	}
 	defer close()
 
-	response, err := s.h.NullableStrings(ctx, request)
+	err = s.h.NullableStrings(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -51,7 +52,8 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	if err := encodeNullableStringsResponse(response, w, span); err != nil {
+	if err := encodeNullableStringsResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -88,7 +90,8 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	}
 	defer close()
 
-	response, err := s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+	err = s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -97,7 +100,8 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		return
 	}
 
-	if err := encodeObjectsWithConflictingArrayPropertyResponse(response, w, span); err != nil {
+	if err := encodeObjectsWithConflictingArrayPropertyResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -134,7 +138,8 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 	}
 	defer close()
 
-	response, err := s.h.ObjectsWithConflictingProperties(ctx, request)
+	err = s.h.ObjectsWithConflictingProperties(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -143,7 +148,8 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		return
 	}
 
-	if err := encodeObjectsWithConflictingPropertiesResponse(response, w, span); err != nil {
+	if err := encodeObjectsWithConflictingPropertiesResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -180,7 +186,8 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	}
 	defer close()
 
-	response, err := s.h.ReferencedAllof(ctx, request)
+	err = s.h.ReferencedAllof(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -189,7 +196,8 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	if err := encodeReferencedAllofResponse(response, w, span); err != nil {
+	if err := encodeReferencedAllofResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -226,7 +234,8 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 	}
 	defer close()
 
-	response, err := s.h.ReferencedAllofOptional(ctx, request)
+	err = s.h.ReferencedAllofOptional(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -235,7 +244,8 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		return
 	}
 
-	if err := encodeReferencedAllofOptionalResponse(response, w, span); err != nil {
+	if err := encodeReferencedAllofOptionalResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -272,7 +282,8 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 	}
 	defer close()
 
-	response, err := s.h.SimpleInteger(ctx, request)
+	err = s.h.SimpleInteger(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -281,7 +292,8 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	if err := encodeSimpleIntegerResponse(response, w, span); err != nil {
+	if err := encodeSimpleIntegerResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -318,7 +330,8 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 	}
 	defer close()
 
-	response, err := s.h.SimpleObjects(ctx, request)
+	err = s.h.SimpleObjects(ctx, request)
+
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -327,7 +340,8 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	if err := encodeSimpleObjectsResponse(response, w, span); err != nil {
+	if err := encodeSimpleObjectsResponse(w, span); err != nil {
+
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
