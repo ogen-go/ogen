@@ -59,7 +59,7 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resol
 
 func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
 	defer func() {
-		rerr = p.wrapLocation(&m.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), &m.Locator, rerr)
 	}()
 
 	s, err := p.parseSchema(m.Schema, ctx)
@@ -76,7 +76,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 
 		parseEncoding := func(name string, e ogen.Encoding) (rerr error) {
 			defer func() {
-				rerr = p.wrapLocation(&e.Locator, rerr)
+				rerr = p.wrapLocation(ctx.lastLoc(), &e.Locator, rerr)
 			}()
 
 			prop, ok := names[name]

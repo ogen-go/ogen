@@ -28,7 +28,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		return nil, errors.New("header object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(&header.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), &header.Locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
 		parsed, err := p.resolveHeader(name, ref, ctx)

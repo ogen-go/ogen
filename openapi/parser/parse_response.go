@@ -22,14 +22,14 @@ func (p *parser) parseStatus(status string, response *ogen.Response, ctx *resolv
 	return resp, nil
 }
 
-func (p *parser) parseResponses(responses ogen.Responses) (_ map[string]*openapi.Response, err error) {
+func (p *parser) parseResponses(responses ogen.Responses, ctx *resolveCtx) (_ map[string]*openapi.Response, err error) {
 	if len(responses) == 0 {
 		return nil, errors.New("no responses")
 	}
 
 	result := make(map[string]*openapi.Response, len(responses))
 	for status, response := range responses {
-		result[status], err = p.parseStatus(status, response, newResolveCtx(p.depthLimit))
+		result[status], err = p.parseStatus(status, response, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, status)
 		}
@@ -43,7 +43,7 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi
 		return nil, errors.New("response object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(&resp.Locator, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), &resp.Locator, rerr)
 	}()
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref, ctx)

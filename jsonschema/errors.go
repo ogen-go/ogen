@@ -15,9 +15,12 @@ func (p *Parser) wrapLocation(l ogenjson.Locatable, err error) error {
 	if !ok {
 		return err
 	}
+	filename := loc.Filename
+	if filename == "" {
+		filename = p.filename
+	}
 	return &LocationError{
-		File: p.filename,
-		Loc:  loc,
-		Err:  err,
+		Loc: loc.WithFilename(filename),
+		Err: err,
 	}
 }

@@ -18,7 +18,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 	}
 	if c != nil {
 		defer func() {
-			rerr = p.wrapLocation(&c.Locator, rerr)
+			rerr = p.wrapLocation("", &c.Locator, rerr)
 		}()
 	}
 

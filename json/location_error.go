@@ -15,9 +15,8 @@ var _ interface {
 
 // LocationError is a wrapper for an error that has a location.
 type LocationError struct {
-	File string
-	Loc  Location
-	Err  error
+	Loc Location
+	Err error
 }
 
 // Unwrap implements errors.Wrapper.
@@ -25,17 +24,9 @@ func (e *LocationError) Unwrap() error {
 	return e.Err
 }
 
-func (e *LocationError) fileName() string {
-	filename := e.File
-	if filename == "" || e.Loc.Line == 0 {
-		return ""
-	}
-	return filename + ":"
-}
-
 // FormatError implements errors.Formatter.
 func (e *LocationError) FormatError(p errors.Printer) (next error) {
-	p.Printf("at %s%s", e.fileName(), e.Loc)
+	p.Printf("at %s", e.Loc)
 	return e.Err
 }
 
@@ -46,5 +37,5 @@ func (e *LocationError) Format(s fmt.State, verb rune) {
 
 // Error implements error.
 func (e *LocationError) Error() string {
-	return fmt.Sprintf("at %s%s: %s", e.fileName(), e.Loc, e.Err)
+	return fmt.Sprintf("at %s: %s", e.Loc, e.Err)
 }
