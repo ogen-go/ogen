@@ -71,6 +71,30 @@ func TestReferencedAllofMultipartFormData_EncodeDecode(t *testing.T) {
 	var typ2 ReferencedAllofMultipartFormData
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestReferencedAllofOptionalApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReferencedAllofOptionalApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReferencedAllofOptionalApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReferencedAllofOptionalMultipartFormData_EncodeDecode(t *testing.T) {
+	var typ ReferencedAllofOptionalMultipartFormData
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReferencedAllofOptionalMultipartFormData
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestRobot_EncodeDecode(t *testing.T) {
 	var typ Robot
 	typ.SetFake()
