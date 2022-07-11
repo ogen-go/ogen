@@ -110,7 +110,6 @@ func (l Lines) LineColumn(offset int64) (line, column int64, ok bool) {
 
 // Location is a JSON value location.
 type Location struct {
-	Filename     string
 	Line, Column int64
 	Node         *yaml.Node
 }
@@ -121,20 +120,17 @@ func (l Location) String() string {
 	if n == nil {
 		return "<empty location>"
 	}
-	if l.Filename == "" {
-		return fmt.Sprintf("%d:%d", n.Line, n.Column)
-	}
-	return fmt.Sprintf("%s:%d:%d", l.Filename, n.Line, n.Column)
+	return fmt.Sprintf("%d:%d", n.Line, n.Column)
 }
 
-// WithFilename creates new Location with the given filename.
-func (l Location) WithFilename(filename string) Location {
-	return Location{
-		Filename: filename,
-		Line:     l.Line,
-		Column:   l.Column,
-		Node:     l.Node,
+// WithFilename prints the location with the given filename.
+//
+// If filename is empty, the location is printed as is.
+func (l Location) WithFilename(filename string) string {
+	if filename != "" {
+		filename += ":"
 	}
+	return filename + l.String()
 }
 
 // Locatable is an interface for JSON value location store.

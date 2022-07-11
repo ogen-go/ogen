@@ -52,6 +52,6 @@ func TestRemoteLocation(t *testing.T) {
 		}
 		iterErr = locErr.Err
 	}
-	loc := locErr.Loc
-	a.Equal("foo.json", loc.Filename)
+	t.Log(locErr)
+	a.Equal("foo.json", locErr.File)
 }

@@ -49,7 +49,7 @@ func (p *Parser) Resolve(ref string) (*Schema, error) {
 func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (_ *Schema, rerr error) {
 	if schema != nil {
 		defer func() {
-			rerr = p.wrapLocation(&schema.Locator, rerr)
+			rerr = p.wrapLocation(ctx.lastLoc(), &schema.Locator, rerr)
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {

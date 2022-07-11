@@ -7,7 +7,7 @@ import (
 // LocationError is a wrapper for an error that has a location.
 type LocationError = ogenjson.LocationError
 
-func (p *parser) wrapLocation(file string, l ogenjson.Locatable, err error) error {
+func (p *parser) wrapLocation(filename string, l ogenjson.Locatable, err error) error {
 	if err == nil || l == nil || p == nil {
 		return err
 	}
@@ -15,12 +15,12 @@ func (p *parser) wrapLocation(file string, l ogenjson.Locatable, err error) erro
 	if !ok {
 		return err
 	}
-	filename := file
 	if filename == "" {
 		filename = p.filename
 	}
 	return &LocationError{
-		Loc: loc.WithFilename(filename),
-		Err: err,
+		File: filename,
+		Loc:  loc,
+		Err:  err,
 	}
 }
