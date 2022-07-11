@@ -2,10 +2,12 @@ package ogen_test
 
 import (
 	"embed"
+	"encoding/json"
 	"path"
 	"strings"
 	"testing"
 
+	helperyaml "github.com/ghodss/yaml"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
@@ -47,8 +49,34 @@ func TestParse(t *testing.T) {
 		t.Helper()
 		a := require.New(t)
 
-		_, err := ogen.Parse(data)
+		var yamlInput, jsonInput []byte
+		if strings.HasSuffix(file, ".json") {
+			jsonInput = data
+			val, err := helperyaml.JSONToYAML(data)
+			a.NoError(err)
+			yamlInput = val
+		} else {
+			yamlInput = data
+			val, err := helperyaml.YAMLToJSON(data)
+			a.NoError(err)
+			jsonInput = val
+		}
+
+		jsonSpec, err := ogen.Parse(jsonInput)
 		a.NoError(err)
+
+		yamlSpec, err := ogen.Parse(yamlInput)
+		a.NoError(err)
+
+		{
+			jsonOutput, err := json.Marshal(jsonSpec)
+			a.NoError(err)
+
+			yamlOutput, err := json.Marshal(yamlSpec)
+			a.NoError(err)
+
+			a.JSONEq(string(jsonOutput), string(yamlOutput))
+		}
 	}
 
 	for _, dir := range []string{

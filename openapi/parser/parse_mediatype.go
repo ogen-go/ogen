@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"encoding/json"
 	"mime"
 
 	"github.com/go-faster/errors"
@@ -58,7 +59,7 @@ func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resol
 
 func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
 	defer func() {
-		rerr = p.wrapLocation(&m, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), m.Locator, rerr)
 	}()
 
 	s, err := p.parseSchema(m.Schema, ctx)
@@ -75,7 +76,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 
 		parseEncoding := func(name string, e ogen.Encoding) (rerr error) {
 			defer func() {
-				rerr = p.wrapLocation(&e, rerr)
+				rerr = p.wrapLocation(ctx.lastLoc(), e.Locator, rerr)
 			}()
 
 			prop, ok := names[name]
@@ -100,11 +101,11 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 			if err := validateParamStyle(&openapi.Parameter{
 				Name:     name,
 				Schema:   prop.Schema,
-				Content:  nil,
 				In:       openapi.LocationQuery,
 				Style:    encoding.Style,
 				Explode:  encoding.Explode,
 				Required: prop.Required,
+				Locator:  encoding.Locator,
 			}); err != nil {
 				return errors.Wrap(err, "param style")
 			}
@@ -141,7 +142,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 
 	return &openapi.MediaType{
 		Schema:   s,
-		Example:  m.Example,
+		Example:  json.RawMessage(m.Example),
 		Examples: examples,
 		Encoding: encodings,
 		Locator:  m.Locator,

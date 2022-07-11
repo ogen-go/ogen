@@ -3,8 +3,6 @@ package jsonschema
 import (
 	"regexp"
 
-	"github.com/go-json-experiment/json"
-
 	ogenjson "github.com/ogen-go/ogen/json"
 )
 
@@ -79,16 +77,16 @@ type Schema struct {
 	MaxProperties *uint64
 	MinProperties *uint64
 
-	Examples []json.RawValue
+	Examples []Example
 	// Default schema value.
 	Default    interface{}
 	DefaultSet bool
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }
 
 // AddExample adds example for this Schema.
-func (s *Schema) AddExample(r json.RawValue) {
+func (s *Schema) AddExample(r Example) {
 	if s != nil && len(r) > 0 {
 		s.Examples = append(s.Examples, r)
 	}

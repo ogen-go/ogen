@@ -19,7 +19,7 @@ func (p *parser) parseSecurityScheme(
 		return nil, errors.New("securityScheme is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(scheme, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), scheme.Locator, rerr)
 	}()
 
 	if ref := scheme.Ref; ref != "" {
@@ -66,7 +66,7 @@ func (p *parser) parseSecurityScheme(
 		case "mutualTLS":
 			return nil
 		case "oauth2":
-			return p.validateOAuthFlows(scopes, scheme.Flows)
+			return p.validateOAuthFlows(scopes, scheme.Flows, ctx.lastLoc())
 		case "openIdConnect":
 			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				return errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
@@ -82,12 +82,12 @@ func (p *parser) parseSecurityScheme(
 	return scheme, nil
 }
 
-func (p *parser) validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows) (rerr error) {
+func (p *parser) validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows, loc string) (rerr error) {
 	if flows == nil {
 		return errors.New("oAuthFlows is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(flows, rerr)
+		rerr = p.wrapLocation(loc, flows.Locator, rerr)
 	}()
 
 	check := func(flow *ogen.OAuthFlow, authURL, tokenURL bool) (rerr error) {
@@ -95,7 +95,7 @@ func (p *parser) validateOAuthFlows(scopes []string, flows *ogen.OAuthFlows) (re
 			return nil
 		}
 		defer func() {
-			rerr = p.wrapLocation(flow, rerr)
+			rerr = p.wrapLocation(loc, flow.Locator, rerr)
 		}()
 
 		if tokenURL {
@@ -166,7 +166,10 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 	}
 }
 
-func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirements) ([]openapi.SecurityRequirements, error) {
+func (p *parser) parseSecurityRequirements(
+	requirements ogen.SecurityRequirements,
+	ctx *resolveCtx,
+) ([]openapi.SecurityRequirements, error) {
 	result := make([]openapi.SecurityRequirements, 0, len(requirements))
 	for _, req := range requirements {
 		for requirementName, scopes := range req {
@@ -175,7 +178,7 @@ func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirement
 				return nil, errors.Errorf("unknown security schema %q", requirementName)
 			}
 
-			spec, err := p.parseSecurityScheme(v, scopes, newResolveCtx(p.depthLimit))
+			spec, err := p.parseSecurityScheme(v, scopes, ctx)
 			if err != nil {
 				return nil, errors.Wrapf(err, "parse security scheme %q", requirementName)
 			}

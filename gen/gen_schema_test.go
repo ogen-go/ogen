@@ -8,9 +8,9 @@ import (
 	"testing"
 
 	"github.com/go-faster/errors"
-	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap/zaptest"
+	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -28,19 +28,24 @@ func TestGenerateSchema(t *testing.T) {
 		}
 		_, file := filepath.Split(path)
 
-		input, err := fs.ReadFile(testdata, path)
+		data, err := fs.ReadFile(testdata, path)
 		if err != nil {
 			return err
 		}
 
-		var rawSchema *jsonschema.RawSchema
-		if err := json.Unmarshal(input, &rawSchema); err != nil {
-			return errors.Wrap(err, "unmarshal")
+		var root yaml.Node
+		if err := yaml.Unmarshal(data, &root); err != nil {
+			return errors.Wrap(err, "parse yaml")
 		}
 		p := jsonschema.NewParser(jsonschema.Settings{
-			Resolver: jsonschema.NewRootResolver(input),
+			Resolver: jsonschema.NewRootResolver(&root),
 		})
-		schema, err := p.Parse(rawSchema)
+
+		var rawSchema jsonschema.RawSchema
+		if err := root.Decode(&rawSchema); err != nil {
+			return errors.Wrap(err, "unmarshal")
+		}
+		schema, err := p.Parse(&rawSchema)
 		if err != nil {
 			return errors.Wrap(err, "parse")
 		}

@@ -497,1194 +497,6 @@ func (s *TestRequestEmptyStructReq) SetFake() {
 func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
-			s.OptionalAny = []byte("null")
-		}
-	}
-	{
-		{
-			s.OptionalArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem jx.Raw
-				{
-					elem = []byte("null")
-				}
-				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem bool
-				{
-					elem = true
-				}
-				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem int
-				{
-					elem = int(0)
-				}
-				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem struct{}
-				{
-					elem = struct{}{}
-				}
-				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem float32
-				{
-					elem = float32(0)
-				}
-				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayString = append(s.OptionalArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem []byte
-				{
-					elem = []byte("[]byte")
-				}
-				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Duration
-				{
-					elem = time.Duration(5 * time.Second)
-				}
-				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnix = append(s.OptionalArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusMicro = append(s.OptionalArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusMilli = append(s.OptionalArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusNano = append(s.OptionalArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusSeconds = append(s.OptionalArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem url.URL
-				{
-					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-				}
-				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem uuid.UUID
-				{
-					elem = uuid.New()
-				}
-				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalBoolean.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem []jx.Raw
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem jx.Raw
-						{
-							elemElem = []byte("null")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem []bool
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem bool
-						{
-							elemElem = true
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem []int
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int
-						{
-							elemElem = int(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem []struct{}
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem struct{}
-						{
-							elemElem = struct{}{}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem []float32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float32
-						{
-							elemElem = float32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem [][]byte
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem []byte
-						{
-							elemElem = []byte("[]byte")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Duration
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Duration
-						{
-							elemElem = time.Duration(5 * time.Second)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnix = append(s.OptionalDoubleArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusMicro = append(s.OptionalDoubleArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusMilli = append(s.OptionalDoubleArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusNano = append(s.OptionalDoubleArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusSeconds = append(s.OptionalDoubleArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem []url.URL
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem url.URL
-						{
-							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem []uuid.UUID
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem uuid.UUID
-						{
-							elemElem = uuid.New()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalInteger.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalIntegerInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalIntegerInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNull.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumber.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberDouble.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberFloat.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalString.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringBinary.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringByte = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.OptionalStringDate.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringDateMinusTime.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringDuration.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringEmail.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringHostname.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIP.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIpv4.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIpv6.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringPassword.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringTime.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnix.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusMicro.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusMilli.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusNano.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusSeconds.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringURI.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUUID.SetFake()
-		}
-	}
-	{
-		{
 			s.RequiredAny = []byte("null")
 		}
 	}
@@ -2869,6 +1681,1194 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringUUID = uuid.New()
+		}
+	}
+	{
+		{
+			s.OptionalAny = []byte("null")
+		}
+	}
+	{
+		{
+			s.OptionalArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+				{
+					elem = []byte("null")
+				}
+				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+				{
+					elem = true
+				}
+				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnix = append(s.OptionalArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusMicro = append(s.OptionalArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusMilli = append(s.OptionalArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusNano = append(s.OptionalArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusSeconds = append(s.OptionalArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+				{
+					elem = uuid.New()
+				}
+				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalBoolean.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnix = append(s.OptionalDoubleArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusMicro = append(s.OptionalDoubleArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusMilli = append(s.OptionalDoubleArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusNano = append(s.OptionalDoubleArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusSeconds = append(s.OptionalDoubleArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalInteger.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNull.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumber.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberDouble.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberFloat.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalString.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringBinary.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringByte = []byte("[]byte")
+		}
+	}
+	{
+		{
+			s.OptionalStringDate.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDateMinusTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDuration.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringEmail.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIP.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIpv4.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIpv6.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringPassword.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnix.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusMicro.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusMilli.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusNano.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringURI.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUUID.SetFake()
 		}
 	}
 }
@@ -2881,1194 +2881,6 @@ func (s *TestRequestRequiredEmptyStructReq) SetFake() {
 func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
-			s.OptionalAny = []byte("null")
-		}
-	}
-	{
-		{
-			s.OptionalArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem jx.Raw
-				{
-					elem = []byte("null")
-				}
-				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem bool
-				{
-					elem = true
-				}
-				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem int
-				{
-					elem = int(0)
-				}
-				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem struct{}
-				{
-					elem = struct{}{}
-				}
-				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem float32
-				{
-					elem = float32(0)
-				}
-				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayString = append(s.OptionalArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem []byte
-				{
-					elem = []byte("[]byte")
-				}
-				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Duration
-				{
-					elem = time.Duration(5 * time.Second)
-				}
-				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnix = append(s.OptionalArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusMicro = append(s.OptionalArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusMilli = append(s.OptionalArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusNano = append(s.OptionalArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusSeconds = append(s.OptionalArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem url.URL
-				{
-					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-				}
-				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem uuid.UUID
-				{
-					elem = uuid.New()
-				}
-				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalBoolean.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem []jx.Raw
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem jx.Raw
-						{
-							elemElem = []byte("null")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem []bool
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem bool
-						{
-							elemElem = true
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem []int
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int
-						{
-							elemElem = int(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem []struct{}
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem struct{}
-						{
-							elemElem = struct{}{}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem []float32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float32
-						{
-							elemElem = float32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem [][]byte
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem []byte
-						{
-							elemElem = []byte("[]byte")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Duration
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Duration
-						{
-							elemElem = time.Duration(5 * time.Second)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnix = append(s.OptionalDoubleArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusMicro = append(s.OptionalDoubleArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusMilli = append(s.OptionalDoubleArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusNano = append(s.OptionalDoubleArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusSeconds = append(s.OptionalDoubleArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem []url.URL
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem url.URL
-						{
-							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem []uuid.UUID
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem uuid.UUID
-						{
-							elemElem = uuid.New()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalInteger.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalIntegerInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalIntegerInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNull.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumber.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberDouble.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberFloat.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalString.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringBinary.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringByte = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.OptionalStringDate.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringDateMinusTime.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringDuration.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringEmail.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringHostname.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIP.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIpv4.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIpv6.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringPassword.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringTime.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnix.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusMicro.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusMilli.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusNano.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusSeconds.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringURI.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUUID.SetFake()
-		}
-	}
-	{
-		{
 			s.RequiredAny = []byte("null")
 		}
 	}
@@ -5253,6 +4065,1194 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringUUID = uuid.New()
+		}
+	}
+	{
+		{
+			s.OptionalAny = []byte("null")
+		}
+	}
+	{
+		{
+			s.OptionalArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+				{
+					elem = []byte("null")
+				}
+				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+				{
+					elem = true
+				}
+				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnix = append(s.OptionalArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusMicro = append(s.OptionalArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusMilli = append(s.OptionalArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusNano = append(s.OptionalArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusSeconds = append(s.OptionalArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+				{
+					elem = uuid.New()
+				}
+				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalBoolean.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnix = append(s.OptionalDoubleArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusMicro = append(s.OptionalDoubleArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusMilli = append(s.OptionalDoubleArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusNano = append(s.OptionalDoubleArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusSeconds = append(s.OptionalDoubleArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalInteger.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNull.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumber.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberDouble.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberFloat.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalString.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringBinary.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringByte = []byte("[]byte")
+		}
+	}
+	{
+		{
+			s.OptionalStringDate.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDateMinusTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDuration.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringEmail.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIP.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIpv4.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIpv6.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringPassword.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnix.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusMicro.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusMilli.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusNano.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringURI.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUUID.SetFake()
 		}
 	}
 }
@@ -5265,1194 +5265,6 @@ func (s *TestResponseEmptyStructOK) SetFake() {
 func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
-			s.OptionalAny = []byte("null")
-		}
-	}
-	{
-		{
-			s.OptionalArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem jx.Raw
-				{
-					elem = []byte("null")
-				}
-				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem bool
-				{
-					elem = true
-				}
-				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem int
-				{
-					elem = int(0)
-				}
-				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem struct{}
-				{
-					elem = struct{}{}
-				}
-				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem float64
-				{
-					elem = float64(0)
-				}
-				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem float32
-				{
-					elem = float32(0)
-				}
-				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayString = append(s.OptionalArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem []byte
-				{
-					elem = []byte("[]byte")
-				}
-				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Duration
-				{
-					elem = time.Duration(5 * time.Second)
-				}
-				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem int32
-				{
-					elem = int32(0)
-				}
-				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem int64
-				{
-					elem = int64(0)
-				}
-				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem netip.Addr
-				{
-					elem = netip.MustParseAddr("127.0.0.1")
-				}
-				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem string
-				{
-					elem = "string"
-				}
-				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnix = append(s.OptionalArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusMicro = append(s.OptionalArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusMilli = append(s.OptionalArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusNano = append(s.OptionalArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem time.Time
-				{
-					elem = time.Now()
-				}
-				s.OptionalArrayStringUnixMinusSeconds = append(s.OptionalArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem url.URL
-				{
-					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-				}
-				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem uuid.UUID
-				{
-					elem = uuid.New()
-				}
-				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalBoolean.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayAny = nil
-			for i := 0; i < 0; i++ {
-				var elem []jx.Raw
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem jx.Raw
-						{
-							elemElem = []byte("null")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayBoolean = nil
-			for i := 0; i < 0; i++ {
-				var elem []bool
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem bool
-						{
-							elemElem = true
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayInteger = nil
-			for i := 0; i < 0; i++ {
-				var elem []int
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int
-						{
-							elemElem = int(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayIntegerInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayIntegerInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNull = nil
-			for i := 0; i < 0; i++ {
-				var elem []struct{}
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem struct{}
-						{
-							elemElem = struct{}{}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumber = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberDouble = nil
-			for i := 0; i < 0; i++ {
-				var elem []float64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float64
-						{
-							elemElem = float64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberFloat = nil
-			for i := 0; i < 0; i++ {
-				var elem []float32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem float32
-						{
-							elemElem = float32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayNumberInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayString = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringBinary = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringByte = nil
-			for i := 0; i < 0; i++ {
-				var elem [][]byte
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem []byte
-						{
-							elemElem = []byte("[]byte")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDate = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDateMinusTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringDuration = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Duration
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Duration
-						{
-							elemElem = time.Duration(5 * time.Second)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringEmail = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringHostname = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringInt32 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int32
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int32
-						{
-							elemElem = int32(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringInt64 = nil
-			for i := 0; i < 0; i++ {
-				var elem []int64
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem int64
-						{
-							elemElem = int64(0)
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIP = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIpv4 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringIpv6 = nil
-			for i := 0; i < 0; i++ {
-				var elem []netip.Addr
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem netip.Addr
-						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringPassword = nil
-			for i := 0; i < 0; i++ {
-				var elem []string
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem string
-						{
-							elemElem = "string"
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringTime = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnix = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnix = append(s.OptionalDoubleArrayStringUnix, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusMicro = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusMicro = append(s.OptionalDoubleArrayStringUnixMinusMicro, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusMilli = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusMilli = append(s.OptionalDoubleArrayStringUnixMinusMilli, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusNano = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusNano = append(s.OptionalDoubleArrayStringUnixMinusNano, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUnixMinusSeconds = nil
-			for i := 0; i < 0; i++ {
-				var elem []time.Time
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem time.Time
-						{
-							elemElem = time.Now()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUnixMinusSeconds = append(s.OptionalDoubleArrayStringUnixMinusSeconds, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringURI = nil
-			for i := 0; i < 0; i++ {
-				var elem []url.URL
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem url.URL
-						{
-							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalDoubleArrayStringUUID = nil
-			for i := 0; i < 0; i++ {
-				var elem []uuid.UUID
-				{
-					elem = nil
-					for i := 0; i < 0; i++ {
-						var elemElem uuid.UUID
-						{
-							elemElem = uuid.New()
-						}
-						elem = append(elem, elemElem)
-					}
-				}
-				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
-			}
-		}
-	}
-	{
-		{
-			s.OptionalInteger.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalIntegerInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalIntegerInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNull.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumber.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberDouble.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberFloat.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalNumberInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalString.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringBinary.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringByte = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.OptionalStringDate.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringDateMinusTime.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringDuration.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringEmail.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringHostname.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringInt32.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringInt64.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIP.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIpv4.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringIpv6.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringPassword.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringTime.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnix.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusMicro.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusMilli.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusNano.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUnixMinusSeconds.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringURI.SetFake()
-		}
-	}
-	{
-		{
-			s.OptionalStringUUID.SetFake()
-		}
-	}
-	{
-		{
 			s.RequiredAny = []byte("null")
 		}
 	}
@@ -7637,6 +6449,1194 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringUUID = uuid.New()
+		}
+	}
+	{
+		{
+			s.OptionalAny = []byte("null")
+		}
+	}
+	{
+		{
+			s.OptionalArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+				{
+					elem = []byte("null")
+				}
+				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+				{
+					elem = true
+				}
+				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+				{
+					elem = int(0)
+				}
+				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem netip.Addr
+				{
+					elem = netip.MustParseAddr("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnix = append(s.OptionalArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusMicro = append(s.OptionalArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusMilli = append(s.OptionalArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusNano = append(s.OptionalArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixMinusSeconds = append(s.OptionalArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+				{
+					elem = uuid.New()
+				}
+				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalBoolean.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []netip.Addr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem netip.Addr
+						{
+							elemElem = netip.MustParseAddr("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+						{
+							elemElem = "string"
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnix = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnix = append(s.OptionalDoubleArrayStringUnix, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusMicro = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusMicro = append(s.OptionalDoubleArrayStringUnixMinusMicro, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusMilli = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusMilli = append(s.OptionalDoubleArrayStringUnixMinusMilli, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusNano = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusNano = append(s.OptionalDoubleArrayStringUnixMinusNano, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUnixMinusSeconds = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixMinusSeconds = append(s.OptionalDoubleArrayStringUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalInteger.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNull.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumber.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberDouble.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberFloat.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNumberInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalString.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringBinary.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringByte = []byte("[]byte")
+		}
+	}
+	{
+		{
+			s.OptionalStringDate.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDateMinusTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDuration.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringEmail.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIP.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIpv4.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringIpv6.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringPassword.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnix.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusMicro.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusMilli.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusNano.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringURI.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUUID.SetFake()
 		}
 	}
 }

@@ -3174,6 +3174,906 @@ func (s TestRequestFormatTestReq) Encode(e *jx.Encoder) {
 func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
+		if len(s.RequiredAny) != 0 {
+			e.FieldStart("required_any")
+			e.Raw(s.RequiredAny)
+		}
+	}
+	{
+
+		e.FieldStart("required_array_any")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayAny {
+			if len(elem) != 0 {
+				e.Raw(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_boolean")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayBoolean {
+			e.Bool(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayInteger {
+			e.Int(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayIntegerInt32 {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayIntegerInt64 {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_null")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNull {
+			_ = elem
+			e.Null()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumber {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_double")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberDouble {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_float")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberFloat {
+			e.Float32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberInt32 {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberInt64 {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayString {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_binary")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringBinary {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_byte")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringByte {
+			e.Base64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_date")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDate {
+			json.EncodeDate(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_date-time")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDateMinusTime {
+			json.EncodeDateTime(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_duration")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDuration {
+			json.EncodeDuration(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_email")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringEmail {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_hostname")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringHostname {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt32 {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt64 {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ip")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIP {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ipv4")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIpv4 {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ipv6")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIpv6 {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_password")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringPassword {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_time")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringTime {
+			json.EncodeTime(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnix {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-micro")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-milli")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-nano")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusNano {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-seconds")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_uri")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringURI {
+			json.EncodeURI(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_uuid")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUUID {
+			json.EncodeUUID(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_boolean")
+		e.Bool(s.RequiredBoolean)
+	}
+	{
+
+		e.FieldStart("required_double_array_any")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayAny {
+			e.ArrStart()
+			for _, elem := range elem {
+				if len(elem) != 0 {
+					e.Raw(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_boolean")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayBoolean {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayInteger {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_null")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNull {
+			e.ArrStart()
+			for _, elem := range elem {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumber {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_double")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberDouble {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_float")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberFloat {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayString {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_binary")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringBinary {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_byte")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringByte {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_date")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDate {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_date-time")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_duration")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDuration {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_email")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringEmail {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_hostname")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringHostname {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ip")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIP {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ipv4")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ipv6")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_password")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringPassword {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_time")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnix {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-micro")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-milli")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-nano")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-seconds")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_uri")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringURI {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_uuid")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUUID {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_integer")
+		e.Int(s.RequiredInteger)
+	}
+	{
+
+		e.FieldStart("required_integer_int32")
+		e.Int32(s.RequiredIntegerInt32)
+	}
+	{
+
+		e.FieldStart("required_integer_int64")
+		e.Int64(s.RequiredIntegerInt64)
+	}
+	{
+
+		_ = s.RequiredNull
+		e.FieldStart("required_null")
+		e.Null()
+	}
+	{
+
+		e.FieldStart("required_number")
+		e.Float64(s.RequiredNumber)
+	}
+	{
+
+		e.FieldStart("required_number_double")
+		e.Float64(s.RequiredNumberDouble)
+	}
+	{
+
+		e.FieldStart("required_number_float")
+		e.Float32(s.RequiredNumberFloat)
+	}
+	{
+
+		e.FieldStart("required_number_int32")
+		e.Int32(s.RequiredNumberInt32)
+	}
+	{
+
+		e.FieldStart("required_number_int64")
+		e.Int64(s.RequiredNumberInt64)
+	}
+	{
+
+		e.FieldStart("required_string")
+		e.Str(s.RequiredString)
+	}
+	{
+
+		e.FieldStart("required_string_binary")
+		e.Str(s.RequiredStringBinary)
+	}
+	{
+
+		e.FieldStart("required_string_byte")
+		e.Base64(s.RequiredStringByte)
+	}
+	{
+
+		e.FieldStart("required_string_date")
+		json.EncodeDate(e, s.RequiredStringDate)
+	}
+	{
+
+		e.FieldStart("required_string_date-time")
+		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
+	}
+	{
+
+		e.FieldStart("required_string_duration")
+		json.EncodeDuration(e, s.RequiredStringDuration)
+	}
+	{
+
+		e.FieldStart("required_string_email")
+		e.Str(s.RequiredStringEmail)
+	}
+	{
+
+		e.FieldStart("required_string_hostname")
+		e.Str(s.RequiredStringHostname)
+	}
+	{
+
+		e.FieldStart("required_string_int32")
+		json.EncodeStringInt32(e, s.RequiredStringInt32)
+	}
+	{
+
+		e.FieldStart("required_string_int64")
+		json.EncodeStringInt64(e, s.RequiredStringInt64)
+	}
+	{
+
+		e.FieldStart("required_string_ip")
+		json.EncodeIP(e, s.RequiredStringIP)
+	}
+	{
+
+		e.FieldStart("required_string_ipv4")
+		json.EncodeIP(e, s.RequiredStringIpv4)
+	}
+	{
+
+		e.FieldStart("required_string_ipv6")
+		json.EncodeIP(e, s.RequiredStringIpv6)
+	}
+	{
+
+		e.FieldStart("required_string_password")
+		e.Str(s.RequiredStringPassword)
+	}
+	{
+
+		e.FieldStart("required_string_time")
+		json.EncodeTime(e, s.RequiredStringTime)
+	}
+	{
+
+		e.FieldStart("required_string_unix")
+		json.EncodeUnixSeconds(e, s.RequiredStringUnix)
+	}
+	{
+
+		e.FieldStart("required_string_unix-micro")
+		json.EncodeUnixMicro(e, s.RequiredStringUnixMinusMicro)
+	}
+	{
+
+		e.FieldStart("required_string_unix-milli")
+		json.EncodeUnixMilli(e, s.RequiredStringUnixMinusMilli)
+	}
+	{
+
+		e.FieldStart("required_string_unix-nano")
+		json.EncodeUnixNano(e, s.RequiredStringUnixMinusNano)
+	}
+	{
+
+		e.FieldStart("required_string_unix-seconds")
+		json.EncodeUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
+	}
+	{
+
+		e.FieldStart("required_string_uri")
+		json.EncodeURI(e, s.RequiredStringURI)
+	}
+	{
+
+		e.FieldStart("required_string_uuid")
+		json.EncodeUUID(e, s.RequiredStringUUID)
+	}
+	{
+
 		if len(s.OptionalAny) != 0 {
 			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
@@ -4168,1107 +5068,207 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
-	{
-
-		if len(s.RequiredAny) != 0 {
-			e.FieldStart("required_any")
-			e.Raw(s.RequiredAny)
-		}
-	}
-	{
-
-		e.FieldStart("required_array_any")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayAny {
-			if len(elem) != 0 {
-				e.Raw(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_boolean")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayBoolean {
-			e.Bool(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayInteger {
-			e.Int(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayIntegerInt32 {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayIntegerInt64 {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_null")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNull {
-			_ = elem
-			e.Null()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumber {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_double")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberDouble {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_float")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberFloat {
-			e.Float32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberInt32 {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberInt64 {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayString {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_binary")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringBinary {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_byte")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringByte {
-			e.Base64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_date")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDate {
-			json.EncodeDate(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_date-time")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDateMinusTime {
-			json.EncodeDateTime(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_duration")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDuration {
-			json.EncodeDuration(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_email")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringEmail {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_hostname")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringHostname {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringInt32 {
-			json.EncodeStringInt32(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringInt64 {
-			json.EncodeStringInt64(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ip")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIP {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ipv4")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIpv4 {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ipv6")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIpv6 {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_password")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringPassword {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_time")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringTime {
-			json.EncodeTime(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnix {
-			json.EncodeUnixSeconds(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-micro")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
-			json.EncodeUnixMicro(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-milli")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
-			json.EncodeUnixMilli(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-nano")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusNano {
-			json.EncodeUnixNano(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-seconds")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
-			json.EncodeUnixSeconds(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_uri")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringURI {
-			json.EncodeURI(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_uuid")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUUID {
-			json.EncodeUUID(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_boolean")
-		e.Bool(s.RequiredBoolean)
-	}
-	{
-
-		e.FieldStart("required_double_array_any")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayAny {
-			e.ArrStart()
-			for _, elem := range elem {
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_boolean")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayBoolean {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Bool(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayInteger {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_null")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNull {
-			e.ArrStart()
-			for _, elem := range elem {
-				_ = elem
-				e.Null()
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumber {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_double")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberDouble {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_float")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberFloat {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayString {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_binary")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringBinary {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_byte")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringByte {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Base64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_date")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDate {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDate(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_date-time")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDateTime(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_duration")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDuration {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDuration(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_email")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringEmail {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_hostname")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringHostname {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt32(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt64(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ip")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIP {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ipv4")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ipv6")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_password")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringPassword {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_time")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringTime {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeTime(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnix {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-micro")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMicro(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-milli")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMilli(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-nano")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixNano(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-seconds")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_uri")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringURI {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeURI(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_uuid")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUUID {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUUID(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_integer")
-		e.Int(s.RequiredInteger)
-	}
-	{
-
-		e.FieldStart("required_integer_int32")
-		e.Int32(s.RequiredIntegerInt32)
-	}
-	{
-
-		e.FieldStart("required_integer_int64")
-		e.Int64(s.RequiredIntegerInt64)
-	}
-	{
-
-		_ = s.RequiredNull
-		e.FieldStart("required_null")
-		e.Null()
-	}
-	{
-
-		e.FieldStart("required_number")
-		e.Float64(s.RequiredNumber)
-	}
-	{
-
-		e.FieldStart("required_number_double")
-		e.Float64(s.RequiredNumberDouble)
-	}
-	{
-
-		e.FieldStart("required_number_float")
-		e.Float32(s.RequiredNumberFloat)
-	}
-	{
-
-		e.FieldStart("required_number_int32")
-		e.Int32(s.RequiredNumberInt32)
-	}
-	{
-
-		e.FieldStart("required_number_int64")
-		e.Int64(s.RequiredNumberInt64)
-	}
-	{
-
-		e.FieldStart("required_string")
-		e.Str(s.RequiredString)
-	}
-	{
-
-		e.FieldStart("required_string_binary")
-		e.Str(s.RequiredStringBinary)
-	}
-	{
-
-		e.FieldStart("required_string_byte")
-		e.Base64(s.RequiredStringByte)
-	}
-	{
-
-		e.FieldStart("required_string_date")
-		json.EncodeDate(e, s.RequiredStringDate)
-	}
-	{
-
-		e.FieldStart("required_string_date-time")
-		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
-	}
-	{
-
-		e.FieldStart("required_string_duration")
-		json.EncodeDuration(e, s.RequiredStringDuration)
-	}
-	{
-
-		e.FieldStart("required_string_email")
-		e.Str(s.RequiredStringEmail)
-	}
-	{
-
-		e.FieldStart("required_string_hostname")
-		e.Str(s.RequiredStringHostname)
-	}
-	{
-
-		e.FieldStart("required_string_int32")
-		json.EncodeStringInt32(e, s.RequiredStringInt32)
-	}
-	{
-
-		e.FieldStart("required_string_int64")
-		json.EncodeStringInt64(e, s.RequiredStringInt64)
-	}
-	{
-
-		e.FieldStart("required_string_ip")
-		json.EncodeIP(e, s.RequiredStringIP)
-	}
-	{
-
-		e.FieldStart("required_string_ipv4")
-		json.EncodeIP(e, s.RequiredStringIpv4)
-	}
-	{
-
-		e.FieldStart("required_string_ipv6")
-		json.EncodeIP(e, s.RequiredStringIpv6)
-	}
-	{
-
-		e.FieldStart("required_string_password")
-		e.Str(s.RequiredStringPassword)
-	}
-	{
-
-		e.FieldStart("required_string_time")
-		json.EncodeTime(e, s.RequiredStringTime)
-	}
-	{
-
-		e.FieldStart("required_string_unix")
-		json.EncodeUnixSeconds(e, s.RequiredStringUnix)
-	}
-	{
-
-		e.FieldStart("required_string_unix-micro")
-		json.EncodeUnixMicro(e, s.RequiredStringUnixMinusMicro)
-	}
-	{
-
-		e.FieldStart("required_string_unix-milli")
-		json.EncodeUnixMilli(e, s.RequiredStringUnixMinusMilli)
-	}
-	{
-
-		e.FieldStart("required_string_unix-nano")
-		json.EncodeUnixNano(e, s.RequiredStringUnixMinusNano)
-	}
-	{
-
-		e.FieldStart("required_string_unix-seconds")
-		json.EncodeUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
-	}
-	{
-
-		e.FieldStart("required_string_uri")
-		json.EncodeURI(e, s.RequiredStringURI)
-	}
-	{
-
-		e.FieldStart("required_string_uuid")
-		json.EncodeUUID(e, s.RequiredStringUUID)
-	}
 }
 
 var jsonFieldsNameOfTestRequestFormatTestReq = [198]string{
-	0:   "optional_any",
-	1:   "optional_array_any",
-	2:   "optional_array_boolean",
-	3:   "optional_array_integer",
-	4:   "optional_array_integer_int32",
-	5:   "optional_array_integer_int64",
-	6:   "optional_array_null",
-	7:   "optional_array_number",
-	8:   "optional_array_number_double",
-	9:   "optional_array_number_float",
-	10:  "optional_array_number_int32",
-	11:  "optional_array_number_int64",
-	12:  "optional_array_string",
-	13:  "optional_array_string_binary",
-	14:  "optional_array_string_byte",
-	15:  "optional_array_string_date",
-	16:  "optional_array_string_date-time",
-	17:  "optional_array_string_duration",
-	18:  "optional_array_string_email",
-	19:  "optional_array_string_hostname",
-	20:  "optional_array_string_int32",
-	21:  "optional_array_string_int64",
-	22:  "optional_array_string_ip",
-	23:  "optional_array_string_ipv4",
-	24:  "optional_array_string_ipv6",
-	25:  "optional_array_string_password",
-	26:  "optional_array_string_time",
-	27:  "optional_array_string_unix",
-	28:  "optional_array_string_unix-micro",
-	29:  "optional_array_string_unix-milli",
-	30:  "optional_array_string_unix-nano",
-	31:  "optional_array_string_unix-seconds",
-	32:  "optional_array_string_uri",
-	33:  "optional_array_string_uuid",
-	34:  "optional_boolean",
-	35:  "optional_double_array_any",
-	36:  "optional_double_array_boolean",
-	37:  "optional_double_array_integer",
-	38:  "optional_double_array_integer_int32",
-	39:  "optional_double_array_integer_int64",
-	40:  "optional_double_array_null",
-	41:  "optional_double_array_number",
-	42:  "optional_double_array_number_double",
-	43:  "optional_double_array_number_float",
-	44:  "optional_double_array_number_int32",
-	45:  "optional_double_array_number_int64",
-	46:  "optional_double_array_string",
-	47:  "optional_double_array_string_binary",
-	48:  "optional_double_array_string_byte",
-	49:  "optional_double_array_string_date",
-	50:  "optional_double_array_string_date-time",
-	51:  "optional_double_array_string_duration",
-	52:  "optional_double_array_string_email",
-	53:  "optional_double_array_string_hostname",
-	54:  "optional_double_array_string_int32",
-	55:  "optional_double_array_string_int64",
-	56:  "optional_double_array_string_ip",
-	57:  "optional_double_array_string_ipv4",
-	58:  "optional_double_array_string_ipv6",
-	59:  "optional_double_array_string_password",
-	60:  "optional_double_array_string_time",
-	61:  "optional_double_array_string_unix",
-	62:  "optional_double_array_string_unix-micro",
-	63:  "optional_double_array_string_unix-milli",
-	64:  "optional_double_array_string_unix-nano",
-	65:  "optional_double_array_string_unix-seconds",
-	66:  "optional_double_array_string_uri",
-	67:  "optional_double_array_string_uuid",
-	68:  "optional_integer",
-	69:  "optional_integer_int32",
-	70:  "optional_integer_int64",
-	71:  "optional_null",
-	72:  "optional_number",
-	73:  "optional_number_double",
-	74:  "optional_number_float",
-	75:  "optional_number_int32",
-	76:  "optional_number_int64",
-	77:  "optional_string",
-	78:  "optional_string_binary",
-	79:  "optional_string_byte",
-	80:  "optional_string_date",
-	81:  "optional_string_date-time",
-	82:  "optional_string_duration",
-	83:  "optional_string_email",
-	84:  "optional_string_hostname",
-	85:  "optional_string_int32",
-	86:  "optional_string_int64",
-	87:  "optional_string_ip",
-	88:  "optional_string_ipv4",
-	89:  "optional_string_ipv6",
-	90:  "optional_string_password",
-	91:  "optional_string_time",
-	92:  "optional_string_unix",
-	93:  "optional_string_unix-micro",
-	94:  "optional_string_unix-milli",
-	95:  "optional_string_unix-nano",
-	96:  "optional_string_unix-seconds",
-	97:  "optional_string_uri",
-	98:  "optional_string_uuid",
-	99:  "required_any",
-	100: "required_array_any",
-	101: "required_array_boolean",
-	102: "required_array_integer",
-	103: "required_array_integer_int32",
-	104: "required_array_integer_int64",
-	105: "required_array_null",
-	106: "required_array_number",
-	107: "required_array_number_double",
-	108: "required_array_number_float",
-	109: "required_array_number_int32",
-	110: "required_array_number_int64",
-	111: "required_array_string",
-	112: "required_array_string_binary",
-	113: "required_array_string_byte",
-	114: "required_array_string_date",
-	115: "required_array_string_date-time",
-	116: "required_array_string_duration",
-	117: "required_array_string_email",
-	118: "required_array_string_hostname",
-	119: "required_array_string_int32",
-	120: "required_array_string_int64",
-	121: "required_array_string_ip",
-	122: "required_array_string_ipv4",
-	123: "required_array_string_ipv6",
-	124: "required_array_string_password",
-	125: "required_array_string_time",
-	126: "required_array_string_unix",
-	127: "required_array_string_unix-micro",
-	128: "required_array_string_unix-milli",
-	129: "required_array_string_unix-nano",
-	130: "required_array_string_unix-seconds",
-	131: "required_array_string_uri",
-	132: "required_array_string_uuid",
-	133: "required_boolean",
-	134: "required_double_array_any",
-	135: "required_double_array_boolean",
-	136: "required_double_array_integer",
-	137: "required_double_array_integer_int32",
-	138: "required_double_array_integer_int64",
-	139: "required_double_array_null",
-	140: "required_double_array_number",
-	141: "required_double_array_number_double",
-	142: "required_double_array_number_float",
-	143: "required_double_array_number_int32",
-	144: "required_double_array_number_int64",
-	145: "required_double_array_string",
-	146: "required_double_array_string_binary",
-	147: "required_double_array_string_byte",
-	148: "required_double_array_string_date",
-	149: "required_double_array_string_date-time",
-	150: "required_double_array_string_duration",
-	151: "required_double_array_string_email",
-	152: "required_double_array_string_hostname",
-	153: "required_double_array_string_int32",
-	154: "required_double_array_string_int64",
-	155: "required_double_array_string_ip",
-	156: "required_double_array_string_ipv4",
-	157: "required_double_array_string_ipv6",
-	158: "required_double_array_string_password",
-	159: "required_double_array_string_time",
-	160: "required_double_array_string_unix",
-	161: "required_double_array_string_unix-micro",
-	162: "required_double_array_string_unix-milli",
-	163: "required_double_array_string_unix-nano",
-	164: "required_double_array_string_unix-seconds",
-	165: "required_double_array_string_uri",
-	166: "required_double_array_string_uuid",
-	167: "required_integer",
-	168: "required_integer_int32",
-	169: "required_integer_int64",
-	170: "required_null",
-	171: "required_number",
-	172: "required_number_double",
-	173: "required_number_float",
-	174: "required_number_int32",
-	175: "required_number_int64",
-	176: "required_string",
-	177: "required_string_binary",
-	178: "required_string_byte",
-	179: "required_string_date",
-	180: "required_string_date-time",
-	181: "required_string_duration",
-	182: "required_string_email",
-	183: "required_string_hostname",
-	184: "required_string_int32",
-	185: "required_string_int64",
-	186: "required_string_ip",
-	187: "required_string_ipv4",
-	188: "required_string_ipv6",
-	189: "required_string_password",
-	190: "required_string_time",
-	191: "required_string_unix",
-	192: "required_string_unix-micro",
-	193: "required_string_unix-milli",
-	194: "required_string_unix-nano",
-	195: "required_string_unix-seconds",
-	196: "required_string_uri",
-	197: "required_string_uuid",
+	0:   "required_any",
+	1:   "required_array_any",
+	2:   "required_array_boolean",
+	3:   "required_array_integer",
+	4:   "required_array_integer_int32",
+	5:   "required_array_integer_int64",
+	6:   "required_array_null",
+	7:   "required_array_number",
+	8:   "required_array_number_double",
+	9:   "required_array_number_float",
+	10:  "required_array_number_int32",
+	11:  "required_array_number_int64",
+	12:  "required_array_string",
+	13:  "required_array_string_binary",
+	14:  "required_array_string_byte",
+	15:  "required_array_string_date",
+	16:  "required_array_string_date-time",
+	17:  "required_array_string_duration",
+	18:  "required_array_string_email",
+	19:  "required_array_string_hostname",
+	20:  "required_array_string_int32",
+	21:  "required_array_string_int64",
+	22:  "required_array_string_ip",
+	23:  "required_array_string_ipv4",
+	24:  "required_array_string_ipv6",
+	25:  "required_array_string_password",
+	26:  "required_array_string_time",
+	27:  "required_array_string_unix",
+	28:  "required_array_string_unix-micro",
+	29:  "required_array_string_unix-milli",
+	30:  "required_array_string_unix-nano",
+	31:  "required_array_string_unix-seconds",
+	32:  "required_array_string_uri",
+	33:  "required_array_string_uuid",
+	34:  "required_boolean",
+	35:  "required_double_array_any",
+	36:  "required_double_array_boolean",
+	37:  "required_double_array_integer",
+	38:  "required_double_array_integer_int32",
+	39:  "required_double_array_integer_int64",
+	40:  "required_double_array_null",
+	41:  "required_double_array_number",
+	42:  "required_double_array_number_double",
+	43:  "required_double_array_number_float",
+	44:  "required_double_array_number_int32",
+	45:  "required_double_array_number_int64",
+	46:  "required_double_array_string",
+	47:  "required_double_array_string_binary",
+	48:  "required_double_array_string_byte",
+	49:  "required_double_array_string_date",
+	50:  "required_double_array_string_date-time",
+	51:  "required_double_array_string_duration",
+	52:  "required_double_array_string_email",
+	53:  "required_double_array_string_hostname",
+	54:  "required_double_array_string_int32",
+	55:  "required_double_array_string_int64",
+	56:  "required_double_array_string_ip",
+	57:  "required_double_array_string_ipv4",
+	58:  "required_double_array_string_ipv6",
+	59:  "required_double_array_string_password",
+	60:  "required_double_array_string_time",
+	61:  "required_double_array_string_unix",
+	62:  "required_double_array_string_unix-micro",
+	63:  "required_double_array_string_unix-milli",
+	64:  "required_double_array_string_unix-nano",
+	65:  "required_double_array_string_unix-seconds",
+	66:  "required_double_array_string_uri",
+	67:  "required_double_array_string_uuid",
+	68:  "required_integer",
+	69:  "required_integer_int32",
+	70:  "required_integer_int64",
+	71:  "required_null",
+	72:  "required_number",
+	73:  "required_number_double",
+	74:  "required_number_float",
+	75:  "required_number_int32",
+	76:  "required_number_int64",
+	77:  "required_string",
+	78:  "required_string_binary",
+	79:  "required_string_byte",
+	80:  "required_string_date",
+	81:  "required_string_date-time",
+	82:  "required_string_duration",
+	83:  "required_string_email",
+	84:  "required_string_hostname",
+	85:  "required_string_int32",
+	86:  "required_string_int64",
+	87:  "required_string_ip",
+	88:  "required_string_ipv4",
+	89:  "required_string_ipv6",
+	90:  "required_string_password",
+	91:  "required_string_time",
+	92:  "required_string_unix",
+	93:  "required_string_unix-micro",
+	94:  "required_string_unix-milli",
+	95:  "required_string_unix-nano",
+	96:  "required_string_unix-seconds",
+	97:  "required_string_uri",
+	98:  "required_string_uuid",
+	99:  "optional_any",
+	100: "optional_array_any",
+	101: "optional_array_boolean",
+	102: "optional_array_integer",
+	103: "optional_array_integer_int32",
+	104: "optional_array_integer_int64",
+	105: "optional_array_null",
+	106: "optional_array_number",
+	107: "optional_array_number_double",
+	108: "optional_array_number_float",
+	109: "optional_array_number_int32",
+	110: "optional_array_number_int64",
+	111: "optional_array_string",
+	112: "optional_array_string_binary",
+	113: "optional_array_string_byte",
+	114: "optional_array_string_date",
+	115: "optional_array_string_date-time",
+	116: "optional_array_string_duration",
+	117: "optional_array_string_email",
+	118: "optional_array_string_hostname",
+	119: "optional_array_string_int32",
+	120: "optional_array_string_int64",
+	121: "optional_array_string_ip",
+	122: "optional_array_string_ipv4",
+	123: "optional_array_string_ipv6",
+	124: "optional_array_string_password",
+	125: "optional_array_string_time",
+	126: "optional_array_string_unix",
+	127: "optional_array_string_unix-micro",
+	128: "optional_array_string_unix-milli",
+	129: "optional_array_string_unix-nano",
+	130: "optional_array_string_unix-seconds",
+	131: "optional_array_string_uri",
+	132: "optional_array_string_uuid",
+	133: "optional_boolean",
+	134: "optional_double_array_any",
+	135: "optional_double_array_boolean",
+	136: "optional_double_array_integer",
+	137: "optional_double_array_integer_int32",
+	138: "optional_double_array_integer_int64",
+	139: "optional_double_array_null",
+	140: "optional_double_array_number",
+	141: "optional_double_array_number_double",
+	142: "optional_double_array_number_float",
+	143: "optional_double_array_number_int32",
+	144: "optional_double_array_number_int64",
+	145: "optional_double_array_string",
+	146: "optional_double_array_string_binary",
+	147: "optional_double_array_string_byte",
+	148: "optional_double_array_string_date",
+	149: "optional_double_array_string_date-time",
+	150: "optional_double_array_string_duration",
+	151: "optional_double_array_string_email",
+	152: "optional_double_array_string_hostname",
+	153: "optional_double_array_string_int32",
+	154: "optional_double_array_string_int64",
+	155: "optional_double_array_string_ip",
+	156: "optional_double_array_string_ipv4",
+	157: "optional_double_array_string_ipv6",
+	158: "optional_double_array_string_password",
+	159: "optional_double_array_string_time",
+	160: "optional_double_array_string_unix",
+	161: "optional_double_array_string_unix-micro",
+	162: "optional_double_array_string_unix-milli",
+	163: "optional_double_array_string_unix-nano",
+	164: "optional_double_array_string_unix-seconds",
+	165: "optional_double_array_string_uri",
+	166: "optional_double_array_string_uuid",
+	167: "optional_integer",
+	168: "optional_integer_int32",
+	169: "optional_integer_int64",
+	170: "optional_null",
+	171: "optional_number",
+	172: "optional_number_double",
+	173: "optional_number_float",
+	174: "optional_number_int32",
+	175: "optional_number_int64",
+	176: "optional_string",
+	177: "optional_string_binary",
+	178: "optional_string_byte",
+	179: "optional_string_date",
+	180: "optional_string_date-time",
+	181: "optional_string_duration",
+	182: "optional_string_email",
+	183: "optional_string_hostname",
+	184: "optional_string_int32",
+	185: "optional_string_int64",
+	186: "optional_string_ip",
+	187: "optional_string_ipv4",
+	188: "optional_string_ipv6",
+	189: "optional_string_password",
+	190: "optional_string_time",
+	191: "optional_string_unix",
+	192: "optional_string_unix-micro",
+	193: "optional_string_unix-milli",
+	194: "optional_string_unix-nano",
+	195: "optional_string_unix-seconds",
+	196: "optional_string_uri",
+	197: "optional_string_uuid",
 }
 
 // Decode decodes TestRequestFormatTestReq from json.
@@ -5280,6 +5280,1980 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "required_any":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.RawAppend(nil)
+				s.RequiredAny = jx.Raw(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_any\"")
+			}
+		case "required_array_any":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayAny = make([]jx.Raw, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem jx.Raw
+					v, err := d.RawAppend(nil)
+					elem = jx.Raw(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_any\"")
+			}
+		case "required_array_boolean":
+			requiredBitSet[0] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayBoolean = make([]bool, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem bool
+					v, err := d.Bool()
+					elem = bool(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_boolean\"")
+			}
+		case "required_array_integer":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayInteger = make([]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer\"")
+			}
+		case "required_array_integer_int32":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayIntegerInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := d.Int32()
+					elem = int32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer_int32\"")
+			}
+		case "required_array_integer_int64":
+			requiredBitSet[0] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayIntegerInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := d.Int64()
+					elem = int64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer_int64\"")
+			}
+		case "required_array_null":
+			requiredBitSet[0] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayNull = make([]struct{}, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem struct{}
+					if err := d.Null(); err != nil {
+						return err
+					}
+					s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_null\"")
+			}
+		case "required_array_number":
+			requiredBitSet[0] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayNumber = make([]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float64
+					v, err := d.Float64()
+					elem = float64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number\"")
+			}
+		case "required_array_number_double":
+			requiredBitSet[1] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayNumberDouble = make([]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float64
+					v, err := d.Float64()
+					elem = float64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_double\"")
+			}
+		case "required_array_number_float":
+			requiredBitSet[1] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayNumberFloat = make([]float32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float32
+					v, err := d.Float32()
+					elem = float32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_float\"")
+			}
+		case "required_array_number_int32":
+			requiredBitSet[1] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayNumberInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := d.Int32()
+					elem = int32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_int32\"")
+			}
+		case "required_array_number_int64":
+			requiredBitSet[1] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayNumberInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := d.Int64()
+					elem = int64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_int64\"")
+			}
+		case "required_array_string":
+			requiredBitSet[1] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayString = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayString = append(s.RequiredArrayString, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string\"")
+			}
+		case "required_array_string_binary":
+			requiredBitSet[1] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringBinary = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_binary\"")
+			}
+		case "required_array_string_byte":
+			requiredBitSet[1] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringByte = make([][]byte, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []byte
+					v, err := d.Base64()
+					elem = []byte(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_byte\"")
+			}
+		case "required_array_string_date":
+			requiredBitSet[1] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringDate = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeDate(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_date\"")
+			}
+		case "required_array_string_date-time":
+			requiredBitSet[2] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeDateTime(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_date-time\"")
+			}
+		case "required_array_string_duration":
+			requiredBitSet[2] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringDuration = make([]time.Duration, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Duration
+					v, err := json.DecodeDuration(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_duration\"")
+			}
+		case "required_array_string_email":
+			requiredBitSet[2] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayStringEmail = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_email\"")
+			}
+		case "required_array_string_hostname":
+			requiredBitSet[2] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayStringHostname = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
+			}
+		case "required_array_string_int32":
+			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
+			}
+		case "required_array_string_int64":
+			requiredBitSet[2] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
+			}
+		case "required_array_string_ip":
+			requiredBitSet[2] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringIP = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
+			}
+		case "required_array_string_ipv4":
+			requiredBitSet[2] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
+			}
+		case "required_array_string_ipv6":
+			requiredBitSet[3] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
+			}
+		case "required_array_string_password":
+			requiredBitSet[3] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringPassword = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_password\"")
+			}
+		case "required_array_string_time":
+			requiredBitSet[3] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayStringTime = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeTime(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_time\"")
+			}
+		case "required_array_string_unix":
+			requiredBitSet[3] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayStringUnix = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix\"")
+			}
+		case "required_array_string_unix-micro":
+			requiredBitSet[3] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusMicro = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixMicro(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-micro\"")
+			}
+		case "required_array_string_unix-milli":
+			requiredBitSet[3] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusMilli = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixMilli(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-milli\"")
+			}
+		case "required_array_string_unix-nano":
+			requiredBitSet[3] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusNano = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixNano(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-nano\"")
+			}
+		case "required_array_string_unix-seconds":
+			requiredBitSet[3] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusSeconds = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-seconds\"")
+			}
+		case "required_array_string_uri":
+			requiredBitSet[4] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringURI = make([]url.URL, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem url.URL
+					v, err := json.DecodeURI(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
+			}
+		case "required_array_string_uuid":
+			requiredBitSet[4] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
+			}
+		case "required_boolean":
+			requiredBitSet[4] |= 1 << 2
+			if err := func() error {
+				v, err := d.Bool()
+				s.RequiredBoolean = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_boolean\"")
+			}
+		case "required_double_array_any":
+			requiredBitSet[4] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []jx.Raw
+					elem = make([]jx.Raw, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem jx.Raw
+						v, err := d.RawAppend(nil)
+						elemElem = jx.Raw(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_any\"")
+			}
+		case "required_double_array_boolean":
+			requiredBitSet[4] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []bool
+					elem = make([]bool, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem bool
+						v, err := d.Bool()
+						elemElem = bool(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
+			}
+		case "required_double_array_integer":
+			requiredBitSet[4] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayInteger = make([][]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int
+					elem = make([]int, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int
+						v, err := d.Int()
+						elemElem = int(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
+			}
+		case "required_double_array_integer_int32":
+			requiredBitSet[4] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := d.Int32()
+						elemElem = int32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
+			}
+		case "required_double_array_integer_int64":
+			requiredBitSet[4] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := d.Int64()
+						elemElem = int64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
+			}
+		case "required_double_array_null":
+			requiredBitSet[5] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []struct{}
+					elem = make([]struct{}, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem struct{}
+						if err := d.Null(); err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_null\"")
+			}
+		case "required_double_array_number":
+			requiredBitSet[5] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayNumber = make([][]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float64
+					elem = make([]float64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float64
+						v, err := d.Float64()
+						elemElem = float64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number\"")
+			}
+		case "required_double_array_number_double":
+			requiredBitSet[5] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float64
+					elem = make([]float64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float64
+						v, err := d.Float64()
+						elemElem = float64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
+			}
+		case "required_double_array_number_float":
+			requiredBitSet[5] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float32
+					elem = make([]float32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float32
+						v, err := d.Float32()
+						elemElem = float32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
+			}
+		case "required_double_array_number_int32":
+			requiredBitSet[5] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := d.Int32()
+						elemElem = int32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
+			}
+		case "required_double_array_number_int64":
+			requiredBitSet[5] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := d.Int64()
+						elemElem = int64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
+			}
+		case "required_double_array_string":
+			requiredBitSet[5] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayString = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string\"")
+			}
+		case "required_double_array_string_binary":
+			requiredBitSet[5] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
+			}
+		case "required_double_array_string_byte":
+			requiredBitSet[6] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem [][]byte
+					elem = make([][]byte, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem []byte
+						v, err := d.Base64()
+						elemElem = []byte(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
+			}
+		case "required_double_array_string_date":
+			requiredBitSet[6] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeDate(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
+			}
+		case "required_double_array_string_date-time":
+			requiredBitSet[6] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeDateTime(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
+			}
+		case "required_double_array_string_duration":
+			requiredBitSet[6] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Duration
+					elem = make([]time.Duration, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Duration
+						v, err := json.DecodeDuration(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
+			}
+		case "required_double_array_string_email":
+			requiredBitSet[6] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
+			}
+		case "required_double_array_string_hostname":
+			requiredBitSet[6] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
+			}
+		case "required_double_array_string_int32":
+			requiredBitSet[6] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
+			}
+		case "required_double_array_string_int64":
+			requiredBitSet[6] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
+			}
+		case "required_double_array_string_ip":
+			requiredBitSet[7] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
+			}
+		case "required_double_array_string_ipv4":
+			requiredBitSet[7] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
+			}
+		case "required_double_array_string_ipv6":
+			requiredBitSet[7] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
+			}
+		case "required_double_array_string_password":
+			requiredBitSet[7] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
+			}
+		case "required_double_array_string_time":
+			requiredBitSet[7] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeTime(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
+			}
+		case "required_double_array_string_unix":
+			requiredBitSet[7] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnix = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixSeconds(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix\"")
+			}
+		case "required_double_array_string_unix-micro":
+			requiredBitSet[7] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusMicro = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixMicro(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-micro\"")
+			}
+		case "required_double_array_string_unix-milli":
+			requiredBitSet[7] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusMilli = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixMilli(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-milli\"")
+			}
+		case "required_double_array_string_unix-nano":
+			requiredBitSet[8] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusNano = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixNano(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-nano\"")
+			}
+		case "required_double_array_string_unix-seconds":
+			requiredBitSet[8] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusSeconds = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixSeconds(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-seconds\"")
+			}
+		case "required_double_array_string_uri":
+			requiredBitSet[8] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []url.URL
+					elem = make([]url.URL, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem url.URL
+						v, err := json.DecodeURI(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
+			}
+		case "required_double_array_string_uuid":
+			requiredBitSet[8] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []uuid.UUID
+					elem = make([]uuid.UUID, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem uuid.UUID
+						v, err := json.DecodeUUID(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
+			}
+		case "required_integer":
+			requiredBitSet[8] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int()
+				s.RequiredInteger = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer\"")
+			}
+		case "required_integer_int32":
+			requiredBitSet[8] |= 1 << 5
+			if err := func() error {
+				v, err := d.Int32()
+				s.RequiredIntegerInt32 = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer_int32\"")
+			}
+		case "required_integer_int64":
+			requiredBitSet[8] |= 1 << 6
+			if err := func() error {
+				v, err := d.Int64()
+				s.RequiredIntegerInt64 = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer_int64\"")
+			}
+		case "required_null":
+			requiredBitSet[8] |= 1 << 7
+			if err := func() error {
+				if err := d.Null(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_null\"")
+			}
+		case "required_number":
+			requiredBitSet[9] |= 1 << 0
+			if err := func() error {
+				v, err := d.Float64()
+				s.RequiredNumber = float64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number\"")
+			}
+		case "required_number_double":
+			requiredBitSet[9] |= 1 << 1
+			if err := func() error {
+				v, err := d.Float64()
+				s.RequiredNumberDouble = float64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_double\"")
+			}
+		case "required_number_float":
+			requiredBitSet[9] |= 1 << 2
+			if err := func() error {
+				v, err := d.Float32()
+				s.RequiredNumberFloat = float32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_float\"")
+			}
+		case "required_number_int32":
+			requiredBitSet[9] |= 1 << 3
+			if err := func() error {
+				v, err := d.Int32()
+				s.RequiredNumberInt32 = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_int32\"")
+			}
+		case "required_number_int64":
+			requiredBitSet[9] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int64()
+				s.RequiredNumberInt64 = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_int64\"")
+			}
+		case "required_string":
+			requiredBitSet[9] |= 1 << 5
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredString = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string\"")
+			}
+		case "required_string_binary":
+			requiredBitSet[9] |= 1 << 6
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringBinary = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_binary\"")
+			}
+		case "required_string_byte":
+			requiredBitSet[9] |= 1 << 7
+			if err := func() error {
+				v, err := d.Base64()
+				s.RequiredStringByte = []byte(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_byte\"")
+			}
+		case "required_string_date":
+			requiredBitSet[10] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeDate(d)
+				s.RequiredStringDate = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_date\"")
+			}
+		case "required_string_date-time":
+			requiredBitSet[10] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeDateTime(d)
+				s.RequiredStringDateMinusTime = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_date-time\"")
+			}
+		case "required_string_duration":
+			requiredBitSet[10] |= 1 << 2
+			if err := func() error {
+				v, err := json.DecodeDuration(d)
+				s.RequiredStringDuration = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_duration\"")
+			}
+		case "required_string_email":
+			requiredBitSet[10] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringEmail = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_email\"")
+			}
+		case "required_string_hostname":
+			requiredBitSet[10] |= 1 << 4
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringHostname = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_hostname\"")
+			}
+		case "required_string_int32":
+			requiredBitSet[10] |= 1 << 5
+			if err := func() error {
+				v, err := json.DecodeStringInt32(d)
+				s.RequiredStringInt32 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int32\"")
+			}
+		case "required_string_int64":
+			requiredBitSet[10] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeStringInt64(d)
+				s.RequiredStringInt64 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int64\"")
+			}
+		case "required_string_ip":
+			requiredBitSet[10] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIP = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ip\"")
+			}
+		case "required_string_ipv4":
+			requiredBitSet[11] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIpv4 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
+			}
+		case "required_string_ipv6":
+			requiredBitSet[11] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIpv6 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
+			}
+		case "required_string_password":
+			requiredBitSet[11] |= 1 << 2
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringPassword = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_password\"")
+			}
+		case "required_string_time":
+			requiredBitSet[11] |= 1 << 3
+			if err := func() error {
+				v, err := json.DecodeTime(d)
+				s.RequiredStringTime = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_time\"")
+			}
+		case "required_string_unix":
+			requiredBitSet[11] |= 1 << 4
+			if err := func() error {
+				v, err := json.DecodeUnixSeconds(d)
+				s.RequiredStringUnix = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix\"")
+			}
+		case "required_string_unix-micro":
+			requiredBitSet[11] |= 1 << 5
+			if err := func() error {
+				v, err := json.DecodeUnixMicro(d)
+				s.RequiredStringUnixMinusMicro = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-micro\"")
+			}
+		case "required_string_unix-milli":
+			requiredBitSet[11] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeUnixMilli(d)
+				s.RequiredStringUnixMinusMilli = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-milli\"")
+			}
+		case "required_string_unix-nano":
+			requiredBitSet[11] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeUnixNano(d)
+				s.RequiredStringUnixMinusNano = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-nano\"")
+			}
+		case "required_string_unix-seconds":
+			requiredBitSet[12] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeUnixSeconds(d)
+				s.RequiredStringUnixMinusSeconds = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-seconds\"")
+			}
+		case "required_string_uri":
+			requiredBitSet[12] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeURI(d)
+				s.RequiredStringURI = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_uri\"")
+			}
+		case "required_string_uuid":
+			requiredBitSet[12] |= 1 << 2
+			if err := func() error {
+				v, err := json.DecodeUUID(d)
+				s.RequiredStringUUID = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_uuid\"")
+			}
 		case "optional_any":
 			if err := func() error {
 				v, err := d.RawAppend(nil)
@@ -7126,1980 +9100,6 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_string_uuid\"")
 			}
-		case "required_any":
-			requiredBitSet[12] |= 1 << 3
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.RequiredAny = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_any\"")
-			}
-		case "required_array_any":
-			requiredBitSet[12] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayAny = make([]jx.Raw, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem jx.Raw
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_any\"")
-			}
-		case "required_array_boolean":
-			requiredBitSet[12] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayBoolean = make([]bool, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem bool
-					v, err := d.Bool()
-					elem = bool(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_boolean\"")
-			}
-		case "required_array_integer":
-			requiredBitSet[12] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayInteger = make([]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int
-					v, err := d.Int()
-					elem = int(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer\"")
-			}
-		case "required_array_integer_int32":
-			requiredBitSet[12] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayIntegerInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer_int32\"")
-			}
-		case "required_array_integer_int64":
-			requiredBitSet[13] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayIntegerInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer_int64\"")
-			}
-		case "required_array_null":
-			requiredBitSet[13] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayNull = make([]struct{}, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem struct{}
-					if err := d.Null(); err != nil {
-						return err
-					}
-					s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_null\"")
-			}
-		case "required_array_number":
-			requiredBitSet[13] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayNumber = make([]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number\"")
-			}
-		case "required_array_number_double":
-			requiredBitSet[13] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayNumberDouble = make([]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_double\"")
-			}
-		case "required_array_number_float":
-			requiredBitSet[13] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayNumberFloat = make([]float32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float32
-					v, err := d.Float32()
-					elem = float32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_float\"")
-			}
-		case "required_array_number_int32":
-			requiredBitSet[13] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayNumberInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_int32\"")
-			}
-		case "required_array_number_int64":
-			requiredBitSet[13] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayNumberInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_int64\"")
-			}
-		case "required_array_string":
-			requiredBitSet[13] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayString = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayString = append(s.RequiredArrayString, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string\"")
-			}
-		case "required_array_string_binary":
-			requiredBitSet[14] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringBinary = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_binary\"")
-			}
-		case "required_array_string_byte":
-			requiredBitSet[14] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringByte = make([][]byte, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []byte
-					v, err := d.Base64()
-					elem = []byte(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_byte\"")
-			}
-		case "required_array_string_date":
-			requiredBitSet[14] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringDate = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDate(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_date\"")
-			}
-		case "required_array_string_date-time":
-			requiredBitSet[14] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDateTime(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_date-time\"")
-			}
-		case "required_array_string_duration":
-			requiredBitSet[14] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringDuration = make([]time.Duration, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Duration
-					v, err := json.DecodeDuration(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_duration\"")
-			}
-		case "required_array_string_email":
-			requiredBitSet[14] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayStringEmail = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_email\"")
-			}
-		case "required_array_string_hostname":
-			requiredBitSet[14] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayStringHostname = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
-			}
-		case "required_array_string_int32":
-			requiredBitSet[14] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayStringInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := json.DecodeStringInt32(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
-			}
-		case "required_array_string_int64":
-			requiredBitSet[15] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := json.DecodeStringInt64(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
-			}
-		case "required_array_string_ip":
-			requiredBitSet[15] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringIP = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
-			}
-		case "required_array_string_ipv4":
-			requiredBitSet[15] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
-			}
-		case "required_array_string_ipv6":
-			requiredBitSet[15] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
-			}
-		case "required_array_string_password":
-			requiredBitSet[15] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringPassword = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_password\"")
-			}
-		case "required_array_string_time":
-			requiredBitSet[15] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayStringTime = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeTime(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_time\"")
-			}
-		case "required_array_string_unix":
-			requiredBitSet[15] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayStringUnix = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix\"")
-			}
-		case "required_array_string_unix-micro":
-			requiredBitSet[15] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusMicro = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMicro(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-micro\"")
-			}
-		case "required_array_string_unix-milli":
-			requiredBitSet[16] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusMilli = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMilli(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-milli\"")
-			}
-		case "required_array_string_unix-nano":
-			requiredBitSet[16] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusNano = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixNano(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-nano\"")
-			}
-		case "required_array_string_unix-seconds":
-			requiredBitSet[16] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusSeconds = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-seconds\"")
-			}
-		case "required_array_string_uri":
-			requiredBitSet[16] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringURI = make([]url.URL, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem url.URL
-					v, err := json.DecodeURI(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
-			}
-		case "required_array_string_uuid":
-			requiredBitSet[16] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem uuid.UUID
-					v, err := json.DecodeUUID(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
-			}
-		case "required_boolean":
-			requiredBitSet[16] |= 1 << 5
-			if err := func() error {
-				v, err := d.Bool()
-				s.RequiredBoolean = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_boolean\"")
-			}
-		case "required_double_array_any":
-			requiredBitSet[16] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []jx.Raw
-					elem = make([]jx.Raw, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem jx.Raw
-						v, err := d.RawAppend(nil)
-						elemElem = jx.Raw(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_any\"")
-			}
-		case "required_double_array_boolean":
-			requiredBitSet[16] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []bool
-					elem = make([]bool, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem bool
-						v, err := d.Bool()
-						elemElem = bool(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
-			}
-		case "required_double_array_integer":
-			requiredBitSet[17] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayInteger = make([][]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int
-					elem = make([]int, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int
-						v, err := d.Int()
-						elemElem = int(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
-			}
-		case "required_double_array_integer_int32":
-			requiredBitSet[17] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
-			}
-		case "required_double_array_integer_int64":
-			requiredBitSet[17] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
-			}
-		case "required_double_array_null":
-			requiredBitSet[17] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []struct{}
-					elem = make([]struct{}, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem struct{}
-						if err := d.Null(); err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_null\"")
-			}
-		case "required_double_array_number":
-			requiredBitSet[17] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayNumber = make([][]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number\"")
-			}
-		case "required_double_array_number_double":
-			requiredBitSet[17] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
-			}
-		case "required_double_array_number_float":
-			requiredBitSet[17] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float32
-					elem = make([]float32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float32
-						v, err := d.Float32()
-						elemElem = float32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
-			}
-		case "required_double_array_number_int32":
-			requiredBitSet[17] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
-			}
-		case "required_double_array_number_int64":
-			requiredBitSet[18] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
-			}
-		case "required_double_array_string":
-			requiredBitSet[18] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayString = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string\"")
-			}
-		case "required_double_array_string_binary":
-			requiredBitSet[18] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
-			}
-		case "required_double_array_string_byte":
-			requiredBitSet[18] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem [][]byte
-					elem = make([][]byte, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem []byte
-						v, err := d.Base64()
-						elemElem = []byte(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
-			}
-		case "required_double_array_string_date":
-			requiredBitSet[18] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDate(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
-			}
-		case "required_double_array_string_date-time":
-			requiredBitSet[18] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDateTime(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
-			}
-		case "required_double_array_string_duration":
-			requiredBitSet[18] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Duration
-					elem = make([]time.Duration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Duration
-						v, err := json.DecodeDuration(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
-			}
-		case "required_double_array_string_email":
-			requiredBitSet[18] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
-			}
-		case "required_double_array_string_hostname":
-			requiredBitSet[19] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
-			}
-		case "required_double_array_string_int32":
-			requiredBitSet[19] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := json.DecodeStringInt32(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
-			}
-		case "required_double_array_string_int64":
-			requiredBitSet[19] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := json.DecodeStringInt64(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
-			}
-		case "required_double_array_string_ip":
-			requiredBitSet[19] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
-			}
-		case "required_double_array_string_ipv4":
-			requiredBitSet[19] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
-			}
-		case "required_double_array_string_ipv6":
-			requiredBitSet[19] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
-			}
-		case "required_double_array_string_password":
-			requiredBitSet[19] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
-			}
-		case "required_double_array_string_time":
-			requiredBitSet[19] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeTime(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
-			}
-		case "required_double_array_string_unix":
-			requiredBitSet[20] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnix = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix\"")
-			}
-		case "required_double_array_string_unix-micro":
-			requiredBitSet[20] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusMicro = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMicro(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-micro\"")
-			}
-		case "required_double_array_string_unix-milli":
-			requiredBitSet[20] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusMilli = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMilli(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-milli\"")
-			}
-		case "required_double_array_string_unix-nano":
-			requiredBitSet[20] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusNano = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixNano(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-nano\"")
-			}
-		case "required_double_array_string_unix-seconds":
-			requiredBitSet[20] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusSeconds = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-seconds\"")
-			}
-		case "required_double_array_string_uri":
-			requiredBitSet[20] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []url.URL
-					elem = make([]url.URL, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem url.URL
-						v, err := json.DecodeURI(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
-			}
-		case "required_double_array_string_uuid":
-			requiredBitSet[20] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []uuid.UUID
-					elem = make([]uuid.UUID, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem uuid.UUID
-						v, err := json.DecodeUUID(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
-			}
-		case "required_integer":
-			requiredBitSet[20] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int()
-				s.RequiredInteger = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer\"")
-			}
-		case "required_integer_int32":
-			requiredBitSet[21] |= 1 << 0
-			if err := func() error {
-				v, err := d.Int32()
-				s.RequiredIntegerInt32 = int32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer_int32\"")
-			}
-		case "required_integer_int64":
-			requiredBitSet[21] |= 1 << 1
-			if err := func() error {
-				v, err := d.Int64()
-				s.RequiredIntegerInt64 = int64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer_int64\"")
-			}
-		case "required_null":
-			requiredBitSet[21] |= 1 << 2
-			if err := func() error {
-				if err := d.Null(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_null\"")
-			}
-		case "required_number":
-			requiredBitSet[21] |= 1 << 3
-			if err := func() error {
-				v, err := d.Float64()
-				s.RequiredNumber = float64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number\"")
-			}
-		case "required_number_double":
-			requiredBitSet[21] |= 1 << 4
-			if err := func() error {
-				v, err := d.Float64()
-				s.RequiredNumberDouble = float64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_double\"")
-			}
-		case "required_number_float":
-			requiredBitSet[21] |= 1 << 5
-			if err := func() error {
-				v, err := d.Float32()
-				s.RequiredNumberFloat = float32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_float\"")
-			}
-		case "required_number_int32":
-			requiredBitSet[21] |= 1 << 6
-			if err := func() error {
-				v, err := d.Int32()
-				s.RequiredNumberInt32 = int32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_int32\"")
-			}
-		case "required_number_int64":
-			requiredBitSet[21] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int64()
-				s.RequiredNumberInt64 = int64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_int64\"")
-			}
-		case "required_string":
-			requiredBitSet[22] |= 1 << 0
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredString = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string\"")
-			}
-		case "required_string_binary":
-			requiredBitSet[22] |= 1 << 1
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringBinary = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_binary\"")
-			}
-		case "required_string_byte":
-			requiredBitSet[22] |= 1 << 2
-			if err := func() error {
-				v, err := d.Base64()
-				s.RequiredStringByte = []byte(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_byte\"")
-			}
-		case "required_string_date":
-			requiredBitSet[22] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeDate(d)
-				s.RequiredStringDate = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_date\"")
-			}
-		case "required_string_date-time":
-			requiredBitSet[22] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeDateTime(d)
-				s.RequiredStringDateMinusTime = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_date-time\"")
-			}
-		case "required_string_duration":
-			requiredBitSet[22] |= 1 << 5
-			if err := func() error {
-				v, err := json.DecodeDuration(d)
-				s.RequiredStringDuration = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_duration\"")
-			}
-		case "required_string_email":
-			requiredBitSet[22] |= 1 << 6
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringEmail = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_email\"")
-			}
-		case "required_string_hostname":
-			requiredBitSet[22] |= 1 << 7
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringHostname = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_hostname\"")
-			}
-		case "required_string_int32":
-			requiredBitSet[23] |= 1 << 0
-			if err := func() error {
-				v, err := json.DecodeStringInt32(d)
-				s.RequiredStringInt32 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_int32\"")
-			}
-		case "required_string_int64":
-			requiredBitSet[23] |= 1 << 1
-			if err := func() error {
-				v, err := json.DecodeStringInt64(d)
-				s.RequiredStringInt64 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_int64\"")
-			}
-		case "required_string_ip":
-			requiredBitSet[23] |= 1 << 2
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIP = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ip\"")
-			}
-		case "required_string_ipv4":
-			requiredBitSet[23] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIpv4 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
-			}
-		case "required_string_ipv6":
-			requiredBitSet[23] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIpv6 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
-			}
-		case "required_string_password":
-			requiredBitSet[23] |= 1 << 5
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringPassword = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_password\"")
-			}
-		case "required_string_time":
-			requiredBitSet[23] |= 1 << 6
-			if err := func() error {
-				v, err := json.DecodeTime(d)
-				s.RequiredStringTime = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_time\"")
-			}
-		case "required_string_unix":
-			requiredBitSet[23] |= 1 << 7
-			if err := func() error {
-				v, err := json.DecodeUnixSeconds(d)
-				s.RequiredStringUnix = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix\"")
-			}
-		case "required_string_unix-micro":
-			requiredBitSet[24] |= 1 << 0
-			if err := func() error {
-				v, err := json.DecodeUnixMicro(d)
-				s.RequiredStringUnixMinusMicro = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-micro\"")
-			}
-		case "required_string_unix-milli":
-			requiredBitSet[24] |= 1 << 1
-			if err := func() error {
-				v, err := json.DecodeUnixMilli(d)
-				s.RequiredStringUnixMinusMilli = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-milli\"")
-			}
-		case "required_string_unix-nano":
-			requiredBitSet[24] |= 1 << 2
-			if err := func() error {
-				v, err := json.DecodeUnixNano(d)
-				s.RequiredStringUnixMinusNano = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-nano\"")
-			}
-		case "required_string_unix-seconds":
-			requiredBitSet[24] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeUnixSeconds(d)
-				s.RequiredStringUnixMinusSeconds = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-seconds\"")
-			}
-		case "required_string_uri":
-			requiredBitSet[24] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeURI(d)
-				s.RequiredStringURI = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_uri\"")
-			}
-		case "required_string_uuid":
-			requiredBitSet[24] |= 1 << 5
-			if err := func() error {
-				v, err := json.DecodeUUID(d)
-				s.RequiredStringUUID = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_uuid\"")
-			}
 		default:
 			return d.Skip()
 		}
@@ -9110,19 +9110,6 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [25]uint8{
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b11111000,
 		0b11111111,
 		0b11111111,
 		0b11111111,
@@ -9134,7 +9121,20 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		0b11111111,
 		0b11111111,
 		0b11111111,
-		0b00111111,
+		0b11111111,
+		0b00000111,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -9236,6 +9236,906 @@ func (s TestRequestRequiredFormatTestReq) Encode(e *jx.Encoder) {
 func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
+		if len(s.RequiredAny) != 0 {
+			e.FieldStart("required_any")
+			e.Raw(s.RequiredAny)
+		}
+	}
+	{
+
+		e.FieldStart("required_array_any")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayAny {
+			if len(elem) != 0 {
+				e.Raw(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_boolean")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayBoolean {
+			e.Bool(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayInteger {
+			e.Int(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayIntegerInt32 {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayIntegerInt64 {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_null")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNull {
+			_ = elem
+			e.Null()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumber {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_double")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberDouble {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_float")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberFloat {
+			e.Float32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberInt32 {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberInt64 {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayString {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_binary")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringBinary {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_byte")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringByte {
+			e.Base64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_date")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDate {
+			json.EncodeDate(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_date-time")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDateMinusTime {
+			json.EncodeDateTime(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_duration")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDuration {
+			json.EncodeDuration(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_email")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringEmail {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_hostname")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringHostname {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt32 {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt64 {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ip")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIP {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ipv4")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIpv4 {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ipv6")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIpv6 {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_password")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringPassword {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_time")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringTime {
+			json.EncodeTime(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnix {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-micro")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-milli")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-nano")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusNano {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-seconds")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_uri")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringURI {
+			json.EncodeURI(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_uuid")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUUID {
+			json.EncodeUUID(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_boolean")
+		e.Bool(s.RequiredBoolean)
+	}
+	{
+
+		e.FieldStart("required_double_array_any")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayAny {
+			e.ArrStart()
+			for _, elem := range elem {
+				if len(elem) != 0 {
+					e.Raw(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_boolean")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayBoolean {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayInteger {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_null")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNull {
+			e.ArrStart()
+			for _, elem := range elem {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumber {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_double")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberDouble {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_float")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberFloat {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayString {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_binary")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringBinary {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_byte")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringByte {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_date")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDate {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_date-time")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_duration")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDuration {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_email")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringEmail {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_hostname")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringHostname {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ip")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIP {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ipv4")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ipv6")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_password")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringPassword {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_time")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnix {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-micro")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-milli")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-nano")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-seconds")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_uri")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringURI {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_uuid")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUUID {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_integer")
+		e.Int(s.RequiredInteger)
+	}
+	{
+
+		e.FieldStart("required_integer_int32")
+		e.Int32(s.RequiredIntegerInt32)
+	}
+	{
+
+		e.FieldStart("required_integer_int64")
+		e.Int64(s.RequiredIntegerInt64)
+	}
+	{
+
+		_ = s.RequiredNull
+		e.FieldStart("required_null")
+		e.Null()
+	}
+	{
+
+		e.FieldStart("required_number")
+		e.Float64(s.RequiredNumber)
+	}
+	{
+
+		e.FieldStart("required_number_double")
+		e.Float64(s.RequiredNumberDouble)
+	}
+	{
+
+		e.FieldStart("required_number_float")
+		e.Float32(s.RequiredNumberFloat)
+	}
+	{
+
+		e.FieldStart("required_number_int32")
+		e.Int32(s.RequiredNumberInt32)
+	}
+	{
+
+		e.FieldStart("required_number_int64")
+		e.Int64(s.RequiredNumberInt64)
+	}
+	{
+
+		e.FieldStart("required_string")
+		e.Str(s.RequiredString)
+	}
+	{
+
+		e.FieldStart("required_string_binary")
+		e.Str(s.RequiredStringBinary)
+	}
+	{
+
+		e.FieldStart("required_string_byte")
+		e.Base64(s.RequiredStringByte)
+	}
+	{
+
+		e.FieldStart("required_string_date")
+		json.EncodeDate(e, s.RequiredStringDate)
+	}
+	{
+
+		e.FieldStart("required_string_date-time")
+		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
+	}
+	{
+
+		e.FieldStart("required_string_duration")
+		json.EncodeDuration(e, s.RequiredStringDuration)
+	}
+	{
+
+		e.FieldStart("required_string_email")
+		e.Str(s.RequiredStringEmail)
+	}
+	{
+
+		e.FieldStart("required_string_hostname")
+		e.Str(s.RequiredStringHostname)
+	}
+	{
+
+		e.FieldStart("required_string_int32")
+		json.EncodeStringInt32(e, s.RequiredStringInt32)
+	}
+	{
+
+		e.FieldStart("required_string_int64")
+		json.EncodeStringInt64(e, s.RequiredStringInt64)
+	}
+	{
+
+		e.FieldStart("required_string_ip")
+		json.EncodeIP(e, s.RequiredStringIP)
+	}
+	{
+
+		e.FieldStart("required_string_ipv4")
+		json.EncodeIP(e, s.RequiredStringIpv4)
+	}
+	{
+
+		e.FieldStart("required_string_ipv6")
+		json.EncodeIP(e, s.RequiredStringIpv6)
+	}
+	{
+
+		e.FieldStart("required_string_password")
+		e.Str(s.RequiredStringPassword)
+	}
+	{
+
+		e.FieldStart("required_string_time")
+		json.EncodeTime(e, s.RequiredStringTime)
+	}
+	{
+
+		e.FieldStart("required_string_unix")
+		json.EncodeUnixSeconds(e, s.RequiredStringUnix)
+	}
+	{
+
+		e.FieldStart("required_string_unix-micro")
+		json.EncodeUnixMicro(e, s.RequiredStringUnixMinusMicro)
+	}
+	{
+
+		e.FieldStart("required_string_unix-milli")
+		json.EncodeUnixMilli(e, s.RequiredStringUnixMinusMilli)
+	}
+	{
+
+		e.FieldStart("required_string_unix-nano")
+		json.EncodeUnixNano(e, s.RequiredStringUnixMinusNano)
+	}
+	{
+
+		e.FieldStart("required_string_unix-seconds")
+		json.EncodeUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
+	}
+	{
+
+		e.FieldStart("required_string_uri")
+		json.EncodeURI(e, s.RequiredStringURI)
+	}
+	{
+
+		e.FieldStart("required_string_uuid")
+		json.EncodeUUID(e, s.RequiredStringUUID)
+	}
+	{
+
 		if len(s.OptionalAny) != 0 {
 			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
@@ -10230,1107 +11130,207 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
-	{
-
-		if len(s.RequiredAny) != 0 {
-			e.FieldStart("required_any")
-			e.Raw(s.RequiredAny)
-		}
-	}
-	{
-
-		e.FieldStart("required_array_any")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayAny {
-			if len(elem) != 0 {
-				e.Raw(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_boolean")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayBoolean {
-			e.Bool(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayInteger {
-			e.Int(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayIntegerInt32 {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayIntegerInt64 {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_null")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNull {
-			_ = elem
-			e.Null()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumber {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_double")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberDouble {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_float")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberFloat {
-			e.Float32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberInt32 {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberInt64 {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayString {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_binary")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringBinary {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_byte")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringByte {
-			e.Base64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_date")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDate {
-			json.EncodeDate(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_date-time")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDateMinusTime {
-			json.EncodeDateTime(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_duration")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDuration {
-			json.EncodeDuration(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_email")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringEmail {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_hostname")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringHostname {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringInt32 {
-			json.EncodeStringInt32(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringInt64 {
-			json.EncodeStringInt64(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ip")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIP {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ipv4")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIpv4 {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ipv6")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIpv6 {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_password")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringPassword {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_time")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringTime {
-			json.EncodeTime(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnix {
-			json.EncodeUnixSeconds(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-micro")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
-			json.EncodeUnixMicro(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-milli")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
-			json.EncodeUnixMilli(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-nano")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusNano {
-			json.EncodeUnixNano(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-seconds")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
-			json.EncodeUnixSeconds(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_uri")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringURI {
-			json.EncodeURI(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_uuid")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUUID {
-			json.EncodeUUID(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_boolean")
-		e.Bool(s.RequiredBoolean)
-	}
-	{
-
-		e.FieldStart("required_double_array_any")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayAny {
-			e.ArrStart()
-			for _, elem := range elem {
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_boolean")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayBoolean {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Bool(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayInteger {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_null")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNull {
-			e.ArrStart()
-			for _, elem := range elem {
-				_ = elem
-				e.Null()
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumber {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_double")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberDouble {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_float")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberFloat {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayString {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_binary")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringBinary {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_byte")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringByte {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Base64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_date")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDate {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDate(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_date-time")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDateTime(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_duration")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDuration {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDuration(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_email")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringEmail {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_hostname")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringHostname {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt32(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt64(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ip")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIP {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ipv4")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ipv6")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_password")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringPassword {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_time")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringTime {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeTime(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnix {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-micro")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMicro(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-milli")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMilli(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-nano")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixNano(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-seconds")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_uri")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringURI {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeURI(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_uuid")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUUID {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUUID(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_integer")
-		e.Int(s.RequiredInteger)
-	}
-	{
-
-		e.FieldStart("required_integer_int32")
-		e.Int32(s.RequiredIntegerInt32)
-	}
-	{
-
-		e.FieldStart("required_integer_int64")
-		e.Int64(s.RequiredIntegerInt64)
-	}
-	{
-
-		_ = s.RequiredNull
-		e.FieldStart("required_null")
-		e.Null()
-	}
-	{
-
-		e.FieldStart("required_number")
-		e.Float64(s.RequiredNumber)
-	}
-	{
-
-		e.FieldStart("required_number_double")
-		e.Float64(s.RequiredNumberDouble)
-	}
-	{
-
-		e.FieldStart("required_number_float")
-		e.Float32(s.RequiredNumberFloat)
-	}
-	{
-
-		e.FieldStart("required_number_int32")
-		e.Int32(s.RequiredNumberInt32)
-	}
-	{
-
-		e.FieldStart("required_number_int64")
-		e.Int64(s.RequiredNumberInt64)
-	}
-	{
-
-		e.FieldStart("required_string")
-		e.Str(s.RequiredString)
-	}
-	{
-
-		e.FieldStart("required_string_binary")
-		e.Str(s.RequiredStringBinary)
-	}
-	{
-
-		e.FieldStart("required_string_byte")
-		e.Base64(s.RequiredStringByte)
-	}
-	{
-
-		e.FieldStart("required_string_date")
-		json.EncodeDate(e, s.RequiredStringDate)
-	}
-	{
-
-		e.FieldStart("required_string_date-time")
-		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
-	}
-	{
-
-		e.FieldStart("required_string_duration")
-		json.EncodeDuration(e, s.RequiredStringDuration)
-	}
-	{
-
-		e.FieldStart("required_string_email")
-		e.Str(s.RequiredStringEmail)
-	}
-	{
-
-		e.FieldStart("required_string_hostname")
-		e.Str(s.RequiredStringHostname)
-	}
-	{
-
-		e.FieldStart("required_string_int32")
-		json.EncodeStringInt32(e, s.RequiredStringInt32)
-	}
-	{
-
-		e.FieldStart("required_string_int64")
-		json.EncodeStringInt64(e, s.RequiredStringInt64)
-	}
-	{
-
-		e.FieldStart("required_string_ip")
-		json.EncodeIP(e, s.RequiredStringIP)
-	}
-	{
-
-		e.FieldStart("required_string_ipv4")
-		json.EncodeIP(e, s.RequiredStringIpv4)
-	}
-	{
-
-		e.FieldStart("required_string_ipv6")
-		json.EncodeIP(e, s.RequiredStringIpv6)
-	}
-	{
-
-		e.FieldStart("required_string_password")
-		e.Str(s.RequiredStringPassword)
-	}
-	{
-
-		e.FieldStart("required_string_time")
-		json.EncodeTime(e, s.RequiredStringTime)
-	}
-	{
-
-		e.FieldStart("required_string_unix")
-		json.EncodeUnixSeconds(e, s.RequiredStringUnix)
-	}
-	{
-
-		e.FieldStart("required_string_unix-micro")
-		json.EncodeUnixMicro(e, s.RequiredStringUnixMinusMicro)
-	}
-	{
-
-		e.FieldStart("required_string_unix-milli")
-		json.EncodeUnixMilli(e, s.RequiredStringUnixMinusMilli)
-	}
-	{
-
-		e.FieldStart("required_string_unix-nano")
-		json.EncodeUnixNano(e, s.RequiredStringUnixMinusNano)
-	}
-	{
-
-		e.FieldStart("required_string_unix-seconds")
-		json.EncodeUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
-	}
-	{
-
-		e.FieldStart("required_string_uri")
-		json.EncodeURI(e, s.RequiredStringURI)
-	}
-	{
-
-		e.FieldStart("required_string_uuid")
-		json.EncodeUUID(e, s.RequiredStringUUID)
-	}
 }
 
 var jsonFieldsNameOfTestRequestRequiredFormatTestReq = [198]string{
-	0:   "optional_any",
-	1:   "optional_array_any",
-	2:   "optional_array_boolean",
-	3:   "optional_array_integer",
-	4:   "optional_array_integer_int32",
-	5:   "optional_array_integer_int64",
-	6:   "optional_array_null",
-	7:   "optional_array_number",
-	8:   "optional_array_number_double",
-	9:   "optional_array_number_float",
-	10:  "optional_array_number_int32",
-	11:  "optional_array_number_int64",
-	12:  "optional_array_string",
-	13:  "optional_array_string_binary",
-	14:  "optional_array_string_byte",
-	15:  "optional_array_string_date",
-	16:  "optional_array_string_date-time",
-	17:  "optional_array_string_duration",
-	18:  "optional_array_string_email",
-	19:  "optional_array_string_hostname",
-	20:  "optional_array_string_int32",
-	21:  "optional_array_string_int64",
-	22:  "optional_array_string_ip",
-	23:  "optional_array_string_ipv4",
-	24:  "optional_array_string_ipv6",
-	25:  "optional_array_string_password",
-	26:  "optional_array_string_time",
-	27:  "optional_array_string_unix",
-	28:  "optional_array_string_unix-micro",
-	29:  "optional_array_string_unix-milli",
-	30:  "optional_array_string_unix-nano",
-	31:  "optional_array_string_unix-seconds",
-	32:  "optional_array_string_uri",
-	33:  "optional_array_string_uuid",
-	34:  "optional_boolean",
-	35:  "optional_double_array_any",
-	36:  "optional_double_array_boolean",
-	37:  "optional_double_array_integer",
-	38:  "optional_double_array_integer_int32",
-	39:  "optional_double_array_integer_int64",
-	40:  "optional_double_array_null",
-	41:  "optional_double_array_number",
-	42:  "optional_double_array_number_double",
-	43:  "optional_double_array_number_float",
-	44:  "optional_double_array_number_int32",
-	45:  "optional_double_array_number_int64",
-	46:  "optional_double_array_string",
-	47:  "optional_double_array_string_binary",
-	48:  "optional_double_array_string_byte",
-	49:  "optional_double_array_string_date",
-	50:  "optional_double_array_string_date-time",
-	51:  "optional_double_array_string_duration",
-	52:  "optional_double_array_string_email",
-	53:  "optional_double_array_string_hostname",
-	54:  "optional_double_array_string_int32",
-	55:  "optional_double_array_string_int64",
-	56:  "optional_double_array_string_ip",
-	57:  "optional_double_array_string_ipv4",
-	58:  "optional_double_array_string_ipv6",
-	59:  "optional_double_array_string_password",
-	60:  "optional_double_array_string_time",
-	61:  "optional_double_array_string_unix",
-	62:  "optional_double_array_string_unix-micro",
-	63:  "optional_double_array_string_unix-milli",
-	64:  "optional_double_array_string_unix-nano",
-	65:  "optional_double_array_string_unix-seconds",
-	66:  "optional_double_array_string_uri",
-	67:  "optional_double_array_string_uuid",
-	68:  "optional_integer",
-	69:  "optional_integer_int32",
-	70:  "optional_integer_int64",
-	71:  "optional_null",
-	72:  "optional_number",
-	73:  "optional_number_double",
-	74:  "optional_number_float",
-	75:  "optional_number_int32",
-	76:  "optional_number_int64",
-	77:  "optional_string",
-	78:  "optional_string_binary",
-	79:  "optional_string_byte",
-	80:  "optional_string_date",
-	81:  "optional_string_date-time",
-	82:  "optional_string_duration",
-	83:  "optional_string_email",
-	84:  "optional_string_hostname",
-	85:  "optional_string_int32",
-	86:  "optional_string_int64",
-	87:  "optional_string_ip",
-	88:  "optional_string_ipv4",
-	89:  "optional_string_ipv6",
-	90:  "optional_string_password",
-	91:  "optional_string_time",
-	92:  "optional_string_unix",
-	93:  "optional_string_unix-micro",
-	94:  "optional_string_unix-milli",
-	95:  "optional_string_unix-nano",
-	96:  "optional_string_unix-seconds",
-	97:  "optional_string_uri",
-	98:  "optional_string_uuid",
-	99:  "required_any",
-	100: "required_array_any",
-	101: "required_array_boolean",
-	102: "required_array_integer",
-	103: "required_array_integer_int32",
-	104: "required_array_integer_int64",
-	105: "required_array_null",
-	106: "required_array_number",
-	107: "required_array_number_double",
-	108: "required_array_number_float",
-	109: "required_array_number_int32",
-	110: "required_array_number_int64",
-	111: "required_array_string",
-	112: "required_array_string_binary",
-	113: "required_array_string_byte",
-	114: "required_array_string_date",
-	115: "required_array_string_date-time",
-	116: "required_array_string_duration",
-	117: "required_array_string_email",
-	118: "required_array_string_hostname",
-	119: "required_array_string_int32",
-	120: "required_array_string_int64",
-	121: "required_array_string_ip",
-	122: "required_array_string_ipv4",
-	123: "required_array_string_ipv6",
-	124: "required_array_string_password",
-	125: "required_array_string_time",
-	126: "required_array_string_unix",
-	127: "required_array_string_unix-micro",
-	128: "required_array_string_unix-milli",
-	129: "required_array_string_unix-nano",
-	130: "required_array_string_unix-seconds",
-	131: "required_array_string_uri",
-	132: "required_array_string_uuid",
-	133: "required_boolean",
-	134: "required_double_array_any",
-	135: "required_double_array_boolean",
-	136: "required_double_array_integer",
-	137: "required_double_array_integer_int32",
-	138: "required_double_array_integer_int64",
-	139: "required_double_array_null",
-	140: "required_double_array_number",
-	141: "required_double_array_number_double",
-	142: "required_double_array_number_float",
-	143: "required_double_array_number_int32",
-	144: "required_double_array_number_int64",
-	145: "required_double_array_string",
-	146: "required_double_array_string_binary",
-	147: "required_double_array_string_byte",
-	148: "required_double_array_string_date",
-	149: "required_double_array_string_date-time",
-	150: "required_double_array_string_duration",
-	151: "required_double_array_string_email",
-	152: "required_double_array_string_hostname",
-	153: "required_double_array_string_int32",
-	154: "required_double_array_string_int64",
-	155: "required_double_array_string_ip",
-	156: "required_double_array_string_ipv4",
-	157: "required_double_array_string_ipv6",
-	158: "required_double_array_string_password",
-	159: "required_double_array_string_time",
-	160: "required_double_array_string_unix",
-	161: "required_double_array_string_unix-micro",
-	162: "required_double_array_string_unix-milli",
-	163: "required_double_array_string_unix-nano",
-	164: "required_double_array_string_unix-seconds",
-	165: "required_double_array_string_uri",
-	166: "required_double_array_string_uuid",
-	167: "required_integer",
-	168: "required_integer_int32",
-	169: "required_integer_int64",
-	170: "required_null",
-	171: "required_number",
-	172: "required_number_double",
-	173: "required_number_float",
-	174: "required_number_int32",
-	175: "required_number_int64",
-	176: "required_string",
-	177: "required_string_binary",
-	178: "required_string_byte",
-	179: "required_string_date",
-	180: "required_string_date-time",
-	181: "required_string_duration",
-	182: "required_string_email",
-	183: "required_string_hostname",
-	184: "required_string_int32",
-	185: "required_string_int64",
-	186: "required_string_ip",
-	187: "required_string_ipv4",
-	188: "required_string_ipv6",
-	189: "required_string_password",
-	190: "required_string_time",
-	191: "required_string_unix",
-	192: "required_string_unix-micro",
-	193: "required_string_unix-milli",
-	194: "required_string_unix-nano",
-	195: "required_string_unix-seconds",
-	196: "required_string_uri",
-	197: "required_string_uuid",
+	0:   "required_any",
+	1:   "required_array_any",
+	2:   "required_array_boolean",
+	3:   "required_array_integer",
+	4:   "required_array_integer_int32",
+	5:   "required_array_integer_int64",
+	6:   "required_array_null",
+	7:   "required_array_number",
+	8:   "required_array_number_double",
+	9:   "required_array_number_float",
+	10:  "required_array_number_int32",
+	11:  "required_array_number_int64",
+	12:  "required_array_string",
+	13:  "required_array_string_binary",
+	14:  "required_array_string_byte",
+	15:  "required_array_string_date",
+	16:  "required_array_string_date-time",
+	17:  "required_array_string_duration",
+	18:  "required_array_string_email",
+	19:  "required_array_string_hostname",
+	20:  "required_array_string_int32",
+	21:  "required_array_string_int64",
+	22:  "required_array_string_ip",
+	23:  "required_array_string_ipv4",
+	24:  "required_array_string_ipv6",
+	25:  "required_array_string_password",
+	26:  "required_array_string_time",
+	27:  "required_array_string_unix",
+	28:  "required_array_string_unix-micro",
+	29:  "required_array_string_unix-milli",
+	30:  "required_array_string_unix-nano",
+	31:  "required_array_string_unix-seconds",
+	32:  "required_array_string_uri",
+	33:  "required_array_string_uuid",
+	34:  "required_boolean",
+	35:  "required_double_array_any",
+	36:  "required_double_array_boolean",
+	37:  "required_double_array_integer",
+	38:  "required_double_array_integer_int32",
+	39:  "required_double_array_integer_int64",
+	40:  "required_double_array_null",
+	41:  "required_double_array_number",
+	42:  "required_double_array_number_double",
+	43:  "required_double_array_number_float",
+	44:  "required_double_array_number_int32",
+	45:  "required_double_array_number_int64",
+	46:  "required_double_array_string",
+	47:  "required_double_array_string_binary",
+	48:  "required_double_array_string_byte",
+	49:  "required_double_array_string_date",
+	50:  "required_double_array_string_date-time",
+	51:  "required_double_array_string_duration",
+	52:  "required_double_array_string_email",
+	53:  "required_double_array_string_hostname",
+	54:  "required_double_array_string_int32",
+	55:  "required_double_array_string_int64",
+	56:  "required_double_array_string_ip",
+	57:  "required_double_array_string_ipv4",
+	58:  "required_double_array_string_ipv6",
+	59:  "required_double_array_string_password",
+	60:  "required_double_array_string_time",
+	61:  "required_double_array_string_unix",
+	62:  "required_double_array_string_unix-micro",
+	63:  "required_double_array_string_unix-milli",
+	64:  "required_double_array_string_unix-nano",
+	65:  "required_double_array_string_unix-seconds",
+	66:  "required_double_array_string_uri",
+	67:  "required_double_array_string_uuid",
+	68:  "required_integer",
+	69:  "required_integer_int32",
+	70:  "required_integer_int64",
+	71:  "required_null",
+	72:  "required_number",
+	73:  "required_number_double",
+	74:  "required_number_float",
+	75:  "required_number_int32",
+	76:  "required_number_int64",
+	77:  "required_string",
+	78:  "required_string_binary",
+	79:  "required_string_byte",
+	80:  "required_string_date",
+	81:  "required_string_date-time",
+	82:  "required_string_duration",
+	83:  "required_string_email",
+	84:  "required_string_hostname",
+	85:  "required_string_int32",
+	86:  "required_string_int64",
+	87:  "required_string_ip",
+	88:  "required_string_ipv4",
+	89:  "required_string_ipv6",
+	90:  "required_string_password",
+	91:  "required_string_time",
+	92:  "required_string_unix",
+	93:  "required_string_unix-micro",
+	94:  "required_string_unix-milli",
+	95:  "required_string_unix-nano",
+	96:  "required_string_unix-seconds",
+	97:  "required_string_uri",
+	98:  "required_string_uuid",
+	99:  "optional_any",
+	100: "optional_array_any",
+	101: "optional_array_boolean",
+	102: "optional_array_integer",
+	103: "optional_array_integer_int32",
+	104: "optional_array_integer_int64",
+	105: "optional_array_null",
+	106: "optional_array_number",
+	107: "optional_array_number_double",
+	108: "optional_array_number_float",
+	109: "optional_array_number_int32",
+	110: "optional_array_number_int64",
+	111: "optional_array_string",
+	112: "optional_array_string_binary",
+	113: "optional_array_string_byte",
+	114: "optional_array_string_date",
+	115: "optional_array_string_date-time",
+	116: "optional_array_string_duration",
+	117: "optional_array_string_email",
+	118: "optional_array_string_hostname",
+	119: "optional_array_string_int32",
+	120: "optional_array_string_int64",
+	121: "optional_array_string_ip",
+	122: "optional_array_string_ipv4",
+	123: "optional_array_string_ipv6",
+	124: "optional_array_string_password",
+	125: "optional_array_string_time",
+	126: "optional_array_string_unix",
+	127: "optional_array_string_unix-micro",
+	128: "optional_array_string_unix-milli",
+	129: "optional_array_string_unix-nano",
+	130: "optional_array_string_unix-seconds",
+	131: "optional_array_string_uri",
+	132: "optional_array_string_uuid",
+	133: "optional_boolean",
+	134: "optional_double_array_any",
+	135: "optional_double_array_boolean",
+	136: "optional_double_array_integer",
+	137: "optional_double_array_integer_int32",
+	138: "optional_double_array_integer_int64",
+	139: "optional_double_array_null",
+	140: "optional_double_array_number",
+	141: "optional_double_array_number_double",
+	142: "optional_double_array_number_float",
+	143: "optional_double_array_number_int32",
+	144: "optional_double_array_number_int64",
+	145: "optional_double_array_string",
+	146: "optional_double_array_string_binary",
+	147: "optional_double_array_string_byte",
+	148: "optional_double_array_string_date",
+	149: "optional_double_array_string_date-time",
+	150: "optional_double_array_string_duration",
+	151: "optional_double_array_string_email",
+	152: "optional_double_array_string_hostname",
+	153: "optional_double_array_string_int32",
+	154: "optional_double_array_string_int64",
+	155: "optional_double_array_string_ip",
+	156: "optional_double_array_string_ipv4",
+	157: "optional_double_array_string_ipv6",
+	158: "optional_double_array_string_password",
+	159: "optional_double_array_string_time",
+	160: "optional_double_array_string_unix",
+	161: "optional_double_array_string_unix-micro",
+	162: "optional_double_array_string_unix-milli",
+	163: "optional_double_array_string_unix-nano",
+	164: "optional_double_array_string_unix-seconds",
+	165: "optional_double_array_string_uri",
+	166: "optional_double_array_string_uuid",
+	167: "optional_integer",
+	168: "optional_integer_int32",
+	169: "optional_integer_int64",
+	170: "optional_null",
+	171: "optional_number",
+	172: "optional_number_double",
+	173: "optional_number_float",
+	174: "optional_number_int32",
+	175: "optional_number_int64",
+	176: "optional_string",
+	177: "optional_string_binary",
+	178: "optional_string_byte",
+	179: "optional_string_date",
+	180: "optional_string_date-time",
+	181: "optional_string_duration",
+	182: "optional_string_email",
+	183: "optional_string_hostname",
+	184: "optional_string_int32",
+	185: "optional_string_int64",
+	186: "optional_string_ip",
+	187: "optional_string_ipv4",
+	188: "optional_string_ipv6",
+	189: "optional_string_password",
+	190: "optional_string_time",
+	191: "optional_string_unix",
+	192: "optional_string_unix-micro",
+	193: "optional_string_unix-milli",
+	194: "optional_string_unix-nano",
+	195: "optional_string_unix-seconds",
+	196: "optional_string_uri",
+	197: "optional_string_uuid",
 }
 
 // Decode decodes TestRequestRequiredFormatTestReq from json.
@@ -11342,6 +11342,1980 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "required_any":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.RawAppend(nil)
+				s.RequiredAny = jx.Raw(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_any\"")
+			}
+		case "required_array_any":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayAny = make([]jx.Raw, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem jx.Raw
+					v, err := d.RawAppend(nil)
+					elem = jx.Raw(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_any\"")
+			}
+		case "required_array_boolean":
+			requiredBitSet[0] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayBoolean = make([]bool, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem bool
+					v, err := d.Bool()
+					elem = bool(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_boolean\"")
+			}
+		case "required_array_integer":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayInteger = make([]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer\"")
+			}
+		case "required_array_integer_int32":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayIntegerInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := d.Int32()
+					elem = int32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer_int32\"")
+			}
+		case "required_array_integer_int64":
+			requiredBitSet[0] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayIntegerInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := d.Int64()
+					elem = int64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer_int64\"")
+			}
+		case "required_array_null":
+			requiredBitSet[0] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayNull = make([]struct{}, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem struct{}
+					if err := d.Null(); err != nil {
+						return err
+					}
+					s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_null\"")
+			}
+		case "required_array_number":
+			requiredBitSet[0] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayNumber = make([]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float64
+					v, err := d.Float64()
+					elem = float64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number\"")
+			}
+		case "required_array_number_double":
+			requiredBitSet[1] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayNumberDouble = make([]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float64
+					v, err := d.Float64()
+					elem = float64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_double\"")
+			}
+		case "required_array_number_float":
+			requiredBitSet[1] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayNumberFloat = make([]float32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float32
+					v, err := d.Float32()
+					elem = float32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_float\"")
+			}
+		case "required_array_number_int32":
+			requiredBitSet[1] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayNumberInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := d.Int32()
+					elem = int32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_int32\"")
+			}
+		case "required_array_number_int64":
+			requiredBitSet[1] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayNumberInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := d.Int64()
+					elem = int64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_int64\"")
+			}
+		case "required_array_string":
+			requiredBitSet[1] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayString = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayString = append(s.RequiredArrayString, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string\"")
+			}
+		case "required_array_string_binary":
+			requiredBitSet[1] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringBinary = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_binary\"")
+			}
+		case "required_array_string_byte":
+			requiredBitSet[1] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringByte = make([][]byte, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []byte
+					v, err := d.Base64()
+					elem = []byte(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_byte\"")
+			}
+		case "required_array_string_date":
+			requiredBitSet[1] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringDate = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeDate(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_date\"")
+			}
+		case "required_array_string_date-time":
+			requiredBitSet[2] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeDateTime(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_date-time\"")
+			}
+		case "required_array_string_duration":
+			requiredBitSet[2] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringDuration = make([]time.Duration, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Duration
+					v, err := json.DecodeDuration(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_duration\"")
+			}
+		case "required_array_string_email":
+			requiredBitSet[2] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayStringEmail = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_email\"")
+			}
+		case "required_array_string_hostname":
+			requiredBitSet[2] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayStringHostname = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
+			}
+		case "required_array_string_int32":
+			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
+			}
+		case "required_array_string_int64":
+			requiredBitSet[2] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
+			}
+		case "required_array_string_ip":
+			requiredBitSet[2] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringIP = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
+			}
+		case "required_array_string_ipv4":
+			requiredBitSet[2] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
+			}
+		case "required_array_string_ipv6":
+			requiredBitSet[3] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
+			}
+		case "required_array_string_password":
+			requiredBitSet[3] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringPassword = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_password\"")
+			}
+		case "required_array_string_time":
+			requiredBitSet[3] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayStringTime = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeTime(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_time\"")
+			}
+		case "required_array_string_unix":
+			requiredBitSet[3] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayStringUnix = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix\"")
+			}
+		case "required_array_string_unix-micro":
+			requiredBitSet[3] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusMicro = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixMicro(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-micro\"")
+			}
+		case "required_array_string_unix-milli":
+			requiredBitSet[3] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusMilli = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixMilli(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-milli\"")
+			}
+		case "required_array_string_unix-nano":
+			requiredBitSet[3] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusNano = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixNano(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-nano\"")
+			}
+		case "required_array_string_unix-seconds":
+			requiredBitSet[3] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusSeconds = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-seconds\"")
+			}
+		case "required_array_string_uri":
+			requiredBitSet[4] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringURI = make([]url.URL, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem url.URL
+					v, err := json.DecodeURI(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
+			}
+		case "required_array_string_uuid":
+			requiredBitSet[4] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
+			}
+		case "required_boolean":
+			requiredBitSet[4] |= 1 << 2
+			if err := func() error {
+				v, err := d.Bool()
+				s.RequiredBoolean = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_boolean\"")
+			}
+		case "required_double_array_any":
+			requiredBitSet[4] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []jx.Raw
+					elem = make([]jx.Raw, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem jx.Raw
+						v, err := d.RawAppend(nil)
+						elemElem = jx.Raw(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_any\"")
+			}
+		case "required_double_array_boolean":
+			requiredBitSet[4] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []bool
+					elem = make([]bool, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem bool
+						v, err := d.Bool()
+						elemElem = bool(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
+			}
+		case "required_double_array_integer":
+			requiredBitSet[4] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayInteger = make([][]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int
+					elem = make([]int, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int
+						v, err := d.Int()
+						elemElem = int(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
+			}
+		case "required_double_array_integer_int32":
+			requiredBitSet[4] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := d.Int32()
+						elemElem = int32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
+			}
+		case "required_double_array_integer_int64":
+			requiredBitSet[4] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := d.Int64()
+						elemElem = int64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
+			}
+		case "required_double_array_null":
+			requiredBitSet[5] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []struct{}
+					elem = make([]struct{}, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem struct{}
+						if err := d.Null(); err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_null\"")
+			}
+		case "required_double_array_number":
+			requiredBitSet[5] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayNumber = make([][]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float64
+					elem = make([]float64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float64
+						v, err := d.Float64()
+						elemElem = float64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number\"")
+			}
+		case "required_double_array_number_double":
+			requiredBitSet[5] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float64
+					elem = make([]float64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float64
+						v, err := d.Float64()
+						elemElem = float64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
+			}
+		case "required_double_array_number_float":
+			requiredBitSet[5] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float32
+					elem = make([]float32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float32
+						v, err := d.Float32()
+						elemElem = float32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
+			}
+		case "required_double_array_number_int32":
+			requiredBitSet[5] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := d.Int32()
+						elemElem = int32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
+			}
+		case "required_double_array_number_int64":
+			requiredBitSet[5] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := d.Int64()
+						elemElem = int64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
+			}
+		case "required_double_array_string":
+			requiredBitSet[5] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayString = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string\"")
+			}
+		case "required_double_array_string_binary":
+			requiredBitSet[5] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
+			}
+		case "required_double_array_string_byte":
+			requiredBitSet[6] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem [][]byte
+					elem = make([][]byte, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem []byte
+						v, err := d.Base64()
+						elemElem = []byte(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
+			}
+		case "required_double_array_string_date":
+			requiredBitSet[6] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeDate(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
+			}
+		case "required_double_array_string_date-time":
+			requiredBitSet[6] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeDateTime(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
+			}
+		case "required_double_array_string_duration":
+			requiredBitSet[6] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Duration
+					elem = make([]time.Duration, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Duration
+						v, err := json.DecodeDuration(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
+			}
+		case "required_double_array_string_email":
+			requiredBitSet[6] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
+			}
+		case "required_double_array_string_hostname":
+			requiredBitSet[6] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
+			}
+		case "required_double_array_string_int32":
+			requiredBitSet[6] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
+			}
+		case "required_double_array_string_int64":
+			requiredBitSet[6] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
+			}
+		case "required_double_array_string_ip":
+			requiredBitSet[7] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
+			}
+		case "required_double_array_string_ipv4":
+			requiredBitSet[7] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
+			}
+		case "required_double_array_string_ipv6":
+			requiredBitSet[7] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
+			}
+		case "required_double_array_string_password":
+			requiredBitSet[7] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
+			}
+		case "required_double_array_string_time":
+			requiredBitSet[7] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeTime(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
+			}
+		case "required_double_array_string_unix":
+			requiredBitSet[7] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnix = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixSeconds(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix\"")
+			}
+		case "required_double_array_string_unix-micro":
+			requiredBitSet[7] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusMicro = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixMicro(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-micro\"")
+			}
+		case "required_double_array_string_unix-milli":
+			requiredBitSet[7] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusMilli = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixMilli(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-milli\"")
+			}
+		case "required_double_array_string_unix-nano":
+			requiredBitSet[8] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusNano = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixNano(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-nano\"")
+			}
+		case "required_double_array_string_unix-seconds":
+			requiredBitSet[8] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusSeconds = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixSeconds(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-seconds\"")
+			}
+		case "required_double_array_string_uri":
+			requiredBitSet[8] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []url.URL
+					elem = make([]url.URL, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem url.URL
+						v, err := json.DecodeURI(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
+			}
+		case "required_double_array_string_uuid":
+			requiredBitSet[8] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []uuid.UUID
+					elem = make([]uuid.UUID, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem uuid.UUID
+						v, err := json.DecodeUUID(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
+			}
+		case "required_integer":
+			requiredBitSet[8] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int()
+				s.RequiredInteger = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer\"")
+			}
+		case "required_integer_int32":
+			requiredBitSet[8] |= 1 << 5
+			if err := func() error {
+				v, err := d.Int32()
+				s.RequiredIntegerInt32 = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer_int32\"")
+			}
+		case "required_integer_int64":
+			requiredBitSet[8] |= 1 << 6
+			if err := func() error {
+				v, err := d.Int64()
+				s.RequiredIntegerInt64 = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer_int64\"")
+			}
+		case "required_null":
+			requiredBitSet[8] |= 1 << 7
+			if err := func() error {
+				if err := d.Null(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_null\"")
+			}
+		case "required_number":
+			requiredBitSet[9] |= 1 << 0
+			if err := func() error {
+				v, err := d.Float64()
+				s.RequiredNumber = float64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number\"")
+			}
+		case "required_number_double":
+			requiredBitSet[9] |= 1 << 1
+			if err := func() error {
+				v, err := d.Float64()
+				s.RequiredNumberDouble = float64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_double\"")
+			}
+		case "required_number_float":
+			requiredBitSet[9] |= 1 << 2
+			if err := func() error {
+				v, err := d.Float32()
+				s.RequiredNumberFloat = float32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_float\"")
+			}
+		case "required_number_int32":
+			requiredBitSet[9] |= 1 << 3
+			if err := func() error {
+				v, err := d.Int32()
+				s.RequiredNumberInt32 = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_int32\"")
+			}
+		case "required_number_int64":
+			requiredBitSet[9] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int64()
+				s.RequiredNumberInt64 = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_int64\"")
+			}
+		case "required_string":
+			requiredBitSet[9] |= 1 << 5
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredString = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string\"")
+			}
+		case "required_string_binary":
+			requiredBitSet[9] |= 1 << 6
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringBinary = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_binary\"")
+			}
+		case "required_string_byte":
+			requiredBitSet[9] |= 1 << 7
+			if err := func() error {
+				v, err := d.Base64()
+				s.RequiredStringByte = []byte(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_byte\"")
+			}
+		case "required_string_date":
+			requiredBitSet[10] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeDate(d)
+				s.RequiredStringDate = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_date\"")
+			}
+		case "required_string_date-time":
+			requiredBitSet[10] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeDateTime(d)
+				s.RequiredStringDateMinusTime = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_date-time\"")
+			}
+		case "required_string_duration":
+			requiredBitSet[10] |= 1 << 2
+			if err := func() error {
+				v, err := json.DecodeDuration(d)
+				s.RequiredStringDuration = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_duration\"")
+			}
+		case "required_string_email":
+			requiredBitSet[10] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringEmail = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_email\"")
+			}
+		case "required_string_hostname":
+			requiredBitSet[10] |= 1 << 4
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringHostname = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_hostname\"")
+			}
+		case "required_string_int32":
+			requiredBitSet[10] |= 1 << 5
+			if err := func() error {
+				v, err := json.DecodeStringInt32(d)
+				s.RequiredStringInt32 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int32\"")
+			}
+		case "required_string_int64":
+			requiredBitSet[10] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeStringInt64(d)
+				s.RequiredStringInt64 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int64\"")
+			}
+		case "required_string_ip":
+			requiredBitSet[10] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIP = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ip\"")
+			}
+		case "required_string_ipv4":
+			requiredBitSet[11] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIpv4 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
+			}
+		case "required_string_ipv6":
+			requiredBitSet[11] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIpv6 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
+			}
+		case "required_string_password":
+			requiredBitSet[11] |= 1 << 2
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringPassword = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_password\"")
+			}
+		case "required_string_time":
+			requiredBitSet[11] |= 1 << 3
+			if err := func() error {
+				v, err := json.DecodeTime(d)
+				s.RequiredStringTime = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_time\"")
+			}
+		case "required_string_unix":
+			requiredBitSet[11] |= 1 << 4
+			if err := func() error {
+				v, err := json.DecodeUnixSeconds(d)
+				s.RequiredStringUnix = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix\"")
+			}
+		case "required_string_unix-micro":
+			requiredBitSet[11] |= 1 << 5
+			if err := func() error {
+				v, err := json.DecodeUnixMicro(d)
+				s.RequiredStringUnixMinusMicro = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-micro\"")
+			}
+		case "required_string_unix-milli":
+			requiredBitSet[11] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeUnixMilli(d)
+				s.RequiredStringUnixMinusMilli = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-milli\"")
+			}
+		case "required_string_unix-nano":
+			requiredBitSet[11] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeUnixNano(d)
+				s.RequiredStringUnixMinusNano = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-nano\"")
+			}
+		case "required_string_unix-seconds":
+			requiredBitSet[12] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeUnixSeconds(d)
+				s.RequiredStringUnixMinusSeconds = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-seconds\"")
+			}
+		case "required_string_uri":
+			requiredBitSet[12] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeURI(d)
+				s.RequiredStringURI = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_uri\"")
+			}
+		case "required_string_uuid":
+			requiredBitSet[12] |= 1 << 2
+			if err := func() error {
+				v, err := json.DecodeUUID(d)
+				s.RequiredStringUUID = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_uuid\"")
+			}
 		case "optional_any":
 			if err := func() error {
 				v, err := d.RawAppend(nil)
@@ -13188,1980 +15162,6 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_string_uuid\"")
 			}
-		case "required_any":
-			requiredBitSet[12] |= 1 << 3
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.RequiredAny = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_any\"")
-			}
-		case "required_array_any":
-			requiredBitSet[12] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayAny = make([]jx.Raw, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem jx.Raw
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_any\"")
-			}
-		case "required_array_boolean":
-			requiredBitSet[12] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayBoolean = make([]bool, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem bool
-					v, err := d.Bool()
-					elem = bool(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_boolean\"")
-			}
-		case "required_array_integer":
-			requiredBitSet[12] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayInteger = make([]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int
-					v, err := d.Int()
-					elem = int(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer\"")
-			}
-		case "required_array_integer_int32":
-			requiredBitSet[12] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayIntegerInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer_int32\"")
-			}
-		case "required_array_integer_int64":
-			requiredBitSet[13] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayIntegerInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer_int64\"")
-			}
-		case "required_array_null":
-			requiredBitSet[13] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayNull = make([]struct{}, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem struct{}
-					if err := d.Null(); err != nil {
-						return err
-					}
-					s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_null\"")
-			}
-		case "required_array_number":
-			requiredBitSet[13] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayNumber = make([]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number\"")
-			}
-		case "required_array_number_double":
-			requiredBitSet[13] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayNumberDouble = make([]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_double\"")
-			}
-		case "required_array_number_float":
-			requiredBitSet[13] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayNumberFloat = make([]float32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float32
-					v, err := d.Float32()
-					elem = float32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_float\"")
-			}
-		case "required_array_number_int32":
-			requiredBitSet[13] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayNumberInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_int32\"")
-			}
-		case "required_array_number_int64":
-			requiredBitSet[13] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayNumberInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_int64\"")
-			}
-		case "required_array_string":
-			requiredBitSet[13] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayString = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayString = append(s.RequiredArrayString, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string\"")
-			}
-		case "required_array_string_binary":
-			requiredBitSet[14] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringBinary = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_binary\"")
-			}
-		case "required_array_string_byte":
-			requiredBitSet[14] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringByte = make([][]byte, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []byte
-					v, err := d.Base64()
-					elem = []byte(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_byte\"")
-			}
-		case "required_array_string_date":
-			requiredBitSet[14] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringDate = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDate(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_date\"")
-			}
-		case "required_array_string_date-time":
-			requiredBitSet[14] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDateTime(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_date-time\"")
-			}
-		case "required_array_string_duration":
-			requiredBitSet[14] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringDuration = make([]time.Duration, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Duration
-					v, err := json.DecodeDuration(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_duration\"")
-			}
-		case "required_array_string_email":
-			requiredBitSet[14] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayStringEmail = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_email\"")
-			}
-		case "required_array_string_hostname":
-			requiredBitSet[14] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayStringHostname = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
-			}
-		case "required_array_string_int32":
-			requiredBitSet[14] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayStringInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := json.DecodeStringInt32(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
-			}
-		case "required_array_string_int64":
-			requiredBitSet[15] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := json.DecodeStringInt64(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
-			}
-		case "required_array_string_ip":
-			requiredBitSet[15] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringIP = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
-			}
-		case "required_array_string_ipv4":
-			requiredBitSet[15] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
-			}
-		case "required_array_string_ipv6":
-			requiredBitSet[15] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
-			}
-		case "required_array_string_password":
-			requiredBitSet[15] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringPassword = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_password\"")
-			}
-		case "required_array_string_time":
-			requiredBitSet[15] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayStringTime = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeTime(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_time\"")
-			}
-		case "required_array_string_unix":
-			requiredBitSet[15] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayStringUnix = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix\"")
-			}
-		case "required_array_string_unix-micro":
-			requiredBitSet[15] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusMicro = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMicro(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-micro\"")
-			}
-		case "required_array_string_unix-milli":
-			requiredBitSet[16] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusMilli = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMilli(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-milli\"")
-			}
-		case "required_array_string_unix-nano":
-			requiredBitSet[16] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusNano = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixNano(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-nano\"")
-			}
-		case "required_array_string_unix-seconds":
-			requiredBitSet[16] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusSeconds = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-seconds\"")
-			}
-		case "required_array_string_uri":
-			requiredBitSet[16] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringURI = make([]url.URL, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem url.URL
-					v, err := json.DecodeURI(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
-			}
-		case "required_array_string_uuid":
-			requiredBitSet[16] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem uuid.UUID
-					v, err := json.DecodeUUID(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
-			}
-		case "required_boolean":
-			requiredBitSet[16] |= 1 << 5
-			if err := func() error {
-				v, err := d.Bool()
-				s.RequiredBoolean = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_boolean\"")
-			}
-		case "required_double_array_any":
-			requiredBitSet[16] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []jx.Raw
-					elem = make([]jx.Raw, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem jx.Raw
-						v, err := d.RawAppend(nil)
-						elemElem = jx.Raw(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_any\"")
-			}
-		case "required_double_array_boolean":
-			requiredBitSet[16] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []bool
-					elem = make([]bool, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem bool
-						v, err := d.Bool()
-						elemElem = bool(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
-			}
-		case "required_double_array_integer":
-			requiredBitSet[17] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayInteger = make([][]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int
-					elem = make([]int, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int
-						v, err := d.Int()
-						elemElem = int(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
-			}
-		case "required_double_array_integer_int32":
-			requiredBitSet[17] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
-			}
-		case "required_double_array_integer_int64":
-			requiredBitSet[17] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
-			}
-		case "required_double_array_null":
-			requiredBitSet[17] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []struct{}
-					elem = make([]struct{}, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem struct{}
-						if err := d.Null(); err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_null\"")
-			}
-		case "required_double_array_number":
-			requiredBitSet[17] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayNumber = make([][]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number\"")
-			}
-		case "required_double_array_number_double":
-			requiredBitSet[17] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
-			}
-		case "required_double_array_number_float":
-			requiredBitSet[17] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float32
-					elem = make([]float32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float32
-						v, err := d.Float32()
-						elemElem = float32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
-			}
-		case "required_double_array_number_int32":
-			requiredBitSet[17] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
-			}
-		case "required_double_array_number_int64":
-			requiredBitSet[18] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
-			}
-		case "required_double_array_string":
-			requiredBitSet[18] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayString = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string\"")
-			}
-		case "required_double_array_string_binary":
-			requiredBitSet[18] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
-			}
-		case "required_double_array_string_byte":
-			requiredBitSet[18] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem [][]byte
-					elem = make([][]byte, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem []byte
-						v, err := d.Base64()
-						elemElem = []byte(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
-			}
-		case "required_double_array_string_date":
-			requiredBitSet[18] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDate(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
-			}
-		case "required_double_array_string_date-time":
-			requiredBitSet[18] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDateTime(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
-			}
-		case "required_double_array_string_duration":
-			requiredBitSet[18] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Duration
-					elem = make([]time.Duration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Duration
-						v, err := json.DecodeDuration(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
-			}
-		case "required_double_array_string_email":
-			requiredBitSet[18] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
-			}
-		case "required_double_array_string_hostname":
-			requiredBitSet[19] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
-			}
-		case "required_double_array_string_int32":
-			requiredBitSet[19] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := json.DecodeStringInt32(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
-			}
-		case "required_double_array_string_int64":
-			requiredBitSet[19] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := json.DecodeStringInt64(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
-			}
-		case "required_double_array_string_ip":
-			requiredBitSet[19] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
-			}
-		case "required_double_array_string_ipv4":
-			requiredBitSet[19] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
-			}
-		case "required_double_array_string_ipv6":
-			requiredBitSet[19] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
-			}
-		case "required_double_array_string_password":
-			requiredBitSet[19] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
-			}
-		case "required_double_array_string_time":
-			requiredBitSet[19] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeTime(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
-			}
-		case "required_double_array_string_unix":
-			requiredBitSet[20] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnix = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix\"")
-			}
-		case "required_double_array_string_unix-micro":
-			requiredBitSet[20] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusMicro = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMicro(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-micro\"")
-			}
-		case "required_double_array_string_unix-milli":
-			requiredBitSet[20] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusMilli = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMilli(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-milli\"")
-			}
-		case "required_double_array_string_unix-nano":
-			requiredBitSet[20] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusNano = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixNano(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-nano\"")
-			}
-		case "required_double_array_string_unix-seconds":
-			requiredBitSet[20] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusSeconds = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-seconds\"")
-			}
-		case "required_double_array_string_uri":
-			requiredBitSet[20] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []url.URL
-					elem = make([]url.URL, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem url.URL
-						v, err := json.DecodeURI(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
-			}
-		case "required_double_array_string_uuid":
-			requiredBitSet[20] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []uuid.UUID
-					elem = make([]uuid.UUID, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem uuid.UUID
-						v, err := json.DecodeUUID(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
-			}
-		case "required_integer":
-			requiredBitSet[20] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int()
-				s.RequiredInteger = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer\"")
-			}
-		case "required_integer_int32":
-			requiredBitSet[21] |= 1 << 0
-			if err := func() error {
-				v, err := d.Int32()
-				s.RequiredIntegerInt32 = int32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer_int32\"")
-			}
-		case "required_integer_int64":
-			requiredBitSet[21] |= 1 << 1
-			if err := func() error {
-				v, err := d.Int64()
-				s.RequiredIntegerInt64 = int64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer_int64\"")
-			}
-		case "required_null":
-			requiredBitSet[21] |= 1 << 2
-			if err := func() error {
-				if err := d.Null(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_null\"")
-			}
-		case "required_number":
-			requiredBitSet[21] |= 1 << 3
-			if err := func() error {
-				v, err := d.Float64()
-				s.RequiredNumber = float64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number\"")
-			}
-		case "required_number_double":
-			requiredBitSet[21] |= 1 << 4
-			if err := func() error {
-				v, err := d.Float64()
-				s.RequiredNumberDouble = float64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_double\"")
-			}
-		case "required_number_float":
-			requiredBitSet[21] |= 1 << 5
-			if err := func() error {
-				v, err := d.Float32()
-				s.RequiredNumberFloat = float32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_float\"")
-			}
-		case "required_number_int32":
-			requiredBitSet[21] |= 1 << 6
-			if err := func() error {
-				v, err := d.Int32()
-				s.RequiredNumberInt32 = int32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_int32\"")
-			}
-		case "required_number_int64":
-			requiredBitSet[21] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int64()
-				s.RequiredNumberInt64 = int64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_int64\"")
-			}
-		case "required_string":
-			requiredBitSet[22] |= 1 << 0
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredString = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string\"")
-			}
-		case "required_string_binary":
-			requiredBitSet[22] |= 1 << 1
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringBinary = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_binary\"")
-			}
-		case "required_string_byte":
-			requiredBitSet[22] |= 1 << 2
-			if err := func() error {
-				v, err := d.Base64()
-				s.RequiredStringByte = []byte(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_byte\"")
-			}
-		case "required_string_date":
-			requiredBitSet[22] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeDate(d)
-				s.RequiredStringDate = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_date\"")
-			}
-		case "required_string_date-time":
-			requiredBitSet[22] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeDateTime(d)
-				s.RequiredStringDateMinusTime = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_date-time\"")
-			}
-		case "required_string_duration":
-			requiredBitSet[22] |= 1 << 5
-			if err := func() error {
-				v, err := json.DecodeDuration(d)
-				s.RequiredStringDuration = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_duration\"")
-			}
-		case "required_string_email":
-			requiredBitSet[22] |= 1 << 6
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringEmail = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_email\"")
-			}
-		case "required_string_hostname":
-			requiredBitSet[22] |= 1 << 7
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringHostname = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_hostname\"")
-			}
-		case "required_string_int32":
-			requiredBitSet[23] |= 1 << 0
-			if err := func() error {
-				v, err := json.DecodeStringInt32(d)
-				s.RequiredStringInt32 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_int32\"")
-			}
-		case "required_string_int64":
-			requiredBitSet[23] |= 1 << 1
-			if err := func() error {
-				v, err := json.DecodeStringInt64(d)
-				s.RequiredStringInt64 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_int64\"")
-			}
-		case "required_string_ip":
-			requiredBitSet[23] |= 1 << 2
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIP = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ip\"")
-			}
-		case "required_string_ipv4":
-			requiredBitSet[23] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIpv4 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
-			}
-		case "required_string_ipv6":
-			requiredBitSet[23] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIpv6 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
-			}
-		case "required_string_password":
-			requiredBitSet[23] |= 1 << 5
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringPassword = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_password\"")
-			}
-		case "required_string_time":
-			requiredBitSet[23] |= 1 << 6
-			if err := func() error {
-				v, err := json.DecodeTime(d)
-				s.RequiredStringTime = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_time\"")
-			}
-		case "required_string_unix":
-			requiredBitSet[23] |= 1 << 7
-			if err := func() error {
-				v, err := json.DecodeUnixSeconds(d)
-				s.RequiredStringUnix = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix\"")
-			}
-		case "required_string_unix-micro":
-			requiredBitSet[24] |= 1 << 0
-			if err := func() error {
-				v, err := json.DecodeUnixMicro(d)
-				s.RequiredStringUnixMinusMicro = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-micro\"")
-			}
-		case "required_string_unix-milli":
-			requiredBitSet[24] |= 1 << 1
-			if err := func() error {
-				v, err := json.DecodeUnixMilli(d)
-				s.RequiredStringUnixMinusMilli = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-milli\"")
-			}
-		case "required_string_unix-nano":
-			requiredBitSet[24] |= 1 << 2
-			if err := func() error {
-				v, err := json.DecodeUnixNano(d)
-				s.RequiredStringUnixMinusNano = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-nano\"")
-			}
-		case "required_string_unix-seconds":
-			requiredBitSet[24] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeUnixSeconds(d)
-				s.RequiredStringUnixMinusSeconds = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-seconds\"")
-			}
-		case "required_string_uri":
-			requiredBitSet[24] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeURI(d)
-				s.RequiredStringURI = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_uri\"")
-			}
-		case "required_string_uuid":
-			requiredBitSet[24] |= 1 << 5
-			if err := func() error {
-				v, err := json.DecodeUUID(d)
-				s.RequiredStringUUID = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_uuid\"")
-			}
 		default:
 			return d.Skip()
 		}
@@ -15172,19 +15172,6 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [25]uint8{
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b11111000,
 		0b11111111,
 		0b11111111,
 		0b11111111,
@@ -15196,7 +15183,20 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		0b11111111,
 		0b11111111,
 		0b11111111,
-		0b00111111,
+		0b11111111,
+		0b00000111,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -15298,6 +15298,906 @@ func (s TestResponseFormatTestOK) Encode(e *jx.Encoder) {
 func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	{
 
+		if len(s.RequiredAny) != 0 {
+			e.FieldStart("required_any")
+			e.Raw(s.RequiredAny)
+		}
+	}
+	{
+
+		e.FieldStart("required_array_any")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayAny {
+			if len(elem) != 0 {
+				e.Raw(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_boolean")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayBoolean {
+			e.Bool(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayInteger {
+			e.Int(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayIntegerInt32 {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_integer_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayIntegerInt64 {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_null")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNull {
+			_ = elem
+			e.Null()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumber {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_double")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberDouble {
+			e.Float64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_float")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberFloat {
+			e.Float32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberInt32 {
+			e.Int32(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_number_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayNumberInt64 {
+			e.Int64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayString {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_binary")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringBinary {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_byte")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringByte {
+			e.Base64(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_date")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDate {
+			json.EncodeDate(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_date-time")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDateMinusTime {
+			json.EncodeDateTime(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_duration")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringDuration {
+			json.EncodeDuration(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_email")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringEmail {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_hostname")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringHostname {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt32 {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt64 {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ip")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIP {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ipv4")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIpv4 {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_ipv6")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringIpv6 {
+			json.EncodeIP(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_password")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringPassword {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_time")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringTime {
+			json.EncodeTime(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnix {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-micro")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-milli")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-nano")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusNano {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_unix-seconds")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_uri")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringURI {
+			json.EncodeURI(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_uuid")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringUUID {
+			json.EncodeUUID(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_boolean")
+		e.Bool(s.RequiredBoolean)
+	}
+	{
+
+		e.FieldStart("required_double_array_any")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayAny {
+			e.ArrStart()
+			for _, elem := range elem {
+				if len(elem) != 0 {
+					e.Raw(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_boolean")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayBoolean {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayInteger {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_integer_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_null")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNull {
+			e.ArrStart()
+			for _, elem := range elem {
+				_ = elem
+				e.Null()
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumber {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_double")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberDouble {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_float")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberFloat {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_number_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayString {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_binary")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringBinary {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_byte")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringByte {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_date")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDate {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_date-time")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_duration")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringDuration {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_email")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringEmail {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_hostname")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringHostname {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ip")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIP {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ipv4")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_ipv6")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_password")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringPassword {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_time")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnix {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-micro")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-milli")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-nano")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_unix-seconds")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_uri")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringURI {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_uuid")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringUUID {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_integer")
+		e.Int(s.RequiredInteger)
+	}
+	{
+
+		e.FieldStart("required_integer_int32")
+		e.Int32(s.RequiredIntegerInt32)
+	}
+	{
+
+		e.FieldStart("required_integer_int64")
+		e.Int64(s.RequiredIntegerInt64)
+	}
+	{
+
+		_ = s.RequiredNull
+		e.FieldStart("required_null")
+		e.Null()
+	}
+	{
+
+		e.FieldStart("required_number")
+		e.Float64(s.RequiredNumber)
+	}
+	{
+
+		e.FieldStart("required_number_double")
+		e.Float64(s.RequiredNumberDouble)
+	}
+	{
+
+		e.FieldStart("required_number_float")
+		e.Float32(s.RequiredNumberFloat)
+	}
+	{
+
+		e.FieldStart("required_number_int32")
+		e.Int32(s.RequiredNumberInt32)
+	}
+	{
+
+		e.FieldStart("required_number_int64")
+		e.Int64(s.RequiredNumberInt64)
+	}
+	{
+
+		e.FieldStart("required_string")
+		e.Str(s.RequiredString)
+	}
+	{
+
+		e.FieldStart("required_string_binary")
+		e.Str(s.RequiredStringBinary)
+	}
+	{
+
+		e.FieldStart("required_string_byte")
+		e.Base64(s.RequiredStringByte)
+	}
+	{
+
+		e.FieldStart("required_string_date")
+		json.EncodeDate(e, s.RequiredStringDate)
+	}
+	{
+
+		e.FieldStart("required_string_date-time")
+		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
+	}
+	{
+
+		e.FieldStart("required_string_duration")
+		json.EncodeDuration(e, s.RequiredStringDuration)
+	}
+	{
+
+		e.FieldStart("required_string_email")
+		e.Str(s.RequiredStringEmail)
+	}
+	{
+
+		e.FieldStart("required_string_hostname")
+		e.Str(s.RequiredStringHostname)
+	}
+	{
+
+		e.FieldStart("required_string_int32")
+		json.EncodeStringInt32(e, s.RequiredStringInt32)
+	}
+	{
+
+		e.FieldStart("required_string_int64")
+		json.EncodeStringInt64(e, s.RequiredStringInt64)
+	}
+	{
+
+		e.FieldStart("required_string_ip")
+		json.EncodeIP(e, s.RequiredStringIP)
+	}
+	{
+
+		e.FieldStart("required_string_ipv4")
+		json.EncodeIP(e, s.RequiredStringIpv4)
+	}
+	{
+
+		e.FieldStart("required_string_ipv6")
+		json.EncodeIP(e, s.RequiredStringIpv6)
+	}
+	{
+
+		e.FieldStart("required_string_password")
+		e.Str(s.RequiredStringPassword)
+	}
+	{
+
+		e.FieldStart("required_string_time")
+		json.EncodeTime(e, s.RequiredStringTime)
+	}
+	{
+
+		e.FieldStart("required_string_unix")
+		json.EncodeUnixSeconds(e, s.RequiredStringUnix)
+	}
+	{
+
+		e.FieldStart("required_string_unix-micro")
+		json.EncodeUnixMicro(e, s.RequiredStringUnixMinusMicro)
+	}
+	{
+
+		e.FieldStart("required_string_unix-milli")
+		json.EncodeUnixMilli(e, s.RequiredStringUnixMinusMilli)
+	}
+	{
+
+		e.FieldStart("required_string_unix-nano")
+		json.EncodeUnixNano(e, s.RequiredStringUnixMinusNano)
+	}
+	{
+
+		e.FieldStart("required_string_unix-seconds")
+		json.EncodeUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
+	}
+	{
+
+		e.FieldStart("required_string_uri")
+		json.EncodeURI(e, s.RequiredStringURI)
+	}
+	{
+
+		e.FieldStart("required_string_uuid")
+		json.EncodeUUID(e, s.RequiredStringUUID)
+	}
+	{
+
 		if len(s.OptionalAny) != 0 {
 			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
@@ -16292,1107 +17192,207 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
-	{
-
-		if len(s.RequiredAny) != 0 {
-			e.FieldStart("required_any")
-			e.Raw(s.RequiredAny)
-		}
-	}
-	{
-
-		e.FieldStart("required_array_any")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayAny {
-			if len(elem) != 0 {
-				e.Raw(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_boolean")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayBoolean {
-			e.Bool(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayInteger {
-			e.Int(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayIntegerInt32 {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_integer_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayIntegerInt64 {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_null")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNull {
-			_ = elem
-			e.Null()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumber {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_double")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberDouble {
-			e.Float64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_float")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberFloat {
-			e.Float32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberInt32 {
-			e.Int32(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_number_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayNumberInt64 {
-			e.Int64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayString {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_binary")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringBinary {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_byte")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringByte {
-			e.Base64(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_date")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDate {
-			json.EncodeDate(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_date-time")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDateMinusTime {
-			json.EncodeDateTime(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_duration")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringDuration {
-			json.EncodeDuration(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_email")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringEmail {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_hostname")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringHostname {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringInt32 {
-			json.EncodeStringInt32(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringInt64 {
-			json.EncodeStringInt64(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ip")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIP {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ipv4")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIpv4 {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_ipv6")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringIpv6 {
-			json.EncodeIP(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_password")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringPassword {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_time")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringTime {
-			json.EncodeTime(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnix {
-			json.EncodeUnixSeconds(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-micro")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusMicro {
-			json.EncodeUnixMicro(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-milli")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusMilli {
-			json.EncodeUnixMilli(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-nano")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusNano {
-			json.EncodeUnixNano(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_unix-seconds")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUnixMinusSeconds {
-			json.EncodeUnixSeconds(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_uri")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringURI {
-			json.EncodeURI(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_array_string_uuid")
-		e.ArrStart()
-		for _, elem := range s.RequiredArrayStringUUID {
-			json.EncodeUUID(e, elem)
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_boolean")
-		e.Bool(s.RequiredBoolean)
-	}
-	{
-
-		e.FieldStart("required_double_array_any")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayAny {
-			e.ArrStart()
-			for _, elem := range elem {
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_boolean")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayBoolean {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Bool(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayInteger {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_integer_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_null")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNull {
-			e.ArrStart()
-			for _, elem := range elem {
-				_ = elem
-				e.Null()
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumber {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_double")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberDouble {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_float")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberFloat {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Float32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int32(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_number_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Int64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayString {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_binary")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringBinary {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_byte")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringByte {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Base64(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_date")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDate {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDate(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_date-time")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDateTime(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_duration")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringDuration {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeDuration(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_email")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringEmail {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_hostname")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringHostname {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_int32")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringInt32 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt32(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_int64")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringInt64 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeStringInt64(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ip")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIP {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ipv4")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_ipv6")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeIP(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_password")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringPassword {
-			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_time")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringTime {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeTime(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnix {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-micro")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMicro(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-milli")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixMilli(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-nano")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixNano(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_unix-seconds")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUnixSeconds(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_uri")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringURI {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeURI(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_double_array_string_uuid")
-		e.ArrStart()
-		for _, elem := range s.RequiredDoubleArrayStringUUID {
-			e.ArrStart()
-			for _, elem := range elem {
-				json.EncodeUUID(e, elem)
-			}
-			e.ArrEnd()
-		}
-		e.ArrEnd()
-	}
-	{
-
-		e.FieldStart("required_integer")
-		e.Int(s.RequiredInteger)
-	}
-	{
-
-		e.FieldStart("required_integer_int32")
-		e.Int32(s.RequiredIntegerInt32)
-	}
-	{
-
-		e.FieldStart("required_integer_int64")
-		e.Int64(s.RequiredIntegerInt64)
-	}
-	{
-
-		_ = s.RequiredNull
-		e.FieldStart("required_null")
-		e.Null()
-	}
-	{
-
-		e.FieldStart("required_number")
-		e.Float64(s.RequiredNumber)
-	}
-	{
-
-		e.FieldStart("required_number_double")
-		e.Float64(s.RequiredNumberDouble)
-	}
-	{
-
-		e.FieldStart("required_number_float")
-		e.Float32(s.RequiredNumberFloat)
-	}
-	{
-
-		e.FieldStart("required_number_int32")
-		e.Int32(s.RequiredNumberInt32)
-	}
-	{
-
-		e.FieldStart("required_number_int64")
-		e.Int64(s.RequiredNumberInt64)
-	}
-	{
-
-		e.FieldStart("required_string")
-		e.Str(s.RequiredString)
-	}
-	{
-
-		e.FieldStart("required_string_binary")
-		e.Str(s.RequiredStringBinary)
-	}
-	{
-
-		e.FieldStart("required_string_byte")
-		e.Base64(s.RequiredStringByte)
-	}
-	{
-
-		e.FieldStart("required_string_date")
-		json.EncodeDate(e, s.RequiredStringDate)
-	}
-	{
-
-		e.FieldStart("required_string_date-time")
-		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
-	}
-	{
-
-		e.FieldStart("required_string_duration")
-		json.EncodeDuration(e, s.RequiredStringDuration)
-	}
-	{
-
-		e.FieldStart("required_string_email")
-		e.Str(s.RequiredStringEmail)
-	}
-	{
-
-		e.FieldStart("required_string_hostname")
-		e.Str(s.RequiredStringHostname)
-	}
-	{
-
-		e.FieldStart("required_string_int32")
-		json.EncodeStringInt32(e, s.RequiredStringInt32)
-	}
-	{
-
-		e.FieldStart("required_string_int64")
-		json.EncodeStringInt64(e, s.RequiredStringInt64)
-	}
-	{
-
-		e.FieldStart("required_string_ip")
-		json.EncodeIP(e, s.RequiredStringIP)
-	}
-	{
-
-		e.FieldStart("required_string_ipv4")
-		json.EncodeIP(e, s.RequiredStringIpv4)
-	}
-	{
-
-		e.FieldStart("required_string_ipv6")
-		json.EncodeIP(e, s.RequiredStringIpv6)
-	}
-	{
-
-		e.FieldStart("required_string_password")
-		e.Str(s.RequiredStringPassword)
-	}
-	{
-
-		e.FieldStart("required_string_time")
-		json.EncodeTime(e, s.RequiredStringTime)
-	}
-	{
-
-		e.FieldStart("required_string_unix")
-		json.EncodeUnixSeconds(e, s.RequiredStringUnix)
-	}
-	{
-
-		e.FieldStart("required_string_unix-micro")
-		json.EncodeUnixMicro(e, s.RequiredStringUnixMinusMicro)
-	}
-	{
-
-		e.FieldStart("required_string_unix-milli")
-		json.EncodeUnixMilli(e, s.RequiredStringUnixMinusMilli)
-	}
-	{
-
-		e.FieldStart("required_string_unix-nano")
-		json.EncodeUnixNano(e, s.RequiredStringUnixMinusNano)
-	}
-	{
-
-		e.FieldStart("required_string_unix-seconds")
-		json.EncodeUnixSeconds(e, s.RequiredStringUnixMinusSeconds)
-	}
-	{
-
-		e.FieldStart("required_string_uri")
-		json.EncodeURI(e, s.RequiredStringURI)
-	}
-	{
-
-		e.FieldStart("required_string_uuid")
-		json.EncodeUUID(e, s.RequiredStringUUID)
-	}
 }
 
 var jsonFieldsNameOfTestResponseFormatTestOK = [198]string{
-	0:   "optional_any",
-	1:   "optional_array_any",
-	2:   "optional_array_boolean",
-	3:   "optional_array_integer",
-	4:   "optional_array_integer_int32",
-	5:   "optional_array_integer_int64",
-	6:   "optional_array_null",
-	7:   "optional_array_number",
-	8:   "optional_array_number_double",
-	9:   "optional_array_number_float",
-	10:  "optional_array_number_int32",
-	11:  "optional_array_number_int64",
-	12:  "optional_array_string",
-	13:  "optional_array_string_binary",
-	14:  "optional_array_string_byte",
-	15:  "optional_array_string_date",
-	16:  "optional_array_string_date-time",
-	17:  "optional_array_string_duration",
-	18:  "optional_array_string_email",
-	19:  "optional_array_string_hostname",
-	20:  "optional_array_string_int32",
-	21:  "optional_array_string_int64",
-	22:  "optional_array_string_ip",
-	23:  "optional_array_string_ipv4",
-	24:  "optional_array_string_ipv6",
-	25:  "optional_array_string_password",
-	26:  "optional_array_string_time",
-	27:  "optional_array_string_unix",
-	28:  "optional_array_string_unix-micro",
-	29:  "optional_array_string_unix-milli",
-	30:  "optional_array_string_unix-nano",
-	31:  "optional_array_string_unix-seconds",
-	32:  "optional_array_string_uri",
-	33:  "optional_array_string_uuid",
-	34:  "optional_boolean",
-	35:  "optional_double_array_any",
-	36:  "optional_double_array_boolean",
-	37:  "optional_double_array_integer",
-	38:  "optional_double_array_integer_int32",
-	39:  "optional_double_array_integer_int64",
-	40:  "optional_double_array_null",
-	41:  "optional_double_array_number",
-	42:  "optional_double_array_number_double",
-	43:  "optional_double_array_number_float",
-	44:  "optional_double_array_number_int32",
-	45:  "optional_double_array_number_int64",
-	46:  "optional_double_array_string",
-	47:  "optional_double_array_string_binary",
-	48:  "optional_double_array_string_byte",
-	49:  "optional_double_array_string_date",
-	50:  "optional_double_array_string_date-time",
-	51:  "optional_double_array_string_duration",
-	52:  "optional_double_array_string_email",
-	53:  "optional_double_array_string_hostname",
-	54:  "optional_double_array_string_int32",
-	55:  "optional_double_array_string_int64",
-	56:  "optional_double_array_string_ip",
-	57:  "optional_double_array_string_ipv4",
-	58:  "optional_double_array_string_ipv6",
-	59:  "optional_double_array_string_password",
-	60:  "optional_double_array_string_time",
-	61:  "optional_double_array_string_unix",
-	62:  "optional_double_array_string_unix-micro",
-	63:  "optional_double_array_string_unix-milli",
-	64:  "optional_double_array_string_unix-nano",
-	65:  "optional_double_array_string_unix-seconds",
-	66:  "optional_double_array_string_uri",
-	67:  "optional_double_array_string_uuid",
-	68:  "optional_integer",
-	69:  "optional_integer_int32",
-	70:  "optional_integer_int64",
-	71:  "optional_null",
-	72:  "optional_number",
-	73:  "optional_number_double",
-	74:  "optional_number_float",
-	75:  "optional_number_int32",
-	76:  "optional_number_int64",
-	77:  "optional_string",
-	78:  "optional_string_binary",
-	79:  "optional_string_byte",
-	80:  "optional_string_date",
-	81:  "optional_string_date-time",
-	82:  "optional_string_duration",
-	83:  "optional_string_email",
-	84:  "optional_string_hostname",
-	85:  "optional_string_int32",
-	86:  "optional_string_int64",
-	87:  "optional_string_ip",
-	88:  "optional_string_ipv4",
-	89:  "optional_string_ipv6",
-	90:  "optional_string_password",
-	91:  "optional_string_time",
-	92:  "optional_string_unix",
-	93:  "optional_string_unix-micro",
-	94:  "optional_string_unix-milli",
-	95:  "optional_string_unix-nano",
-	96:  "optional_string_unix-seconds",
-	97:  "optional_string_uri",
-	98:  "optional_string_uuid",
-	99:  "required_any",
-	100: "required_array_any",
-	101: "required_array_boolean",
-	102: "required_array_integer",
-	103: "required_array_integer_int32",
-	104: "required_array_integer_int64",
-	105: "required_array_null",
-	106: "required_array_number",
-	107: "required_array_number_double",
-	108: "required_array_number_float",
-	109: "required_array_number_int32",
-	110: "required_array_number_int64",
-	111: "required_array_string",
-	112: "required_array_string_binary",
-	113: "required_array_string_byte",
-	114: "required_array_string_date",
-	115: "required_array_string_date-time",
-	116: "required_array_string_duration",
-	117: "required_array_string_email",
-	118: "required_array_string_hostname",
-	119: "required_array_string_int32",
-	120: "required_array_string_int64",
-	121: "required_array_string_ip",
-	122: "required_array_string_ipv4",
-	123: "required_array_string_ipv6",
-	124: "required_array_string_password",
-	125: "required_array_string_time",
-	126: "required_array_string_unix",
-	127: "required_array_string_unix-micro",
-	128: "required_array_string_unix-milli",
-	129: "required_array_string_unix-nano",
-	130: "required_array_string_unix-seconds",
-	131: "required_array_string_uri",
-	132: "required_array_string_uuid",
-	133: "required_boolean",
-	134: "required_double_array_any",
-	135: "required_double_array_boolean",
-	136: "required_double_array_integer",
-	137: "required_double_array_integer_int32",
-	138: "required_double_array_integer_int64",
-	139: "required_double_array_null",
-	140: "required_double_array_number",
-	141: "required_double_array_number_double",
-	142: "required_double_array_number_float",
-	143: "required_double_array_number_int32",
-	144: "required_double_array_number_int64",
-	145: "required_double_array_string",
-	146: "required_double_array_string_binary",
-	147: "required_double_array_string_byte",
-	148: "required_double_array_string_date",
-	149: "required_double_array_string_date-time",
-	150: "required_double_array_string_duration",
-	151: "required_double_array_string_email",
-	152: "required_double_array_string_hostname",
-	153: "required_double_array_string_int32",
-	154: "required_double_array_string_int64",
-	155: "required_double_array_string_ip",
-	156: "required_double_array_string_ipv4",
-	157: "required_double_array_string_ipv6",
-	158: "required_double_array_string_password",
-	159: "required_double_array_string_time",
-	160: "required_double_array_string_unix",
-	161: "required_double_array_string_unix-micro",
-	162: "required_double_array_string_unix-milli",
-	163: "required_double_array_string_unix-nano",
-	164: "required_double_array_string_unix-seconds",
-	165: "required_double_array_string_uri",
-	166: "required_double_array_string_uuid",
-	167: "required_integer",
-	168: "required_integer_int32",
-	169: "required_integer_int64",
-	170: "required_null",
-	171: "required_number",
-	172: "required_number_double",
-	173: "required_number_float",
-	174: "required_number_int32",
-	175: "required_number_int64",
-	176: "required_string",
-	177: "required_string_binary",
-	178: "required_string_byte",
-	179: "required_string_date",
-	180: "required_string_date-time",
-	181: "required_string_duration",
-	182: "required_string_email",
-	183: "required_string_hostname",
-	184: "required_string_int32",
-	185: "required_string_int64",
-	186: "required_string_ip",
-	187: "required_string_ipv4",
-	188: "required_string_ipv6",
-	189: "required_string_password",
-	190: "required_string_time",
-	191: "required_string_unix",
-	192: "required_string_unix-micro",
-	193: "required_string_unix-milli",
-	194: "required_string_unix-nano",
-	195: "required_string_unix-seconds",
-	196: "required_string_uri",
-	197: "required_string_uuid",
+	0:   "required_any",
+	1:   "required_array_any",
+	2:   "required_array_boolean",
+	3:   "required_array_integer",
+	4:   "required_array_integer_int32",
+	5:   "required_array_integer_int64",
+	6:   "required_array_null",
+	7:   "required_array_number",
+	8:   "required_array_number_double",
+	9:   "required_array_number_float",
+	10:  "required_array_number_int32",
+	11:  "required_array_number_int64",
+	12:  "required_array_string",
+	13:  "required_array_string_binary",
+	14:  "required_array_string_byte",
+	15:  "required_array_string_date",
+	16:  "required_array_string_date-time",
+	17:  "required_array_string_duration",
+	18:  "required_array_string_email",
+	19:  "required_array_string_hostname",
+	20:  "required_array_string_int32",
+	21:  "required_array_string_int64",
+	22:  "required_array_string_ip",
+	23:  "required_array_string_ipv4",
+	24:  "required_array_string_ipv6",
+	25:  "required_array_string_password",
+	26:  "required_array_string_time",
+	27:  "required_array_string_unix",
+	28:  "required_array_string_unix-micro",
+	29:  "required_array_string_unix-milli",
+	30:  "required_array_string_unix-nano",
+	31:  "required_array_string_unix-seconds",
+	32:  "required_array_string_uri",
+	33:  "required_array_string_uuid",
+	34:  "required_boolean",
+	35:  "required_double_array_any",
+	36:  "required_double_array_boolean",
+	37:  "required_double_array_integer",
+	38:  "required_double_array_integer_int32",
+	39:  "required_double_array_integer_int64",
+	40:  "required_double_array_null",
+	41:  "required_double_array_number",
+	42:  "required_double_array_number_double",
+	43:  "required_double_array_number_float",
+	44:  "required_double_array_number_int32",
+	45:  "required_double_array_number_int64",
+	46:  "required_double_array_string",
+	47:  "required_double_array_string_binary",
+	48:  "required_double_array_string_byte",
+	49:  "required_double_array_string_date",
+	50:  "required_double_array_string_date-time",
+	51:  "required_double_array_string_duration",
+	52:  "required_double_array_string_email",
+	53:  "required_double_array_string_hostname",
+	54:  "required_double_array_string_int32",
+	55:  "required_double_array_string_int64",
+	56:  "required_double_array_string_ip",
+	57:  "required_double_array_string_ipv4",
+	58:  "required_double_array_string_ipv6",
+	59:  "required_double_array_string_password",
+	60:  "required_double_array_string_time",
+	61:  "required_double_array_string_unix",
+	62:  "required_double_array_string_unix-micro",
+	63:  "required_double_array_string_unix-milli",
+	64:  "required_double_array_string_unix-nano",
+	65:  "required_double_array_string_unix-seconds",
+	66:  "required_double_array_string_uri",
+	67:  "required_double_array_string_uuid",
+	68:  "required_integer",
+	69:  "required_integer_int32",
+	70:  "required_integer_int64",
+	71:  "required_null",
+	72:  "required_number",
+	73:  "required_number_double",
+	74:  "required_number_float",
+	75:  "required_number_int32",
+	76:  "required_number_int64",
+	77:  "required_string",
+	78:  "required_string_binary",
+	79:  "required_string_byte",
+	80:  "required_string_date",
+	81:  "required_string_date-time",
+	82:  "required_string_duration",
+	83:  "required_string_email",
+	84:  "required_string_hostname",
+	85:  "required_string_int32",
+	86:  "required_string_int64",
+	87:  "required_string_ip",
+	88:  "required_string_ipv4",
+	89:  "required_string_ipv6",
+	90:  "required_string_password",
+	91:  "required_string_time",
+	92:  "required_string_unix",
+	93:  "required_string_unix-micro",
+	94:  "required_string_unix-milli",
+	95:  "required_string_unix-nano",
+	96:  "required_string_unix-seconds",
+	97:  "required_string_uri",
+	98:  "required_string_uuid",
+	99:  "optional_any",
+	100: "optional_array_any",
+	101: "optional_array_boolean",
+	102: "optional_array_integer",
+	103: "optional_array_integer_int32",
+	104: "optional_array_integer_int64",
+	105: "optional_array_null",
+	106: "optional_array_number",
+	107: "optional_array_number_double",
+	108: "optional_array_number_float",
+	109: "optional_array_number_int32",
+	110: "optional_array_number_int64",
+	111: "optional_array_string",
+	112: "optional_array_string_binary",
+	113: "optional_array_string_byte",
+	114: "optional_array_string_date",
+	115: "optional_array_string_date-time",
+	116: "optional_array_string_duration",
+	117: "optional_array_string_email",
+	118: "optional_array_string_hostname",
+	119: "optional_array_string_int32",
+	120: "optional_array_string_int64",
+	121: "optional_array_string_ip",
+	122: "optional_array_string_ipv4",
+	123: "optional_array_string_ipv6",
+	124: "optional_array_string_password",
+	125: "optional_array_string_time",
+	126: "optional_array_string_unix",
+	127: "optional_array_string_unix-micro",
+	128: "optional_array_string_unix-milli",
+	129: "optional_array_string_unix-nano",
+	130: "optional_array_string_unix-seconds",
+	131: "optional_array_string_uri",
+	132: "optional_array_string_uuid",
+	133: "optional_boolean",
+	134: "optional_double_array_any",
+	135: "optional_double_array_boolean",
+	136: "optional_double_array_integer",
+	137: "optional_double_array_integer_int32",
+	138: "optional_double_array_integer_int64",
+	139: "optional_double_array_null",
+	140: "optional_double_array_number",
+	141: "optional_double_array_number_double",
+	142: "optional_double_array_number_float",
+	143: "optional_double_array_number_int32",
+	144: "optional_double_array_number_int64",
+	145: "optional_double_array_string",
+	146: "optional_double_array_string_binary",
+	147: "optional_double_array_string_byte",
+	148: "optional_double_array_string_date",
+	149: "optional_double_array_string_date-time",
+	150: "optional_double_array_string_duration",
+	151: "optional_double_array_string_email",
+	152: "optional_double_array_string_hostname",
+	153: "optional_double_array_string_int32",
+	154: "optional_double_array_string_int64",
+	155: "optional_double_array_string_ip",
+	156: "optional_double_array_string_ipv4",
+	157: "optional_double_array_string_ipv6",
+	158: "optional_double_array_string_password",
+	159: "optional_double_array_string_time",
+	160: "optional_double_array_string_unix",
+	161: "optional_double_array_string_unix-micro",
+	162: "optional_double_array_string_unix-milli",
+	163: "optional_double_array_string_unix-nano",
+	164: "optional_double_array_string_unix-seconds",
+	165: "optional_double_array_string_uri",
+	166: "optional_double_array_string_uuid",
+	167: "optional_integer",
+	168: "optional_integer_int32",
+	169: "optional_integer_int64",
+	170: "optional_null",
+	171: "optional_number",
+	172: "optional_number_double",
+	173: "optional_number_float",
+	174: "optional_number_int32",
+	175: "optional_number_int64",
+	176: "optional_string",
+	177: "optional_string_binary",
+	178: "optional_string_byte",
+	179: "optional_string_date",
+	180: "optional_string_date-time",
+	181: "optional_string_duration",
+	182: "optional_string_email",
+	183: "optional_string_hostname",
+	184: "optional_string_int32",
+	185: "optional_string_int64",
+	186: "optional_string_ip",
+	187: "optional_string_ipv4",
+	188: "optional_string_ipv6",
+	189: "optional_string_password",
+	190: "optional_string_time",
+	191: "optional_string_unix",
+	192: "optional_string_unix-micro",
+	193: "optional_string_unix-milli",
+	194: "optional_string_unix-nano",
+	195: "optional_string_unix-seconds",
+	196: "optional_string_uri",
+	197: "optional_string_uuid",
 }
 
 // Decode decodes TestResponseFormatTestOK from json.
@@ -17404,6 +17404,1980 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "required_any":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.RawAppend(nil)
+				s.RequiredAny = jx.Raw(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_any\"")
+			}
+		case "required_array_any":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayAny = make([]jx.Raw, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem jx.Raw
+					v, err := d.RawAppend(nil)
+					elem = jx.Raw(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_any\"")
+			}
+		case "required_array_boolean":
+			requiredBitSet[0] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayBoolean = make([]bool, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem bool
+					v, err := d.Bool()
+					elem = bool(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_boolean\"")
+			}
+		case "required_array_integer":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayInteger = make([]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int
+					v, err := d.Int()
+					elem = int(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer\"")
+			}
+		case "required_array_integer_int32":
+			requiredBitSet[0] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayIntegerInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := d.Int32()
+					elem = int32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer_int32\"")
+			}
+		case "required_array_integer_int64":
+			requiredBitSet[0] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayIntegerInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := d.Int64()
+					elem = int64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_integer_int64\"")
+			}
+		case "required_array_null":
+			requiredBitSet[0] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayNull = make([]struct{}, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem struct{}
+					if err := d.Null(); err != nil {
+						return err
+					}
+					s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_null\"")
+			}
+		case "required_array_number":
+			requiredBitSet[0] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayNumber = make([]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float64
+					v, err := d.Float64()
+					elem = float64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number\"")
+			}
+		case "required_array_number_double":
+			requiredBitSet[1] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayNumberDouble = make([]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float64
+					v, err := d.Float64()
+					elem = float64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_double\"")
+			}
+		case "required_array_number_float":
+			requiredBitSet[1] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayNumberFloat = make([]float32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem float32
+					v, err := d.Float32()
+					elem = float32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_float\"")
+			}
+		case "required_array_number_int32":
+			requiredBitSet[1] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayNumberInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := d.Int32()
+					elem = int32(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_int32\"")
+			}
+		case "required_array_number_int64":
+			requiredBitSet[1] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayNumberInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := d.Int64()
+					elem = int64(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_number_int64\"")
+			}
+		case "required_array_string":
+			requiredBitSet[1] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayString = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayString = append(s.RequiredArrayString, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string\"")
+			}
+		case "required_array_string_binary":
+			requiredBitSet[1] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringBinary = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_binary\"")
+			}
+		case "required_array_string_byte":
+			requiredBitSet[1] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringByte = make([][]byte, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []byte
+					v, err := d.Base64()
+					elem = []byte(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_byte\"")
+			}
+		case "required_array_string_date":
+			requiredBitSet[1] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringDate = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeDate(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_date\"")
+			}
+		case "required_array_string_date-time":
+			requiredBitSet[2] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeDateTime(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_date-time\"")
+			}
+		case "required_array_string_duration":
+			requiredBitSet[2] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringDuration = make([]time.Duration, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Duration
+					v, err := json.DecodeDuration(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_duration\"")
+			}
+		case "required_array_string_email":
+			requiredBitSet[2] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayStringEmail = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_email\"")
+			}
+		case "required_array_string_hostname":
+			requiredBitSet[2] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayStringHostname = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
+			}
+		case "required_array_string_int32":
+			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
+			}
+		case "required_array_string_int64":
+			requiredBitSet[2] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
+			}
+		case "required_array_string_ip":
+			requiredBitSet[2] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringIP = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
+			}
+		case "required_array_string_ipv4":
+			requiredBitSet[2] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
+			}
+		case "required_array_string_ipv6":
+			requiredBitSet[3] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem netip.Addr
+					v, err := json.DecodeIP(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
+			}
+		case "required_array_string_password":
+			requiredBitSet[3] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringPassword = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_password\"")
+			}
+		case "required_array_string_time":
+			requiredBitSet[3] |= 1 << 2
+			if err := func() error {
+				s.RequiredArrayStringTime = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeTime(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_time\"")
+			}
+		case "required_array_string_unix":
+			requiredBitSet[3] |= 1 << 3
+			if err := func() error {
+				s.RequiredArrayStringUnix = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix\"")
+			}
+		case "required_array_string_unix-micro":
+			requiredBitSet[3] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusMicro = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixMicro(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-micro\"")
+			}
+		case "required_array_string_unix-milli":
+			requiredBitSet[3] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusMilli = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixMilli(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-milli\"")
+			}
+		case "required_array_string_unix-nano":
+			requiredBitSet[3] |= 1 << 6
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusNano = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixNano(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-nano\"")
+			}
+		case "required_array_string_unix-seconds":
+			requiredBitSet[3] |= 1 << 7
+			if err := func() error {
+				s.RequiredArrayStringUnixMinusSeconds = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_unix-seconds\"")
+			}
+		case "required_array_string_uri":
+			requiredBitSet[4] |= 1 << 0
+			if err := func() error {
+				s.RequiredArrayStringURI = make([]url.URL, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem url.URL
+					v, err := json.DecodeURI(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
+			}
+		case "required_array_string_uuid":
+			requiredBitSet[4] |= 1 << 1
+			if err := func() error {
+				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
+			}
+		case "required_boolean":
+			requiredBitSet[4] |= 1 << 2
+			if err := func() error {
+				v, err := d.Bool()
+				s.RequiredBoolean = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_boolean\"")
+			}
+		case "required_double_array_any":
+			requiredBitSet[4] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []jx.Raw
+					elem = make([]jx.Raw, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem jx.Raw
+						v, err := d.RawAppend(nil)
+						elemElem = jx.Raw(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_any\"")
+			}
+		case "required_double_array_boolean":
+			requiredBitSet[4] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []bool
+					elem = make([]bool, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem bool
+						v, err := d.Bool()
+						elemElem = bool(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
+			}
+		case "required_double_array_integer":
+			requiredBitSet[4] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayInteger = make([][]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int
+					elem = make([]int, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int
+						v, err := d.Int()
+						elemElem = int(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
+			}
+		case "required_double_array_integer_int32":
+			requiredBitSet[4] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := d.Int32()
+						elemElem = int32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
+			}
+		case "required_double_array_integer_int64":
+			requiredBitSet[4] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := d.Int64()
+						elemElem = int64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
+			}
+		case "required_double_array_null":
+			requiredBitSet[5] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []struct{}
+					elem = make([]struct{}, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem struct{}
+						if err := d.Null(); err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_null\"")
+			}
+		case "required_double_array_number":
+			requiredBitSet[5] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayNumber = make([][]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float64
+					elem = make([]float64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float64
+						v, err := d.Float64()
+						elemElem = float64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number\"")
+			}
+		case "required_double_array_number_double":
+			requiredBitSet[5] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float64
+					elem = make([]float64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float64
+						v, err := d.Float64()
+						elemElem = float64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
+			}
+		case "required_double_array_number_float":
+			requiredBitSet[5] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []float32
+					elem = make([]float32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem float32
+						v, err := d.Float32()
+						elemElem = float32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
+			}
+		case "required_double_array_number_int32":
+			requiredBitSet[5] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := d.Int32()
+						elemElem = int32(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
+			}
+		case "required_double_array_number_int64":
+			requiredBitSet[5] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := d.Int64()
+						elemElem = int64(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
+			}
+		case "required_double_array_string":
+			requiredBitSet[5] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayString = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string\"")
+			}
+		case "required_double_array_string_binary":
+			requiredBitSet[5] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
+			}
+		case "required_double_array_string_byte":
+			requiredBitSet[6] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem [][]byte
+					elem = make([][]byte, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem []byte
+						v, err := d.Base64()
+						elemElem = []byte(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
+			}
+		case "required_double_array_string_date":
+			requiredBitSet[6] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeDate(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
+			}
+		case "required_double_array_string_date-time":
+			requiredBitSet[6] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeDateTime(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
+			}
+		case "required_double_array_string_duration":
+			requiredBitSet[6] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Duration
+					elem = make([]time.Duration, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Duration
+						v, err := json.DecodeDuration(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
+			}
+		case "required_double_array_string_email":
+			requiredBitSet[6] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
+			}
+		case "required_double_array_string_hostname":
+			requiredBitSet[6] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
+			}
+		case "required_double_array_string_int32":
+			requiredBitSet[6] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
+			}
+		case "required_double_array_string_int64":
+			requiredBitSet[6] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
+			}
+		case "required_double_array_string_ip":
+			requiredBitSet[7] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
+			}
+		case "required_double_array_string_ipv4":
+			requiredBitSet[7] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
+			}
+		case "required_double_array_string_ipv6":
+			requiredBitSet[7] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem netip.Addr
+						v, err := json.DecodeIP(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
+			}
+		case "required_double_array_string_password":
+			requiredBitSet[7] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = make([]string, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
+			}
+		case "required_double_array_string_time":
+			requiredBitSet[7] |= 1 << 4
+			if err := func() error {
+				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeTime(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
+			}
+		case "required_double_array_string_unix":
+			requiredBitSet[7] |= 1 << 5
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnix = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixSeconds(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix\"")
+			}
+		case "required_double_array_string_unix-micro":
+			requiredBitSet[7] |= 1 << 6
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusMicro = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixMicro(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-micro\"")
+			}
+		case "required_double_array_string_unix-milli":
+			requiredBitSet[7] |= 1 << 7
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusMilli = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixMilli(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-milli\"")
+			}
+		case "required_double_array_string_unix-nano":
+			requiredBitSet[8] |= 1 << 0
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusNano = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixNano(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-nano\"")
+			}
+		case "required_double_array_string_unix-seconds":
+			requiredBitSet[8] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringUnixMinusSeconds = make([][]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []time.Time
+					elem = make([]time.Time, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem time.Time
+						v, err := json.DecodeUnixSeconds(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_unix-seconds\"")
+			}
+		case "required_double_array_string_uri":
+			requiredBitSet[8] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []url.URL
+					elem = make([]url.URL, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem url.URL
+						v, err := json.DecodeURI(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
+			}
+		case "required_double_array_string_uuid":
+			requiredBitSet[8] |= 1 << 3
+			if err := func() error {
+				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []uuid.UUID
+					elem = make([]uuid.UUID, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem uuid.UUID
+						v, err := json.DecodeUUID(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
+			}
+		case "required_integer":
+			requiredBitSet[8] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int()
+				s.RequiredInteger = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer\"")
+			}
+		case "required_integer_int32":
+			requiredBitSet[8] |= 1 << 5
+			if err := func() error {
+				v, err := d.Int32()
+				s.RequiredIntegerInt32 = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer_int32\"")
+			}
+		case "required_integer_int64":
+			requiredBitSet[8] |= 1 << 6
+			if err := func() error {
+				v, err := d.Int64()
+				s.RequiredIntegerInt64 = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_integer_int64\"")
+			}
+		case "required_null":
+			requiredBitSet[8] |= 1 << 7
+			if err := func() error {
+				if err := d.Null(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_null\"")
+			}
+		case "required_number":
+			requiredBitSet[9] |= 1 << 0
+			if err := func() error {
+				v, err := d.Float64()
+				s.RequiredNumber = float64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number\"")
+			}
+		case "required_number_double":
+			requiredBitSet[9] |= 1 << 1
+			if err := func() error {
+				v, err := d.Float64()
+				s.RequiredNumberDouble = float64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_double\"")
+			}
+		case "required_number_float":
+			requiredBitSet[9] |= 1 << 2
+			if err := func() error {
+				v, err := d.Float32()
+				s.RequiredNumberFloat = float32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_float\"")
+			}
+		case "required_number_int32":
+			requiredBitSet[9] |= 1 << 3
+			if err := func() error {
+				v, err := d.Int32()
+				s.RequiredNumberInt32 = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_int32\"")
+			}
+		case "required_number_int64":
+			requiredBitSet[9] |= 1 << 4
+			if err := func() error {
+				v, err := d.Int64()
+				s.RequiredNumberInt64 = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_number_int64\"")
+			}
+		case "required_string":
+			requiredBitSet[9] |= 1 << 5
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredString = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string\"")
+			}
+		case "required_string_binary":
+			requiredBitSet[9] |= 1 << 6
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringBinary = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_binary\"")
+			}
+		case "required_string_byte":
+			requiredBitSet[9] |= 1 << 7
+			if err := func() error {
+				v, err := d.Base64()
+				s.RequiredStringByte = []byte(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_byte\"")
+			}
+		case "required_string_date":
+			requiredBitSet[10] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeDate(d)
+				s.RequiredStringDate = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_date\"")
+			}
+		case "required_string_date-time":
+			requiredBitSet[10] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeDateTime(d)
+				s.RequiredStringDateMinusTime = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_date-time\"")
+			}
+		case "required_string_duration":
+			requiredBitSet[10] |= 1 << 2
+			if err := func() error {
+				v, err := json.DecodeDuration(d)
+				s.RequiredStringDuration = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_duration\"")
+			}
+		case "required_string_email":
+			requiredBitSet[10] |= 1 << 3
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringEmail = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_email\"")
+			}
+		case "required_string_hostname":
+			requiredBitSet[10] |= 1 << 4
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringHostname = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_hostname\"")
+			}
+		case "required_string_int32":
+			requiredBitSet[10] |= 1 << 5
+			if err := func() error {
+				v, err := json.DecodeStringInt32(d)
+				s.RequiredStringInt32 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int32\"")
+			}
+		case "required_string_int64":
+			requiredBitSet[10] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeStringInt64(d)
+				s.RequiredStringInt64 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int64\"")
+			}
+		case "required_string_ip":
+			requiredBitSet[10] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIP = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ip\"")
+			}
+		case "required_string_ipv4":
+			requiredBitSet[11] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIpv4 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
+			}
+		case "required_string_ipv6":
+			requiredBitSet[11] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeIP(d)
+				s.RequiredStringIpv6 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
+			}
+		case "required_string_password":
+			requiredBitSet[11] |= 1 << 2
+			if err := func() error {
+				v, err := d.Str()
+				s.RequiredStringPassword = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_password\"")
+			}
+		case "required_string_time":
+			requiredBitSet[11] |= 1 << 3
+			if err := func() error {
+				v, err := json.DecodeTime(d)
+				s.RequiredStringTime = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_time\"")
+			}
+		case "required_string_unix":
+			requiredBitSet[11] |= 1 << 4
+			if err := func() error {
+				v, err := json.DecodeUnixSeconds(d)
+				s.RequiredStringUnix = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix\"")
+			}
+		case "required_string_unix-micro":
+			requiredBitSet[11] |= 1 << 5
+			if err := func() error {
+				v, err := json.DecodeUnixMicro(d)
+				s.RequiredStringUnixMinusMicro = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-micro\"")
+			}
+		case "required_string_unix-milli":
+			requiredBitSet[11] |= 1 << 6
+			if err := func() error {
+				v, err := json.DecodeUnixMilli(d)
+				s.RequiredStringUnixMinusMilli = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-milli\"")
+			}
+		case "required_string_unix-nano":
+			requiredBitSet[11] |= 1 << 7
+			if err := func() error {
+				v, err := json.DecodeUnixNano(d)
+				s.RequiredStringUnixMinusNano = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-nano\"")
+			}
+		case "required_string_unix-seconds":
+			requiredBitSet[12] |= 1 << 0
+			if err := func() error {
+				v, err := json.DecodeUnixSeconds(d)
+				s.RequiredStringUnixMinusSeconds = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_unix-seconds\"")
+			}
+		case "required_string_uri":
+			requiredBitSet[12] |= 1 << 1
+			if err := func() error {
+				v, err := json.DecodeURI(d)
+				s.RequiredStringURI = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_uri\"")
+			}
+		case "required_string_uuid":
+			requiredBitSet[12] |= 1 << 2
+			if err := func() error {
+				v, err := json.DecodeUUID(d)
+				s.RequiredStringUUID = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_uuid\"")
+			}
 		case "optional_any":
 			if err := func() error {
 				v, err := d.RawAppend(nil)
@@ -19250,1980 +21224,6 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_string_uuid\"")
 			}
-		case "required_any":
-			requiredBitSet[12] |= 1 << 3
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.RequiredAny = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_any\"")
-			}
-		case "required_array_any":
-			requiredBitSet[12] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayAny = make([]jx.Raw, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem jx.Raw
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_any\"")
-			}
-		case "required_array_boolean":
-			requiredBitSet[12] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayBoolean = make([]bool, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem bool
-					v, err := d.Bool()
-					elem = bool(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_boolean\"")
-			}
-		case "required_array_integer":
-			requiredBitSet[12] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayInteger = make([]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int
-					v, err := d.Int()
-					elem = int(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer\"")
-			}
-		case "required_array_integer_int32":
-			requiredBitSet[12] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayIntegerInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer_int32\"")
-			}
-		case "required_array_integer_int64":
-			requiredBitSet[13] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayIntegerInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_integer_int64\"")
-			}
-		case "required_array_null":
-			requiredBitSet[13] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayNull = make([]struct{}, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem struct{}
-					if err := d.Null(); err != nil {
-						return err
-					}
-					s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_null\"")
-			}
-		case "required_array_number":
-			requiredBitSet[13] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayNumber = make([]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number\"")
-			}
-		case "required_array_number_double":
-			requiredBitSet[13] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayNumberDouble = make([]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float64
-					v, err := d.Float64()
-					elem = float64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_double\"")
-			}
-		case "required_array_number_float":
-			requiredBitSet[13] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayNumberFloat = make([]float32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem float32
-					v, err := d.Float32()
-					elem = float32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_float\"")
-			}
-		case "required_array_number_int32":
-			requiredBitSet[13] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayNumberInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := d.Int32()
-					elem = int32(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_int32\"")
-			}
-		case "required_array_number_int64":
-			requiredBitSet[13] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayNumberInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := d.Int64()
-					elem = int64(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_number_int64\"")
-			}
-		case "required_array_string":
-			requiredBitSet[13] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayString = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayString = append(s.RequiredArrayString, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string\"")
-			}
-		case "required_array_string_binary":
-			requiredBitSet[14] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringBinary = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_binary\"")
-			}
-		case "required_array_string_byte":
-			requiredBitSet[14] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringByte = make([][]byte, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []byte
-					v, err := d.Base64()
-					elem = []byte(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_byte\"")
-			}
-		case "required_array_string_date":
-			requiredBitSet[14] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringDate = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDate(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_date\"")
-			}
-		case "required_array_string_date-time":
-			requiredBitSet[14] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeDateTime(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_date-time\"")
-			}
-		case "required_array_string_duration":
-			requiredBitSet[14] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringDuration = make([]time.Duration, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Duration
-					v, err := json.DecodeDuration(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_duration\"")
-			}
-		case "required_array_string_email":
-			requiredBitSet[14] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayStringEmail = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_email\"")
-			}
-		case "required_array_string_hostname":
-			requiredBitSet[14] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayStringHostname = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
-			}
-		case "required_array_string_int32":
-			requiredBitSet[14] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayStringInt32 = make([]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int32
-					v, err := json.DecodeStringInt32(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
-			}
-		case "required_array_string_int64":
-			requiredBitSet[15] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringInt64 = make([]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int64
-					v, err := json.DecodeStringInt64(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
-			}
-		case "required_array_string_ip":
-			requiredBitSet[15] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringIP = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
-			}
-		case "required_array_string_ipv4":
-			requiredBitSet[15] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
-			}
-		case "required_array_string_ipv6":
-			requiredBitSet[15] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem netip.Addr
-					v, err := json.DecodeIP(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
-			}
-		case "required_array_string_password":
-			requiredBitSet[15] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringPassword = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem string
-					v, err := d.Str()
-					elem = string(v)
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_password\"")
-			}
-		case "required_array_string_time":
-			requiredBitSet[15] |= 1 << 5
-			if err := func() error {
-				s.RequiredArrayStringTime = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeTime(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_time\"")
-			}
-		case "required_array_string_unix":
-			requiredBitSet[15] |= 1 << 6
-			if err := func() error {
-				s.RequiredArrayStringUnix = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnix = append(s.RequiredArrayStringUnix, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix\"")
-			}
-		case "required_array_string_unix-micro":
-			requiredBitSet[15] |= 1 << 7
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusMicro = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMicro(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusMicro = append(s.RequiredArrayStringUnixMinusMicro, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-micro\"")
-			}
-		case "required_array_string_unix-milli":
-			requiredBitSet[16] |= 1 << 0
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusMilli = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixMilli(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusMilli = append(s.RequiredArrayStringUnixMinusMilli, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-milli\"")
-			}
-		case "required_array_string_unix-nano":
-			requiredBitSet[16] |= 1 << 1
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusNano = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixNano(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusNano = append(s.RequiredArrayStringUnixMinusNano, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-nano\"")
-			}
-		case "required_array_string_unix-seconds":
-			requiredBitSet[16] |= 1 << 2
-			if err := func() error {
-				s.RequiredArrayStringUnixMinusSeconds = make([]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem time.Time
-					v, err := json.DecodeUnixSeconds(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUnixMinusSeconds = append(s.RequiredArrayStringUnixMinusSeconds, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_unix-seconds\"")
-			}
-		case "required_array_string_uri":
-			requiredBitSet[16] |= 1 << 3
-			if err := func() error {
-				s.RequiredArrayStringURI = make([]url.URL, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem url.URL
-					v, err := json.DecodeURI(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
-			}
-		case "required_array_string_uuid":
-			requiredBitSet[16] |= 1 << 4
-			if err := func() error {
-				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem uuid.UUID
-					v, err := json.DecodeUUID(d)
-					elem = v
-					if err != nil {
-						return err
-					}
-					s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
-			}
-		case "required_boolean":
-			requiredBitSet[16] |= 1 << 5
-			if err := func() error {
-				v, err := d.Bool()
-				s.RequiredBoolean = bool(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_boolean\"")
-			}
-		case "required_double_array_any":
-			requiredBitSet[16] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []jx.Raw
-					elem = make([]jx.Raw, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem jx.Raw
-						v, err := d.RawAppend(nil)
-						elemElem = jx.Raw(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_any\"")
-			}
-		case "required_double_array_boolean":
-			requiredBitSet[16] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []bool
-					elem = make([]bool, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem bool
-						v, err := d.Bool()
-						elemElem = bool(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
-			}
-		case "required_double_array_integer":
-			requiredBitSet[17] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayInteger = make([][]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int
-					elem = make([]int, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int
-						v, err := d.Int()
-						elemElem = int(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
-			}
-		case "required_double_array_integer_int32":
-			requiredBitSet[17] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
-			}
-		case "required_double_array_integer_int64":
-			requiredBitSet[17] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
-			}
-		case "required_double_array_null":
-			requiredBitSet[17] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []struct{}
-					elem = make([]struct{}, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem struct{}
-						if err := d.Null(); err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_null\"")
-			}
-		case "required_double_array_number":
-			requiredBitSet[17] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayNumber = make([][]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number\"")
-			}
-		case "required_double_array_number_double":
-			requiredBitSet[17] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float64
-					elem = make([]float64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float64
-						v, err := d.Float64()
-						elemElem = float64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
-			}
-		case "required_double_array_number_float":
-			requiredBitSet[17] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []float32
-					elem = make([]float32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem float32
-						v, err := d.Float32()
-						elemElem = float32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
-			}
-		case "required_double_array_number_int32":
-			requiredBitSet[17] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := d.Int32()
-						elemElem = int32(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
-			}
-		case "required_double_array_number_int64":
-			requiredBitSet[18] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := d.Int64()
-						elemElem = int64(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
-			}
-		case "required_double_array_string":
-			requiredBitSet[18] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayString = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string\"")
-			}
-		case "required_double_array_string_binary":
-			requiredBitSet[18] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
-			}
-		case "required_double_array_string_byte":
-			requiredBitSet[18] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem [][]byte
-					elem = make([][]byte, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem []byte
-						v, err := d.Base64()
-						elemElem = []byte(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
-			}
-		case "required_double_array_string_date":
-			requiredBitSet[18] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDate(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
-			}
-		case "required_double_array_string_date-time":
-			requiredBitSet[18] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeDateTime(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
-			}
-		case "required_double_array_string_duration":
-			requiredBitSet[18] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Duration
-					elem = make([]time.Duration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Duration
-						v, err := json.DecodeDuration(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
-			}
-		case "required_double_array_string_email":
-			requiredBitSet[18] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
-			}
-		case "required_double_array_string_hostname":
-			requiredBitSet[19] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
-			}
-		case "required_double_array_string_int32":
-			requiredBitSet[19] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int32
-					elem = make([]int32, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int32
-						v, err := json.DecodeStringInt32(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
-			}
-		case "required_double_array_string_int64":
-			requiredBitSet[19] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []int64
-					elem = make([]int64, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem int64
-						v, err := json.DecodeStringInt64(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
-			}
-		case "required_double_array_string_ip":
-			requiredBitSet[19] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
-			}
-		case "required_double_array_string_ipv4":
-			requiredBitSet[19] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
-			}
-		case "required_double_array_string_ipv6":
-			requiredBitSet[19] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []netip.Addr
-					elem = make([]netip.Addr, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
-			}
-		case "required_double_array_string_password":
-			requiredBitSet[19] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []string
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
-			}
-		case "required_double_array_string_time":
-			requiredBitSet[19] |= 1 << 7
-			if err := func() error {
-				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeTime(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
-			}
-		case "required_double_array_string_unix":
-			requiredBitSet[20] |= 1 << 0
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnix = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnix = append(s.RequiredDoubleArrayStringUnix, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix\"")
-			}
-		case "required_double_array_string_unix-micro":
-			requiredBitSet[20] |= 1 << 1
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusMicro = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMicro(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusMicro = append(s.RequiredDoubleArrayStringUnixMinusMicro, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-micro\"")
-			}
-		case "required_double_array_string_unix-milli":
-			requiredBitSet[20] |= 1 << 2
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusMilli = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixMilli(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusMilli = append(s.RequiredDoubleArrayStringUnixMinusMilli, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-milli\"")
-			}
-		case "required_double_array_string_unix-nano":
-			requiredBitSet[20] |= 1 << 3
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusNano = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixNano(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusNano = append(s.RequiredDoubleArrayStringUnixMinusNano, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-nano\"")
-			}
-		case "required_double_array_string_unix-seconds":
-			requiredBitSet[20] |= 1 << 4
-			if err := func() error {
-				s.RequiredDoubleArrayStringUnixMinusSeconds = make([][]time.Time, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []time.Time
-					elem = make([]time.Time, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem time.Time
-						v, err := json.DecodeUnixSeconds(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUnixMinusSeconds = append(s.RequiredDoubleArrayStringUnixMinusSeconds, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_unix-seconds\"")
-			}
-		case "required_double_array_string_uri":
-			requiredBitSet[20] |= 1 << 5
-			if err := func() error {
-				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []url.URL
-					elem = make([]url.URL, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem url.URL
-						v, err := json.DecodeURI(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
-			}
-		case "required_double_array_string_uuid":
-			requiredBitSet[20] |= 1 << 6
-			if err := func() error {
-				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []uuid.UUID
-					elem = make([]uuid.UUID, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem uuid.UUID
-						v, err := json.DecodeUUID(d)
-						elemElem = v
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
-			}
-		case "required_integer":
-			requiredBitSet[20] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int()
-				s.RequiredInteger = int(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer\"")
-			}
-		case "required_integer_int32":
-			requiredBitSet[21] |= 1 << 0
-			if err := func() error {
-				v, err := d.Int32()
-				s.RequiredIntegerInt32 = int32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer_int32\"")
-			}
-		case "required_integer_int64":
-			requiredBitSet[21] |= 1 << 1
-			if err := func() error {
-				v, err := d.Int64()
-				s.RequiredIntegerInt64 = int64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_integer_int64\"")
-			}
-		case "required_null":
-			requiredBitSet[21] |= 1 << 2
-			if err := func() error {
-				if err := d.Null(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_null\"")
-			}
-		case "required_number":
-			requiredBitSet[21] |= 1 << 3
-			if err := func() error {
-				v, err := d.Float64()
-				s.RequiredNumber = float64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number\"")
-			}
-		case "required_number_double":
-			requiredBitSet[21] |= 1 << 4
-			if err := func() error {
-				v, err := d.Float64()
-				s.RequiredNumberDouble = float64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_double\"")
-			}
-		case "required_number_float":
-			requiredBitSet[21] |= 1 << 5
-			if err := func() error {
-				v, err := d.Float32()
-				s.RequiredNumberFloat = float32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_float\"")
-			}
-		case "required_number_int32":
-			requiredBitSet[21] |= 1 << 6
-			if err := func() error {
-				v, err := d.Int32()
-				s.RequiredNumberInt32 = int32(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_int32\"")
-			}
-		case "required_number_int64":
-			requiredBitSet[21] |= 1 << 7
-			if err := func() error {
-				v, err := d.Int64()
-				s.RequiredNumberInt64 = int64(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_number_int64\"")
-			}
-		case "required_string":
-			requiredBitSet[22] |= 1 << 0
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredString = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string\"")
-			}
-		case "required_string_binary":
-			requiredBitSet[22] |= 1 << 1
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringBinary = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_binary\"")
-			}
-		case "required_string_byte":
-			requiredBitSet[22] |= 1 << 2
-			if err := func() error {
-				v, err := d.Base64()
-				s.RequiredStringByte = []byte(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_byte\"")
-			}
-		case "required_string_date":
-			requiredBitSet[22] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeDate(d)
-				s.RequiredStringDate = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_date\"")
-			}
-		case "required_string_date-time":
-			requiredBitSet[22] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeDateTime(d)
-				s.RequiredStringDateMinusTime = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_date-time\"")
-			}
-		case "required_string_duration":
-			requiredBitSet[22] |= 1 << 5
-			if err := func() error {
-				v, err := json.DecodeDuration(d)
-				s.RequiredStringDuration = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_duration\"")
-			}
-		case "required_string_email":
-			requiredBitSet[22] |= 1 << 6
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringEmail = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_email\"")
-			}
-		case "required_string_hostname":
-			requiredBitSet[22] |= 1 << 7
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringHostname = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_hostname\"")
-			}
-		case "required_string_int32":
-			requiredBitSet[23] |= 1 << 0
-			if err := func() error {
-				v, err := json.DecodeStringInt32(d)
-				s.RequiredStringInt32 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_int32\"")
-			}
-		case "required_string_int64":
-			requiredBitSet[23] |= 1 << 1
-			if err := func() error {
-				v, err := json.DecodeStringInt64(d)
-				s.RequiredStringInt64 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_int64\"")
-			}
-		case "required_string_ip":
-			requiredBitSet[23] |= 1 << 2
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIP = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ip\"")
-			}
-		case "required_string_ipv4":
-			requiredBitSet[23] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIpv4 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
-			}
-		case "required_string_ipv6":
-			requiredBitSet[23] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeIP(d)
-				s.RequiredStringIpv6 = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
-			}
-		case "required_string_password":
-			requiredBitSet[23] |= 1 << 5
-			if err := func() error {
-				v, err := d.Str()
-				s.RequiredStringPassword = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_password\"")
-			}
-		case "required_string_time":
-			requiredBitSet[23] |= 1 << 6
-			if err := func() error {
-				v, err := json.DecodeTime(d)
-				s.RequiredStringTime = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_time\"")
-			}
-		case "required_string_unix":
-			requiredBitSet[23] |= 1 << 7
-			if err := func() error {
-				v, err := json.DecodeUnixSeconds(d)
-				s.RequiredStringUnix = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix\"")
-			}
-		case "required_string_unix-micro":
-			requiredBitSet[24] |= 1 << 0
-			if err := func() error {
-				v, err := json.DecodeUnixMicro(d)
-				s.RequiredStringUnixMinusMicro = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-micro\"")
-			}
-		case "required_string_unix-milli":
-			requiredBitSet[24] |= 1 << 1
-			if err := func() error {
-				v, err := json.DecodeUnixMilli(d)
-				s.RequiredStringUnixMinusMilli = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-milli\"")
-			}
-		case "required_string_unix-nano":
-			requiredBitSet[24] |= 1 << 2
-			if err := func() error {
-				v, err := json.DecodeUnixNano(d)
-				s.RequiredStringUnixMinusNano = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-nano\"")
-			}
-		case "required_string_unix-seconds":
-			requiredBitSet[24] |= 1 << 3
-			if err := func() error {
-				v, err := json.DecodeUnixSeconds(d)
-				s.RequiredStringUnixMinusSeconds = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_unix-seconds\"")
-			}
-		case "required_string_uri":
-			requiredBitSet[24] |= 1 << 4
-			if err := func() error {
-				v, err := json.DecodeURI(d)
-				s.RequiredStringURI = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_uri\"")
-			}
-		case "required_string_uuid":
-			requiredBitSet[24] |= 1 << 5
-			if err := func() error {
-				v, err := json.DecodeUUID(d)
-				s.RequiredStringUUID = v
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"required_string_uuid\"")
-			}
 		default:
 			return d.Skip()
 		}
@@ -21234,19 +21234,6 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [25]uint8{
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b00000000,
-		0b11111000,
 		0b11111111,
 		0b11111111,
 		0b11111111,
@@ -21258,7 +21245,20 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		0b11111111,
 		0b11111111,
 		0b11111111,
-		0b00111111,
+		0b11111111,
+		0b00000111,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

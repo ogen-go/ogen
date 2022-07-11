@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	"github.com/go-faster/errors"
+	"gopkg.in/yaml.v3"
 )
 
 // ReferenceResolver resolves JSON schema references.
@@ -90,11 +91,23 @@ func (p *Parser) getResolver(ctx *resolveCtx) (ReferenceResolver, error) {
 		return r, nil
 	}
 
-	root, err := p.external.Get(context.TODO(), loc)
-	if err != nil {
+	var node yaml.Node
+	if err := func() error {
+		raw, err := p.external.Get(context.TODO(), loc)
+		if err != nil {
+			return errors.Wrap(err, "get")
+		}
+
+		if err := yaml.Unmarshal(raw, &node); err != nil {
+			return errors.Wrap(err, "unmarshal")
+		}
+
+		return nil
+	}(); err != nil {
 		return nil, errors.Wrapf(err, "external %q", loc)
 	}
-	r = NewRootResolver(root)
+
+	r = NewRootResolver(&node)
 	p.schemas[loc] = r
 
 	return r, nil

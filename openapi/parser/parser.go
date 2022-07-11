@@ -2,6 +2,7 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
+	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -24,7 +25,7 @@ type parser struct {
 	}
 
 	external   jsonschema.ExternalResolver
-	schemas    map[string][]byte
+	schemas    map[string]*yaml.Node
 	depthLimit int
 	filename   string // optional, used for error messages
 
@@ -58,7 +59,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			securitySchemes: map[string]*ogen.SecurityScheme{},
 		},
 		external: s.External,
-		schemas: map[string][]byte{
+		schemas: map[string]*yaml.Node{
 			"": spec.Raw,
 		},
 		depthLimit: s.DepthLimit,
@@ -119,7 +120,7 @@ func (p *parser) parsePathItems() error {
 			}
 			paths[id] = struct{}{}
 
-			return p.parsePathItem(path, item, operationIDs)
+			return p.parsePathItem(path, item, operationIDs, newResolveCtx(p.depthLimit))
 		}(); err != nil {
 			return errors.Wrapf(err, "path %q", path)
 		}
@@ -127,18 +128,23 @@ func (p *parser) parsePathItems() error {
 	return nil
 }
 
-func (p *parser) parsePathItem(path string, item *ogen.PathItem, operationIDs map[string]struct{}) (rerr error) {
+func (p *parser) parsePathItem(
+	path string,
+	item *ogen.PathItem,
+	operationIDs map[string]struct{},
+	ctx *resolveCtx,
+) (rerr error) {
 	if item == nil {
 		return errors.New("pathItem object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(item, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), item.Locator, rerr)
 	}()
 	if item.Ref != "" {
 		return errors.New("referenced pathItem not supported")
 	}
 
-	itemParams, err := p.parseParams(item.Parameters)
+	itemParams, err := p.parseParams(item.Parameters, ctx)
 	if err != nil {
 		return errors.Wrap(err, "parameters")
 	}
@@ -151,7 +157,7 @@ func (p *parser) parsePathItem(path string, item *ogen.PathItem, operationIDs ma
 			operationIDs[id] = struct{}{}
 		}
 
-		parsedOp, err := p.parseOp(path, method, op, itemParams)
+		parsedOp, err := p.parseOp(path, method, op, itemParams, ctx)
 		if err != nil {
 			if op.OperationID != "" {
 				return errors.Wrapf(err, "operation %q", op.OperationID)
@@ -168,9 +174,10 @@ func (p *parser) parseOp(
 	path, httpMethod string,
 	spec ogen.Operation,
 	itemParams []*openapi.Parameter,
+	ctx *resolveCtx,
 ) (_ *openapi.Operation, err error) {
 	defer func() {
-		err = p.wrapLocation(&spec, err)
+		err = p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
 	}()
 
 	op := &openapi.Operation{
@@ -182,7 +189,7 @@ func (p *parser) parseOp(
 		Locator:     spec.Locator,
 	}
 
-	opParams, err := p.parseParams(spec.Parameters)
+	opParams, err := p.parseParams(spec.Parameters, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
@@ -196,26 +203,26 @@ func (p *parser) parseOp(
 	}
 
 	if spec.RequestBody != nil {
-		op.RequestBody, err = p.parseRequestBody(spec.RequestBody, newResolveCtx(p.depthLimit))
+		op.RequestBody, err = p.parseRequestBody(spec.RequestBody, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "requestBody")
 		}
 	}
 
-	op.Responses, err = p.parseResponses(spec.Responses)
+	op.Responses, err = p.parseResponses(spec.Responses, ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
 	}
 
 	if spec.Security != nil {
 		// Use operation level security.
-		op.Security, err = p.parseSecurityRequirements(spec.Security)
+		op.Security, err = p.parseSecurityRequirements(spec.Security, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "security")
 		}
 	} else {
 		// Use root level security.
-		op.Security, err = p.parseSecurityRequirements(p.spec.Security)
+		op.Security, err = p.parseSecurityRequirements(p.spec.Security, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "security")
 		}

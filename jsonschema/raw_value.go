@@ -1,45 +1,23 @@
 package jsonschema
 
 import (
-	"github.com/go-json-experiment/json"
+	"encoding/json"
+
 	"gopkg.in/yaml.v3"
 )
 
 type (
 	// RawValue is a raw JSON value.
-	RawValue json.RawValue
+	RawValue json.RawMessage
 	// Default is a default value.
 	Default = RawValue
 	// Example is an example value.
 	Example = RawValue
 )
 
-// MarshalNextJSON implements json.MarshalerV2.
-func (n RawValue) MarshalNextJSON(opts json.MarshalOptions, e *json.Encoder) error {
-	val := json.RawValue(n)
-	return opts.MarshalNext(e, val)
-}
-
-// UnmarshalNextJSON implements json.UnmarshalerV2.
-func (n *RawValue) UnmarshalNextJSON(opts json.UnmarshalOptions, d *json.Decoder) error {
-	val, err := d.ReadValue()
-	if err != nil {
-		return err
-	}
-	*n = append((*n)[:0], val...)
-	return nil
-}
-
-// MarshalJSON implements json.MarshalerV1.
-func (n *RawValue) MarshalJSON() ([]byte, error) {
-	// Backward-compatibility with v1.
-	return json.Marshal(n)
-}
-
-// UnmarshalJSON implements json.UnmarshalerV1.
-func (n *RawValue) UnmarshalJSON(data []byte) error {
-	// Backward-compatibility with v1.
-	return json.Unmarshal(data, n)
+// MarshalYAML implements yaml.Marshaler.
+func (n RawValue) MarshalYAML() (interface{}, error) {
+	return convertJSONToRawYAML(json.RawMessage(n))
 }
 
 // UnmarshalYAML implements yaml.Unmarshaler.
@@ -52,7 +30,23 @@ func (n *RawValue) UnmarshalYAML(node *yaml.Node) error {
 	return nil
 }
 
-func convertYAMLtoRawJSON(node *yaml.Node) (json.RawValue, error) {
+// MarshalJSON implements json.Marshaler.
+func (n RawValue) MarshalJSON() ([]byte, error) {
+	return json.RawMessage(n).MarshalJSON()
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (n *RawValue) UnmarshalJSON(b []byte) error {
+	*n = append((*n)[:0], b...)
+	return nil
+}
+
+func convertJSONToRawYAML(raw json.RawMessage) (node yaml.Node, err error) {
+	err = yaml.Unmarshal(raw, &node)
+	return node, err
+}
+
+func convertYAMLtoRawJSON(node *yaml.Node) (json.RawMessage, error) {
 	var tmp interface{}
 	if err := node.Decode(&tmp); err != nil {
 		return nil, err

@@ -6,7 +6,6 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v0.38.0
-	github.com/go-json-experiment/json v0.0.0-20220620174529-794765d0bd38
 	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.8.0
 	github.com/valyala/fasthttp v1.38.0
@@ -37,3 +36,5 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
+
+replace gopkg.in/yaml.v3 v3.0.1 => github.com/go-faster/yamlx v0.0.0-20220711115722-810b8bfdedac

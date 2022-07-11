@@ -4,9 +4,26 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/go-faster/jx"
+	helperyaml "github.com/ghodss/yaml"
 	"github.com/stretchr/testify/require"
+	"gopkg.in/yaml.v3"
 )
+
+func getNode(t require.TestingT, input []byte) *yaml.Node {
+	var n yaml.Node
+	require.NoError(t, yaml.Unmarshal(input, &n))
+	return &n
+}
+
+func getOutput(t require.TestingT, got *yaml.Node) string {
+	data, err := yaml.Marshal(got)
+	require.NoError(t, err)
+
+	data, err = helperyaml.YAMLToJSON(data)
+	require.NoError(t, err)
+
+	return string(data)
+}
 
 func TestSpecification(t *testing.T) {
 	var specExample = []byte(`{
@@ -76,19 +93,20 @@ func TestSpecification(t *testing.T) {
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
-			got, err := Resolve(tt.ptr, specExample)
+
+			got, err := Resolve(tt.ptr, getNode(t, specExample))
 			if tt.wantErr {
 				a.Error(err)
 				return
 			}
 			a.NoError(err)
-			a.Equal(tt.want, string(got))
+			a.JSONEq(tt.want, getOutput(t, got))
 		})
 	}
 }
 
 func BenchmarkResolve(b *testing.B) {
-	var specExample = []byte(`{
+	var specExample = getNode(b, []byte(`{
   "openapi": "3.0.3",
   "components": {
     "schemas": {
@@ -111,9 +129,9 @@ func BenchmarkResolve(b *testing.B) {
       }
     }
   }
-}`)
+}`))
 	var (
-		buf []byte
+		n   *yaml.Node
 		err error
 	)
 
@@ -121,14 +139,14 @@ func BenchmarkResolve(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		buf, err = Resolve("#/components/schemas/Error/properties/code/type", specExample)
+		n, err = Resolve("#/components/schemas/Error/properties/code/type", specExample)
 	}
 
 	if err != nil {
 		b.Fatal(err)
 	}
-	if string(buf) != `"integer"` {
-		b.Fatal("unexpected result", buf)
+	if n.Value != `"integer"` {
+		b.Fatal("unexpected result", n)
 	}
 }
 
@@ -140,81 +158,19 @@ func TestResolve(t *testing.T) {
 		wantErr bool
 	}{
 		{"/foo/0/0", `{"foo":[["foo"]]}`, `"foo"`, false},
-
-		// Invalid JSON.
-		{"/foo/bar", `{"foo":{1}`, ``, true},
-		{"/0", `[0.ee]`, ``, true},
-		{"", `{"foo":`, "", true},
-
 		// Invalid path.
 		{"/foo/0/-3/0", `{"foo":[["foo"]]}`, "", true},
 	}
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
-			got, err := Resolve(tt.ptr, []byte(tt.input))
+			got, err := Resolve(tt.ptr, getNode(t, []byte(tt.input)))
 			if tt.wantErr {
 				a.Error(err)
 				return
 			}
 			a.NoError(err)
-			a.Equal(tt.want, string(got))
-		})
-	}
-}
-
-func Test_findIdx(t *testing.T) {
-	inputs := []struct {
-		input      string
-		part       string
-		wantErr    bool
-		wantResult []byte
-	}{
-		{`{}`, "0", true, nil},
-		{`[baz]`, "1", true, nil},
-		{`["bar","baz"]`, "1", false, []byte(`"baz"`)},
-	}
-	for i, tt := range inputs {
-		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-			gotResult, gotOk, err := findIdx(jx.DecodeStr(tt.input), tt.part)
-			if tt.wantErr {
-				a.Error(err)
-				a.False(gotOk)
-				return
-			}
-			a.NoError(err)
-			a.True(gotOk)
-			a.Equal(tt.wantResult, gotResult)
-		})
-	}
-}
-
-func Test_findKey(t *testing.T) {
-	inputs := []struct {
-		input      string
-		part       string
-		wantErr    bool
-		wantResult []byte
-	}{
-		{`[]`, "foo", true, nil},
-		{`{"bar":baz}`, "foo", true, nil},
-		{`{"foo":"baz"}`, "foo", false, []byte(`"baz"`)},
-	}
-	for i, tt := range inputs {
-		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-			gotResult, gotOk, err := findKey(jx.DecodeStr(tt.input), tt.part)
-			if tt.wantErr {
-				a.Error(err)
-				a.False(gotOk)
-				return
-			}
-			a.NoError(err)
-			a.True(gotOk)
-			a.Equal(tt.wantResult, gotResult)
+			a.JSONEq(tt.want, getOutput(t, got))
 		})
 	}
 }

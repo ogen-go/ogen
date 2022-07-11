@@ -74,7 +74,7 @@ func Test_validateOAuthFlows(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 			var p parser
-			err := p.validateOAuthFlows(tt.scopes, tt.flows)
+			err := p.validateOAuthFlows(tt.scopes, tt.flows, "")
 			if tt.wantErr {
 				a.Error(err)
 				return

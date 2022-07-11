@@ -2,21 +2,14 @@
 package ogen
 
 import (
-	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
+	"gopkg.in/yaml.v3"
 )
 
 // Parse parses JSON/YAML into OpenAPI Spec.
 func Parse(data []byte) (s *Spec, err error) {
 	s = &Spec{}
-	if !jx.Valid(data) {
-		if err := unmarshalYAML(data, s); err != nil {
-			return nil, errors.Wrap(err, "yaml")
-		}
-	} else {
-		if err := unmarshalJSON(data, s); err != nil {
-			return nil, errors.Wrap(err, "json")
-		}
+	if err := yaml.Unmarshal(data, s); err != nil {
+		return nil, err
 	}
 	s.Init()
 	return s, nil

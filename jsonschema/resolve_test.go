@@ -2,12 +2,14 @@ package jsonschema
 
 import (
 	"context"
+	"encoding/json"
 	"testing"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
+
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 type external map[string]components
@@ -18,7 +20,7 @@ func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 		return nil, errors.Errorf("unexpected location %q", loc)
 	}
 
-	data, err := json.Marshal(r)
+	data, err := json.MarshalIndent(r, "", "  ")
 	if err != nil {
 		return nil, err
 	}
@@ -130,7 +132,29 @@ func TestExternalReference(t *testing.T) {
 			},
 		},
 	}
+	zeroLocator(out)
 	require.Equal(t, expect, out)
+}
+
+func zeroLocator(s *Schema) {
+	var zeroed ogenjson.Locator
+	if s == nil {
+		return
+	}
+	s.Locator = zeroed
+
+	zeroLocator(s.Item)
+	for _, p := range s.Properties {
+		zeroLocator(p.Schema)
+	}
+	zeroMany := func(many []*Schema) {
+		for _, s := range many {
+			zeroLocator(s)
+		}
+	}
+	zeroMany(s.AllOf)
+	zeroMany(s.OneOf)
+	zeroMany(s.AnyOf)
 }
 
 func TestLimitDepth(t *testing.T) {

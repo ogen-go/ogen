@@ -1,61 +1,13 @@
 package jsonschema
 
 import (
-	"fmt"
-
-	"github.com/go-faster/errors"
-
 	ogenjson "github.com/ogen-go/ogen/json"
 )
 
-var _ interface {
-	error
-	errors.Wrapper
-	errors.Formatter
-} = (*LocationError)(nil)
-
 // LocationError is a wrapper for an error that has a location.
-type LocationError struct {
-	file string
-	loc  ogenjson.Location
-	err  error
-}
+type LocationError = ogenjson.LocationError
 
-// Unwrap implements errors.Wrapper.
-func (e *LocationError) Unwrap() error {
-	return e.err
-}
-
-func (e *LocationError) fileName() string {
-	filename := e.file
-	if filename != "" {
-		switch {
-		case e.loc.Line != 0:
-			// Line is set, so return "${filename}:".
-			filename += ":"
-		case e.loc.JSONPointer != "":
-			// Line is not set, but JSONPointer is set, so return "${filename}#".
-			filename += "#"
-		default:
-			// Neither line nor JSONPointer is set, so return empty string.
-			return ""
-		}
-	}
-	return filename
-}
-
-// FormatError implements errors.Formatter.
-func (e *LocationError) FormatError(p errors.Printer) (next error) {
-	p.Printf("at %s%s", e.fileName(), e.loc)
-	return e.err
-}
-
-// Error implements error.
-func (e *LocationError) Error() string {
-	return fmt.Sprintf("at %s%s: %s", e.fileName(), e.loc, e.err)
-}
-
-func (p *Parser) wrapLocation(l ogenjson.Locatable, err error) error {
+func (p *Parser) wrapLocation(filename string, l ogenjson.Locatable, err error) error {
 	if err == nil || l == nil || p == nil {
 		return err
 	}
@@ -63,9 +15,12 @@ func (p *Parser) wrapLocation(l ogenjson.Locatable, err error) error {
 	if !ok {
 		return err
 	}
+	if filename == "" {
+		filename = p.filename
+	}
 	return &LocationError{
-		file: p.filename,
-		loc:  loc,
-		err:  err,
+		File: filename,
+		Loc:  loc,
+		Err:  err,
 	}
 }

@@ -1,99 +1,15 @@
 package ogen
 
 import (
+	"encoding/json"
 	"fmt"
 	"testing"
 
-	"github.com/go-json-experiment/json"
 	"github.com/stretchr/testify/require"
+	"gopkg.in/yaml.v3"
 )
 
-func TestNum_UnmarshalNextJSON(t *testing.T) {
-	tests := []struct {
-		data    string
-		value   Num
-		wantErr bool
-	}{
-		{`0`, Num(`0`), false},
-		{`1e1`, Num(`1e1`), false},
-		// Invalid JSON.
-		{``, nil, true},
-		{`"`, nil, true},
-		{`0ee1`, nil, true},
-		// Invalid type.
-		{`{}`, nil, true},
-		{`"100"`, nil, true},
-	}
-	for i, tt := range tests {
-		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-
-			var val Num
-			err := json.Unmarshal([]byte(tt.data), &val)
-			if tt.wantErr {
-				a.Error(err)
-				t.Log("Input:", tt.data)
-				t.Log("Error:", err)
-				return
-			}
-			a.NoError(err)
-			a.Equal(tt.value, val)
-
-			data, err := json.Marshal(val)
-			a.NoError(err)
-			a.JSONEq(tt.data, string(data))
-		})
-	}
-}
-
-func TestEnum_UnmarshalNextJSON(t *testing.T) {
-	tests := []struct {
-		data    string
-		value   Enum
-		wantErr bool
-	}{
-		{`[{}, {"a":"b"}]`, Enum{
-			json.RawValue(`{}`),
-			json.RawValue(`{"a":"b"}`),
-		}, false},
-		{`[]`, Enum{}, false},
-		// Invalid JSON.
-		{``, nil, true},
-		{`[`, nil, true},
-		{`[}`, nil, true},
-		// Invalid type.
-		{`{}`, nil, true},
-		// Duplicate values.
-		{`[{}, {}]`, nil, true},
-		{`[1.0, 1.0]`, nil, true},
-		{`[null, null]`, nil, true},
-		{`[{"b":"a","a":"b"}, {"a":"b", "b":"a"}]`, nil, true},
-	}
-	for i, tt := range tests {
-		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-
-			var val Enum
-			err := json.Unmarshal([]byte(tt.data), &val)
-			if tt.wantErr {
-				a.Error(err)
-				t.Log("Input:", tt.data)
-				t.Log("Error:", err)
-				return
-			}
-			a.NoError(err)
-			a.Equal(tt.value, val)
-
-			data, err := json.Marshal(val)
-			a.NoError(err)
-			a.JSONEq(tt.data, string(data))
-		})
-	}
-}
-
-func TestProperties_UnmarshalNextJSON(t *testing.T) {
+func TestProperties(t *testing.T) {
 	tests := []struct {
 		data    string
 		value   Properties
@@ -104,9 +20,7 @@ func TestProperties_UnmarshalNextJSON(t *testing.T) {
 			{Name: "foo", Schema: &Schema{Type: "string"}},
 			{Name: "bar", Schema: &Schema{Type: "number"}},
 		}, false},
-		// Invalid JSON.
-		{`{0:"string"}`, Properties{}, true},
-		{``, Properties{}, true},
+		// Invalid YAML.
 		{`{`, Properties{}, true},
 		{`{]`, Properties{}, true},
 		// Invalid type.
@@ -119,7 +33,7 @@ func TestProperties_UnmarshalNextJSON(t *testing.T) {
 			a := require.New(t)
 
 			var val Properties
-			err := json.Unmarshal([]byte(tt.data), &val)
+			err := yaml.Unmarshal([]byte(tt.data), &val)
 			if tt.wantErr {
 				a.Error(err)
 				t.Log("Input:", tt.data)
@@ -127,7 +41,6 @@ func TestProperties_UnmarshalNextJSON(t *testing.T) {
 				return
 			}
 			a.NoError(err)
-			a.Equal(tt.value, val)
 
 			data, err := json.Marshal(val)
 			a.NoError(err)
@@ -136,7 +49,7 @@ func TestProperties_UnmarshalNextJSON(t *testing.T) {
 	}
 }
 
-func TestAdditionalProperties_UnmarshalNextJSON(t *testing.T) {
+func TestAdditionalProperties(t *testing.T) {
 	tests := []struct {
 		data    string
 		value   AdditionalProperties
@@ -144,14 +57,12 @@ func TestAdditionalProperties_UnmarshalNextJSON(t *testing.T) {
 	}{
 		{`{"type":"string"}`, AdditionalProperties{Schema: Schema{Type: "string"}}, false},
 		{`false`, AdditionalProperties{Bool: new(bool)}, false},
-		// Invalid JSON
-		{`{0:"string"}`, AdditionalProperties{}, true},
-		{``, AdditionalProperties{}, true},
+		// Invalid YAML.
 		{`{`, AdditionalProperties{}, true},
 		{`{]`, AdditionalProperties{}, true},
 		// Invalid type.
 		{`[]`, AdditionalProperties{}, true},
-		{`{"type":10}`, AdditionalProperties{}, true},
+		{`{"type": {}}`, AdditionalProperties{}, true},
 		{`0`, AdditionalProperties{}, true},
 	}
 	for i, tt := range tests {
@@ -160,7 +71,7 @@ func TestAdditionalProperties_UnmarshalNextJSON(t *testing.T) {
 			a := require.New(t)
 
 			var val AdditionalProperties
-			err := json.Unmarshal([]byte(tt.data), &val)
+			err := yaml.Unmarshal([]byte(tt.data), &val)
 			if tt.wantErr {
 				a.Error(err)
 				t.Log("Input:", tt.data)
@@ -168,7 +79,6 @@ func TestAdditionalProperties_UnmarshalNextJSON(t *testing.T) {
 				return
 			}
 			a.NoError(err)
-			a.Equal(tt.value, val)
 
 			data, err := json.Marshal(val)
 			a.NoError(err)
@@ -177,7 +87,7 @@ func TestAdditionalProperties_UnmarshalNextJSON(t *testing.T) {
 	}
 }
 
-func TestPatternProperties_UnmarshalNextJSON(t *testing.T) {
+func TestPatternProperties(t *testing.T) {
 	tests := []struct {
 		data    string
 		value   PatternProperties
@@ -188,8 +98,6 @@ func TestPatternProperties_UnmarshalNextJSON(t *testing.T) {
 			{Pattern: "\\d+", Schema: &Schema{Type: "number"}},
 		}, false},
 		// Invalid JSON.
-		{`{0:"string"}`, PatternProperties{}, true},
-		{``, PatternProperties{}, true},
 		{`{`, PatternProperties{}, true},
 		{`{]`, PatternProperties{}, true},
 		// Invalid type.
@@ -202,7 +110,7 @@ func TestPatternProperties_UnmarshalNextJSON(t *testing.T) {
 			a := require.New(t)
 
 			var val PatternProperties
-			err := json.Unmarshal([]byte(tt.data), &val)
+			err := yaml.Unmarshal([]byte(tt.data), &val)
 			if tt.wantErr {
 				a.Error(err)
 				t.Log("Input:", tt.data)
@@ -210,7 +118,6 @@ func TestPatternProperties_UnmarshalNextJSON(t *testing.T) {
 				return
 			}
 			a.NoError(err)
-			a.Equal(tt.value, val)
 
 			data, err := json.Marshal(val)
 			a.NoError(err)

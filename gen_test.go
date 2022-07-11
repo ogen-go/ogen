@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/gen/genfs"
 )
 
-func testGenerate(t *testing.T, data []byte, ignore ...string) {
+func testGenerate(t *testing.T, filename string, data []byte, ignore ...string) {
 	t.Helper()
 	t.Parallel()
 	log := zaptest.NewLogger(t)
@@ -25,6 +25,7 @@ func testGenerate(t *testing.T, data []byte, ignore ...string) {
 	notImplemented := map[string]struct{}{}
 	opt := gen.Options{
 		InferSchemaType:      true,
+		Filename:             filename,
 		IgnoreNotImplemented: ignore,
 		NotImplementedHook: func(name string, err error) {
 			notImplemented[name] = struct{}{}
@@ -51,7 +52,7 @@ func testGenerate(t *testing.T, data []byte, ignore ...string) {
 		}
 
 		t.Run("Full", func(t *testing.T) {
-			t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
+			t.Skipf("Ignoring: [%s]", strings.Join(opt.IgnoreNotImplemented, ", "))
 		})
 	}
 }
@@ -69,7 +70,7 @@ func runPositive(root string, skipSets map[string][]string) func(t *testing.T) {
 		walkTestdata(t, root, func(t *testing.T, file string, data []byte) {
 			file = strings.TrimPrefix(file, root+"/")
 			skip := skipSets[file]
-			testGenerate(t, data, skip...)
+			testGenerate(t, file, data, skip...)
 		})
 	}
 }

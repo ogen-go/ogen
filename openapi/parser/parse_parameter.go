@@ -33,7 +33,7 @@ func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter
 	return opParams
 }
 
-func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, error) {
+func (p *parser) parseParams(params []*ogen.Parameter, ctx *resolveCtx) ([]*openapi.Parameter, error) {
 	// Unique parameter is defined by a combination of a name and location.
 	type pnameLoc struct {
 		name     string
@@ -50,7 +50,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 			return nil, errors.Errorf("parameter %d is empty or null", idx)
 		}
 
-		param, err := p.parseParameter(spec, newResolveCtx(p.depthLimit))
+		param, err := p.parseParameter(spec, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
 		}
@@ -61,7 +61,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 		}
 		if _, ok := unique[ploc]; ok {
 			err = errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(spec, err)
+			return nil, p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
 		}
 
 		unique[ploc] = struct{}{}
@@ -101,7 +101,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 		return nil, errors.New("parameter object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(param, rerr)
+		rerr = p.wrapLocation(ctx.lastLoc(), param.Locator, rerr)
 	}()
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
@@ -120,7 +120,8 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
-		return nil, errors.Errorf("unsupported parameter type %q", param.In)
+		err := errors.Errorf("unknown parameter location %q", param.In)
+		return nil, p.wrapField("in", ctx.lastLoc(), param.Locator, err)
 	}
 
 	if err := validateParameter(param.Name, locatedIn, param); err != nil {

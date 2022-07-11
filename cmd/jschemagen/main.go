@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/go-json-experiment/json"
+	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
@@ -86,14 +86,19 @@ func run() error {
 		return errors.Wrap(err, "read file")
 	}
 
-	var rawSchema jsonschema.RawSchema
-	if err := json.Unmarshal(data, &rawSchema); err != nil {
-		return errors.Wrap(err, "unmarshal")
+	var root yaml.Node
+	if err := yaml.Unmarshal(data, &root); err != nil {
+		return errors.Wrap(err, "parse yaml")
 	}
 	p := jsonschema.NewParser(jsonschema.Settings{
-		Resolver:   jsonschema.NewRootResolver(data),
+		Resolver:   jsonschema.NewRootResolver(&root),
 		InferTypes: *inferTypes,
 	})
+
+	var rawSchema jsonschema.RawSchema
+	if err := root.Decode(&rawSchema); err != nil {
+		return errors.Wrap(err, "unmarshal")
+	}
 	schema, err := p.Parse(&rawSchema)
 	if err != nil {
 		return errors.Wrap(err, "parse")
