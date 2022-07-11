@@ -42,7 +42,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		if got == "" {
 			return nil
 		}
-		err := errors.Errorf(`"%q MUST NOT be specified, got %q`, name, got)
+		err := errors.Errorf(`%q MUST NOT be specified, got %q`, name, got)
 		return p.wrapField(name, ctx.lastLoc(), header.Locator, err)
 	}
 	if err := mustNotSpecified("in", header.In); err != nil {
