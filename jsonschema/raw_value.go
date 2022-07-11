@@ -3,7 +3,6 @@ package jsonschema
 import (
 	"encoding/json"
 
-	helperyaml "github.com/ghodss/yaml"
 	"gopkg.in/yaml.v3"
 )
 
@@ -48,12 +47,11 @@ func convertJSONToRawYAML(raw json.RawMessage) (node yaml.Node, err error) {
 }
 
 func convertYAMLtoRawJSON(node *yaml.Node) (json.RawMessage, error) {
-	rawYAML, err := yaml.Marshal(node)
-	if err != nil {
+	var tmp interface{}
+	if err := node.Decode(&tmp); err != nil {
 		return nil, err
 	}
-
-	raw, err := helperyaml.YAMLToJSON(rawYAML)
+	raw, err := json.Marshal(tmp)
 	if err != nil {
 		return nil, err
 	}
