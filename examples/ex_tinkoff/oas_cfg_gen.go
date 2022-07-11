@@ -9,7 +9,6 @@ import (
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -58,7 +57,7 @@ type config struct {
 func newConfig(opts ...Option) config {
 	cfg := config{
 		TracerProvider:     otel.GetTracerProvider(),
-		MeterProvider:      nonrecording.NewNoopMeterProvider(),
+		MeterProvider:      metric.NewNoopMeterProvider(),
 		Client:             http.DefaultClient,
 		NotFound:           http.NotFound,
 		ErrorHandler:       respondError,

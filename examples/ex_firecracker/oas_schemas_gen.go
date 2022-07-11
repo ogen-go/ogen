@@ -1080,7 +1080,9 @@ type PartialDrive struct {
 }
 
 // Defines a partial network interface structure, used to update the rate limiters for that interface,
-//  after microvm start.
+//
+//	after microvm start.
+//
 // Ref: #/components/schemas/PartialNetworkInterface
 type PartialNetworkInterface struct {
 	IfaceID       string         "json:\"iface_id\""

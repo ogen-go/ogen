@@ -149,32 +149,6 @@ func (s ReferencedAllofMultipartFormData) Validate() error {
 	}
 	return nil
 }
-func (s ReferencedAllofOptionalApplicationJSON) Validate() error {
-	if s.Set {
-		if err := func() error {
-			if err := s.Value.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-func (s ReferencedAllofOptionalMultipartFormData) Validate() error {
-	if s.Set {
-		if err := func() error {
-			if err := s.Value.Validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
 func (s Robot) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
