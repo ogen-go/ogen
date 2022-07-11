@@ -222,9 +222,7 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (res
 // imperdiet. Vivamus id aliquam diam. Cras quis velit non tortor eleifend sagittis. Praesent at enim
 // pharetra urna volutpat venenatis eget eget mauris. In eleifend fermentum facilisis. Praesent enim
 // enim, gravida ac sodales sed, placerat id erat. Suspendisse lacus dolor, consectetur non augue vel,
-//
-//	vehicula interdum libero. Morbi euismod sagittis libero sed lacinia.
-//
+//  vehicula interdum libero. Morbi euismod sagittis libero sed lacinia.
 // Sed tempus felis lobortis leo pulvinar rutrum. Nam mattis velit nisl, eu condimentum ligula luctus
 // nec. Phasellus semper velit eget aliquet faucibus. In a mattis elit. Phasellus vel urna viverra,
 // condimentum lorem id, rhoncus nibh. Ut pellentesque posuere elementum. Sed a varius odio. Morbi

@@ -3128,9 +3128,7 @@ func (s *ResponsePattern0) init() ResponsePattern0 {
 // response codes because they may not be known in advance. However, documentation is expected to
 // cover a successful operation response and any known errors.  The `default` MAY be used as a
 // default response object for all HTTP codes  that are not covered individually by the specification.
-//
-//	The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response
-//
+//   The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response
 // for a successful operation call.
 // Ref: #/definitions/responses
 type Responses struct {
@@ -3176,9 +3174,7 @@ func (s *ResponsesPattern1) init() ResponsesPattern1 {
 }
 
 // The Schema Object allows the definition of input and output data types. These types can be objects,
-//
-//	but also primitives and arrays. This object is an extended subset of the JSON Schema
-//
+//  but also primitives and arrays. This object is an extended subset of the JSON Schema
 // Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core
 // and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON
 // Schema.
@@ -3402,9 +3398,7 @@ func (s *SchemasOrReferences) init() SchemasOrReferences {
 
 // Lists the required security schemes to execute this operation. The name used for each property
 // MUST correspond to a security scheme declared in the Security Schemes under the Components Object.
-//
-//	Security Requirement Objects that contain multiple schemes require that all schemes MUST be
-//
+//  Security Requirement Objects that contain multiple schemes require that all schemes MUST be
 // satisfied for a request to be authorized. This enables support for scenarios where multiple query
 // parameters or HTTP headers are required to convey security information.  When a list of Security
 // Requirement Objects is defined on the Open API object or Operation Object, only one of Security

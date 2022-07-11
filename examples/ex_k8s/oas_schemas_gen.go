@@ -652,9 +652,7 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus struct {
 // serializing and deserializing the objects that contain their internal state. Once a
 // ControllerRevision has been successfully created, it can not be updated. The API Server will fail
 // validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however,
-//
-//	be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for
-//
+//  be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for
 // update and rollback, this object is beta. However, it may be subject to name and representation
 // changes in future releases, and clients should not depend on its stability. It is primarily for
 // internal use by controllers.
@@ -1303,9 +1301,7 @@ type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
 }
 
 // ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes,
-//
-//	as specified in requests and limits, describing a single container in each pod in the current
-//
+//  as specified in requests and limits, describing a single container in each pod in the current
 // scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special
 // scaling options on top of those available to normal per-pod metrics using the "pods" source.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricStatus
@@ -1573,9 +1569,7 @@ type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource struct {
 }
 
 // ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes,
-//
-//	as specified in requests and limits, describing a single container in each pod in the current
-//
+//  as specified in requests and limits, describing a single container in each pod in the current
 // scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special
 // scaling options on top of those available to normal per-pod metrics using the "pods" source.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ContainerResourceMetricStatus
@@ -6404,9 +6398,7 @@ type IoK8sAPIDiscoveryV1EndpointConditions struct {
 }
 
 // DeprecatedTopology contains topology information part of the v1beta1 API. This field is deprecated,
-//
-//	and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24).  While
-//
+//  and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24).  While
 // this field can hold values, it is not writable through the v1 API, and any attempts to write to it
 // will be silently ignored. Topology information can be found in the zone and nodeName fields
 // instead.

@@ -488,9 +488,7 @@ func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params 
 // for `Location:` in the response header to find the URL for the download. Anyone with read access
 // to the repository can
 // use this endpoint. If the repository is private you must use an access token with the `repo` scope.
-//
-//	GitHub Apps must
-//
+//  GitHub Apps must
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
@@ -2222,9 +2220,7 @@ func (UnimplementedHandler) ChecksSetSuitesPreferences(ctx context.Context, req 
 // iteration.
 // The above process assumes that you want to remove all trace of the tool's analyses from the GitHub
 // user interface, for the specified repository, and it therefore uses the `confirm_delete_url` value.
-//
-//	Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis
-//
+//  Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis
 // in each set undeleted to avoid removing a tool's analysis entirely.
 //
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
@@ -2889,9 +2885,7 @@ func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx
 // change.
 // Allows you to change a provisioned user's individual attributes. To change a user's values, you
 // must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
-//
-//	or `replace` operations. For examples and more information on the SCIM operations format, see the
-//
+//  or `replace` operations. For examples and more information on the SCIM operations format, see the
 // [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
 // **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
 // `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
@@ -4449,9 +4443,7 @@ func (UnimplementedHandler) OAuthAuthorizationsListAuthorizations(ctx context.Co
 // access to your account, regardless of the number of tokens an application has generated for your
 // user. The list of OAuth applications returned matches what is shown on [the application
 // authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
-//
-//	The `scopes` returned are the union of scopes authorized for the application. For example, if an
-//
+//  The `scopes` returned are the union of scopes authorized for the application. For example, if an
 // application has one token with `repo` scope and another token with `user` scope, the grant will
 // return `["repo", "user"]`.
 //
@@ -5706,10 +5698,9 @@ func (UnimplementedHandler) PullsDismissReview(ctx context.Context, req PullsDis
 // Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge
 // commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how
 // you merged the pull request:
-//   - If merged as a [merge commit](https://help.github.com/articles/about-merge-methods-on-github/),
-//     `merge_commit_sha` represents the SHA of the merge commit.
-//   - If merged via a [squash](https://help.github.
-//
+// *   If merged as a [merge commit](https://help.github.com/articles/about-merge-methods-on-github/),
+//  `merge_commit_sha` represents the SHA of the merge commit.
+// *   If merged via a [squash](https://help.github.
 // com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha`
 // represents the SHA of the squashed commit on the base branch.
 // *   If [rebased](https://help.github.
@@ -6002,9 +5993,7 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentLegacy(ctx co
 // ReactionsCreateForTeamDiscussionInOrg implements reactions/create-for-team-discussion-in-org operation.
 //
 // Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
-//
-//	OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-//
+//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
 // status means that you already added the reaction type to this team discussion.
 // **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
@@ -6022,9 +6011,7 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionInOrg(ctx context.Co
 // discussion`](https://docs.github.
 // com/rest/reference/reactions#create-reaction-for-a-team-discussion) endpoint.
 // Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
-//
-//	OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-//
+//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
 // status means that you already added the reaction type to this team discussion.
 //
@@ -6086,9 +6073,7 @@ func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Con
 // `DELETE
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
 // Delete a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
-//
-//	OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-//
+//  OAuth access tokens require the `write:discussion` [scope](https://docs.github.
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
@@ -6244,9 +6229,7 @@ func (UnimplementedHandler) ReposAcceptInvitation(ctx context.Context, params Re
 // Grants the specified apps push access for this branch. Only installed GitHub Apps with `write`
 // access to the `contents` permission can be added as authorized actors on a protected branch.
 // | Type    | Description
-//
-//	|
-//
+//                                                                     |
 // | ------- |
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
@@ -6308,9 +6291,7 @@ func (UnimplementedHandler) ReposAddStatusCheckContexts(ctx context.Context, req
 // Grants the specified teams push access for this branch. You can also give push access to child
 // teams.
 // | Type    | Description
-//
-//	|
-//
+//                                                     |
 // | ------- |
 // ------------------------------------------------------------------------------------------------------------------------------------------ |
 // | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
@@ -6330,9 +6311,7 @@ func (UnimplementedHandler) ReposAddTeamAccessRestrictions(ctx context.Context, 
 // GitHub Help documentation.
 // Grants the specified people push access for this branch.
 // | Type    | Description
-//
-//	|
-//
+//                                        |
 // | ------- |
 // ----------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
@@ -6389,9 +6368,7 @@ func (UnimplementedHandler) ReposCheckVulnerabilityAlerts(ctx context.Context, p
 // pagination, see "[Traversing with pagination](/rest/guides/traversing-with-pagination)."
 // When calling this API without any paging parameters (`per_page` or `page`), the returned list is
 // limited to 250 commits and the last commit in the list is the most recent of the entire comparison.
-//
-//	When a paging parameter is specified, the first commit in the returned list of each page is the
-//
+//  When a paging parameter is specified, the first commit in the returned list of each page is the
 // earliest.
 // **Signature verification object**
 // The response will include a `verification` object that describes the result of verifying the
@@ -6518,9 +6495,7 @@ func (UnimplementedHandler) ReposCreateDeployKey(ctx context.Context, req ReposC
 // deploy. If you do
 // not require any contexts or create any commit statuses, the deployment will always succeed.
 // The `payload` parameter is available for any extra information that a deployment system might need.
-//
-//	It is a JSON text
-//
+//  It is a JSON text
 // field that will be passed on when a deployment event is dispatched.
 // The `task` parameter is used by the deployment system to allow different execution paths. In the
 // web world this might
@@ -6570,16 +6545,12 @@ func (UnimplementedHandler) ReposCreateDeploymentStatus(ctx context.Context, req
 //
 // You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want
 // activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook.
-//
-//	You must configure your GitHub Actions workflow or GitHub App to run when the
-//
+//  You must configure your GitHub Actions workflow or GitHub App to run when the
 // `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see
 // "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
 // The `client_payload` parameter is available for any extra information that your workflow might
 // need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched.
-//
-//	For example, the `client_payload` can include a message that a user would like to send using a
-//
+//  For example, the `client_payload` can include a message that a user would like to send using a
 // GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
 // This endpoint requires write access to the repository by providing either:
 // - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access
@@ -7171,9 +7142,7 @@ func (UnimplementedHandler) ReposGetCombinedStatusForRef(ctx context.Context, pa
 // To return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media
 // type](https://docs.github.
 // com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header.
-//
-//	You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local
-//
+//  You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local
 // reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
 // **Signature verification object**
 // The response will include a `verification` object that describes the result of verifying the
@@ -7933,9 +7902,7 @@ func (UnimplementedHandler) ReposRedeliverWebhookDelivery(ctx context.Context, p
 // Removes the ability of an app to push to this branch. Only installed GitHub Apps with `write`
 // access to the `contents` permission can be added as authorized actors on a protected branch.
 // | Type    | Description
-//
-//	|
-//
+//                                                                     |
 // | ------- |
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
@@ -7991,9 +7958,7 @@ func (UnimplementedHandler) ReposRemoveStatusCheckProtection(ctx context.Context
 // Removes the ability of a team to push to this branch. You can also remove push access for child
 // teams.
 // | Type    | Description
-//
-//	|
-//
+//                                                              |
 // | ------- |
 // --------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | Teams that should no longer have push access. Use the team's `slug`. **Note**: The
@@ -8013,9 +7978,7 @@ func (UnimplementedHandler) ReposRemoveTeamAccessRestrictions(ctx context.Contex
 // GitHub Help documentation.
 // Removes the ability of a user to push to this branch.
 // | Type    | Description
-//
-//	|
-//
+//                                                        |
 // | ------- |
 // --------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | Usernames of the people who should no longer have push access. **Note**: The list of
@@ -8097,9 +8060,7 @@ func (UnimplementedHandler) ReposSetAdminBranchProtection(ctx context.Context, p
 // Apps with `write` access to the `contents` permission can be added as authorized actors on a
 // protected branch.
 // | Type    | Description
-//
-//	|
-//
+//                                                                     |
 // | ------- |
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
@@ -8134,9 +8095,7 @@ func (UnimplementedHandler) ReposSetStatusCheckContexts(ctx context.Context, req
 // previously had push access and grants push access to the new list of teams. Team restrictions
 // include child teams.
 // | Type    | Description
-//
-//	|
-//
+//                                                     |
 // | ------- |
 // ------------------------------------------------------------------------------------------------------------------------------------------ |
 // | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
@@ -8157,9 +8116,7 @@ func (UnimplementedHandler) ReposSetTeamAccessRestrictions(ctx context.Context, 
 // Replaces the list of people that have push access to this branch. This removes all people that
 // previously had push access and grants push access to the new list of people.
 // | Type    | Description
-//
-//	|
-//
+//                                        |
 // | ------- |
 // ----------------------------------------------------------------------------------------------------------------------------- |
 // | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
@@ -8374,9 +8331,7 @@ func (UnimplementedHandler) SearchCommits(ctx context.Context, params SearchComm
 // Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.
 // github.com/rest/overview/resources-in-the-rest-api#pagination).
 // When searching for issues, you can get text match metadata for the issue **title**, issue **body**,
-//
-//	and issue **comment body** fields when you pass the `text-match` media type. For more details
-//
+//  and issue **comment body** fields when you pass the `text-match` media type. For more details
 // about how to receive highlighted
 // search results, see [Text match metadata](https://docs.github.
 // com/rest/reference/search#text-match-metadata).
@@ -9368,9 +9323,7 @@ func (UnimplementedHandler) TeamsListReposLegacy(ctx context.Context, params Tea
 // com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 // To remove a team member, the authenticated user must have 'admin' permissions to the team or be an
 // owner of the org that the team is associated with. Removing a team member does not delete the user,
-//
-//	it just removes them from the team.
-//
+//  it just removes them from the team.
 // **Note:** When you have team synchronization set up for a team with your organization's identity
 // provider (IdP), you will see an error if you attempt to use the API for making changes to the
 // team's membership. If you have access to manage group membership in your IdP, you can manage
