@@ -135,7 +135,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 	//
 	// Probably this will be rewritten later.
 	// Kept for backward compatibility.
-	s.AddExample(json.RawMessage(m.Example))
+	s.AddExample(m.Example)
 	for _, ex := range examples {
 		s.AddExample(ex.Value)
 	}

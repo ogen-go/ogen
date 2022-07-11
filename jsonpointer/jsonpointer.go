@@ -7,46 +7,39 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
+	"gopkg.in/yaml.v3"
 )
 
 // Resolve takes given pointer and returns byte slice of requested value if any.
 // If value not found, returns NotFoundError.
-func Resolve(ptr string, buf []byte) ([]byte, error) {
+func Resolve(ptr string, node *yaml.Node) (*yaml.Node, error) {
+	if node.Kind == yaml.DocumentNode && len(node.Content) > 0 {
+		node = node.Content[0]
+	}
 	switch {
 	case ptr == "" || ptr == "#":
-		return validate(buf)
+		return node, nil
 	case ptr[0] == '/':
-		return find(ptr, buf)
+		return find(ptr, node)
 	case ptr[0] == '#': // Note that length is bigger than 1.
 		unescaped, err := url.PathUnescape(ptr[1:])
 		if err != nil {
 			return nil, errors.Wrap(err, "unescape")
 		}
 		// Fast-path to not parse URL.
-		return find(unescaped, buf)
+		return find(unescaped, node)
 	}
 
 	u, err := url.Parse(ptr)
 	if err != nil {
 		return nil, err
 	}
-	return find(u.Fragment, buf)
+	return find(u.Fragment, node)
 }
 
-func validate(buf []byte) ([]byte, error) {
-	if err := jx.DecodeBytes(buf).Validate(); err != nil {
-		return nil, errors.Wrap(err, "validate")
-	}
-	return buf, nil
-}
-
-func find(ptr string, buf []byte) ([]byte, error) {
-	d := jx.GetDecoder()
-	defer jx.PutDecoder(d)
-
+func find(ptr string, node *yaml.Node) (*yaml.Node, error) {
 	if ptr == "" {
-		return validate(buf)
+		return node, nil
 	}
 
 	if ptr[0] != '/' {
@@ -58,85 +51,52 @@ func find(ptr string, buf []byte) ([]byte, error) {
 	err := splitFunc(ptr, '/', func(part string) (err error) {
 		part = unescape(part)
 		var (
-			result []byte
+			result *yaml.Node
 			ok     bool
 		)
-		d.ResetBytes(buf)
-		switch tt := d.Next(); tt {
-		case jx.Object:
-			result, ok, err = findKey(d, part)
-			if err != nil {
-				return errors.Wrapf(err, "find key %q", part)
-			}
-		case jx.Array:
-			result, ok, err = findIdx(d, part)
+		switch tt := node.Kind; tt {
+		case yaml.MappingNode:
+			result, ok = findKey(node, part)
+		case yaml.SequenceNode:
+			result, ok, err = findIdx(node, part)
 			if err != nil {
 				return errors.Wrapf(err, "find index %q", part)
 			}
 		default:
-			return errors.Errorf("unexpected type %q", tt)
+			return errors.Errorf("unexpected type %q", node.ShortTag())
 		}
 		if !ok {
 			return &NotFoundError{Pointer: ptr}
 		}
 
-		buf = result
+		node = result
 		return err
 	})
-	return buf, err
+	return node, err
 }
 
-func findIdx(d *jx.Decoder, part string) (result []byte, ok bool, _ error) {
+func findIdx(n *yaml.Node, part string) (result *yaml.Node, ok bool, _ error) {
 	index, err := strconv.ParseUint(part, 10, 64)
 	if err != nil {
 		return nil, false, errors.Wrap(err, "index")
 	}
 
-	counter := uint64(0)
-
-	iter, err := d.ArrIter()
-	if err != nil {
-		return nil, false, err
+	children := n.Content
+	if index >= uint64(len(children)) {
+		return nil, false, nil
 	}
-	for iter.Next() {
-		if index == counter {
-			raw, err := d.Raw()
-			if err != nil {
-				return nil, false, errors.Wrapf(err, "parse %d", counter)
-			}
-			result = raw
-			ok = true
-			break
-		}
-		if err := d.Skip(); err != nil {
-			return nil, false, err
-		}
-		counter++
-	}
-	return result, ok, iter.Err()
+	return children[index], true, nil
 }
 
-func findKey(d *jx.Decoder, part string) (result []byte, ok bool, _ error) {
-	iter, err := d.ObjIter()
-	if err != nil {
-		return nil, false, err
-	}
-
-	for iter.Next() {
-		if key := iter.Key(); string(key) == part {
-			raw, err := d.Raw()
-			if err != nil {
-				return nil, false, errors.Wrapf(err, "parse %q", key)
-			}
-			result = raw
-			ok = true
-			break
-		}
-		if err := d.Skip(); err != nil {
-			return nil, false, err
+func findKey(n *yaml.Node, part string) (*yaml.Node, bool) {
+	children := n.Content
+	for i := 0; i < len(children); i += 2 {
+		key, value := children[i], children[i+1]
+		if key.Value == part {
+			return value, true
 		}
 	}
-	return result, ok, iter.Err()
+	return nil, false
 }
 
 var (

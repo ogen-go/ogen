@@ -2,17 +2,17 @@ package parser
 
 import (
 	"context"
-	"encoding/json"
 	"strings"
 
 	"github.com/go-faster/errors"
+	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonpointer"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) getSchema(ctx *resolveCtx) ([]byte, error) {
+func (p *parser) getSchema(ctx *resolveCtx) (*yaml.Node, error) {
 	loc := ctx.lastLoc()
 
 	r, ok := p.schemas[loc]
@@ -20,21 +20,32 @@ func (p *parser) getSchema(ctx *resolveCtx) ([]byte, error) {
 		return r, nil
 	}
 
-	r, err := p.external.Get(context.TODO(), loc)
-	if err != nil {
+	var node yaml.Node
+	if err := func() error {
+		raw, err := p.external.Get(context.TODO(), loc)
+		if err != nil {
+			return errors.Wrap(err, "get")
+		}
+
+		if err := yaml.Unmarshal(raw, &node); err != nil {
+			return errors.Wrap(err, "unmarshal")
+		}
+
+		return nil
+	}(); err != nil {
 		return nil, errors.Wrapf(err, "external %q", loc)
 	}
+	r = &node
 	p.schemas[loc] = r
-
 	return r, nil
 }
 
-func resolvePointer(root []byte, ptr string, to interface{}) error {
-	data, err := jsonpointer.Resolve(ptr, root)
+func resolvePointer(root *yaml.Node, ptr string, to interface{}) error {
+	n, err := jsonpointer.Resolve(ptr, root)
 	if err != nil {
 		return err
 	}
-	return json.Unmarshal(data, to)
+	return n.Decode(to)
 }
 
 func (p *parser) resolve(key refKey, ctx *resolveCtx, to interface{}) error {

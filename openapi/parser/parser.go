@@ -2,6 +2,7 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
+	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -24,7 +25,7 @@ type parser struct {
 	}
 
 	external   jsonschema.ExternalResolver
-	schemas    map[string][]byte
+	schemas    map[string]*yaml.Node
 	depthLimit int
 	filename   string // optional, used for error messages
 
@@ -58,7 +59,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			securitySchemes: map[string]*ogen.SecurityScheme{},
 		},
 		external: s.External,
-		schemas: map[string][]byte{
+		schemas: map[string]*yaml.Node{
 			"": spec.Raw,
 		},
 		depthLimit: s.DepthLimit,

@@ -45,7 +45,7 @@ type Parameter struct {
 	Explode     bool
 	Required    bool
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }
 
 // ParameterContent describes OpenAPI Parameter content field.

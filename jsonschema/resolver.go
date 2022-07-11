@@ -1,21 +1,21 @@
 package jsonschema
 
 import (
-	"encoding/json"
 	"strings"
 
 	"github.com/go-faster/errors"
+	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen/jsonpointer"
 )
 
 // RootResolver is ReferenceResolver implementation.
 type RootResolver struct {
-	root []byte
+	root *yaml.Node
 }
 
 // NewRootResolver creates new RootResolver.
-func NewRootResolver(root []byte) *RootResolver {
+func NewRootResolver(root *yaml.Node) *RootResolver {
 	return &RootResolver{root: root}
 }
 
@@ -23,13 +23,15 @@ func NewRootResolver(root []byte) *RootResolver {
 func (r *RootResolver) ResolveReference(ref string) (rawSchema *RawSchema, err error) {
 	ref = strings.TrimSpace(ref)
 
-	buf, err := jsonpointer.Resolve(ref, r.root)
+	n, err := jsonpointer.Resolve(ref, r.root)
 	if err != nil {
-		return nil, errors.Wrapf(err, "resolve %q", ref)
+		return nil, errors.Wrap(err, "resolve")
 	}
 
-	if err := json.Unmarshal(buf, &rawSchema); err != nil {
-		return nil, errors.Wrap(err, "unmarshal")
+	rawSchema = &RawSchema{}
+	if err := n.Decode(rawSchema); err != nil {
+		return nil, errors.Wrap(err, "decode")
 	}
+
 	return rawSchema, nil
 }

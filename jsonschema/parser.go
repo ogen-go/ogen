@@ -389,7 +389,7 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 	s.Summary = schema.Summary
 	s.Description = schema.Description
 	s.Deprecated = schema.Deprecated
-	s.AddExample(json.RawMessage(schema.Example))
+	s.AddExample(schema.Example)
 
 	// Nullable enums will be handled later.
 	if len(s.Enum) < 1 {

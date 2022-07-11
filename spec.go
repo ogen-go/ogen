@@ -44,8 +44,8 @@ type Spec struct {
 	// Additional external documentation.
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
 
-	// Raw JSON value. Used by JSON Schema resolver.
-	Raw json.RawMessage `json:"-" yaml:"-"`
+	// Raw YAML node. Used by '$ref' resolvers.
+	Raw *yaml.Node `json:"-" yaml:"-"`
 }
 
 // UnmarshalYAML implements yaml.Unmarshaler.
@@ -57,12 +57,7 @@ func (s *Spec) UnmarshalYAML(n *yaml.Node) error {
 		return err
 	}
 	*s = Spec(a)
-
-	raw, err := json.Marshal(a)
-	if err != nil {
-		return err
-	}
-	s.Raw = raw
+	s.Raw = n
 
 	return nil
 }
@@ -75,8 +70,13 @@ func (s *Spec) UnmarshalJSON(bytes []byte) error {
 	if err := json.Unmarshal(bytes, &a); err != nil {
 		return err
 	}
-	a.Raw = append(a.Raw, bytes...)
 	*s = Spec(a)
+
+	var n yaml.Node
+	if err := yaml.Unmarshal(bytes, &n); err != nil {
+		return err
+	}
+	s.Raw = &n
 
 	return nil
 }
@@ -93,7 +93,7 @@ func (s *Spec) Init() {
 //
 // https://swagger.io/specification/#example-object
 type Example struct {
-	Ref           string       `json:"$ref,omitempty"` // ref objec yaml:"$ref,omitempty"` // ref object
+	Ref           string       `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
 	Summary       string       `json:"summary,omitempty" yaml:"summary,omitempty"`
 	Description   string       `json:"description,omitempty" yaml:"description,omitempty"`
 	Value         ExampleValue `json:"value,omitempty" yaml:"value,omitempty"`

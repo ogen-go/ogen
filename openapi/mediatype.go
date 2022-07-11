@@ -14,7 +14,7 @@ type MediaType struct {
 	Examples map[string]*Example
 	Encoding map[string]*Encoding
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }
 
 // Encoding is Encoding Type Object.
@@ -25,5 +25,5 @@ type Encoding struct {
 	Explode       bool
 	AllowReserved bool
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }

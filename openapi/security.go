@@ -22,7 +22,7 @@ type Security struct {
 	Flows            OAuthFlows
 	OpenIDConnectURL string
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }
 
 // OAuthFlows allows configuration of the supported OAuth Flows.
@@ -32,7 +32,7 @@ type OAuthFlows struct {
 	ClientCredentials *OAuthFlow
 	AuthorizationCode *OAuthFlow
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }
 
 // OAuthFlow is configuration details for a supported OAuth Flow.
@@ -42,5 +42,5 @@ type OAuthFlow struct {
 	RefreshURL       string
 	Scopes           map[string]string // name -> description
 
-	ogenjson.Locator
+	ogenjson.Locator `json:"-" yaml:"-"`
 }
