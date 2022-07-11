@@ -38,13 +38,8 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 	return nil
 }
 
-func generate(specPath, packageName string, fs gen.FileSystem, opts gen.Options) error {
+func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Options) error {
 	log := opts.Logger
-
-	data, err := os.ReadFile(specPath)
-	if err != nil {
-		return err
-	}
 
 	spec, err := ogen.Parse(data)
 	if err != nil {
@@ -168,11 +163,19 @@ func run() error {
 		opts.IgnoreNotImplemented = []string{"all"}
 	}
 
+	data, err := os.ReadFile(specPath)
+	if err != nil {
+		return err
+	}
+
 	fs := genfs.FormattedSource{
 		Root:   *targetDir,
 		Format: *performFormat,
 	}
-	if err := generate(specPath, *packageName, fs, opts); err != nil {
+	if err := generate(data, *packageName, fs, opts); err != nil {
+		if printPrettyError(os.Stderr, specPath, data, err) {
+			return errors.New("generation failed")
+		}
 		return errors.Wrap(err, "generate")
 	}
 
