@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"sort"
+	"strconv"
 
 	"gopkg.in/yaml.v3"
 )
@@ -14,27 +15,27 @@ type Lines struct {
 	// lines stores newline offsets.
 	//
 	// idx is the line number (counts from 0).
-	lines []int64
+	lines []int
 }
 
 // Search returns the nearest line number to the given offset.
 //
 // NOTE: may return index bigger than lines length.
-func (l Lines) Search(offset int64) int64 {
+func (l Lines) Search(offset int) int {
 	// The index is the line number.
 	lines := l.lines
 	idx := sort.Search(len(lines), func(i int) bool {
 		return lines[i] >= offset
 	})
-	return int64(idx)
+	return idx
 }
 
 // Line returns offset range of the line.
 //
 // NOTE: the line number is 1-based. Returns (-1, -1) if the line is invalid.
-func (l Lines) Line(n int) (start, end int64) {
+func (l Lines) Line(n int) (start, end int) {
 	n--
-	end = int64(len(l.data))
+	end = len(l.data)
 	switch {
 	case n < 0:
 		// Line 0 is invalid.
@@ -70,42 +71,10 @@ func (l *Lines) Collect(data []byte) {
 		if idx < 0 {
 			break
 		}
-		l.lines = append(l.lines, int64(offset+idx))
+		l.lines = append(l.lines, offset+idx)
 		offset += idx + 1
 		remain = remain[idx+1:]
 	}
-}
-
-// LineColumn returns the line and column of the location.
-//
-// If offset is invalid, line and column are 0 and ok is false.
-func (l Lines) LineColumn(offset int64) (line, column int64, ok bool) {
-	if offset < 0 || offset >= int64(len(l.data)) {
-		return 0, 0, false
-	}
-	{
-		unread := l.data[offset:]
-		trimmed := bytes.TrimLeft(unread, "\x20\t\r\n,:")
-		if len(trimmed) != len(unread) {
-			// Skip leading whitespace, because decoder does not do it.
-			offset += int64(len(unread) - len(trimmed))
-		}
-	}
-
-	line = l.Search(offset)
-	if line > 0 {
-		var prevLine int64
-		if line-1 < int64(len(l.lines)) {
-			prevLine = l.lines[line-1]
-		}
-		column = offset - prevLine
-	} else {
-		// Offset is on the first line. Column counts from 1.
-		column = offset + 1
-	}
-
-	// Line counts from 1.
-	return line + 1, column, true
 }
 
 // Location is a JSON value location.
@@ -175,11 +144,14 @@ func (l Location) Index(idx int) (loc Location) {
 
 // String implements fmt.Stringer.
 func (l Location) String() string {
-	n := l.Node
-	if n == nil {
-		return "<empty location>"
+	line, column, n := l.Line, l.Column, l.Node
+	if n != nil {
+		line, column = n.Line, n.Column
 	}
-	return fmt.Sprintf("%d:%d", n.Line, n.Column)
+	if column == 0 {
+		return strconv.Itoa(line)
+	}
+	return fmt.Sprintf("%d:%d", line, column)
 }
 
 // WithFilename prints the location with the given filename.
