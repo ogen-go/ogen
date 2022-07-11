@@ -54,7 +54,7 @@ type config struct {
 func newConfig(opts ...Option) config {
 	cfg := config{
 		TracerProvider: otel.GetTracerProvider(),
-		MeterProvider: nonrecording.NewNoopMeterProvider(),
+		MeterProvider: metric.NewNoopMeterProvider(),
 		{{- if $.ClientEnabled }}
 		Client: http.DefaultClient,
 		{{- end }}
