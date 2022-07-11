@@ -51,7 +51,7 @@ func testGenerate(t *testing.T, data []byte, ignore ...string) {
 		}
 
 		t.Run("Full", func(t *testing.T) {
-			t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
+			t.Skipf("Ignoring: [%s]", strings.Join(opt.IgnoreNotImplemented, ", "))
 		})
 	}
 }
