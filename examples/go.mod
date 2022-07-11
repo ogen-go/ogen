@@ -29,4 +29,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/ogen-go/ogen v0.0.0 => ./..
+replace (
+	github.com/ogen-go/ogen v0.0.0 => ./..
+	gopkg.in/yaml.v3 v3.0.1 => github.com/go-faster/yamlx v0.0.0-20220711115722-810b8bfdedac
+)
