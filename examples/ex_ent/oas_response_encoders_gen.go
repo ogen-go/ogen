@@ -25,7 +25,7 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -37,7 +37,7 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R409:
+	case *FourHundredNine:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -49,7 +49,7 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -79,7 +79,7 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -91,7 +91,7 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		}
 		return nil
 
-	case *R409:
+	case *FourHundredNine:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -103,7 +103,7 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -133,7 +133,7 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -145,7 +145,7 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		}
 		return nil
 
-	case *R409:
+	case *FourHundredNine:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -157,7 +157,7 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -187,7 +187,7 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -199,7 +199,7 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R409:
+	case *FourHundredNine:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -211,7 +211,7 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -234,7 +234,7 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -246,7 +246,7 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -258,7 +258,7 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -281,7 +281,7 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -293,7 +293,7 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -305,7 +305,7 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -335,7 +335,7 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -347,7 +347,7 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -359,7 +359,7 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -389,7 +389,7 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -401,7 +401,7 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -413,7 +413,7 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -443,7 +443,7 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -455,7 +455,7 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -467,7 +467,7 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -497,7 +497,7 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -509,7 +509,7 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -521,7 +521,7 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -551,7 +551,7 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -563,7 +563,7 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -575,7 +575,7 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -605,7 +605,7 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R400:
+	case *FourHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -617,7 +617,7 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R404:
+	case *FourHundredFour:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -629,7 +629,7 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *R500:
+	case *FiveHundred:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))

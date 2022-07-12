@@ -45,6 +45,66 @@ type DeletePetOwnerNoContent struct{}
 
 func (*DeletePetOwnerNoContent) deletePetOwnerRes() {}
 
+type FiveHundred struct {
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
+}
+
+func (*FiveHundred) createPetCategoriesRes() {}
+func (*FiveHundred) createPetFriendsRes()    {}
+func (*FiveHundred) createPetOwnerRes()      {}
+func (*FiveHundred) createPetRes()           {}
+func (*FiveHundred) deletePetOwnerRes()      {}
+func (*FiveHundred) deletePetRes()           {}
+func (*FiveHundred) listPetCategoriesRes()   {}
+func (*FiveHundred) listPetFriendsRes()      {}
+func (*FiveHundred) listPetRes()             {}
+func (*FiveHundred) readPetOwnerRes()        {}
+func (*FiveHundred) readPetRes()             {}
+func (*FiveHundred) updatePetRes()           {}
+
+type FourHundred struct {
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
+}
+
+func (*FourHundred) createPetCategoriesRes() {}
+func (*FourHundred) createPetFriendsRes()    {}
+func (*FourHundred) createPetOwnerRes()      {}
+func (*FourHundred) createPetRes()           {}
+func (*FourHundred) deletePetOwnerRes()      {}
+func (*FourHundred) deletePetRes()           {}
+func (*FourHundred) listPetCategoriesRes()   {}
+func (*FourHundred) listPetFriendsRes()      {}
+func (*FourHundred) listPetRes()             {}
+func (*FourHundred) readPetOwnerRes()        {}
+func (*FourHundred) readPetRes()             {}
+func (*FourHundred) updatePetRes()           {}
+
+type FourHundredFour struct {
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
+}
+
+func (*FourHundredFour) deletePetOwnerRes()    {}
+func (*FourHundredFour) deletePetRes()         {}
+func (*FourHundredFour) listPetCategoriesRes() {}
+func (*FourHundredFour) listPetFriendsRes()    {}
+func (*FourHundredFour) listPetRes()           {}
+func (*FourHundredFour) readPetOwnerRes()      {}
+func (*FourHundredFour) readPetRes()           {}
+func (*FourHundredFour) updatePetRes()         {}
+
+type FourHundredNine struct {
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
+}
+
+func (*FourHundredNine) createPetCategoriesRes() {}
+func (*FourHundredNine) createPetFriendsRes()    {}
+func (*FourHundredNine) createPetOwnerRes()      {}
+func (*FourHundredNine) createPetRes()           {}
+
 type ListPetCategoriesOKApplicationJSON []PetCategoriesList
 
 func (ListPetCategoriesOKApplicationJSON) listPetCategoriesRes() {}
@@ -297,66 +357,6 @@ type PetUpdate struct {
 }
 
 func (*PetUpdate) updatePetRes() {}
-
-type R400 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-}
-
-func (*R400) createPetCategoriesRes() {}
-func (*R400) createPetFriendsRes()    {}
-func (*R400) createPetOwnerRes()      {}
-func (*R400) createPetRes()           {}
-func (*R400) deletePetOwnerRes()      {}
-func (*R400) deletePetRes()           {}
-func (*R400) listPetCategoriesRes()   {}
-func (*R400) listPetFriendsRes()      {}
-func (*R400) listPetRes()             {}
-func (*R400) readPetOwnerRes()        {}
-func (*R400) readPetRes()             {}
-func (*R400) updatePetRes()           {}
-
-type R404 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-}
-
-func (*R404) deletePetOwnerRes()    {}
-func (*R404) deletePetRes()         {}
-func (*R404) listPetCategoriesRes() {}
-func (*R404) listPetFriendsRes()    {}
-func (*R404) listPetRes()           {}
-func (*R404) readPetOwnerRes()      {}
-func (*R404) readPetRes()           {}
-func (*R404) updatePetRes()         {}
-
-type R409 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-}
-
-func (*R409) createPetCategoriesRes() {}
-func (*R409) createPetFriendsRes()    {}
-func (*R409) createPetOwnerRes()      {}
-func (*R409) createPetRes()           {}
-
-type R500 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
-}
-
-func (*R500) createPetCategoriesRes() {}
-func (*R500) createPetFriendsRes()    {}
-func (*R500) createPetOwnerRes()      {}
-func (*R500) createPetRes()           {}
-func (*R500) deletePetOwnerRes()      {}
-func (*R500) deletePetRes()           {}
-func (*R500) listPetCategoriesRes()   {}
-func (*R500) listPetFriendsRes()      {}
-func (*R500) listPetRes()             {}
-func (*R500) readPetOwnerRes()        {}
-func (*R500) readPetRes()             {}
-func (*R500) updatePetRes()           {}
 
 type UpdatePetReq struct {
 	Name       string      "json:\"name\""

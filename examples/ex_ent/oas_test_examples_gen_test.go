@@ -59,6 +59,54 @@ func TestCreatePetReq_EncodeDecode(t *testing.T) {
 	var typ2 CreatePetReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestFiveHundred_EncodeDecode(t *testing.T) {
+	var typ FiveHundred
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FiveHundred
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFourHundred_EncodeDecode(t *testing.T) {
+	var typ FourHundred
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FourHundred
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFourHundredFour_EncodeDecode(t *testing.T) {
+	var typ FourHundredFour
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FourHundredFour
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFourHundredNine_EncodeDecode(t *testing.T) {
+	var typ FourHundredNine
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FourHundredNine
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestListPetCategoriesOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ ListPetCategoriesOKApplicationJSON
 	typ.SetFake()
@@ -237,54 +285,6 @@ func TestPetUpdate_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PetUpdate
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestR400_EncodeDecode(t *testing.T) {
-	var typ R400
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 R400
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestR404_EncodeDecode(t *testing.T) {
-	var typ R404
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 R404
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestR409_EncodeDecode(t *testing.T) {
-	var typ R409
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 R409
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestR500_EncodeDecode(t *testing.T) {
-	var typ R500
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 R500
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestUpdatePetReq_EncodeDecode(t *testing.T) {

@@ -150,6 +150,62 @@ func (s *CreatePetReq) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *FiveHundred) SetFake() {
+	{
+		{
+			s.Code = int(0)
+		}
+	}
+	{
+		{
+			s.Status = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *FourHundred) SetFake() {
+	{
+		{
+			s.Code = int(0)
+		}
+	}
+	{
+		{
+			s.Status = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *FourHundredFour) SetFake() {
+	{
+		{
+			s.Code = int(0)
+		}
+	}
+	{
+		{
+			s.Status = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *FourHundredNine) SetFake() {
+	{
+		{
+			s.Code = int(0)
+		}
+	}
+	{
+		{
+			s.Status = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *ListPetCategoriesOKApplicationJSON) SetFake() {
 	var unwrapped []PetCategoriesList
 	{
@@ -471,62 +527,6 @@ func (s *PetUpdate) SetFake() {
 	{
 		{
 			s.Birthday.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *R400) SetFake() {
-	{
-		{
-			s.Code = int(0)
-		}
-	}
-	{
-		{
-			s.Status = "string"
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *R404) SetFake() {
-	{
-		{
-			s.Code = int(0)
-		}
-	}
-	{
-		{
-			s.Status = "string"
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *R409) SetFake() {
-	{
-		{
-			s.Code = int(0)
-		}
-	}
-	{
-		{
-			s.Status = "string"
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *R500) SetFake() {
-	{
-		{
-			s.Code = int(0)
-		}
-	}
-	{
-		{
-			s.Status = "string"
 		}
 	}
 }

@@ -2,6 +2,8 @@ package gen
 
 import (
 	"go/token"
+	"math"
+	"strconv"
 	"strings"
 	"unicode"
 
@@ -49,11 +51,8 @@ func (g *nameGen) generate() (string, error) {
 		if !ok {
 			pushPart()
 
-			name := strings.Join(g.parts, "")
-			// FIXME(tdakkota): choose prefix according to context
-			if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
-				name = "R" + name
-			}
+			name := setName(g.parts)
+
 			if !token.IsIdentifier(name) {
 				return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"},
 					"can't generate valid name: %+v", g.parts)
@@ -81,6 +80,86 @@ func (g *nameGen) generate() (string, error) {
 
 		pushPart()
 	}
+}
+
+func setName(parts []string) string {
+	name := strings.Join(parts, "")
+	var intPrefix strings.Builder
+	pos := 0
+	for _, c := range []rune(name) {
+		if unicode.IsDigit(c) {
+			intPrefix.WriteRune(c)
+			pos++
+		} else {
+			break
+		}
+	}
+	var res strings.Builder
+	res.Grow(intPrefix.Len() + len(name) - pos)
+	convIntPrefix, err := strconv.Atoi(intPrefix.String())
+	if err == nil {
+		res.WriteString(convertIntegerToWord(convIntPrefix))
+	}
+	res.WriteString(name[pos:])
+	return res.String()
+}
+
+func convertIntegerToWord(integer int) string {
+	if integer == 0 {
+		return "Zero"
+	}
+	var res strings.Builder
+	if integer < 0 {
+		res.WriteString("Minus")
+		integer = int(math.Abs(float64(integer)))
+	}
+
+	var triplets []int
+
+	for integer > 0 {
+		triplets = append(triplets, integer%1000)
+		integer /= 1000
+	}
+
+	megaWords := []string{"", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion"}
+	unitWords := []string{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
+	tenWords := []string{"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"}
+	teenWords := []string{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"}
+
+	for i := len(triplets) - 1; i >= 0; i-- {
+		triplet := triplets[i]
+
+		if triplet == 0 {
+			continue
+		}
+
+		hundreds := triplet / 100 % 10
+		tens := triplet / 10 % 10
+		units := triplet % 10
+
+		if hundreds > 0 {
+			res.WriteString(unitWords[hundreds] + "Hundred")
+		}
+
+		switch tens {
+		case 0:
+			res.WriteString(unitWords[units])
+		case 1:
+			res.WriteString(teenWords[units])
+		default:
+			if units > 0 {
+				res.WriteString(tenWords[tens] + unitWords[units])
+			} else {
+				res.WriteString(tenWords[tens])
+			}
+		}
+
+		if mega := megaWords[i]; mega != "" {
+			res.WriteString(megaWords[i])
+		}
+	}
+
+	return res.String()
 }
 
 func (g *nameGen) clean() string {

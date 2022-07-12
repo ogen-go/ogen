@@ -55,7 +55,7 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -81,7 +81,7 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R409
+			var response FourHundredNine
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -107,7 +107,7 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -165,7 +165,7 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -191,7 +191,7 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R409
+			var response FourHundredNine
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -217,7 +217,7 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -275,7 +275,7 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -301,7 +301,7 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R409
+			var response FourHundredNine
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -327,7 +327,7 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -385,7 +385,7 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -411,7 +411,7 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R409
+			var response FourHundredNine
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -437,7 +437,7 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -471,7 +471,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -497,7 +497,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -523,7 +523,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -557,7 +557,7 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -583,7 +583,7 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -609,7 +609,7 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -667,7 +667,7 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -693,7 +693,7 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -719,7 +719,7 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -777,7 +777,7 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -803,7 +803,7 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -829,7 +829,7 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -887,7 +887,7 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -913,7 +913,7 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -939,7 +939,7 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -997,7 +997,7 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1023,7 +1023,7 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1049,7 +1049,7 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1107,7 +1107,7 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1133,7 +1133,7 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1159,7 +1159,7 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1217,7 +1217,7 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R400
+			var response FourHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1243,7 +1243,7 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R404
+			var response FourHundredFour
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1269,7 +1269,7 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}
 
 			d := jx.DecodeBytes(b)
-			var response R500
+			var response FiveHundred
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
