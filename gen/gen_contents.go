@@ -137,9 +137,9 @@ func (g *Generator) generateContents(
 	name string,
 	optional bool,
 	contents map[string]*openapi.MediaType,
-) (_ map[ir.ContentType]*ir.Type, err error) {
+) (_ map[ir.ContentType]ir.Media, err error) {
 	var (
-		result      = make(map[ir.ContentType]*ir.Type, len(contents))
+		result      = make(map[ir.ContentType]ir.Media, len(contents))
 		unsupported []string
 	)
 	if err := filterMostSpecific(contents); err != nil {
@@ -162,18 +162,26 @@ func (g *Generator) generateContents(
 
 		ctx := ctx.appendPath(contentType)
 		if err := func() error {
-			switch parsedContentType {
-			case "application/json":
+			encoding := ir.Encoding(parsedContentType)
+			if r, ok := g.opt.ContentTypeAliases[parsedContentType]; ok {
+				encoding = r
+			}
+
+			switch encoding {
+			case ir.EncodingJSON:
 				t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
 
 				t.AddFeature("json")
-				result[ir.ContentTypeJSON] = t
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding: encoding,
+					Type:     t,
+				}
 				return nil
 
-			case "application/x-www-form-urlencoded":
+			case ir.EncodingFormURLEncoded:
 				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
 					f.Type.AddFeature("uri")
 					return nil
@@ -182,10 +190,13 @@ func (g *Generator) generateContents(
 					return err
 				}
 
-				result[ir.ContentTypeFormURLEncoded] = t
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding: encoding,
+					Type:     t,
+				}
 				return nil
 
-			case "multipart/form-data":
+			case ir.EncodingMultipart:
 				files := map[string]*ir.Type{}
 				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
 					t, err := isMultipartFile(ctx, f.Type, f.Spec)
@@ -258,10 +269,13 @@ func (g *Generator) generateContents(
 					t = newt
 				}
 
-				result[ir.ContentTypeMultipart] = t
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding: encoding,
+					Type:     t,
+				}
 				return nil
 
-			case "application/octet-stream":
+			case ir.EncodingOctetStream:
 				if s := media.Schema; s != nil && !isBinary(s) {
 					return errors.Wrapf(
 						&ErrNotImplemented{Name: "complex application/octet-stream"},
@@ -270,10 +284,13 @@ func (g *Generator) generateContents(
 				}
 
 				t := ir.Stream(typeName)
-				result[ir.ContentTypeOctetStream] = t
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding: encoding,
+					Type:     t,
+				}
 				return ctx.saveType(t)
 
-			case "text/plain":
+			case ir.EncodingTextPlain:
 				if s := media.Schema; s != nil && s.Type != "string" {
 					return errors.Wrapf(
 						&ErrNotImplemented{Name: "complex text/plain"},
@@ -282,13 +299,19 @@ func (g *Generator) generateContents(
 				}
 
 				t := ir.Stream(typeName)
-				result[ir.ContentTypeTextPlain] = t
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding: encoding,
+					Type:     t,
+				}
 				return ctx.saveType(t)
 
 			default:
 				if isBinary(media.Schema) {
 					t := ir.Stream(typeName)
-					result[ir.ContentType(contentType)] = t
+					result[ir.ContentType(parsedContentType)] = ir.Media{
+						Encoding: ir.EncodingOctetStream,
+						Type:     t,
+					}
 					return ctx.saveType(t)
 				}
 

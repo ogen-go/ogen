@@ -5,7 +5,6 @@ import (
 
 	"github.com/go-faster/errors"
 
-	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -42,7 +41,15 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 	if err != nil {
 		return errors.Wrap(err, "default")
 	}
-	if resp.NoContent != nil || len(resp.Contents) > 1 || resp.Contents[ir.ContentTypeJSON] == nil {
+
+	hasJSON := false
+	for _, media := range resp.Contents {
+		if media.Encoding.JSON() {
+			hasJSON = true
+			break
+		}
+	}
+	if resp.NoContent != nil || len(resp.Contents) > 1 || !hasJSON {
 		return errors.Wrap(err, "too complicated to reduce default error")
 	}
 

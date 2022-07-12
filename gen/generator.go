@@ -43,22 +43,28 @@ type Options struct {
 	// InferSchemaType enables type inference for schemas. Schema parser will try to detect schema type
 	// by its properties.
 	InferSchemaType bool
+
 	// AllowRemote enables remote references resolving.
 	//
 	// See https://github.com/ogen-go/ogen/issues/385.
 	AllowRemote bool
 	// Remote is remote reference resolver options.
 	Remote RemoteOptions
-	// Filename is a name of the spec file.
-	//
-	// Used for error messages.
-	Filename string
+
 	// Filters contains filters to skip operations.
 	Filters Filters
 	// IgnoreNotImplemented contains ErrNotImplemented messages to ignore.
 	IgnoreNotImplemented []string
 	// NotImplementedHook is hook for ErrNotImplemented errors.
 	NotImplementedHook func(name string, err error)
+
+	// ContentTypeAliases contains content type aliases.
+	ContentTypeAliases map[string]ir.Encoding
+
+	// Filename is a name of the spec file.
+	//
+	// Used for error messages.
+	Filename string
 	// Logger to use.
 	Logger *zap.Logger
 }

@@ -131,12 +131,6 @@ func templateFunctions() template.FuncMap {
 				Ptr:      ptr,
 			}
 		},
-		"ir_media": func(ct ir.ContentType, t *ir.Type) ir.Media {
-			return ir.Media{
-				Encoding: ct,
-				Type:     t,
-			}
-		},
 		"router_elem": func(child *RouteNode, currentIdx int) RouterElem {
 			if child.IsParam() {
 				currentIdx++
