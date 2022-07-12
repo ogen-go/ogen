@@ -1,8 +1,6 @@
 package openapi
 
-import (
-	ogenjson "github.com/ogen-go/ogen/json"
-)
+import "github.com/ogen-go/ogen/internal/location"
 
 // Operation is an OpenAPI Operation.
 type Operation struct {
@@ -28,7 +26,7 @@ type Operation struct {
 	//  * 1XX, 2XX, 3XX, 4XX, 5XX
 	Responses map[string]*Response
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }
 
 // Path is an operation path.
@@ -73,7 +71,7 @@ type RequestBody struct {
 	Required    bool
 	Content     map[string]*MediaType
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }
 
 // Header is an OpenAPI Header definition.
@@ -87,5 +85,5 @@ type Response struct {
 	Content     map[string]*MediaType
 	// Links map[string]*Link
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }

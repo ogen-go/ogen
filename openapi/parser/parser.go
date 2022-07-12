@@ -5,6 +5,7 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -12,6 +13,8 @@ import (
 type parser struct {
 	// api spec, immutable.
 	spec *ogen.Spec
+	// root location of the spec, immutable.
+	rootLoc location.Locator
 	// parsed operations.
 	operations []*openapi.Operation
 	// refs contains lazy-initialized referenced components.
@@ -75,6 +78,11 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			InferTypes: s.InferTypes,
 		}),
 	}
+	if spec.Raw != nil {
+		var loc location.Location
+		loc.FromNode(spec.Raw)
+		p.rootLoc.SetLocation(loc)
+	}
 
 	for name, s := range spec.Components.SecuritySchemes {
 		p.refs.securitySchemes[name] = s
@@ -116,7 +124,9 @@ func (p *parser) parsePathItems() error {
 			}
 
 			if _, ok := paths[id]; ok {
-				return errors.New("duplicate path")
+				pathLoc := p.rootLoc.Field("paths").Key(path)
+				err := errors.Errorf("duplicate path: %q", path)
+				return p.wrapLocation("", pathLoc, err)
 			}
 			paths[id] = struct{}{}
 
@@ -218,13 +228,16 @@ func (p *parser) parseOp(
 		// Use operation level security.
 		op.Security, err = p.parseSecurityRequirements(spec.Security, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "security")
+			err = errors.Wrap(err, "security")
+			return nil, p.wrapField("security", ctx.lastLoc(), spec.Locator, err)
 		}
 	} else {
 		// Use root level security.
 		op.Security, err = p.parseSecurityRequirements(p.spec.Security, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "security")
+			loc := p.rootLoc.Field("security")
+			err = errors.Wrap(err, "security")
+			return nil, p.wrapField("security", ctx.lastLoc(), loc, err)
 		}
 	}
 

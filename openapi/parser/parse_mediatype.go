@@ -94,11 +94,11 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 			}
 			encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 			if err != nil {
-				return errors.Wrap(err, "headers")
+				return p.wrapField("headers", ctx.lastLoc(), e.Locator, err)
 			}
 			encodings[name] = encoding
 
-			if err := validateParamStyle(&openapi.Parameter{
+			if err := p.validateParamStyle(&openapi.Parameter{
 				Name:     name,
 				Schema:   prop.Schema,
 				In:       openapi.LocationQuery,
@@ -106,7 +106,7 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 				Explode:  encoding.Explode,
 				Required: prop.Required,
 				Locator:  encoding.Locator,
-			}); err != nil {
+			}, ctx.lastLoc()); err != nil {
 				return errors.Wrap(err, "param style")
 			}
 

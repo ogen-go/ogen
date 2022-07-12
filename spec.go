@@ -5,7 +5,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -20,7 +20,7 @@ type (
 	ExampleValue = jsonschema.Example
 
 	// Locator stores location of JSON value.
-	Locator = ogenjson.Locator
+	Locator = location.Locator
 )
 
 // Spec is the root document object of the OpenAPI document.

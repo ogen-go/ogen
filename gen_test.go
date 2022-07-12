@@ -12,6 +12,7 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 func testGenerate(t *testing.T, filename string, data []byte, ignore ...string) {
@@ -129,6 +130,12 @@ func TestNegative(t *testing.T) {
 			Filename: name,
 		})
 		a.Error(err)
-		t.Logf("%+v", err)
+
+		var buf strings.Builder
+		if location.PrintPrettyError(&buf, name, data, err) {
+			t.Log(buf.String())
+		} else {
+			t.Logf("%+v", err)
+		}
 	})
 }

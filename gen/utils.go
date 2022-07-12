@@ -7,7 +7,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -76,7 +76,7 @@ func statusText(code int) string {
 }
 
 func (g *Generator) zapLocation(l interface {
-	Location() (ogenjson.Location, bool)
+	Location() (location.Location, bool)
 }) zap.Field {
 	loc, ok := l.Location()
 	if !ok {
@@ -86,7 +86,7 @@ func (g *Generator) zapLocation(l interface {
 }
 
 func (g *schemaGen) zapLocation(l interface {
-	Location() (ogenjson.Location, bool)
+	Location() (location.Location, bool)
 }) zap.Field {
 	loc, ok := l.Location()
 	if !ok {

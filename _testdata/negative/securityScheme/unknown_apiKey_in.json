@@ -9,13 +9,11 @@
       "get": {
         "security": [
           {
-            "api_key": [
-              "read"
-            ]
+            "api_key": []
           }
         ],
         "responses": {
-          "200": {
+          "default": {
             "description": "default"
           }
         }
@@ -25,15 +23,8 @@
   "components": {
     "securitySchemes": {
       "api_key": {
-        "type": "oauth2",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "https://example.com/oauth/authorize",
-            "scopes": {
-              "foobar": "read access"
-            }
-          }
-        }
+        "type": "apiKey",
+        "in": "amongus"
       }
     }
   }

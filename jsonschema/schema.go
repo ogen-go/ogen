@@ -3,7 +3,7 @@ package jsonschema
 import (
 	"regexp"
 
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 // SchemaType is a JSON Schema type.
@@ -82,7 +82,7 @@ type Schema struct {
 	Default    interface{}
 	DefaultSet bool
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }
 
 // AddExample adds example for this Schema.
