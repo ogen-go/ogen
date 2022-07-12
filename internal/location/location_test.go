@@ -7,6 +7,41 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+func TestLocation_Key(t *testing.T) {
+	input := `{
+  "a": 1,
+  "b": {
+    "c": 2
+  }
+}`
+	a := require.New(t)
+
+	var node yaml.Node
+	a.NoError(yaml.Unmarshal([]byte(input), &node))
+
+	var loc Location
+	loc.FromNode(&node)
+	a.Equal(1, loc.Line)
+	a.Equal(1, loc.Column)
+	a.Equal(loc, loc.Key("abc"))
+
+	{
+		loc := loc.Key("b")
+		a.Equal("!!str", loc.Node.ShortTag())
+		a.Equal("b", loc.Node.Value)
+		a.Equal(3, loc.Line)
+		a.Equal(3, loc.Column)
+	}
+
+	{
+		loc := loc.Field("b").Key("c")
+		a.Equal("!!str", loc.Node.ShortTag())
+		a.Equal("c", loc.Node.Value)
+		a.Equal(4, loc.Line)
+		a.Equal(5, loc.Column)
+	}
+}
+
 func TestLocation_Field(t *testing.T) {
 	input := `{
   "a": 1,
@@ -20,7 +55,7 @@ func TestLocation_Field(t *testing.T) {
 	a.NoError(yaml.Unmarshal([]byte(input), &node))
 
 	var loc Location
-	loc.fromNode(&node)
+	loc.FromNode(&node)
 	a.Equal(1, loc.Line)
 	a.Equal(1, loc.Column)
 	a.Equal(loc, loc.Field("abc"))
@@ -47,7 +82,7 @@ func TestLocation_Index(t *testing.T) {
 	a.NoError(yaml.Unmarshal([]byte(input), &node))
 
 	var loc Location
-	loc.fromNode(&node)
+	loc.FromNode(&node)
 	a.Equal(1, loc.Line)
 	a.Equal(1, loc.Column)
 	a.Equal(loc, loc.Index(-10))

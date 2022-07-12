@@ -13,7 +13,8 @@ type Location struct {
 	Node         *yaml.Node
 }
 
-func (l *Location) fromNode(node *yaml.Node) {
+// FromNode sets the location of the value from the given node.
+func (l *Location) FromNode(node *yaml.Node) {
 	*l = Location{
 		Line:   node.Line,
 		Column: node.Column,
@@ -21,10 +22,40 @@ func (l *Location) fromNode(node *yaml.Node) {
 	}
 }
 
+// Key tries to find the child node using given key and returns its location.
+// If such node is not found or parent node is not a mapping, Key returns location of the parent node.
+//
+// NOTE: child location will point to the key node, not to the value node.
+// Use Field if you want location of the value.
+func (l Location) Key(key string) (loc Location) {
+	n := l.Node
+	if n != nil && n.Kind == yaml.DocumentNode {
+		if len(n.Content) < 1 {
+			return l
+		}
+		n = n.Content[0]
+	}
+
+	if n == nil || n.Kind != yaml.MappingNode || len(n.Content) < 2 {
+		return l
+	}
+
+	children := n.Content
+	for i := 0; i < len(children); i += 2 {
+		keyNode := children[i]
+		if keyNode.Value == key {
+			loc.FromNode(keyNode)
+			return loc
+		}
+	}
+	return l
+}
+
 // Field tries to find the child node using given key and returns its location.
 // If such node is not found or parent node is not a mapping, Field returns location of the parent node.
 //
 // NOTE: child location will point to the value node, not to the key node.
+// Use Key if you want location of the key.
 func (l Location) Field(key string) (loc Location) {
 	n := l.Node
 	if n != nil && n.Kind == yaml.DocumentNode {
@@ -42,7 +73,7 @@ func (l Location) Field(key string) (loc Location) {
 	for i := 0; i < len(children); i += 2 {
 		keyNode, valueNode := children[i], children[i+1]
 		if keyNode.Value == key {
-			loc.fromNode(valueNode)
+			loc.FromNode(valueNode)
 			return loc
 		}
 	}
@@ -68,7 +99,7 @@ func (l Location) Index(idx int) (loc Location) {
 	if idx < 0 || idx >= len(children) {
 		return l
 	}
-	loc.fromNode(children[idx])
+	loc.FromNode(children[idx])
 	return loc
 }
 
@@ -120,6 +151,16 @@ func (l Locator) Location() (Location, bool) {
 	return l.location, l.set
 }
 
+// Key tries to find the child node using given key and returns its location.
+//
+// See Key method of Location.
+func (l Locator) Key(key string) (loc Locator) {
+	if l.set {
+		loc.SetLocation(l.location.Key(key))
+	}
+	return
+}
+
 // Field tries to find the child node using given key and returns its location.
 //
 // See Field method of Location.
@@ -148,7 +189,7 @@ func (l *Locator) MarshalYAML(n *yaml.Node) error {
 // UnmarshalYAML implements yaml.Unmarshaler.
 func (l *Locator) UnmarshalYAML(n *yaml.Node) error {
 	var loc Location
-	loc.fromNode(n)
+	loc.FromNode(n)
 	l.SetLocation(loc)
 	return nil
 }
