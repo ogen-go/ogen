@@ -23,14 +23,21 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 		return reqBody, nil
 	}
 
-	if len(body.Content) < 1 {
-		// See https://github.com/OAI/OpenAPI-Specification/discussions/2875.
-		return nil, errors.New("content must have at least one entry")
-	}
+	content, err := func() (map[string]*openapi.MediaType, error) {
+		if len(body.Content) < 1 {
+			// See https://github.com/OAI/OpenAPI-Specification/discussions/2875.
+			return nil, errors.New("content must have at least one entry")
+		}
 
-	content, err := p.parseContent(body.Content, ctx)
+		content, err := p.parseContent(body.Content, ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "parse content")
+		}
+
+		return content, nil
+	}()
 	if err != nil {
-		return nil, errors.Wrap(err, "content")
+		return nil, p.wrapField("content", ctx.lastLoc(), body.Locator, err)
 	}
 
 	return &openapi.RequestBody{

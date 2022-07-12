@@ -24,44 +24,43 @@ func Test_validateOAuthFlows(t *testing.T) {
 	}
 
 	tests := []struct {
-		scopes  []string
 		flows   *ogen.OAuthFlows
 		wantErr bool
 	}{
 		// OAuthFlows is required.
-		{nil, nil, true},
-		{nil, new(ogen.OAuthFlows), false},
+		{nil, true},
+		{new(ogen.OAuthFlows), false},
 
 		// `implicit` requires `authorizationUrl`.
-		{nil, implicit(ogen.OAuthFlow{}), true},
+		{implicit(ogen.OAuthFlow{}), true},
 		// `authCode` requires `authorizationUrl` and `tokenUrl`.
-		{nil, authCode(ogen.OAuthFlow{}), true},
+		{authCode(ogen.OAuthFlow{}), true},
 		// `password` requires `tokenUrl`.
-		{nil, password(ogen.OAuthFlow{}), true},
+		{password(ogen.OAuthFlow{}), true},
 		// `clientCredentials` requires `tokenUrl`.
-		{nil, clientCreds(ogen.OAuthFlow{}), true},
+		{clientCreds(ogen.OAuthFlow{}), true},
 
 		// `authorizationUrl` must be a valid URL.
-		{nil, implicit(ogen.OAuthFlow{
+		{implicit(ogen.OAuthFlow{
 			AuthorizationURL: "-",
 		}), true},
 		// `tokenUrl` must be a valid URL.
-		{nil, password(ogen.OAuthFlow{
+		{password(ogen.OAuthFlow{
 			TokenURL: "-",
 		}), true},
 
 		// `refreshUrl` must be a valid URL.
-		{nil, implicit(ogen.OAuthFlow{
+		{implicit(ogen.OAuthFlow{
 			AuthorizationURL: "https://example.com/authorization",
 			RefreshURL:       "-",
 		}), true},
 
 		// `unknown_scope` must be defined in `flows`.
-		{[]string{"unknown_scope"}, implicit(ogen.OAuthFlow{
+		{implicit(ogen.OAuthFlow{
 			AuthorizationURL: "https://example.com/authorization",
 			RefreshURL:       "https://example.com/refresh",
 		}), true},
-		{[]string{"unknown_scope"}, implicit(ogen.OAuthFlow{
+		{implicit(ogen.OAuthFlow{
 			AuthorizationURL: "https://example.com/authorization",
 			RefreshURL:       "https://example.com/refresh",
 			Scopes: map[string]string{
@@ -74,7 +73,7 @@ func Test_validateOAuthFlows(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 			var p parser
-			err := p.validateOAuthFlows(tt.scopes, tt.flows, "")
+			err := p.validateOAuthFlows(tt.flows, "")
 			if tt.wantErr {
 				a.Error(err)
 				return

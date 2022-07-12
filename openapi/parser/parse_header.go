@@ -53,7 +53,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 	}
 	locatedIn := openapi.LocationHeader
 
-	if err := validateParameter(name, locatedIn, header); err != nil {
+	if err := p.validateParameter(name, locatedIn, header, ctx.lastLoc()); err != nil {
 		return nil, err
 	}
 
@@ -85,7 +85,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		return op, nil
 	}
 
-	if err := validateParamStyle(op); err != nil {
+	if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
 		return nil, err
 	}
 
