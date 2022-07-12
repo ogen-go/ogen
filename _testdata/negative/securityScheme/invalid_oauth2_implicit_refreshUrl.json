@@ -15,7 +15,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "default": {
             "description": "default"
           }
         }
@@ -25,8 +25,16 @@
   "components": {
     "securitySchemes": {
       "api_key": {
-        "type": "http",
-        "scheme": "amongus"
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://example.com/oauth/authorize",
+            "refreshUrl": "-",
+            "scopes": {
+              "read": "read"
+            }
+          }
+        }
       }
     }
   }

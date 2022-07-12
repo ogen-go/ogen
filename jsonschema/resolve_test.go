@@ -8,6 +8,8 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 type external map[string]components

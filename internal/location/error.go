@@ -16,9 +16,8 @@ var _ interface {
 // Error is a wrapper for an error that has a location.
 type Error struct {
 	File string
-	// 1+N locations.
-	Loc Location
-	Err error
+	Loc  Location
+	Err  error
 }
 
 // Unwrap implements errors.Wrapper.

@@ -55,11 +55,7 @@ func Test_validateOAuthFlows(t *testing.T) {
 			RefreshURL:       "-",
 		}), true},
 
-		// `unknown_scope` must be defined in `flows`.
-		{implicit(ogen.OAuthFlow{
-			AuthorizationURL: "https://example.com/authorization",
-			RefreshURL:       "https://example.com/refresh",
-		}), true},
+		// It's OK.
 		{implicit(ogen.OAuthFlow{
 			AuthorizationURL: "https://example.com/authorization",
 			RefreshURL:       "https://example.com/refresh",

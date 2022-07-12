@@ -9,9 +9,7 @@
       "get": {
         "security": [
           {
-            "api_key": [
-              "read"
-            ]
+            "api_key": []
           }
         ],
         "responses": {
@@ -26,7 +24,8 @@
     "securitySchemes": {
       "api_key": {
         "type": "apiKey",
-        "in": "amongus"
+        "name": "",
+        "in": "query"
       }
     }
   }

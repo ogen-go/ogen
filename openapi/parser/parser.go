@@ -78,7 +78,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			InferTypes: s.InferTypes,
 		}),
 	}
-	{
+	if spec.Raw != nil {
 		var loc location.Location
 		loc.FromNode(spec.Raw)
 		p.rootLoc.SetLocation(loc)
