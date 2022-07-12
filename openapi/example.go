@@ -1,7 +1,7 @@
 package openapi
 
 import (
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -14,5 +14,5 @@ type Example struct {
 	Value         jsonschema.Example
 	ExternalValue string
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }

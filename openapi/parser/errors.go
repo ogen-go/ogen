@@ -1,13 +1,13 @@
 package parser
 
 import (
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 // LocationError is a wrapper for an error that has a location.
-type LocationError = ogenjson.LocationError
+type LocationError = location.Error
 
-func (p *parser) wrapLocation(filename string, l ogenjson.Locator, err error) error {
+func (p *parser) wrapLocation(filename string, l location.Locator, err error) error {
 	if err == nil || p == nil {
 		return err
 	}
@@ -25,7 +25,7 @@ func (p *parser) wrapLocation(filename string, l ogenjson.Locator, err error) er
 	}
 }
 
-func (p *parser) wrapField(field, filename string, l ogenjson.Locator, err error) error {
+func (p *parser) wrapField(field, filename string, l location.Locator, err error) error {
 	if err == nil || p == nil {
 		return err
 	}

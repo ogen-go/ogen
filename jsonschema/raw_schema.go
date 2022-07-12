@@ -7,7 +7,7 @@ import (
 	"github.com/go-faster/jx"
 	"gopkg.in/yaml.v3"
 
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 // RawSchema is unparsed JSON Schema.
@@ -48,7 +48,7 @@ type RawSchema struct {
 	ContentMediaType     string                `json:"contentMediaType,omitempty" yaml:"contentMediaType,omitempty"`
 
 	XAnnotations map[string]json.RawMessage `json:"-" yaml:"-"`
-	Locator      ogenjson.Locator           `json:"-" yaml:",inline"`
+	Locator      location.Locator           `json:"-" yaml:",inline"`
 }
 
 // RawProperty is item of RawProperties.

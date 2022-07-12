@@ -1,4 +1,4 @@
-package json
+package location
 
 import (
 	"bytes"
@@ -33,25 +33,73 @@ func (p padLine) Format(f fmt.State, verb rune) {
 	_, _ = f.Write(b)
 }
 
-// PrettyError prints given message with line number and file listing to the writer.
+// PrintListingOptions is a set of options for PrintListing.
+type PrintListingOptions struct {
+	// Filename is a name of the file to print with location.
+	Filename string
+	// Context is the number of lines to print before and after the error line.
+	//
+	// If is zero, the default value 5 is used.
+	Context int
+	// If is nil, the default value color.New(color.FgRed) is used.
+	ErrColor *color.Color
+	// If is nil, the default value color.New(color.Reset) is used.
+	PlainColor *color.Color
+}
+
+func (o PrintListingOptions) contextLines(errLine int) (padNum, top, bottom int) {
+	context := o.Context
+
+	// Round up to the nearest odd number.
+	if context%2 == 0 {
+		context++
+	}
+	top, bottom = errLine-context/2, errLine+context/2
+
+	padNum = 2
+	if l := log10(bottom); l > 2 {
+		padNum = l
+	}
+
+	return padNum, top, bottom
+}
+
+func (o *PrintListingOptions) setDefaults() {
+	if o.Context == 0 {
+		o.Context = 5
+	}
+	if o.ErrColor == nil {
+		o.ErrColor = color.New(color.FgRed)
+	}
+	if o.PlainColor == nil {
+		o.PlainColor = color.New(color.Reset)
+	}
+}
+
+// PrintListing prints given message with line number and file listing to the writer.
 //
 // The context parameter defines the number of lines to print before and after.
-func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, context int) error {
-	tw := w
-	const (
-		leftPad           = "  "
-		verticalBorder    = "|"
-		verticalPointer   = "\u2191"
-		horizontalPointer = "\u2192"
-	)
+func (l Lines) PrintListing(w io.Writer, msg string, loc Location, opts PrintListingOptions) error {
+	opts.setDefaults()
 
 	// Line starts from 1, but index starts from 0.
 	errLine := loc.Line - 1
 	if len(l.data) == 0 || errLine < 0 || errLine >= len(l.lines) {
 		return errors.New("line number is out of range")
 	}
-	plainColor := color.New(color.Reset)
-	errColor := color.New(color.FgRed)
+
+	const (
+		leftPad           = "  "
+		verticalBorder    = "|"
+		verticalPointer   = "\u2191"
+		horizontalPointer = "\u2192"
+	)
+	var (
+		plainColor          = opts.PlainColor
+		errColor            = opts.ErrColor
+		filename            = opts.Filename
+		padNum, top, bottom = opts.contextLines(loc.Line)
+	)
 
 	if _, err := errColor.Fprintf(w, "%s- %s -> %s\n",
 		leftPad,
@@ -59,17 +107,6 @@ func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, cont
 		msg,
 	); err != nil {
 		return err
-	}
-
-	// Round up to the nearest odd number.
-	if context%2 == 0 {
-		context++
-	}
-	topContext, bottomContext := errLine-context/2, errLine+context/2
-
-	padNum := 2
-	if l := log10(bottomContext); l > 2 {
-		padNum = l
 	}
 
 	line := func(n int) []byte {
@@ -87,12 +124,12 @@ func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, cont
 		}
 		// Line number is 1-based, but index is 0-based.
 		lineText := line(n + 1)
-		_, err := c.Fprintf(tw, "\t%s%d %s %s\t\n", leftPad, lineNumber, verticalBorder, lineText)
+		_, err := c.Fprintf(w, "\t%s%d %s %s\t\n", leftPad, lineNumber, verticalBorder, lineText)
 		return err
 	}
 
 	// Print top context.
-	for contextLine := topContext; contextLine < errLine; contextLine++ {
+	for contextLine := top; contextLine < errLine; contextLine++ {
 		if contextLine < 0 || contextLine >= len(l.lines) {
 			continue
 		}
@@ -108,7 +145,7 @@ func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, cont
 
 	// Print column pointer.
 	if loc.Column > 0 {
-		if _, err := errColor.Fprintf(tw,
+		if _, err := errColor.Fprintf(w,
 			"\t%s%s %s %s%s\t\n",
 			leftPad,
 			strings.Repeat(" ", padNum+1),
@@ -121,7 +158,7 @@ func (l Lines) PrettyError(w io.Writer, filename, msg string, loc Location, cont
 	}
 
 	// Print bottom context.
-	for contextLine := errLine + 1; contextLine <= bottomContext; contextLine++ {
+	for contextLine := errLine + 1; contextLine <= bottom; contextLine++ {
 		if contextLine < 0 || contextLine >= len(l.lines) {
 			continue
 		}

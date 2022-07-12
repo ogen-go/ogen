@@ -16,6 +16,7 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/ogenzap"
 )
 
@@ -173,7 +174,7 @@ func run() error {
 		Format: *performFormat,
 	}
 	if err := generate(data, *packageName, fs, opts); err != nil {
-		if printPrettyError(os.Stderr, specPath, data, err) {
+		if location.PrintPrettyError(os.Stderr, specPath, data, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")
