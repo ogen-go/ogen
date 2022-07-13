@@ -8,7 +8,7 @@ import (
 )
 
 // CreateMultipartBody is helper for streaming multipart/form-data.
-func CreateMultipartBody(cb func(mw *multipart.Writer) error) (body io.ReadCloser, contentType string) {
+func CreateMultipartBody(cb func(mw *multipart.Writer) error) (body io.ReadCloser, boundary string) {
 	piper, pipew := io.Pipe()
 
 	mw := multipart.NewWriter(pipew)
@@ -27,8 +27,8 @@ func CreateMultipartBody(cb func(mw *multipart.Writer) error) (body io.ReadClose
 		w:  pipew,
 		wg: wg,
 	}
-	contentType = mw.FormDataContentType()
-	return body, contentType
+	boundary = mw.Boundary()
+	return body, boundary
 }
 
 type bodyReader struct {

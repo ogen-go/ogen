@@ -87,7 +87,7 @@ func encode{{ $op.Name }}Request(
 		ht.SetBody(r, strings.NewReader(encoded), contentType)
 		return nil
 	{{- else if $contentType.MultipartForm }}
-		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
         	{{- range $param := $type.FileParameters }}
 				{{- template "encode_multipart_file_param" $param }}
 			{{- end }}
@@ -96,7 +96,7 @@ func encode{{ $op.Name }}Request(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, contentType)
+		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	{{- else }}
 		{{- errorf "%s encoder not implemented" $contentType }}
