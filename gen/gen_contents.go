@@ -164,6 +164,9 @@ func (g *Generator) generateContents(
 		if err := func() error {
 			encoding := ir.Encoding(parsedContentType)
 			if r, ok := g.opt.ContentTypeAliases[parsedContentType]; ok {
+				if encoding.MultipartForm() {
+					return &ErrNotImplemented{"multipart form CT aliasing"}
+				}
 				encoding = r
 			}
 
