@@ -3,8 +3,8 @@ package location
 import (
 	"testing"
 
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 )
 
 func TestLocation_Key(t *testing.T) {

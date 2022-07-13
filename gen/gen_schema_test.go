@@ -8,9 +8,9 @@ import (
 	"testing"
 
 	"github.com/go-faster/errors"
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap/zaptest"
-	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/jsonschema"

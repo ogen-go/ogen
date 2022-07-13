@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 )
 
 // The Schema Object allows the definition of input and output data types.

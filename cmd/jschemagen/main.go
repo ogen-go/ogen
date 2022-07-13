@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"

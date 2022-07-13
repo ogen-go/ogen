@@ -2,7 +2,7 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/location"
