@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/go-faster/errors"
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 )
 
 // ReferenceResolver resolves JSON schema references.

@@ -4,8 +4,8 @@ import (
 	"io"
 
 	"github.com/go-faster/errors"
+	yaml "github.com/go-faster/yamlx"
 	"go.uber.org/multierr"
-	"gopkg.in/yaml.v3"
 )
 
 // PrintPrettyError prints the error in a pretty way and returns true if it was printed successfully.

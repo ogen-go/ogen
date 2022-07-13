@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 )
 
 func TestNum_UnmarshalYAML(t *testing.T) {

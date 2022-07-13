@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen/internal/location"
 )

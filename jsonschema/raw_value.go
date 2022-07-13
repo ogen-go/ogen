@@ -3,7 +3,7 @@ package jsonschema
 import (
 	"encoding/json"
 
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 )
 
 type (

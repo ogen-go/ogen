@@ -3,7 +3,7 @@ package ogen
 import (
 	"encoding/json"
 
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
