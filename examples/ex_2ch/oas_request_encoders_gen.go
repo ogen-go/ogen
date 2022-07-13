@@ -3,6 +3,7 @@
 package api
 
 import (
+	"mime"
 	"mime/multipart"
 	"net/http"
 
@@ -17,6 +18,7 @@ func encodeUserPassloginPostRequest(
 	req OptUserPassloginPostReq,
 	r *http.Request,
 ) error {
+	const contentType = "multipart/form-data"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -37,19 +39,20 @@ func encodeUserPassloginPostRequest(
 			return errors.Wrap(err, "encode query")
 		}
 	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	ht.SetBody(r, body, contentType)
+	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 func encodeUserPostingPostRequest(
 	req OptUserPostingPostReqForm,
 	r *http.Request,
 ) error {
+	const contentType = "multipart/form-data"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -233,19 +236,20 @@ func encodeUserPostingPostRequest(
 			return errors.Wrap(err, "encode query")
 		}
 	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	ht.SetBody(r, body, contentType)
+	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 func encodeUserReportPostRequest(
 	req OptUserReportPostReq,
 	r *http.Request,
 ) error {
+	const contentType = "multipart/form-data"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -314,12 +318,12 @@ func encodeUserReportPostRequest(
 			return errors.Wrap(err, "encode query")
 		}
 	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	ht.SetBody(r, body, contentType)
+	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }

@@ -4,6 +4,7 @@ package api
 
 import (
 	"bytes"
+	"mime"
 	"mime/multipart"
 	"net/http"
 	"strings"
@@ -20,6 +21,7 @@ func encodeTestFormURLEncodedRequest(
 	req TestForm,
 	r *http.Request,
 ) error {
+	const contentType = "application/x-www-form-urlencoded"
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -123,13 +125,14 @@ func encodeTestFormURLEncodedRequest(
 		}
 	}
 	encoded := q.Values().Encode()
-	ht.SetBody(r, strings.NewReader(encoded), "application/x-www-form-urlencoded")
+	ht.SetBody(r, strings.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestMultipartRequest(
 	req TestForm,
 	r *http.Request,
 ) error {
+	const contentType = "multipart/form-data"
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -232,19 +235,20 @@ func encodeTestMultipartRequest(
 			return errors.Wrap(err, "encode query")
 		}
 	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := q.WriteMultipart(w); err != nil {
 			return errors.Wrap(err, "write multipart")
 		}
 		return nil
 	})
-	ht.SetBody(r, body, contentType)
+	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 func encodeTestMultipartUploadRequest(
 	req TestMultipartUploadReqForm,
 	r *http.Request,
 ) error {
+	const contentType = "multipart/form-data"
 	request := req
 
 	q := uri.NewQueryEncoder()
@@ -280,7 +284,7 @@ func encodeTestMultipartUploadRequest(
 			return errors.Wrap(err, "encode query")
 		}
 	}
-	body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+	body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 		if err := request.File.WriteMultipart("file", w); err != nil {
 			return errors.Wrap(err, "write \"file\"")
 		}
@@ -304,7 +308,7 @@ func encodeTestMultipartUploadRequest(
 		}
 		return nil
 	})
-	ht.SetBody(r, body, contentType)
+	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 func encodeTestShareFormSchemaRequest(
@@ -313,14 +317,16 @@ func encodeTestShareFormSchemaRequest(
 ) error {
 	switch req := req.(type) {
 	case *SharedRequest:
+		const contentType = "application/json"
 		e := jx.GetEncoder()
 		{
 			req.Encode(e)
 		}
 		encoded := e.Bytes()
-		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
 	case *SharedRequestForm:
+		const contentType = "multipart/form-data"
 		request := req
 
 		q := uri.NewQueryEncoder()
@@ -340,7 +346,7 @@ func encodeTestShareFormSchemaRequest(
 				return errors.Wrap(err, "encode query")
 			}
 		}
-		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 			if val, ok := request.File.Get(); ok {
 				if err := val.WriteMultipart("file", w); err != nil {
 					return errors.Wrap(err, "write \"file\"")
@@ -351,7 +357,7 @@ func encodeTestShareFormSchemaRequest(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, contentType)
+		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
