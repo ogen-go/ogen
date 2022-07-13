@@ -186,15 +186,12 @@ func (g *Generator) responseToIR(
 	// Check for unsupported response content types.
 	var unsupported []string
 	for ct, content := range contents {
-		if content.Type.IsStream() || isBinary(content.Type.Schema) {
+		t, e := content.Type, content.Encoding
+		if e.JSON() || t.IsStream() || isBinary(t.Schema) {
 			continue
 		}
-		switch content.Encoding {
-		case ir.EncodingJSON, ir.EncodingOctetStream:
-		default:
-			delete(contents, ct)
-			unsupported = append(unsupported, string(ct))
-		}
+		delete(contents, ct)
+		unsupported = append(unsupported, string(ct))
 	}
 	if len(contents) == 0 && len(unsupported) > 0 {
 		return nil, &ErrUnsupportedContentTypes{ContentTypes: unsupported}
