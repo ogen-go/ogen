@@ -35,7 +35,6 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		AllOf:                convertMany(s.AllOf),
 		OneOf:                convertMany(s.OneOf),
 		AnyOf:                convertMany(s.AnyOf),
-		Discriminator:        s.Discriminator.ToJSONSchema(),
 		Enum:                 s.Enum,
 		MultipleOf:           s.MultipleOf,
 		Maximum:              s.Maximum,
@@ -51,10 +50,12 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		MaxProperties:        s.MaxProperties,
 		MinProperties:        s.MinProperties,
 		Default:              s.Default,
-		Example:              s.Example,
 		Deprecated:           s.Deprecated,
 		ContentEncoding:      s.ContentEncoding,
 		ContentMediaType:     s.ContentMediaType,
+		Discriminator:        s.Discriminator.ToJSONSchema(),
+		XML:                  s.XML.ToJSONSchema(),
+		Example:              s.Example,
 		XAnnotations:         map[string]json.RawMessage{},
 		Locator:              s.Locator,
 	}
@@ -114,5 +115,20 @@ func (d *Discriminator) ToJSONSchema() *jsonschema.Discriminator {
 	return &jsonschema.Discriminator{
 		PropertyName: d.PropertyName,
 		Mapping:      d.Mapping,
+	}
+}
+
+// ToJSONSchema converts XML to jsonschema.XML.
+func (d *XML) ToJSONSchema() *jsonschema.XML {
+	if d == nil {
+		return nil
+	}
+
+	return &jsonschema.XML{
+		Name:      d.Name,
+		Namespace: d.Namespace,
+		Prefix:    d.Prefix,
+		Attribute: d.Attribute,
+		Wrapped:   d.Wrapped,
 	}
 }

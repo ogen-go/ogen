@@ -401,6 +401,15 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 			Mapping:      d.Mapping,
 		}
 	}
+	if x := schema.XML; x != nil {
+		s.XML = &XML{
+			Name:      x.Name,
+			Namespace: x.Namespace,
+			Prefix:    x.Prefix,
+			Attribute: x.Attribute,
+			Wrapped:   x.Wrapped,
+		}
+	}
 
 	s.Locator = schema.Locator
 	return s
@@ -418,7 +427,7 @@ func parseType(typ string) (SchemaType, error) {
 
 	t, ok := mapping[typ]
 	if !ok {
-		return SchemaType(""), errors.Errorf("unexpected type: %q", typ)
+		return "", errors.Errorf("unexpected type: %q", typ)
 	}
 
 	return t, nil

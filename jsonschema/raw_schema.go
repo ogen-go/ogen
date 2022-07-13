@@ -26,7 +26,6 @@ type RawSchema struct {
 	AllOf                []*RawSchema          `json:"allOf,omitempty" yaml:"allOf,omitempty"`
 	OneOf                []*RawSchema          `json:"oneOf,omitempty" yaml:"oneOf,omitempty"`
 	AnyOf                []*RawSchema          `json:"anyOf,omitempty" yaml:"anyOf,omitempty"`
-	Discriminator        *Discriminator        `json:"discriminator,omitempty" yaml:"discriminator,omitempty"`
 	Enum                 Enum                  `json:"enum,omitempty" yaml:"enum,omitempty"`
 	MultipleOf           Num                   `json:"multipleOf,omitempty" yaml:"multipleOf,omitempty"`
 	Maximum              Num                   `json:"maximum,omitempty" yaml:"maximum,omitempty"`
@@ -42,10 +41,13 @@ type RawSchema struct {
 	MaxProperties        *uint64               `json:"maxProperties,omitempty" yaml:"maxProperties,omitempty"`
 	MinProperties        *uint64               `json:"minProperties,omitempty" yaml:"minProperties,omitempty"`
 	Default              Default               `json:"default,omitempty" yaml:"default,omitempty"`
-	Example              Example               `json:"example,omitempty" yaml:"example,omitempty"`
 	Deprecated           bool                  `json:"deprecated,omitempty" yaml:"deprecated,omitempty"`
 	ContentEncoding      string                `json:"contentEncoding,omitempty" yaml:"contentEncoding,omitempty"`
 	ContentMediaType     string                `json:"contentMediaType,omitempty" yaml:"contentMediaType,omitempty"`
+
+	Discriminator *Discriminator `json:"discriminator,omitempty" yaml:"discriminator,omitempty"`
+	XML           *XML           `json:"xml,omitempty" yaml:"xml,omitempty"`
+	Example       Example        `json:"example,omitempty" yaml:"example,omitempty"`
 
 	XAnnotations map[string]json.RawMessage `json:"-" yaml:"-"`
 	Locator      location.Locator           `json:"-" yaml:",inline"`
@@ -245,8 +247,44 @@ func (p *RawPatternProperties) UnmarshalJSON(data []byte) error {
 	})
 }
 
-// Discriminator is JSON Schema discriminator description.
+// Discriminator discriminates types for OneOf, AllOf, AnyOf.
+//
+// See https://spec.openapis.org/oas/v3.1.0#discriminator-object.
 type Discriminator struct {
-	PropertyName string            `json:"propertyName" yaml:"propertyName"`
-	Mapping      map[string]string `json:"mapping,omitempty" yaml:"mapping,omitempty"`
+	// REQUIRED. The name of the property in the payload that will hold the discriminator value.
+	PropertyName string `json:"propertyName" yaml:"propertyName"`
+	// An object to hold mappings between payload values and schema names or references.
+	Mapping map[string]string `json:"mapping,omitempty" yaml:"mapping,omitempty"`
+}
+
+// XML is a metadata object that allows for more fine-tuned XML model definitions.
+//
+// See https://spec.openapis.org/oas/v3.1.0#xml-object.
+type XML struct {
+	// Replaces the name of the element/attribute used for the described schema property.
+	//
+	// When defined within items, it will affect the name of the individual XML elements within the list.
+	//
+	// When defined alongside type being array (outside the items), it will affect the wrapping element
+	// and only if wrapped is true.
+	//
+	// If wrapped is false, it will be ignored.
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
+	// The URI of the namespace definition.
+	//
+	// This MUST be in the form of an absolute URI.
+	Namespace string `json:"namespace,omitempty" yaml:"namespace,omitempty"`
+	// The prefix to be used for the name.
+	Prefix string `json:"prefix,omitempty" yaml:"prefix,omitempty"`
+	// Declares whether the property definition translates to an attribute instead of an element.
+	//
+	// Default value is false.
+	Attribute bool `json:"attribute,omitempty" yaml:"attribute,omitempty"`
+	// MAY be used only for an array definition. Signifies whether the array is wrapped
+	// (for example, `<books><book/><book/></books>`) or unwrapped (`<book/><book/>`).
+	//
+	// The definition takes effect only when defined alongside type being array (outside the items).
+	//
+	// Default value is false.
+	Wrapped bool `json:"wrapped,omitempty" yaml:"wrapped,omitempty"`
 }

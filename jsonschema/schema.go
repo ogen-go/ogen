@@ -51,10 +51,12 @@ type Schema struct {
 
 	Nullable bool // Whether schema is nullable or not. Any types.
 
-	OneOf         []*Schema
-	AnyOf         []*Schema
-	AllOf         []*Schema
+	OneOf []*Schema
+	AnyOf []*Schema
+	AllOf []*Schema
+
 	Discriminator *Discriminator
+	XML           *XML
 
 	// Numeric validation (Integer, Number).
 	Maximum          Num
