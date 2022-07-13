@@ -1,7 +1,7 @@
 package openapi
 
 import (
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -45,7 +45,7 @@ type Parameter struct {
 	Explode     bool
 	Required    bool
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }
 
 // ParameterContent describes OpenAPI Parameter content field.

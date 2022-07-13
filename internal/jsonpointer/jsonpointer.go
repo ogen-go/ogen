@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 )
 
 // Resolve takes given pointer and returns byte slice of requested value if any.

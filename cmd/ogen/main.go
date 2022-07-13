@@ -16,6 +16,7 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/ogenzap"
 )
 
@@ -85,9 +86,12 @@ func run() error {
 	logOptions.RegisterFlags(flag.CommandLine)
 
 	var (
+		ctAliases gen.ContentTypeAliases
+
 		filterPath    *regexp.Regexp
 		filterMethods []string
 	)
+	flag.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
 	flag.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
 		filterPath, err = regexp.Compile(s)
 		return err
@@ -143,13 +147,13 @@ func run() error {
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
 		AllowRemote:          *allowRemote,
-		Filename:             fileName,
 		Filters: gen.Filters{
 			PathRegex: filterPath,
 			Methods:   filterMethods,
 		},
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
-		NotImplementedHook:   nil,
+		ContentTypeAliases:   ctAliases,
+		Filename:             fileName,
 		Logger:               logger,
 	}
 	if expr := *skipTestsRegex; expr != "" {
@@ -173,7 +177,7 @@ func run() error {
 		Format: *performFormat,
 	}
 	if err := generate(data, *packageName, fs, opts); err != nil {
-		if printPrettyError(os.Stderr, specPath, data, err) {
+		if location.PrintPrettyError(os.Stderr, specPath, data, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")

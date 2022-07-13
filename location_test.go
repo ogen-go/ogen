@@ -6,11 +6,11 @@ import (
 	"strings"
 	"testing"
 
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 func TestLocator(t *testing.T) {
@@ -97,27 +97,27 @@ var (
 )
 
 func TestLocation(t *testing.T) {
-	createEqualLoc := func(a *assert.Assertions, data []byte) func(l ogenjson.Locatable, line, column int) {
-		var lines ogenjson.Lines
+	createEqualLoc := func(a *assert.Assertions, data []byte) func(l location.Locatable, line, column int) {
+		var lines location.Lines
 		lines.Collect(data)
-		return func(l ogenjson.Locatable, line, column int) {
+		return func(l location.Locatable, line, column int) {
 			t.Helper()
 
 			loc, ok := l.Location()
 			a.True(ok)
-			type location struct {
-				Line, Column int
-				Data         string
-			}
 			getLine := func(n int) string {
 				start, end := lines.Line(n)
 				// Offset points exactly to the newline, trim it.
 				return strings.Trim(string(data[start:end]), "\n\r")
 			}
 
+			type compareLoc struct {
+				Line, Column int
+				Data         string
+			}
 			a.Equal(
-				location{line, column, getLine(line)},
-				location{loc.Line, loc.Column, getLine(loc.Line)},
+				compareLoc{line, column, getLine(line)},
+				compareLoc{loc.Line, loc.Column, getLine(loc.Line)},
 			)
 		}
 	}

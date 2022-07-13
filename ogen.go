@@ -2,7 +2,7 @@
 package ogen
 
 import (
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 )
 
 // Parse parses JSON/YAML into OpenAPI Spec.

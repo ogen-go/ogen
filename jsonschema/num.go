@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"gopkg.in/yaml.v3"
+	yaml "github.com/go-faster/yamlx"
 )
 
 // Num represents JSON number.

@@ -16,7 +16,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 			{{- template "respond" $info }}
 		{{- end }}
 		default:
-		return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
+			return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
 		}
 	{{- end }}
 }
@@ -54,11 +54,11 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 {
 	h := uri.NewHeaderEncoder(w.Header())
 	{{- range $_, $header := $.Headers }}
-	// Encode '{{ $header.Spec.Name }}' header.
+	// Encode {{ quote $header.Spec.Name }} header.
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
 			Name:    {{ quote $header.Spec.Name }},
-			Explode: {{ if $header.Spec.Explode}}true{{ else }}false{{ end }},
+			Explode: {{ if $header.Spec.Explode }}true{{ else }}false{{ end }},
 		}
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error{
 			{{- template "uri/encode" elem $header.Type (printf "response.%s" $header.Name) }}
@@ -97,7 +97,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 		{{- $var = "response.Response" }}
 	{{- end }}
 
-	{{- if $.ContentType.JSON }}
+	{{- if $.Encoding.JSON }}
 		e := jx.GetEncoder()
 		{{ template "json/enc" elem $type $var }}
 		if _, err := e.WriteTo(w); err != nil {
@@ -110,7 +110,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 		}
 		return nil
 	{{- else }}
-		{{- errorf "%q: %s encoder not implemented" $.ContentType $type }}
+		{{- errorf "%q: %s encoder not implemented" $.Encoding $type }}
 	{{- end }}
 {{- end }}
 {{ end }}

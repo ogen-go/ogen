@@ -22,12 +22,15 @@ func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*i
 	}
 
 	for code, r := range r.StatusCode {
-		for contentType, t := range r.Contents {
-			typ, err := do(statusText(code), t, contentType)
+		for contentType, media := range r.Contents {
+			typ, err := do(statusText(code), media.Type, contentType)
 			if err != nil {
 				return errors.Wrapf(err, "%d: %q", code, contentType)
 			}
-			r.Contents[contentType] = typ
+			r.Contents[contentType] = ir.Media{
+				Encoding: media.Encoding,
+				Type:     typ,
+			}
 		}
 		if r.NoContent != nil {
 			typ, err := do(statusText(code), r.NoContent, "")
@@ -39,12 +42,15 @@ func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*i
 	}
 
 	if def := r.Default; def != nil {
-		for contentType, t := range def.Contents {
-			typ, err := do("Default", t, contentType)
+		for contentType, media := range def.Contents {
+			typ, err := do("Default", media.Type, contentType)
 			if err != nil {
 				return errors.Wrapf(err, "default: %q", contentType)
 			}
-			def.Contents[contentType] = typ
+			def.Contents[contentType] = ir.Media{
+				Encoding: media.Encoding,
+				Type:     typ,
+			}
 		}
 		if def.NoContent != nil {
 			typ, err := walkFn("Default", def.NoContent)
@@ -70,9 +76,9 @@ func walkOpTypes(ops []*ir.Operation, walk func(*ir.Type) error) (err error) {
 		err = walk(t)
 	}
 
-	visitContents := func(c map[ir.ContentType]*ir.Type) {
-		for _, t := range c {
-			visit(t)
+	visitContents := func(c map[ir.ContentType]ir.Media) {
+		for _, media := range c {
+			visit(media.Type)
 		}
 	}
 

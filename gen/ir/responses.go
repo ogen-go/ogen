@@ -6,8 +6,9 @@ import (
 
 type ResponseInfo struct {
 	Type           *Type
-	StatusCode     int
+	Encoding       Encoding
 	ContentType    ContentType
+	StatusCode     int
 	NoContent      bool
 	WithStatusCode bool
 	WithHeaders    bool
@@ -28,11 +29,12 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 			})
 			continue
 		}
-		for contentType, typ := range resp.Contents {
+		for contentType, media := range resp.Contents {
 			result = append(result, ResponseInfo{
-				Type:           typ,
-				StatusCode:     statusCode,
+				Type:           media.Type,
+				Encoding:       media.Encoding,
 				ContentType:    contentType,
+				StatusCode:     statusCode,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
 				Headers:        resp.Headers,
@@ -50,9 +52,10 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				Headers:        def.Headers,
 			})
 		}
-		for contentType, typ := range def.Contents {
+		for contentType, media := range def.Contents {
 			result = append(result, ResponseInfo{
-				Type:           typ,
+				Type:           media.Type,
+				Encoding:       media.Encoding,
 				ContentType:    contentType,
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,

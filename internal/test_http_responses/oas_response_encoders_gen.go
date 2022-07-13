@@ -42,7 +42,7 @@ func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'TestHeader' header.
+		// Encode "TestHeader" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "TestHeader",
@@ -66,7 +66,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'TestHeader' header.
+			// Encode "TestHeader" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "TestHeader",
@@ -87,7 +87,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'TestHeader' header.
+			// Encode "TestHeader" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "TestHeader",
@@ -117,7 +117,7 @@ func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWri
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'TestHeader' header.
+		// Encode "TestHeader" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "TestHeader",

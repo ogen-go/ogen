@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	helperyaml "github.com/ghodss/yaml"
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 )
 
 func getNode(t require.TestingT, input []byte) *yaml.Node {

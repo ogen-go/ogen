@@ -6,8 +6,8 @@ import (
 	"sort"
 	"testing"
 
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"

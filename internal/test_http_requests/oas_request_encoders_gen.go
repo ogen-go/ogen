@@ -4,6 +4,7 @@ package api
 
 import (
 	"bytes"
+	"mime"
 	"mime/multipart"
 	"net/http"
 	"strings"
@@ -22,17 +23,20 @@ func encodeAllRequestBodiesRequest(
 ) error {
 	switch req := req.(type) {
 	case *AllRequestBodiesApplicationJSON:
+		const contentType = "application/json"
 		e := jx.GetEncoder()
 		{
 			req.Encode(e)
 		}
 		encoded := e.Bytes()
-		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
 	case *AllRequestBodiesReqApplicationOctetStream:
-		ht.SetBody(r, req, "application/octet-stream")
+		const contentType = "application/octet-stream"
+		ht.SetBody(r, req, contentType)
 		return nil
 	case *AllRequestBodiesApplicationXWwwFormUrlencoded:
+		const contentType = "application/x-www-form-urlencoded"
 		request := req
 
 		q := uri.NewQueryEncoder()
@@ -66,9 +70,10 @@ func encodeAllRequestBodiesRequest(
 			}
 		}
 		encoded := q.Values().Encode()
-		ht.SetBody(r, strings.NewReader(encoded), "application/x-www-form-urlencoded")
+		ht.SetBody(r, strings.NewReader(encoded), contentType)
 		return nil
 	case *AllRequestBodiesMultipartFormData:
+		const contentType = "multipart/form-data"
 		request := req
 
 		q := uri.NewQueryEncoder()
@@ -101,16 +106,17 @@ func encodeAllRequestBodiesRequest(
 				return errors.Wrap(err, "encode query")
 			}
 		}
-		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 			if err := q.WriteMultipart(w); err != nil {
 				return errors.Wrap(err, "write multipart")
 			}
 			return nil
 		})
-		ht.SetBody(r, body, contentType)
+		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	case *AllRequestBodiesReqTextPlain:
-		ht.SetBody(r, req, "text/plain")
+		const contentType = "text/plain"
+		ht.SetBody(r, req, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -122,6 +128,7 @@ func encodeAllRequestBodiesOptionalRequest(
 ) error {
 	switch req := req.(type) {
 	case *AllRequestBodiesOptionalApplicationJSON:
+		const contentType = "application/json"
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil
@@ -131,12 +138,14 @@ func encodeAllRequestBodiesOptionalRequest(
 			req.Encode(e)
 		}
 		encoded := e.Bytes()
-		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
 	case *AllRequestBodiesOptionalReqApplicationOctetStream:
-		ht.SetBody(r, req, "application/octet-stream")
+		const contentType = "application/octet-stream"
+		ht.SetBody(r, req, contentType)
 		return nil
 	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
+		const contentType = "application/x-www-form-urlencoded"
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil
@@ -174,9 +183,10 @@ func encodeAllRequestBodiesOptionalRequest(
 			}
 		}
 		encoded := q.Values().Encode()
-		ht.SetBody(r, strings.NewReader(encoded), "application/x-www-form-urlencoded")
+		ht.SetBody(r, strings.NewReader(encoded), contentType)
 		return nil
 	case *AllRequestBodiesOptionalMultipartFormData:
+		const contentType = "multipart/form-data"
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil
@@ -213,16 +223,17 @@ func encodeAllRequestBodiesOptionalRequest(
 				return errors.Wrap(err, "encode query")
 			}
 		}
-		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 			if err := q.WriteMultipart(w); err != nil {
 				return errors.Wrap(err, "write multipart")
 			}
 			return nil
 		})
-		ht.SetBody(r, body, contentType)
+		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	case *AllRequestBodiesOptionalReqTextPlain:
-		ht.SetBody(r, req, "text/plain")
+		const contentType = "text/plain"
+		ht.SetBody(r, req, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)

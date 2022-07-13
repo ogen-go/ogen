@@ -9,19 +9,6 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseStatus(status string, response *ogen.Response, ctx *resolveCtx) (*openapi.Response, error) {
-	if err := validateStatusCode(status); err != nil {
-		return nil, err
-	}
-
-	resp, err := p.parseResponse(response, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	return resp, nil
-}
-
 func (p *parser) parseResponses(responses ogen.Responses, ctx *resolveCtx) (_ map[string]*openapi.Response, err error) {
 	if len(responses) == 0 {
 		return nil, errors.New("no responses")
@@ -36,6 +23,19 @@ func (p *parser) parseResponses(responses ogen.Responses, ctx *resolveCtx) (_ ma
 	}
 
 	return result, nil
+}
+
+func (p *parser) parseStatus(status string, response *ogen.Response, ctx *resolveCtx) (*openapi.Response, error) {
+	if err := validateStatusCode(status); err != nil {
+		return nil, err
+	}
+
+	resp, err := p.parseResponse(response, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
 }
 
 func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi.Response, rerr error) {
@@ -56,12 +56,14 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi
 
 	content, err := p.parseContent(resp.Content, ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "content")
+		err := errors.Wrap(err, "content")
+		return nil, p.wrapField("content", ctx.lastLoc(), resp.Locator, err)
 	}
 
 	headers, err := p.parseHeaders(resp.Headers, ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "headers")
+		err := errors.Wrap(err, "headers")
+		return nil, p.wrapField("headers", ctx.lastLoc(), resp.Locator, err)
 	}
 
 	return &openapi.Response{

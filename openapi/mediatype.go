@@ -3,7 +3,7 @@ package openapi
 import (
 	"encoding/json"
 
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -14,7 +14,7 @@ type MediaType struct {
 	Examples map[string]*Example
 	Encoding map[string]*Encoding
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }
 
 // Encoding is Encoding Type Object.
@@ -25,5 +25,5 @@ type Encoding struct {
 	Explode       bool
 	AllowReserved bool
 
-	ogenjson.Locator `json:"-" yaml:"-"`
+	location.Locator `json:"-" yaml:"-"`
 }

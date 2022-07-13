@@ -106,7 +106,7 @@ func generateSpec() *ogen.Spec {
 				"error": {
 					Description: "An Error Response",
 					Content: map[string]ogen.Media{
-						string(ir.ContentTypeJSON): {Schema: &ogen.Schema{
+						string(ir.EncodingJSON): {Schema: &ogen.Schema{
 							Type:        "object",
 							Description: "Error Response Schema",
 							Properties: []ogen.Property{
@@ -121,7 +121,7 @@ func generateSpec() *ogen.Spec {
 				"defaultBody": {
 					Description: "Referenced RequestBody",
 					Content: map[string]ogen.Media{
-						string(ir.ContentTypeJSON): {
+						string(ir.EncodingJSON): {
 							Schema: &ogen.Schema{Type: "string"},
 						},
 					},
@@ -139,7 +139,7 @@ func generateSpec() *ogen.Spec {
 		{"request", func(op *ogen.Operation, schema *ogen.NamedSchema) {
 			op.SetRequestBody(&ogen.RequestBody{
 				Content: map[string]ogen.Media{
-					string(ir.ContentTypeJSON): {
+					string(ir.EncodingJSON): {
 						Schema: schema.Schema,
 					},
 				},
@@ -150,7 +150,7 @@ func generateSpec() *ogen.Spec {
 		{"request_required", func(op *ogen.Operation, schema *ogen.NamedSchema) {
 			op.SetRequestBody(&ogen.RequestBody{
 				Content: map[string]ogen.Media{
-					string(ir.ContentTypeJSON): {
+					string(ir.EncodingJSON): {
 						Schema: schema.Schema,
 					},
 				},
@@ -162,7 +162,7 @@ func generateSpec() *ogen.Spec {
 			op.SetResponses(ogen.Responses{
 				"200": {
 					Content: map[string]ogen.Media{
-						string(ir.ContentTypeJSON): {
+						string(ir.EncodingJSON): {
 							Schema: schema.Schema,
 						},
 					},

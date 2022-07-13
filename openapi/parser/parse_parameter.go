@@ -71,22 +71,30 @@ func (p *parser) parseParams(params []*ogen.Parameter, ctx *resolveCtx) ([]*open
 	return result, nil
 }
 
-func validateParameter(name string, locatedIn openapi.ParameterLocation, param *ogen.Parameter) error {
+func (p *parser) validateParameter(
+	name string,
+	locatedIn openapi.ParameterLocation,
+	param *ogen.Parameter,
+	loc string,
+) error {
 	switch {
 	case param.Schema != nil && param.Content != nil:
-		return errors.New("parameter MUST contain either a schema property, or a content property, but not both")
+		err := errors.New("parameter MUST contain either a schema property, or a content property, but not both")
+		return p.wrapField("schema", loc, param.Locator, err)
 	case param.Schema == nil && param.Content == nil:
 		return errors.New("parameter MUST contain either a schema property, or a content property")
 	case param.Content != nil && len(param.Content) < 1:
 		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
-		return errors.New("content must have at least one entry")
+		err := errors.New("content must have at least one entry")
+		return p.wrapField("content", loc, param.Locator, err)
 	}
 
 	// Path parameters are always required.
 	switch locatedIn {
 	case openapi.LocationPath:
 		if !param.Required {
-			return errors.New("path parameters must be required")
+			err := errors.New("path parameters must be required")
+			return p.wrapField("required", loc, param.Locator, err)
 		}
 	case openapi.LocationHeader:
 		if !httpguts.ValidHeaderFieldName(name) {
@@ -124,18 +132,20 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 		return nil, p.wrapField("in", ctx.lastLoc(), param.Locator, err)
 	}
 
-	if err := validateParameter(param.Name, locatedIn, param); err != nil {
+	if err := p.validateParameter(param.Name, locatedIn, param, ctx.lastLoc()); err != nil {
 		return nil, err
 	}
 
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "schema")
+		err = errors.Wrap(err, "schema")
+		return nil, p.wrapField("schema", ctx.lastLoc(), param.Locator, err)
 	}
 
 	content, err := p.parseParameterContent(param.Content, ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "content")
+		err = errors.Wrap(err, "content")
+		return nil, p.wrapField("content", ctx.lastLoc(), param.Locator, err)
 	}
 
 	op := &openapi.Parameter{
@@ -155,7 +165,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 		return op, nil
 	}
 
-	if err := validateParamStyle(op); err != nil {
+	if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
 		return nil, err
 	}
 
@@ -191,7 +201,7 @@ func inferParamExplode(locatedIn openapi.ParameterLocation, explode *bool) bool 
 	return false
 }
 
-func validateParamStyle(p *openapi.Parameter) error {
+func (p *parser) validateParamStyle(param *openapi.Parameter, loc string) error {
 	// https://swagger.io/docs/specification/serialization/
 	const (
 		primitive byte = 1 << iota
@@ -231,20 +241,23 @@ func validateParamStyle(p *openapi.Parameter) error {
 			{openapi.CookieStyleForm, false}: primitive | array | object,
 		},
 	}
-
-	styles, ok := table[p.In]
-	if !ok {
-		return errors.Errorf("invalid in: %q", p.In)
+	wrap := func(field string, err error) error {
+		return p.wrapField(field, loc, param.Locator, err)
 	}
 
-	types, ok := styles[stexp{p.Style, p.Explode}]
+	styles, ok := table[param.In]
 	if !ok {
-		return errors.Errorf("invalid style explode combination %q, explode:%v", p.Style, p.Explode)
+		return wrap("in", errors.Errorf(`invalid "in": %q`, param.In))
+	}
+
+	types, ok := styles[stexp{param.Style, param.Explode}]
+	if !ok {
+		return errors.Errorf("invalid style explode combination %q, explode:%v", param.Style, param.Explode)
 	}
 
 	allowed := func(t byte) bool { return types&t != 0 }
 
-	switch p.Schema.Type {
+	switch param.Schema.Type {
 	case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
 		if allowed(primitive) {
 			return nil
@@ -258,8 +271,8 @@ func validateParamStyle(p *openapi.Parameter) error {
 			return nil
 		}
 	case jsonschema.Empty:
-		if p.Schema.OneOf != nil {
-			for _, s := range p.Schema.OneOf {
+		if param.Schema.OneOf != nil {
+			for _, s := range param.Schema.OneOf {
 				switch s.Type {
 				case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
 					// ok
@@ -275,5 +288,5 @@ func validateParamStyle(p *openapi.Parameter) error {
 	}
 
 	return errors.Errorf("invalid schema:style:explode combination: (%q:%q:%v)",
-		p.Schema.Type, p.Style, p.Explode)
+		param.Schema.Type, param.Style, param.Explode)
 }

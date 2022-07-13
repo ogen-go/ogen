@@ -35,11 +35,13 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		return req, close, errors.Wrap(err, "parse media type")
 	}
 	switch ct {
-{{- range $contentType, $t := $op.Request.Contents }}
+{{- range $contentType, $media := $op.Request.Contents }}
+	{{- $t := $media.Type }}
+	{{- $e := $media.Encoding }}
 	case {{ quote $contentType }}:
 	{{- if $t.IsStream }}
 		request := {{ $t.Go }}{Data: r.Body}
-	{{- else if $contentType.JSON }}
+	{{- else if $e.JSON }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, close, nil
@@ -77,7 +79,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 			return req, close, errors.Wrap(err, "validate")
 		}
 		{{- end }}
-    {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
+    {{- else if or $e.FormURLEncoded $e.MultipartForm }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, close, nil
@@ -86,7 +88,7 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 		{{- end }}
 		}
 
-		{{- if $contentType.FormURLEncoded }}
+		{{- if $e.FormURLEncoded }}
 		if err := r.ParseForm(); err != nil {
 			return req, close, errors.Wrap(err, "parse form")
 		}

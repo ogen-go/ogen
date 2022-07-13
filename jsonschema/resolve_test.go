@@ -9,7 +9,7 @@ import (
 	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
 
-	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 type external map[string]components
@@ -137,7 +137,7 @@ func TestExternalReference(t *testing.T) {
 }
 
 func zeroLocator(s *Schema) {
-	var zeroed ogenjson.Locator
+	var zeroed location.Locator
 	if s == nil {
 		return
 	}
