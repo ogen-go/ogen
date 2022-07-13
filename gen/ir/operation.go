@@ -94,43 +94,8 @@ func (op Parameter) Default() Default {
 
 type Request struct {
 	Type     *Type
-	Contents map[ContentType]*Type
+	Contents map[ContentType]Media
 	Spec     *openapi.RequestBody
-}
-
-// ContentType of body.
-type ContentType string
-
-const (
-	// ContentTypeJSON is ContentType for json.
-	ContentTypeJSON ContentType = "application/json"
-	// ContentTypeFormURLEncoded is ContentType for URL-encoded form.
-	ContentTypeFormURLEncoded ContentType = "application/x-www-form-urlencoded"
-	// ContentTypeMultipart is ContentType for multipart form.
-	ContentTypeMultipart ContentType = "multipart/form-data"
-	// ContentTypeOctetStream is ContentType for binary.
-	ContentTypeOctetStream ContentType = "application/octet-stream"
-	// ContentTypeTextPlain is ContentType for text.
-	ContentTypeTextPlain ContentType = "text/plain"
-)
-
-func (t ContentType) String() string { return string(t) }
-
-func (t ContentType) Mask() bool { return strings.ContainsRune(string(t), '*') }
-
-func (t ContentType) JSON() bool { return t == ContentTypeJSON }
-
-func (t ContentType) FormURLEncoded() bool { return t == ContentTypeFormURLEncoded }
-
-func (t ContentType) MultipartForm() bool { return t == ContentTypeMultipart }
-
-func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }
-
-func (t ContentType) TextPlain() bool { return t == ContentTypeTextPlain }
-
-type Media struct {
-	Encoding ContentType
-	Type     *Type
 }
 
 type Responses struct {
@@ -141,7 +106,7 @@ type Responses struct {
 
 type Response struct {
 	NoContent *Type
-	Contents  map[ContentType]*Type
+	Contents  map[ContentType]Media
 	Spec      *openapi.Response
 	Headers   map[string]*Parameter
 
@@ -171,9 +136,10 @@ func (s Response) ResponseInfo() []ResponseInfo {
 			WithHeaders:    s.WithHeaders,
 		})
 	}
-	for contentType, typ := range s.Contents {
+	for contentType, media := range s.Contents {
 		result = append(result, ResponseInfo{
-			Type:           typ,
+			Type:           media.Type,
+			Encoding:       media.Encoding,
 			ContentType:    contentType,
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,

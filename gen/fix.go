@@ -60,6 +60,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 
 	type candidate struct {
 		renameTo string
+		encoding ir.Encoding
 		typ      *ir.Type
 
 		replaceNoc bool
@@ -116,8 +117,9 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 					if lcode == rcode && lct == rct {
 						continue
 					}
-					lschema, rschema := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
-					if reflect.DeepEqual(lschema, rschema) {
+					lmedia, rmedia := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
+					ltype, rtype := lmedia.Type, rmedia.Type
+					if reflect.DeepEqual(ltype, rtype) {
 						lname, err := pascal(op.Name, lct, statusText(lcode))
 						if err != nil {
 							return errors.Wrap(err, "lname")
@@ -129,12 +131,14 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 
 						candidates = append(candidates, candidate{
 							renameTo:  lname,
-							typ:       lschema,
+							encoding:  lmedia.Encoding,
+							typ:       ltype,
 							replaceCT: lct,
 							response:  lresp,
 						}, candidate{
 							renameTo:  rname,
-							typ:       rschema,
+							encoding:  rmedia.Encoding,
+							typ:       rtype,
 							replaceCT: rct,
 							response:  rresp,
 						})
@@ -158,7 +162,10 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			continue
 		}
 
-		candidate.response.Contents[ir.ContentType(candidate.replaceCT)] = alias
+		candidate.response.Contents[ir.ContentType(candidate.replaceCT)] = ir.Media{
+			Encoding: candidate.encoding,
+			Type:     alias,
+		}
 	}
 
 	return nil
@@ -173,7 +180,7 @@ func cloneResponse(r *ir.Responses) *ir.Responses {
 	for code, statResp := range r.StatusCode {
 		newStatResp := &ir.Response{
 			NoContent:      statResp.NoContent,
-			Contents:       map[ir.ContentType]*ir.Type{},
+			Contents:       map[ir.ContentType]ir.Media{},
 			Headers:        statResp.Headers,
 			WithStatusCode: statResp.WithStatusCode,
 			WithHeaders:    statResp.WithHeaders,
@@ -202,6 +209,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 	type candidate struct {
 		renameTo string
 		ctype    string
+		encoding ir.Encoding
 		t        *ir.Type
 	}
 	var candidates []candidate
@@ -213,14 +221,16 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 	sort.Strings(contents)
 
 	for _, lcontent := range contents {
-		lschema := op.Request.Contents[ir.ContentType(lcontent)]
+		lmedia := op.Request.Contents[ir.ContentType(lcontent)]
+		ltype := lmedia.Type
 		for _, rcontent := range contents {
 			if lcontent == rcontent {
 				continue
 			}
 
-			rschema := op.Request.Contents[ir.ContentType(rcontent)]
-			if reflect.DeepEqual(lschema, rschema) {
+			rmedia := op.Request.Contents[ir.ContentType(rcontent)]
+			rtype := rmedia.Type
+			if reflect.DeepEqual(ltype, rtype) {
 				lname, err := pascal(op.Name, lcontent)
 				if err != nil {
 					return errors.Wrap(err, "lname")
@@ -232,11 +242,13 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 				candidates = append(candidates, candidate{
 					renameTo: lname,
 					ctype:    lcontent,
-					t:        lschema,
+					encoding: lmedia.Encoding,
+					t:        ltype,
 				}, candidate{
 					renameTo: rname,
 					ctype:    rcontent,
-					t:        rschema,
+					encoding: rmedia.Encoding,
+					t:        rtype,
 				})
 			}
 		}
@@ -251,16 +263,19 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 		// g.saveType(alias)
 		ctx.local.types[alias.Name] = alias
 
-		op.Request.Contents[ir.ContentType(candidate.ctype)] = alias
+		op.Request.Contents[ir.ContentType(candidate.ctype)] = ir.Media{
+			Encoding: candidate.encoding,
+			Type:     alias,
+		}
 	}
 
 	return nil
 }
 
 func cloneRequest(r *ir.Request) *ir.Request {
-	contents := make(map[ir.ContentType]*ir.Type)
-	for contentType, t := range r.Contents {
-		contents[contentType] = t
+	contents := make(map[ir.ContentType]ir.Media)
+	for contentType, media := range r.Contents {
+		contents[contentType] = media
 	}
 	return &ir.Request{
 		Type:     r.Type,

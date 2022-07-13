@@ -49,7 +49,7 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'x-next' header.
+			// Encode "x-next" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "x-next",

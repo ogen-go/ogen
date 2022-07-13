@@ -70,8 +70,8 @@ func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) (r []stri
 	}
 	if t.Error != nil {
 		add(t.Error.NoContent)
-		for _, typ := range t.Error.Contents {
-			add(typ)
+		for _, media := range t.Error.Contents {
+			add(media.Type)
 		}
 	}
 	add(t.ErrorType)
@@ -192,7 +192,15 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		skipTestRegex: g.opt.SkipTestRegex,
 	}
 	if cfg.Error != nil {
-		cfg.ErrorType = cfg.Error.Contents[ir.ContentTypeJSON]
+		if len(cfg.Error.Contents) != 1 {
+			panic(unreachable("error type must have exactly one content type"))
+		}
+		for _, media := range cfg.Error.Contents {
+			if media.Encoding.JSON() {
+				cfg.ErrorType = media.Type
+				break
+			}
+		}
 	}
 
 	genClient, genServer := !g.opt.NoClient, !g.opt.NoServer

@@ -54,7 +54,9 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		return res, errors.Wrap(err, "parse media type")
 	}
 	switch {
-	{{- range $contentType, $originalType := $response.Contents }}{{/* Range over contents */}}
+	{{- range $contentType, $media := $response.Contents }}{{/* Range over contents */}}
+		{{- $originalType := $media.Type }}
+		{{- $encoding := $media.Encoding }}
 		{{- if not $contentType.Mask }}
 		case ct == {{ quote $contentType }}:
 		{{- else }}
@@ -65,7 +67,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			{{- $type = ($type.MustField "Response").Type }}
 		{{- end }}
 
-		{{- if $contentType.JSON }}
+		{{- if $encoding.JSON }}
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
@@ -87,7 +89,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 
 			response := {{ $type.Name }}{Data: bytes.NewReader(b)}
 		{{- else }}
-			{{- errorf "%q: %s decoder not implemented" $contentType $type }}
+			{{- errorf "%q: %s decoder not implemented" $encoding $type }}
 		{{- end }}
 
 		{{- if $response.WithHeaders }}

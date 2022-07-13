@@ -20,18 +20,20 @@ func encodeTestQueryParameterRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestAnyRequest(
 	req jx.Raw,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if len(req) != 0 {
@@ -39,13 +41,14 @@ func encodeTestRequestAnyRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestBooleanRequest(
 	req OptBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -57,13 +60,14 @@ func encodeTestRequestBooleanRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestBooleanArrayRequest(
 	req []bool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -75,13 +79,14 @@ func encodeTestRequestBooleanArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestBooleanArrayArrayRequest(
 	req [][]bool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -97,13 +102,14 @@ func encodeTestRequestBooleanArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestBooleanNullableRequest(
 	req OptNilBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -115,13 +121,14 @@ func encodeTestRequestBooleanNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestBooleanNullableArrayRequest(
 	req []NilBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -133,13 +140,14 @@ func encodeTestRequestBooleanNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestBooleanNullableArrayArrayRequest(
 	req [][]NilBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -155,13 +163,14 @@ func encodeTestRequestBooleanNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestEmptyStructRequest(
 	req *TestRequestEmptyStructReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -169,13 +178,14 @@ func encodeTestRequestEmptyStructRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestFormatTestRequest(
 	req OptTestRequestFormatTestReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -187,13 +197,14 @@ func encodeTestRequestFormatTestRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerRequest(
 	req OptInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -205,13 +216,14 @@ func encodeTestRequestIntegerRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerArrayRequest(
 	req []int,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -223,13 +235,14 @@ func encodeTestRequestIntegerArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerArrayArrayRequest(
 	req [][]int,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -245,13 +258,14 @@ func encodeTestRequestIntegerArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt32Request(
 	req OptInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -263,13 +277,14 @@ func encodeTestRequestIntegerInt32Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -281,13 +296,14 @@ func encodeTestRequestIntegerInt32ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -303,13 +319,14 @@ func encodeTestRequestIntegerInt32ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt32NullableRequest(
 	req OptNilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -321,13 +338,14 @@ func encodeTestRequestIntegerInt32NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -339,13 +357,14 @@ func encodeTestRequestIntegerInt32NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -361,13 +380,14 @@ func encodeTestRequestIntegerInt32NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt64Request(
 	req OptInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -379,13 +399,14 @@ func encodeTestRequestIntegerInt64Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -397,13 +418,14 @@ func encodeTestRequestIntegerInt64ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -419,13 +441,14 @@ func encodeTestRequestIntegerInt64ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt64NullableRequest(
 	req OptNilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -437,13 +460,14 @@ func encodeTestRequestIntegerInt64NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -455,13 +479,14 @@ func encodeTestRequestIntegerInt64NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -477,13 +502,14 @@ func encodeTestRequestIntegerInt64NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerNullableRequest(
 	req OptNilInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -495,13 +521,14 @@ func encodeTestRequestIntegerNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerNullableArrayRequest(
 	req []NilInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -513,13 +540,14 @@ func encodeTestRequestIntegerNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestIntegerNullableArrayArrayRequest(
 	req [][]NilInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -535,13 +563,14 @@ func encodeTestRequestIntegerNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNullRequest(
 	req OptNull,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -553,13 +582,14 @@ func encodeTestRequestNullRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNullArrayRequest(
 	req []struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -572,13 +602,14 @@ func encodeTestRequestNullArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNullArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -595,13 +626,14 @@ func encodeTestRequestNullArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNullNullableRequest(
 	req OptNull,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -613,13 +645,14 @@ func encodeTestRequestNullNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNullNullableArrayRequest(
 	req []struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -632,13 +665,14 @@ func encodeTestRequestNullNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNullNullableArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -655,13 +689,14 @@ func encodeTestRequestNullNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberRequest(
 	req OptFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -673,13 +708,14 @@ func encodeTestRequestNumberRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberArrayRequest(
 	req []float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -691,13 +727,14 @@ func encodeTestRequestNumberArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -713,13 +750,14 @@ func encodeTestRequestNumberArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberDoubleRequest(
 	req OptFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -731,13 +769,14 @@ func encodeTestRequestNumberDoubleRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberDoubleArrayRequest(
 	req []float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -749,13 +788,14 @@ func encodeTestRequestNumberDoubleArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberDoubleArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -771,13 +811,14 @@ func encodeTestRequestNumberDoubleArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberDoubleNullableRequest(
 	req OptNilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -789,13 +830,14 @@ func encodeTestRequestNumberDoubleNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberDoubleNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -807,13 +849,14 @@ func encodeTestRequestNumberDoubleNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberDoubleNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -829,13 +872,14 @@ func encodeTestRequestNumberDoubleNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberFloatRequest(
 	req OptFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -847,13 +891,14 @@ func encodeTestRequestNumberFloatRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberFloatArrayRequest(
 	req []float32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -865,13 +910,14 @@ func encodeTestRequestNumberFloatArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberFloatArrayArrayRequest(
 	req [][]float32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -887,13 +933,14 @@ func encodeTestRequestNumberFloatArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberFloatNullableRequest(
 	req OptNilFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -905,13 +952,14 @@ func encodeTestRequestNumberFloatNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberFloatNullableArrayRequest(
 	req []NilFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -923,13 +971,14 @@ func encodeTestRequestNumberFloatNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberFloatNullableArrayArrayRequest(
 	req [][]NilFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -945,13 +994,14 @@ func encodeTestRequestNumberFloatNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt32Request(
 	req OptInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -963,13 +1013,14 @@ func encodeTestRequestNumberInt32Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -981,13 +1032,14 @@ func encodeTestRequestNumberInt32ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1003,13 +1055,14 @@ func encodeTestRequestNumberInt32ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt32NullableRequest(
 	req OptNilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -1021,13 +1074,14 @@ func encodeTestRequestNumberInt32NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1039,13 +1093,14 @@ func encodeTestRequestNumberInt32NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1061,13 +1116,14 @@ func encodeTestRequestNumberInt32NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt64Request(
 	req OptInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -1079,13 +1135,14 @@ func encodeTestRequestNumberInt64Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1097,13 +1154,14 @@ func encodeTestRequestNumberInt64ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1119,13 +1177,14 @@ func encodeTestRequestNumberInt64ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt64NullableRequest(
 	req OptNilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -1137,13 +1196,14 @@ func encodeTestRequestNumberInt64NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1155,13 +1215,14 @@ func encodeTestRequestNumberInt64NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1177,13 +1238,14 @@ func encodeTestRequestNumberInt64NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberNullableRequest(
 	req OptNilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -1195,13 +1257,14 @@ func encodeTestRequestNumberNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1213,13 +1276,14 @@ func encodeTestRequestNumberNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestNumberNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -1235,13 +1299,14 @@ func encodeTestRequestNumberNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredAnyRequest(
 	req jx.Raw,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if len(req) != 0 {
@@ -1249,25 +1314,27 @@ func encodeTestRequestRequiredAnyRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredBooleanRequest(
 	req bool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Bool(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredBooleanArrayRequest(
 	req []bool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1277,13 +1344,14 @@ func encodeTestRequestRequiredBooleanArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredBooleanArrayArrayRequest(
 	req [][]bool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1297,25 +1365,27 @@ func encodeTestRequestRequiredBooleanArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredBooleanNullableRequest(
 	req NilBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredBooleanNullableArrayRequest(
 	req []NilBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1325,13 +1395,14 @@ func encodeTestRequestRequiredBooleanNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredBooleanNullableArrayArrayRequest(
 	req [][]NilBool,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1345,49 +1416,53 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredEmptyStructRequest(
 	req TestRequestRequiredEmptyStructReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredFormatTestRequest(
 	req TestRequestRequiredFormatTestReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerRequest(
 	req int,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Int(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerArrayRequest(
 	req []int,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1397,13 +1472,14 @@ func encodeTestRequestRequiredIntegerArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerArrayArrayRequest(
 	req [][]int,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1417,25 +1493,27 @@ func encodeTestRequestRequiredIntegerArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt32Request(
 	req int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Int32(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1445,13 +1523,14 @@ func encodeTestRequestRequiredIntegerInt32ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1465,25 +1544,27 @@ func encodeTestRequestRequiredIntegerInt32ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableRequest(
 	req NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1493,13 +1574,14 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1513,25 +1595,27 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt64Request(
 	req int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Int64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1541,13 +1625,14 @@ func encodeTestRequestRequiredIntegerInt64ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1561,25 +1646,27 @@ func encodeTestRequestRequiredIntegerInt64ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableRequest(
 	req NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1589,13 +1676,14 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1609,25 +1697,27 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerNullableRequest(
 	req NilInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerNullableArrayRequest(
 	req []NilInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1637,13 +1727,14 @@ func encodeTestRequestRequiredIntegerNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredIntegerNullableArrayArrayRequest(
 	req [][]NilInt,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1657,26 +1748,28 @@ func encodeTestRequestRequiredIntegerNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNullRequest(
 	req struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		_ = req
 		e.Null()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNullArrayRequest(
 	req []struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1687,13 +1780,14 @@ func encodeTestRequestRequiredNullArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNullArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1708,26 +1802,28 @@ func encodeTestRequestRequiredNullArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNullNullableRequest(
 	req struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		_ = req
 		e.Null()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNullNullableArrayRequest(
 	req []struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1738,13 +1834,14 @@ func encodeTestRequestRequiredNullNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNullNullableArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1759,25 +1856,27 @@ func encodeTestRequestRequiredNullNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberRequest(
 	req float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Float64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberArrayRequest(
 	req []float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1787,13 +1886,14 @@ func encodeTestRequestRequiredNumberArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1807,25 +1907,27 @@ func encodeTestRequestRequiredNumberArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberDoubleRequest(
 	req float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Float64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberDoubleArrayRequest(
 	req []float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1835,13 +1937,14 @@ func encodeTestRequestRequiredNumberDoubleArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberDoubleArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1855,25 +1958,27 @@ func encodeTestRequestRequiredNumberDoubleArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableRequest(
 	req NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1883,13 +1988,14 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1903,25 +2009,27 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberFloatRequest(
 	req float32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Float32(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberFloatArrayRequest(
 	req []float32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1931,13 +2039,14 @@ func encodeTestRequestRequiredNumberFloatArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberFloatArrayArrayRequest(
 	req [][]float32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1951,25 +2060,27 @@ func encodeTestRequestRequiredNumberFloatArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberFloatNullableRequest(
 	req NilFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberFloatNullableArrayRequest(
 	req []NilFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1979,13 +2090,14 @@ func encodeTestRequestRequiredNumberFloatNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(
 	req [][]NilFloat32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -1999,25 +2111,27 @@ func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt32Request(
 	req int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Int32(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2027,13 +2141,14 @@ func encodeTestRequestRequiredNumberInt32ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2047,25 +2162,27 @@ func encodeTestRequestRequiredNumberInt32ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt32NullableRequest(
 	req NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2075,13 +2192,14 @@ func encodeTestRequestRequiredNumberInt32NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2095,25 +2213,27 @@ func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt64Request(
 	req int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Int64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2123,13 +2243,14 @@ func encodeTestRequestRequiredNumberInt64ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2143,25 +2264,27 @@ func encodeTestRequestRequiredNumberInt64ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt64NullableRequest(
 	req NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2171,13 +2294,14 @@ func encodeTestRequestRequiredNumberInt64NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2191,25 +2315,27 @@ func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberNullableRequest(
 	req NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2219,13 +2345,14 @@ func encodeTestRequestRequiredNumberNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredNumberNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2239,25 +2366,27 @@ func encodeTestRequestRequiredNumberNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2267,13 +2396,14 @@ func encodeTestRequestRequiredStringArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2287,25 +2417,27 @@ func encodeTestRequestRequiredStringArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringBinaryRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringBinaryArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2315,13 +2447,14 @@ func encodeTestRequestRequiredStringBinaryArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringBinaryArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2335,25 +2468,27 @@ func encodeTestRequestRequiredStringBinaryArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringBinaryNullableRequest(
 	req NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringBinaryNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2363,13 +2498,14 @@ func encodeTestRequestRequiredStringBinaryNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2383,25 +2519,27 @@ func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringByteRequest(
 	req []byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Base64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringByteArrayRequest(
 	req [][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2411,13 +2549,14 @@ func encodeTestRequestRequiredStringByteArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringByteArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2431,25 +2570,27 @@ func encodeTestRequestRequiredStringByteArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringByteNullableRequest(
 	req []byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Base64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringByteNullableArrayRequest(
 	req [][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2459,13 +2600,14 @@ func encodeTestRequestRequiredStringByteNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringByteNullableArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2479,25 +2621,27 @@ func encodeTestRequestRequiredStringByteNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeDate(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2507,13 +2651,14 @@ func encodeTestRequestRequiredStringDateArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2527,25 +2672,27 @@ func encodeTestRequestRequiredStringDateArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateNullableRequest(
 	req NilDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeDate)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateNullableArrayRequest(
 	req []NilDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2555,13 +2702,14 @@ func encodeTestRequestRequiredStringDateNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateNullableArrayArrayRequest(
 	req [][]NilDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2575,25 +2723,27 @@ func encodeTestRequestRequiredStringDateNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateTimeRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeDateTime(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2603,13 +2753,14 @@ func encodeTestRequestRequiredStringDateTimeArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2623,25 +2774,27 @@ func encodeTestRequestRequiredStringDateTimeArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableRequest(
 	req NilDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeDateTime)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableArrayRequest(
 	req []NilDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2651,13 +2804,14 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(
 	req [][]NilDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2671,25 +2825,27 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDurationRequest(
 	req time.Duration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeDuration(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDurationArrayRequest(
 	req []time.Duration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2699,13 +2855,14 @@ func encodeTestRequestRequiredStringDurationArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDurationArrayArrayRequest(
 	req [][]time.Duration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2719,25 +2876,27 @@ func encodeTestRequestRequiredStringDurationArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDurationNullableRequest(
 	req NilDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDurationNullableArrayRequest(
 	req []NilDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2747,13 +2906,14 @@ func encodeTestRequestRequiredStringDurationNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringDurationNullableArrayArrayRequest(
 	req [][]NilDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2767,25 +2927,27 @@ func encodeTestRequestRequiredStringDurationNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringEmailRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringEmailArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2795,13 +2957,14 @@ func encodeTestRequestRequiredStringEmailArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringEmailArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2815,25 +2978,27 @@ func encodeTestRequestRequiredStringEmailArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringEmailNullableRequest(
 	req NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringEmailNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2843,13 +3008,14 @@ func encodeTestRequestRequiredStringEmailNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringEmailNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2863,25 +3029,27 @@ func encodeTestRequestRequiredStringEmailNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringHostnameRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringHostnameArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2891,13 +3059,14 @@ func encodeTestRequestRequiredStringHostnameArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringHostnameArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2911,25 +3080,27 @@ func encodeTestRequestRequiredStringHostnameArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringHostnameNullableRequest(
 	req NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringHostnameNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2939,13 +3110,14 @@ func encodeTestRequestRequiredStringHostnameNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2959,25 +3131,27 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIPRequest(
 	req netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeIP(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIPArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -2987,13 +3161,14 @@ func encodeTestRequestRequiredStringIPArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIPArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3007,25 +3182,27 @@ func encodeTestRequestRequiredStringIPArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIPNullableRequest(
 	req NilIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIPNullableArrayRequest(
 	req []NilIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3035,13 +3212,14 @@ func encodeTestRequestRequiredStringIPNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIPNullableArrayArrayRequest(
 	req [][]NilIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3055,25 +3233,27 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt32Request(
 	req int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeStringInt32(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3083,13 +3263,14 @@ func encodeTestRequestRequiredStringInt32ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3103,25 +3284,27 @@ func encodeTestRequestRequiredStringInt32ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt32NullableRequest(
 	req NilStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt32NullableArrayRequest(
 	req []NilStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3131,13 +3314,14 @@ func encodeTestRequestRequiredStringInt32NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt32NullableArrayArrayRequest(
 	req [][]NilStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3151,25 +3335,27 @@ func encodeTestRequestRequiredStringInt32NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt64Request(
 	req int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeStringInt64(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3179,13 +3365,14 @@ func encodeTestRequestRequiredStringInt64ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3199,25 +3386,27 @@ func encodeTestRequestRequiredStringInt64ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt64NullableRequest(
 	req NilStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt64NullableArrayRequest(
 	req []NilStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3227,13 +3416,14 @@ func encodeTestRequestRequiredStringInt64NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringInt64NullableArrayArrayRequest(
 	req [][]NilStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3247,25 +3437,27 @@ func encodeTestRequestRequiredStringInt64NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv4Request(
 	req netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeIP(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv4ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3275,13 +3467,14 @@ func encodeTestRequestRequiredStringIpv4ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv4ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3295,25 +3488,27 @@ func encodeTestRequestRequiredStringIpv4ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv4NullableRequest(
 	req NilIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv4NullableArrayRequest(
 	req []NilIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3323,13 +3518,14 @@ func encodeTestRequestRequiredStringIpv4NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(
 	req [][]NilIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3343,25 +3539,27 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv6Request(
 	req netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeIP(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv6ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3371,13 +3569,14 @@ func encodeTestRequestRequiredStringIpv6ArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv6ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3391,25 +3590,27 @@ func encodeTestRequestRequiredStringIpv6ArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv6NullableRequest(
 	req NilIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv6NullableArrayRequest(
 	req []NilIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3419,13 +3620,14 @@ func encodeTestRequestRequiredStringIpv6NullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(
 	req [][]NilIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3439,25 +3641,27 @@ func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringNullableRequest(
 	req NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3467,13 +3671,14 @@ func encodeTestRequestRequiredStringNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3487,25 +3692,27 @@ func encodeTestRequestRequiredStringNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringPasswordRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringPasswordArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3515,13 +3722,14 @@ func encodeTestRequestRequiredStringPasswordArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringPasswordArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3535,25 +3743,27 @@ func encodeTestRequestRequiredStringPasswordArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringPasswordNullableRequest(
 	req NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringPasswordNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3563,13 +3773,14 @@ func encodeTestRequestRequiredStringPasswordNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3583,25 +3794,27 @@ func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringTimeRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeTime(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3611,13 +3824,14 @@ func encodeTestRequestRequiredStringTimeArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3631,25 +3845,27 @@ func encodeTestRequestRequiredStringTimeArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringTimeNullableRequest(
 	req NilTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeTime)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringTimeNullableArrayRequest(
 	req []NilTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3659,13 +3875,14 @@ func encodeTestRequestRequiredStringTimeNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringTimeNullableArrayArrayRequest(
 	req [][]NilTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3679,25 +3896,27 @@ func encodeTestRequestRequiredStringTimeNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringURIRequest(
 	req url.URL,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeURI(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringURIArrayRequest(
 	req []url.URL,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3707,13 +3926,14 @@ func encodeTestRequestRequiredStringURIArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringURIArrayArrayRequest(
 	req [][]url.URL,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3727,25 +3947,27 @@ func encodeTestRequestRequiredStringURIArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringURINullableRequest(
 	req NilURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringURINullableArrayRequest(
 	req []NilURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3755,13 +3977,14 @@ func encodeTestRequestRequiredStringURINullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringURINullableArrayArrayRequest(
 	req [][]NilURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3775,25 +3998,27 @@ func encodeTestRequestRequiredStringURINullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUUIDRequest(
 	req uuid.UUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeUUID(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUUIDArrayRequest(
 	req []uuid.UUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3803,13 +4028,14 @@ func encodeTestRequestRequiredStringUUIDArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUUIDArrayArrayRequest(
 	req [][]uuid.UUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3823,25 +4049,27 @@ func encodeTestRequestRequiredStringUUIDArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUUIDNullableRequest(
 	req NilUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUUIDNullableArrayRequest(
 	req []NilUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3851,13 +4079,14 @@ func encodeTestRequestRequiredStringUUIDNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(
 	req [][]NilUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3871,25 +4100,27 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeUnixSeconds(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3899,13 +4130,14 @@ func encodeTestRequestRequiredStringUnixArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3919,25 +4151,27 @@ func encodeTestRequestRequiredStringUnixArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMicroRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeUnixMicro(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMicroArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3947,13 +4181,14 @@ func encodeTestRequestRequiredStringUnixMicroArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMicroArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3967,25 +4202,27 @@ func encodeTestRequestRequiredStringUnixMicroArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableRequest(
 	req NilUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeUnixMicro)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableArrayRequest(
 	req []NilUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -3995,13 +4232,14 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(
 	req [][]NilUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4015,25 +4253,27 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMilliRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeUnixMilli(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMilliArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4043,13 +4283,14 @@ func encodeTestRequestRequiredStringUnixMilliArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMilliArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4063,25 +4304,27 @@ func encodeTestRequestRequiredStringUnixMilliArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableRequest(
 	req NilUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeUnixMilli)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableArrayRequest(
 	req []NilUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4091,13 +4334,14 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(
 	req [][]NilUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4111,25 +4355,27 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNanoRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeUnixNano(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNanoArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4139,13 +4385,14 @@ func encodeTestRequestRequiredStringUnixNanoArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNanoArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4159,25 +4406,27 @@ func encodeTestRequestRequiredStringUnixNanoArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableRequest(
 	req NilUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeUnixNano)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableArrayRequest(
 	req []NilUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4187,13 +4436,14 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(
 	req [][]NilUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4207,25 +4457,27 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNullableRequest(
 	req NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeUnixSeconds)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4235,13 +4487,14 @@ func encodeTestRequestRequiredStringUnixNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4255,25 +4508,27 @@ func encodeTestRequestRequiredStringUnixNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixSecondsRequest(
 	req time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		json.EncodeUnixSeconds(e, req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixSecondsArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4283,13 +4538,14 @@ func encodeTestRequestRequiredStringUnixSecondsArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4303,25 +4559,27 @@ func encodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableRequest(
 	req NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e, json.EncodeUnixSeconds)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4331,13 +4589,14 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.ArrStart()
@@ -4351,13 +4610,14 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(
 		e.ArrEnd()
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringRequest(
 	req OptString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4369,13 +4629,14 @@ func encodeTestRequestStringRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4387,13 +4648,14 @@ func encodeTestRequestStringArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4409,13 +4671,14 @@ func encodeTestRequestStringArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringBinaryRequest(
 	req OptString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4427,13 +4690,14 @@ func encodeTestRequestStringBinaryRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringBinaryArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4445,13 +4709,14 @@ func encodeTestRequestStringBinaryArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringBinaryArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4467,13 +4732,14 @@ func encodeTestRequestStringBinaryArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringBinaryNullableRequest(
 	req OptNilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4485,13 +4751,14 @@ func encodeTestRequestStringBinaryNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringBinaryNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4503,13 +4770,14 @@ func encodeTestRequestStringBinaryNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringBinaryNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4525,25 +4793,27 @@ func encodeTestRequestStringBinaryNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringByteRequest(
 	req []byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Base64(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringByteArrayRequest(
 	req [][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4555,13 +4825,14 @@ func encodeTestRequestStringByteArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringByteArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4577,13 +4848,14 @@ func encodeTestRequestStringByteArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringByteNullableRequest(
 	req OptNilByte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4595,13 +4867,14 @@ func encodeTestRequestStringByteNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringByteNullableArrayRequest(
 	req [][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4613,13 +4886,14 @@ func encodeTestRequestStringByteNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringByteNullableArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4635,13 +4909,14 @@ func encodeTestRequestStringByteNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateRequest(
 	req OptDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4653,13 +4928,14 @@ func encodeTestRequestStringDateRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4671,13 +4947,14 @@ func encodeTestRequestStringDateArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4693,13 +4970,14 @@ func encodeTestRequestStringDateArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateNullableRequest(
 	req OptNilDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4711,13 +4989,14 @@ func encodeTestRequestStringDateNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateNullableArrayRequest(
 	req []NilDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4729,13 +5008,14 @@ func encodeTestRequestStringDateNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateNullableArrayArrayRequest(
 	req [][]NilDate,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4751,13 +5031,14 @@ func encodeTestRequestStringDateNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateTimeRequest(
 	req OptDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4769,13 +5050,14 @@ func encodeTestRequestStringDateTimeRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4787,13 +5069,14 @@ func encodeTestRequestStringDateTimeArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4809,13 +5092,14 @@ func encodeTestRequestStringDateTimeArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateTimeNullableRequest(
 	req OptNilDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4827,13 +5111,14 @@ func encodeTestRequestStringDateTimeNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateTimeNullableArrayRequest(
 	req []NilDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4845,13 +5130,14 @@ func encodeTestRequestStringDateTimeNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDateTimeNullableArrayArrayRequest(
 	req [][]NilDateTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4867,13 +5153,14 @@ func encodeTestRequestStringDateTimeNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDurationRequest(
 	req OptDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4885,13 +5172,14 @@ func encodeTestRequestStringDurationRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDurationArrayRequest(
 	req []time.Duration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4903,13 +5191,14 @@ func encodeTestRequestStringDurationArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDurationArrayArrayRequest(
 	req [][]time.Duration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4925,13 +5214,14 @@ func encodeTestRequestStringDurationArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDurationNullableRequest(
 	req OptNilDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -4943,13 +5233,14 @@ func encodeTestRequestStringDurationNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDurationNullableArrayRequest(
 	req []NilDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4961,13 +5252,14 @@ func encodeTestRequestStringDurationNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringDurationNullableArrayArrayRequest(
 	req [][]NilDuration,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -4983,13 +5275,14 @@ func encodeTestRequestStringDurationNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringEmailRequest(
 	req OptString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5001,13 +5294,14 @@ func encodeTestRequestStringEmailRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringEmailArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5019,13 +5313,14 @@ func encodeTestRequestStringEmailArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringEmailArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5041,13 +5336,14 @@ func encodeTestRequestStringEmailArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringEmailNullableRequest(
 	req OptNilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5059,13 +5355,14 @@ func encodeTestRequestStringEmailNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringEmailNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5077,13 +5374,14 @@ func encodeTestRequestStringEmailNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringEmailNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5099,13 +5397,14 @@ func encodeTestRequestStringEmailNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringHostnameRequest(
 	req OptString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5117,13 +5416,14 @@ func encodeTestRequestStringHostnameRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringHostnameArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5135,13 +5435,14 @@ func encodeTestRequestStringHostnameArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringHostnameArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5157,13 +5458,14 @@ func encodeTestRequestStringHostnameArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringHostnameNullableRequest(
 	req OptNilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5175,13 +5477,14 @@ func encodeTestRequestStringHostnameNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringHostnameNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5193,13 +5496,14 @@ func encodeTestRequestStringHostnameNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringHostnameNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5215,13 +5519,14 @@ func encodeTestRequestStringHostnameNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIPRequest(
 	req OptIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5233,13 +5538,14 @@ func encodeTestRequestStringIPRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIPArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5251,13 +5557,14 @@ func encodeTestRequestStringIPArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIPArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5273,13 +5580,14 @@ func encodeTestRequestStringIPArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIPNullableRequest(
 	req OptNilIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5291,13 +5599,14 @@ func encodeTestRequestStringIPNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIPNullableArrayRequest(
 	req []NilIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5309,13 +5618,14 @@ func encodeTestRequestStringIPNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIPNullableArrayArrayRequest(
 	req [][]NilIP,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5331,13 +5641,14 @@ func encodeTestRequestStringIPNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt32Request(
 	req OptStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5349,13 +5660,14 @@ func encodeTestRequestStringInt32Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5367,13 +5679,14 @@ func encodeTestRequestStringInt32ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5389,13 +5702,14 @@ func encodeTestRequestStringInt32ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt32NullableRequest(
 	req OptNilStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5407,13 +5721,14 @@ func encodeTestRequestStringInt32NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt32NullableArrayRequest(
 	req []NilStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5425,13 +5740,14 @@ func encodeTestRequestStringInt32NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt32NullableArrayArrayRequest(
 	req [][]NilStringInt32,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5447,13 +5763,14 @@ func encodeTestRequestStringInt32NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt64Request(
 	req OptStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5465,13 +5782,14 @@ func encodeTestRequestStringInt64Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5483,13 +5801,14 @@ func encodeTestRequestStringInt64ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5505,13 +5824,14 @@ func encodeTestRequestStringInt64ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt64NullableRequest(
 	req OptNilStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5523,13 +5843,14 @@ func encodeTestRequestStringInt64NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt64NullableArrayRequest(
 	req []NilStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5541,13 +5862,14 @@ func encodeTestRequestStringInt64NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringInt64NullableArrayArrayRequest(
 	req [][]NilStringInt64,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5563,13 +5885,14 @@ func encodeTestRequestStringInt64NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv4Request(
 	req OptIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5581,13 +5904,14 @@ func encodeTestRequestStringIpv4Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv4ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5599,13 +5923,14 @@ func encodeTestRequestStringIpv4ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv4ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5621,13 +5946,14 @@ func encodeTestRequestStringIpv4ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv4NullableRequest(
 	req OptNilIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5639,13 +5965,14 @@ func encodeTestRequestStringIpv4NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv4NullableArrayRequest(
 	req []NilIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5657,13 +5984,14 @@ func encodeTestRequestStringIpv4NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv4NullableArrayArrayRequest(
 	req [][]NilIPv4,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5679,13 +6007,14 @@ func encodeTestRequestStringIpv4NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv6Request(
 	req OptIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5697,13 +6026,14 @@ func encodeTestRequestStringIpv6Request(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv6ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5715,13 +6045,14 @@ func encodeTestRequestStringIpv6ArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv6ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5737,13 +6068,14 @@ func encodeTestRequestStringIpv6ArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv6NullableRequest(
 	req OptNilIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5755,13 +6087,14 @@ func encodeTestRequestStringIpv6NullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv6NullableArrayRequest(
 	req []NilIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5773,13 +6106,14 @@ func encodeTestRequestStringIpv6NullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringIpv6NullableArrayArrayRequest(
 	req [][]NilIPv6,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5795,13 +6129,14 @@ func encodeTestRequestStringIpv6NullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringNullableRequest(
 	req OptNilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5813,13 +6148,14 @@ func encodeTestRequestStringNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5831,13 +6167,14 @@ func encodeTestRequestStringNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5853,13 +6190,14 @@ func encodeTestRequestStringNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringPasswordRequest(
 	req OptString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5871,13 +6209,14 @@ func encodeTestRequestStringPasswordRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringPasswordArrayRequest(
 	req []string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5889,13 +6228,14 @@ func encodeTestRequestStringPasswordArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringPasswordArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5911,13 +6251,14 @@ func encodeTestRequestStringPasswordArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringPasswordNullableRequest(
 	req OptNilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5929,13 +6270,14 @@ func encodeTestRequestStringPasswordNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringPasswordNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5947,13 +6289,14 @@ func encodeTestRequestStringPasswordNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringPasswordNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -5969,13 +6312,14 @@ func encodeTestRequestStringPasswordNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringTimeRequest(
 	req OptTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -5987,13 +6331,14 @@ func encodeTestRequestStringTimeRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6005,13 +6350,14 @@ func encodeTestRequestStringTimeArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6027,13 +6373,14 @@ func encodeTestRequestStringTimeArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringTimeNullableRequest(
 	req OptNilTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6045,13 +6392,14 @@ func encodeTestRequestStringTimeNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringTimeNullableArrayRequest(
 	req []NilTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6063,13 +6411,14 @@ func encodeTestRequestStringTimeNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringTimeNullableArrayArrayRequest(
 	req [][]NilTime,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6085,13 +6434,14 @@ func encodeTestRequestStringTimeNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringURIRequest(
 	req OptURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6103,13 +6453,14 @@ func encodeTestRequestStringURIRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringURIArrayRequest(
 	req []url.URL,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6121,13 +6472,14 @@ func encodeTestRequestStringURIArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringURIArrayArrayRequest(
 	req [][]url.URL,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6143,13 +6495,14 @@ func encodeTestRequestStringURIArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringURINullableRequest(
 	req OptNilURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6161,13 +6514,14 @@ func encodeTestRequestStringURINullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringURINullableArrayRequest(
 	req []NilURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6179,13 +6533,14 @@ func encodeTestRequestStringURINullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringURINullableArrayArrayRequest(
 	req [][]NilURI,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6201,13 +6556,14 @@ func encodeTestRequestStringURINullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUUIDRequest(
 	req OptUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6219,13 +6575,14 @@ func encodeTestRequestStringUUIDRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUUIDArrayRequest(
 	req []uuid.UUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6237,13 +6594,14 @@ func encodeTestRequestStringUUIDArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUUIDArrayArrayRequest(
 	req [][]uuid.UUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6259,13 +6617,14 @@ func encodeTestRequestStringUUIDArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUUIDNullableRequest(
 	req OptNilUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6277,13 +6636,14 @@ func encodeTestRequestStringUUIDNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUUIDNullableArrayRequest(
 	req []NilUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6295,13 +6655,14 @@ func encodeTestRequestStringUUIDNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUUIDNullableArrayArrayRequest(
 	req [][]NilUUID,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6317,13 +6678,14 @@ func encodeTestRequestStringUUIDNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixRequest(
 	req OptUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6335,13 +6697,14 @@ func encodeTestRequestStringUnixRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6353,13 +6716,14 @@ func encodeTestRequestStringUnixArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6375,13 +6739,14 @@ func encodeTestRequestStringUnixArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMicroRequest(
 	req OptUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6393,13 +6758,14 @@ func encodeTestRequestStringUnixMicroRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMicroArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6411,13 +6777,14 @@ func encodeTestRequestStringUnixMicroArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMicroArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6433,13 +6800,14 @@ func encodeTestRequestStringUnixMicroArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMicroNullableRequest(
 	req OptNilUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6451,13 +6819,14 @@ func encodeTestRequestStringUnixMicroNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMicroNullableArrayRequest(
 	req []NilUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6469,13 +6838,14 @@ func encodeTestRequestStringUnixMicroNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMicroNullableArrayArrayRequest(
 	req [][]NilUnixMicro,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6491,13 +6861,14 @@ func encodeTestRequestStringUnixMicroNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMilliRequest(
 	req OptUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6509,13 +6880,14 @@ func encodeTestRequestStringUnixMilliRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMilliArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6527,13 +6899,14 @@ func encodeTestRequestStringUnixMilliArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMilliArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6549,13 +6922,14 @@ func encodeTestRequestStringUnixMilliArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMilliNullableRequest(
 	req OptNilUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6567,13 +6941,14 @@ func encodeTestRequestStringUnixMilliNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMilliNullableArrayRequest(
 	req []NilUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6585,13 +6960,14 @@ func encodeTestRequestStringUnixMilliNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixMilliNullableArrayArrayRequest(
 	req [][]NilUnixMilli,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6607,13 +6983,14 @@ func encodeTestRequestStringUnixMilliNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNanoRequest(
 	req OptUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6625,13 +7002,14 @@ func encodeTestRequestStringUnixNanoRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNanoArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6643,13 +7021,14 @@ func encodeTestRequestStringUnixNanoArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNanoArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6665,13 +7044,14 @@ func encodeTestRequestStringUnixNanoArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNanoNullableRequest(
 	req OptNilUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6683,13 +7063,14 @@ func encodeTestRequestStringUnixNanoNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNanoNullableArrayRequest(
 	req []NilUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6701,13 +7082,14 @@ func encodeTestRequestStringUnixNanoNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNanoNullableArrayArrayRequest(
 	req [][]NilUnixNano,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6723,13 +7105,14 @@ func encodeTestRequestStringUnixNanoNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNullableRequest(
 	req OptNilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6741,13 +7124,14 @@ func encodeTestRequestStringUnixNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6759,13 +7143,14 @@ func encodeTestRequestStringUnixNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6781,13 +7166,14 @@ func encodeTestRequestStringUnixNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixSecondsRequest(
 	req OptUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6799,13 +7185,14 @@ func encodeTestRequestStringUnixSecondsRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixSecondsArrayRequest(
 	req []time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6817,13 +7204,14 @@ func encodeTestRequestStringUnixSecondsArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixSecondsArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6839,13 +7227,14 @@ func encodeTestRequestStringUnixSecondsArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixSecondsNullableRequest(
 	req OptNilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	if !req.Set {
 		// Keep request with empty body if value is not set.
 		return nil
@@ -6857,13 +7246,14 @@ func encodeTestRequestStringUnixSecondsNullableRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixSecondsNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6875,13 +7265,14 @@ func encodeTestRequestStringUnixSecondsNullableArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestRequestStringUnixSecondsNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		if req != nil {
@@ -6897,2346 +7288,2541 @@ func encodeTestRequestStringUnixSecondsNullableArrayArrayRequest(
 		}
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseAnyRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseBooleanRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseBooleanArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseBooleanArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseBooleanNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseBooleanNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseBooleanNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseEmptyStructRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseFormatTestRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt32Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt32ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt32ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt32NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt32NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt64Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt64ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt64ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt64NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt64NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerInt64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseIntegerNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNullRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNullArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNullArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNullNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNullNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNullNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberDoubleRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberDoubleArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberDoubleArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberDoubleNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberDoubleNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberDoubleNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberFloatRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberFloatArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberFloatArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberFloatNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberFloatNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberFloatNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt32Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt32ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt32ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt32NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt32NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt64Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt64ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt64ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt64NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt64NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberInt64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseNumberNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringBinaryRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringBinaryArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringBinaryArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringBinaryNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringBinaryNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringBinaryNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringByteRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringByteArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringByteArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringByteNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringByteNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringByteNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateTimeRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateTimeArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateTimeArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateTimeNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateTimeNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDateTimeNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDurationRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDurationArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDurationArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDurationNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDurationNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringDurationNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringEmailRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringEmailArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringEmailArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringEmailNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringEmailNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringEmailNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringHostnameRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringHostnameArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringHostnameArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringHostnameNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringHostnameNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringHostnameNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIPRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIPArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIPArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIPNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIPNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIPNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt32Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt32ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt32ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt32NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt32NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt64Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt64ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt64ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt64NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt64NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringInt64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv4Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv4ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv4ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv4NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv4NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv4NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv6Request(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv6ArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv6ArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv6NullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv6NullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringIpv6NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringPasswordRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringPasswordArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringPasswordArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringPasswordNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringPasswordNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringPasswordNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringTimeRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringTimeArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringTimeArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringTimeNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringTimeNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringTimeNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringURIRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringURIArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringURIArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringURINullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringURINullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringURINullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUUIDRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUUIDArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUUIDArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUUIDNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUUIDNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUUIDNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMicroRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMicroArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMicroArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMicroNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMicroNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMicroNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMilliRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMilliArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMilliArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMilliNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMilliNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixMilliNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNanoRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNanoArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNanoArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNanoNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNanoNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNanoNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixSecondsRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixSecondsArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixSecondsArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixSecondsNullableRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixSecondsNullableArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeTestResponseStringUnixSecondsNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }

@@ -86,9 +86,12 @@ func run() error {
 	logOptions.RegisterFlags(flag.CommandLine)
 
 	var (
+		ctAliases gen.ContentTypeAliases
+
 		filterPath    *regexp.Regexp
 		filterMethods []string
 	)
+	flag.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
 	flag.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
 		filterPath, err = regexp.Compile(s)
 		return err
@@ -144,13 +147,13 @@ func run() error {
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
 		AllowRemote:          *allowRemote,
-		Filename:             fileName,
 		Filters: gen.Filters{
 			PathRegex: filterPath,
 			Methods:   filterMethods,
 		},
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
-		NotImplementedHook:   nil,
+		ContentTypeAliases:   ctAliases,
+		Filename:             fileName,
 		Logger:               logger,
 	}
 	if expr := *skipTestsRegex; expr != "" {

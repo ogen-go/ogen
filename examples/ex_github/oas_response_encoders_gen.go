@@ -296,7 +296,7 @@ func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -321,7 +321,7 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownload
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -346,7 +346,7 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkfl
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -616,7 +616,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -648,7 +648,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -680,7 +680,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -712,7 +712,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -757,7 +757,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeade
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -789,7 +789,7 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKH
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -894,7 +894,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -926,7 +926,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -958,7 +958,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -990,7 +990,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -1022,7 +1022,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -1445,7 +1445,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -1733,7 +1733,7 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response Ac
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -1771,7 +1771,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -1839,7 +1839,7 @@ func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatc
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -1877,7 +1877,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -1945,7 +1945,7 @@ func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForR
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -2803,7 +2803,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -2880,7 +2880,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -2933,7 +2933,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -2999,7 +2999,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -3064,7 +3064,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -3117,7 +3117,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -3183,7 +3183,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -3253,7 +3253,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -3767,7 +3767,7 @@ func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -3803,7 +3803,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.R
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -3835,7 +3835,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w ht
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -3867,7 +3867,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeade
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -4771,7 +4771,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -4803,7 +4803,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -5010,7 +5010,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -5088,7 +5088,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -5234,7 +5234,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -5460,7 +5460,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -5518,7 +5518,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -5588,7 +5588,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -5658,7 +5658,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -5711,7 +5711,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -5781,7 +5781,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -5851,7 +5851,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -6031,7 +6031,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6116,7 +6116,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6177,7 +6177,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6226,7 +6226,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6275,7 +6275,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6555,7 +6555,7 @@ func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -6816,7 +6816,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6913,7 +6913,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -6998,7 +6998,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -7059,7 +7059,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -7358,7 +7358,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7428,7 +7428,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7481,7 +7481,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7546,7 +7546,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7611,7 +7611,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7664,7 +7664,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7722,7 +7722,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7775,7 +7775,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7850,7 +7850,7 @@ func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMile
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -7888,7 +7888,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7941,7 +7941,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -7994,7 +7994,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -8804,7 +8804,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -8872,7 +8872,7 @@ func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -8910,7 +8910,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -8963,7 +8963,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -9189,7 +9189,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -9338,7 +9338,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -9602,7 +9602,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -9633,7 +9633,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -9711,7 +9711,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -9742,7 +9742,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -9791,7 +9791,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -9873,7 +9873,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10070,7 +10070,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -10204,7 +10204,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -10504,7 +10504,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10580,7 +10580,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10633,7 +10633,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10701,7 +10701,7 @@ func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.Res
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -10739,7 +10739,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10792,7 +10792,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10826,7 +10826,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -10869,7 +10869,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -10949,7 +10949,7 @@ func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollabor
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -10987,7 +10987,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -11038,7 +11038,7 @@ func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -11135,7 +11135,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -13190,7 +13190,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -13260,7 +13260,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -13354,7 +13354,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -13424,7 +13424,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -13477,7 +13477,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -13578,7 +13578,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -14035,7 +14035,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -14096,7 +14096,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -14187,7 +14187,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -14462,7 +14462,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -14520,7 +14520,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -14571,7 +14571,7 @@ func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.R
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -14609,7 +14609,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -14672,7 +14672,7 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -14704,7 +14704,7 @@ func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHea
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -14740,7 +14740,7 @@ func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommen
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -14776,7 +14776,7 @@ func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.R
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -15103,7 +15103,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'X-RateLimit-Limit' header.
+			// Encode "X-RateLimit-Limit" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "X-RateLimit-Limit",
@@ -15118,7 +15118,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 					return errors.Wrap(err, "encode X-RateLimit-Limit header")
 				}
 			}
-			// Encode 'X-RateLimit-Remaining' header.
+			// Encode "X-RateLimit-Remaining" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "X-RateLimit-Remaining",
@@ -15133,7 +15133,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 					return errors.Wrap(err, "encode X-RateLimit-Remaining header")
 				}
 			}
-			// Encode 'X-RateLimit-Reset' header.
+			// Encode "X-RateLimit-Reset" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "X-RateLimit-Reset",
@@ -15643,7 +15643,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -15708,7 +15708,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -15785,7 +15785,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -15850,7 +15850,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -15913,7 +15913,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response Reactions
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -15949,7 +15949,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response Reaction
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -15985,7 +15985,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListFor
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -16021,7 +16021,7 @@ func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListFo
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -16376,7 +16376,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -16425,7 +16425,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -16514,7 +16514,7 @@ func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.Respon
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -16548,7 +16548,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -16644,7 +16644,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -16716,7 +16716,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -16884,7 +16884,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -17065,7 +17065,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -17124,7 +17124,7 @@ func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.R
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -17158,7 +17158,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Location' header.
+			// Encode "Location" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Location",
@@ -17690,7 +17690,7 @@ func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArch
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -17715,7 +17715,7 @@ func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArch
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Location' header.
+		// Encode "Location" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Location",
@@ -19175,7 +19175,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19258,7 +19258,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19309,7 +19309,7 @@ func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommi
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19345,7 +19345,7 @@ func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommen
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19383,7 +19383,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19436,7 +19436,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19525,7 +19525,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19593,7 +19593,7 @@ func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19631,7 +19631,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19682,7 +19682,7 @@ func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19777,7 +19777,7 @@ func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.Res
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19813,7 +19813,7 @@ func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.R
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19851,7 +19851,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -19902,7 +19902,7 @@ func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -19940,7 +19940,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -20033,7 +20033,7 @@ func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -20071,7 +20071,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -20127,7 +20127,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListP
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -20163,7 +20163,7 @@ func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeade
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -20201,7 +20201,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -20252,7 +20252,7 @@ func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.Respons
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -20288,7 +20288,7 @@ func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.Respo
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -20368,7 +20368,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -21766,7 +21766,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -22615,7 +22615,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -22666,7 +22666,7 @@ func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -22704,7 +22704,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -22779,7 +22779,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussion
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -22815,7 +22815,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussio
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -22851,7 +22851,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgO
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -22887,7 +22887,7 @@ func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegac
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -22925,7 +22925,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -23035,7 +23035,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -23080,7 +23080,7 @@ func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -23118,7 +23118,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -23169,7 +23169,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInv
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -23205,7 +23205,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingIn
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -23241,7 +23241,7 @@ func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeade
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -23279,7 +23279,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -23330,7 +23330,7 @@ func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w 
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -23368,7 +23368,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -24543,7 +24543,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -24660,7 +24660,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -24742,7 +24742,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -24812,7 +24812,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -24880,7 +24880,7 @@ func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserO
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -24916,7 +24916,7 @@ func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserO
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -24954,7 +24954,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -25034,7 +25034,7 @@ func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHea
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -25072,7 +25072,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",
@@ -25152,7 +25152,7 @@ func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUse
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode 'Link' header.
+		// Encode "Link" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
 				Name:    "Link",
@@ -25190,7 +25190,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'Link' header.
+			// Encode "Link" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "Link",

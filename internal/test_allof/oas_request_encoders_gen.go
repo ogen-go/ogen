@@ -4,6 +4,7 @@ package api
 
 import (
 	"bytes"
+	"mime"
 	"mime/multipart"
 	"net/http"
 
@@ -19,36 +20,39 @@ func encodeNullableStringsRequest(
 	req string,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Str(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeObjectsWithConflictingArrayPropertyRequest(
 	req ObjectsWithConflictingArrayPropertyReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeObjectsWithConflictingPropertiesRequest(
 	req ObjectsWithConflictingPropertiesReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeReferencedAllofRequest(
@@ -57,14 +61,16 @@ func encodeReferencedAllofRequest(
 ) error {
 	switch req := req.(type) {
 	case *ReferencedAllofApplicationJSON:
+		const contentType = "application/json"
 		e := jx.GetEncoder()
 		{
 			req.Encode(e)
 		}
 		encoded := e.Bytes()
-		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
 	case *ReferencedAllofMultipartFormData:
+		const contentType = "multipart/form-data"
 		request := req
 
 		q := uri.NewQueryEncoder()
@@ -107,13 +113,13 @@ func encodeReferencedAllofRequest(
 				return errors.Wrap(err, "encode query")
 			}
 		}
-		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 			if err := q.WriteMultipart(w); err != nil {
 				return errors.Wrap(err, "write multipart")
 			}
 			return nil
 		})
-		ht.SetBody(r, body, contentType)
+		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -125,6 +131,7 @@ func encodeReferencedAllofOptionalRequest(
 ) error {
 	switch req := req.(type) {
 	case *ReferencedAllofOptionalApplicationJSON:
+		const contentType = "application/json"
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil
@@ -134,9 +141,10 @@ func encodeReferencedAllofOptionalRequest(
 			req.Encode(e)
 		}
 		encoded := e.Bytes()
-		ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
 		return nil
 	case *ReferencedAllofOptionalMultipartFormData:
+		const contentType = "multipart/form-data"
 		if !req.Set {
 			// Keep request with empty body if value is not set.
 			return nil
@@ -183,13 +191,13 @@ func encodeReferencedAllofOptionalRequest(
 				return errors.Wrap(err, "encode query")
 			}
 		}
-		body, contentType := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
 			if err := q.WriteMultipart(w); err != nil {
 				return errors.Wrap(err, "write multipart")
 			}
 			return nil
 		})
-		ht.SetBody(r, body, contentType)
+		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -199,23 +207,25 @@ func encodeSimpleIntegerRequest(
 	req int,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		e.Int(req)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
 func encodeSimpleObjectsRequest(
 	req SimpleObjectsReq,
 	r *http.Request,
 ) error {
+	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
 		req.Encode(e)
 	}
 	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), "application/json")
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
