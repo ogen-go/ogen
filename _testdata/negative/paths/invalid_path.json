@@ -5,11 +5,13 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/foo": {
+    "/foo/{param": {
       "get": {
-        "parameters": [
-          null
-        ]
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
       }
     }
   }
