@@ -99,13 +99,14 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 			encodings[name] = encoding
 
 			if err := p.validateParamStyle(&openapi.Parameter{
-				Name:     name,
-				Schema:   prop.Schema,
-				In:       openapi.LocationQuery,
-				Style:    encoding.Style,
-				Explode:  encoding.Explode,
-				Required: prop.Required,
-				Locator:  encoding.Locator,
+				Name:          name,
+				Schema:        prop.Schema,
+				In:            openapi.LocationQuery,
+				Style:         encoding.Style,
+				Explode:       encoding.Explode,
+				Required:      prop.Required,
+				AllowReserved: encoding.AllowReserved,
+				Locator:       encoding.Locator,
 			}, ctx.lastLoc()); err != nil {
 				return errors.Wrap(err, "param style")
 			}

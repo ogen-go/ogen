@@ -35,15 +35,16 @@ func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 type Parameter struct {
 	Ref string
 
-	Name        string
-	Description string
-	Deprecated  bool
-	Schema      *jsonschema.Schema
-	Content     *ParameterContent
-	In          ParameterLocation
-	Style       ParameterStyle
-	Explode     bool
-	Required    bool
+	Name          string
+	Description   string
+	Deprecated    bool
+	Schema        *jsonschema.Schema
+	Content       *ParameterContent
+	In            ParameterLocation
+	Style         ParameterStyle
+	Explode       bool
+	Required      bool
+	AllowReserved bool
 
 	location.Locator `json:"-" yaml:"-"`
 }

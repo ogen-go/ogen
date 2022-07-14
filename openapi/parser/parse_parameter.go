@@ -149,15 +149,17 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 	}
 
 	op := &openapi.Parameter{
-		Name:        param.Name,
-		Description: param.Description,
-		Schema:      schema,
-		Content:     content,
-		In:          locatedIn,
-		Style:       inferParamStyle(locatedIn, param.Style),
-		Explode:     inferParamExplode(locatedIn, param.Explode),
-		Required:    param.Required,
-		Deprecated:  param.Deprecated,
+		Name:          param.Name,
+		Description:   param.Description,
+		Deprecated:    param.Deprecated,
+		Schema:        schema,
+		Content:       content,
+		In:            locatedIn,
+		Style:         inferParamStyle(locatedIn, param.Style),
+		Explode:       inferParamExplode(locatedIn, param.Explode),
+		Required:      param.Required,
+		AllowReserved: param.AllowReserved,
+		Locator:       param.Locator,
 	}
 
 	if param.Content != nil {
