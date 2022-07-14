@@ -178,8 +178,8 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 func (p *parser) parseSecurityRequirements(
 	requirements ogen.SecurityRequirements,
 	ctx *resolveCtx,
-) ([]openapi.SecurityRequirements, error) {
-	result := make([]openapi.SecurityRequirements, 0, len(requirements))
+) ([]openapi.SecurityRequirement, error) {
+	result := make([]openapi.SecurityRequirement, 0, len(requirements))
 	for _, req := range requirements {
 		for requirementName, scopes := range req {
 			v, ok := p.refs.securitySchemes[requirementName]
@@ -205,7 +205,7 @@ func (p *parser) parseSecurityRequirements(
 				flows = *spec.Flows
 			}
 
-			result = append(result, openapi.SecurityRequirements{
+			result = append(result, openapi.SecurityRequirement{
 				Scopes: scopes,
 				Name:   requirementName,
 				Security: openapi.Security{

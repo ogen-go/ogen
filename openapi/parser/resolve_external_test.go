@@ -250,7 +250,7 @@ func TestExternalReference(t *testing.T) {
 				},
 				Parameters:  []*openapi.Parameter{param},
 				RequestBody: requestBody,
-				Security:    []openapi.SecurityRequirements{},
+				Security:    []openapi.SecurityRequirement{},
 				Responses: map[string]*openapi.Response{
 					"200": response,
 				},
