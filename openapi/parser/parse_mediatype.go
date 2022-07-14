@@ -7,11 +7,16 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseContent(content map[string]ogen.Media, ctx *resolveCtx) (_ map[string]*openapi.MediaType, err error) {
+func (p *parser) parseContent(
+	content map[string]ogen.Media,
+	locator location.Locator,
+	ctx *resolveCtx,
+) (_ map[string]*openapi.MediaType, err error) {
 	if len(content) == 0 {
 		return nil, nil
 	}
@@ -19,7 +24,8 @@ func (p *parser) parseContent(content map[string]ogen.Media, ctx *resolveCtx) (_
 	result := make(map[string]*openapi.MediaType, len(content))
 	for name, m := range content {
 		if _, _, err := mime.ParseMediaType(name); err != nil {
-			return nil, errors.Wrapf(err, "content type %q", name)
+			err := errors.Wrapf(err, "content type %q", name)
+			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
 		}
 
 		result[name], err = p.parseMediaType(m, ctx)
@@ -31,17 +37,28 @@ func (p *parser) parseContent(content map[string]ogen.Media, ctx *resolveCtx) (_
 	return result, nil
 }
 
-func (p *parser) parseParameterContent(content map[string]ogen.Media, ctx *resolveCtx) (*openapi.ParameterContent, error) {
+func (p *parser) parseParameterContent(
+	content map[string]ogen.Media,
+	locator location.Locator,
+	ctx *resolveCtx,
+) (*openapi.ParameterContent, error) {
 	if content == nil {
 		return nil, nil
 	}
 	if len(content) != 1 {
-		return nil, errors.New(`"content" map MUST only contain one entry`)
+		for key := range content {
+			locator = locator.Field(key)
+			break
+		}
+
+		err := errors.New(`"content" map MUST only contain one entry`)
+		return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
 	}
 
 	for name, m := range content {
 		if _, _, err := mime.ParseMediaType(name); err != nil {
-			return nil, errors.Wrapf(err, "content type %q", name)
+			err := errors.Wrapf(err, "content type %q", name)
+			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
 		}
 
 		media, err := p.parseMediaType(m, ctx)
@@ -74,15 +91,10 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 			names[prop.Name] = prop
 		}
 
-		parseEncoding := func(name string, e ogen.Encoding) (rerr error) {
+		parseEncoding := func(name string, prop jsonschema.Property, e ogen.Encoding) (rerr error) {
 			defer func() {
 				rerr = p.wrapLocation(ctx.lastLoc(), e.Locator, rerr)
 			}()
-
-			prop, ok := names[name]
-			if !ok {
-				return errors.Errorf("unknown property %q", name)
-			}
 
 			encoding := &openapi.Encoding{
 				ContentType:   e.ContentType,
@@ -114,8 +126,16 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 			return nil
 		}
 
+		encodingLoc := m.Locator.Field("encoding")
 		for name, e := range m.Encoding {
-			if err := parseEncoding(name, e); err != nil {
+			prop, ok := names[name]
+			if !ok {
+				loc := encodingLoc.Key(name)
+				err := errors.Errorf("unknown property %q", name)
+				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+			}
+
+			if err := parseEncoding(name, prop, e); err != nil {
 				return nil, errors.Wrapf(err, "encoding property %q", name)
 			}
 		}

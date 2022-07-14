@@ -7,6 +7,7 @@ import (
 	"golang.org/x/net/http/httpguts"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -33,7 +34,11 @@ func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter
 	return opParams
 }
 
-func (p *parser) parseParams(params []*ogen.Parameter, ctx *resolveCtx) ([]*openapi.Parameter, error) {
+func (p *parser) parseParams(
+	params []*ogen.Parameter,
+	locator location.Locator,
+	ctx *resolveCtx,
+) ([]*openapi.Parameter, error) {
 	// Unique parameter is defined by a combination of a name and location.
 	type pnameLoc struct {
 		name     string
@@ -47,7 +52,9 @@ func (p *parser) parseParams(params []*ogen.Parameter, ctx *resolveCtx) ([]*open
 
 	for idx, spec := range params {
 		if spec == nil {
-			return nil, errors.Errorf("parameter %d is empty or null", idx)
+			loc := locator.Index(idx)
+			err := errors.Errorf("parameter %d is empty or null", idx)
+			return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
 		}
 
 		param, err := p.parseParameter(spec, ctx)
@@ -60,7 +67,7 @@ func (p *parser) parseParams(params []*ogen.Parameter, ctx *resolveCtx) ([]*open
 			location: param.In,
 		}
 		if _, ok := unique[ploc]; ok {
-			err = errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
+			err := errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
 			return nil, p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
 		}
 
@@ -75,18 +82,18 @@ func (p *parser) validateParameter(
 	name string,
 	locatedIn openapi.ParameterLocation,
 	param *ogen.Parameter,
-	loc string,
+	file string,
 ) error {
 	switch {
 	case param.Schema != nil && param.Content != nil:
 		err := errors.New("parameter MUST contain either a schema property, or a content property, but not both")
-		return p.wrapField("schema", loc, param.Locator, err)
+		return p.wrapField("schema", file, param.Locator, err)
 	case param.Schema == nil && param.Content == nil:
 		return errors.New("parameter MUST contain either a schema property, or a content property")
 	case param.Content != nil && len(param.Content) < 1:
 		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
 		err := errors.New("content must have at least one entry")
-		return p.wrapField("content", loc, param.Locator, err)
+		return p.wrapField("content", file, param.Locator, err)
 	}
 
 	// Path parameters are always required.
@@ -94,11 +101,12 @@ func (p *parser) validateParameter(
 	case openapi.LocationPath:
 		if !param.Required {
 			err := errors.New("path parameters must be required")
-			return p.wrapField("required", loc, param.Locator, err)
+			return p.wrapField("required", file, param.Locator, err)
 		}
 	case openapi.LocationHeader:
 		if !httpguts.ValidHeaderFieldName(name) {
-			return errors.Errorf("invalid header name %q", name)
+			err := errors.Errorf("invalid header name %q", name)
+			return p.wrapField("name", file, param.Locator, err)
 		}
 	}
 	return nil
@@ -138,13 +146,13 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
-		err = errors.Wrap(err, "schema")
+		err := errors.Wrap(err, "schema")
 		return nil, p.wrapField("schema", ctx.lastLoc(), param.Locator, err)
 	}
 
-	content, err := p.parseParameterContent(param.Content, ctx)
+	content, err := p.parseParameterContent(param.Content, param.Locator.Field("content"), ctx)
 	if err != nil {
-		err = errors.Wrap(err, "content")
+		err := errors.Wrap(err, "content")
 		return nil, p.wrapField("content", ctx.lastLoc(), param.Locator, err)
 	}
 
@@ -254,7 +262,8 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, loc string) error 
 
 	types, ok := styles[stexp{param.Style, param.Explode}]
 	if !ok {
-		return errors.Errorf("invalid style explode combination %q, explode:%v", param.Style, param.Explode)
+		err := errors.Errorf("invalid style explode combination %q, explode:%v", param.Style, param.Explode)
+		return wrap("style", err)
 	}
 
 	allowed := func(t byte) bool { return types&t != 0 }

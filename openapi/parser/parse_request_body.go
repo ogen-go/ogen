@@ -29,7 +29,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 			return nil, errors.New("content must have at least one entry")
 		}
 
-		content, err := p.parseContent(body.Content, ctx)
+		content, err := p.parseContent(body.Content, body.Locator.Field("content"), ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "parse content")
 		}
