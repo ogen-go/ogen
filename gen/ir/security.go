@@ -81,5 +81,5 @@ func (s *Security) GoDoc() []string {
 
 type SecurityRequirement struct {
 	Security *Security
-	Spec     openapi.SecurityRequirements
+	Spec     openapi.SecurityRequirement
 }

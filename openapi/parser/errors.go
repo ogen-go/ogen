@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/internal/location"
 )
 
@@ -8,9 +10,12 @@ import (
 type LocationError = location.Error
 
 func (p *parser) wrapLocation(filename string, l location.Locator, err error) error {
-	if err == nil || p == nil {
+	var locErr *LocationError
+	// Do not wrap error if it is nil or is already a LocationError.
+	if err == nil || p == nil || errors.As(err, &locErr) {
 		return err
 	}
+
 	loc, ok := l.Location()
 	if !ok {
 		return err

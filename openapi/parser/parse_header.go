@@ -13,8 +13,8 @@ func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *resolveCtx) 
 	}
 
 	result := make(map[string]*openapi.Header, len(headers))
-	for name, m := range headers {
-		result[name], err = p.parseHeader(name, m, ctx)
+	for name, h := range headers {
+		result[name], err = p.parseHeader(name, h, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "header %q", name)
 		}
@@ -59,12 +59,14 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 
 	schema, err := p.parseSchema(header.Schema, ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "schema")
+		err := errors.Wrap(err, "schema")
+		return nil, p.wrapField("schema", ctx.lastLoc(), header.Locator, err)
 	}
 
-	content, err := p.parseParameterContent(header.Content, ctx)
+	content, err := p.parseParameterContent(header.Content, header.Locator.Field("content"), ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "content")
+		err := errors.Wrap(err, "content")
+		return nil, p.wrapField("content", ctx.lastLoc(), header.Locator, err)
 	}
 
 	op := &openapi.Header{

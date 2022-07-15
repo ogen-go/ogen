@@ -150,7 +150,7 @@ func TestComplicatedReference(t *testing.T) {
 					},
 				},
 			},
-			Security: []openapi.SecurityRequirements{},
+			Security: []openapi.SecurityRequirement{},
 			Responses: map[string]*openapi.Response{
 				"200": {
 					Ref: "#/paths/~1post/post/responses/200",
@@ -211,7 +211,7 @@ func TestComplicatedReference(t *testing.T) {
 					},
 				},
 			},
-			Security: []openapi.SecurityRequirements{},
+			Security: []openapi.SecurityRequirement{},
 			Responses: map[string]*openapi.Response{
 				"200": {
 					Headers: map[string]*openapi.Header{

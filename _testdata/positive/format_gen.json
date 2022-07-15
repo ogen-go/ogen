@@ -13,645 +13,645 @@
 					{
 						"name": "boolean",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "boolean"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "boolean_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "boolean"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "integer",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "integer"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "integer_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "integer"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "integer_int32",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "integer",
 							"format": "int32"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "integer_int32_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "integer",
 								"format": "int32"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "integer_int64",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "integer",
 							"format": "int64"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "integer_int64_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "integer",
 								"format": "int64"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "number"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "number"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_double",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "number",
 							"format": "double"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_double_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "number",
 								"format": "double"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_float",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "number",
 							"format": "float"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_float_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "number",
 								"format": "float"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_int32",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "number",
 							"format": "int32"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_int32_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "number",
 								"format": "int32"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_int64",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "number",
 							"format": "int64"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "number_int64_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "number",
 								"format": "int64"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_binary",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "binary"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_binary_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "binary"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_byte",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "byte"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_byte_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "byte"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_date",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "date"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_date-time",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "date-time"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_date-time_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "date-time"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_date_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "date"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_duration",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "duration"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_duration_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "duration"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_email",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "email"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_email_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "email"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_hostname",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "hostname"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_hostname_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "hostname"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_int32",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "int32"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_int32_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "int32"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_int64",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "int64"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_int64_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "int64"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_ip",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "ip"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_ip_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "ip"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_ipv4",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "ipv4"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_ipv4_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "ipv4"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_ipv6",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "ipv6"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_ipv6_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "ipv6"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_password",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "password"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_password_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "password"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_time",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "time"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_time_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "time"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "unix"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-micro",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "unix-micro"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-micro_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "unix-micro"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-milli",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "unix-milli"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-milli_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "unix-milli"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-nano",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "unix-nano"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-nano_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "unix-nano"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-seconds",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "unix-seconds"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix-seconds_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "unix-seconds"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_unix_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "unix"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_uri",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "uri"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_uri_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "uri"
 							}
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_uuid",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "string",
 							"format": "uuid"
-						},
-						"required": true
+						}
 					},
 					{
 						"name": "string_uuid_array",
 						"in": "query",
+						"required": true,
 						"schema": {
 							"type": "array",
 							"items": {
 								"type": "string",
 								"format": "uuid"
 							}
-						},
-						"required": true
+						}
 					}
 				],
 				"requestBody": {

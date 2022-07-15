@@ -1,6 +1,8 @@
 package ogen
 
 // SecurityScheme defines a security scheme that can be used by the operations.
+//
+// See https://spec.openapis.org/oas/v3.1.0#security-scheme-object.
 type SecurityScheme struct {
 	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 	// The type of the security scheme. Valid values are "apiKey", "http", "mutualTLS", "oauth2", "openIdConnect".
@@ -27,6 +29,8 @@ type SecurityScheme struct {
 }
 
 // OAuthFlows allows configuration of the supported OAuth Flows.
+//
+// See https://spec.openapis.org/oas/v3.1.0#oauth-flows-object.
 type OAuthFlows struct {
 	// Configuration for the OAuth Implicit flow.
 	Implicit *OAuthFlow `json:"implicit" yaml:"implicit"`
@@ -41,6 +45,8 @@ type OAuthFlows struct {
 }
 
 // OAuthFlow is configuration details for a supported OAuth Flow.
+//
+// See https://spec.openapis.org/oas/v3.1.0#oauth-flow-object.
 type OAuthFlow struct {
 	// The authorization URL to be used for this flow.
 	// This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.
@@ -59,4 +65,6 @@ type OAuthFlow struct {
 }
 
 // SecurityRequirements lists the required security schemes to execute this operation.
+//
+// See https://spec.openapis.org/oas/v3.1.0#security-requirement-object.
 type SecurityRequirements []map[string][]string

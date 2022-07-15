@@ -18,21 +18,48 @@ type (
 	Default = jsonschema.Default
 	// ExampleValue is an example value.
 	ExampleValue = jsonschema.Example
+	// RawValue is a raw JSON value.
+	RawValue = jsonschema.RawValue
 
 	// Locator stores location of JSON value.
 	Locator = location.Locator
 )
 
 // Spec is the root document object of the OpenAPI document.
+//
+// See https://spec.openapis.org/oas/v3.1.0#openapi-object.
 type Spec struct {
-	// This string MUST be the semantic version number
-	// of the OpenAPI Specification version that the OpenAPI document uses.
-	OpenAPI    string               `json:"openapi" yaml:"openapi"`
-	Info       Info                 `json:"info" yaml:"info"`
-	Servers    []Server             `json:"servers,omitempty" yaml:"servers,omitempty"`
-	Paths      Paths                `json:"paths,omitempty" yaml:"paths,omitempty"`
-	Components *Components          `json:"components,omitempty" yaml:"components,omitempty"`
-	Security   SecurityRequirements `json:"security,omitempty" yaml:"security,omitempty"`
+	// REQUIRED. This string MUST be the version number of the OpenAPI Specification
+	// that the OpenAPI document uses.
+	OpenAPI string `json:"openapi" yaml:"openapi"`
+	// REQUIRED. Provides metadata about the API.
+	//
+	// The metadata MAY be used by tooling as required.
+	Info Info `json:"info" yaml:"info"`
+	// The default value for the `$schema` keyword within Schema Objects contained within this OAS document.
+	JSONSchemaDialect string `json:"jsonSchemaDialect,omitempty" yaml:"jsonSchemaDialect,omitempty"`
+	// An array of Server Objects, which provide connectivity information to a target server.
+	Servers []Server `json:"servers,omitempty" yaml:"servers,omitempty"`
+	// The available paths and operations for the API.
+	Paths Paths `json:"paths,omitempty" yaml:"paths,omitempty"`
+	// The incoming webhooks that MAY be received as part of this API and that
+	// the API consumer MAY choose to implement.
+	//
+	// Closely related to the `callbacks` feature, this section describes requests initiated other
+	// than by an API call, for example by an out of band registration.
+	//
+	// The key name is a unique string to refer to each webhook, while the (optionally referenced)
+	// PathItem Object describes a request that may be initiated by the API provider and the expected responses.
+	Webhooks map[string]*PathItem `json:"webhooks,omitempty" yaml:"webhooks,omitempty"`
+	// An element to hold various schemas for the document.
+	Components *Components `json:"components,omitempty" yaml:"components,omitempty"`
+	// A declaration of which security mechanisms can be used across the API.
+	// The list of values includes alternative security requirement objects that can be used.
+	//
+	// Only one of the security requirement objects need to be satisfied to authorize a request.
+	//
+	// Individual operations can override this definition.
+	Security SecurityRequirements `json:"security,omitempty" yaml:"security,omitempty"`
 
 	// A list of tags used by the specification with additional metadata.
 	// The order of the tags can be used to reflect on their order by the parsing
@@ -89,32 +116,12 @@ func (s *Spec) Init() {
 	s.Components.Init()
 }
 
-// Example object.
-//
-// https://swagger.io/specification/#example-object
-type Example struct {
-	Ref           string       `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
-	Summary       string       `json:"summary,omitempty" yaml:"summary,omitempty"`
-	Description   string       `json:"description,omitempty" yaml:"description,omitempty"`
-	Value         ExampleValue `json:"value,omitempty" yaml:"value,omitempty"`
-	ExternalValue string       `json:"externalValue,omitempty" yaml:"externalValue,omitempty"`
-
-	Locator Locator `json:"-" yaml:",inline"`
-}
-
-// Tag object.
-//
-// https://swagger.io/specification/#tag-object
-type Tag struct {
-	Name         string                 `json:"name" yaml:"name"`
-	Description  string                 `json:"description,omitempty" yaml:"description,omitempty"`
-	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
-}
-
 // Info provides metadata about the API.
 //
 // The metadata MAY be used by the clients if needed,
 // and MAY be presented in editing or documentation generation tools for convenience.
+//
+// See https://spec.openapis.org/oas/v3.1.0#info-object.
 type Info struct {
 	// REQUIRED. The title of the API.
 	Title string `json:"title" yaml:"title"`
@@ -134,19 +141,32 @@ type Info struct {
 }
 
 // Contact information for the exposed API.
+//
+// See https://spec.openapis.org/oas/v3.1.0#contact-object.
 type Contact struct {
-	Name  string `json:"name,omitempty" yaml:"name,omitempty"`
-	URL   string `json:"url,omitempty" yaml:"url,omitempty"`
+	// The identifying name of the contact person/organization.
+	Name string `json:"name,omitempty" yaml:"name,omitempty"`
+	// The URL pointing to the contact information.
+	URL string `json:"url,omitempty" yaml:"url,omitempty"`
+	// The email address of the contact person/organization.
 	Email string `json:"email,omitempty" yaml:"email,omitempty"`
 }
 
 // License information for the exposed API.
+//
+// See https://spec.openapis.org/oas/v3.1.0#license-object.
 type License struct {
-	Name string `json:"name,omitempty" yaml:"name,omitempty"`
-	URL  string `json:"url,omitempty" yaml:"url,omitempty"`
+	// REQUIRED. The license name used for the API.
+	Name string `json:"name" yaml:"name"`
+	// An SPDX license expression for the API.
+	Identifier string `json:"identifier,omitempty" yaml:"identifier,omitempty"`
+	// A URL to the license used for the API.
+	URL string `json:"url,omitempty" yaml:"url,omitempty"`
 }
 
 // Server represents a Server.
+//
+// See https://spec.openapis.org/oas/v3.1.0#server-object.
 type Server struct {
 	// REQUIRED. A URL to the target host. This URL supports Server Variables and MAY be relative,
 	// to indicate that the host location is relative to the location where the OpenAPI document is being served.
@@ -160,30 +180,26 @@ type Server struct {
 }
 
 // ServerVariable describes an object representing a Server Variable for server URL template substitution.
+//
+// See https://spec.openapis.org/oas/v3.1.0#server-variable-object
 type ServerVariable struct {
 	// An enumeration of string values to be used if the substitution options are from a limited set.
 	//
 	// The array MUST NOT be empty.
 	Enum []string `json:"enum,omitempty" yaml:"enum,omitempty"`
 	// REQUIRED. The default value to use for substitution, which SHALL be sent if an alternate value is not supplied.
-	// Note this behavior is different than the Schema Object’s treatment of default values, because in those
-	// cases parameter values are optional. If the enum is defined, the value MUST exist in the enum’s values.
+	// Note this behavior is different than the Schema Object's treatment of default values, because in those
+	// cases parameter values are optional. If the enum is defined, the value MUST exist in the enum's values.
 	Default string `json:"default" yaml:"default"`
 	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 }
 
-// ExternalDocumentation describes a reference to external resource for extended documentation.
-type ExternalDocumentation struct {
-	// A description of the target documentation. CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description,omitempty" yaml:"description,omitempty"`
-	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
-	URL string `json:"url" yaml:"url"`
-}
-
-// Components hold a set of reusable objects for different aspects of the OAS.
-// All objects defined within the components object will have no effect on the API
-// unless they are explicitly referenced from properties outside the components object.
+// Components Holds a set of reusable objects for different aspects of the OAS.
+// All objects defined within the components object will have no effect on the API unless
+// they are explicitly referenced from properties outside the components object.
+//
+// See https://spec.openapis.org/oas/v3.1.0#components-object.
 type Components struct {
 	Schemas         map[string]*Schema         `json:"schemas,omitempty" yaml:"schemas,omitempty"`
 	Responses       map[string]*Response       `json:"responses,omitempty" yaml:"responses,omitempty"`
@@ -192,8 +208,8 @@ type Components struct {
 	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty" yaml:"requestBodies,omitempty"`
 	Headers         map[string]*Header         `json:"headers,omitempty" yaml:"headers,omitempty"`
 	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitempty" yaml:"securitySchemes,omitempty"`
-	// Links           map[string]Link            `json:"links" yaml:"links"`
-	// Callbacks       map[string]Callback        `json:"callback" yaml:"callback"`
+	Links           map[string]*Link           `json:"links,omitempty" yaml:"links,omitempty"`
+	Callbacks       map[string]*Callback       `json:"callbacks,omitempty" yaml:"callbacks,omitempty"`
 
 	Locator Locator `json:"-" yaml:",inline"`
 }
@@ -229,73 +245,163 @@ func (c *Components) Init() {
 // Paths holds the relative paths to the individual endpoints and their operations.
 // The path is appended to the URL from the Server Object in order to construct the full URL.
 // The Paths MAY be empty, due to ACL constraints.
+//
+// See https://spec.openapis.org/oas/v3.1.0#paths-object.
 type Paths map[string]*PathItem
 
-// PathItem describes the operations available on a single path.
-// A Path Item MAY be empty, due to ACL constraints.
-// The path itself is still exposed to the documentation viewer,
-// but they will not know which operations and parameters are available.
+// PathItem Describes the operations available on a single path.
+// A Path Item MAY be empty, due to ACL constraints. The path itself is still exposed to the
+// documentation viewer, but they will not know which operations and parameters are available.
+//
+// See https://spec.openapis.org/oas/v3.1.0#path-item-object.
 type PathItem struct {
 	// Allows for an external definition of this path item.
 	// The referenced structure MUST be in the format of a Path Item Object.
 	// In case a Path Item Object field appears both
 	// in the defined object and the referenced object, the behavior is undefined.
-	Ref         string       `json:"$ref,omitempty" yaml:"$ref,omitempty"`
-	Summary     string       `json:"summary,omitempty" yaml:"summary,omitempty"`
-	Description string       `json:"description,omitempty" yaml:"description,omitempty"`
-	Get         *Operation   `json:"get,omitempty" yaml:"get,omitempty"`
-	Put         *Operation   `json:"put,omitempty" yaml:"put,omitempty"`
-	Post        *Operation   `json:"post,omitempty" yaml:"post,omitempty"`
-	Delete      *Operation   `json:"delete,omitempty" yaml:"delete,omitempty"`
-	Options     *Operation   `json:"options,omitempty" yaml:"options,omitempty"`
-	Head        *Operation   `json:"head,omitempty" yaml:"head,omitempty"`
-	Patch       *Operation   `json:"patch,omitempty" yaml:"patch,omitempty"`
-	Trace       *Operation   `json:"trace,omitempty" yaml:"trace,omitempty"`
-	Servers     []Server     `json:"servers,omitempty" yaml:"servers,omitempty"`
-	Parameters  []*Parameter `json:"parameters,omitempty" yaml:"parameters,omitempty"`
+	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+
+	// An optional, string summary, intended to apply to all operations in this path.
+	Summary string `json:"summary,omitempty" yaml:"summary,omitempty"`
+	// An optional, string description, intended to apply to all operations in this path.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	// A definition of a GET operation on this path.
+	Get *Operation `json:"get,omitempty" yaml:"get,omitempty"`
+	// A definition of a PUT operation on this path.
+	Put *Operation `json:"put,omitempty" yaml:"put,omitempty"`
+	// A definition of a POST operation on this path.
+	Post *Operation `json:"post,omitempty" yaml:"post,omitempty"`
+	// A definition of a DELETE operation on this path.
+	Delete *Operation `json:"delete,omitempty" yaml:"delete,omitempty"`
+	// A definition of a OPTIONS operation on this path.
+	Options *Operation `json:"options,omitempty" yaml:"options,omitempty"`
+	// A definition of a HEAD operation on this path.
+	Head *Operation `json:"head,omitempty" yaml:"head,omitempty"`
+	// A definition of a PATCH operation on this path.
+	Patch *Operation `json:"patch,omitempty" yaml:"patch,omitempty"`
+	// A definition of a TRACE operation on this path.
+	Trace *Operation `json:"trace,omitempty" yaml:"trace,omitempty"`
+	// An alternative server array to service all operations in this path.
+	Servers []Server `json:"servers,omitempty" yaml:"servers,omitempty"`
+	// A list of parameters that are applicable for all the operations described under this path.
+	//
+	// These parameters can be overridden at the operation level, but cannot be removed there.
+	//
+	// The list MUST NOT include duplicated parameters. A unique parameter is defined by
+	// a combination of a name and location.
+	Parameters []*Parameter `json:"parameters,omitempty" yaml:"parameters,omitempty"`
 
 	Locator Locator `json:"-" yaml:",inline"`
 }
 
 // Operation describes a single API operation on a path.
+//
+// See https://spec.openapis.org/oas/v3.1.0#operation-object.
 type Operation struct {
-	OperationID string               `json:"operationId,omitempty" yaml:"operationId,omitempty"`
-	Security    SecurityRequirements `json:"security,omitempty" yaml:"security,omitempty"`
-	Parameters  []*Parameter         `json:"parameters,omitempty" yaml:"parameters,omitempty"`
-	RequestBody *RequestBody         `json:"requestBody,omitempty" yaml:"requestBody,omitempty"`
-	Responses   Responses            `json:"responses,omitempty" yaml:"responses,omitempty"`
-
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
-	Tags         []string               `json:"tags,omitempty" yaml:"tags,omitempty"`
-	Summary      string                 `json:"summary,omitempty" yaml:"summary,omitempty"`
-	Description  string                 `json:"description,omitempty" yaml:"description,omitempty"`
+	Tags []string `json:"tags,omitempty" yaml:"tags,omitempty"`
+	// A short summary of what the operation does.
+	Summary string `json:"summary,omitempty" yaml:"summary,omitempty"`
+	// A verbose explanation of the operation behavior.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	// Additional external documentation for this operation.
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
-	Deprecated   bool                   `json:"deprecated,omitempty" yaml:"deprecated,omitempty"`
+
+	// Unique string used to identify the operation.
+	//
+	// The id MUST be unique among all operations described in the API.
+	//
+	// The operationId value is case-sensitive.
+	OperationID string `json:"operationId,omitempty" yaml:"operationId,omitempty"`
+	// A list of parameters that are applicable for this operation.
+	//
+	// If a parameter is already defined at the Path Item, the new definition will override it but
+	// can never remove it.
+	//
+	// The list MUST NOT include duplicated parameters. A unique parameter is defined by
+	// a combination of a name and location.
+	Parameters []*Parameter `json:"parameters,omitempty" yaml:"parameters,omitempty"`
+	// The request body applicable for this operation.
+	RequestBody *RequestBody `json:"requestBody,omitempty" yaml:"requestBody,omitempty"`
+	// The list of possible responses as they are returned from executing this operation.
+	Responses Responses `json:"responses,omitempty" yaml:"responses,omitempty"`
+	// A map of possible out-of band callbacks related to the parent operation.
+	//
+	// The key is a unique identifier for the Callback Object.
+	Callbacks map[string]*Callback `json:"callbacks,omitempty" yaml:"callbacks,omitempty"`
+	// Declares this operation to be deprecated
+	Deprecated bool `json:"deprecated,omitempty" yaml:"deprecated,omitempty"`
+	// A declaration of which security mechanisms can be used for this operation.
+	//
+	// The list of values includes alternative security requirement objects that can be used.
+	//
+	// Only one of the security requirement objects need to be satisfied to authorize a request.
+	Security SecurityRequirements `json:"security,omitempty" yaml:"security,omitempty"`
+	// An alternative server array to service this operation.
+	//
+	// If an alternative server object is specified at the Path Item Object or Root level,
+	// it will be overridden by this value.
+	Servers []Server `json:"servers,omitempty" yaml:"servers,omitempty"`
 
 	Locator Locator `json:"-" yaml:",inline"`
 }
 
+// ExternalDocumentation describes a reference to external resource for extended documentation.
+//
+// See https://spec.openapis.org/oas/v3.1.0#external-documentation-object.
+type ExternalDocumentation struct {
+	// A description of the target documentation. CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
+	URL string `json:"url" yaml:"url"`
+}
+
 // Parameter describes a single operation parameter.
 // A unique parameter is defined by a combination of a name and location.
+//
+// See https://spec.openapis.org/oas/v3.1.0#parameter-object.
 type Parameter struct {
-	Ref  string `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
+
+	// REQUIRED. The name of the parameter. Parameter names are case sensitive.
 	Name string `json:"name" yaml:"name"`
-
-	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
-	In          string  `json:"in" yaml:"in"`
-	Description string  `json:"description,omitempty" yaml:"description,omitempty"`
-	Schema      *Schema `json:"schema,omitempty" yaml:"schema,omitempty"`
-
+	// REQUIRED. The location of the parameter. Possible values are "query", "header", "path" or "cookie".
+	In string `json:"in" yaml:"in"`
+	// A brief description of the parameter. This could contain examples of use.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Determines whether this parameter is mandatory.
 	// If the parameter location is "path", this property is REQUIRED
 	// and its value MUST be true.
 	// Otherwise, the property MAY be included and its default value is false.
 	Required bool `json:"required,omitempty" yaml:"required,omitempty"`
-
 	// Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
 	// Default value is false.
 	Deprecated bool `json:"deprecated,omitempty" yaml:"deprecated,omitempty"`
+
+	// Describes how the parameter value will be serialized
+	// depending on the type of the parameter value.
+	Style string `json:"style,omitempty" yaml:"style,omitempty"`
+	// When this is true, parameter values of type array or object
+	// generate separate parameters for each value of the array
+	// or key-value pair of the map.
+	// For other types of parameters this property has no effect.
+	Explode *bool `json:"explode,omitempty" yaml:"explode,omitempty"`
+	// Determines whether the parameter value SHOULD allow reserved characters, as defined by RFC 3986.
+	//
+	// This property only applies to parameters with an in value of query.
+	//
+	// The default value is false.
+	AllowReserved bool `json:"allowReserved,omitempty" yaml:"allowReserved,omitempty"`
+	// The schema defining the type used for the parameter.
+	Schema *Schema `json:"schema,omitempty" yaml:"schema,omitempty"`
+	// Example of the parameter's potential value.
+	Example ExampleValue `json:"example,omitempty" yaml:"example,omitempty"`
+	// Examples of the parameter's potential value.
+	Examples map[string]*Example `json:"examples,omitempty" yaml:"examples,omitempty"`
 
 	// For more complex scenarios, the content property can define the media type and schema of the parameter.
 	// A parameter MUST contain either a schema property, or a content property, but not both.
@@ -307,29 +413,23 @@ type Parameter struct {
 	// The map MUST only contain one entry.
 	Content map[string]Media `json:"content,omitempty" yaml:"content,omitempty"`
 
-	// Describes how the parameter value will be serialized
-	// depending on the type of the parameter value.
-	Style string `json:"style,omitempty" yaml:"style,omitempty"`
-
-	// When this is true, parameter values of type array or object
-	// generate separate parameters for each value of the array
-	// or key-value pair of the map.
-	// For other types of parameters this property has no effect.
-	Explode *bool `json:"explode,omitempty" yaml:"explode,omitempty"`
-
-	Example  ExampleValue        `json:"example,omitempty" yaml:"example,omitempty"`
-	Examples map[string]*Example `json:"examples,omitempty" yaml:"examples,omitempty"`
-
 	Locator Locator `json:"-" yaml:",inline"`
 }
 
 // RequestBody describes a single request body.
+//
+// See https://spec.openapis.org/oas/v3.1.0#request-body-object.
 type RequestBody struct {
-	Ref         string `json:"$ref,omitempty" yaml:"$ref,omitempty"`
+	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
+
+	// A brief description of the request body. This could contain examples of use.
+	// CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 
-	// The content of the request body.
+	// REQUIRED. The content of the request body.
+	//
 	// The key is a media type or media type range and the value describes it.
+	//
 	// For requests that match multiple keys, only the most specific key is applicable.
 	// e.g. text/plain overrides text/*
 	Content map[string]Media `json:"content,omitempty" yaml:"content,omitempty"`
@@ -340,41 +440,22 @@ type RequestBody struct {
 	Locator Locator `json:"-" yaml:",inline"`
 }
 
-// Responses is a container for the expected responses of an operation.
-// The container maps the HTTP response code to the expected response
-type Responses map[string]*Response
-
-// Response describes a single response from an API Operation,
-// including design-time, static links to operations based on the response.
-type Response struct {
-	Ref         string                 `json:"$ref,omitempty" yaml:"$ref,omitempty"`
-	Description string                 `json:"description,omitempty" yaml:"description,omitempty"`
-	Headers     map[string]*Header     `json:"headers,omitempty" yaml:"headers,omitempty"`
-	Content     map[string]Media       `json:"content,omitempty" yaml:"content,omitempty"`
-	Links       map[string]interface{} `json:"links,omitempty" yaml:"links,omitempty"` // TODO: implement
-
-	Locator Locator `json:"-" yaml:",inline"`
-}
-
-// Header describes header response.
-//
-// Header Object follows the structure of the Parameter Object with the following changes:
-//
-// 	1. `name` MUST NOT be specified, it is given in the corresponding headers map.
-// 	2. `in` MUST NOT be specified, it is implicitly in header.
-// 	3. All traits that are affected by the location MUST be applicable to a location of header.
-//
-type Header = Parameter
-
 // Media provides schema and examples for the media type identified by its key.
+//
+// See https://spec.openapis.org/oas/v3.1.0#media-type-object.
 type Media struct {
 	// The schema defining the content of the request, response, or parameter.
-	Schema   *Schema             `json:"schema,omitempty" yaml:"schema,omitempty"`
-	Example  ExampleValue        `json:"example,omitempty" yaml:"example,omitempty"`
+	Schema *Schema `json:"schema,omitempty" yaml:"schema,omitempty"`
+	// Example of the media type.
+	Example ExampleValue `json:"example,omitempty" yaml:"example,omitempty"`
+	// Examples of the media type.
 	Examples map[string]*Example `json:"examples,omitempty" yaml:"examples,omitempty"`
 
-	// A map between a property name and its encoding information. The key, being the property name, MUST exist in
-	// the schema as a property. The encoding object SHALL only apply to requestBody objects when the media
+	// A map between a property name and its encoding information.
+	//
+	// The key, being the property name, MUST exist in the schema as a property.
+	//
+	// The encoding object SHALL only apply to requestBody objects when the media
 	// type is multipart or application/x-www-form-urlencoded.
 	Encoding map[string]Encoding `json:"encoding,omitempty" yaml:"encoding,omitempty"`
 
@@ -382,6 +463,8 @@ type Media struct {
 }
 
 // Encoding describes single encoding definition applied to a single schema property.
+//
+// See https://spec.openapis.org/oas/v3.1.0#encoding-object.
 type Encoding struct {
 	// The Content-Type for encoding a specific property.
 	ContentType string `json:"contentType,omitempty" yaml:"contentType,omitempty"`
@@ -410,8 +493,125 @@ type Encoding struct {
 	Locator Locator `json:"-" yaml:",inline"`
 }
 
-// Discriminator discriminates types for OneOf, AllOf, AnyOf.
-type Discriminator struct {
-	PropertyName string            `json:"propertyName" yaml:"propertyName"`
-	Mapping      map[string]string `json:"mapping,omitempty" yaml:"mapping,omitempty"`
+// Responses is a container for the expected responses of an operation.
+//
+// The container maps the HTTP response code to the expected response.
+//
+// The `default` MAY be used as a default response object for all HTTP
+// codes that are not covered individually by the Responses Object.
+//
+// The Responses Object MUST contain at least one response code, and if only one
+// response code is provided it SHOULD be the response for a successful operation call.
+//
+// See https://spec.openapis.org/oas/v3.1.0#responses-object.
+type Responses map[string]*Response
+
+// Response describes a single response from an API Operation,
+// including design-time, static links to operations based on the response.
+//
+// See https://spec.openapis.org/oas/v3.1.0#response-object.
+type Response struct {
+	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
+
+	// REQUIRED. A description of the response.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	// Maps a header name to its definition.
+	//
+	// RFC7230 states header names are case insensitive.
+	//
+	// If a response header is defined with the name "Content-Type", it SHALL be ignored.
+	Headers map[string]*Header `json:"headers,omitempty" yaml:"headers,omitempty"`
+	// A map containing descriptions of potential response payloads.
+	//
+	// The key is a media type or media type range and the value describes it.
+	//
+	// For requests that match multiple keys, only the most specific key is applicable.
+	// e.g. text/plain overrides text/*
+	Content map[string]Media `json:"content,omitempty" yaml:"content,omitempty"`
+	// A map of operations links that can be followed from the response.
+	//
+	// The key of the map is a short name for the link, following the naming constraints
+	// of the names for Component Objects.
+	Links map[string]*Link `json:"links,omitempty" yaml:"links,omitempty"`
+
+	Locator Locator `json:"-" yaml:",inline"`
+}
+
+// Callback is a map of possible out-of band callbacks related to the parent operation.
+//
+// Each value in the map is a Path Item Object that describes a set of requests that may be
+// initiated by the API provider and the expected responses.
+//
+// The key value used to identify the path item object is an expression, evaluated at runtime,
+// that identifies a URL to use for the callback operation.
+//
+// To describe incoming requests from the API provider independent from another
+// API call, use the `webhooks` field.
+//
+// See https://spec.openapis.org/oas/v3.1.0#callback-object.
+type Callback map[string]*PathItem
+
+// Example object.
+//
+// See https://spec.openapis.org/oas/v3.1.0#example-object.
+type Example struct {
+	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
+
+	// Short description for the example.
+	Summary string `json:"summary,omitempty" yaml:"summary,omitempty"`
+	// Long description for the example.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	// Embedded literal example.
+	Value ExampleValue `json:"value,omitempty" yaml:"value,omitempty"`
+	// A URI that points to the literal example.
+	ExternalValue string `json:"externalValue,omitempty" yaml:"externalValue,omitempty"`
+
+	Locator Locator `json:"-" yaml:",inline"`
+}
+
+// Link describes a possible design-time link for a response.
+//
+// See https://spec.openapis.org/oas/v3.1.0#link-object.
+type Link struct {
+	Ref string `json:"$ref,omitempty" yaml:"$ref,omitempty"` // ref object
+
+	// A relative or absolute URI reference to an OAS operation.
+	//
+	// This field is mutually exclusive of the operationId field, and MUST point to an Operation Object.
+	OperationRef string `json:"operationRef,omitempty" yaml:"operationRef,omitempty"`
+	// The name of an existing, resolvable OAS operation, as defined with a unique operationId.
+	//
+	// This field is mutually exclusive of the operationRef field.
+	OperationID string `json:"operationId,omitempty" yaml:"operationId,omitempty"`
+	// A map representing parameters to pass to an operation as specified with operationId or identified
+	// via operationRef.
+	//
+	// The key is the parameter name to be used, whereas the value can be a constant or an expression to be
+	// evaluated and passed to the linked operation.
+	Parameters map[string]RawValue `json:"parameters,omitempty" yaml:"parameters,omitempty"`
+}
+
+// Header describes header response.
+//
+// Header Object follows the structure of the Parameter Object with the following changes:
+//
+// 	1. `name` MUST NOT be specified, it is given in the corresponding headers map.
+// 	2. `in` MUST NOT be specified, it is implicitly in header.
+// 	3. All traits that are affected by the location MUST be applicable to a location of header.
+//
+// See https://spec.openapis.org/oas/v3.1.0#header-object.
+type Header = Parameter
+
+// Tag adds metadata to a single tag that is used by the Operation Object.
+//
+// See https://spec.openapis.org/oas/v3.1.0#tag-object
+type Tag struct {
+	// REQUIRED. The name of the tag.
+	Name string `json:"name" yaml:"name"`
+	// A description for the tag. CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+	// Additional external documentation for this tag.
+	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
 }

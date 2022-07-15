@@ -115,6 +115,8 @@ func (p *parser) parsePathItems() error {
 		//	names MUST NOT exist as they are identical.
 		//
 		paths = map[string]struct{}{}
+
+		pathsLoc = p.rootLoc.Field("paths")
 	)
 	for path, item := range p.spec.Paths {
 		if err := func() error {
@@ -124,15 +126,18 @@ func (p *parser) parsePathItems() error {
 			}
 
 			if _, ok := paths[id]; ok {
-				pathLoc := p.rootLoc.Field("paths").Key(path)
-				err := errors.Errorf("duplicate path: %q", path)
-				return p.wrapLocation("", pathLoc, err)
+				return errors.Errorf("duplicate path: %q", path)
 			}
 			paths[id] = struct{}{}
 
-			return p.parsePathItem(path, item, operationIDs, newResolveCtx(p.depthLimit))
+			return nil
 		}(); err != nil {
-			return errors.Wrapf(err, "path %q", path)
+			return p.wrapLocation("", pathsLoc.Key(path), err)
+		}
+
+		if err := p.parsePathItem(path, item, operationIDs, newResolveCtx(p.depthLimit)); err != nil {
+			err := errors.Wrapf(err, "path %q", path)
+			return p.wrapLocation("", pathsLoc.Field(path), err)
 		}
 	}
 	return nil
@@ -154,7 +159,7 @@ func (p *parser) parsePathItem(
 		return errors.New("referenced pathItem not supported")
 	}
 
-	itemParams, err := p.parseParams(item.Parameters, ctx)
+	itemParams, err := p.parseParams(item.Parameters, item.Locator.Field("parameters"), ctx)
 	if err != nil {
 		return errors.Wrap(err, "parameters")
 	}
@@ -199,7 +204,7 @@ func (p *parser) parseOp(
 		Locator:     spec.Locator,
 	}
 
-	opParams, err := p.parseParams(spec.Parameters, ctx)
+	opParams, err := p.parseParams(spec.Parameters, spec.Locator.Field("parameters"), ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
@@ -219,26 +224,35 @@ func (p *parser) parseOp(
 		}
 	}
 
-	op.Responses, err = p.parseResponses(spec.Responses, ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "responses")
+	{
+		locator := spec.Locator.Field("responses")
+		op.Responses, err = p.parseResponses(spec.Responses, locator, ctx)
+		if err != nil {
+			err := errors.Wrap(err, "responses")
+			return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
+		}
 	}
 
+	parseSecurity := func(spec ogen.SecurityRequirements, locator location.Locator) (err error) {
+		op.Security, err = p.parseSecurityRequirements(spec, locator, ctx)
+		if err != nil {
+			err := errors.Wrap(err, "security")
+			return p.wrapLocation(ctx.lastLoc(), locator, err)
+		}
+		return nil
+	}
+
+	var (
+		security       = p.spec.Security
+		securityParent = p.rootLoc
+	)
 	if spec.Security != nil {
 		// Use operation level security.
-		op.Security, err = p.parseSecurityRequirements(spec.Security, ctx)
-		if err != nil {
-			err = errors.Wrap(err, "security")
-			return nil, p.wrapField("security", ctx.lastLoc(), spec.Locator, err)
-		}
-	} else {
-		// Use root level security.
-		op.Security, err = p.parseSecurityRequirements(p.spec.Security, ctx)
-		if err != nil {
-			loc := p.rootLoc.Field("security")
-			err = errors.Wrap(err, "security")
-			return nil, p.wrapField("security", ctx.lastLoc(), loc, err)
-		}
+		security = spec.Security
+		securityParent = spec.Locator
+	}
+	if err := parseSecurity(security, securityParent.Field("security")); err != nil {
+		return nil, err
 	}
 
 	return op, nil

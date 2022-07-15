@@ -9,6 +9,19 @@ import (
 )
 
 func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rerr error) {
+	if c == nil {
+		return &openapi.Components{
+			Schemas:       map[string]*jsonschema.Schema{},
+			Responses:     map[string]*openapi.Response{},
+			Parameters:    map[string]*openapi.Parameter{},
+			Examples:      map[string]*openapi.Example{},
+			RequestBodies: map[string]*openapi.RequestBody{},
+		}, nil
+	}
+	defer func() {
+		rerr = p.wrapLocation("", c.Locator, rerr)
+	}()
+
 	result := &openapi.Components{
 		Schemas:       make(map[string]*jsonschema.Schema, len(c.Schemas)),
 		Responses:     make(map[string]*openapi.Response, len(c.Responses)),
@@ -16,17 +29,17 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 		Examples:      make(map[string]*openapi.Example, len(c.Examples)),
 		RequestBodies: make(map[string]*openapi.RequestBody, len(c.RequestBodies)),
 	}
-	if c != nil {
-		defer func() {
-			rerr = p.wrapLocation("", c.Locator, rerr)
-		}()
+	wrapErr := func(component, name string, err error) error {
+		loc := c.Locator.Field(component).Field(name)
+		err = errors.Wrapf(err, "schemas: %q", name)
+		return p.wrapLocation("", loc, err)
 	}
 
 	for name := range c.Schemas {
 		ref := "#/components/schemas/" + name
 		s, err := p.schemaParser.Resolve(ref)
 		if err != nil {
-			return nil, errors.Wrapf(err, "schemas: %q", name)
+			return nil, wrapErr("schemas", name, err)
 		}
 
 		result.Schemas[name] = s
@@ -36,7 +49,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 		ref := "#/components/responses/" + name
 		r, err := p.resolveResponse(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
-			return nil, errors.Wrapf(err, "responses: %q", name)
+			return nil, wrapErr("responses", name, err)
 		}
 
 		result.Responses[name] = r
@@ -46,7 +59,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 		ref := "#/components/parameters/" + name
 		pp, err := p.resolveParameter(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
-			return nil, errors.Wrapf(err, "parameters: %q", name)
+			return nil, wrapErr("parameters", name, err)
 		}
 
 		result.Parameters[name] = pp
@@ -56,7 +69,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 		ref := "#/components/examples/" + name
 		ex, err := p.resolveExample(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
-			return nil, errors.Wrapf(err, "examples: %q", name)
+			return nil, wrapErr("examples", name, err)
 		}
 
 		result.Examples[name] = ex
@@ -66,7 +79,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 		ref := "#/components/requestBodies/" + name
 		b, err := p.resolveRequestBody(ref, newResolveCtx(p.depthLimit))
 		if err != nil {
-			return nil, errors.Wrapf(err, "requestBodies: %q", name)
+			return nil, wrapErr("requestBodies", name, err)
 		}
 
 		result.RequestBodies[name] = b

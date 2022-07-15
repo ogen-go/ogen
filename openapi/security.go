@@ -2,8 +2,8 @@ package openapi
 
 import "github.com/ogen-go/ogen/internal/location"
 
-// SecurityRequirements is parsed security requirements.
-type SecurityRequirements struct {
+// SecurityRequirement is parsed security requirements.
+type SecurityRequirement struct {
 	Scopes   []string
 	Name     string
 	Security Security

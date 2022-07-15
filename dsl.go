@@ -733,7 +733,7 @@ func (r *Response) initContent() {
 }
 
 // SetLinks sets the Links of the Response.
-func (r *Response) SetLinks(l map[string]interface{}) *Response {
+func (r *Response) SetLinks(l map[string]*Link) *Response {
 	r.Links = l
 	return r
 }

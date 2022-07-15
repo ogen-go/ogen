@@ -49,7 +49,7 @@ func (p *Parser) Resolve(ref string) (*Schema, error) {
 func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (_ *Schema, rerr error) {
 	if schema != nil {
 		defer func() {
-			rerr = p.wrapLocation(ctx.lastLoc(), &schema.Locator, rerr)
+			rerr = p.wrapLocation(ctx.lastLoc(), schema.Locator, rerr)
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
@@ -73,15 +73,24 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 			handleNullableEnum(s)
 		}
 		if d := schema.Default; len(d) > 0 {
-			v, err := parseJSONValue(s, json.RawMessage(d))
-			if err != nil {
-				return nil, errors.Wrap(err, "parse default")
+			if err := func() error {
+				v, err := parseJSONValue(s, json.RawMessage(d))
+				if err != nil {
+					return err
+				}
+
+				if v == nil && !s.Nullable {
+					return errors.New("unexpected default \"null\" value")
+				}
+
+				s.Default = v
+				s.DefaultSet = true
+				return nil
+			}(); err != nil {
+				loc := schema.Locator.Field("default")
+				err := errors.Wrap(err, "parse default")
+				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
 			}
-			if v == nil && !s.Nullable {
-				return nil, errors.New("unexpected default \"null\" value")
-			}
-			s.Default = v
-			s.DefaultSet = true
 		}
 		if a, ok := schema.XAnnotations["x-ogen-name"]; ok {
 			name, err := jx.DecodeBytes(a).Str()
@@ -401,6 +410,15 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 			Mapping:      d.Mapping,
 		}
 	}
+	if x := schema.XML; x != nil {
+		s.XML = &XML{
+			Name:      x.Name,
+			Namespace: x.Namespace,
+			Prefix:    x.Prefix,
+			Attribute: x.Attribute,
+			Wrapped:   x.Wrapped,
+		}
+	}
 
 	s.Locator = schema.Locator
 	return s
@@ -418,7 +436,7 @@ func parseType(typ string) (SchemaType, error) {
 
 	t, ok := mapping[typ]
 	if !ok {
-		return SchemaType(""), errors.Errorf("unexpected type: %q", typ)
+		return "", errors.Errorf("unexpected type: %q", typ)
 	}
 
 	return t, nil

@@ -6,36 +6,35 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseResponses(responses ogen.Responses, ctx *resolveCtx) (_ map[string]*openapi.Response, err error) {
+func (p *parser) parseResponses(
+	responses ogen.Responses,
+	locator location.Locator,
+	ctx *resolveCtx,
+) (_ map[string]*openapi.Response, err error) {
 	if len(responses) == 0 {
 		return nil, errors.New("no responses")
 	}
 
 	result := make(map[string]*openapi.Response, len(responses))
 	for status, response := range responses {
-		result[status], err = p.parseStatus(status, response, ctx)
-		if err != nil {
-			return nil, errors.Wrap(err, status)
+		if err := validateStatusCode(status); err != nil {
+			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(status), err)
 		}
+
+		resp, err := p.parseResponse(response, ctx)
+		if err != nil {
+			err := errors.Wrap(err, status)
+			return nil, p.wrapLocation(ctx.lastLoc(), locator.Field(status), err)
+		}
+
+		result[status] = resp
 	}
 
 	return result, nil
-}
-
-func (p *parser) parseStatus(status string, response *ogen.Response, ctx *resolveCtx) (*openapi.Response, error) {
-	if err := validateStatusCode(status); err != nil {
-		return nil, err
-	}
-
-	resp, err := p.parseResponse(response, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	return resp, nil
 }
 
 func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi.Response, rerr error) {
@@ -54,7 +53,7 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi
 		return resp, nil
 	}
 
-	content, err := p.parseContent(resp.Content, ctx)
+	content, err := p.parseContent(resp.Content, resp.Locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
 		return nil, p.wrapField("content", ctx.lastLoc(), resp.Locator, err)

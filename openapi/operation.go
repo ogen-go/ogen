@@ -15,7 +15,7 @@ type Operation struct {
 	RequestBody *RequestBody // optional
 
 	// Security requirements.
-	Security []SecurityRequirements
+	Security []SecurityRequirement
 
 	// Operation responses.
 	// Map is always non-nil.

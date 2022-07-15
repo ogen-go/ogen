@@ -9,7 +9,7 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.SecurityRequirements) (*ir.Security, error) {
+func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.SecurityRequirement) (*ir.Security, error) {
 	security := spec.Security
 	if name := security.Name; name == "" {
 		return nil, errors.Errorf(`invalid "apiKey" name %q`, name)
@@ -34,7 +34,7 @@ func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.Security
 	return s, nil
 }
 
-func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityRequirements) (*ir.Security, error) {
+func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityRequirement) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
 	switch scheme := security.Scheme; scheme {
@@ -64,7 +64,7 @@ func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityRe
 	return s, nil
 }
 
-func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequirements) (r *ir.Security, rErr error) {
+func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequirement) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
 		return sec, nil
 	}
@@ -110,7 +110,7 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequireme
 	}
 }
 
-func (g *Generator) generateSecurities(ctx *genctx, spec []openapi.SecurityRequirements) (r []*ir.SecurityRequirement, _ error) {
+func (g *Generator) generateSecurities(ctx *genctx, spec []openapi.SecurityRequirement) (r []*ir.SecurityRequirement, _ error) {
 	for idx, sr := range spec {
 		s, err := g.generateSecurity(ctx, sr)
 		if err != nil {

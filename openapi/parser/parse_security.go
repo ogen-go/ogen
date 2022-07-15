@@ -7,6 +7,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -62,13 +63,14 @@ func (p *parser) parseSecurityScheme(
 				"vapid":
 			default:
 				err := errors.Errorf(`invalid "scheme": %q`, scheme.Scheme)
-				return p.wrapField("name", ctx.lastLoc(), scheme.Locator, err)
+				return p.wrapField("scheme", ctx.lastLoc(), scheme.Locator, err)
 			}
 			return nil
 		case "mutualTLS":
 			return nil
 		case "oauth2":
-			return p.validateOAuthFlows(scheme.Flows, ctx.lastLoc())
+			err := p.validateOAuthFlows(scheme.Flows, ctx.lastLoc())
+			return p.wrapField("flows", ctx.lastLoc(), scheme.Locator, err)
 		case "openIdConnect":
 			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				err := errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
@@ -127,7 +129,7 @@ func (p *parser) validateOAuthFlows(flows *ogen.OAuthFlows, loc string) (rerr er
 				return nil
 			}
 			if _, err := url.ParseRequestURI(input); err != nil {
-				err = errors.Wrapf(err, `%q MUST be in the form of a URL`, name)
+				err := errors.Wrapf(err, `%q MUST be in the form of a URL`, name)
 				return p.wrapField(name, loc, flow.Locator, err)
 			}
 			return nil
@@ -177,26 +179,37 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 
 func (p *parser) parseSecurityRequirements(
 	requirements ogen.SecurityRequirements,
+	locator location.Locator,
 	ctx *resolveCtx,
-) ([]openapi.SecurityRequirements, error) {
-	result := make([]openapi.SecurityRequirements, 0, len(requirements))
-	for _, req := range requirements {
-		for requirementName, scopes := range req {
-			v, ok := p.refs.securitySchemes[requirementName]
+) ([]openapi.SecurityRequirement, error) {
+	result := make([]openapi.SecurityRequirement, 0, len(requirements))
+	securitySchemesLoc := p.rootLoc.Field("components").Field("securitySchemes")
+
+	for idx, req := range requirements {
+		locator := locator.Index(idx)
+
+		for name, scopes := range req {
+			v, ok := p.refs.securitySchemes[name]
 			if !ok {
-				return nil, errors.Errorf("unknown security schema %q", requirementName)
+				err := errors.Errorf("unknown security schema %q", name)
+				return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
 			}
 
 			spec, err := p.parseSecurityScheme(v, ctx)
 			if err != nil {
-				return nil, errors.Wrapf(err, "parse security scheme %q", requirementName)
+				loc := securitySchemesLoc.Field(name)
+				err := errors.Wrapf(err, "parse security scheme %q", name)
+				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
 			}
 
 			if len(scopes) > 0 {
 				switch spec.Type {
 				case "openIdConnect", "oauth2":
 				default:
-					return nil, errors.Errorf(`list of scopes MUST be empty for "type" %q`, spec.Type)
+					// Point to the first scope in the list.
+					locator := locator.Field(name).Index(0)
+					err := errors.Errorf(`list of scopes MUST be empty for "type" %q`, spec.Type)
+					return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
 				}
 			}
 
@@ -205,9 +218,9 @@ func (p *parser) parseSecurityRequirements(
 				flows = *spec.Flows
 			}
 
-			result = append(result, openapi.SecurityRequirements{
+			result = append(result, openapi.SecurityRequirement{
 				Scopes: scopes,
-				Name:   requirementName,
+				Name:   name,
 				Security: openapi.Security{
 					Type:             spec.Type,
 					Description:      spec.Description,
