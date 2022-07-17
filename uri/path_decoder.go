@@ -37,13 +37,13 @@ func (d *PathDecoder) DecodeValue() (string, error) {
 
 	case PathStyleLabel:
 		if !d.cur.eat('.') {
-			return "", errors.Errorf(`label style value must begin with "."`)
+			return "", errors.New(`label style value must begin with "."`)
 		}
 		return d.cur.readAll()
 
 	case PathStyleMatrix:
 		if !d.cur.eat(';') {
-			return "", errors.Errorf(`label style value must begin with ";"`)
+			return "", errors.New(`label style value must begin with ";"`)
 		}
 
 		param, err := d.cur.readUntil('=')
