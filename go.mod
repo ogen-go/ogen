@@ -6,7 +6,7 @@ require (
 	github.com/fatih/color v1.13.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
-	github.com/go-faster/jx v0.38.0
+	github.com/go-faster/jx v0.38.1
 	github.com/go-faster/yamlx v0.1.0
 	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.8.0
