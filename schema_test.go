@@ -9,13 +9,79 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+type encoding struct {
+	marshal   func(interface{}) ([]byte, error)
+	unmarshal func([]byte, interface{}) error
+	compare   func(a *require.Assertions, got, want string, msgArgs ...interface{})
+}
+
+func testCustomEncoding(
+	createVal func() interface{},
+	input string,
+	wantErr bool,
+	e encoding,
+) func(t *testing.T) {
+	return func(t *testing.T) {
+		a := require.New(t)
+
+		val := createVal()
+		err := e.unmarshal([]byte(input), val)
+		if wantErr {
+			a.Error(err)
+			t.Logf("Input: %q", input)
+			t.Logf("Error: %+v", err)
+			return
+		}
+		a.NoError(err)
+
+		data, err := e.marshal(val)
+		a.NoError(err)
+		e.compare(a, input, string(data))
+	}
+}
+
+func testCustomEncodings(
+	createVal func() interface{},
+	input string,
+	wantErr bool,
+) func(t *testing.T) {
+	js := encoding{
+		marshal:   json.Marshal,
+		unmarshal: json.Unmarshal,
+		compare:   (*require.Assertions).JSONEq,
+	}
+	yml := encoding{
+		marshal:   yaml.Marshal,
+		unmarshal: yaml.Unmarshal,
+		compare:   (*require.Assertions).YAMLEq,
+	}
+
+	return func(t *testing.T) {
+		t.Run("YAML", testCustomEncoding(
+			createVal,
+			input,
+			wantErr,
+			yml,
+		))
+		t.Run("JSON", testCustomEncoding(
+			createVal,
+			input,
+			wantErr,
+			js,
+		))
+	}
+}
+
 func TestProperties(t *testing.T) {
+	create := func() interface{} {
+		return &Properties{}
+	}
+
 	tests := []struct {
 		data    string
 		value   Properties
 		wantErr bool
 	}{
-
 		{`{"foo":{"type":"string"}, "bar":{"type":"number"}}`, Properties{
 			{Name: "foo", Schema: &Schema{Type: "string"}},
 			{Name: "bar", Schema: &Schema{Type: "number"}},
@@ -29,27 +95,15 @@ func TestProperties(t *testing.T) {
 	}
 	for i, tt := range tests {
 		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-
-			var val Properties
-			err := yaml.Unmarshal([]byte(tt.data), &val)
-			if tt.wantErr {
-				a.Error(err)
-				t.Log("Input:", tt.data)
-				t.Log("Error:", err)
-				return
-			}
-			a.NoError(err)
-
-			data, err := json.Marshal(val)
-			a.NoError(err)
-			a.JSONEq(tt.data, string(data))
-		})
+		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
 
 func TestAdditionalProperties(t *testing.T) {
+	create := func() interface{} {
+		return &AdditionalProperties{}
+	}
+
 	tests := []struct {
 		data    string
 		value   AdditionalProperties
@@ -67,27 +121,15 @@ func TestAdditionalProperties(t *testing.T) {
 	}
 	for i, tt := range tests {
 		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-
-			var val AdditionalProperties
-			err := yaml.Unmarshal([]byte(tt.data), &val)
-			if tt.wantErr {
-				a.Error(err)
-				t.Log("Input:", tt.data)
-				t.Log("Error:", err)
-				return
-			}
-			a.NoError(err)
-
-			data, err := json.Marshal(val)
-			a.NoError(err)
-			a.JSONEq(tt.data, string(data))
-		})
+		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
 
 func TestPatternProperties(t *testing.T) {
+	create := func() interface{} {
+		return &PatternProperties{}
+	}
+
 	tests := []struct {
 		data    string
 		value   PatternProperties
@@ -106,22 +148,6 @@ func TestPatternProperties(t *testing.T) {
 	}
 	for i, tt := range tests {
 		tt := tt
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			a := require.New(t)
-
-			var val PatternProperties
-			err := yaml.Unmarshal([]byte(tt.data), &val)
-			if tt.wantErr {
-				a.Error(err)
-				t.Log("Input:", tt.data)
-				t.Log("Error:", err)
-				return
-			}
-			a.NoError(err)
-
-			data, err := json.Marshal(val)
-			a.NoError(err)
-			a.JSONEq(tt.data, string(data))
-		})
+		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }

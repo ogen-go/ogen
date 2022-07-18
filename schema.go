@@ -2,6 +2,7 @@ package ogen
 
 import (
 	"encoding/json"
+	"reflect"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -250,10 +251,34 @@ type Property struct {
 // Properties is unparsed JSON Schema properties validator description.
 type Properties []Property
 
+// MarshalYAML implements yaml.Marshaler.
+func (p Properties) MarshalYAML() (interface{}, error) {
+	content := make([]*yaml.Node, 0, len(p)*2)
+	for _, prop := range p {
+		var val yaml.Node
+		if err := val.Encode(prop.Schema); err != nil {
+			return nil, err
+		}
+		content = append(content,
+			&yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: prop.Name},
+			&val,
+		)
+	}
+
+	return &yaml.Node{
+		Kind:    yaml.MappingNode,
+		Content: content,
+	}, nil
+}
+
 // UnmarshalYAML implements yaml.Unmarshaler.
 func (p *Properties) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
-		return errors.Errorf("unexpected YAML kind %v", node.Kind)
+		return &yaml.UnmarshalError{
+			Node: node,
+			Type: reflect.TypeOf(p),
+			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
+		}
 	}
 	for i := 0; i < len(node.Content); i += 2 {
 		var (
@@ -318,6 +343,14 @@ type AdditionalProperties struct {
 	Schema Schema
 }
 
+// MarshalYAML implements yaml.Marshaler.
+func (p AdditionalProperties) MarshalYAML() (interface{}, error) {
+	if p.Bool != nil {
+		return *p.Bool, nil
+	}
+	return p.Schema, nil
+}
+
 // UnmarshalYAML implements yaml.Unmarshaler.
 func (p *AdditionalProperties) UnmarshalYAML(node *yaml.Node) error {
 	switch node.Kind {
@@ -375,10 +408,34 @@ type PatternProperty struct {
 // PatternProperties is unparsed JSON Schema patternProperties validator description.
 type PatternProperties []PatternProperty
 
+// MarshalYAML implements yaml.Marshaler.
+func (p PatternProperties) MarshalYAML() (interface{}, error) {
+	content := make([]*yaml.Node, 0, len(p)*2)
+	for _, prop := range p {
+		var val yaml.Node
+		if err := val.Encode(prop.Schema); err != nil {
+			return nil, err
+		}
+		content = append(content,
+			&yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: prop.Pattern},
+			&val,
+		)
+	}
+
+	return &yaml.Node{
+		Kind:    yaml.MappingNode,
+		Content: content,
+	}, nil
+}
+
 // UnmarshalYAML implements yaml.Unmarshaler.
 func (p *PatternProperties) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
-		return errors.Errorf("unexpected YAML kind %v", node.Kind)
+		return &yaml.UnmarshalError{
+			Node: node,
+			Type: reflect.TypeOf(p),
+			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
+		}
 	}
 	for i := 0; i < len(node.Content); i += 2 {
 		var (
