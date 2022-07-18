@@ -3,6 +3,7 @@ package gen
 import (
 	"mime"
 	"path"
+	"sort"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
@@ -138,15 +139,23 @@ func (g *Generator) generateContents(
 	optional bool,
 	contents map[string]*openapi.MediaType,
 ) (_ map[ir.ContentType]ir.Media, err error) {
-	var (
-		result      = make(map[ir.ContentType]ir.Media, len(contents))
-		unsupported []string
-	)
 	if err := filterMostSpecific(contents); err != nil {
 		return nil, errors.Wrap(err, "filter most specific")
 	}
 
-	for contentType, media := range contents {
+	var (
+		result      = make(map[ir.ContentType]ir.Media, len(contents))
+		keys        = make([]string, 0, len(contents))
+		unsupported []string
+	)
+	for k := range contents {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, contentType := range keys {
+		media := contents[contentType]
+
 		parsedContentType, _, err := mime.ParseMediaType(contentType)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse content type %q", contentType)
