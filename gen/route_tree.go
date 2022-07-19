@@ -58,7 +58,7 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 		// Head is a first character of route.
 		head := path[0]
 		// Find parameter index.
-		_, _, pend, _, err := nextPathPart(path)
+		_, _, pend, err := nextPathPart(path)
 		if err != nil {
 			return err
 		}

@@ -22,7 +22,7 @@ func PrintPrettyError(w io.Writer, filename string, data []byte, err error) bool
 	write := func(msg string, loc Location, context int) {
 		opts := PrintListingOptions{
 			Filename: filename,
-			Context:  contextLines,
+			Context:  context,
 		}
 		_ = lines.PrintListing(w, msg, loc, opts)
 	}
