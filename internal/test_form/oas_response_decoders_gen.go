@@ -17,22 +17,25 @@ import (
 func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (res TestFormURLEncodedOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return TestFormURLEncodedOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (res TestMultipartOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return TestMultipartOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (res TestMultipartUploadOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -58,15 +61,15 @@ func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestShareFormSchemaResponse(resp *http.Response, span trace.Span) (res TestShareFormSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return TestShareFormSchemaOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

@@ -27,6 +27,13 @@ func (UnimplementedHandler) AnyContentTypeBinaryStringSchemaDefault(ctx context.
 	return r, ht.ErrNotImplemented
 }
 
+// Combined implements combined operation.
+//
+// GET /combined
+func (UnimplementedHandler) Combined(ctx context.Context, params CombinedParams) (r CombinedRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // Headers200 implements headers200 operation.
 //
 // GET /headers200
@@ -45,6 +52,23 @@ func (UnimplementedHandler) HeadersCombined(ctx context.Context, params HeadersC
 //
 // GET /headersDefault
 func (UnimplementedHandler) HeadersDefault(ctx context.Context) (r HeadersDefaultDef, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// HeadersPattern implements headersPattern operation.
+//
+// GET /headersPattern
+func (UnimplementedHandler) HeadersPattern(ctx context.Context) (r HeadersPattern4XX, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// IntersectPatternCode implements intersectPatternCode operation.
+//
+// If a response is defined using an explicit code, the explicit code definition takes precedence
+// over the range definition for that code.
+//
+// GET /intersectPatternCode
+func (UnimplementedHandler) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (r IntersectPatternCodeRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

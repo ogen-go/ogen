@@ -133,6 +133,64 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 	return result, nil
 }
 
+// Combined invokes combined operation.
+//
+// GET /combined
+func (c *Client) Combined(ctx context.Context, params CombinedParams) (res CombinedRes, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("combined"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "Combined",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/combined"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "type" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(string(params.Type)))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeCombinedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // Headers200 invokes headers200 operation.
 //
 // GET /headers200
@@ -202,15 +260,15 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 	u.Path += "/headersCombined"
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "default" parameter.
+		// Encode "type" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "default",
+			Name:    "type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.BoolToString(params.Default))
+			return e.EncodeValue(conv.StringToString(string(params.Type)))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -268,6 +326,109 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 	defer resp.Body.Close()
 
 	result, err := decodeHeadersDefaultResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// HeadersPattern invokes headersPattern operation.
+//
+// GET /headersPattern
+func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("headersPattern"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersPattern",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/headersPattern"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeHeadersPatternResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// IntersectPatternCode invokes intersectPatternCode operation.
+//
+// If a response is defined using an explicit code, the explicit code definition takes precedence
+// over the range definition for that code.
+//
+// GET /intersectPatternCode
+func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (res IntersectPatternCodeRes, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("intersectPatternCode"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "IntersectPatternCode",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/intersectPatternCode"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "code" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "code",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.IntToString(params.Code))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeIntersectPatternCodeResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

@@ -87,6 +87,51 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleCombinedRequest handles combined operation.
+//
+// GET /combined
+func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("combined"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "Combined",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	params, err := decodeCombinedParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			Operation: "Combined",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.Combined(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeCombinedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleHeaders200Request handles headers200 operation.
 //
 // GET /headers200
@@ -195,6 +240,87 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 	}
 
 	if err := encodeHeadersDefaultResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleHeadersPatternRequest handles headersPattern operation.
+//
+// GET /headersPattern
+func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("headersPattern"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "HeadersPattern",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+
+	response, err := s.h.HeadersPattern(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeHeadersPatternResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleIntersectPatternCodeRequest handles intersectPatternCode operation.
+//
+// GET /intersectPatternCode
+func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("intersectPatternCode"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "IntersectPatternCode",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	params, err := decodeIntersectPatternCodeParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			Operation: "IntersectPatternCode",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.IntersectPatternCode(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeIntersectPatternCodeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

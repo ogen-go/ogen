@@ -17,6 +17,7 @@ import (
 func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response, span trace.Span) (res Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -42,23 +43,26 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response, span trace.Span) (res APICaptcha2chcaptchaShowGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return &APICaptcha2chcaptchaShowGetOK{}, nil
 	case 404:
+		// Code 404.
 		return &APICaptcha2chcaptchaShowGetNotFound{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response, span trace.Span) (res Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -84,13 +88,14 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response, span trace.Span) (res Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -116,21 +121,23 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response, span trace.Span) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return APICaptchaInvisibleRecaptchaMobileGetOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response, span trace.Span) (res Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -156,21 +163,23 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response, span trace.Span) (res APICaptchaRecaptchaMobileGetOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return APICaptchaRecaptchaMobileGetOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPIDislikeGetResponse(resp *http.Response, span trace.Span) (res Like, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -196,13 +205,14 @@ func decodeAPIDislikeGetResponse(resp *http.Response, span trace.Span) (res Like
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPILikeGetResponse(resp *http.Response, span trace.Span) (res Like, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -228,13 +238,14 @@ func decodeAPILikeGetResponse(resp *http.Response, span trace.Span) (res Like, e
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response, span trace.Span) (res MobileThreadPostsAfter, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -260,13 +271,14 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPIMobileV2BoardsGetResponse(resp *http.Response, span trace.Span) (res Boards, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -292,13 +304,14 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response, span trace.Span) (r
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response, span trace.Span) (res MobileThreadLastInfo, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -324,13 +337,14 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response, span trace.Span) (res MobilePost, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -356,13 +370,14 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeUserPassloginPostResponse(resp *http.Response, span trace.Span) (res Passcode, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -388,13 +403,14 @@ func decodeUserPassloginPostResponse(resp *http.Response, span trace.Span) (res 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeUserPostingPostResponse(resp *http.Response, span trace.Span) (res UserPostingPostOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -420,13 +436,14 @@ func decodeUserPostingPostResponse(resp *http.Response, span trace.Span) (res Us
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeUserReportPostResponse(resp *http.Response, span trace.Span) (res Report, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -452,7 +469,6 @@ func decodeUserReportPostResponse(resp *http.Response, span trace.Span) (res Rep
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

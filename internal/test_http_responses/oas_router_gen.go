@@ -63,6 +63,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 'c': // Prefix: "combined"
+				if l := len("combined"); len(elem) >= l && elem[0:l] == "combined" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: Combined
+					s.handleCombinedRequest([0]string{}, w, r)
+
+					return
+				}
 			case 'h': // Prefix: "headers"
 				if l := len("headers"); len(elem) >= l && elem[0:l] == "headers" {
 					elem = elem[l:]
@@ -113,6 +126,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+				case 'P': // Prefix: "Pattern"
+					if l := len("Pattern"); len(elem) >= l && elem[0:l] == "Pattern" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: HeadersPattern
+						s.handleHeadersPatternRequest([0]string{}, w, r)
+
+						return
+					}
+				}
+			case 'i': // Prefix: "intersectPatternCode"
+				if l := len("intersectPatternCode"); len(elem) >= l && elem[0:l] == "intersectPatternCode" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: IntersectPatternCode
+					s.handleIntersectPatternCodeRequest([0]string{}, w, r)
+
+					return
 				}
 			case 'm': // Prefix: "multipleGenericResponses"
 				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {
@@ -259,6 +298,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 				}
+			case 'c': // Prefix: "combined"
+				if l := len("combined"); len(elem) >= l && elem[0:l] == "combined" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: Combined
+					r.name = "Combined"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
 			case 'h': // Prefix: "headers"
 				if l := len("headers"); len(elem) >= l && elem[0:l] == "headers" {
 					elem = elem[l:]
@@ -312,6 +365,34 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						r.count = 0
 						return r, true
 					}
+				case 'P': // Prefix: "Pattern"
+					if l := len("Pattern"); len(elem) >= l && elem[0:l] == "Pattern" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: HeadersPattern
+						r.name = "HeadersPattern"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				}
+			case 'i': // Prefix: "intersectPatternCode"
+				if l := len("intersectPatternCode"); len(elem) >= l && elem[0:l] == "intersectPatternCode" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: IntersectPatternCode
+					r.name = "IntersectPatternCode"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			case 'm': // Prefix: "multipleGenericResponses"
 				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {

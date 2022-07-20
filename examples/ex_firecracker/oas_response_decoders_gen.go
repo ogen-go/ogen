@@ -17,8 +17,10 @@ import (
 func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res CreateSnapshotRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &CreateSnapshotNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -44,42 +46,45 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res CreateSyncActionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &CreateSyncActionNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -105,40 +110,42 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (res DescribeBalloonConfigRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -165,6 +172,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -190,40 +198,42 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (res DescribeBalloonStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -250,6 +260,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -275,40 +286,42 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res DescribeInstanceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -334,40 +347,42 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res GetExportVmConfigRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -393,40 +408,42 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span) (res GetMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -452,42 +469,45 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadSnapshotRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &LoadSnapshotNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -513,42 +533,45 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res MmdsConfigPutRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &MmdsConfigPutNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -574,40 +597,42 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -634,6 +659,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
+		// Code 404.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -659,42 +685,45 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatchRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &MmdsPatchNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -720,42 +749,45 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &MmdsPutNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -781,42 +813,45 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res PatchBalloonRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PatchBalloonNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -842,42 +877,45 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Span) (res PatchBalloonStatsIntervalRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PatchBalloonStatsIntervalNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -903,42 +941,45 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res PatchGuestDriveByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PatchGuestDriveByIDNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -964,42 +1005,45 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.Span) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PatchGuestNetworkInterfaceByIDNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1025,42 +1069,45 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Span) (res PatchMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PatchMachineConfigurationNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1086,42 +1133,45 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PatchVmNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1147,42 +1197,45 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBalloonRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutBalloonNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1208,42 +1261,45 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res PutGuestBootSourceRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutGuestBootSourceNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1269,42 +1325,45 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res PutGuestDriveByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutGuestDriveByIDNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1330,42 +1389,45 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.Span) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutGuestNetworkInterfaceByIDNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1391,42 +1453,45 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutGuestVsockRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutGuestVsockNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1452,42 +1517,45 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLoggerRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutLoggerNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1513,42 +1581,45 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }
+
 func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span) (res PutMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutMachineConfigurationNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1571,45 +1642,48 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 			return &response, nil
-		default:
-			return res, validate.InvalidContentType(ct)
-		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
-		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
-			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
 	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
+		if err != nil {
+			return res, err
+		}
+
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return res, err
+		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
+	}
 }
+
 func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetricsRes, err error) {
 	switch resp.StatusCode {
 	case 204:
+		// Code 204.
 		return &PutMetricsNoContent{}, nil
 	case 400:
+		// Code 400.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1635,34 +1709,34 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	}
+	// Default response.
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		return res, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "application/json":
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
+			return res, err
 		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
 
-			d := jx.DecodeBytes(b)
-			var response Error
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, err
+		d := jx.DecodeBytes(b)
+		var response Error
+		if err := func() error {
+			if err := response.Decode(d); err != nil {
+				return err
 			}
-			return &ErrorStatusCode{
-				StatusCode: resp.StatusCode,
-				Response:   response,
-			}, nil
-		default:
-			return res, validate.InvalidContentType(ct)
+			return nil
+		}(); err != nil {
+			return res, err
 		}
+		return &ErrorStatusCode{
+			StatusCode: resp.StatusCode,
+			Response:   response,
+		}, nil
+	default:
+		return res, validate.InvalidContentType(ct)
 	}
 }

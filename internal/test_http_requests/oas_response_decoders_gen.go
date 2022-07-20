@@ -17,6 +17,7 @@ import (
 func decodeAllRequestBodiesResponse(resp *http.Response, span trace.Span) (res AllRequestBodiesOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -33,13 +34,14 @@ func decodeAllRequestBodiesResponse(resp *http.Response, span trace.Span) (res A
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeAllRequestBodiesOptionalResponse(resp *http.Response, span trace.Span) (res AllRequestBodiesOptionalOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -56,7 +58,6 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

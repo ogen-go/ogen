@@ -19,6 +19,7 @@ import (
 func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -45,14 +46,16 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
+		// Code 403.
 		return &GetBookForbidden{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res GetPageCoverImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -70,14 +73,16 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
+		// Code 403.
 		return &GetPageCoverImageForbidden{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPageImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -95,14 +100,16 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
+		// Code 403.
 		return &GetPageImageForbidden{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (res GetPageThumbnailImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -120,14 +127,16 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
+		// Code 403.
 		return &GetPageThumbnailImageForbidden{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -154,14 +163,16 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
+		// Code 403.
 		return &SearchForbidden{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res SearchByTagIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -188,8 +199,8 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
+		// Code 403.
 		return &SearchByTagIDForbidden{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

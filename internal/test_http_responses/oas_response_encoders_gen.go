@@ -38,6 +38,79 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTy
 	return nil
 
 }
+func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *CombinedOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
+		e := jx.GetEncoder()
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *Combined2XXStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
+		e := jx.GetEncoder()
+
+		e.Int(response.Response)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *Combined5XXStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
+		e := jx.GetEncoder()
+
+		e.Bool(response.Response)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *CombinedDefStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
+		e := jx.GetEncoder()
+
+		e.ArrStart()
+		for _, elem := range response.Response {
+			e.Str(elem)
+		}
+		e.ArrEnd()
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	default:
+		return errors.Errorf("/combined"+`: unexpected response type: %T`, response)
+	}
+}
 func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -81,6 +154,32 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
+		return nil
+
+	case *HeadersCombined4XX:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode "TestHeader" header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "TestHeader",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					return e.EncodeValue(conv.StringToString(response.TestHeader))
+				}); err != nil {
+					return errors.Wrap(err, "encode TestHeader header")
+				}
+			}
+		}
+		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		return nil
 
 	case *HeadersCombinedDef:
@@ -139,6 +238,68 @@ func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWri
 	}
 	return nil
 
+}
+func encodeHeadersPatternResponse(response HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode "TestHeader" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				return e.EncodeValue(conv.StringToString(response.TestHeader))
+			}); err != nil {
+				return errors.Wrap(err, "encode TestHeader header")
+			}
+		}
+	}
+	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
+	return nil
+
+}
+func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *IntersectPatternCodeOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
+		e := jx.GetEncoder()
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	case *IntersectPatternCode2XXStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
+		e := jx.GetEncoder()
+
+		e.Int(response.Response)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	default:
+		return errors.Errorf("/intersectPatternCode"+`: unexpected response type: %T`, response)
+	}
 }
 func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
