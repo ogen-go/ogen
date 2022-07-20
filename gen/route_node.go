@@ -118,29 +118,25 @@ func (n *RouteNode) Operation() *ir.Operation {
 	return n.op
 }
 
-func nextPathPart(s string) (hasParam bool, paramStart, paramEnd int, tail byte, _ error) {
+func nextPathPart(s string) (hasParam bool, paramStart, paramEnd int, _ error) {
 	paramStart = strings.IndexByte(s, '{')
 	if paramStart < 0 {
-		return false, 0, 0, 0, nil
+		return false, 0, 0, nil
 	}
 
 	paramEnd = strings.IndexByte(s, '}')
 	if paramEnd < 0 || paramEnd < paramStart {
-		return false, paramStart, paramEnd, tail, errors.Errorf("unclosed '{' at %d", paramStart)
+		return false, paramStart, paramEnd, errors.Errorf("unclosed '{' at %d", paramStart)
 	}
 	// Need to match parameter part including both brackets.
 	paramEnd++
-	if paramEnd < len(s) {
-		tail = s[paramEnd]
-	}
-
-	return true, paramStart, paramEnd, tail, nil
+	return true, paramStart, paramEnd, nil
 }
 
 func (n *RouteNode) addChild(path string, op *ir.Operation, ch *RouteNode) (r *RouteNode, _ error) {
 	r = ch
 
-	hasParam, start, end, _, err := nextPathPart(path)
+	hasParam, start, end, err := nextPathPart(path)
 	if err != nil {
 		return nil, errors.Errorf("parse %q", path)
 	}
