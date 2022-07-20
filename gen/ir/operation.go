@@ -100,8 +100,18 @@ type Request struct {
 
 type Responses struct {
 	Type       *Type
+	Pattern    [5]*Response
 	StatusCode map[int]*Response
 	Default    *Response
+}
+
+func (r *Responses) HasPattern() bool {
+	for _, resp := range r.Pattern {
+		if resp != nil {
+			return true
+		}
+	}
+	return false
 }
 
 type Response struct {

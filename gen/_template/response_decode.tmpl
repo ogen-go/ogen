@@ -5,15 +5,31 @@
 
 {{- range $op := $.Operations }}
 func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Responses.Type.Go }}, err error) {
+	{{- with $statusCodes := $op.Responses.StatusCode }}
 	switch resp.StatusCode {
-	{{- range $statusCode, $response := $op.Responses.StatusCode }}{{/* Range over responses */}}
+	{{- range $statusCode, $response := $statusCodes }}{{/* Range over responses */}}
 	case {{ $statusCode }}:
+		// Code {{ $statusCode }}.
 		{{- template "decode_response" response_elem $response $op.Responses.Type.IsInterface }}
 	{{- end }}
-	default:
+	}
+    {{- end }}
+
+	{{- if $op.Responses.HasPattern }}
+	switch resp.StatusCode / 100 {
+    {{- range $idx, $response := $op.Responses.Pattern }}{{- if $response }}
+	case {{ add $idx 1 }}:
+		// Pattern {{ add $idx 1 }}XX.
+    	{{- template "decode_response" response_elem $response $op.Responses.Type.IsInterface }}
+    {{- end }}{{- end }}
+	}
+	{{- end }}
+
 	{{- if $op.Responses.Default }}
+		// Default response.
 		{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.Type.IsInterface }}
 	{{- else if $.Error }}
+		// Convenient error response.
 		defRes, err := func() (res {{ $.ErrorType.Go }}, err error) {
 			{{- template "decode_response" response_elem $.Error false }}
 		}()
@@ -24,9 +40,9 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 	{{- else }}
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	{{- end }}
-	}
 }
-{{- end }}
+
+{{ end }}
 {{ end }}
 
 {{- define "decode_response" }}

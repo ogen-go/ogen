@@ -172,23 +172,30 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 }
 
 func cloneResponse(r *ir.Responses) *ir.Responses {
+	cloneResponse := func(r *ir.Response) *ir.Response {
+		if r == nil {
+			return nil
+		}
+
+		return &ir.Response{
+			NoContent:      r.NoContent,
+			Contents:       cloneContents(r.Contents),
+			Headers:        r.Headers,
+			WithStatusCode: r.WithStatusCode,
+			WithHeaders:    r.WithHeaders,
+		}
+	}
+
 	newR := &ir.Responses{
 		Type:       r.Type,
-		StatusCode: map[int]*ir.Response{},
-		Default:    r.Default,
+		StatusCode: make(map[int]*ir.Response, len(r.StatusCode)),
+		Default:    cloneResponse(r.Default),
 	}
-	for code, statResp := range r.StatusCode {
-		newStatResp := &ir.Response{
-			NoContent:      statResp.NoContent,
-			Contents:       map[ir.ContentType]ir.Media{},
-			Headers:        statResp.Headers,
-			WithStatusCode: statResp.WithStatusCode,
-			WithHeaders:    statResp.WithHeaders,
-		}
-		for contentType, t := range statResp.Contents {
-			newStatResp.Contents[contentType] = t
-		}
-		newR.StatusCode[code] = newStatResp
+	for code, resp := range r.StatusCode {
+		newR.StatusCode[code] = cloneResponse(resp)
+	}
+	for idx, resp := range r.Pattern {
+		newR.Pattern[idx] = cloneResponse(resp)
 	}
 	return newR
 }
@@ -273,13 +280,21 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 }
 
 func cloneRequest(r *ir.Request) *ir.Request {
-	contents := make(map[ir.ContentType]ir.Media)
-	for contentType, media := range r.Contents {
-		contents[contentType] = media
-	}
 	return &ir.Request{
 		Type:     r.Type,
-		Contents: contents,
+		Contents: cloneContents(r.Contents),
 		Spec:     r.Spec,
 	}
+}
+
+func cloneContents(c map[ir.ContentType]ir.Media) map[ir.ContentType]ir.Media {
+	if c == nil {
+		return nil
+	}
+
+	result := make(map[ir.ContentType]ir.Media, len(c))
+	for ct, m := range c {
+		result[ct] = m
+	}
+	return result
 }

@@ -20,13 +20,15 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 
 	// Sort responses by status code.
 	statusCodes := make([]int, 0, len(responses))
+	patterns := make([]string, 0, 5)
 	for status := range responses {
 		if status == "default" {
 			continue // Ignore default response.
 		}
 		switch strings.ToUpper(status) {
 		case "1XX", "2XX", "3XX", "4XX", "5XX":
-			return nil, &ErrNotImplemented{Name: "HTTP code pattern"}
+			patterns = append(patterns, status)
+			continue // Ignore pattern responses.
 		default:
 			code, err := strconv.Atoi(status)
 			if err != nil {
@@ -37,6 +39,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 		}
 	}
 	sort.Ints(statusCodes)
+	sort.Strings(patterns)
 
 	for _, code := range statusCodes {
 		respName, err := pascal(opName, statusText(code))
@@ -51,7 +54,34 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 		ctx := ctx.appendPath(strconv.Itoa(code))
 		result.StatusCode[code], err = g.responseToIR(ctx, respName, doc, resp, false)
 		if err != nil {
-			return nil, errors.Wrapf(err, "%d", code)
+			return nil, errors.Wrapf(err, "code %d", code)
+		}
+	}
+
+	for _, pattern := range patterns {
+		respName, err := pascal(opName, pattern)
+		if err != nil {
+			return nil, errors.Wrapf(err, "%s: %s: response name", opName, pattern)
+		}
+
+		// Convert first digit to byte.
+		n := pattern[0] - '0'
+		switch n {
+		case 1, 2, 3, 4, 5:
+		default:
+			panic(fmt.Sprintf("unexpected pattern %q: code %d", pattern, n))
+		}
+		// Index starts from 0.
+		n--
+
+		var (
+			resp = responses[pattern]
+			doc  = fmt.Sprintf("%s is %s pattern response for %s operation.", respName, pattern, opName)
+		)
+		ctx := ctx.appendPath(pattern)
+		result.Pattern[n], err = g.responseToIR(ctx, respName, doc, resp, true)
+		if err != nil {
+			return nil, errors.Wrapf(err, "pattern %q", pattern)
 		}
 	}
 
