@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
@@ -22,22 +24,64 @@ func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*i
 	}
 
 	for code, r := range r.StatusCode {
-		for contentType, media := range r.Contents {
-			typ, err := do(statusText(code), media.Type, contentType)
-			if err != nil {
-				return errors.Wrapf(err, "%d: %q", code, contentType)
+		if err := func() error {
+			prefix := statusText(code)
+
+			for contentType, media := range r.Contents {
+				typ, err := do(prefix, media.Type, contentType)
+				if err != nil {
+					return errors.Wrapf(err, "%q", contentType)
+				}
+				r.Contents[contentType] = ir.Media{
+					Encoding: media.Encoding,
+					Type:     typ,
+				}
 			}
-			r.Contents[contentType] = ir.Media{
-				Encoding: media.Encoding,
-				Type:     typ,
+
+			if r.NoContent != nil {
+				typ, err := do(prefix, r.NoContent, "")
+				if err != nil {
+					return errors.Wrap(err, "no content")
+				}
+				r.NoContent = typ
 			}
+
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "code %d", code)
 		}
-		if r.NoContent != nil {
-			typ, err := do(statusText(code), r.NoContent, "")
-			if err != nil {
-				return errors.Wrapf(err, "%d: no content", code)
+	}
+
+	for pattern, r := range r.Pattern {
+		if r == nil {
+			continue
+		}
+
+		if err := func() error {
+			prefix := fmt.Sprintf("%dXX", pattern)
+
+			for contentType, media := range r.Contents {
+				typ, err := do(prefix, media.Type, contentType)
+				if err != nil {
+					return errors.Wrapf(err, "%q", contentType)
+				}
+				r.Contents[contentType] = ir.Media{
+					Encoding: media.Encoding,
+					Type:     typ,
+				}
 			}
-			r.NoContent = typ
+
+			if r.NoContent != nil {
+				typ, err := do(prefix, r.NoContent, "")
+				if err != nil {
+					return errors.Wrap(err, "no content")
+				}
+				r.NoContent = typ
+			}
+
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "pattern %q", pattern)
 		}
 	}
 

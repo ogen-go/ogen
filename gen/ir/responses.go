@@ -42,6 +42,33 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 		}
 	}
 
+	for _, resp := range op.Responses.Pattern {
+		if resp == nil {
+			continue
+		}
+
+		if noc := resp.NoContent; noc != nil {
+			result = append(result, ResponseInfo{
+				Type:           noc,
+				NoContent:      true,
+				WithStatusCode: resp.WithStatusCode,
+				WithHeaders:    resp.WithHeaders,
+				Headers:        resp.Headers,
+			})
+			continue
+		}
+		for contentType, media := range resp.Contents {
+			result = append(result, ResponseInfo{
+				Type:           media.Type,
+				Encoding:       media.Encoding,
+				ContentType:    contentType,
+				WithStatusCode: resp.WithStatusCode,
+				WithHeaders:    resp.WithHeaders,
+				Headers:        resp.Headers,
+			})
+		}
+	}
+
 	if def := op.Responses.Default; def != nil {
 		if noc := def.NoContent; noc != nil {
 			result = append(result, ResponseInfo{

@@ -118,6 +118,118 @@
         }
       }
     },
+    "/intersectPatternCode": {
+      "get": {
+        "operationId": "intersectPatternCode",
+        "description": "If a response is defined using an explicit code, the explicit code definition takes precedence over the range definition for that code.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "test",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "2XX": {
+            "description": "test",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/combined": {
+      "get": {
+        "operationId": "combined",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "200",
+                "2XX",
+                "5XX",
+                "default"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200: JSON object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "2XX": {
+            "description": "2XX: JSON integer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "5XX: JSON boolean",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "default: JSON array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/headers200": {
       "get": {
         "operationId": "headers200",
@@ -154,21 +266,55 @@
         }
       }
     },
+    "/headersPattern": {
+      "get": {
+        "operationId": "headersPattern",
+        "responses": {
+          "4XX": {
+            "description": "test",
+            "headers": {
+              "TestHeader": {
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/headersCombined": {
       "get": {
         "operationId": "headersCombined",
         "parameters": [
           {
-            "name": "default",
+            "name": "type",
             "in": "query",
             "required": true,
             "schema": {
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "200",
+                "default",
+                "4XX"
+              ]
             }
           }
         ],
         "responses": {
           "200": {
+            "description": "test",
+            "headers": {
+              "TestHeader": {
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "4XX": {
             "description": "test",
             "headers": {
               "TestHeader": {

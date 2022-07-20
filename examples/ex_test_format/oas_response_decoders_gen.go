@@ -22,6 +22,7 @@ import (
 func decodeTestQueryParameterResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -47,13 +48,14 @@ func decodeTestQueryParameterResponse(resp *http.Response, span trace.Span) (res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -79,13 +81,14 @@ func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Err
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestBooleanResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -111,13 +114,14 @@ func decodeTestRequestBooleanResponse(resp *http.Response, span trace.Span) (res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestBooleanArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -143,13 +147,14 @@ func decodeTestRequestBooleanArrayResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -175,13 +180,14 @@ func decodeTestRequestBooleanArrayArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestBooleanNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -207,13 +213,14 @@ func decodeTestRequestBooleanNullableResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -239,13 +246,14 @@ func decodeTestRequestBooleanNullableArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -271,13 +279,14 @@ func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestEmptyStructResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -303,13 +312,14 @@ func decodeTestRequestEmptyStructResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestFormatTestResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -335,13 +345,14 @@ func decodeTestRequestFormatTestResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -367,13 +378,14 @@ func decodeTestRequestIntegerResponse(resp *http.Response, span trace.Span) (res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -399,13 +411,14 @@ func decodeTestRequestIntegerArrayResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -431,13 +444,14 @@ func decodeTestRequestIntegerArrayArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -463,13 +477,14 @@ func decodeTestRequestIntegerInt32Response(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -495,13 +510,14 @@ func decodeTestRequestIntegerInt32ArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -527,13 +543,14 @@ func decodeTestRequestIntegerInt32ArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -559,13 +576,14 @@ func decodeTestRequestIntegerInt32NullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -591,13 +609,14 @@ func decodeTestRequestIntegerInt32NullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -623,13 +642,14 @@ func decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -655,13 +675,14 @@ func decodeTestRequestIntegerInt64Response(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -687,13 +708,14 @@ func decodeTestRequestIntegerInt64ArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -719,13 +741,14 @@ func decodeTestRequestIntegerInt64ArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -751,13 +774,14 @@ func decodeTestRequestIntegerInt64NullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -783,13 +807,14 @@ func decodeTestRequestIntegerInt64NullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -815,13 +840,14 @@ func decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -847,13 +873,14 @@ func decodeTestRequestIntegerNullableResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -879,13 +906,14 @@ func decodeTestRequestIntegerNullableArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -911,13 +939,14 @@ func decodeTestRequestIntegerNullableArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNullResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -943,13 +972,14 @@ func decodeTestRequestNullResponse(resp *http.Response, span trace.Span) (res Er
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNullArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -975,13 +1005,14 @@ func decodeTestRequestNullArrayResponse(resp *http.Response, span trace.Span) (r
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNullArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1007,13 +1038,14 @@ func decodeTestRequestNullArrayArrayResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNullNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1039,13 +1071,14 @@ func decodeTestRequestNullNullableResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNullNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1071,13 +1104,14 @@ func decodeTestRequestNullNullableArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNullNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1103,13 +1137,14 @@ func decodeTestRequestNullNullableArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1135,13 +1170,14 @@ func decodeTestRequestNumberResponse(resp *http.Response, span trace.Span) (res 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1167,13 +1203,14 @@ func decodeTestRequestNumberArrayResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1199,13 +1236,14 @@ func decodeTestRequestNumberArrayArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberDoubleResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1231,13 +1269,14 @@ func decodeTestRequestNumberDoubleResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1263,13 +1302,14 @@ func decodeTestRequestNumberDoubleArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1295,13 +1335,14 @@ func decodeTestRequestNumberDoubleArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1327,13 +1368,14 @@ func decodeTestRequestNumberDoubleNullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1359,13 +1401,14 @@ func decodeTestRequestNumberDoubleNullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1391,13 +1434,14 @@ func decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberFloatResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1423,13 +1467,14 @@ func decodeTestRequestNumberFloatResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1455,13 +1500,14 @@ func decodeTestRequestNumberFloatArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1487,13 +1533,14 @@ func decodeTestRequestNumberFloatArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1519,13 +1566,14 @@ func decodeTestRequestNumberFloatNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1551,13 +1599,14 @@ func decodeTestRequestNumberFloatNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1583,13 +1632,14 @@ func decodeTestRequestNumberFloatNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1615,13 +1665,14 @@ func decodeTestRequestNumberInt32Response(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1647,13 +1698,14 @@ func decodeTestRequestNumberInt32ArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1679,13 +1731,14 @@ func decodeTestRequestNumberInt32ArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1711,13 +1764,14 @@ func decodeTestRequestNumberInt32NullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1743,13 +1797,14 @@ func decodeTestRequestNumberInt32NullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1775,13 +1830,14 @@ func decodeTestRequestNumberInt32NullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1807,13 +1863,14 @@ func decodeTestRequestNumberInt64Response(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1839,13 +1896,14 @@ func decodeTestRequestNumberInt64ArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1871,13 +1929,14 @@ func decodeTestRequestNumberInt64ArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1903,13 +1962,14 @@ func decodeTestRequestNumberInt64NullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1935,13 +1995,14 @@ func decodeTestRequestNumberInt64NullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1967,13 +2028,14 @@ func decodeTestRequestNumberInt64NullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -1999,13 +2061,14 @@ func decodeTestRequestNumberNullableResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2031,13 +2094,14 @@ func decodeTestRequestNumberNullableArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2063,13 +2127,14 @@ func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2095,13 +2160,14 @@ func decodeTestRequestRequiredAnyResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredBooleanResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2127,13 +2193,14 @@ func decodeTestRequestRequiredBooleanResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2159,13 +2226,14 @@ func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2191,13 +2259,14 @@ func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2223,13 +2292,14 @@ func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2255,13 +2325,14 @@ func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2287,13 +2358,14 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2319,13 +2391,14 @@ func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredFormatTestResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2351,13 +2424,14 @@ func decodeTestRequestRequiredFormatTestResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2383,13 +2457,14 @@ func decodeTestRequestRequiredIntegerResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2415,13 +2490,14 @@ func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2447,13 +2523,14 @@ func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2479,13 +2556,14 @@ func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2511,13 +2589,14 @@ func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2543,13 +2622,14 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2575,13 +2655,14 @@ func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2607,13 +2688,14 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2639,13 +2721,14 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2671,13 +2754,14 @@ func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2703,13 +2787,14 @@ func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2735,13 +2820,14 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2767,13 +2853,14 @@ func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2799,13 +2886,14 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2831,13 +2919,14 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2863,13 +2952,14 @@ func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2895,13 +2985,14 @@ func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2927,13 +3018,14 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNullResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2959,13 +3051,14 @@ func decodeTestRequestRequiredNullResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNullArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -2991,13 +3084,14 @@ func decodeTestRequestRequiredNullArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNullArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3023,13 +3117,14 @@ func decodeTestRequestRequiredNullArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNullNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3055,13 +3150,14 @@ func decodeTestRequestRequiredNullNullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNullNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3087,13 +3183,14 @@ func decodeTestRequestRequiredNullNullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNullNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3119,13 +3216,14 @@ func decodeTestRequestRequiredNullNullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3151,13 +3249,14 @@ func decodeTestRequestRequiredNumberResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3183,13 +3282,14 @@ func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3215,13 +3315,14 @@ func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3247,13 +3348,14 @@ func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3279,13 +3381,14 @@ func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3311,13 +3414,14 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3343,13 +3447,14 @@ func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3375,13 +3480,14 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3407,13 +3513,14 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3439,13 +3546,14 @@ func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3471,13 +3579,14 @@ func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3503,13 +3612,14 @@ func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3535,13 +3645,14 @@ func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3567,13 +3678,14 @@ func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3599,13 +3711,14 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.R
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3631,13 +3744,14 @@ func decodeTestRequestRequiredNumberInt32Response(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3663,13 +3777,14 @@ func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3695,13 +3810,14 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3727,13 +3843,14 @@ func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3759,13 +3876,14 @@ func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3791,13 +3909,14 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.R
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3823,13 +3942,14 @@ func decodeTestRequestRequiredNumberInt64Response(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3855,13 +3975,14 @@ func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3887,13 +4008,14 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3919,13 +4041,14 @@ func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3951,13 +4074,14 @@ func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -3983,13 +4107,14 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.R
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4015,13 +4140,14 @@ func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4047,13 +4173,14 @@ func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4079,13 +4206,14 @@ func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4111,13 +4239,14 @@ func decodeTestRequestRequiredStringResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4143,13 +4272,14 @@ func decodeTestRequestRequiredStringArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4175,13 +4305,14 @@ func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4207,13 +4338,14 @@ func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4239,13 +4371,14 @@ func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4271,13 +4404,14 @@ func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4303,13 +4437,14 @@ func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4335,13 +4470,14 @@ func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4367,13 +4503,14 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringByteResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4399,13 +4536,14 @@ func decodeTestRequestRequiredStringByteResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4431,13 +4569,14 @@ func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4463,13 +4602,14 @@ func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4495,13 +4635,14 @@ func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4527,13 +4668,14 @@ func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4559,13 +4701,14 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4591,13 +4734,14 @@ func decodeTestRequestRequiredStringDateResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4623,13 +4767,14 @@ func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4655,13 +4800,14 @@ func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4687,13 +4833,14 @@ func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4719,13 +4866,14 @@ func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4751,13 +4899,14 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4783,13 +4932,14 @@ func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4815,13 +4965,14 @@ func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4847,13 +4998,14 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4879,13 +5031,14 @@ func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4911,13 +5064,14 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4943,13 +5097,14 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *htt
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDurationResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -4975,13 +5130,14 @@ func decodeTestRequestRequiredStringDurationResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5007,13 +5163,14 @@ func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5039,13 +5196,14 @@ func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5071,13 +5229,14 @@ func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5103,13 +5262,14 @@ func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5135,13 +5295,14 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *htt
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringEmailResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5167,13 +5328,14 @@ func decodeTestRequestRequiredStringEmailResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5199,13 +5361,14 @@ func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5231,13 +5394,14 @@ func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5263,13 +5427,14 @@ func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5295,13 +5460,14 @@ func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5327,13 +5493,14 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.R
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5359,13 +5526,14 @@ func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5391,13 +5559,14 @@ func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5423,13 +5592,14 @@ func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5455,13 +5625,14 @@ func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5487,13 +5658,14 @@ func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5519,13 +5691,14 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *htt
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIPResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5551,13 +5724,14 @@ func decodeTestRequestRequiredStringIPResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5583,13 +5757,14 @@ func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5615,13 +5790,14 @@ func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5647,13 +5823,14 @@ func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5679,13 +5856,14 @@ func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5711,13 +5889,14 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Resp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5743,13 +5922,14 @@ func decodeTestRequestRequiredStringInt32Response(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5775,13 +5955,14 @@ func decodeTestRequestRequiredStringInt32ArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5807,13 +5988,14 @@ func decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5839,13 +6021,14 @@ func decodeTestRequestRequiredStringInt32NullableResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5871,13 +6054,14 @@ func decodeTestRequestRequiredStringInt32NullableArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5903,13 +6087,14 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp *http.R
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5935,13 +6120,14 @@ func decodeTestRequestRequiredStringInt64Response(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5967,13 +6153,14 @@ func decodeTestRequestRequiredStringInt64ArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -5999,13 +6186,14 @@ func decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6031,13 +6219,14 @@ func decodeTestRequestRequiredStringInt64NullableResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6063,13 +6252,14 @@ func decodeTestRequestRequiredStringInt64NullableArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6095,13 +6285,14 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp *http.R
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv4Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6127,13 +6318,14 @@ func decodeTestRequestRequiredStringIpv4Response(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6159,13 +6351,14 @@ func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6191,13 +6384,14 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6223,13 +6417,14 @@ func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6255,13 +6450,14 @@ func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6287,13 +6483,14 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv6Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6319,13 +6516,14 @@ func decodeTestRequestRequiredStringIpv6Response(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6351,13 +6549,14 @@ func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6383,13 +6582,14 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6415,13 +6615,14 @@ func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6447,13 +6648,14 @@ func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6479,13 +6681,14 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6511,13 +6714,14 @@ func decodeTestRequestRequiredStringNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6543,13 +6747,14 @@ func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6575,13 +6780,14 @@ func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6607,13 +6813,14 @@ func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6639,13 +6846,14 @@ func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6671,13 +6879,14 @@ func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6703,13 +6912,14 @@ func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6735,13 +6945,14 @@ func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6767,13 +6978,14 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *htt
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6799,13 +7011,14 @@ func decodeTestRequestRequiredStringTimeResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6831,13 +7044,14 @@ func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6863,13 +7077,14 @@ func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6895,13 +7110,14 @@ func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6927,13 +7143,14 @@ func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6959,13 +7176,14 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringURIResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -6991,13 +7209,14 @@ func decodeTestRequestRequiredStringURIResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7023,13 +7242,14 @@ func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7055,13 +7275,14 @@ func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7087,13 +7308,14 @@ func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7119,13 +7341,14 @@ func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7151,13 +7374,14 @@ func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7183,13 +7407,14 @@ func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7215,13 +7440,14 @@ func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7247,13 +7473,14 @@ func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7279,13 +7506,14 @@ func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7311,13 +7539,14 @@ func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7343,13 +7572,14 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7375,13 +7605,14 @@ func decodeTestRequestRequiredStringUnixResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7407,13 +7638,14 @@ func decodeTestRequestRequiredStringUnixArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7439,13 +7671,14 @@ func decodeTestRequestRequiredStringUnixArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMicroResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7471,13 +7704,14 @@ func decodeTestRequestRequiredStringUnixMicroResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7503,13 +7737,14 @@ func decodeTestRequestRequiredStringUnixMicroArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7535,13 +7770,14 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7567,13 +7803,14 @@ func decodeTestRequestRequiredStringUnixMicroNullableResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7599,13 +7836,14 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7631,13 +7869,14 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp *ht
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMilliResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7663,13 +7902,14 @@ func decodeTestRequestRequiredStringUnixMilliResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7695,13 +7935,14 @@ func decodeTestRequestRequiredStringUnixMilliArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7727,13 +7968,14 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7759,13 +8001,14 @@ func decodeTestRequestRequiredStringUnixMilliNullableResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7791,13 +8034,14 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7823,13 +8067,14 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp *ht
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNanoResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7855,13 +8100,14 @@ func decodeTestRequestRequiredStringUnixNanoResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7887,13 +8133,14 @@ func decodeTestRequestRequiredStringUnixNanoArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7919,13 +8166,14 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7951,13 +8199,14 @@ func decodeTestRequestRequiredStringUnixNanoNullableResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -7983,13 +8232,14 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8015,13 +8265,14 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp *htt
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8047,13 +8298,14 @@ func decodeTestRequestRequiredStringUnixNullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8079,13 +8331,14 @@ func decodeTestRequestRequiredStringUnixNullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8111,13 +8364,14 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixSecondsResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8143,13 +8397,14 @@ func decodeTestRequestRequiredStringUnixSecondsResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8175,13 +8430,14 @@ func decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8207,13 +8463,14 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8239,13 +8496,14 @@ func decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8271,13 +8529,14 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp *http.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8303,13 +8562,14 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp *
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8335,13 +8595,14 @@ func decodeTestRequestStringResponse(resp *http.Response, span trace.Span) (res 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8367,13 +8628,14 @@ func decodeTestRequestStringArrayResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8399,13 +8661,14 @@ func decodeTestRequestStringArrayArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringBinaryResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8431,13 +8694,14 @@ func decodeTestRequestStringBinaryResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8463,13 +8727,14 @@ func decodeTestRequestStringBinaryArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8495,13 +8760,14 @@ func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8527,13 +8793,14 @@ func decodeTestRequestStringBinaryNullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8559,13 +8826,14 @@ func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8591,13 +8859,14 @@ func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringByteResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8623,13 +8892,14 @@ func decodeTestRequestStringByteResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringByteArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8655,13 +8925,14 @@ func decodeTestRequestStringByteArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8687,13 +8958,14 @@ func decodeTestRequestStringByteArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringByteNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8719,13 +8991,14 @@ func decodeTestRequestStringByteNullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8751,13 +9024,14 @@ func decodeTestRequestStringByteNullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8783,13 +9057,14 @@ func decodeTestRequestStringByteNullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8815,13 +9090,14 @@ func decodeTestRequestStringDateResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8847,13 +9123,14 @@ func decodeTestRequestStringDateArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8879,13 +9156,14 @@ func decodeTestRequestStringDateArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8911,13 +9189,14 @@ func decodeTestRequestStringDateNullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8943,13 +9222,14 @@ func decodeTestRequestStringDateNullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -8975,13 +9255,14 @@ func decodeTestRequestStringDateNullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9007,13 +9288,14 @@ func decodeTestRequestStringDateTimeResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9039,13 +9321,14 @@ func decodeTestRequestStringDateTimeArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9071,13 +9354,14 @@ func decodeTestRequestStringDateTimeArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9103,13 +9387,14 @@ func decodeTestRequestStringDateTimeNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9135,13 +9420,14 @@ func decodeTestRequestStringDateTimeNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9167,13 +9453,14 @@ func decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDurationResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9199,13 +9486,14 @@ func decodeTestRequestStringDurationResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDurationArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9231,13 +9519,14 @@ func decodeTestRequestStringDurationArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9263,13 +9552,14 @@ func decodeTestRequestStringDurationArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDurationNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9295,13 +9585,14 @@ func decodeTestRequestStringDurationNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9327,13 +9618,14 @@ func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9359,13 +9651,14 @@ func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringEmailResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9391,13 +9684,14 @@ func decodeTestRequestStringEmailResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringEmailArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9423,13 +9717,14 @@ func decodeTestRequestStringEmailArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9455,13 +9750,14 @@ func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringEmailNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9487,13 +9783,14 @@ func decodeTestRequestStringEmailNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9519,13 +9816,14 @@ func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9551,13 +9849,14 @@ func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringHostnameResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9583,13 +9882,14 @@ func decodeTestRequestStringHostnameResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9615,13 +9915,14 @@ func decodeTestRequestStringHostnameArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9647,13 +9948,14 @@ func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9679,13 +9981,14 @@ func decodeTestRequestStringHostnameNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9711,13 +10014,14 @@ func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9743,13 +10047,14 @@ func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIPResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9775,13 +10080,14 @@ func decodeTestRequestStringIPResponse(resp *http.Response, span trace.Span) (re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIPArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9807,13 +10113,14 @@ func decodeTestRequestStringIPArrayResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9839,13 +10146,14 @@ func decodeTestRequestStringIPArrayArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIPNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9871,13 +10179,14 @@ func decodeTestRequestStringIPNullableResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9903,13 +10212,14 @@ func decodeTestRequestStringIPNullableArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9935,13 +10245,14 @@ func decodeTestRequestStringIPNullableArrayArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9967,13 +10278,14 @@ func decodeTestRequestStringInt32Response(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -9999,13 +10311,14 @@ func decodeTestRequestStringInt32ArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10031,13 +10344,14 @@ func decodeTestRequestStringInt32ArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10063,13 +10377,14 @@ func decodeTestRequestStringInt32NullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10095,13 +10410,14 @@ func decodeTestRequestStringInt32NullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10127,13 +10443,14 @@ func decodeTestRequestStringInt32NullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10159,13 +10476,14 @@ func decodeTestRequestStringInt64Response(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10191,13 +10509,14 @@ func decodeTestRequestStringInt64ArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10223,13 +10542,14 @@ func decodeTestRequestStringInt64ArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10255,13 +10575,14 @@ func decodeTestRequestStringInt64NullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10287,13 +10608,14 @@ func decodeTestRequestStringInt64NullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10319,13 +10641,14 @@ func decodeTestRequestStringInt64NullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv4Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10351,13 +10674,14 @@ func decodeTestRequestStringIpv4Response(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10383,13 +10707,14 @@ func decodeTestRequestStringIpv4ArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10415,13 +10740,14 @@ func decodeTestRequestStringIpv4ArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10447,13 +10773,14 @@ func decodeTestRequestStringIpv4NullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10479,13 +10806,14 @@ func decodeTestRequestStringIpv4NullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10511,13 +10839,14 @@ func decodeTestRequestStringIpv4NullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv6Response(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10543,13 +10872,14 @@ func decodeTestRequestStringIpv6Response(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10575,13 +10905,14 @@ func decodeTestRequestStringIpv6ArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10607,13 +10938,14 @@ func decodeTestRequestStringIpv6ArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10639,13 +10971,14 @@ func decodeTestRequestStringIpv6NullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10671,13 +11004,14 @@ func decodeTestRequestStringIpv6NullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10703,13 +11037,14 @@ func decodeTestRequestStringIpv6NullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10735,13 +11070,14 @@ func decodeTestRequestStringNullableResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10767,13 +11103,14 @@ func decodeTestRequestStringNullableArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10799,13 +11136,14 @@ func decodeTestRequestStringNullableArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringPasswordResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10831,13 +11169,14 @@ func decodeTestRequestStringPasswordResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10863,13 +11202,14 @@ func decodeTestRequestStringPasswordArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10895,13 +11235,14 @@ func decodeTestRequestStringPasswordArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10927,13 +11268,14 @@ func decodeTestRequestStringPasswordNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10959,13 +11301,14 @@ func decodeTestRequestStringPasswordNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -10991,13 +11334,14 @@ func decodeTestRequestStringPasswordNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11023,13 +11367,14 @@ func decodeTestRequestStringTimeResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11055,13 +11400,14 @@ func decodeTestRequestStringTimeArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11087,13 +11433,14 @@ func decodeTestRequestStringTimeArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11119,13 +11466,14 @@ func decodeTestRequestStringTimeNullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11151,13 +11499,14 @@ func decodeTestRequestStringTimeNullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11183,13 +11532,14 @@ func decodeTestRequestStringTimeNullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringURIResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11215,13 +11565,14 @@ func decodeTestRequestStringURIResponse(resp *http.Response, span trace.Span) (r
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringURIArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11247,13 +11598,14 @@ func decodeTestRequestStringURIArrayResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11279,13 +11631,14 @@ func decodeTestRequestStringURIArrayArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringURINullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11311,13 +11664,14 @@ func decodeTestRequestStringURINullableResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11343,13 +11697,14 @@ func decodeTestRequestStringURINullableArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11375,13 +11730,14 @@ func decodeTestRequestStringURINullableArrayArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUUIDResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11407,13 +11763,14 @@ func decodeTestRequestStringUUIDResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11439,13 +11796,14 @@ func decodeTestRequestStringUUIDArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11471,13 +11829,14 @@ func decodeTestRequestStringUUIDArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11503,13 +11862,14 @@ func decodeTestRequestStringUUIDNullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11535,13 +11895,14 @@ func decodeTestRequestStringUUIDNullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11567,13 +11928,14 @@ func decodeTestRequestStringUUIDNullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11599,13 +11961,14 @@ func decodeTestRequestStringUnixResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11631,13 +11994,14 @@ func decodeTestRequestStringUnixArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11663,13 +12027,14 @@ func decodeTestRequestStringUnixArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMicroResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11695,13 +12060,14 @@ func decodeTestRequestStringUnixMicroResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11727,13 +12093,14 @@ func decodeTestRequestStringUnixMicroArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11759,13 +12126,14 @@ func decodeTestRequestStringUnixMicroArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11791,13 +12159,14 @@ func decodeTestRequestStringUnixMicroNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11823,13 +12192,14 @@ func decodeTestRequestStringUnixMicroNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11855,13 +12225,14 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMilliResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11887,13 +12258,14 @@ func decodeTestRequestStringUnixMilliResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11919,13 +12291,14 @@ func decodeTestRequestStringUnixMilliArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11951,13 +12324,14 @@ func decodeTestRequestStringUnixMilliArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -11983,13 +12357,14 @@ func decodeTestRequestStringUnixMilliNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12015,13 +12390,14 @@ func decodeTestRequestStringUnixMilliNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12047,13 +12423,14 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNanoResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12079,13 +12456,14 @@ func decodeTestRequestStringUnixNanoResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12111,13 +12489,14 @@ func decodeTestRequestStringUnixNanoArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12143,13 +12522,14 @@ func decodeTestRequestStringUnixNanoArrayArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12175,13 +12555,14 @@ func decodeTestRequestStringUnixNanoNullableResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12207,13 +12588,14 @@ func decodeTestRequestStringUnixNanoNullableArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12239,13 +12621,14 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp *http.Respon
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12271,13 +12654,14 @@ func decodeTestRequestStringUnixNullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12303,13 +12687,14 @@ func decodeTestRequestStringUnixNullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12335,13 +12720,14 @@ func decodeTestRequestStringUnixNullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixSecondsResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12367,13 +12753,14 @@ func decodeTestRequestStringUnixSecondsResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12399,13 +12786,14 @@ func decodeTestRequestStringUnixSecondsArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12431,13 +12819,14 @@ func decodeTestRequestStringUnixSecondsArrayArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12463,13 +12852,14 @@ func decodeTestRequestStringUnixSecondsNullableResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12495,13 +12885,14 @@ func decodeTestRequestStringUnixSecondsNullableArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12527,13 +12918,14 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp *http.Res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseAnyResponse(resp *http.Response, span trace.Span) (res jx.Raw, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12561,13 +12953,14 @@ func decodeTestResponseAnyResponse(resp *http.Response, span trace.Span) (res jx
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseBooleanResponse(resp *http.Response, span trace.Span) (res bool, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12595,13 +12988,14 @@ func decodeTestResponseBooleanResponse(resp *http.Response, span trace.Span) (re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseBooleanArrayResponse(resp *http.Response, span trace.Span) (res []bool, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12637,13 +13031,14 @@ func decodeTestResponseBooleanArrayResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]bool, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12687,13 +13082,14 @@ func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.Span) (res NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12719,13 +13115,14 @@ func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12759,13 +13156,14 @@ func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12807,13 +13205,14 @@ func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseEmptyStructResponse(resp *http.Response, span trace.Span) (res TestResponseEmptyStructOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12839,13 +13238,14 @@ func decodeTestResponseEmptyStructResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseFormatTestResponse(resp *http.Response, span trace.Span) (res TestResponseFormatTestOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12871,13 +13271,14 @@ func decodeTestResponseFormatTestResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerResponse(resp *http.Response, span trace.Span) (res int, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12905,13 +13306,14 @@ func decodeTestResponseIntegerResponse(resp *http.Response, span trace.Span) (re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerArrayResponse(resp *http.Response, span trace.Span) (res []int, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12947,13 +13349,14 @@ func decodeTestResponseIntegerArrayResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -12997,13 +13400,14 @@ func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt32Response(resp *http.Response, span trace.Span) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13031,13 +13435,14 @@ func decodeTestResponseIntegerInt32Response(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13073,13 +13478,14 @@ func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13123,13 +13529,14 @@ func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13155,13 +13562,14 @@ func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13195,13 +13603,14 @@ func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13243,13 +13652,14 @@ func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt64Response(resp *http.Response, span trace.Span) (res int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13277,13 +13687,14 @@ func decodeTestResponseIntegerInt64Response(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13319,13 +13730,14 @@ func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13369,13 +13781,14 @@ func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13401,13 +13814,14 @@ func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13441,13 +13855,14 @@ func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13489,13 +13904,14 @@ func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.Span) (res NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13521,13 +13937,14 @@ func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13561,13 +13978,14 @@ func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13609,13 +14027,14 @@ func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNullResponse(resp *http.Response, span trace.Span) (res struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13641,13 +14060,14 @@ func decodeTestResponseNullResponse(resp *http.Response, span trace.Span) (res s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNullArrayResponse(resp *http.Response, span trace.Span) (res []struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13681,13 +14101,14 @@ func decodeTestResponseNullArrayResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNullArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13729,13 +14150,14 @@ func decodeTestResponseNullArrayArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNullNullableResponse(resp *http.Response, span trace.Span) (res struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13761,13 +14183,14 @@ func decodeTestResponseNullNullableResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNullNullableArrayResponse(resp *http.Response, span trace.Span) (res []struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13801,13 +14224,14 @@ func decodeTestResponseNullNullableArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNullNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13849,13 +14273,14 @@ func decodeTestResponseNullNullableArrayArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberResponse(resp *http.Response, span trace.Span) (res float64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13883,13 +14308,14 @@ func decodeTestResponseNumberResponse(resp *http.Response, span trace.Span) (res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberArrayResponse(resp *http.Response, span trace.Span) (res []float64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13925,13 +14351,14 @@ func decodeTestResponseNumberArrayResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -13975,13 +14402,14 @@ func decodeTestResponseNumberArrayArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberDoubleResponse(resp *http.Response, span trace.Span) (res float64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14009,13 +14437,14 @@ func decodeTestResponseNumberDoubleResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res []float64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14051,13 +14480,14 @@ func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14101,13 +14531,14 @@ func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14133,13 +14564,14 @@ func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14173,13 +14605,14 @@ func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14221,13 +14654,14 @@ func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberFloatResponse(resp *http.Response, span trace.Span) (res float32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14255,13 +14689,14 @@ func decodeTestResponseNumberFloatResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res []float32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14297,13 +14732,14 @@ func decodeTestResponseNumberFloatArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14347,13 +14783,14 @@ func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14379,13 +14816,14 @@ func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14419,13 +14857,14 @@ func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14467,13 +14906,14 @@ func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt32Response(resp *http.Response, span trace.Span) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14501,13 +14941,14 @@ func decodeTestResponseNumberInt32Response(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14543,13 +14984,14 @@ func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14593,13 +15035,14 @@ func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14625,13 +15068,14 @@ func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14665,13 +15109,14 @@ func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14713,13 +15158,14 @@ func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt64Response(resp *http.Response, span trace.Span) (res int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14747,13 +15193,14 @@ func decodeTestResponseNumberInt64Response(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14789,13 +15236,14 @@ func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14839,13 +15287,14 @@ func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14871,13 +15320,14 @@ func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14911,13 +15361,14 @@ func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14959,13 +15410,14 @@ func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Span) (res NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -14991,13 +15443,14 @@ func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15031,13 +15484,14 @@ func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15079,13 +15533,14 @@ func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15113,13 +15568,14 @@ func decodeTestResponseStringResponse(resp *http.Response, span trace.Span) (res
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15155,13 +15611,14 @@ func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15205,13 +15662,14 @@ func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringBinaryResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15239,13 +15697,14 @@ func decodeTestResponseStringBinaryResponse(resp *http.Response, span trace.Span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15281,13 +15740,14 @@ func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15331,13 +15791,14 @@ func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15363,13 +15824,14 @@ func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15403,13 +15865,14 @@ func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15451,13 +15914,14 @@ func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringByteResponse(resp *http.Response, span trace.Span) (res []byte, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15485,13 +15949,14 @@ func decodeTestResponseStringByteResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringByteArrayResponse(resp *http.Response, span trace.Span) (res [][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15527,13 +15992,14 @@ func decodeTestResponseStringByteArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res [][][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15577,13 +16043,14 @@ func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringByteNullableResponse(resp *http.Response, span trace.Span) (res []byte, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15611,13 +16078,14 @@ func decodeTestResponseStringByteNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res [][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15653,13 +16121,14 @@ func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15703,13 +16172,14 @@ func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15737,13 +16207,14 @@ func decodeTestResponseStringDateResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15779,13 +16250,14 @@ func decodeTestResponseStringDateArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15829,13 +16301,14 @@ func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trace.Span) (res NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15861,13 +16334,14 @@ func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15901,13 +16375,14 @@ func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15949,13 +16424,14 @@ func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateTimeResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -15983,13 +16459,14 @@ func decodeTestResponseStringDateTimeResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16025,13 +16502,14 @@ func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16075,13 +16553,14 @@ func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16107,13 +16586,14 @@ func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16147,13 +16627,14 @@ func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16195,13 +16676,14 @@ func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDurationResponse(resp *http.Response, span trace.Span) (res time.Duration, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16229,13 +16711,14 @@ func decodeTestResponseStringDurationResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDurationArrayResponse(resp *http.Response, span trace.Span) (res []time.Duration, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16271,13 +16754,14 @@ func decodeTestResponseStringDurationArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Duration, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16321,13 +16805,14 @@ func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span trace.Span) (res NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16353,13 +16838,14 @@ func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16393,13 +16879,14 @@ func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16441,13 +16928,14 @@ func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringEmailResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16475,13 +16963,14 @@ func decodeTestResponseStringEmailResponse(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16517,13 +17006,14 @@ func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16567,13 +17057,14 @@ func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16599,13 +17090,14 @@ func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16639,13 +17131,14 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16687,13 +17180,14 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringHostnameResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16721,13 +17215,14 @@ func decodeTestResponseStringHostnameResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16763,13 +17258,14 @@ func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16813,13 +17309,14 @@ func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16845,13 +17342,14 @@ func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16885,13 +17383,14 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16933,13 +17432,14 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -16967,13 +17467,14 @@ func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (r
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17009,13 +17510,14 @@ func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17059,13 +17561,14 @@ func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.Span) (res NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17091,13 +17594,14 @@ func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17131,13 +17635,14 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17179,13 +17684,14 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt32Response(resp *http.Response, span trace.Span) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17213,13 +17719,14 @@ func decodeTestResponseStringInt32Response(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt32ArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17255,13 +17762,14 @@ func decodeTestResponseStringInt32ArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17305,13 +17813,14 @@ func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span trace.Span) (res NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17337,13 +17846,14 @@ func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17377,13 +17887,14 @@ func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17425,13 +17936,14 @@ func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt64Response(resp *http.Response, span trace.Span) (res int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17459,13 +17971,14 @@ func decodeTestResponseStringInt64Response(resp *http.Response, span trace.Span)
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt64ArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17501,13 +18014,14 @@ func decodeTestResponseStringInt64ArrayResponse(resp *http.Response, span trace.
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17551,13 +18065,14 @@ func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response, span t
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span trace.Span) (res NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17583,13 +18098,14 @@ func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17623,13 +18139,14 @@ func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17671,13 +18188,14 @@ func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17705,13 +18223,14 @@ func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17747,13 +18266,14 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17797,13 +18317,14 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17829,13 +18350,14 @@ func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17869,13 +18391,14 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17917,13 +18440,14 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17951,13 +18475,14 @@ func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -17993,13 +18518,14 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18043,13 +18569,14 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18075,13 +18602,14 @@ func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18115,13 +18643,14 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18163,13 +18692,14 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18195,13 +18725,14 @@ func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18235,13 +18766,14 @@ func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18283,13 +18815,14 @@ func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringPasswordResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18317,13 +18850,14 @@ func decodeTestResponseStringPasswordResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18359,13 +18893,14 @@ func decodeTestResponseStringPasswordArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18409,13 +18944,14 @@ func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18441,13 +18977,14 @@ func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18481,13 +19018,14 @@ func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18529,13 +19067,14 @@ func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringTimeResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18563,13 +19102,14 @@ func decodeTestResponseStringTimeResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringTimeArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18605,13 +19145,14 @@ func decodeTestResponseStringTimeArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18655,13 +19196,14 @@ func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trace.Span) (res NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18687,13 +19229,14 @@ func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18727,13 +19270,14 @@ func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18775,13 +19319,14 @@ func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringURIResponse(resp *http.Response, span trace.Span) (res url.URL, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18809,13 +19354,14 @@ func decodeTestResponseStringURIResponse(resp *http.Response, span trace.Span) (
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringURIArrayResponse(resp *http.Response, span trace.Span) (res []url.URL, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18851,13 +19397,14 @@ func decodeTestResponseStringURIArrayResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]url.URL, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18901,13 +19448,14 @@ func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace.Span) (res NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18933,13 +19481,14 @@ func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res []NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -18973,13 +19522,14 @@ func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19021,13 +19571,14 @@ func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUUIDResponse(resp *http.Response, span trace.Span) (res uuid.UUID, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19055,13 +19606,14 @@ func decodeTestResponseStringUUIDResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res []uuid.UUID, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19097,13 +19649,14 @@ func decodeTestResponseStringUUIDArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]uuid.UUID, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19147,13 +19700,14 @@ func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19179,13 +19733,14 @@ func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19219,13 +19774,14 @@ func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19267,13 +19823,14 @@ func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19301,13 +19858,14 @@ func decodeTestResponseStringUnixResponse(resp *http.Response, span trace.Span) 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19343,13 +19901,14 @@ func decodeTestResponseStringUnixArrayResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19393,13 +19952,14 @@ func decodeTestResponseStringUnixArrayArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMicroResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19427,13 +19987,14 @@ func decodeTestResponseStringUnixMicroResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19469,13 +20030,14 @@ func decodeTestResponseStringUnixMicroArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19519,13 +20081,14 @@ func decodeTestResponseStringUnixMicroArrayArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19551,13 +20114,14 @@ func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19591,13 +20155,14 @@ func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19639,13 +20204,14 @@ func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Resp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMilliResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19673,13 +20239,14 @@ func decodeTestResponseStringUnixMilliResponse(resp *http.Response, span trace.S
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19715,13 +20282,14 @@ func decodeTestResponseStringUnixMilliArrayResponse(resp *http.Response, span tr
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19765,13 +20333,14 @@ func decodeTestResponseStringUnixMilliArrayArrayResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19797,13 +20366,14 @@ func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19837,13 +20407,14 @@ func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19885,13 +20456,14 @@ func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Resp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNanoResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19919,13 +20491,14 @@ func decodeTestResponseStringUnixNanoResponse(resp *http.Response, span trace.Sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -19961,13 +20534,14 @@ func decodeTestResponseStringUnixNanoArrayResponse(resp *http.Response, span tra
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20011,13 +20585,14 @@ func decodeTestResponseStringUnixNanoArrayArrayResponse(resp *http.Response, spa
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20043,13 +20618,14 @@ func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20083,13 +20659,14 @@ func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20131,13 +20708,14 @@ func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Respo
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNullableResponse(resp *http.Response, span trace.Span) (res NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20163,13 +20741,14 @@ func decodeTestResponseStringUnixNullableResponse(resp *http.Response, span trac
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20203,13 +20782,14 @@ func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20251,13 +20831,14 @@ func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixSecondsResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20285,13 +20866,14 @@ func decodeTestResponseStringUnixSecondsResponse(resp *http.Response, span trace
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20327,13 +20909,14 @@ func decodeTestResponseStringUnixSecondsArrayResponse(resp *http.Response, span 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20377,13 +20960,14 @@ func decodeTestResponseStringUnixSecondsArrayArrayResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20409,13 +20993,14 @@ func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response, sp
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20449,13 +21034,14 @@ func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Respons
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -20497,7 +21083,6 @@ func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

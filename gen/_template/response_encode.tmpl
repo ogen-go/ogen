@@ -35,7 +35,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 			{{- template "respond" $info }}
 		{{- end }}
 		default:
-		return errors.Errorf(`default: unexpected response type: %T`, response)
+			return errors.Errorf(`default: unexpected response type: %T`, response)
 		}
 	{{- end }}
 }

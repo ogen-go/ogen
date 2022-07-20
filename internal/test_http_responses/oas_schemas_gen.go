@@ -28,10 +28,57 @@ func (s AnyContentTypeBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+// Combined2XXStatusCode wraps int with StatusCode.
+type Combined2XXStatusCode struct {
+	StatusCode int
+	Response   int
+}
+
+func (*Combined2XXStatusCode) combinedRes() {}
+
+// Combined5XXStatusCode wraps bool with StatusCode.
+type Combined5XXStatusCode struct {
+	StatusCode int
+	Response   bool
+}
+
+func (*Combined5XXStatusCode) combinedRes() {}
+
+// CombinedDefStatusCode wraps []string with StatusCode.
+type CombinedDefStatusCode struct {
+	StatusCode int
+	Response   []string
+}
+
+func (*CombinedDefStatusCode) combinedRes() {}
+
+type CombinedOK struct {
+	Ok string "json:\"ok\""
+}
+
+func (*CombinedOK) combinedRes() {}
+
+type CombinedType string
+
+const (
+	CombinedType200     CombinedType = "200"
+	CombinedType2XX     CombinedType = "2XX"
+	CombinedType5XX     CombinedType = "5XX"
+	CombinedTypeDefault CombinedType = "default"
+)
+
 // Headers200OK is response for Headers200 operation.
 type Headers200OK struct {
 	TestHeader string
 }
+
+// HeadersCombined4XX is 4XX pattern response for HeadersCombined operation.
+type HeadersCombined4XX struct {
+	TestHeader string
+	StatusCode int
+}
+
+func (*HeadersCombined4XX) headersCombinedRes() {}
 
 // HeadersCombinedDef is default response for HeadersCombined operation.
 type HeadersCombinedDef struct {
@@ -48,11 +95,37 @@ type HeadersCombinedOK struct {
 
 func (*HeadersCombinedOK) headersCombinedRes() {}
 
+type HeadersCombinedType string
+
+const (
+	HeadersCombinedType200     HeadersCombinedType = "200"
+	HeadersCombinedTypeDefault HeadersCombinedType = "default"
+	HeadersCombinedType4XX     HeadersCombinedType = "4XX"
+)
+
 // HeadersDefaultDef is default response for HeadersDefault operation.
 type HeadersDefaultDef struct {
 	TestHeader string
 	StatusCode int
 }
+
+// HeadersPattern4XX is 4XX pattern response for HeadersPattern operation.
+type HeadersPattern4XX struct {
+	TestHeader string
+	StatusCode int
+}
+
+// IntersectPatternCode2XXStatusCode wraps int with StatusCode.
+type IntersectPatternCode2XXStatusCode struct {
+	StatusCode int
+	Response   int
+}
+
+func (*IntersectPatternCode2XXStatusCode) intersectPatternCodeRes() {}
+
+type IntersectPatternCodeOKApplicationJSON string
+
+func (*IntersectPatternCodeOKApplicationJSON) intersectPatternCodeRes() {}
 
 // NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {

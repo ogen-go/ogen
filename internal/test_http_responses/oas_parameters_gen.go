@@ -11,16 +11,16 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-type HeadersCombinedParams struct {
-	Default bool
+type CombinedParams struct {
+	Type CombinedType
 }
 
-func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params HeadersCombinedParams, _ error) {
+func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
-	// Decode query: default.
+	// Decode query: type.
 	{
 		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "default",
+			Name:    "type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
@@ -32,15 +32,107 @@ func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params Header
 					return err
 				}
 
-				c, err := conv.ToBool(val)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
 
-				params.Default = c
+				params.Type = CombinedType(c)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: default: parse")
+				return params, errors.Wrap(err, "query: type: parse")
+			}
+			if err := func() error {
+				if err := params.Type.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: type: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	return params, nil
+}
+
+type HeadersCombinedParams struct {
+	Type HeadersCombinedType
+}
+
+func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params HeadersCombinedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: type.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Type = HeadersCombinedType(c)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: type: parse")
+			}
+			if err := func() error {
+				if err := params.Type.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: type: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	return params, nil
+}
+
+type IntersectPatternCodeParams struct {
+	Code int
+}
+
+func decodeIntersectPatternCodeParams(args [0]string, r *http.Request) (params IntersectPatternCodeParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: code.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "code",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.Code = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: code: parse")
 			}
 		} else {
 			return params, errors.Wrap(err, "query")

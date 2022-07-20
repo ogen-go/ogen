@@ -13,56 +13,62 @@ import (
 func decodeNullableStringsResponse(resp *http.Response, span trace.Span) (res NullableStringsOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return NullableStringsOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response, span trace.Span) (res ObjectsWithConflictingArrayPropertyOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return ObjectsWithConflictingArrayPropertyOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response, span trace.Span) (res ObjectsWithConflictingPropertiesOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return ObjectsWithConflictingPropertiesOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeReferencedAllofResponse(resp *http.Response, span trace.Span) (res ReferencedAllofOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return ReferencedAllofOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeReferencedAllofOptionalResponse(resp *http.Response, span trace.Span) (res ReferencedAllofOptionalOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return ReferencedAllofOptionalOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeSimpleIntegerResponse(resp *http.Response, span trace.Span) (res SimpleIntegerOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return SimpleIntegerOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeSimpleObjectsResponse(resp *http.Response, span trace.Span) (res SimpleObjectsOK, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		return SimpleObjectsOK{}, nil
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

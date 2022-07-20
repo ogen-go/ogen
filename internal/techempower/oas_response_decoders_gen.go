@@ -17,6 +17,7 @@ import (
 func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -42,13 +43,14 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -74,13 +76,14 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -106,13 +109,14 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -138,13 +142,14 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjects, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -170,7 +175,6 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

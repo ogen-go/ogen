@@ -17,6 +17,7 @@ import (
 func decodeDataGetResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -44,13 +45,14 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res string, er
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeDataGetAnyResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -78,13 +80,14 @@ func decodeDataGetAnyResponse(resp *http.Response, span trace.Span) (res string,
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
 func decodeDataGetIDResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
+		// Code 200.
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -112,7 +115,6 @@ func decodeDataGetIDResponse(resp *http.Response, span trace.Span) (res string, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
-	default:
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
