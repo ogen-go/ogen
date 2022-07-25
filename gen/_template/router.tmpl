@@ -25,10 +25,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	{{- end }}
 
 	// Static code generated router with unwrapped path search.
+	{{- with $n := $router.Tree.Root }}
 	switch {
 	default:
-		{{- template "route_edge" router_elem $router.Tree.Root 0 }}
+		{{- template "route_edge" router_elem $n 0 }}
 	}
+	{{- end }}
 	s.notFound(w, r)
 }
 
@@ -61,10 +63,12 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
+	{{- with $n := $router.Tree.Root }}
 	switch {
 	default:
-		{{- template "find_edge" router_elem $router.Tree.Root 0 }}
+		{{- template "find_edge" router_elem $n 0 }}
 	}
+    {{- end }}
 	return r, false
 }
 
