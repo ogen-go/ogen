@@ -30,39 +30,54 @@ func BenchmarkFindRoute(b *testing.B) {
 	b.Run("Parameters", bench(http.MethodGet, "/pet/name/10"))
 }
 
+type routerTestCase struct {
+	Method    string
+	Path      string
+	Operation string
+	Args      []string
+	Defined   bool
+}
+
+func (r routerTestCase) defined(val bool) routerTestCase {
+	return routerTestCase{
+		Method:    r.Method,
+		Path:      r.Path,
+		Operation: r.Operation,
+		Args:      r.Args,
+		Defined:   val,
+	}
+}
+
 func TestRouter(t *testing.T) {
 	handler := &sampleAPIServer{}
 	s, err := api.NewServer(handler, handler)
 	require.NoError(t, err)
 
-	type testCase struct {
-		Method    string
-		Path      string
-		Operation string
-		Args      []string
-	}
-	test := func(method, route, op string, args ...string) testCase {
+	test := func(method, route, op string, args ...string) routerTestCase {
 		if len(args) == 0 {
 			args = []string{}
 		}
-		return testCase{
+		return routerTestCase{
 			Method:    method,
 			Path:      route,
 			Operation: op,
 			Args:      args,
 		}
 	}
-	get := func(p, op string, args ...string) testCase {
+	get := func(p, op string, args ...string) routerTestCase {
 		return test(http.MethodGet, p, op, args...)
 	}
-	post := func(p, op string, args ...string) testCase {
+	post := func(p, op string, args ...string) routerTestCase {
 		return test(http.MethodPost, p, op, args...)
 	}
-	put := func(p, op string, args ...string) testCase {
+	put := func(p, op string, args ...string) routerTestCase {
 		return test(http.MethodPut, p, op, args...)
 	}
+	del := func(p, op string, args ...string) routerTestCase {
+		return test(http.MethodDelete, p, op, args...)
+	}
 
-	for i, tc := range []testCase{
+	for i, tc := range []routerTestCase{
 		get("/pet/name/10", "PetNameByID", "10"),
 		get("/pet/friendNames/10", "PetFriendsNamesByID", "10"),
 		get("/pet", "PetGet"),
@@ -84,18 +99,35 @@ func TestRouter(t *testing.T) {
 
 		get("/test", ""),
 		post("/test", ""),
+		post("/pet/friendNames/10", "").defined(true),
+		post("/pet/aboba", "").defined(true),
+		del("/foobar", "").defined(true),
+		del("/name/10/foobar1234barh-buzz!-kek", "").defined(true),
+		post("/test/header", "").defined(true),
 	} {
 		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i), func(t *testing.T) {
-			a := require.New(t)
-			r, ok := s.FindRoute(tc.Method, tc.Path)
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			t.Run("FindRoute", func(t *testing.T) {
+				a := require.New(t)
+				r, ok := s.FindRoute(tc.Method, tc.Path)
+				if tc.Operation == "" {
+					a.False(ok, r.OperationID())
+					return
+				}
+				a.True(ok, tc.Operation)
+				a.Equal(tc.Operation, r.OperationID())
+				a.Equal(tc.Args, r.Args())
+			})
+
 			if tc.Operation == "" {
-				a.False(ok, r.OperationID())
-				return
+				t.Run("ServeHTTP", func(t *testing.T) {
+					code := http.StatusNotFound
+					if tc.Defined {
+						code = http.StatusMethodNotAllowed
+					}
+					require.HTTPStatusCode(t, s.ServeHTTP, tc.Method, tc.Path, nil, code)
+				})
 			}
-			a.True(ok, tc.Operation)
-			a.Equal(tc.Operation, r.OperationID())
-			a.Equal(tc.Args, r.Args())
 		})
 	}
 }
