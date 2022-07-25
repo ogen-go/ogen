@@ -13,6 +13,9 @@ import (
 // Resolve takes given pointer and returns byte slice of requested value if any.
 // If value not found, returns NotFoundError.
 func Resolve(ptr string, node *yaml.Node) (*yaml.Node, error) {
+	if node == nil {
+		return nil, errors.New("root is nil")
+	}
 	if node.Kind == yaml.DocumentNode && len(node.Content) > 0 {
 		node = node.Content[0]
 	}

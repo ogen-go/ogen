@@ -105,6 +105,15 @@ func TestSpecification(t *testing.T) {
 	}
 }
 
+func TestResolveNilNode(t *testing.T) {
+	a := require.New(t)
+	var err error
+	a.NotPanics(func() {
+		_, err = Resolve("", nil)
+	})
+	a.EqualError(err, "root is nil")
+}
+
 func BenchmarkResolve(b *testing.B) {
 	var specExample = getNode(b, []byte(`{
   "openapi": "3.0.3",
