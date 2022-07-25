@@ -45,6 +45,9 @@ func TestExternalReference(t *testing.T) {
 					},
 				},
 			},
+			"/pathItem": {
+				Ref: "#/components/pathItems/LocalPathItem",
+			},
 		},
 		Components: &ogen.Components{
 			Schemas: map[string]*ogen.Schema{
@@ -62,11 +65,6 @@ func TestExternalReference(t *testing.T) {
 					Ref: "foo.json#/components/parameters/RemoteParameter",
 				},
 			},
-			Headers: map[string]*ogen.Header{
-				"LocalHeader": {
-					Ref: "foo.json#/components/headers/RemoteHeader",
-				},
-			},
 			Examples: map[string]*ogen.Example{
 				"LocalExample": {
 					Ref: "foo.json#/components/examples/RemoteExample",
@@ -77,9 +75,19 @@ func TestExternalReference(t *testing.T) {
 					Ref: "foo.json#/components/requestBodies/RemoteRequestBody",
 				},
 			},
+			Headers: map[string]*ogen.Header{
+				"LocalHeader": {
+					Ref: "foo.json#/components/headers/RemoteHeader",
+				},
+			},
 			SecuritySchemes: map[string]*ogen.SecurityScheme{
 				"LocalSecurityScheme": {
 					Ref: "foo.json#/components/securitySchemes/RemoteSecurityScheme",
+				},
+			},
+			PathItems: map[string]*ogen.PathItem{
+				"LocalPathItem": {
+					Ref: "pathItem.json",
 				},
 			},
 		},
@@ -138,6 +146,17 @@ func TestExternalReference(t *testing.T) {
 					},
 				},
 				SecuritySchemes: nil,
+			},
+		},
+		"pathItem.json": &ogen.PathItem{
+			Get: &ogen.Operation{
+				OperationID: "remoteGet",
+				Description: "remote operation description",
+				Responses: map[string]*ogen.Response{
+					"200": {
+						Ref: "response.json#",
+					},
+				},
 			},
 		},
 		"bar.json": &ogen.Spec{
@@ -255,6 +274,20 @@ func TestExternalReference(t *testing.T) {
 					"200": response,
 				},
 			},
+			{
+				OperationID: "remoteGet",
+				Description: "remote operation description",
+				HTTPMethod:  "get",
+				Path: openapi.Path{
+					{Raw: "/pathItem"},
+				},
+				Parameters:  []*openapi.Parameter{},
+				RequestBody: nil,
+				Security:    []openapi.SecurityRequirement{},
+				Responses: map[string]*openapi.Response{
+					"200": response,
+				},
+			},
 		},
 		Components: &openapi.Components{
 			Schemas: map[string]*jsonschema.Schema{
@@ -274,4 +307,45 @@ func TestExternalReference(t *testing.T) {
 			},
 		},
 	}, spec)
+}
+
+// Ensure that parser checks for duplicate operation IDs even if there is pathItem reference.
+func TestDuplicateOperationID(t *testing.T) {
+	root := &ogen.Spec{
+		Paths: map[string]*ogen.PathItem{
+			"/get": {
+				Get: &ogen.Operation{
+					OperationID: "testGet",
+					Description: "local",
+					Responses: map[string]*ogen.Response{
+						"200": {
+							Description: "response description",
+						},
+					},
+				},
+			},
+			"/pathItem": {
+				Ref: "pathItem.json#",
+			},
+		},
+		Components: &ogen.Components{},
+	}
+	remote := external{
+		"pathItem.json": &ogen.PathItem{
+			Get: &ogen.Operation{
+				OperationID: "testGet",
+				Description: "remote",
+				Responses: map[string]*ogen.Response{
+					"200": {
+						Description: "response description",
+					},
+				},
+			},
+		},
+	}
+
+	_, err := Parse(root, Settings{
+		External: remote,
+	})
+	require.ErrorContains(t, err, "duplicate operationId: \"testGet\"")
 }
