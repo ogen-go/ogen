@@ -30,6 +30,20 @@ func BenchmarkFindRoute(b *testing.B) {
 	b.Run("Parameters", bench(http.MethodGet, "/pet/name/10"))
 }
 
+func FuzzRouter(f *testing.F) {
+	for _, tc := range routerTestCases() {
+		f.Add(tc.Method, tc.Path)
+	}
+
+	handler := &sampleAPIServer{}
+	s, err := api.NewServer(handler, handler)
+	require.NoError(f, err)
+
+	f.Fuzz(func(t *testing.T, method, path string) {
+		s.FindRoute(method, path)
+	})
+}
+
 type routerTestCase struct {
 	Method    string
 	Path      string
@@ -48,11 +62,7 @@ func (r routerTestCase) defined(val bool) routerTestCase {
 	}
 }
 
-func TestRouter(t *testing.T) {
-	handler := &sampleAPIServer{}
-	s, err := api.NewServer(handler, handler)
-	require.NoError(t, err)
-
+func routerTestCases() []routerTestCase {
 	test := func(method, route, op string, args ...string) routerTestCase {
 		if len(args) == 0 {
 			args = []string{}
@@ -77,7 +87,7 @@ func TestRouter(t *testing.T) {
 		return test(http.MethodDelete, p, op, args...)
 	}
 
-	for i, tc := range []routerTestCase{
+	return []routerTestCase{
 		get("/pet/name/10", "PetNameByID", "10"),
 		get("/pet/friendNames/10", "PetFriendsNamesByID", "10"),
 		get("/pet", "PetGet"),
@@ -104,7 +114,15 @@ func TestRouter(t *testing.T) {
 		del("/foobar", "").defined(true),
 		del("/name/10/foobar1234barh-buzz!-kek", "").defined(true),
 		post("/test/header", "").defined(true),
-	} {
+	}
+}
+
+func TestRouter(t *testing.T) {
+	handler := &sampleAPIServer{}
+	s, err := api.NewServer(handler, handler)
+	require.NoError(t, err)
+
+	for i, tc := range routerTestCases() {
 		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			t.Run("FindRoute", func(t *testing.T) {
