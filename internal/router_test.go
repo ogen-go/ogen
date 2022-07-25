@@ -52,13 +52,13 @@ type routerTestCase struct {
 	Defined   bool
 }
 
-func (r routerTestCase) defined(val bool) routerTestCase {
+func (r routerTestCase) defined() routerTestCase {
 	return routerTestCase{
 		Method:    r.Method,
 		Path:      r.Path,
 		Operation: r.Operation,
 		Args:      r.Args,
-		Defined:   val,
+		Defined:   true,
 	}
 }
 
@@ -109,11 +109,11 @@ func routerTestCases() []routerTestCase {
 
 		get("/test", ""),
 		post("/test", ""),
-		post("/pet/friendNames/10", "").defined(true),
-		post("/pet/aboba", "").defined(true),
-		del("/foobar", "").defined(true),
-		del("/name/10/foobar1234barh-buzz!-kek", "").defined(true),
-		post("/test/header", "").defined(true),
+		post("/pet/friendNames/10", "").defined(),
+		post("/pet/aboba", "").defined(),
+		del("/foobar", "").defined(),
+		del("/name/10/foobar1234barh-buzz!-kek", "").defined(),
+		post("/test/header", "").defined(),
 	}
 }
 
