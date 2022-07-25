@@ -9,53 +9,54 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
+// Route describes route.
 type Route struct {
 	Method    string        // GET, POST, DELETE
-	Operation *ir.Operation // getUserInfo
 	Path      string        // /api/v1/user/{name}/info
+	Operation *ir.Operation // getUserInfo
 }
 
-// MethodRoute is route for one Method.
-type MethodRoute struct {
-	Method string
-	Tree   RouteTree
+// Routes is list of routes.
+type Routes []Route
+
+// Len implements sort.Interface.
+func (n Routes) Len() int {
+	return len(n)
 }
 
-// Add adds route to this tree.
-func (m *MethodRoute) Add(r Route) error {
-	if err := m.Tree.addRoute(r.Path, r.Operation); err != nil {
-		return errors.Wrapf(err, "add route %s", r.Path)
+// Less implements sort.Interface.
+func (n Routes) Less(i, j int) bool {
+	return n[i].Method < n[j].Method
+}
+
+// Swap implements sort.Interface.
+func (n Routes) Swap(i, j int) {
+	n[i], n[j] = n[j], n[i]
+}
+
+// AddRoute adds new route. If the route is already added, it returns error.
+func (n *Routes) AddRoute(nr Route) error {
+	for _, r := range *n {
+		if strings.EqualFold(r.Method, nr.Method) {
+			return errors.Errorf("duplicate method %q", nr.Method)
+		}
 	}
+	*n = append(*n, nr)
+	// Keep routes sorted by method.
+	sort.Sort(n)
 	return nil
 }
 
 // Router contains list of routes.
 type Router struct {
-	Methods []MethodRoute
+	Tree RouteTree
 	// MaxParametersCount is maximum number of path parameters in one operation.
 	MaxParametersCount int
 }
 
 // Add adds new route.
 func (s *Router) Add(r Route) error {
-	for _, m := range s.Methods {
-		if m.Method == r.Method {
-			if err := m.Add(r); err != nil {
-				return errors.Wrapf(err, "update method %s", r.Method)
-			}
-			return nil
-		}
-	}
-
-	m := MethodRoute{
-		Method: r.Method,
-		Tree:   RouteTree{},
-	}
-	if err := m.Add(r); err != nil {
-		return errors.Wrapf(err, "update method %s", r.Method)
-	}
-	s.Methods = append(s.Methods, m)
-	return nil
+	return s.Tree.addRoute(r)
 }
 
 func (g *Generator) route() error {
@@ -73,13 +74,5 @@ func (g *Generator) route() error {
 		}
 	}
 	g.router.MaxParametersCount = maxParametersCount
-
-	{
-		m := g.router.Methods
-		sort.SliceStable(m, func(i, j int) bool {
-			return m[i].Method < m[j].Method
-		})
-	}
-
 	return nil
 }
