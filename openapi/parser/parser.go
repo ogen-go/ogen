@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"sort"
+
 	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
 
@@ -25,6 +27,7 @@ type parser struct {
 		headers         map[string]*openapi.Header
 		examples        map[string]*openapi.Example
 		securitySchemes map[string]*ogen.SecurityScheme
+		pathItems       map[string]pathItem
 	}
 
 	external   jsonschema.ExternalResolver
@@ -53,6 +56,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			headers         map[string]*openapi.Header
 			examples        map[string]*openapi.Example
 			securitySchemes map[string]*ogen.SecurityScheme
+			pathItems       map[string]pathItem
 		}{
 			requestBodies:   map[string]*openapi.RequestBody{},
 			responses:       map[string]*openapi.Response{},
@@ -60,6 +64,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 			headers:         map[string]*openapi.Header{},
 			examples:        map[string]*openapi.Example{},
 			securitySchemes: map[string]*ogen.SecurityScheme{},
+			pathItems:       map[string]pathItem{},
 		},
 		external: s.External,
 		schemas: map[string]*yaml.Node{
@@ -117,8 +122,15 @@ func (p *parser) parsePathItems() error {
 		paths = map[string]struct{}{}
 
 		pathsLoc = p.rootLoc.Field("paths")
+		keys     = make([]string, 0, len(p.spec.Paths))
 	)
-	for path, item := range p.spec.Paths {
+	for k := range p.spec.Paths {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, path := range keys {
+		item := p.spec.Paths[path]
 		if err := func() error {
 			id, err := pathID(path)
 			if err != nil {
@@ -135,149 +147,12 @@ func (p *parser) parsePathItems() error {
 			return p.wrapLocation("", pathsLoc.Key(path), err)
 		}
 
-		if err := p.parsePathItem(path, item, operationIDs, newResolveCtx(p.depthLimit)); err != nil {
+		ops, err := p.parsePathItem(path, item, operationIDs, newResolveCtx(p.depthLimit))
+		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
 			return p.wrapLocation("", pathsLoc.Field(path), err)
 		}
+		p.operations = append(p.operations, ops...)
 	}
 	return nil
-}
-
-func (p *parser) parsePathItem(
-	path string,
-	item *ogen.PathItem,
-	operationIDs map[string]struct{},
-	ctx *resolveCtx,
-) (rerr error) {
-	if item == nil {
-		return errors.New("pathItem object is empty or null")
-	}
-	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), item.Locator, rerr)
-	}()
-	if item.Ref != "" {
-		return errors.New("referenced pathItem not supported")
-	}
-
-	itemParams, err := p.parseParams(item.Parameters, item.Locator.Field("parameters"), ctx)
-	if err != nil {
-		return errors.Wrap(err, "parameters")
-	}
-
-	return forEachOps(item, func(method string, op ogen.Operation) error {
-		if id := op.OperationID; id != "" {
-			if _, ok := operationIDs[id]; ok {
-				return errors.Errorf("duplicate operationId: %q", id)
-			}
-			operationIDs[id] = struct{}{}
-		}
-
-		parsedOp, err := p.parseOp(path, method, op, itemParams, ctx)
-		if err != nil {
-			if op.OperationID != "" {
-				return errors.Wrapf(err, "operation %q", op.OperationID)
-			}
-			return err
-		}
-
-		p.operations = append(p.operations, parsedOp)
-		return nil
-	})
-}
-
-func (p *parser) parseOp(
-	path, httpMethod string,
-	spec ogen.Operation,
-	itemParams []*openapi.Parameter,
-	ctx *resolveCtx,
-) (_ *openapi.Operation, err error) {
-	defer func() {
-		err = p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
-	}()
-
-	op := &openapi.Operation{
-		OperationID: spec.OperationID,
-		Summary:     spec.Summary,
-		Description: spec.Description,
-		Deprecated:  spec.Deprecated,
-		HTTPMethod:  httpMethod,
-		Locator:     spec.Locator,
-	}
-
-	opParams, err := p.parseParams(spec.Parameters, spec.Locator.Field("parameters"), ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "parameters")
-	}
-
-	// Merge operation parameters with pathItem parameters.
-	op.Parameters = mergeParams(opParams, itemParams)
-
-	op.Path, err = parsePath(path, op.Parameters)
-	if err != nil {
-		return nil, errors.Wrapf(err, "parse path %q", path)
-	}
-
-	if spec.RequestBody != nil {
-		op.RequestBody, err = p.parseRequestBody(spec.RequestBody, ctx)
-		if err != nil {
-			return nil, errors.Wrap(err, "requestBody")
-		}
-	}
-
-	{
-		locator := spec.Locator.Field("responses")
-		op.Responses, err = p.parseResponses(spec.Responses, locator, ctx)
-		if err != nil {
-			err := errors.Wrap(err, "responses")
-			return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
-		}
-	}
-
-	parseSecurity := func(spec ogen.SecurityRequirements, locator location.Locator) (err error) {
-		op.Security, err = p.parseSecurityRequirements(spec, locator, ctx)
-		if err != nil {
-			err := errors.Wrap(err, "security")
-			return p.wrapLocation(ctx.lastLoc(), locator, err)
-		}
-		return nil
-	}
-
-	var (
-		security       = p.spec.Security
-		securityParent = p.rootLoc
-	)
-	if spec.Security != nil {
-		// Use operation level security.
-		security = spec.Security
-		securityParent = spec.Locator
-	}
-	if err := parseSecurity(security, securityParent.Field("security")); err != nil {
-		return nil, err
-	}
-
-	return op, nil
-}
-
-func forEachOps(item *ogen.PathItem, f func(method string, op ogen.Operation) error) error {
-	var err error
-	handle := func(method string, op *ogen.Operation) {
-		if err != nil || op == nil {
-			return
-		}
-
-		err = f(method, *op)
-		if err != nil {
-			err = errors.Wrap(err, method)
-		}
-	}
-
-	handle("get", item.Get)
-	handle("put", item.Put)
-	handle("post", item.Post)
-	handle("delete", item.Delete)
-	handle("options", item.Options)
-	handle("head", item.Head)
-	handle("patch", item.Patch)
-	handle("trace", item.Trace)
-	return err
 }

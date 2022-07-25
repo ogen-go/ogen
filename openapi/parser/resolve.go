@@ -303,3 +303,48 @@ func (p *parser) resolveSecurityScheme(ref string, ctx *resolveCtx) (*ogen.Secur
 	p.refs.securitySchemes[ref] = component
 	return component, nil
 }
+
+func (p *parser) resolvePathItem(
+	itemPath, ref string,
+	operationIDs map[string]struct{},
+	ctx *resolveCtx,
+) (pathItem, error) {
+	const prefix = "#/components/pathItems/"
+
+	if r, ok := p.refs.pathItems[ref]; ok {
+		return r, nil
+	}
+
+	key, err := ctx.add(ref)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		ctx.delete(key)
+	}()
+
+	var component *ogen.PathItem
+	if key.loc == "" && ctx.lastLoc() == "" {
+		name := strings.TrimPrefix(ref, prefix)
+		c, found := p.spec.Components.PathItems[name]
+		if found {
+			component = c
+		} else {
+			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
+				return nil, err
+			}
+		}
+	} else {
+		if err := p.resolve(key, ctx, &component); err != nil {
+			return nil, err
+		}
+	}
+
+	r, err := p.parsePathItem(itemPath, component, operationIDs, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	p.refs.pathItems[ref] = r
+	return r, nil
+}

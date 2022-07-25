@@ -1,0 +1,19 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "$ref": "#/components/pathItems/PathItem"
+    }
+  },
+  "components": {
+    "pathItems": {
+      "PathItem": {
+        "$ref": "#/components/pathItems/PathItem"
+      }
+    }
+  }
+}

@@ -210,6 +210,7 @@ type Components struct {
 	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitempty" yaml:"securitySchemes,omitempty"`
 	Links           map[string]*Link           `json:"links,omitempty" yaml:"links,omitempty"`
 	Callbacks       map[string]*Callback       `json:"callbacks,omitempty" yaml:"callbacks,omitempty"`
+	PathItems       map[string]*PathItem       `json:"pathItems,omitempty" yaml:"pathItems,omitempty"`
 
 	Locator Locator `json:"-" yaml:",inline"`
 }
