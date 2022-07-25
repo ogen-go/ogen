@@ -76,16 +76,21 @@ type config struct {
 	Meter              metric.Meter
 	Client             ht.Client
 	NotFound           http.HandlerFunc
+	MethodNotAllowed   func(w http.ResponseWriter, r *http.Request, allowed string)
 	ErrorHandler       ErrorHandler
 	MaxMultipartMemory int64
 }
 
 func newConfig(opts ...Option) config {
 	cfg := config{
-		TracerProvider:     otel.GetTracerProvider(),
-		MeterProvider:      metric.NewNoopMeterProvider(),
-		Client:             http.DefaultClient,
-		NotFound:           http.NotFound,
+		TracerProvider: otel.GetTracerProvider(),
+		MeterProvider:  metric.NewNoopMeterProvider(),
+		Client:         http.DefaultClient,
+		NotFound:       http.NotFound,
+		MethodNotAllowed: func(w http.ResponseWriter, r *http.Request, allowed string) {
+			w.Header().Set("Allow", allowed)
+			w.WriteHeader(http.StatusMethodNotAllowed)
+		},
 		ErrorHandler:       respondError,
 		MaxMultipartMemory: 32 << 20, // 32 MB
 	}
@@ -145,6 +150,15 @@ func WithNotFound(notFound http.HandlerFunc) Option {
 	return optionFunc(func(cfg *config) {
 		if notFound != nil {
 			cfg.NotFound = notFound
+		}
+	})
+}
+
+// WithMethodNotAllowed specifies Method Not Allowed handler to use.
+func WithMethodNotAllowed(methodNotAllowed func(w http.ResponseWriter, r *http.Request, allowed string)) Option {
+	return optionFunc(func(cfg *config) {
+		if methodNotAllowed != nil {
+			cfg.MethodNotAllowed = methodNotAllowed
 		}
 	})
 }

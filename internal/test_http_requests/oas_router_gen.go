@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -33,7 +38,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleAllRequestBodiesRequest([0]string{}, w, r)
+				switch r.Method {
+				case "POST":
+					s.handleAllRequestBodiesRequest([0]string{}, w, r)
+				default:
+					s.notAllowed(w, r, "POST")
+				}
 
 				return
 			}
@@ -46,8 +56,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: AllRequestBodiesOptional
-					s.handleAllRequestBodiesOptionalRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleAllRequestBodiesOptionalRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -86,8 +101,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -100,10 +115,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "AllRequestBodies"
-				r.args = args
-				r.count = 0
-				return r, true
+				switch method {
+				case "POST":
+					r.name = "AllRequestBodies"
+					r.args = args
+					r.count = 0
+					return r, true
+				default:
+					return
+				}
 			}
 			switch elem[0] {
 			case 'O': // Prefix: "Optional"
@@ -114,11 +134,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: AllRequestBodiesOptional
-					r.name = "AllRequestBodiesOptional"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						// Leaf: AllRequestBodiesOptional
+						r.name = "AllRequestBodiesOptional"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			}
 		}

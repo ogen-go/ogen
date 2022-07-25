@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -44,8 +49,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: Caching
-					s.handleCachingRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleCachingRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -57,8 +67,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: DB
-					s.handleDBRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleDBRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -70,8 +85,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: JSON
-					s.handleJSONRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleJSONRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -83,8 +103,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: Queries
-					s.handleQueriesRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleQueriesRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -96,8 +121,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: Updates
-					s.handleUpdatesRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleUpdatesRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -136,8 +166,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -161,11 +191,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: Caching
-					r.name = "Caching"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: Caching
+						r.name = "Caching"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'd': // Prefix: "db"
 				if l := len("db"); len(elem) >= l && elem[0:l] == "db" {
@@ -175,11 +210,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: DB
-					r.name = "DB"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: DB
+						r.name = "DB"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'j': // Prefix: "json"
 				if l := len("json"); len(elem) >= l && elem[0:l] == "json" {
@@ -189,11 +229,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: JSON
-					r.name = "JSON"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: JSON
+						r.name = "JSON"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'q': // Prefix: "queries"
 				if l := len("queries"); len(elem) >= l && elem[0:l] == "queries" {
@@ -203,11 +248,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: Queries
-					r.name = "Queries"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: Queries
+						r.name = "Queries"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'u': // Prefix: "updates"
 				if l := len("updates"); len(elem) >= l && elem[0:l] == "updates" {
@@ -217,11 +267,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: Updates
-					r.name = "Updates"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: Updates
+						r.name = "Updates"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			}
 		}

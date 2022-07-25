@@ -11,6 +11,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -20,9 +24,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	args := [2]string{}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -35,7 +40,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleDataGetAnyRequest([0]string{}, w, r)
+				switch r.Method {
+				case "GET":
+					s.handleDataGetAnyRequest([0]string{}, w, r)
+				default:
+					s.notAllowed(w, r, "GET")
+				}
 
 				return
 			}
@@ -57,9 +67,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = elem[idx:]
 
 				if len(elem) == 0 {
-					s.handleDataGetIDRequest([1]string{
-						args[0],
-					}, w, r)
+					switch r.Method {
+					case "GET":
+						s.handleDataGetIDRequest([1]string{
+							args[0],
+						}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -77,11 +92,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					elem = ""
 
 					if len(elem) == 0 {
-						// Leaf: DataGet
-						s.handleDataGetRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleDataGetRequest([2]string{
+								args[0],
+								args[1],
+							}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -121,8 +141,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -135,10 +155,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "DataGetAny"
-				r.args = args
-				r.count = 0
-				return r, true
+				switch method {
+				case "GET":
+					r.name = "DataGetAny"
+					r.args = args
+					r.count = 0
+					return r, true
+				default:
+					return
+				}
 			}
 			switch elem[0] {
 			case '/': // Prefix: "/"
@@ -158,10 +183,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				elem = elem[idx:]
 
 				if len(elem) == 0 {
-					r.name = "DataGetID"
-					r.args = args
-					r.count = 1
-					return r, true
+					switch method {
+					case "GET":
+						r.name = "DataGetID"
+						r.args = args
+						r.count = 1
+						return r, true
+					default:
+						return
+					}
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -177,11 +207,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
-						// Leaf: DataGet
-						r.name = "DataGet"
-						r.args = args
-						r.count = 2
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: DataGet
+							r.name = "DataGet"
+							r.args = args
+							r.count = 2
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			}

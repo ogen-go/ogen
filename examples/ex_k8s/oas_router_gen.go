@@ -11,6 +11,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -20,9 +24,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	args := [2]string{}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -46,8 +51,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: GetServiceAccountIssuerOpenIDConfiguration
-					s.handleGetServiceAccountIssuerOpenIDConfigurationRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleGetServiceAccountIssuerOpenIDConfigurationRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -70,7 +80,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleGetCoreAPIVersionsRequest([0]string{}, w, r)
+						switch r.Method {
+						case "GET":
+							s.handleGetCoreAPIVersionsRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -83,7 +98,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetCoreV1APIResourcesRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetCoreV1APIResourcesRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -107,7 +127,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListCoreV1ComponentStatusRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1ComponentStatusRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -125,10 +150,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									elem = ""
 
 									if len(elem) == 0 {
-										// Leaf: ReadCoreV1ComponentStatus
-										s.handleReadCoreV1ComponentStatusRequest([1]string{
-											args[0],
-										}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleReadCoreV1ComponentStatusRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -141,8 +171,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1ConfigMapForAllNamespaces
-									s.handleListCoreV1ConfigMapForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1ConfigMapForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -166,8 +201,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1EndpointsForAllNamespaces
-									s.handleListCoreV1EndpointsForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1EndpointsForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -179,8 +219,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1EventForAllNamespaces
-									s.handleListCoreV1EventForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1EventForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -193,8 +238,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: ListCoreV1LimitRangeForAllNamespaces
-								s.handleListCoreV1LimitRangeForAllNamespacesRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handleListCoreV1LimitRangeForAllNamespacesRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -217,7 +267,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListCoreV1NamespaceRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1NamespaceRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -239,9 +294,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										s.handleReadCoreV1NamespaceRequest([1]string{
-											args[0],
-										}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleReadCoreV1NamespaceRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -265,9 +325,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListCoreV1NamespacedConfigMapRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListCoreV1NamespacedConfigMapRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -285,11 +350,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadCoreV1NamespacedConfigMap
-													s.handleReadCoreV1NamespacedConfigMapRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadCoreV1NamespacedConfigMapRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -313,9 +383,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedEndpointsRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListCoreV1NamespacedEndpointsRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -333,11 +408,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedEndpoints
-														s.handleReadCoreV1NamespacedEndpointsRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadCoreV1NamespacedEndpointsRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -350,9 +430,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedEventRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListCoreV1NamespacedEventRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -370,11 +455,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedEvent
-														s.handleReadCoreV1NamespacedEventRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadCoreV1NamespacedEventRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -388,9 +478,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListCoreV1NamespacedLimitRangeRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListCoreV1NamespacedLimitRangeRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -408,11 +503,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadCoreV1NamespacedLimitRange
-													s.handleReadCoreV1NamespacedLimitRangeRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadCoreV1NamespacedLimitRangeRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -436,9 +536,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedPersistentVolumeClaimRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListCoreV1NamespacedPersistentVolumeClaimRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -460,10 +565,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -476,11 +586,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
-															s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -505,9 +620,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedPodRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListCoreV1NamespacedPodRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -529,10 +649,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															s.handleReadCoreV1NamespacedPodRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleReadCoreV1NamespacedPodRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -556,11 +681,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
-																	s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+																	// Leaf node.
+																	switch r.Method {
+																	case "GET":
+																		s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "GET")
+																	}
 
 																	return
 																}
@@ -572,11 +702,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPodLog
-																	s.handleReadCoreV1NamespacedPodLogRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+																	// Leaf node.
+																	switch r.Method {
+																	case "GET":
+																		s.handleReadCoreV1NamespacedPodLogRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "GET")
+																	}
 
 																	return
 																}
@@ -588,11 +723,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPodStatus
-																	s.handleReadCoreV1NamespacedPodStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+																	// Leaf node.
+																	switch r.Method {
+																	case "GET":
+																		s.handleReadCoreV1NamespacedPodStatusRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "GET")
+																	}
 
 																	return
 																}
@@ -607,9 +747,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedPodTemplateRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListCoreV1NamespacedPodTemplateRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -627,11 +772,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedPodTemplate
-															s.handleReadCoreV1NamespacedPodTemplateRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleReadCoreV1NamespacedPodTemplateRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -657,9 +807,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedReplicationControllerRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListCoreV1NamespacedReplicationControllerRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -681,10 +836,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadCoreV1NamespacedReplicationControllerRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadCoreV1NamespacedReplicationControllerRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -708,11 +868,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedReplicationControllerScale
-																s.handleReadCoreV1NamespacedReplicationControllerScaleRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadCoreV1NamespacedReplicationControllerScaleRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -724,11 +889,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
-																s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -743,9 +913,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -767,10 +942,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadCoreV1NamespacedResourceQuotaRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadCoreV1NamespacedResourceQuotaRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -783,11 +963,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
-															s.handleReadCoreV1NamespacedResourceQuotaStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleReadCoreV1NamespacedResourceQuotaStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -824,9 +1009,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedSecretRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListCoreV1NamespacedSecretRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -844,11 +1034,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedSecret
-															s.handleReadCoreV1NamespacedSecretRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleReadCoreV1NamespacedSecretRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -872,9 +1067,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -892,11 +1092,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedServiceAccount
-																s.handleReadCoreV1NamespacedServiceAccountRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadCoreV1NamespacedServiceAccountRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -909,9 +1114,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleListCoreV1NamespacedServiceRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleListCoreV1NamespacedServiceRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -933,10 +1143,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = elem[idx:]
 
 															if len(elem) == 0 {
-																s.handleReadCoreV1NamespacedServiceRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																switch r.Method {
+																case "GET":
+																	s.handleReadCoreV1NamespacedServiceRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -949,11 +1164,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedServiceStatus
-																	s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+																	// Leaf node.
+																	switch r.Method {
+																	case "GET":
+																		s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "GET")
+																	}
 
 																	return
 																}
@@ -969,10 +1189,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadCoreV1NamespaceStatus
-													s.handleReadCoreV1NamespaceStatusRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadCoreV1NamespaceStatusRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -988,7 +1213,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListCoreV1NodeRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1NodeRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -1010,9 +1240,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										s.handleReadCoreV1NodeRequest([1]string{
-											args[0],
-										}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleReadCoreV1NodeRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1025,10 +1260,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ReadCoreV1NodeStatus
-											s.handleReadCoreV1NodeStatusRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadCoreV1NodeStatusRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -1065,8 +1305,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
-										s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1078,7 +1323,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListCoreV1PersistentVolumeRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListCoreV1PersistentVolumeRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1100,9 +1350,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleReadCoreV1PersistentVolumeRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleReadCoreV1PersistentVolumeRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -1115,10 +1370,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadCoreV1PersistentVolumeStatus
-												s.handleReadCoreV1PersistentVolumeStatusRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadCoreV1PersistentVolumeStatusRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -1144,8 +1404,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1PodForAllNamespaces
-										s.handleListCoreV1PodForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListCoreV1PodForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1157,8 +1422,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1PodTemplateForAllNamespaces
-										s.handleListCoreV1PodTemplateForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListCoreV1PodTemplateForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1183,8 +1453,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1ReplicationControllerForAllNamespaces
-									s.handleListCoreV1ReplicationControllerForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1ReplicationControllerForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -1196,8 +1471,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
-									s.handleListCoreV1ResourceQuotaForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1ResourceQuotaForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -1221,8 +1501,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1SecretForAllNamespaces
-									s.handleListCoreV1SecretForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleListCoreV1SecretForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -1245,8 +1530,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1ServiceAccountForAllNamespaces
-										s.handleListCoreV1ServiceAccountForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListCoreV1ServiceAccountForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1258,8 +1548,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1ServiceForAllNamespaces
-										s.handleListCoreV1ServiceForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListCoreV1ServiceForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1284,8 +1579,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: WatchCoreV1ConfigMapListForAllNamespaces
-									s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -1308,8 +1608,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1EndpointsListForAllNamespaces
-										s.handleWatchCoreV1EndpointsListForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1EndpointsListForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1321,8 +1626,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1EventListForAllNamespaces
-										s.handleWatchCoreV1EventListForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1EventListForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1335,8 +1645,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: WatchCoreV1LimitRangeListForAllNamespaces
-									s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -1359,7 +1674,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCoreV1NamespaceListRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1NamespaceListRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1381,9 +1701,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleWatchCoreV1NamespaceRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1NamespaceRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -1407,9 +1732,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedConfigMapListRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchCoreV1NamespacedConfigMapListRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -1427,11 +1757,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchCoreV1NamespacedConfigMap
-														s.handleWatchCoreV1NamespacedConfigMapRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedConfigMapRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1455,9 +1790,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedEndpointsListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedEndpointsListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1475,11 +1815,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedEndpoints
-															s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1492,9 +1837,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedEventListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedEventListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1512,11 +1862,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedEvent
-															s.handleWatchCoreV1NamespacedEventRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedEventRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1530,9 +1885,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedLimitRangeListRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchCoreV1NamespacedLimitRangeListRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -1550,11 +1910,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchCoreV1NamespacedLimitRange
-														s.handleWatchCoreV1NamespacedLimitRangeRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedLimitRangeRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1578,9 +1943,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1598,11 +1968,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
-															s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1626,9 +2001,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedPodListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedPodListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1646,11 +2026,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedPod
-																s.handleWatchCoreV1NamespacedPodRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchCoreV1NamespacedPodRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -1663,9 +2048,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedPodTemplateListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedPodTemplateListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1683,11 +2073,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedPodTemplate
-																s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -1713,9 +2108,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedReplicationControllerListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedReplicationControllerListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1733,11 +2133,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedReplicationController
-															s.handleWatchCoreV1NamespacedReplicationControllerRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedReplicationControllerRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1750,9 +2155,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedResourceQuotaListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedResourceQuotaListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1770,11 +2180,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedResourceQuota
-															s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1799,9 +2214,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedSecretListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchCoreV1NamespacedSecretListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -1819,11 +2239,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedSecret
-															s.handleWatchCoreV1NamespacedSecretRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedSecretRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1847,9 +2272,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedServiceAccountListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedServiceAccountListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1867,11 +2297,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedServiceAccount
-																s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -1884,9 +2319,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedServiceListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchCoreV1NamespacedServiceListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -1904,11 +2344,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedService
-																s.handleWatchCoreV1NamespacedServiceRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchCoreV1NamespacedServiceRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -1926,7 +2371,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCoreV1NodeListRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1NodeListRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -1944,10 +2394,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1Node
-											s.handleWatchCoreV1NodeRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1NodeRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -1983,8 +2438,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
-											s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -1996,7 +2456,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchCoreV1PersistentVolumeListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1PersistentVolumeListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2014,10 +2479,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchCoreV1PersistentVolume
-												s.handleWatchCoreV1PersistentVolumeRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchCoreV1PersistentVolumeRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2042,8 +2512,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1PodListForAllNamespaces
-											s.handleWatchCoreV1PodListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1PodListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2055,8 +2530,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
-											s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2081,8 +2561,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1ReplicationControllerListForAllNamespaces
-										s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2094,8 +2579,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
-										s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2119,8 +2609,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1SecretListForAllNamespaces
-										s.handleWatchCoreV1SecretListForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleWatchCoreV1SecretListForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2143,8 +2638,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
-											s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2156,8 +2656,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1ServiceListForAllNamespaces
-											s.handleWatchCoreV1ServiceListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoreV1ServiceListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2174,7 +2679,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleGetAPIVersionsRequest([0]string{}, w, r)
+						switch r.Method {
+						case "GET":
+							s.handleGetAPIVersionsRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -2198,7 +2708,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetAdmissionregistrationAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetAdmissionregistrationAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -2211,7 +2726,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetAdmissionregistrationV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetAdmissionregistrationV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -2224,7 +2744,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2242,10 +2767,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadAdmissionregistrationV1MutatingWebhookConfiguration
-											s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2258,7 +2788,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2276,10 +2811,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadAdmissionregistrationV1ValidatingWebhookConfiguration
-											s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2303,7 +2843,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2321,10 +2866,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchAdmissionregistrationV1MutatingWebhookConfiguration
-												s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2337,7 +2887,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2355,10 +2910,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
-												s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2396,7 +2956,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetApiextensionsAPIGroupRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetApiextensionsAPIGroupRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2409,7 +2974,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleGetApiextensionsV1APIResourcesRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleGetApiextensionsV1APIResourcesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2422,7 +2992,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListApiextensionsV1CustomResourceDefinitionRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListApiextensionsV1CustomResourceDefinitionRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2444,9 +3019,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													s.handleReadApiextensionsV1CustomResourceDefinitionRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleReadApiextensionsV1CustomResourceDefinitionRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -2459,10 +3039,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
-														s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
-															args[0],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -2476,7 +3061,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2494,10 +3084,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchApiextensionsV1CustomResourceDefinition
-													s.handleWatchApiextensionsV1CustomResourceDefinitionRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchApiextensionsV1CustomResourceDefinitionRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -2512,7 +3107,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetApiregistrationAPIGroupRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetApiregistrationAPIGroupRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2525,7 +3125,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleGetApiregistrationV1APIResourcesRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleGetApiregistrationV1APIResourcesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2538,7 +3143,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListApiregistrationV1APIServiceRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListApiregistrationV1APIServiceRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2560,9 +3170,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													s.handleReadApiregistrationV1APIServiceRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleReadApiregistrationV1APIServiceRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -2575,10 +3190,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadApiregistrationV1APIServiceStatus
-														s.handleReadApiregistrationV1APIServiceStatusRequest([1]string{
-															args[0],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadApiregistrationV1APIServiceStatusRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -2592,7 +3212,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchApiregistrationV1APIServiceListRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchApiregistrationV1APIServiceListRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2610,10 +3235,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchApiregistrationV1APIService
-													s.handleWatchApiregistrationV1APIServiceRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchApiregistrationV1APIServiceRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -2629,7 +3259,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetAppsAPIGroupRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetAppsAPIGroupRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -2642,7 +3277,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetAppsV1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetAppsV1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -2655,8 +3295,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListAppsV1ControllerRevisionForAllNamespaces
-											s.handleListAppsV1ControllerRevisionForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListAppsV1ControllerRevisionForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -2679,8 +3324,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ListAppsV1DaemonSetForAllNamespaces
-												s.handleListAppsV1DaemonSetForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleListAppsV1DaemonSetForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2692,8 +3342,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ListAppsV1DeploymentForAllNamespaces
-												s.handleListAppsV1DeploymentForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleListAppsV1DeploymentForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -2737,9 +3392,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListAppsV1NamespacedControllerRevisionRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListAppsV1NamespacedControllerRevisionRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -2757,11 +3417,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadAppsV1NamespacedControllerRevision
-														s.handleReadAppsV1NamespacedControllerRevisionRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadAppsV1NamespacedControllerRevisionRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -2785,9 +3450,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -2809,10 +3479,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															s.handleReadAppsV1NamespacedDaemonSetRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleReadAppsV1NamespacedDaemonSetRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -2825,11 +3500,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedDaemonSetStatus
-																s.handleReadAppsV1NamespacedDaemonSetStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAppsV1NamespacedDaemonSetStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -2843,9 +3523,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListAppsV1NamespacedDeploymentRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListAppsV1NamespacedDeploymentRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -2867,10 +3552,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															s.handleReadAppsV1NamespacedDeploymentRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleReadAppsV1NamespacedDeploymentRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -2894,11 +3584,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadAppsV1NamespacedDeploymentScale
-																	s.handleReadAppsV1NamespacedDeploymentScaleRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+																	// Leaf node.
+																	switch r.Method {
+																	case "GET":
+																		s.handleReadAppsV1NamespacedDeploymentScaleRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "GET")
+																	}
 
 																	return
 																}
@@ -2910,11 +3605,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadAppsV1NamespacedDeploymentStatus
-																	s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+																	// Leaf node.
+																	switch r.Method {
+																	case "GET":
+																		s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "GET")
+																	}
 
 																	return
 																}
@@ -2930,9 +3630,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListAppsV1NamespacedReplicaSetRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListAppsV1NamespacedReplicaSetRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -2954,10 +3659,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadAppsV1NamespacedReplicaSetRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadAppsV1NamespacedReplicaSetRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -2981,11 +3691,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedReplicaSetScale
-																s.handleReadAppsV1NamespacedReplicaSetScaleRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAppsV1NamespacedReplicaSetScaleRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -2997,11 +3712,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedReplicaSetStatus
-																s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3016,9 +3736,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListAppsV1NamespacedStatefulSetRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListAppsV1NamespacedStatefulSetRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3040,10 +3765,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadAppsV1NamespacedStatefulSetRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadAppsV1NamespacedStatefulSetRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3067,11 +3797,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedStatefulSetScale
-																s.handleReadAppsV1NamespacedStatefulSetScaleRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAppsV1NamespacedStatefulSetScaleRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3083,11 +3818,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedStatefulSetStatus
-																s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3104,8 +3844,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListAppsV1ReplicaSetForAllNamespaces
-											s.handleListAppsV1ReplicaSetForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListAppsV1ReplicaSetForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -3117,8 +3862,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListAppsV1StatefulSetForAllNamespaces
-											s.handleListAppsV1StatefulSetForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListAppsV1StatefulSetForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -3141,8 +3891,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchAppsV1ControllerRevisionListForAllNamespaces
-												s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -3165,8 +3920,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
-													s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest([0]string{}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3178,8 +3938,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: WatchAppsV1DeploymentListForAllNamespaces
-													s.handleWatchAppsV1DeploymentListForAllNamespacesRequest([0]string{}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchAppsV1DeploymentListForAllNamespacesRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3223,9 +3988,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchAppsV1NamespacedControllerRevisionListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchAppsV1NamespacedControllerRevisionListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3243,11 +4013,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAppsV1NamespacedControllerRevision
-															s.handleWatchAppsV1NamespacedControllerRevisionRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchAppsV1NamespacedControllerRevisionRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3271,9 +4046,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchAppsV1NamespacedDaemonSetListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchAppsV1NamespacedDaemonSetListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3291,11 +4071,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedDaemonSet
-																s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3308,9 +4093,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchAppsV1NamespacedDeploymentListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchAppsV1NamespacedDeploymentListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3328,11 +4118,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedDeployment
-																s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3346,9 +4141,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchAppsV1NamespacedReplicaSetListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchAppsV1NamespacedReplicaSetListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3366,11 +4166,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAppsV1NamespacedReplicaSet
-															s.handleWatchAppsV1NamespacedReplicaSetRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchAppsV1NamespacedReplicaSetRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3383,9 +4188,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchAppsV1NamespacedStatefulSetListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchAppsV1NamespacedStatefulSetListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3403,11 +4213,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAppsV1NamespacedStatefulSet
-															s.handleWatchAppsV1NamespacedStatefulSetRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchAppsV1NamespacedStatefulSetRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3422,8 +4237,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchAppsV1ReplicaSetListForAllNamespaces
-												s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -3435,8 +4255,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchAppsV1StatefulSetListForAllNamespaces
-												s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -3474,7 +4299,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetAuthenticationAPIGroupRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetAuthenticationAPIGroupRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -3487,8 +4317,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: GetAuthenticationV1APIResources
-											s.handleGetAuthenticationV1APIResourcesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleGetAuthenticationV1APIResourcesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -3501,7 +4336,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetAuthorizationAPIGroupRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetAuthorizationAPIGroupRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -3514,8 +4354,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: GetAuthorizationV1APIResources
-											s.handleGetAuthorizationV1APIResourcesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleGetAuthorizationV1APIResourcesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -3529,7 +4374,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetAutoscalingAPIGroupRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetAutoscalingAPIGroupRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -3553,7 +4403,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleGetAutoscalingV1APIResourcesRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleGetAutoscalingV1APIResourcesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -3566,8 +4421,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces
-												s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -3599,9 +4459,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3623,10 +4488,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3639,11 +4509,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
-															s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3669,8 +4544,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces
-													s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3702,9 +4582,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3722,11 +4607,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
-															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3753,7 +4643,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleGetAutoscalingV2beta1APIResourcesRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleGetAutoscalingV2beta1APIResourcesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -3766,8 +4661,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces
-													s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3799,9 +4699,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3823,10 +4728,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3839,11 +4749,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
-																s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3869,8 +4784,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces
-														s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -3902,9 +4822,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -3922,11 +4847,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
-																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -3942,7 +4872,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleGetAutoscalingV2beta2APIResourcesRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleGetAutoscalingV2beta2APIResourcesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -3955,8 +4890,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces
-													s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -3988,9 +4928,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -4012,10 +4957,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -4028,11 +4978,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
-																s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -4058,8 +5013,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces
-														s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -4091,9 +5051,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest([1]string{
-																args[0],
-															}, w, r)
+															switch r.Method {
+															case "GET":
+																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																	args[0],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -4111,11 +5076,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
-																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
 
 																return
 															}
@@ -4136,7 +5106,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetBatchAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetBatchAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -4160,7 +5135,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetBatchV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetBatchV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -4173,8 +5153,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListBatchV1CronJobForAllNamespaces
-										s.handleListBatchV1CronJobForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListBatchV1CronJobForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -4186,8 +5171,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListBatchV1JobForAllNamespaces
-										s.handleListBatchV1JobForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListBatchV1JobForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -4230,9 +5220,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListBatchV1NamespacedCronJobRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListBatchV1NamespacedCronJobRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -4254,10 +5249,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													s.handleReadBatchV1NamespacedCronJobRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleReadBatchV1NamespacedCronJobRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4270,11 +5270,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadBatchV1NamespacedCronJobStatus
-														s.handleReadBatchV1NamespacedCronJobStatusRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadBatchV1NamespacedCronJobStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -4288,9 +5293,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListBatchV1NamespacedJobRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListBatchV1NamespacedJobRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -4312,10 +5322,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													s.handleReadBatchV1NamespacedJobRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleReadBatchV1NamespacedJobRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4328,11 +5343,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadBatchV1NamespacedJobStatus
-														s.handleReadBatchV1NamespacedJobStatusRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadBatchV1NamespacedJobStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -4359,8 +5379,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchBatchV1CronJobListForAllNamespaces
-											s.handleWatchBatchV1CronJobListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchBatchV1CronJobListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4372,8 +5397,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchBatchV1JobListForAllNamespaces
-											s.handleWatchBatchV1JobListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchBatchV1JobListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4416,9 +5446,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchBatchV1NamespacedCronJobListRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchBatchV1NamespacedCronJobListRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4436,11 +5471,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchBatchV1NamespacedCronJob
-														s.handleWatchBatchV1NamespacedCronJobRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchBatchV1NamespacedCronJobRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -4453,9 +5493,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchBatchV1NamespacedJobListRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchBatchV1NamespacedJobListRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4473,11 +5518,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchBatchV1NamespacedJob
-														s.handleWatchBatchV1NamespacedJobRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchBatchV1NamespacedJobRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -4494,7 +5544,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetBatchV1beta1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetBatchV1beta1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -4507,8 +5562,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListBatchV1beta1CronJobForAllNamespaces
-										s.handleListBatchV1beta1CronJobForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListBatchV1beta1CronJobForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -4540,9 +5600,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListBatchV1beta1NamespacedCronJobRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListBatchV1beta1NamespacedCronJobRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4564,10 +5629,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												s.handleReadBatchV1beta1NamespacedCronJobRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleReadBatchV1beta1NamespacedCronJobRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -4580,11 +5650,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
-													s.handleReadBatchV1beta1NamespacedCronJobStatusRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadBatchV1beta1NamespacedCronJobStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4610,8 +5685,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchBatchV1beta1CronJobListForAllNamespaces
-											s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4643,9 +5723,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchBatchV1beta1NamespacedCronJobListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchBatchV1beta1NamespacedCronJobListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -4663,11 +5748,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchBatchV1beta1NamespacedCronJob
-													s.handleWatchBatchV1beta1NamespacedCronJobRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchBatchV1beta1NamespacedCronJobRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4696,7 +5786,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetCertificatesAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetCertificatesAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -4709,7 +5804,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetCertificatesV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetCertificatesV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -4722,7 +5822,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListCertificatesV1CertificateSigningRequestRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListCertificatesV1CertificateSigningRequestRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -4744,9 +5849,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleReadCertificatesV1CertificateSigningRequestRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleReadCertificatesV1CertificateSigningRequestRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4770,10 +5880,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
-													s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4785,10 +5900,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
-													s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -4803,7 +5923,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCertificatesV1CertificateSigningRequestListRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleWatchCertificatesV1CertificateSigningRequestListRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -4821,10 +5946,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: WatchCertificatesV1CertificateSigningRequest
-											s.handleWatchCertificatesV1CertificateSigningRequestRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCertificatesV1CertificateSigningRequestRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4839,7 +5969,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetCoordinationAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetCoordinationAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -4852,7 +5987,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetCoordinationV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetCoordinationV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -4865,8 +6005,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoordinationV1LeaseForAllNamespaces
-										s.handleListCoordinationV1LeaseForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListCoordinationV1LeaseForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -4898,9 +6043,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListCoordinationV1NamespacedLeaseRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListCoordinationV1NamespacedLeaseRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4918,11 +6068,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadCoordinationV1NamespacedLease
-												s.handleReadCoordinationV1NamespacedLeaseRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadCoordinationV1NamespacedLeaseRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -4947,8 +6102,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoordinationV1LeaseListForAllNamespaces
-											s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -4980,9 +6140,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchCoordinationV1NamespacedLeaseListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchCoordinationV1NamespacedLeaseListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5000,11 +6165,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchCoordinationV1NamespacedLease
-													s.handleWatchCoordinationV1NamespacedLeaseRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchCoordinationV1NamespacedLeaseRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -5022,7 +6192,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetDiscoveryAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetDiscoveryAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -5046,7 +6221,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetDiscoveryV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetDiscoveryV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -5059,8 +6239,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListDiscoveryV1EndpointSliceForAllNamespaces
-										s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -5092,9 +6277,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListDiscoveryV1NamespacedEndpointSliceRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListDiscoveryV1NamespacedEndpointSliceRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5112,11 +6302,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
-												s.handleReadDiscoveryV1NamespacedEndpointSliceRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadDiscoveryV1NamespacedEndpointSliceRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5141,8 +6336,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchDiscoveryV1EndpointSliceListForAllNamespaces
-											s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5174,9 +6374,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5194,11 +6399,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
-													s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -5214,7 +6424,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetDiscoveryV1beta1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetDiscoveryV1beta1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -5227,8 +6442,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListDiscoveryV1beta1EndpointSliceForAllNamespaces
-										s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -5260,9 +6480,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5280,11 +6505,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
-												s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5309,8 +6539,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces
-											s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5342,9 +6577,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5362,11 +6602,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
-													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -5384,7 +6629,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetEventsAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetEventsAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -5408,7 +6658,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetEventsV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetEventsV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -5421,8 +6676,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListEventsV1EventForAllNamespaces
-										s.handleListEventsV1EventForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListEventsV1EventForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -5454,9 +6714,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListEventsV1NamespacedEventRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListEventsV1NamespacedEventRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5474,11 +6739,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadEventsV1NamespacedEvent
-												s.handleReadEventsV1NamespacedEventRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadEventsV1NamespacedEventRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5503,8 +6773,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchEventsV1EventListForAllNamespaces
-											s.handleWatchEventsV1EventListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchEventsV1EventListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5536,9 +6811,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchEventsV1NamespacedEventListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchEventsV1NamespacedEventListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5556,11 +6836,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchEventsV1NamespacedEvent
-													s.handleWatchEventsV1NamespacedEventRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchEventsV1NamespacedEventRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -5576,7 +6861,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetEventsV1beta1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetEventsV1beta1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -5589,8 +6879,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListEventsV1beta1EventForAllNamespaces
-										s.handleListEventsV1beta1EventForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListEventsV1beta1EventForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -5622,9 +6917,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListEventsV1beta1NamespacedEventRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListEventsV1beta1NamespacedEventRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5642,11 +6942,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadEventsV1beta1NamespacedEvent
-												s.handleReadEventsV1beta1NamespacedEventRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadEventsV1beta1NamespacedEventRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5671,8 +6976,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchEventsV1beta1EventListForAllNamespaces
-											s.handleWatchEventsV1beta1EventListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchEventsV1beta1EventListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5704,9 +7014,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchEventsV1beta1NamespacedEventListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchEventsV1beta1NamespacedEventListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5724,11 +7039,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchEventsV1beta1NamespacedEvent
-													s.handleWatchEventsV1beta1NamespacedEventRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchEventsV1beta1NamespacedEventRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -5746,7 +7066,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetFlowcontrolApiserverAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetFlowcontrolApiserverAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -5770,7 +7095,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -5783,7 +7113,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -5805,9 +7140,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5820,10 +7160,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
-												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5837,7 +7182,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -5859,9 +7209,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5874,10 +7229,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
-												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5902,7 +7262,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5920,10 +7285,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta1FlowSchema
-												s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5936,7 +7306,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -5954,10 +7329,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
-												s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -5972,7 +7352,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -5985,7 +7370,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6007,9 +7397,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6022,10 +7417,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
-												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6039,7 +7439,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6061,9 +7466,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6076,10 +7486,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
-												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6104,7 +7519,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6122,10 +7542,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta2FlowSchema
-												s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6138,7 +7563,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6156,10 +7586,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
-												s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6176,7 +7611,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetInternalApiserverAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetInternalApiserverAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -6189,7 +7629,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetInternalApiserverV1alpha1APIResourcesRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetInternalApiserverV1alpha1APIResourcesRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -6202,7 +7647,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListInternalApiserverV1alpha1StorageVersionRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleListInternalApiserverV1alpha1StorageVersionRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -6224,9 +7674,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										s.handleReadInternalApiserverV1alpha1StorageVersionRequest([1]string{
-											args[0],
-										}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleReadInternalApiserverV1alpha1StorageVersionRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6239,10 +7694,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
-											s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6256,7 +7716,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -6274,10 +7739,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									elem = ""
 
 									if len(elem) == 0 {
-										// Leaf: WatchInternalApiserverV1alpha1StorageVersion
-										s.handleWatchInternalApiserverV1alpha1StorageVersionRequest([1]string{
-											args[0],
-										}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleWatchInternalApiserverV1alpha1StorageVersionRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6303,7 +7773,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetNetworkingAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetNetworkingAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -6316,7 +7791,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetNetworkingV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetNetworkingV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -6340,7 +7820,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListNetworkingV1IngressClassRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListNetworkingV1IngressClassRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6358,10 +7843,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNetworkingV1IngressClass
-												s.handleReadNetworkingV1IngressClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadNetworkingV1IngressClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6374,8 +7864,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListNetworkingV1IngressForAllNamespaces
-											s.handleListNetworkingV1IngressForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListNetworkingV1IngressForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6430,9 +7925,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListNetworkingV1NamespacedIngressRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListNetworkingV1NamespacedIngressRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -6454,10 +7954,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleReadNetworkingV1NamespacedIngressRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleReadNetworkingV1NamespacedIngressRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -6470,11 +7975,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadNetworkingV1NamespacedIngressStatus
-															s.handleReadNetworkingV1NamespacedIngressStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleReadNetworkingV1NamespacedIngressStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -6488,9 +7998,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListNetworkingV1NamespacedNetworkPolicyRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleListNetworkingV1NamespacedNetworkPolicyRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -6508,11 +8023,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
-														s.handleReadNetworkingV1NamespacedNetworkPolicyRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleReadNetworkingV1NamespacedNetworkPolicyRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -6527,8 +8047,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
-											s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6563,7 +8088,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchNetworkingV1IngressClassListRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchNetworkingV1IngressClassListRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6581,10 +8111,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchNetworkingV1IngressClass
-													s.handleWatchNetworkingV1IngressClassRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchNetworkingV1IngressClassRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -6597,8 +8132,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchNetworkingV1IngressListForAllNamespaces
-												s.handleWatchNetworkingV1IngressListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchNetworkingV1IngressListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6653,9 +8193,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchNetworkingV1NamespacedIngressListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchNetworkingV1NamespacedIngressListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -6673,11 +8218,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchNetworkingV1NamespacedIngress
-															s.handleWatchNetworkingV1NamespacedIngressRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchNetworkingV1NamespacedIngressRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -6690,9 +8240,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest([1]string{
-															args[0],
-														}, w, r)
+														switch r.Method {
+														case "GET":
+															s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -6710,11 +8265,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
-															s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
 
 															return
 														}
@@ -6729,8 +8289,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
-												s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6746,7 +8311,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetNodeAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetNodeAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -6770,7 +8340,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetNodeV1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetNodeV1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6783,7 +8358,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListNodeV1RuntimeClassRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListNodeV1RuntimeClassRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6801,10 +8381,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNodeV1RuntimeClass
-												s.handleReadNodeV1RuntimeClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadNodeV1RuntimeClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6817,7 +8402,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchNodeV1RuntimeClassListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchNodeV1RuntimeClassListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6835,10 +8425,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchNodeV1RuntimeClass
-												s.handleWatchNodeV1RuntimeClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchNodeV1RuntimeClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6852,7 +8447,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetNodeV1alpha1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetNodeV1alpha1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6865,7 +8465,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListNodeV1alpha1RuntimeClassRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListNodeV1alpha1RuntimeClassRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6883,10 +8488,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNodeV1alpha1RuntimeClass
-												s.handleReadNodeV1alpha1RuntimeClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadNodeV1alpha1RuntimeClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6899,7 +8509,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchNodeV1alpha1RuntimeClassListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchNodeV1alpha1RuntimeClassListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6917,10 +8532,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchNodeV1alpha1RuntimeClass
-												s.handleWatchNodeV1alpha1RuntimeClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchNodeV1alpha1RuntimeClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6934,7 +8554,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetNodeV1beta1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetNodeV1beta1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -6947,7 +8572,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListNodeV1beta1RuntimeClassRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListNodeV1beta1RuntimeClassRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6965,10 +8595,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNodeV1beta1RuntimeClass
-												s.handleReadNodeV1beta1RuntimeClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadNodeV1beta1RuntimeClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -6981,7 +8616,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchNodeV1beta1RuntimeClassListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchNodeV1beta1RuntimeClassListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -6999,10 +8639,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchNodeV1beta1RuntimeClass
-												s.handleWatchNodeV1beta1RuntimeClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchNodeV1beta1RuntimeClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7019,7 +8664,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetPolicyAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetPolicyAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -7043,7 +8693,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetPolicyV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetPolicyV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -7076,9 +8731,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7100,10 +8760,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7116,11 +8781,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
-													s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7135,8 +8805,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListPolicyV1PodDisruptionBudgetForAllNamespaces
-										s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -7179,9 +8854,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7199,11 +8879,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
-													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7217,8 +8902,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
-											s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7232,7 +8922,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetPolicyV1beta1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetPolicyV1beta1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -7265,9 +8960,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7289,10 +8989,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7305,11 +9010,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
-													s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7335,8 +9045,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces
-											s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7348,7 +9063,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListPolicyV1beta1PodSecurityPolicyRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListPolicyV1beta1PodSecurityPolicyRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7366,10 +9086,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadPolicyV1beta1PodSecurityPolicy
-												s.handleReadPolicyV1beta1PodSecurityPolicyRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadPolicyV1beta1PodSecurityPolicyRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7414,9 +9139,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7434,11 +9164,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
-													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7463,8 +9198,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
-												s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7476,7 +9216,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7494,10 +9239,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchPolicyV1beta1PodSecurityPolicy
-													s.handleWatchPolicyV1beta1PodSecurityPolicyRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchPolicyV1beta1PodSecurityPolicyRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7515,7 +9265,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetRbacAuthorizationAPIGroupRequest([0]string{}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handleGetRbacAuthorizationAPIGroupRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -7528,7 +9283,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetRbacAuthorizationV1APIResourcesRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetRbacAuthorizationV1APIResourcesRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -7552,7 +9312,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListRbacAuthorizationV1ClusterRoleBindingRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListRbacAuthorizationV1ClusterRoleBindingRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -7570,10 +9335,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadRbacAuthorizationV1ClusterRoleBinding
-											s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7586,7 +9356,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListRbacAuthorizationV1ClusterRoleRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListRbacAuthorizationV1ClusterRoleRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -7604,10 +9379,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadRbacAuthorizationV1ClusterRole
-											s.handleReadRbacAuthorizationV1ClusterRoleRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadRbacAuthorizationV1ClusterRoleRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7652,9 +9432,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7672,11 +9457,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
-												s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7689,9 +9479,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListRbacAuthorizationV1NamespacedRoleRequest([1]string{
-												args[0],
-											}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListRbacAuthorizationV1NamespacedRoleRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7709,11 +9504,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadRbacAuthorizationV1NamespacedRole
-												s.handleReadRbacAuthorizationV1NamespacedRoleRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadRbacAuthorizationV1NamespacedRoleRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7739,8 +9539,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListRbacAuthorizationV1RoleBindingForAllNamespaces
-										s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -7752,8 +9557,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
-										s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -7788,7 +9598,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7806,10 +9621,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
-												s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7822,7 +9642,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchRbacAuthorizationV1ClusterRoleListRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleWatchRbacAuthorizationV1ClusterRoleListRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7840,10 +9665,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchRbacAuthorizationV1ClusterRole
-												s.handleWatchRbacAuthorizationV1ClusterRoleRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchRbacAuthorizationV1ClusterRoleRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7888,9 +9718,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7908,11 +9743,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
-													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7925,9 +9765,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -7945,11 +9790,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchRbacAuthorizationV1NamespacedRole
-													s.handleWatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -7975,8 +9825,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchRbacAuthorizationV1RoleBindingListForAllNamespaces
-											s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -7988,8 +9843,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
-											s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8016,7 +9876,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetSchedulingAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetSchedulingAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -8029,7 +9894,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetSchedulingV1APIResourcesRequest([0]string{}, w, r)
+									switch r.Method {
+									case "GET":
+										s.handleGetSchedulingV1APIResourcesRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
 
 									return
 								}
@@ -8042,7 +9912,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListSchedulingV1PriorityClassRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleListSchedulingV1PriorityClassRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -8060,10 +9935,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadSchedulingV1PriorityClass
-											s.handleReadSchedulingV1PriorityClassRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleReadSchedulingV1PriorityClassRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8076,7 +9956,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchSchedulingV1PriorityClassListRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleWatchSchedulingV1PriorityClassListRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -8094,10 +9979,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: WatchSchedulingV1PriorityClass
-											s.handleWatchSchedulingV1PriorityClassRequest([1]string{
-												args[0],
-											}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleWatchSchedulingV1PriorityClassRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8112,7 +10002,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetStorageAPIGroupRequest([0]string{}, w, r)
+								switch r.Method {
+								case "GET":
+									s.handleGetStorageAPIGroupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -8136,7 +10031,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetStorageV1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetStorageV1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -8160,7 +10060,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListStorageV1CSIDriverRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListStorageV1CSIDriverRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8178,10 +10083,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1CSIDriver
-													s.handleReadStorageV1CSIDriverRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadStorageV1CSIDriverRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8194,7 +10104,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListStorageV1CSINodeRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListStorageV1CSINodeRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8212,10 +10127,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1CSINode
-													s.handleReadStorageV1CSINodeRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadStorageV1CSINodeRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8229,7 +10149,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListStorageV1StorageClassRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListStorageV1StorageClassRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8247,10 +10172,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadStorageV1StorageClass
-												s.handleReadStorageV1StorageClassRequest([1]string{
-													args[0],
-												}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadStorageV1StorageClassRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8263,7 +10193,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListStorageV1VolumeAttachmentRequest([0]string{}, w, r)
+											switch r.Method {
+											case "GET":
+												s.handleListStorageV1VolumeAttachmentRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8285,9 +10220,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												s.handleReadStorageV1VolumeAttachmentRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleReadStorageV1VolumeAttachmentRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8300,10 +10240,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1VolumeAttachmentStatus
-													s.handleReadStorageV1VolumeAttachmentStatusRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadStorageV1VolumeAttachmentStatusRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8339,7 +10284,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchStorageV1CSIDriverListRequest([0]string{}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchStorageV1CSIDriverListRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8357,10 +10307,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1CSIDriver
-														s.handleWatchStorageV1CSIDriverRequest([1]string{
-															args[0],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchStorageV1CSIDriverRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -8373,7 +10328,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchStorageV1CSINodeListRequest([0]string{}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchStorageV1CSINodeListRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8391,10 +10351,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1CSINode
-														s.handleWatchStorageV1CSINodeRequest([1]string{
-															args[0],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchStorageV1CSINodeRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -8408,7 +10373,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchStorageV1StorageClassListRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchStorageV1StorageClassListRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8426,10 +10396,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchStorageV1StorageClass
-													s.handleWatchStorageV1StorageClassRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchStorageV1StorageClassRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8442,7 +10417,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchStorageV1VolumeAttachmentListRequest([0]string{}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleWatchStorageV1VolumeAttachmentListRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8460,10 +10440,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchStorageV1VolumeAttachment
-													s.handleWatchStorageV1VolumeAttachmentRequest([1]string{
-														args[0],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleWatchStorageV1VolumeAttachmentRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8478,7 +10463,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetStorageV1alpha1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetStorageV1alpha1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -8491,8 +10481,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListStorageV1alpha1CSIStorageCapacityForAllNamespaces
-											s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8524,9 +10519,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8544,11 +10544,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
-													s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8573,8 +10578,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces
-												s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8606,9 +10616,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8626,11 +10641,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
-														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -8646,7 +10666,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetStorageV1beta1APIResourcesRequest([0]string{}, w, r)
+										switch r.Method {
+										case "GET":
+											s.handleGetStorageV1beta1APIResourcesRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -8659,8 +10684,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListStorageV1beta1CSIStorageCapacityForAllNamespaces
-											s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest([0]string{}, w, r)
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
 
 											return
 										}
@@ -8692,9 +10722,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest([1]string{
-													args[0],
-												}, w, r)
+												switch r.Method {
+												case "GET":
+													s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8712,11 +10747,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
-													s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8741,8 +10781,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
-												s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, w, r)
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
 
 												return
 											}
@@ -8774,9 +10819,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest([1]string{
-														args[0],
-													}, w, r)
+													switch r.Method {
+													case "GET":
+														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
 
 													return
 												}
@@ -8794,11 +10844,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
-														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
 
 														return
 													}
@@ -8824,10 +10879,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = ""
 
 				if len(elem) == 0 {
-					// Leaf: LogFileHandler
-					s.handleLogFileHandlerRequest([1]string{
-						args[0],
-					}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleLogFileHandlerRequest([1]string{
+							args[0],
+						}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -8839,8 +10899,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: GetCodeVersion
-					s.handleGetCodeVersionRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleGetCodeVersionRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -8879,8 +10944,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -8904,11 +10969,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: GetServiceAccountIssuerOpenIDConfiguration
-					r.name = "GetServiceAccountIssuerOpenIDConfiguration"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: GetServiceAccountIssuerOpenIDConfiguration
+						r.name = "GetServiceAccountIssuerOpenIDConfiguration"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'a': // Prefix: "api"
 				if l := len("api"); len(elem) >= l && elem[0:l] == "api" {
@@ -8929,10 +10999,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "GetCoreAPIVersions"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							r.name = "GetCoreAPIVersions"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 					switch elem[0] {
 					case 'v': // Prefix: "v1/"
@@ -8943,10 +11018,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetCoreV1APIResources"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetCoreV1APIResources"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "co"
@@ -8968,10 +11048,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListCoreV1ComponentStatus"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "ListCoreV1ComponentStatus"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -8987,11 +11072,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
-										// Leaf: ReadCoreV1ComponentStatus
-										r.name = "ReadCoreV1ComponentStatus"
-										r.args = args
-										r.count = 1
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ReadCoreV1ComponentStatus
+											r.name = "ReadCoreV1ComponentStatus"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							case 'n': // Prefix: "nfigmaps"
@@ -9002,11 +11092,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1ConfigMapForAllNamespaces
-									r.name = "ListCoreV1ConfigMapForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: ListCoreV1ConfigMapForAllNamespaces
+										r.name = "ListCoreV1ConfigMapForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'e': // Prefix: "e"
@@ -9028,11 +11123,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1EndpointsForAllNamespaces
-									r.name = "ListCoreV1EndpointsForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: ListCoreV1EndpointsForAllNamespaces
+										r.name = "ListCoreV1EndpointsForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'v': // Prefix: "vents"
 								if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
@@ -9042,11 +11142,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1EventForAllNamespaces
-									r.name = "ListCoreV1EventForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: ListCoreV1EventForAllNamespaces
+										r.name = "ListCoreV1EventForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'l': // Prefix: "limitranges"
@@ -9057,11 +11162,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: ListCoreV1LimitRangeForAllNamespaces
-								r.name = "ListCoreV1LimitRangeForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: ListCoreV1LimitRangeForAllNamespaces
+									r.name = "ListCoreV1LimitRangeForAllNamespaces"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'n': // Prefix: "n"
 							if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
@@ -9082,10 +11192,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListCoreV1Namespace"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "ListCoreV1Namespace"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -9105,10 +11220,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										r.name = "ReadCoreV1Namespace"
-										r.args = args
-										r.count = 1
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ReadCoreV1Namespace"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -9130,10 +11250,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListCoreV1NamespacedConfigMap"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListCoreV1NamespacedConfigMap"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -9149,11 +11274,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadCoreV1NamespacedConfigMap
-													r.name = "ReadCoreV1NamespacedConfigMap"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadCoreV1NamespacedConfigMap
+														r.name = "ReadCoreV1NamespacedConfigMap"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 'e': // Prefix: "e"
@@ -9175,10 +11305,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedEndpoints"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListCoreV1NamespacedEndpoints"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -9194,11 +11329,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedEndpoints
-														r.name = "ReadCoreV1NamespacedEndpoints"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadCoreV1NamespacedEndpoints
+															r.name = "ReadCoreV1NamespacedEndpoints"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											case 'v': // Prefix: "vents"
@@ -9209,10 +11349,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedEvent"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListCoreV1NamespacedEvent"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -9228,11 +11373,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedEvent
-														r.name = "ReadCoreV1NamespacedEvent"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadCoreV1NamespacedEvent
+															r.name = "ReadCoreV1NamespacedEvent"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -9244,10 +11394,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListCoreV1NamespacedLimitRange"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListCoreV1NamespacedLimitRange"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -9263,11 +11418,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadCoreV1NamespacedLimitRange
-													r.name = "ReadCoreV1NamespacedLimitRange"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadCoreV1NamespacedLimitRange
+														r.name = "ReadCoreV1NamespacedLimitRange"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 'p': // Prefix: "p"
@@ -9289,10 +11449,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedPersistentVolumeClaim"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListCoreV1NamespacedPersistentVolumeClaim"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -9312,10 +11477,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadCoreV1NamespacedPersistentVolumeClaim"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadCoreV1NamespacedPersistentVolumeClaim"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/status"
@@ -9326,11 +11496,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
-															r.name = "ReadCoreV1NamespacedPersistentVolumeClaimStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
+																r.name = "ReadCoreV1NamespacedPersistentVolumeClaimStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -9353,10 +11528,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedPod"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListCoreV1NamespacedPod"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -9376,10 +11556,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															r.name = "ReadCoreV1NamespacedPod"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ReadCoreV1NamespacedPod"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -9401,11 +11586,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
-																	r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
-																	r.args = args
-																	r.count = 2
-																	return r, true
+																	switch method {
+																	case "GET":
+																		// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
+																		r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	default:
+																		return
+																	}
 																}
 															case 'l': // Prefix: "log"
 																if l := len("log"); len(elem) >= l && elem[0:l] == "log" {
@@ -9415,11 +11605,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPodLog
-																	r.name = "ReadCoreV1NamespacedPodLog"
-																	r.args = args
-																	r.count = 2
-																	return r, true
+																	switch method {
+																	case "GET":
+																		// Leaf: ReadCoreV1NamespacedPodLog
+																		r.name = "ReadCoreV1NamespacedPodLog"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	default:
+																		return
+																	}
 																}
 															case 's': // Prefix: "status"
 																if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
@@ -9429,11 +11624,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPodStatus
-																	r.name = "ReadCoreV1NamespacedPodStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
+																	switch method {
+																	case "GET":
+																		// Leaf: ReadCoreV1NamespacedPodStatus
+																		r.name = "ReadCoreV1NamespacedPodStatus"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	default:
+																		return
+																	}
 																}
 															}
 														}
@@ -9446,10 +11646,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedPodTemplate"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListCoreV1NamespacedPodTemplate"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -9465,11 +11670,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedPodTemplate
-															r.name = "ReadCoreV1NamespacedPodTemplate"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: ReadCoreV1NamespacedPodTemplate
+																r.name = "ReadCoreV1NamespacedPodTemplate"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -9493,10 +11703,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedReplicationController"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListCoreV1NamespacedReplicationController"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -9516,10 +11731,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadCoreV1NamespacedReplicationController"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadCoreV1NamespacedReplicationController"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/s"
@@ -9541,11 +11761,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedReplicationControllerScale
-																r.name = "ReadCoreV1NamespacedReplicationControllerScale"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadCoreV1NamespacedReplicationControllerScale
+																	r.name = "ReadCoreV1NamespacedReplicationControllerScale"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														case 't': // Prefix: "tatus"
 															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
@@ -9555,11 +11780,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
-																r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
+																	r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -9572,10 +11802,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedResourceQuota"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListCoreV1NamespacedResourceQuota"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -9595,10 +11830,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadCoreV1NamespacedResourceQuota"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadCoreV1NamespacedResourceQuota"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/status"
@@ -9609,11 +11849,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
-															r.name = "ReadCoreV1NamespacedResourceQuotaStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
+																r.name = "ReadCoreV1NamespacedResourceQuotaStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -9648,10 +11893,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedSecret"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListCoreV1NamespacedSecret"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -9667,11 +11917,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedSecret
-															r.name = "ReadCoreV1NamespacedSecret"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: ReadCoreV1NamespacedSecret
+																r.name = "ReadCoreV1NamespacedSecret"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 'r': // Prefix: "rvice"
@@ -9693,10 +11948,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ListCoreV1NamespacedServiceAccount"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ListCoreV1NamespacedServiceAccount"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -9712,11 +11972,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedServiceAccount
-																r.name = "ReadCoreV1NamespacedServiceAccount"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadCoreV1NamespacedServiceAccount
+																	r.name = "ReadCoreV1NamespacedServiceAccount"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													case 's': // Prefix: "s"
@@ -9727,10 +11992,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ListCoreV1NamespacedService"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ListCoreV1NamespacedService"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -9750,10 +12020,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = elem[idx:]
 
 															if len(elem) == 0 {
-																r.name = "ReadCoreV1NamespacedService"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	r.name = "ReadCoreV1NamespacedService"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/status"
@@ -9764,11 +12039,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedServiceStatus
-																	r.name = "ReadCoreV1NamespacedServiceStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
+																	switch method {
+																	case "GET":
+																		// Leaf: ReadCoreV1NamespacedServiceStatus
+																		r.name = "ReadCoreV1NamespacedServiceStatus"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	default:
+																		return
+																	}
 																}
 															}
 														}
@@ -9782,11 +12062,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadCoreV1NamespaceStatus
-													r.name = "ReadCoreV1NamespaceStatus"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadCoreV1NamespaceStatus
+														r.name = "ReadCoreV1NamespaceStatus"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -9800,10 +12085,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListCoreV1Node"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "ListCoreV1Node"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -9823,10 +12113,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										r.name = "ReadCoreV1Node"
-										r.args = args
-										r.count = 1
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ReadCoreV1Node"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/status"
@@ -9837,11 +12132,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ReadCoreV1NodeStatus
-											r.name = "ReadCoreV1NodeStatus"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadCoreV1NodeStatus
+												r.name = "ReadCoreV1NodeStatus"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -9876,11 +12176,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
-										r.name = "ListCoreV1PersistentVolumeClaimForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
+											r.name = "ListCoreV1PersistentVolumeClaimForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 's': // Prefix: "s"
 									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -9890,10 +12195,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListCoreV1PersistentVolume"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListCoreV1PersistentVolume"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -9913,10 +12223,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "ReadCoreV1PersistentVolume"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ReadCoreV1PersistentVolume"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/status"
@@ -9927,11 +12242,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadCoreV1PersistentVolumeStatus
-												r.name = "ReadCoreV1PersistentVolumeStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadCoreV1PersistentVolumeStatus
+													r.name = "ReadCoreV1PersistentVolumeStatus"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -9955,11 +12275,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1PodForAllNamespaces
-										r.name = "ListCoreV1PodForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListCoreV1PodForAllNamespaces
+											r.name = "ListCoreV1PodForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 't': // Prefix: "templates"
 									if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
@@ -9969,11 +12294,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1PodTemplateForAllNamespaces
-										r.name = "ListCoreV1PodTemplateForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListCoreV1PodTemplateForAllNamespaces
+											r.name = "ListCoreV1PodTemplateForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							}
@@ -9996,11 +12326,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1ReplicationControllerForAllNamespaces
-									r.name = "ListCoreV1ReplicationControllerForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: ListCoreV1ReplicationControllerForAllNamespaces
+										r.name = "ListCoreV1ReplicationControllerForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 's': // Prefix: "sourcequotas"
 								if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
@@ -10010,11 +12345,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
-									r.name = "ListCoreV1ResourceQuotaForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
+										r.name = "ListCoreV1ResourceQuotaForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 's': // Prefix: "se"
@@ -10036,11 +12376,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: ListCoreV1SecretForAllNamespaces
-									r.name = "ListCoreV1SecretForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: ListCoreV1SecretForAllNamespaces
+										r.name = "ListCoreV1SecretForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'r': // Prefix: "rvice"
 								if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
@@ -10061,11 +12406,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1ServiceAccountForAllNamespaces
-										r.name = "ListCoreV1ServiceAccountForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListCoreV1ServiceAccountForAllNamespaces
+											r.name = "ListCoreV1ServiceAccountForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 's': // Prefix: "s"
 									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -10075,11 +12425,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoreV1ServiceForAllNamespaces
-										r.name = "ListCoreV1ServiceForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListCoreV1ServiceForAllNamespaces
+											r.name = "ListCoreV1ServiceForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							}
@@ -10102,11 +12457,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: WatchCoreV1ConfigMapListForAllNamespaces
-									r.name = "WatchCoreV1ConfigMapListForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: WatchCoreV1ConfigMapListForAllNamespaces
+										r.name = "WatchCoreV1ConfigMapListForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'e': // Prefix: "e"
 								if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
@@ -10127,11 +12487,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1EndpointsListForAllNamespaces
-										r.name = "WatchCoreV1EndpointsListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: WatchCoreV1EndpointsListForAllNamespaces
+											r.name = "WatchCoreV1EndpointsListForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'v': // Prefix: "vents"
 									if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
@@ -10141,11 +12506,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1EventListForAllNamespaces
-										r.name = "WatchCoreV1EventListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: WatchCoreV1EventListForAllNamespaces
+											r.name = "WatchCoreV1EventListForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							case 'l': // Prefix: "limitranges"
@@ -10156,11 +12526,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: WatchCoreV1LimitRangeListForAllNamespaces
-									r.name = "WatchCoreV1LimitRangeListForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										// Leaf: WatchCoreV1LimitRangeListForAllNamespaces
+										r.name = "WatchCoreV1LimitRangeListForAllNamespaces"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'n': // Prefix: "n"
 								if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
@@ -10181,10 +12556,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCoreV1NamespaceList"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "WatchCoreV1NamespaceList"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -10204,10 +12584,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "WatchCoreV1Namespace"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchCoreV1Namespace"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -10229,10 +12614,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedConfigMapList"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchCoreV1NamespacedConfigMapList"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -10248,11 +12638,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchCoreV1NamespacedConfigMap
-														r.name = "WatchCoreV1NamespacedConfigMap"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchCoreV1NamespacedConfigMap
+															r.name = "WatchCoreV1NamespacedConfigMap"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											case 'e': // Prefix: "e"
@@ -10274,10 +12669,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedEndpointsList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchCoreV1NamespacedEndpointsList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -10293,11 +12693,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedEndpoints
-															r.name = "WatchCoreV1NamespacedEndpoints"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchCoreV1NamespacedEndpoints
+																r.name = "WatchCoreV1NamespacedEndpoints"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 'v': // Prefix: "vents"
@@ -10308,10 +12713,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedEventList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchCoreV1NamespacedEventList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -10327,11 +12737,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedEvent
-															r.name = "WatchCoreV1NamespacedEvent"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchCoreV1NamespacedEvent
+																r.name = "WatchCoreV1NamespacedEvent"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -10343,10 +12758,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedLimitRangeList"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchCoreV1NamespacedLimitRangeList"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -10362,11 +12782,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchCoreV1NamespacedLimitRange
-														r.name = "WatchCoreV1NamespacedLimitRange"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchCoreV1NamespacedLimitRange
+															r.name = "WatchCoreV1NamespacedLimitRange"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											case 'p': // Prefix: "p"
@@ -10388,10 +12813,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedPersistentVolumeClaimList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchCoreV1NamespacedPersistentVolumeClaimList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -10407,11 +12837,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
-															r.name = "WatchCoreV1NamespacedPersistentVolumeClaim"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
+																r.name = "WatchCoreV1NamespacedPersistentVolumeClaim"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 'o': // Prefix: "od"
@@ -10433,10 +12868,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedPodList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchCoreV1NamespacedPodList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -10452,11 +12892,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedPod
-																r.name = "WatchCoreV1NamespacedPod"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchCoreV1NamespacedPod
+																	r.name = "WatchCoreV1NamespacedPod"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													case 't': // Prefix: "templates"
@@ -10467,10 +12912,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedPodTemplateList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchCoreV1NamespacedPodTemplateList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -10486,11 +12936,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedPodTemplate
-																r.name = "WatchCoreV1NamespacedPodTemplate"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchCoreV1NamespacedPodTemplate
+																	r.name = "WatchCoreV1NamespacedPodTemplate"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -10514,10 +12969,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedReplicationControllerList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchCoreV1NamespacedReplicationControllerList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -10533,11 +12993,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedReplicationController
-															r.name = "WatchCoreV1NamespacedReplicationController"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchCoreV1NamespacedReplicationController
+																r.name = "WatchCoreV1NamespacedReplicationController"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 's': // Prefix: "sourcequotas"
@@ -10548,10 +13013,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedResourceQuotaList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchCoreV1NamespacedResourceQuotaList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -10567,11 +13037,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedResourceQuota
-															r.name = "WatchCoreV1NamespacedResourceQuota"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchCoreV1NamespacedResourceQuota
+																r.name = "WatchCoreV1NamespacedResourceQuota"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -10594,10 +13069,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedSecretList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchCoreV1NamespacedSecretList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -10613,11 +13093,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedSecret
-															r.name = "WatchCoreV1NamespacedSecret"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchCoreV1NamespacedSecret
+																r.name = "WatchCoreV1NamespacedSecret"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 'r': // Prefix: "rvice"
@@ -10639,10 +13124,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedServiceAccountList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchCoreV1NamespacedServiceAccountList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -10658,11 +13148,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedServiceAccount
-																r.name = "WatchCoreV1NamespacedServiceAccount"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchCoreV1NamespacedServiceAccount
+																	r.name = "WatchCoreV1NamespacedServiceAccount"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													case 's': // Prefix: "s"
@@ -10673,10 +13168,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedServiceList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchCoreV1NamespacedServiceList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -10692,11 +13192,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedService
-																r.name = "WatchCoreV1NamespacedService"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchCoreV1NamespacedService
+																	r.name = "WatchCoreV1NamespacedService"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -10712,10 +13217,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCoreV1NodeList"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "WatchCoreV1NodeList"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -10731,11 +13241,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1Node
-											r.name = "WatchCoreV1Node"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoreV1Node
+												r.name = "WatchCoreV1Node"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -10769,11 +13284,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
-											r.name = "WatchCoreV1PersistentVolumeClaimListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
+												r.name = "WatchCoreV1PersistentVolumeClaimListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 's': // Prefix: "s"
 										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -10783,10 +13303,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchCoreV1PersistentVolumeList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchCoreV1PersistentVolumeList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -10802,11 +13327,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchCoreV1PersistentVolume
-												r.name = "WatchCoreV1PersistentVolume"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchCoreV1PersistentVolume
+													r.name = "WatchCoreV1PersistentVolume"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -10829,11 +13359,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1PodListForAllNamespaces
-											r.name = "WatchCoreV1PodListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoreV1PodListForAllNamespaces
+												r.name = "WatchCoreV1PodListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 't': // Prefix: "templates"
 										if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
@@ -10843,11 +13378,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
-											r.name = "WatchCoreV1PodTemplateListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
+												r.name = "WatchCoreV1PodTemplateListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -10870,11 +13410,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1ReplicationControllerListForAllNamespaces
-										r.name = "WatchCoreV1ReplicationControllerListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: WatchCoreV1ReplicationControllerListForAllNamespaces
+											r.name = "WatchCoreV1ReplicationControllerListForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 's': // Prefix: "sourcequotas"
 									if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
@@ -10884,11 +13429,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
-										r.name = "WatchCoreV1ResourceQuotaListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
+											r.name = "WatchCoreV1ResourceQuotaListForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							case 's': // Prefix: "se"
@@ -10910,11 +13460,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: WatchCoreV1SecretListForAllNamespaces
-										r.name = "WatchCoreV1SecretListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: WatchCoreV1SecretListForAllNamespaces
+											r.name = "WatchCoreV1SecretListForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'r': // Prefix: "rvice"
 									if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
@@ -10935,11 +13490,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
-											r.name = "WatchCoreV1ServiceAccountListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
+												r.name = "WatchCoreV1ServiceAccountListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 's': // Prefix: "s"
 										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -10949,11 +13509,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoreV1ServiceListForAllNamespaces
-											r.name = "WatchCoreV1ServiceListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoreV1ServiceListForAllNamespaces
+												r.name = "WatchCoreV1ServiceListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -10968,10 +13533,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "GetAPIVersions"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							r.name = "GetAPIVersions"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "a"
@@ -10993,10 +13563,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetAdmissionregistrationAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetAdmissionregistrationAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1/"
@@ -11007,10 +13582,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetAdmissionregistrationV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetAdmissionregistrationV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'm': // Prefix: "mutatingwebhookconfigurations"
@@ -11021,10 +13601,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListAdmissionregistrationV1MutatingWebhookConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListAdmissionregistrationV1MutatingWebhookConfiguration"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -11040,11 +13625,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadAdmissionregistrationV1MutatingWebhookConfiguration
-											r.name = "ReadAdmissionregistrationV1MutatingWebhookConfiguration"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadAdmissionregistrationV1MutatingWebhookConfiguration
+												r.name = "ReadAdmissionregistrationV1MutatingWebhookConfiguration"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 'v': // Prefix: "validatingwebhookconfigurations"
@@ -11055,10 +13645,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListAdmissionregistrationV1ValidatingWebhookConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListAdmissionregistrationV1ValidatingWebhookConfiguration"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -11074,11 +13669,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadAdmissionregistrationV1ValidatingWebhookConfiguration
-											r.name = "ReadAdmissionregistrationV1ValidatingWebhookConfiguration"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadAdmissionregistrationV1ValidatingWebhookConfiguration
+												r.name = "ReadAdmissionregistrationV1ValidatingWebhookConfiguration"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 'w': // Prefix: "watch/"
@@ -11100,10 +13700,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchAdmissionregistrationV1MutatingWebhookConfigurationList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchAdmissionregistrationV1MutatingWebhookConfigurationList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -11119,11 +13724,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchAdmissionregistrationV1MutatingWebhookConfiguration
-												r.name = "WatchAdmissionregistrationV1MutatingWebhookConfiguration"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchAdmissionregistrationV1MutatingWebhookConfiguration
+													r.name = "WatchAdmissionregistrationV1MutatingWebhookConfiguration"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'v': // Prefix: "validatingwebhookconfigurations"
@@ -11134,10 +13744,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -11153,11 +13768,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
-												r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfiguration"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
+													r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfiguration"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -11193,10 +13813,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetApiextensionsAPIGroup"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetApiextensionsAPIGroup"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'v': // Prefix: "v1/"
@@ -11207,10 +13832,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "GetApiextensionsV1APIResources"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "GetApiextensionsV1APIResources"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "customresourcedefinitions"
@@ -11221,10 +13851,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListApiextensionsV1CustomResourceDefinition"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListApiextensionsV1CustomResourceDefinition"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -11244,10 +13879,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													r.name = "ReadApiextensionsV1CustomResourceDefinition"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ReadApiextensionsV1CustomResourceDefinition"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/status"
@@ -11258,11 +13898,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
-														r.name = "ReadApiextensionsV1CustomResourceDefinitionStatus"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
+															r.name = "ReadApiextensionsV1CustomResourceDefinitionStatus"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -11274,10 +13919,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchApiextensionsV1CustomResourceDefinitionList"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchApiextensionsV1CustomResourceDefinitionList"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -11293,11 +13943,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchApiextensionsV1CustomResourceDefinition
-													r.name = "WatchApiextensionsV1CustomResourceDefinition"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchApiextensionsV1CustomResourceDefinition
+														r.name = "WatchApiextensionsV1CustomResourceDefinition"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -11310,10 +13965,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetApiregistrationAPIGroup"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetApiregistrationAPIGroup"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'v': // Prefix: "v1/"
@@ -11324,10 +13984,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "GetApiregistrationV1APIResources"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "GetApiregistrationV1APIResources"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "apiservices"
@@ -11338,10 +14003,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListApiregistrationV1APIService"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListApiregistrationV1APIService"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -11361,10 +14031,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													r.name = "ReadApiregistrationV1APIService"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ReadApiregistrationV1APIService"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/status"
@@ -11375,11 +14050,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadApiregistrationV1APIServiceStatus
-														r.name = "ReadApiregistrationV1APIServiceStatus"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadApiregistrationV1APIServiceStatus
+															r.name = "ReadApiregistrationV1APIServiceStatus"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -11391,10 +14071,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchApiregistrationV1APIServiceList"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchApiregistrationV1APIServiceList"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -11410,11 +14095,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchApiregistrationV1APIService
-													r.name = "WatchApiregistrationV1APIService"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchApiregistrationV1APIService
+														r.name = "WatchApiregistrationV1APIService"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -11428,10 +14118,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetAppsAPIGroup"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetAppsAPIGroup"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'v': // Prefix: "v1/"
@@ -11442,10 +14137,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetAppsV1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetAppsV1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "controllerrevisions"
@@ -11456,11 +14156,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListAppsV1ControllerRevisionForAllNamespaces
-											r.name = "ListAppsV1ControllerRevisionForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListAppsV1ControllerRevisionForAllNamespaces
+												r.name = "ListAppsV1ControllerRevisionForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'd': // Prefix: "d"
 										if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
@@ -11481,11 +14186,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ListAppsV1DaemonSetForAllNamespaces
-												r.name = "ListAppsV1DaemonSetForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ListAppsV1DaemonSetForAllNamespaces
+													r.name = "ListAppsV1DaemonSetForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 'e': // Prefix: "eployments"
 											if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
@@ -11495,11 +14205,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ListAppsV1DeploymentForAllNamespaces
-												r.name = "ListAppsV1DeploymentForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ListAppsV1DeploymentForAllNamespaces
+													r.name = "ListAppsV1DeploymentForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'n': // Prefix: "namespaces/"
@@ -11541,10 +14256,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListAppsV1NamespacedControllerRevision"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListAppsV1NamespacedControllerRevision"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -11560,11 +14280,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadAppsV1NamespacedControllerRevision
-														r.name = "ReadAppsV1NamespacedControllerRevision"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadAppsV1NamespacedControllerRevision
+															r.name = "ReadAppsV1NamespacedControllerRevision"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											case 'd': // Prefix: "d"
@@ -11586,10 +14311,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListAppsV1NamespacedDaemonSet"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListAppsV1NamespacedDaemonSet"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -11609,10 +14339,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															r.name = "ReadAppsV1NamespacedDaemonSet"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ReadAppsV1NamespacedDaemonSet"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/status"
@@ -11623,11 +14358,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedDaemonSetStatus
-																r.name = "ReadAppsV1NamespacedDaemonSetStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAppsV1NamespacedDaemonSetStatus
+																	r.name = "ReadAppsV1NamespacedDaemonSetStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -11639,10 +14379,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListAppsV1NamespacedDeployment"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListAppsV1NamespacedDeployment"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -11662,10 +14407,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															r.name = "ReadAppsV1NamespacedDeployment"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ReadAppsV1NamespacedDeployment"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/s"
@@ -11687,11 +14437,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadAppsV1NamespacedDeploymentScale
-																	r.name = "ReadAppsV1NamespacedDeploymentScale"
-																	r.args = args
-																	r.count = 2
-																	return r, true
+																	switch method {
+																	case "GET":
+																		// Leaf: ReadAppsV1NamespacedDeploymentScale
+																		r.name = "ReadAppsV1NamespacedDeploymentScale"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	default:
+																		return
+																	}
 																}
 															case 't': // Prefix: "tatus"
 																if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
@@ -11701,11 +14456,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadAppsV1NamespacedDeploymentStatus
-																	r.name = "ReadAppsV1NamespacedDeploymentStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
+																	switch method {
+																	case "GET":
+																		// Leaf: ReadAppsV1NamespacedDeploymentStatus
+																		r.name = "ReadAppsV1NamespacedDeploymentStatus"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	default:
+																		return
+																	}
 																}
 															}
 														}
@@ -11719,10 +14479,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListAppsV1NamespacedReplicaSet"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListAppsV1NamespacedReplicaSet"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -11742,10 +14507,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadAppsV1NamespacedReplicaSet"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadAppsV1NamespacedReplicaSet"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/s"
@@ -11767,11 +14537,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedReplicaSetScale
-																r.name = "ReadAppsV1NamespacedReplicaSetScale"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAppsV1NamespacedReplicaSetScale
+																	r.name = "ReadAppsV1NamespacedReplicaSetScale"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														case 't': // Prefix: "tatus"
 															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
@@ -11781,11 +14556,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedReplicaSetStatus
-																r.name = "ReadAppsV1NamespacedReplicaSetStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAppsV1NamespacedReplicaSetStatus
+																	r.name = "ReadAppsV1NamespacedReplicaSetStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -11798,10 +14578,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListAppsV1NamespacedStatefulSet"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListAppsV1NamespacedStatefulSet"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -11821,10 +14606,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadAppsV1NamespacedStatefulSet"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadAppsV1NamespacedStatefulSet"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/s"
@@ -11846,11 +14636,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedStatefulSetScale
-																r.name = "ReadAppsV1NamespacedStatefulSetScale"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAppsV1NamespacedStatefulSetScale
+																	r.name = "ReadAppsV1NamespacedStatefulSetScale"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														case 't': // Prefix: "tatus"
 															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
@@ -11860,11 +14655,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAppsV1NamespacedStatefulSetStatus
-																r.name = "ReadAppsV1NamespacedStatefulSetStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAppsV1NamespacedStatefulSetStatus
+																	r.name = "ReadAppsV1NamespacedStatefulSetStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -11879,11 +14679,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListAppsV1ReplicaSetForAllNamespaces
-											r.name = "ListAppsV1ReplicaSetForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListAppsV1ReplicaSetForAllNamespaces
+												r.name = "ListAppsV1ReplicaSetForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 's': // Prefix: "statefulsets"
 										if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
@@ -11893,11 +14698,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListAppsV1StatefulSetForAllNamespaces
-											r.name = "ListAppsV1StatefulSetForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListAppsV1StatefulSetForAllNamespaces
+												r.name = "ListAppsV1StatefulSetForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'w': // Prefix: "watch/"
 										if l := len("watch/"); len(elem) >= l && elem[0:l] == "watch/" {
@@ -11918,11 +14728,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchAppsV1ControllerRevisionListForAllNamespaces
-												r.name = "WatchAppsV1ControllerRevisionListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchAppsV1ControllerRevisionListForAllNamespaces
+													r.name = "WatchAppsV1ControllerRevisionListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 'd': // Prefix: "d"
 											if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
@@ -11943,11 +14758,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
-													r.name = "WatchAppsV1DaemonSetListForAllNamespaces"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
+														r.name = "WatchAppsV1DaemonSetListForAllNamespaces"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 											case 'e': // Prefix: "eployments"
 												if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
@@ -11957,11 +14777,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: WatchAppsV1DeploymentListForAllNamespaces
-													r.name = "WatchAppsV1DeploymentListForAllNamespaces"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchAppsV1DeploymentListForAllNamespaces
+														r.name = "WatchAppsV1DeploymentListForAllNamespaces"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 'n': // Prefix: "namespaces/"
@@ -12003,10 +14828,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchAppsV1NamespacedControllerRevisionList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchAppsV1NamespacedControllerRevisionList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -12022,11 +14852,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAppsV1NamespacedControllerRevision
-															r.name = "WatchAppsV1NamespacedControllerRevision"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchAppsV1NamespacedControllerRevision
+																r.name = "WatchAppsV1NamespacedControllerRevision"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 'd': // Prefix: "d"
@@ -12048,10 +14883,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchAppsV1NamespacedDaemonSetList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchAppsV1NamespacedDaemonSetList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -12067,11 +14907,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedDaemonSet
-																r.name = "WatchAppsV1NamespacedDaemonSet"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchAppsV1NamespacedDaemonSet
+																	r.name = "WatchAppsV1NamespacedDaemonSet"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													case 'e': // Prefix: "eployments"
@@ -12082,10 +14927,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchAppsV1NamespacedDeploymentList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchAppsV1NamespacedDeploymentList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -12101,11 +14951,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedDeployment
-																r.name = "WatchAppsV1NamespacedDeployment"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchAppsV1NamespacedDeployment
+																	r.name = "WatchAppsV1NamespacedDeployment"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -12117,10 +14972,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchAppsV1NamespacedReplicaSetList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchAppsV1NamespacedReplicaSetList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -12136,11 +14996,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAppsV1NamespacedReplicaSet
-															r.name = "WatchAppsV1NamespacedReplicaSet"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchAppsV1NamespacedReplicaSet
+																r.name = "WatchAppsV1NamespacedReplicaSet"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 's': // Prefix: "statefulsets"
@@ -12151,10 +15016,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchAppsV1NamespacedStatefulSetList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchAppsV1NamespacedStatefulSetList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -12170,11 +15040,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAppsV1NamespacedStatefulSet
-															r.name = "WatchAppsV1NamespacedStatefulSet"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchAppsV1NamespacedStatefulSet
+																r.name = "WatchAppsV1NamespacedStatefulSet"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -12187,11 +15062,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchAppsV1ReplicaSetListForAllNamespaces
-												r.name = "WatchAppsV1ReplicaSetListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchAppsV1ReplicaSetListForAllNamespaces
+													r.name = "WatchAppsV1ReplicaSetListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 's': // Prefix: "statefulsets"
 											if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
@@ -12201,11 +15081,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchAppsV1StatefulSetListForAllNamespaces
-												r.name = "WatchAppsV1StatefulSetListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchAppsV1StatefulSetListForAllNamespaces
+													r.name = "WatchAppsV1StatefulSetListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -12241,10 +15126,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetAuthenticationAPIGroup"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetAuthenticationAPIGroup"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'v': // Prefix: "v1/"
@@ -12255,11 +15145,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: GetAuthenticationV1APIResources
-											r.name = "GetAuthenticationV1APIResources"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: GetAuthenticationV1APIResources
+												r.name = "GetAuthenticationV1APIResources"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 'o': // Prefix: "orization.k8s.io/"
@@ -12270,10 +15165,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetAuthorizationAPIGroup"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetAuthorizationAPIGroup"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'v': // Prefix: "v1/"
@@ -12284,11 +15184,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: GetAuthorizationV1APIResources
-											r.name = "GetAuthorizationV1APIResources"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: GetAuthorizationV1APIResources
+												r.name = "GetAuthorizationV1APIResources"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -12300,10 +15205,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetAutoscalingAPIGroup"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetAutoscalingAPIGroup"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'v': // Prefix: "v"
@@ -12325,10 +15235,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "GetAutoscalingV1APIResources"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "GetAutoscalingV1APIResources"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case 'h': // Prefix: "horizontalpodautoscalers"
@@ -12339,11 +15254,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces
-												r.name = "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces
+													r.name = "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 'n': // Prefix: "namespaces/"
 											if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12373,10 +15293,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListAutoscalingV1NamespacedHorizontalPodAutoscaler"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListAutoscalingV1NamespacedHorizontalPodAutoscaler"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -12396,10 +15321,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/status"
@@ -12410,11 +15340,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
-															r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
+																r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -12438,11 +15373,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces
-													r.name = "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces
+														r.name = "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 											case 'n': // Prefix: "namespaces/"
 												if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12472,10 +15412,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -12491,11 +15436,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
-															r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
+																r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -12520,10 +15470,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "GetAutoscalingV2beta1APIResources"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "GetAutoscalingV2beta1APIResources"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case 'h': // Prefix: "horizontalpodautoscalers"
@@ -12534,11 +15489,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces
-													r.name = "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces
+														r.name = "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 											case 'n': // Prefix: "namespaces/"
 												if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12568,10 +15528,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -12591,10 +15556,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/status"
@@ -12605,11 +15575,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
-																r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
+																	r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -12633,11 +15608,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces
-														r.name = "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
-														r.args = args
-														r.count = 0
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces
+															r.name = "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
 													}
 												case 'n': // Prefix: "namespaces/"
 													if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12667,10 +15647,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -12686,11 +15671,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
-																r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
+																	r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -12704,10 +15694,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "GetAutoscalingV2beta2APIResources"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "GetAutoscalingV2beta2APIResources"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case 'h': // Prefix: "horizontalpodautoscalers"
@@ -12718,11 +15713,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces
-													r.name = "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces
+														r.name = "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 											case 'n': // Prefix: "namespaces/"
 												if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12752,10 +15752,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -12775,10 +15780,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/status"
@@ -12789,11 +15799,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
-																r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
+																	r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -12817,11 +15832,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces
-														r.name = "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
-														r.args = args
-														r.count = 0
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces
+															r.name = "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
 													}
 												case 'n': // Prefix: "namespaces/"
 													if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12851,10 +15871,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
-															r.args = args
-															r.count = 1
-															return r, true
+															switch method {
+															case "GET":
+																r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
@@ -12870,11 +15895,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
-																r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
-																r.args = args
-																r.count = 2
-																return r, true
+																switch method {
+																case "GET":
+																	// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
+																	r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																default:
+																	return
+																}
 															}
 														}
 													}
@@ -12893,10 +15923,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetBatchAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetBatchAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1"
@@ -12918,10 +15953,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetBatchV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetBatchV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "cronjobs"
@@ -12932,11 +15972,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListBatchV1CronJobForAllNamespaces
-										r.name = "ListBatchV1CronJobForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListBatchV1CronJobForAllNamespaces
+											r.name = "ListBatchV1CronJobForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'j': // Prefix: "jobs"
 									if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
@@ -12946,11 +15991,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListBatchV1JobForAllNamespaces
-										r.name = "ListBatchV1JobForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListBatchV1JobForAllNamespaces
+											r.name = "ListBatchV1JobForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -12991,10 +16041,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListBatchV1NamespacedCronJob"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListBatchV1NamespacedCronJob"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -13014,10 +16069,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													r.name = "ReadBatchV1NamespacedCronJob"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ReadBatchV1NamespacedCronJob"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/status"
@@ -13028,11 +16088,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadBatchV1NamespacedCronJobStatus
-														r.name = "ReadBatchV1NamespacedCronJobStatus"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadBatchV1NamespacedCronJobStatus
+															r.name = "ReadBatchV1NamespacedCronJobStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -13044,10 +16109,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListBatchV1NamespacedJob"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListBatchV1NamespacedJob"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -13067,10 +16137,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													r.name = "ReadBatchV1NamespacedJob"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ReadBatchV1NamespacedJob"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/status"
@@ -13081,11 +16156,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														// Leaf: ReadBatchV1NamespacedJobStatus
-														r.name = "ReadBatchV1NamespacedJobStatus"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadBatchV1NamespacedJobStatus
+															r.name = "ReadBatchV1NamespacedJobStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -13110,11 +16190,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchBatchV1CronJobListForAllNamespaces
-											r.name = "WatchBatchV1CronJobListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchBatchV1CronJobListForAllNamespaces
+												r.name = "WatchBatchV1CronJobListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'j': // Prefix: "jobs"
 										if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
@@ -13124,11 +16209,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchBatchV1JobListForAllNamespaces
-											r.name = "WatchBatchV1JobListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchBatchV1JobListForAllNamespaces
+												r.name = "WatchBatchV1JobListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13169,10 +16259,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchBatchV1NamespacedCronJobList"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchBatchV1NamespacedCronJobList"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -13188,11 +16283,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchBatchV1NamespacedCronJob
-														r.name = "WatchBatchV1NamespacedCronJob"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchBatchV1NamespacedCronJob
+															r.name = "WatchBatchV1NamespacedCronJob"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											case 'j': // Prefix: "jobs"
@@ -13203,10 +16303,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchBatchV1NamespacedJobList"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchBatchV1NamespacedJobList"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -13222,11 +16327,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchBatchV1NamespacedJob
-														r.name = "WatchBatchV1NamespacedJob"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchBatchV1NamespacedJob
+															r.name = "WatchBatchV1NamespacedJob"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -13241,10 +16351,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetBatchV1beta1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetBatchV1beta1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "cronjobs"
@@ -13255,11 +16370,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListBatchV1beta1CronJobForAllNamespaces
-										r.name = "ListBatchV1beta1CronJobForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListBatchV1beta1CronJobForAllNamespaces
+											r.name = "ListBatchV1beta1CronJobForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13289,10 +16409,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListBatchV1beta1NamespacedCronJob"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListBatchV1beta1NamespacedCronJob"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -13312,10 +16437,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												r.name = "ReadBatchV1beta1NamespacedCronJob"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ReadBatchV1beta1NamespacedCronJob"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/status"
@@ -13326,11 +16456,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
-													r.name = "ReadBatchV1beta1NamespacedCronJobStatus"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
+														r.name = "ReadBatchV1beta1NamespacedCronJobStatus"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -13354,11 +16489,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchBatchV1beta1CronJobListForAllNamespaces
-											r.name = "WatchBatchV1beta1CronJobListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchBatchV1beta1CronJobListForAllNamespaces
+												r.name = "WatchBatchV1beta1CronJobListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13388,10 +16528,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchBatchV1beta1NamespacedCronJobList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchBatchV1beta1NamespacedCronJobList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -13407,11 +16552,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchBatchV1beta1NamespacedCronJob
-													r.name = "WatchBatchV1beta1NamespacedCronJob"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchBatchV1beta1NamespacedCronJob
+														r.name = "WatchBatchV1beta1NamespacedCronJob"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -13438,10 +16588,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetCertificatesAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetCertificatesAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1/"
@@ -13452,10 +16607,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetCertificatesV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetCertificatesV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "certificatesigningrequests"
@@ -13466,10 +16626,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListCertificatesV1CertificateSigningRequest"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListCertificatesV1CertificateSigningRequest"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -13489,10 +16654,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "ReadCertificatesV1CertificateSigningRequest"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ReadCertificatesV1CertificateSigningRequest"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -13514,11 +16684,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
-													r.name = "ReadCertificatesV1CertificateSigningRequestApproval"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
+														r.name = "ReadCertificatesV1CertificateSigningRequestApproval"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											case 's': // Prefix: "status"
 												if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
@@ -13528,11 +16703,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
-													r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
+														r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -13545,10 +16725,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCertificatesV1CertificateSigningRequestList"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "WatchCertificatesV1CertificateSigningRequestList"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -13564,11 +16749,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: WatchCertificatesV1CertificateSigningRequest
-											r.name = "WatchCertificatesV1CertificateSigningRequest"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCertificatesV1CertificateSigningRequest
+												r.name = "WatchCertificatesV1CertificateSigningRequest"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -13581,10 +16771,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetCoordinationAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetCoordinationAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1/"
@@ -13595,10 +16790,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetCoordinationV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetCoordinationV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'l': // Prefix: "leases"
@@ -13609,11 +16809,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListCoordinationV1LeaseForAllNamespaces
-										r.name = "ListCoordinationV1LeaseForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListCoordinationV1LeaseForAllNamespaces
+											r.name = "ListCoordinationV1LeaseForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13643,10 +16848,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListCoordinationV1NamespacedLease"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListCoordinationV1NamespacedLease"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -13662,11 +16872,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadCoordinationV1NamespacedLease
-												r.name = "ReadCoordinationV1NamespacedLease"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadCoordinationV1NamespacedLease
+													r.name = "ReadCoordinationV1NamespacedLease"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -13689,11 +16904,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchCoordinationV1LeaseListForAllNamespaces
-											r.name = "WatchCoordinationV1LeaseListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchCoordinationV1LeaseListForAllNamespaces
+												r.name = "WatchCoordinationV1LeaseListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13723,10 +16943,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchCoordinationV1NamespacedLeaseList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchCoordinationV1NamespacedLeaseList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -13742,11 +16967,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchCoordinationV1NamespacedLease
-													r.name = "WatchCoordinationV1NamespacedLease"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchCoordinationV1NamespacedLease
+														r.name = "WatchCoordinationV1NamespacedLease"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -13762,10 +16992,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetDiscoveryAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetDiscoveryAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1"
@@ -13787,10 +17022,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetDiscoveryV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetDiscoveryV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "endpointslices"
@@ -13801,11 +17041,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListDiscoveryV1EndpointSliceForAllNamespaces
-										r.name = "ListDiscoveryV1EndpointSliceForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListDiscoveryV1EndpointSliceForAllNamespaces
+											r.name = "ListDiscoveryV1EndpointSliceForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13835,10 +17080,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListDiscoveryV1NamespacedEndpointSlice"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListDiscoveryV1NamespacedEndpointSlice"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -13854,11 +17104,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
-												r.name = "ReadDiscoveryV1NamespacedEndpointSlice"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
+													r.name = "ReadDiscoveryV1NamespacedEndpointSlice"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -13881,11 +17136,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchDiscoveryV1EndpointSliceListForAllNamespaces
-											r.name = "WatchDiscoveryV1EndpointSliceListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchDiscoveryV1EndpointSliceListForAllNamespaces
+												r.name = "WatchDiscoveryV1EndpointSliceListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -13915,10 +17175,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchDiscoveryV1NamespacedEndpointSliceList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchDiscoveryV1NamespacedEndpointSliceList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -13934,11 +17199,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
-													r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
+														r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -13952,10 +17222,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetDiscoveryV1beta1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetDiscoveryV1beta1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "endpointslices"
@@ -13966,11 +17241,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListDiscoveryV1beta1EndpointSliceForAllNamespaces
-										r.name = "ListDiscoveryV1beta1EndpointSliceForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListDiscoveryV1beta1EndpointSliceForAllNamespaces
+											r.name = "ListDiscoveryV1beta1EndpointSliceForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -14000,10 +17280,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListDiscoveryV1beta1NamespacedEndpointSlice"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListDiscoveryV1beta1NamespacedEndpointSlice"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14019,11 +17304,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
-												r.name = "ReadDiscoveryV1beta1NamespacedEndpointSlice"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
+													r.name = "ReadDiscoveryV1beta1NamespacedEndpointSlice"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14046,11 +17336,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces
-											r.name = "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces
+												r.name = "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -14080,10 +17375,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchDiscoveryV1beta1NamespacedEndpointSliceList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchDiscoveryV1beta1NamespacedEndpointSliceList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -14099,11 +17399,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
-													r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
+														r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -14119,10 +17424,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetEventsAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetEventsAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1"
@@ -14144,10 +17454,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetEventsV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetEventsV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "events"
@@ -14158,11 +17473,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListEventsV1EventForAllNamespaces
-										r.name = "ListEventsV1EventForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListEventsV1EventForAllNamespaces
+											r.name = "ListEventsV1EventForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -14192,10 +17512,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListEventsV1NamespacedEvent"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListEventsV1NamespacedEvent"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14211,11 +17536,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadEventsV1NamespacedEvent
-												r.name = "ReadEventsV1NamespacedEvent"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadEventsV1NamespacedEvent
+													r.name = "ReadEventsV1NamespacedEvent"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14238,11 +17568,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchEventsV1EventListForAllNamespaces
-											r.name = "WatchEventsV1EventListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchEventsV1EventListForAllNamespaces
+												r.name = "WatchEventsV1EventListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -14272,10 +17607,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchEventsV1NamespacedEventList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchEventsV1NamespacedEventList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -14291,11 +17631,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchEventsV1NamespacedEvent
-													r.name = "WatchEventsV1NamespacedEvent"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchEventsV1NamespacedEvent
+														r.name = "WatchEventsV1NamespacedEvent"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -14309,10 +17654,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetEventsV1beta1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetEventsV1beta1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "events"
@@ -14323,11 +17673,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListEventsV1beta1EventForAllNamespaces
-										r.name = "ListEventsV1beta1EventForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListEventsV1beta1EventForAllNamespaces
+											r.name = "ListEventsV1beta1EventForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'n': // Prefix: "namespaces/"
 									if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -14357,10 +17712,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListEventsV1beta1NamespacedEvent"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListEventsV1beta1NamespacedEvent"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14376,11 +17736,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadEventsV1beta1NamespacedEvent
-												r.name = "ReadEventsV1beta1NamespacedEvent"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadEventsV1beta1NamespacedEvent
+													r.name = "ReadEventsV1beta1NamespacedEvent"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14403,11 +17768,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchEventsV1beta1EventListForAllNamespaces
-											r.name = "WatchEventsV1beta1EventListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchEventsV1beta1EventListForAllNamespaces
+												r.name = "WatchEventsV1beta1EventListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -14437,10 +17807,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchEventsV1beta1NamespacedEventList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchEventsV1beta1NamespacedEventList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -14456,11 +17831,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchEventsV1beta1NamespacedEvent
-													r.name = "WatchEventsV1beta1NamespacedEvent"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchEventsV1beta1NamespacedEvent
+														r.name = "WatchEventsV1beta1NamespacedEvent"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -14476,10 +17856,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetFlowcontrolApiserverAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetFlowcontrolApiserverAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1beta"
@@ -14501,10 +17886,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetFlowcontrolApiserverV1beta1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetFlowcontrolApiserverV1beta1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'f': // Prefix: "flowschemas"
@@ -14515,10 +17905,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListFlowcontrolApiserverV1beta1FlowSchema"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListFlowcontrolApiserverV1beta1FlowSchema"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -14538,10 +17933,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "ReadFlowcontrolApiserverV1beta1FlowSchema"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ReadFlowcontrolApiserverV1beta1FlowSchema"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/status"
@@ -14552,11 +17952,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
-												r.name = "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
+													r.name = "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14568,10 +17973,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -14591,10 +18001,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/status"
@@ -14605,11 +18020,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
-												r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
+													r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14632,10 +18052,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchFlowcontrolApiserverV1beta1FlowSchemaList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchFlowcontrolApiserverV1beta1FlowSchemaList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14651,11 +18076,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta1FlowSchema
-												r.name = "WatchFlowcontrolApiserverV1beta1FlowSchema"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchFlowcontrolApiserverV1beta1FlowSchema
+													r.name = "WatchFlowcontrolApiserverV1beta1FlowSchema"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'p': // Prefix: "prioritylevelconfigurations"
@@ -14666,10 +18096,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14685,11 +18120,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
-												r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
+													r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14702,10 +18142,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetFlowcontrolApiserverV1beta2APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetFlowcontrolApiserverV1beta2APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'f': // Prefix: "flowschemas"
@@ -14716,10 +18161,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListFlowcontrolApiserverV1beta2FlowSchema"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListFlowcontrolApiserverV1beta2FlowSchema"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -14739,10 +18189,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "ReadFlowcontrolApiserverV1beta2FlowSchema"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ReadFlowcontrolApiserverV1beta2FlowSchema"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/status"
@@ -14753,11 +18208,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
-												r.name = "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
+													r.name = "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14769,10 +18229,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -14792,10 +18257,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = elem[idx:]
 
 										if len(elem) == 0 {
-											r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/status"
@@ -14806,11 +18276,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
-												r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
+													r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14833,10 +18308,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchFlowcontrolApiserverV1beta2FlowSchemaList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchFlowcontrolApiserverV1beta2FlowSchemaList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14852,11 +18332,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta2FlowSchema
-												r.name = "WatchFlowcontrolApiserverV1beta2FlowSchema"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchFlowcontrolApiserverV1beta2FlowSchema
+													r.name = "WatchFlowcontrolApiserverV1beta2FlowSchema"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'p': // Prefix: "prioritylevelconfigurations"
@@ -14867,10 +18352,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -14886,11 +18376,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
-												r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
+													r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -14905,10 +18400,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetInternalApiserverAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetInternalApiserverAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1alpha1/"
@@ -14919,10 +18419,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetInternalApiserverV1alpha1APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetInternalApiserverV1alpha1APIResources"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 's': // Prefix: "storageversions"
@@ -14933,10 +18438,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListInternalApiserverV1alpha1StorageVersion"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "ListInternalApiserverV1alpha1StorageVersion"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -14956,10 +18466,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										r.name = "ReadInternalApiserverV1alpha1StorageVersion"
-										r.args = args
-										r.count = 1
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ReadInternalApiserverV1alpha1StorageVersion"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/status"
@@ -14970,11 +18485,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
-											r.name = "ReadInternalApiserverV1alpha1StorageVersionStatus"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
+												r.name = "ReadInternalApiserverV1alpha1StorageVersionStatus"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -14986,10 +18506,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchInternalApiserverV1alpha1StorageVersionList"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "WatchInternalApiserverV1alpha1StorageVersionList"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -15005,11 +18530,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
-										// Leaf: WatchInternalApiserverV1alpha1StorageVersion
-										r.name = "WatchInternalApiserverV1alpha1StorageVersion"
-										r.args = args
-										r.count = 1
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: WatchInternalApiserverV1alpha1StorageVersion
+											r.name = "WatchInternalApiserverV1alpha1StorageVersion"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							}
@@ -15033,10 +18563,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetNetworkingAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetNetworkingAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1/"
@@ -15047,10 +18582,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetNetworkingV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetNetworkingV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'i': // Prefix: "ingress"
@@ -15072,10 +18612,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListNetworkingV1IngressClass"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListNetworkingV1IngressClass"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15091,11 +18636,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNetworkingV1IngressClass
-												r.name = "ReadNetworkingV1IngressClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadNetworkingV1IngressClass
+													r.name = "ReadNetworkingV1IngressClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'e': // Prefix: "es"
@@ -15106,11 +18656,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListNetworkingV1IngressForAllNamespaces
-											r.name = "ListNetworkingV1IngressForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListNetworkingV1IngressForAllNamespaces
+												r.name = "ListNetworkingV1IngressForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 'n': // Prefix: "n"
@@ -15163,10 +18718,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListNetworkingV1NamespacedIngress"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListNetworkingV1NamespacedIngress"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -15186,10 +18746,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														r.name = "ReadNetworkingV1NamespacedIngress"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "ReadNetworkingV1NamespacedIngress"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/status"
@@ -15200,11 +18765,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															// Leaf: ReadNetworkingV1NamespacedIngressStatus
-															r.name = "ReadNetworkingV1NamespacedIngressStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: ReadNetworkingV1NamespacedIngressStatus
+																r.name = "ReadNetworkingV1NamespacedIngressStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -15216,10 +18786,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListNetworkingV1NamespacedNetworkPolicy"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "ListNetworkingV1NamespacedNetworkPolicy"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -15235,11 +18810,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
-														r.name = "ReadNetworkingV1NamespacedNetworkPolicy"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
+															r.name = "ReadNetworkingV1NamespacedNetworkPolicy"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -15252,11 +18832,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
-											r.name = "ListNetworkingV1NetworkPolicyForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
+												r.name = "ListNetworkingV1NetworkPolicyForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 'w': // Prefix: "watch/"
@@ -15289,10 +18874,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchNetworkingV1IngressClassList"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchNetworkingV1IngressClassList"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -15308,11 +18898,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchNetworkingV1IngressClass
-													r.name = "WatchNetworkingV1IngressClass"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchNetworkingV1IngressClass
+														r.name = "WatchNetworkingV1IngressClass"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 'e': // Prefix: "es"
@@ -15323,11 +18918,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchNetworkingV1IngressListForAllNamespaces
-												r.name = "WatchNetworkingV1IngressListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchNetworkingV1IngressListForAllNamespaces
+													r.name = "WatchNetworkingV1IngressListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'n': // Prefix: "n"
@@ -15380,10 +18980,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchNetworkingV1NamespacedIngressList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchNetworkingV1NamespacedIngressList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -15399,11 +19004,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchNetworkingV1NamespacedIngress
-															r.name = "WatchNetworkingV1NamespacedIngress"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchNetworkingV1NamespacedIngress
+																r.name = "WatchNetworkingV1NamespacedIngress"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												case 'n': // Prefix: "networkpolicies"
@@ -15414,10 +19024,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchNetworkingV1NamespacedNetworkPolicyList"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															r.name = "WatchNetworkingV1NamespacedNetworkPolicyList"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
@@ -15433,11 +19048,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
-															r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
-															r.args = args
-															r.count = 2
-															return r, true
+															switch method {
+															case "GET":
+																// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
+																r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -15450,11 +19070,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
-												r.name = "WatchNetworkingV1NetworkPolicyListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
+													r.name = "WatchNetworkingV1NetworkPolicyListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -15468,10 +19093,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetNodeAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetNodeAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1"
@@ -15493,10 +19123,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetNodeV1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetNodeV1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "runtimeclasses"
@@ -15507,10 +19142,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListNodeV1RuntimeClass"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListNodeV1RuntimeClass"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15526,11 +19166,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNodeV1RuntimeClass
-												r.name = "ReadNodeV1RuntimeClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadNodeV1RuntimeClass
+													r.name = "ReadNodeV1RuntimeClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'w': // Prefix: "watch/runtimeclasses"
@@ -15541,10 +19186,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchNodeV1RuntimeClassList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchNodeV1RuntimeClassList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15560,11 +19210,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchNodeV1RuntimeClass
-												r.name = "WatchNodeV1RuntimeClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchNodeV1RuntimeClass
+													r.name = "WatchNodeV1RuntimeClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -15576,10 +19231,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetNodeV1alpha1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetNodeV1alpha1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "runtimeclasses"
@@ -15590,10 +19250,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListNodeV1alpha1RuntimeClass"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListNodeV1alpha1RuntimeClass"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15609,11 +19274,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNodeV1alpha1RuntimeClass
-												r.name = "ReadNodeV1alpha1RuntimeClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadNodeV1alpha1RuntimeClass
+													r.name = "ReadNodeV1alpha1RuntimeClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'w': // Prefix: "watch/runtimeclasses"
@@ -15624,10 +19294,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchNodeV1alpha1RuntimeClassList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchNodeV1alpha1RuntimeClassList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15643,11 +19318,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchNodeV1alpha1RuntimeClass
-												r.name = "WatchNodeV1alpha1RuntimeClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchNodeV1alpha1RuntimeClass
+													r.name = "WatchNodeV1alpha1RuntimeClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -15659,10 +19339,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetNodeV1beta1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetNodeV1beta1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "runtimeclasses"
@@ -15673,10 +19358,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListNodeV1beta1RuntimeClass"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListNodeV1beta1RuntimeClass"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15692,11 +19382,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadNodeV1beta1RuntimeClass
-												r.name = "ReadNodeV1beta1RuntimeClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadNodeV1beta1RuntimeClass
+													r.name = "ReadNodeV1beta1RuntimeClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'w': // Prefix: "watch/runtimeclasses"
@@ -15707,10 +19402,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchNodeV1beta1RuntimeClassList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchNodeV1beta1RuntimeClassList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15726,11 +19426,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchNodeV1beta1RuntimeClass
-												r.name = "WatchNodeV1beta1RuntimeClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchNodeV1beta1RuntimeClass
+													r.name = "WatchNodeV1beta1RuntimeClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -15745,10 +19450,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetPolicyAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetPolicyAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1"
@@ -15770,10 +19480,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetPolicyV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetPolicyV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "namespaces/"
@@ -15804,10 +19519,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListPolicyV1NamespacedPodDisruptionBudget"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListPolicyV1NamespacedPodDisruptionBudget"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -15827,10 +19547,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												r.name = "ReadPolicyV1NamespacedPodDisruptionBudget"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ReadPolicyV1NamespacedPodDisruptionBudget"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/status"
@@ -15841,11 +19566,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
-													r.name = "ReadPolicyV1NamespacedPodDisruptionBudgetStatus"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
+														r.name = "ReadPolicyV1NamespacedPodDisruptionBudgetStatus"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -15858,11 +19588,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListPolicyV1PodDisruptionBudgetForAllNamespaces
-										r.name = "ListPolicyV1PodDisruptionBudgetForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListPolicyV1PodDisruptionBudgetForAllNamespaces
+											r.name = "ListPolicyV1PodDisruptionBudgetForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'w': // Prefix: "watch/"
 									if l := len("watch/"); len(elem) >= l && elem[0:l] == "watch/" {
@@ -15903,10 +19638,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchPolicyV1NamespacedPodDisruptionBudgetList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchPolicyV1NamespacedPodDisruptionBudgetList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -15922,11 +19662,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
-													r.name = "WatchPolicyV1NamespacedPodDisruptionBudget"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
+														r.name = "WatchPolicyV1NamespacedPodDisruptionBudget"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -15938,11 +19683,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
-											r.name = "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
+												r.name = "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -15954,10 +19704,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetPolicyV1beta1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetPolicyV1beta1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "namespaces/"
@@ -15988,10 +19743,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListPolicyV1beta1NamespacedPodDisruptionBudget"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListPolicyV1beta1NamespacedPodDisruptionBudget"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16011,10 +19771,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudget"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudget"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/status"
@@ -16025,11 +19790,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
-													r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
+														r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -16053,11 +19823,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces
-											r.name = "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces
+												r.name = "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 's': // Prefix: "securitypolicies"
 										if l := len("securitypolicies"); len(elem) >= l && elem[0:l] == "securitypolicies" {
@@ -16067,10 +19842,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListPolicyV1beta1PodSecurityPolicy"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListPolicyV1beta1PodSecurityPolicy"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16086,11 +19866,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadPolicyV1beta1PodSecurityPolicy
-												r.name = "ReadPolicyV1beta1PodSecurityPolicy"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadPolicyV1beta1PodSecurityPolicy
+													r.name = "ReadPolicyV1beta1PodSecurityPolicy"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -16133,10 +19918,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -16152,11 +19942,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
-													r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudget"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
+														r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudget"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -16179,11 +19974,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
-												r.name = "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
+													r.name = "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 's': // Prefix: "securitypolicies"
 											if l := len("securitypolicies"); len(elem) >= l && elem[0:l] == "securitypolicies" {
@@ -16193,10 +19993,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchPolicyV1beta1PodSecurityPolicyList"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchPolicyV1beta1PodSecurityPolicyList"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -16212,11 +20017,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchPolicyV1beta1PodSecurityPolicy
-													r.name = "WatchPolicyV1beta1PodSecurityPolicy"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchPolicyV1beta1PodSecurityPolicy
+														r.name = "WatchPolicyV1beta1PodSecurityPolicy"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -16232,10 +20042,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetRbacAuthorizationAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "GetRbacAuthorizationAPIGroup"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'v': // Prefix: "v1/"
@@ -16246,10 +20061,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetRbacAuthorizationV1APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetRbacAuthorizationV1APIResources"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "clusterrole"
@@ -16271,10 +20091,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListRbacAuthorizationV1ClusterRoleBinding"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListRbacAuthorizationV1ClusterRoleBinding"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -16290,11 +20115,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadRbacAuthorizationV1ClusterRoleBinding
-											r.name = "ReadRbacAuthorizationV1ClusterRoleBinding"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadRbacAuthorizationV1ClusterRoleBinding
+												r.name = "ReadRbacAuthorizationV1ClusterRoleBinding"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 's': // Prefix: "s"
@@ -16305,10 +20135,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListRbacAuthorizationV1ClusterRole"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListRbacAuthorizationV1ClusterRole"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -16324,11 +20159,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadRbacAuthorizationV1ClusterRole
-											r.name = "ReadRbacAuthorizationV1ClusterRole"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadRbacAuthorizationV1ClusterRole
+												r.name = "ReadRbacAuthorizationV1ClusterRole"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -16371,10 +20211,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16390,11 +20235,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
-												r.name = "ReadRbacAuthorizationV1NamespacedRoleBinding"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
+													r.name = "ReadRbacAuthorizationV1NamespacedRoleBinding"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 's': // Prefix: "s"
@@ -16405,10 +20255,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListRbacAuthorizationV1NamespacedRole"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListRbacAuthorizationV1NamespacedRole"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16424,11 +20279,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadRbacAuthorizationV1NamespacedRole
-												r.name = "ReadRbacAuthorizationV1NamespacedRole"
-												r.args = args
-												r.count = 2
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadRbacAuthorizationV1NamespacedRole
+													r.name = "ReadRbacAuthorizationV1NamespacedRole"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -16452,11 +20312,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListRbacAuthorizationV1RoleBindingForAllNamespaces
-										r.name = "ListRbacAuthorizationV1RoleBindingForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListRbacAuthorizationV1RoleBindingForAllNamespaces
+											r.name = "ListRbacAuthorizationV1RoleBindingForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 's': // Prefix: "s"
 									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -16466,11 +20331,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
-										r.name = "ListRbacAuthorizationV1RoleForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
+											r.name = "ListRbacAuthorizationV1RoleForAllNamespaces"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							case 'w': // Prefix: "watch/"
@@ -16503,10 +20373,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchRbacAuthorizationV1ClusterRoleBindingList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchRbacAuthorizationV1ClusterRoleBindingList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16522,11 +20397,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
-												r.name = "WatchRbacAuthorizationV1ClusterRoleBinding"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
+													r.name = "WatchRbacAuthorizationV1ClusterRoleBinding"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 's': // Prefix: "s"
@@ -16537,10 +20417,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchRbacAuthorizationV1ClusterRoleList"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "WatchRbacAuthorizationV1ClusterRoleList"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16556,11 +20441,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: WatchRbacAuthorizationV1ClusterRole
-												r.name = "WatchRbacAuthorizationV1ClusterRole"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchRbacAuthorizationV1ClusterRole
+													r.name = "WatchRbacAuthorizationV1ClusterRole"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -16603,10 +20493,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchRbacAuthorizationV1NamespacedRoleBindingList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchRbacAuthorizationV1NamespacedRoleBindingList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -16622,11 +20517,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
-													r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
+														r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 's': // Prefix: "s"
@@ -16637,10 +20537,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchRbacAuthorizationV1NamespacedRoleList"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchRbacAuthorizationV1NamespacedRoleList"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -16656,11 +20561,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchRbacAuthorizationV1NamespacedRole
-													r.name = "WatchRbacAuthorizationV1NamespacedRole"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchRbacAuthorizationV1NamespacedRole
+														r.name = "WatchRbacAuthorizationV1NamespacedRole"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -16684,11 +20594,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchRbacAuthorizationV1RoleBindingListForAllNamespaces
-											r.name = "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchRbacAuthorizationV1RoleBindingListForAllNamespaces
+												r.name = "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 's': // Prefix: "s"
 										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -16698,11 +20613,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
-											r.name = "WatchRbacAuthorizationV1RoleListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
+												r.name = "WatchRbacAuthorizationV1RoleListForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -16727,10 +20647,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetSchedulingAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetSchedulingAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1/"
@@ -16741,10 +20666,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetSchedulingV1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "GET":
+										r.name = "GetSchedulingV1APIResources"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "priorityclasses"
@@ -16755,10 +20685,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListSchedulingV1PriorityClass"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "ListSchedulingV1PriorityClass"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -16774,11 +20709,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: ReadSchedulingV1PriorityClass
-											r.name = "ReadSchedulingV1PriorityClass"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ReadSchedulingV1PriorityClass
+												r.name = "ReadSchedulingV1PriorityClass"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								case 'w': // Prefix: "watch/priorityclasses"
@@ -16789,10 +20729,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchSchedulingV1PriorityClassList"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "WatchSchedulingV1PriorityClassList"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
@@ -16808,11 +20753,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
-											// Leaf: WatchSchedulingV1PriorityClass
-											r.name = "WatchSchedulingV1PriorityClass"
-											r.args = args
-											r.count = 1
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: WatchSchedulingV1PriorityClass
+												r.name = "WatchSchedulingV1PriorityClass"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -16825,10 +20775,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetStorageAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									r.name = "GetStorageAPIGroup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 							switch elem[0] {
 							case 'v': // Prefix: "v1"
@@ -16850,10 +20805,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetStorageV1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetStorageV1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "csi"
@@ -16875,10 +20835,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListStorageV1CSIDriver"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListStorageV1CSIDriver"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -16894,11 +20859,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1CSIDriver
-													r.name = "ReadStorageV1CSIDriver"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadStorageV1CSIDriver
+														r.name = "ReadStorageV1CSIDriver"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 'n': // Prefix: "nodes"
@@ -16909,10 +20879,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListStorageV1CSINode"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListStorageV1CSINode"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -16928,11 +20903,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1CSINode
-													r.name = "ReadStorageV1CSINode"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadStorageV1CSINode
+														r.name = "ReadStorageV1CSINode"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -16944,10 +20924,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListStorageV1StorageClass"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListStorageV1StorageClass"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -16963,11 +20948,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
-												// Leaf: ReadStorageV1StorageClass
-												r.name = "ReadStorageV1StorageClass"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: ReadStorageV1StorageClass
+													r.name = "ReadStorageV1StorageClass"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									case 'v': // Prefix: "volumeattachments"
@@ -16978,10 +20968,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListStorageV1VolumeAttachment"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												r.name = "ListStorageV1VolumeAttachment"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
@@ -17001,10 +20996,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												r.name = "ReadStorageV1VolumeAttachment"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ReadStorageV1VolumeAttachment"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/status"
@@ -17015,11 +21015,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1VolumeAttachmentStatus
-													r.name = "ReadStorageV1VolumeAttachmentStatus"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadStorageV1VolumeAttachmentStatus
+														r.name = "ReadStorageV1VolumeAttachmentStatus"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -17053,10 +21058,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchStorageV1CSIDriverList"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchStorageV1CSIDriverList"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -17072,11 +21082,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1CSIDriver
-														r.name = "WatchStorageV1CSIDriver"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchStorageV1CSIDriver
+															r.name = "WatchStorageV1CSIDriver"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											case 'n': // Prefix: "nodes"
@@ -17087,10 +21102,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchStorageV1CSINodeList"
-													r.args = args
-													r.count = 0
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchStorageV1CSINodeList"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -17106,11 +21126,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1CSINode
-														r.name = "WatchStorageV1CSINode"
-														r.args = args
-														r.count = 1
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchStorageV1CSINode
+															r.name = "WatchStorageV1CSINode"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -17122,10 +21147,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchStorageV1StorageClassList"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchStorageV1StorageClassList"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -17141,11 +21171,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchStorageV1StorageClass
-													r.name = "WatchStorageV1StorageClass"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchStorageV1StorageClass
+														r.name = "WatchStorageV1StorageClass"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										case 'v': // Prefix: "volumeattachments"
@@ -17156,10 +21191,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchStorageV1VolumeAttachmentList"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "WatchStorageV1VolumeAttachmentList"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -17175,11 +21215,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: WatchStorageV1VolumeAttachment
-													r.name = "WatchStorageV1VolumeAttachment"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: WatchStorageV1VolumeAttachment
+														r.name = "WatchStorageV1VolumeAttachment"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -17192,10 +21237,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetStorageV1alpha1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetStorageV1alpha1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "csistoragecapacities"
@@ -17206,11 +21256,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListStorageV1alpha1CSIStorageCapacityForAllNamespaces
-											r.name = "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListStorageV1alpha1CSIStorageCapacityForAllNamespaces
+												r.name = "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -17240,10 +21295,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListStorageV1alpha1NamespacedCSIStorageCapacity"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListStorageV1alpha1NamespacedCSIStorageCapacity"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -17259,11 +21319,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
-													r.name = "ReadStorageV1alpha1NamespacedCSIStorageCapacity"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
+														r.name = "ReadStorageV1alpha1NamespacedCSIStorageCapacity"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -17286,11 +21351,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces
-												r.name = "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces
+													r.name = "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 'n': // Prefix: "namespaces/"
 											if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -17320,10 +21390,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacityList"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacityList"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -17339,11 +21414,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
-														r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
+															r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -17357,10 +21437,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetStorageV1beta1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "GET":
+											r.name = "GetStorageV1beta1APIResources"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "csistoragecapacities"
@@ -17371,11 +21456,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ListStorageV1beta1CSIStorageCapacityForAllNamespaces
-											r.name = "ListStorageV1beta1CSIStorageCapacityForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											switch method {
+											case "GET":
+												// Leaf: ListStorageV1beta1CSIStorageCapacityForAllNamespaces
+												r.name = "ListStorageV1beta1CSIStorageCapacityForAllNamespaces"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 									case 'n': // Prefix: "namespaces/"
 										if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -17405,10 +21495,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListStorageV1beta1NamespacedCSIStorageCapacity"
-												r.args = args
-												r.count = 1
-												return r, true
+												switch method {
+												case "GET":
+													r.name = "ListStorageV1beta1NamespacedCSIStorageCapacity"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
@@ -17424,11 +21519,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
-													// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
-													r.name = "ReadStorageV1beta1NamespacedCSIStorageCapacity"
-													r.args = args
-													r.count = 2
-													return r, true
+													switch method {
+													case "GET":
+														// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
+														r.name = "ReadStorageV1beta1NamespacedCSIStorageCapacity"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 											}
 										}
@@ -17451,11 +21551,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												// Leaf: WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
-												r.name = "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												switch method {
+												case "GET":
+													// Leaf: WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
+													r.name = "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 										case 'n': // Prefix: "namespaces/"
 											if l := len("namespaces/"); len(elem) >= l && elem[0:l] == "namespaces/" {
@@ -17485,10 +21590,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacityList"
-													r.args = args
-													r.count = 1
-													return r, true
+													switch method {
+													case "GET":
+														r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacityList"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
@@ -17504,11 +21614,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
-														r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
-														r.args = args
-														r.count = 2
-														return r, true
+														switch method {
+														case "GET":
+															// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
+															r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -17532,11 +21647,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				elem = ""
 
 				if len(elem) == 0 {
-					// Leaf: LogFileHandler
-					r.name = "LogFileHandler"
-					r.args = args
-					r.count = 1
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: LogFileHandler
+						r.name = "LogFileHandler"
+						r.args = args
+						r.count = 1
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'v': // Prefix: "version/"
 				if l := len("version/"); len(elem) >= l && elem[0:l] == "version/" {
@@ -17546,11 +21666,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: GetCodeVersion
-					r.name = "GetCodeVersion"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: GetCodeVersion
+						r.name = "GetCodeVersion"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			}
 		}

@@ -11,6 +11,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -20,9 +24,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	args := [5]string{}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -38,6 +43,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 			switch elem[0] {
+			case 'd': // Prefix: "defaultTest"
+				if l := len("defaultTest"); len(elem) >= l && elem[0:l] == "defaultTest" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleDefaultTestRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
+
+					return
+				}
 			case 'e': // Prefix: "error"
 				if l := len("error"); len(elem) >= l && elem[0:l] == "error" {
 					elem = elem[l:]
@@ -46,8 +69,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: ErrorGet
-					s.handleErrorGetRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleErrorGetRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -59,8 +87,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: FoobarGet
-					s.handleFoobarGetRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleFoobarGetRequest([0]string{}, w, r)
+					case "POST":
+						s.handleFoobarPostRequest([0]string{}, w, r)
+					case "PUT":
+						s.handleFoobarPutRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET,POST,PUT")
+					}
 
 					return
 				}
@@ -168,14 +205,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									elem = ""
 
 									if len(elem) == 0 {
-										// Leaf: DataGetFormat
-										s.handleDataGetFormatRequest([5]string{
-											args[0],
-											args[1],
-											args[2],
-											args[3],
-											args[4],
-										}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleDataGetFormatRequest([5]string{
+												args[0],
+												args[1],
+												args[2],
+												args[3],
+												args[4],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
 
 										return
 									}
@@ -191,8 +233,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: NoAdditionalPropertiesTest
-						s.handleNoAdditionalPropertiesTestRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleNoAdditionalPropertiesTestRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -204,11 +251,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: NullableDefaultResponse
-						s.handleNullableDefaultResponseRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleNullableDefaultResponseRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
+				}
+			case 'o': // Prefix: "oneofBug"
+				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleOneofBugRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
+
+					return
 				}
 			case 'p': // Prefix: "p"
 				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
@@ -229,8 +299,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PatternRecursiveMapGet
-						s.handlePatternRecursiveMapGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handlePatternRecursiveMapGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -242,7 +317,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handlePetGetRequest([0]string{}, w, r)
+						switch r.Method {
+						case "GET":
+							s.handlePetGetRequest([0]string{}, w, r)
+						case "POST":
+							s.handlePetCreateRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET,POST")
+						}
 
 						return
 					}
@@ -266,8 +348,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: PetGetAvatarByID
-								s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
+								case "POST":
+									s.handlePetUploadAvatarByIDRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET,POST")
+								}
 
 								return
 							}
@@ -284,10 +373,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							elem = ""
 
 							if len(elem) == 0 {
-								// Leaf: PetFriendsNamesByID
-								s.handlePetFriendsNamesByIDRequest([1]string{
-									args[0],
-								}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handlePetFriendsNamesByIDRequest([1]string{
+										args[0],
+									}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -304,12 +398,54 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							elem = ""
 
 							if len(elem) == 0 {
-								// Leaf: PetNameByID
-								s.handlePetNameByIDRequest([1]string{
-									args[0],
-								}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handlePetNameByIDRequest([1]string{
+										args[0],
+									}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
+							}
+						case 'u': // Prefix: "updateName"
+							if l := len("updateName"); len(elem) >= l && elem[0:l] == "updateName" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								switch r.Method {
+								case "POST":
+									s.handlePetUpdateNamePostRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
+
+								return
+							}
+							switch elem[0] {
+							case 'A': // Prefix: "Alias"
+								if l := len("Alias"); len(elem) >= l && elem[0:l] == "Alias" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handlePetUpdateNameAliasPostRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
+
+									return
+								}
 							}
 						}
 						// Param: "name"
@@ -322,9 +458,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						elem = elem[idx:]
 
 						if len(elem) == 0 {
-							s.handlePetGetByNameRequest([1]string{
-								args[0],
-							}, w, r)
+							switch r.Method {
+							case "GET":
+								s.handlePetGetByNameRequest([1]string{
+									args[0],
+								}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -337,10 +478,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: PetGetAvatarByName
-								s.handlePetGetAvatarByNameRequest([1]string{
-									args[0],
-								}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handlePetGetAvatarByNameRequest([1]string{
+										args[0],
+									}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -366,8 +512,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RecursiveArrayGet
-						s.handleRecursiveArrayGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleRecursiveArrayGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -379,8 +530,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RecursiveMapGet
-						s.handleRecursiveMapGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleRecursiveMapGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -404,8 +560,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SecurityTest
-						s.handleSecurityTestRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleSecurityTestRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -417,8 +578,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: StringIntMapGet
-						s.handleStringIntMapGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleStringIntMapGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -442,8 +608,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetHeader
-						s.handleGetHeaderRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleGetHeaderRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -455,8 +626,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestContentParameter
-						s.handleTestContentParameterRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleTestContentParameterRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+				case 'F': // Prefix: "FloatValidation"
+					if l := len("FloatValidation"); len(elem) >= l && elem[0:l] == "FloatValidation" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleTestFloatValidationRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -468,8 +662,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestNullableOneofs
-						s.handleTestNullableOneofsRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleTestNullableOneofsRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -481,167 +680,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestObjectQueryParameter
-						s.handleTestObjectQueryParameterRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleTestObjectQueryParameterRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
 				}
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
-			}
-			switch elem[0] {
-			case 'd': // Prefix: "defaultTest"
-				if l := len("defaultTest"); len(elem) >= l && elem[0:l] == "defaultTest" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: DefaultTest
-					s.handleDefaultTestRequest([0]string{}, w, r)
-
-					return
-				}
-			case 'f': // Prefix: "foobar"
-				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: FoobarPost
-					s.handleFoobarPostRequest([0]string{}, w, r)
-
-					return
-				}
-			case 'o': // Prefix: "oneofBug"
-				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: OneofBug
-					s.handleOneofBugRequest([0]string{}, w, r)
-
-					return
-				}
-			case 'p': // Prefix: "pet"
-				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handlePetCreateRequest([0]string{}, w, r)
-
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'a': // Prefix: "avatar"
-						if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: PetUploadAvatarByID
-							s.handlePetUploadAvatarByIDRequest([0]string{}, w, r)
-
-							return
-						}
-					case 'u': // Prefix: "updateName"
-						if l := len("updateName"); len(elem) >= l && elem[0:l] == "updateName" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handlePetUpdateNamePostRequest([0]string{}, w, r)
-
-							return
-						}
-						switch elem[0] {
-						case 'A': // Prefix: "Alias"
-							if l := len("Alias"); len(elem) >= l && elem[0:l] == "Alias" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								// Leaf: PetUpdateNameAliasPost
-								s.handlePetUpdateNameAliasPostRequest([0]string{}, w, r)
-
-								return
-							}
-						}
-					}
-				}
-			case 't': // Prefix: "testFloatValidation"
-				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: TestFloatValidation
-					s.handleTestFloatValidationRequest([0]string{}, w, r)
-
-					return
-				}
-			}
-		}
-	case "PUT":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/foobar"
-			if l := len("/foobar"); len(elem) >= l && elem[0:l] == "/foobar" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				// Leaf: FoobarPut
-				s.handleFoobarPutRequest([0]string{}, w, r)
-
-				return
 			}
 		}
 	}
@@ -677,8 +726,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -694,6 +743,25 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				break
 			}
 			switch elem[0] {
+			case 'd': // Prefix: "defaultTest"
+				if l := len("defaultTest"); len(elem) >= l && elem[0:l] == "defaultTest" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "POST":
+						// Leaf: DefaultTest
+						r.name = "DefaultTest"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
+				}
 			case 'e': // Prefix: "error"
 				if l := len("error"); len(elem) >= l && elem[0:l] == "error" {
 					elem = elem[l:]
@@ -702,11 +770,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: ErrorGet
-					r.name = "ErrorGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: ErrorGet
+						r.name = "ErrorGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'f': // Prefix: "foobar"
 				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
@@ -716,11 +789,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: FoobarGet
-					r.name = "FoobarGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						// Leaf: FoobarGet
+						r.name = "FoobarGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					case "POST":
+						// Leaf: FoobarPost
+						r.name = "FoobarPost"
+						r.args = args
+						r.count = 0
+						return r, true
+					case "PUT":
+						// Leaf: FoobarPut
+						r.name = "FoobarPut"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'n': // Prefix: "n"
 				if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
@@ -826,11 +916,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
-										// Leaf: DataGetFormat
-										r.name = "DataGetFormat"
-										r.args = args
-										r.count = 5
-										return r, true
+										switch method {
+										case "GET":
+											// Leaf: DataGetFormat
+											r.name = "DataGetFormat"
+											r.args = args
+											r.count = 5
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							}
@@ -844,11 +939,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: NoAdditionalPropertiesTest
-						r.name = "NoAdditionalPropertiesTest"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: NoAdditionalPropertiesTest
+							r.name = "NoAdditionalPropertiesTest"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'u': // Prefix: "ullableDefaultResponse"
 					if l := len("ullableDefaultResponse"); len(elem) >= l && elem[0:l] == "ullableDefaultResponse" {
@@ -858,11 +958,35 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: NullableDefaultResponse
-						r.name = "NullableDefaultResponse"
+						switch method {
+						case "GET":
+							// Leaf: NullableDefaultResponse
+							r.name = "NullableDefaultResponse"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				}
+			case 'o': // Prefix: "oneofBug"
+				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "POST":
+						// Leaf: OneofBug
+						r.name = "OneofBug"
 						r.args = args
 						r.count = 0
 						return r, true
+					default:
+						return
 					}
 				}
 			case 'p': // Prefix: "p"
@@ -884,11 +1008,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PatternRecursiveMapGet
-						r.name = "PatternRecursiveMapGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: PatternRecursiveMapGet
+							r.name = "PatternRecursiveMapGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'e': // Prefix: "et"
 					if l := len("et"); len(elem) >= l && elem[0:l] == "et" {
@@ -898,10 +1027,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "PetGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							r.name = "PetGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "POST":
+							r.name = "PetCreate"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -923,11 +1062,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: PetGetAvatarByID
-								r.name = "PetGetAvatarByID"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: PetGetAvatarByID
+									r.name = "PetGetAvatarByID"
+									r.args = args
+									r.count = 0
+									return r, true
+								case "POST":
+									// Leaf: PetUploadAvatarByID
+									r.name = "PetUploadAvatarByID"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'f': // Prefix: "friendNames/"
 							if l := len("friendNames/"); len(elem) >= l && elem[0:l] == "friendNames/" {
@@ -942,11 +1092,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
-								// Leaf: PetFriendsNamesByID
-								r.name = "PetFriendsNamesByID"
-								r.args = args
-								r.count = 1
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: PetFriendsNamesByID
+									r.name = "PetFriendsNamesByID"
+									r.args = args
+									r.count = 1
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'n': // Prefix: "name/"
 							if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
@@ -961,11 +1116,55 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
-								// Leaf: PetNameByID
-								r.name = "PetNameByID"
-								r.args = args
-								r.count = 1
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: PetNameByID
+									r.name = "PetNameByID"
+									r.args = args
+									r.count = 1
+									return r, true
+								default:
+									return
+								}
+							}
+						case 'u': // Prefix: "updateName"
+							if l := len("updateName"); len(elem) >= l && elem[0:l] == "updateName" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								switch method {
+								case "POST":
+									r.name = "PetUpdateNamePost"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
+							}
+							switch elem[0] {
+							case 'A': // Prefix: "Alias"
+								if l := len("Alias"); len(elem) >= l && elem[0:l] == "Alias" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "POST":
+										// Leaf: PetUpdateNameAliasPost
+										r.name = "PetUpdateNameAliasPost"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
+								}
 							}
 						}
 						// Param: "name"
@@ -978,10 +1177,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						elem = elem[idx:]
 
 						if len(elem) == 0 {
-							r.name = "PetGetByName"
-							r.args = args
-							r.count = 1
-							return r, true
+							switch method {
+							case "GET":
+								r.name = "PetGetByName"
+								r.args = args
+								r.count = 1
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/avatar"
@@ -992,11 +1196,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: PetGetAvatarByName
-								r.name = "PetGetAvatarByName"
-								r.args = args
-								r.count = 1
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: PetGetAvatarByName
+									r.name = "PetGetAvatarByName"
+									r.args = args
+									r.count = 1
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					}
@@ -1020,11 +1229,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RecursiveArrayGet
-						r.name = "RecursiveArrayGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: RecursiveArrayGet
+							r.name = "RecursiveArrayGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'M': // Prefix: "Map"
 					if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
@@ -1034,11 +1248,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RecursiveMapGet
-						r.name = "RecursiveMapGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: RecursiveMapGet
+							r.name = "RecursiveMapGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 's': // Prefix: "s"
@@ -1060,11 +1279,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SecurityTest
-						r.name = "SecurityTest"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: SecurityTest
+							r.name = "SecurityTest"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 't': // Prefix: "tringIntMap"
 					if l := len("tringIntMap"); len(elem) >= l && elem[0:l] == "tringIntMap" {
@@ -1074,11 +1298,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: StringIntMapGet
-						r.name = "StringIntMapGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: StringIntMapGet
+							r.name = "StringIntMapGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 't': // Prefix: "test"
@@ -1100,11 +1329,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetHeader
-						r.name = "GetHeader"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: GetHeader
+							r.name = "GetHeader"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'C': // Prefix: "ContentParameter"
 					if l := len("ContentParameter"); len(elem) >= l && elem[0:l] == "ContentParameter" {
@@ -1114,11 +1348,35 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestContentParameter
-						r.name = "TestContentParameter"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: TestContentParameter
+							r.name = "TestContentParameter"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'F': // Prefix: "FloatValidation"
+					if l := len("FloatValidation"); len(elem) >= l && elem[0:l] == "FloatValidation" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "POST":
+							// Leaf: TestFloatValidation
+							r.name = "TestFloatValidation"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'N': // Prefix: "NullableOneofs"
 					if l := len("NullableOneofs"); len(elem) >= l && elem[0:l] == "NullableOneofs" {
@@ -1128,11 +1386,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestNullableOneofs
-						r.name = "TestNullableOneofs"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: TestNullableOneofs
+							r.name = "TestNullableOneofs"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'O': // Prefix: "ObjectQueryParameter"
 					if l := len("ObjectQueryParameter"); len(elem) >= l && elem[0:l] == "ObjectQueryParameter" {
@@ -1142,177 +1405,18 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestObjectQueryParameter
-						r.name = "TestObjectQueryParameter"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				}
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
-			}
-			switch elem[0] {
-			case 'd': // Prefix: "defaultTest"
-				if l := len("defaultTest"); len(elem) >= l && elem[0:l] == "defaultTest" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: DefaultTest
-					r.name = "DefaultTest"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			case 'f': // Prefix: "foobar"
-				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: FoobarPost
-					r.name = "FoobarPost"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			case 'o': // Prefix: "oneofBug"
-				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: OneofBug
-					r.name = "OneofBug"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			case 'p': // Prefix: "pet"
-				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					r.name = "PetCreate"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'a': // Prefix: "avatar"
-						if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: PetUploadAvatarByID
-							r.name = "PetUploadAvatarByID"
+						switch method {
+						case "GET":
+							// Leaf: TestObjectQueryParameter
+							r.name = "TestObjectQueryParameter"
 							r.args = args
 							r.count = 0
 							return r, true
-						}
-					case 'u': // Prefix: "updateName"
-						if l := len("updateName"); len(elem) >= l && elem[0:l] == "updateName" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							r.name = "PetUpdateNamePost"
-							r.args = args
-							r.count = 0
-							return r, true
-						}
-						switch elem[0] {
-						case 'A': // Prefix: "Alias"
-							if l := len("Alias"); len(elem) >= l && elem[0:l] == "Alias" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								// Leaf: PetUpdateNameAliasPost
-								r.name = "PetUpdateNameAliasPost"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
+						default:
+							return
 						}
 					}
 				}
-			case 't': // Prefix: "testFloatValidation"
-				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: TestFloatValidation
-					r.name = "TestFloatValidation"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			}
-		}
-	case "PUT":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/foobar"
-			if l := len("/foobar"); len(elem) >= l && elem[0:l] == "/foobar" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				// Leaf: FoobarPut
-				r.name = "FoobarPut"
-				r.args = args
-				r.count = 0
-				return r, true
 			}
 		}
 	}

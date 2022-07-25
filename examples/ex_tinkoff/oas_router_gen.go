@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -55,8 +60,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: MarketBondsGet
-						s.handleMarketBondsGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleMarketBondsGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -79,8 +89,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MarketCandlesGet
-							s.handleMarketCandlesGetRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleMarketCandlesGetRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -92,8 +107,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MarketCurrenciesGet
-							s.handleMarketCurrenciesGetRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleMarketCurrenciesGetRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -106,8 +126,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: MarketEtfsGet
-						s.handleMarketEtfsGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleMarketEtfsGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -119,8 +144,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: MarketOrderbookGet
-						s.handleMarketOrderbookGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleMarketOrderbookGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -154,8 +184,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: MarketSearchByFigiGet
-								s.handleMarketSearchByFigiGetRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handleMarketSearchByFigiGetRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -167,8 +202,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: MarketSearchByTickerGet
-								s.handleMarketSearchByTickerGetRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handleMarketSearchByTickerGetRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
 
 								return
 							}
@@ -181,8 +221,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MarketStocksGet
-							s.handleMarketStocksGetRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleMarketStocksGetRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
 
 							return
 						}
@@ -207,8 +252,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: OperationsGet
-						s.handleOperationsGetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleOperationsGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -220,10 +270,82 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: OrdersGet
-						s.handleOrdersGetRequest([0]string{}, w, r)
+						switch r.Method {
+						case "GET":
+							s.handleOrdersGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "cancel"
+							if l := len("cancel"); len(elem) >= l && elem[0:l] == "cancel" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleOrdersCancelPostRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
+
+								return
+							}
+						case 'l': // Prefix: "limit-order"
+							if l := len("limit-order"); len(elem) >= l && elem[0:l] == "limit-order" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleOrdersLimitOrderPostRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
+
+								return
+							}
+						case 'm': // Prefix: "market-order"
+							if l := len("market-order"); len(elem) >= l && elem[0:l] == "market-order" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleOrdersMarketOrderPostRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
+
+								return
+							}
+						}
 					}
 				}
 			case 'p': // Prefix: "portfolio"
@@ -234,7 +356,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePortfolioGetRequest([0]string{}, w, r)
+					switch r.Method {
+					case "GET":
+						s.handlePortfolioGetRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
 
 					return
 				}
@@ -247,90 +374,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PortfolioCurrenciesGet
-						s.handlePortfolioCurrenciesGetRequest([0]string{}, w, r)
-
-						return
-					}
-				}
-			case 'u': // Prefix: "user/accounts"
-				if l := len("user/accounts"); len(elem) >= l && elem[0:l] == "user/accounts" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: UserAccountsGet
-					s.handleUserAccountsGetRequest([0]string{}, w, r)
-
-					return
-				}
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
-			}
-			switch elem[0] {
-			case 'o': // Prefix: "orders/"
-				if l := len("orders/"); len(elem) >= l && elem[0:l] == "orders/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "cancel"
-					if l := len("cancel"); len(elem) >= l && elem[0:l] == "cancel" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: OrdersCancelPost
-						s.handleOrdersCancelPostRequest([0]string{}, w, r)
-
-						return
-					}
-				case 'l': // Prefix: "limit-order"
-					if l := len("limit-order"); len(elem) >= l && elem[0:l] == "limit-order" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: OrdersLimitOrderPost
-						s.handleOrdersLimitOrderPostRequest([0]string{}, w, r)
-
-						return
-					}
-				case 'm': // Prefix: "market-order"
-					if l := len("market-order"); len(elem) >= l && elem[0:l] == "market-order" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: OrdersMarketOrderPost
-						s.handleOrdersMarketOrderPostRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handlePortfolioCurrenciesGetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
 
 						return
 					}
@@ -365,8 +415,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxClearPost
-							s.handleSandboxClearPostRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleSandboxClearPostRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -378,8 +433,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxCurrenciesBalancePost
-							s.handleSandboxCurrenciesBalancePostRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleSandboxCurrenciesBalancePostRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -392,8 +452,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SandboxPositionsBalancePost
-						s.handleSandboxPositionsBalancePostRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleSandboxPositionsBalancePostRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -416,8 +481,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxRegisterPost
-							s.handleSandboxRegisterPostRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleSandboxRegisterPostRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -429,12 +499,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxRemovePost
-							s.handleSandboxRemovePostRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleSandboxRemovePostRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
 					}
+				}
+			case 'u': // Prefix: "user/accounts"
+				if l := len("user/accounts"); len(elem) >= l && elem[0:l] == "user/accounts" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleUserAccountsGetRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
+
+					return
 				}
 			}
 		}
@@ -471,8 +564,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -507,11 +600,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: MarketBondsGet
-						r.name = "MarketBondsGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: MarketBondsGet
+							r.name = "MarketBondsGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'c': // Prefix: "c"
 					if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
@@ -532,11 +630,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MarketCandlesGet
-							r.name = "MarketCandlesGet"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								// Leaf: MarketCandlesGet
+								r.name = "MarketCandlesGet"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'u': // Prefix: "urrencies"
 						if l := len("urrencies"); len(elem) >= l && elem[0:l] == "urrencies" {
@@ -546,11 +649,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MarketCurrenciesGet
-							r.name = "MarketCurrenciesGet"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								// Leaf: MarketCurrenciesGet
+								r.name = "MarketCurrenciesGet"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				case 'e': // Prefix: "etfs"
@@ -561,11 +669,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: MarketEtfsGet
-						r.name = "MarketEtfsGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: MarketEtfsGet
+							r.name = "MarketEtfsGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'o': // Prefix: "orderbook"
 					if l := len("orderbook"); len(elem) >= l && elem[0:l] == "orderbook" {
@@ -575,11 +688,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: MarketOrderbookGet
-						r.name = "MarketOrderbookGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: MarketOrderbookGet
+							r.name = "MarketOrderbookGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 's': // Prefix: "s"
 					if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
@@ -611,11 +729,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: MarketSearchByFigiGet
-								r.name = "MarketSearchByFigiGet"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: MarketSearchByFigiGet
+									r.name = "MarketSearchByFigiGet"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 't': // Prefix: "ticker"
 							if l := len("ticker"); len(elem) >= l && elem[0:l] == "ticker" {
@@ -625,11 +748,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: MarketSearchByTickerGet
-								r.name = "MarketSearchByTickerGet"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "GET":
+									// Leaf: MarketSearchByTickerGet
+									r.name = "MarketSearchByTickerGet"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					case 't': // Prefix: "tocks"
@@ -640,11 +768,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MarketStocksGet
-							r.name = "MarketStocksGet"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "GET":
+								// Leaf: MarketStocksGet
+								r.name = "MarketStocksGet"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				}
@@ -667,11 +800,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: OperationsGet
-						r.name = "OperationsGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: OperationsGet
+							r.name = "OperationsGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'r': // Prefix: "rders"
 					if l := len("rders"); len(elem) >= l && elem[0:l] == "rders" {
@@ -681,11 +819,86 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: OrdersGet
-						r.name = "OrdersGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							r.name = "OrdersGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "cancel"
+							if l := len("cancel"); len(elem) >= l && elem[0:l] == "cancel" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								switch method {
+								case "POST":
+									// Leaf: OrdersCancelPost
+									r.name = "OrdersCancelPost"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
+							}
+						case 'l': // Prefix: "limit-order"
+							if l := len("limit-order"); len(elem) >= l && elem[0:l] == "limit-order" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								switch method {
+								case "POST":
+									// Leaf: OrdersLimitOrderPost
+									r.name = "OrdersLimitOrderPost"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
+							}
+						case 'm': // Prefix: "market-order"
+							if l := len("market-order"); len(elem) >= l && elem[0:l] == "market-order" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								switch method {
+								case "POST":
+									// Leaf: OrdersMarketOrderPost
+									r.name = "OrdersMarketOrderPost"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
+							}
+						}
 					}
 				}
 			case 'p': // Prefix: "portfolio"
@@ -696,10 +909,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PortfolioGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "GET":
+						r.name = "PortfolioGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/currencies"
@@ -710,97 +928,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PortfolioCurrenciesGet
-						r.name = "PortfolioCurrenciesGet"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				}
-			case 'u': // Prefix: "user/accounts"
-				if l := len("user/accounts"); len(elem) >= l && elem[0:l] == "user/accounts" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: UserAccountsGet
-					r.name = "UserAccountsGet"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
-			}
-			switch elem[0] {
-			case 'o': // Prefix: "orders/"
-				if l := len("orders/"); len(elem) >= l && elem[0:l] == "orders/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "cancel"
-					if l := len("cancel"); len(elem) >= l && elem[0:l] == "cancel" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: OrdersCancelPost
-						r.name = "OrdersCancelPost"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				case 'l': // Prefix: "limit-order"
-					if l := len("limit-order"); len(elem) >= l && elem[0:l] == "limit-order" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: OrdersLimitOrderPost
-						r.name = "OrdersLimitOrderPost"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				case 'm': // Prefix: "market-order"
-					if l := len("market-order"); len(elem) >= l && elem[0:l] == "market-order" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: OrdersMarketOrderPost
-						r.name = "OrdersMarketOrderPost"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: PortfolioCurrenciesGet
+							r.name = "PortfolioCurrenciesGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 's': // Prefix: "sandbox/"
@@ -833,11 +970,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxClearPost
-							r.name = "SandboxClearPost"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: SandboxClearPost
+								r.name = "SandboxClearPost"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'u': // Prefix: "urrencies/balance"
 						if l := len("urrencies/balance"); len(elem) >= l && elem[0:l] == "urrencies/balance" {
@@ -847,11 +989,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxCurrenciesBalancePost
-							r.name = "SandboxCurrenciesBalancePost"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: SandboxCurrenciesBalancePost
+								r.name = "SandboxCurrenciesBalancePost"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				case 'p': // Prefix: "positions/balance"
@@ -862,11 +1009,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SandboxPositionsBalancePost
-						r.name = "SandboxPositionsBalancePost"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: SandboxPositionsBalancePost
+							r.name = "SandboxPositionsBalancePost"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'r': // Prefix: "re"
 					if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
@@ -887,11 +1039,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxRegisterPost
-							r.name = "SandboxRegisterPost"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: SandboxRegisterPost
+								r.name = "SandboxRegisterPost"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'm': // Prefix: "move"
 						if l := len("move"); len(elem) >= l && elem[0:l] == "move" {
@@ -901,12 +1058,36 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: SandboxRemovePost
-							r.name = "SandboxRemovePost"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: SandboxRemovePost
+								r.name = "SandboxRemovePost"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
+					}
+				}
+			case 'u': // Prefix: "user/accounts"
+				if l := len("user/accounts"); len(elem) >= l && elem[0:l] == "user/accounts" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "GET":
+						// Leaf: UserAccountsGet
+						r.name = "UserAccountsGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
 					}
 				}
 			}

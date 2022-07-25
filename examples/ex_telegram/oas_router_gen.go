@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -55,8 +60,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: AddStickerToSet
-						s.handleAddStickerToSetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleAddStickerToSetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -79,8 +89,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerCallbackQuery
-							s.handleAnswerCallbackQueryRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleAnswerCallbackQueryRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -92,8 +107,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerInlineQuery
-							s.handleAnswerInlineQueryRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleAnswerInlineQueryRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -105,8 +125,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerPreCheckoutQuery
-							s.handleAnswerPreCheckoutQueryRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleAnswerPreCheckoutQueryRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -118,8 +143,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerShippingQuery
-							s.handleAnswerShippingQueryRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleAnswerShippingQueryRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -132,8 +162,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ApproveChatJoinRequest
-						s.handleApproveChatJoinRequestRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleApproveChatJoinRequestRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -157,8 +192,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: BanChatMember
-						s.handleBanChatMemberRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleBanChatMemberRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -170,8 +210,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: BanChatSenderChat
-						s.handleBanChatSenderChatRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleBanChatSenderChatRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -195,8 +240,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: Close
-						s.handleCloseRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleCloseRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -208,8 +258,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: CopyMessage
-						s.handleCopyMessageRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleCopyMessageRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -232,8 +287,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: CreateChatInviteLink
-							s.handleCreateChatInviteLinkRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleCreateChatInviteLinkRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -245,8 +305,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: CreateNewStickerSet
-							s.handleCreateNewStickerSetRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleCreateNewStickerSetRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -271,8 +336,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: DeclineChatJoinRequest
-						s.handleDeclineChatJoinRequestRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleDeclineChatJoinRequestRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -306,8 +376,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteChatPhoto
-								s.handleDeleteChatPhotoRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleDeleteChatPhotoRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -319,8 +394,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteChatStickerSet
-								s.handleDeleteChatStickerSetRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleDeleteChatStickerSetRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -344,8 +424,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteMessage
-								s.handleDeleteMessageRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleDeleteMessageRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -357,8 +442,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteMyCommands
-								s.handleDeleteMyCommandsRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleDeleteMyCommandsRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -371,8 +461,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: DeleteStickerFromSet
-							s.handleDeleteStickerFromSetRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleDeleteStickerFromSetRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -384,8 +479,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: DeleteWebhook
-							s.handleDeleteWebhookRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleDeleteWebhookRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -421,8 +521,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: EditChatInviteLink
-							s.handleEditChatInviteLinkRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleEditChatInviteLinkRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -445,8 +550,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageCaption
-								s.handleEditMessageCaptionRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleEditMessageCaptionRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -458,8 +568,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageLiveLocation
-								s.handleEditMessageLiveLocationRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleEditMessageLiveLocationRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -471,8 +586,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageMedia
-								s.handleEditMessageMediaRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleEditMessageMediaRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -484,8 +604,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageReplyMarkup
-								s.handleEditMessageReplyMarkupRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleEditMessageReplyMarkupRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -497,8 +622,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageText
-								s.handleEditMessageTextRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleEditMessageTextRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -512,8 +642,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ExportChatInviteLink
-						s.handleExportChatInviteLinkRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleExportChatInviteLinkRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -526,8 +661,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: ForwardMessage
-					s.handleForwardMessageRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleForwardMessageRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -550,7 +690,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleGetChatRequest([0]string{}, w, r)
+						switch r.Method {
+						case "POST":
+							s.handleGetChatRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -563,8 +708,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetChatAdministrators
-							s.handleGetChatAdministratorsRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleGetChatAdministratorsRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -576,7 +726,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetChatMemberRequest([0]string{}, w, r)
+							switch r.Method {
+							case "POST":
+								s.handleGetChatMemberRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -589,8 +744,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: GetChatMemberCount
-								s.handleGetChatMemberCountRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleGetChatMemberCountRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -604,8 +764,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetFile
-						s.handleGetFileRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleGetFileRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -617,8 +782,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetGameHighScores
-						s.handleGetGameHighScoresRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleGetGameHighScoresRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -641,8 +811,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetMe
-							s.handleGetMeRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleGetMeRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -654,8 +829,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetMyCommands
-							s.handleGetMyCommandsRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleGetMyCommandsRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -668,8 +848,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetStickerSet
-						s.handleGetStickerSetRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleGetStickerSetRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -692,8 +877,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetUpdates
-							s.handleGetUpdatesRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleGetUpdatesRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -705,8 +895,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetUserProfilePhotos
-							s.handleGetUserProfilePhotosRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleGetUserProfilePhotosRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -719,8 +914,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetWebhookInfo
-						s.handleGetWebhookInfoRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleGetWebhookInfoRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -744,8 +944,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: LeaveChat
-						s.handleLeaveChatRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleLeaveChatRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -757,8 +962,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: LogOut
-						s.handleLogOutRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleLogOutRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -782,8 +992,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PinChatMessage
-						s.handlePinChatMessageRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handlePinChatMessageRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -795,8 +1010,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PromoteChatMember
-						s.handlePromoteChatMemberRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handlePromoteChatMemberRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -820,8 +1040,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RestrictChatMember
-						s.handleRestrictChatMemberRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleRestrictChatMemberRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -833,8 +1058,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RevokeChatInviteLink
-						s.handleRevokeChatInviteLinkRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleRevokeChatInviteLinkRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -891,8 +1121,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendAnimation
-									s.handleSendAnimationRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendAnimationRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -904,8 +1139,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendAudio
-									s.handleSendAudioRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendAudioRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -929,8 +1169,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendChatAction
-									s.handleSendChatActionRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendChatActionRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -942,8 +1187,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendContact
-									s.handleSendContactRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendContactRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -967,8 +1217,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendDice
-									s.handleSendDiceRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendDiceRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -980,8 +1235,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendDocument
-									s.handleSendDocumentRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendDocumentRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -994,8 +1254,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendGame
-								s.handleSendGameRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSendGameRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1007,8 +1272,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendInvoice
-								s.handleSendInvoiceRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSendInvoiceRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1020,8 +1290,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendLocation
-								s.handleSendLocationRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSendLocationRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1044,8 +1319,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendMediaGroup
-									s.handleSendMediaGroupRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendMediaGroupRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1057,8 +1337,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendMessage
-									s.handleSendMessageRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendMessageRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1082,8 +1367,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendPhoto
-									s.handleSendPhotoRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendPhotoRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1095,8 +1385,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendPoll
-									s.handleSendPollRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendPollRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1109,8 +1404,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendSticker
-								s.handleSendStickerRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSendStickerRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1133,8 +1433,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendVenue
-									s.handleSendVenueRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendVenueRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1146,7 +1451,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleSendVideoRequest([0]string{}, w, r)
+									switch r.Method {
+									case "POST":
+										s.handleSendVideoRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1159,8 +1469,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: SendVideoNote
-										s.handleSendVideoNoteRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "POST":
+											s.handleSendVideoNoteRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
 
 										return
 									}
@@ -1173,8 +1488,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendVoice
-									s.handleSendVoiceRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSendVoiceRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1210,8 +1530,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatAdministratorCustomTitle
-									s.handleSetChatAdministratorCustomTitleRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSetChatAdministratorCustomTitleRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1223,8 +1548,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatDescription
-									s.handleSetChatDescriptionRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSetChatDescriptionRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1247,8 +1577,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: SetChatPermissions
-										s.handleSetChatPermissionsRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "POST":
+											s.handleSetChatPermissionsRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
 
 										return
 									}
@@ -1260,8 +1595,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: SetChatPhoto
-										s.handleSetChatPhotoRequest([0]string{}, w, r)
+										// Leaf node.
+										switch r.Method {
+										case "POST":
+											s.handleSetChatPhotoRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
 
 										return
 									}
@@ -1274,8 +1614,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatStickerSet
-									s.handleSetChatStickerSetRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSetChatStickerSetRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1287,8 +1632,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatTitle
-									s.handleSetChatTitleRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSetChatTitleRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1301,8 +1651,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetGameScore
-								s.handleSetGameScoreRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSetGameScoreRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1314,8 +1669,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetMyCommands
-								s.handleSetMyCommandsRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSetMyCommandsRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1327,8 +1687,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetPassportDataErrors
-								s.handleSetPassportDataErrorsRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSetPassportDataErrorsRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1351,8 +1716,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetStickerPositionInSet
-									s.handleSetStickerPositionInSetRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSetStickerPositionInSetRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1364,8 +1734,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetStickerSetThumb
-									s.handleSetStickerSetThumbRequest([0]string{}, w, r)
+									// Leaf node.
+									switch r.Method {
+									case "POST":
+										s.handleSetStickerSetThumbRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
 
 									return
 								}
@@ -1378,8 +1753,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetWebhook
-								s.handleSetWebhookRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleSetWebhookRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1404,8 +1784,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: StopMessageLiveLocation
-							s.handleStopMessageLiveLocationRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleStopMessageLiveLocationRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -1417,8 +1802,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: StopPoll
-							s.handleStopPollRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleStopPollRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
 
 							return
 						}
@@ -1465,8 +1855,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnbanChatMember
-								s.handleUnbanChatMemberRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleUnbanChatMemberRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1478,8 +1873,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnbanChatSenderChat
-								s.handleUnbanChatSenderChatRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleUnbanChatSenderChatRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1503,8 +1903,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnpinAllChatMessages
-								s.handleUnpinAllChatMessagesRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleUnpinAllChatMessagesRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1516,8 +1921,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnpinChatMessage
-								s.handleUnpinChatMessageRequest([0]string{}, w, r)
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleUnpinChatMessageRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
+								}
 
 								return
 							}
@@ -1531,8 +1941,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: UploadStickerFile
-						s.handleUploadStickerFileRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleUploadStickerFileRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -1572,8 +1987,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -1608,11 +2023,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: AddStickerToSet
-						r.name = "AddStickerToSet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: AddStickerToSet
+							r.name = "AddStickerToSet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'n': // Prefix: "nswer"
 					if l := len("nswer"); len(elem) >= l && elem[0:l] == "nswer" {
@@ -1633,11 +2053,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerCallbackQuery
-							r.name = "AnswerCallbackQuery"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: AnswerCallbackQuery
+								r.name = "AnswerCallbackQuery"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'I': // Prefix: "InlineQuery"
 						if l := len("InlineQuery"); len(elem) >= l && elem[0:l] == "InlineQuery" {
@@ -1647,11 +2072,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerInlineQuery
-							r.name = "AnswerInlineQuery"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: AnswerInlineQuery
+								r.name = "AnswerInlineQuery"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'P': // Prefix: "PreCheckoutQuery"
 						if l := len("PreCheckoutQuery"); len(elem) >= l && elem[0:l] == "PreCheckoutQuery" {
@@ -1661,11 +2091,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerPreCheckoutQuery
-							r.name = "AnswerPreCheckoutQuery"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: AnswerPreCheckoutQuery
+								r.name = "AnswerPreCheckoutQuery"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'S': // Prefix: "ShippingQuery"
 						if l := len("ShippingQuery"); len(elem) >= l && elem[0:l] == "ShippingQuery" {
@@ -1675,11 +2110,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: AnswerShippingQuery
-							r.name = "AnswerShippingQuery"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: AnswerShippingQuery
+								r.name = "AnswerShippingQuery"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				case 'p': // Prefix: "pproveChatJoinRequest"
@@ -1690,11 +2130,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ApproveChatJoinRequest
-						r.name = "ApproveChatJoinRequest"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: ApproveChatJoinRequest
+							r.name = "ApproveChatJoinRequest"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'b': // Prefix: "banChat"
@@ -1716,11 +2161,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: BanChatMember
-						r.name = "BanChatMember"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: BanChatMember
+							r.name = "BanChatMember"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'S': // Prefix: "SenderChat"
 					if l := len("SenderChat"); len(elem) >= l && elem[0:l] == "SenderChat" {
@@ -1730,11 +2180,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: BanChatSenderChat
-						r.name = "BanChatSenderChat"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: BanChatSenderChat
+							r.name = "BanChatSenderChat"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'c': // Prefix: "c"
@@ -1756,11 +2211,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: Close
-						r.name = "Close"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: Close
+							r.name = "Close"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'o': // Prefix: "opyMessage"
 					if l := len("opyMessage"); len(elem) >= l && elem[0:l] == "opyMessage" {
@@ -1770,11 +2230,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: CopyMessage
-						r.name = "CopyMessage"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: CopyMessage
+							r.name = "CopyMessage"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'r': // Prefix: "reate"
 					if l := len("reate"); len(elem) >= l && elem[0:l] == "reate" {
@@ -1795,11 +2260,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: CreateChatInviteLink
-							r.name = "CreateChatInviteLink"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: CreateChatInviteLink
+								r.name = "CreateChatInviteLink"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'N': // Prefix: "NewStickerSet"
 						if l := len("NewStickerSet"); len(elem) >= l && elem[0:l] == "NewStickerSet" {
@@ -1809,11 +2279,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: CreateNewStickerSet
-							r.name = "CreateNewStickerSet"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: CreateNewStickerSet
+								r.name = "CreateNewStickerSet"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				}
@@ -1836,11 +2311,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: DeclineChatJoinRequest
-						r.name = "DeclineChatJoinRequest"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: DeclineChatJoinRequest
+							r.name = "DeclineChatJoinRequest"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'l': // Prefix: "lete"
 					if l := len("lete"); len(elem) >= l && elem[0:l] == "lete" {
@@ -1872,11 +2352,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteChatPhoto
-								r.name = "DeleteChatPhoto"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: DeleteChatPhoto
+									r.name = "DeleteChatPhoto"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'S': // Prefix: "StickerSet"
 							if l := len("StickerSet"); len(elem) >= l && elem[0:l] == "StickerSet" {
@@ -1886,11 +2371,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteChatStickerSet
-								r.name = "DeleteChatStickerSet"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: DeleteChatStickerSet
+									r.name = "DeleteChatStickerSet"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					case 'M': // Prefix: "M"
@@ -1912,11 +2402,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteMessage
-								r.name = "DeleteMessage"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: DeleteMessage
+									r.name = "DeleteMessage"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'y': // Prefix: "yCommands"
 							if l := len("yCommands"); len(elem) >= l && elem[0:l] == "yCommands" {
@@ -1926,11 +2421,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: DeleteMyCommands
-								r.name = "DeleteMyCommands"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: DeleteMyCommands
+									r.name = "DeleteMyCommands"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					case 'S': // Prefix: "StickerFromSet"
@@ -1941,11 +2441,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: DeleteStickerFromSet
-							r.name = "DeleteStickerFromSet"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: DeleteStickerFromSet
+								r.name = "DeleteStickerFromSet"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'W': // Prefix: "Webhook"
 						if l := len("Webhook"); len(elem) >= l && elem[0:l] == "Webhook" {
@@ -1955,11 +2460,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: DeleteWebhook
-							r.name = "DeleteWebhook"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: DeleteWebhook
+								r.name = "DeleteWebhook"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				}
@@ -1993,11 +2503,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: EditChatInviteLink
-							r.name = "EditChatInviteLink"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: EditChatInviteLink
+								r.name = "EditChatInviteLink"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'M': // Prefix: "Message"
 						if l := len("Message"); len(elem) >= l && elem[0:l] == "Message" {
@@ -2018,11 +2533,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageCaption
-								r.name = "EditMessageCaption"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: EditMessageCaption
+									r.name = "EditMessageCaption"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'L': // Prefix: "LiveLocation"
 							if l := len("LiveLocation"); len(elem) >= l && elem[0:l] == "LiveLocation" {
@@ -2032,11 +2552,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageLiveLocation
-								r.name = "EditMessageLiveLocation"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: EditMessageLiveLocation
+									r.name = "EditMessageLiveLocation"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'M': // Prefix: "Media"
 							if l := len("Media"); len(elem) >= l && elem[0:l] == "Media" {
@@ -2046,11 +2571,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageMedia
-								r.name = "EditMessageMedia"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: EditMessageMedia
+									r.name = "EditMessageMedia"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'R': // Prefix: "ReplyMarkup"
 							if l := len("ReplyMarkup"); len(elem) >= l && elem[0:l] == "ReplyMarkup" {
@@ -2060,11 +2590,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageReplyMarkup
-								r.name = "EditMessageReplyMarkup"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: EditMessageReplyMarkup
+									r.name = "EditMessageReplyMarkup"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'T': // Prefix: "Text"
 							if l := len("Text"); len(elem) >= l && elem[0:l] == "Text" {
@@ -2074,11 +2609,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: EditMessageText
-								r.name = "EditMessageText"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: EditMessageText
+									r.name = "EditMessageText"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					}
@@ -2090,11 +2630,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ExportChatInviteLink
-						r.name = "ExportChatInviteLink"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: ExportChatInviteLink
+							r.name = "ExportChatInviteLink"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'f': // Prefix: "forwardMessage"
@@ -2105,11 +2650,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: ForwardMessage
-					r.name = "ForwardMessage"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						// Leaf: ForwardMessage
+						r.name = "ForwardMessage"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'g': // Prefix: "get"
 				if l := len("get"); len(elem) >= l && elem[0:l] == "get" {
@@ -2130,10 +2680,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "GetChat"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							r.name = "GetChat"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 					switch elem[0] {
 					case 'A': // Prefix: "Administrators"
@@ -2144,11 +2699,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetChatAdministrators
-							r.name = "GetChatAdministrators"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: GetChatAdministrators
+								r.name = "GetChatAdministrators"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'M': // Prefix: "Member"
 						if l := len("Member"); len(elem) >= l && elem[0:l] == "Member" {
@@ -2158,10 +2718,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetChatMember"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								r.name = "GetChatMember"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 						switch elem[0] {
 						case 'C': // Prefix: "Count"
@@ -2172,11 +2737,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: GetChatMemberCount
-								r.name = "GetChatMemberCount"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: GetChatMemberCount
+									r.name = "GetChatMemberCount"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					}
@@ -2188,11 +2758,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetFile
-						r.name = "GetFile"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: GetFile
+							r.name = "GetFile"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'G': // Prefix: "GameHighScores"
 					if l := len("GameHighScores"); len(elem) >= l && elem[0:l] == "GameHighScores" {
@@ -2202,11 +2777,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetGameHighScores
-						r.name = "GetGameHighScores"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: GetGameHighScores
+							r.name = "GetGameHighScores"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'M': // Prefix: "M"
 					if l := len("M"); len(elem) >= l && elem[0:l] == "M" {
@@ -2227,11 +2807,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetMe
-							r.name = "GetMe"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: GetMe
+								r.name = "GetMe"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'y': // Prefix: "yCommands"
 						if l := len("yCommands"); len(elem) >= l && elem[0:l] == "yCommands" {
@@ -2241,11 +2826,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetMyCommands
-							r.name = "GetMyCommands"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: GetMyCommands
+								r.name = "GetMyCommands"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				case 'S': // Prefix: "StickerSet"
@@ -2256,11 +2846,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetStickerSet
-						r.name = "GetStickerSet"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: GetStickerSet
+							r.name = "GetStickerSet"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'U': // Prefix: "U"
 					if l := len("U"); len(elem) >= l && elem[0:l] == "U" {
@@ -2281,11 +2876,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetUpdates
-							r.name = "GetUpdates"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: GetUpdates
+								r.name = "GetUpdates"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 's': // Prefix: "serProfilePhotos"
 						if l := len("serProfilePhotos"); len(elem) >= l && elem[0:l] == "serProfilePhotos" {
@@ -2295,11 +2895,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: GetUserProfilePhotos
-							r.name = "GetUserProfilePhotos"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: GetUserProfilePhotos
+								r.name = "GetUserProfilePhotos"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				case 'W': // Prefix: "WebhookInfo"
@@ -2310,11 +2915,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: GetWebhookInfo
-						r.name = "GetWebhookInfo"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: GetWebhookInfo
+							r.name = "GetWebhookInfo"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'l': // Prefix: "l"
@@ -2336,11 +2946,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: LeaveChat
-						r.name = "LeaveChat"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: LeaveChat
+							r.name = "LeaveChat"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'o': // Prefix: "ogOut"
 					if l := len("ogOut"); len(elem) >= l && elem[0:l] == "ogOut" {
@@ -2350,11 +2965,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: LogOut
-						r.name = "LogOut"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: LogOut
+							r.name = "LogOut"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'p': // Prefix: "p"
@@ -2376,11 +2996,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PinChatMessage
-						r.name = "PinChatMessage"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: PinChatMessage
+							r.name = "PinChatMessage"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'r': // Prefix: "romoteChatMember"
 					if l := len("romoteChatMember"); len(elem) >= l && elem[0:l] == "romoteChatMember" {
@@ -2390,11 +3015,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PromoteChatMember
-						r.name = "PromoteChatMember"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: PromoteChatMember
+							r.name = "PromoteChatMember"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'r': // Prefix: "re"
@@ -2416,11 +3046,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RestrictChatMember
-						r.name = "RestrictChatMember"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: RestrictChatMember
+							r.name = "RestrictChatMember"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'v': // Prefix: "vokeChatInviteLink"
 					if l := len("vokeChatInviteLink"); len(elem) >= l && elem[0:l] == "vokeChatInviteLink" {
@@ -2430,11 +3065,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: RevokeChatInviteLink
-						r.name = "RevokeChatInviteLink"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: RevokeChatInviteLink
+							r.name = "RevokeChatInviteLink"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 's': // Prefix: "s"
@@ -2489,11 +3129,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendAnimation
-									r.name = "SendAnimation"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendAnimation
+										r.name = "SendAnimation"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'u': // Prefix: "udio"
 								if l := len("udio"); len(elem) >= l && elem[0:l] == "udio" {
@@ -2503,11 +3148,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendAudio
-									r.name = "SendAudio"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendAudio
+										r.name = "SendAudio"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'C': // Prefix: "C"
@@ -2529,11 +3179,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendChatAction
-									r.name = "SendChatAction"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendChatAction
+										r.name = "SendChatAction"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'o': // Prefix: "ontact"
 								if l := len("ontact"); len(elem) >= l && elem[0:l] == "ontact" {
@@ -2543,11 +3198,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendContact
-									r.name = "SendContact"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendContact
+										r.name = "SendContact"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'D': // Prefix: "D"
@@ -2569,11 +3229,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendDice
-									r.name = "SendDice"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendDice
+										r.name = "SendDice"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'o': // Prefix: "ocument"
 								if l := len("ocument"); len(elem) >= l && elem[0:l] == "ocument" {
@@ -2583,11 +3248,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendDocument
-									r.name = "SendDocument"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendDocument
+										r.name = "SendDocument"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'G': // Prefix: "Game"
@@ -2598,11 +3268,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendGame
-								r.name = "SendGame"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SendGame
+									r.name = "SendGame"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'I': // Prefix: "Invoice"
 							if l := len("Invoice"); len(elem) >= l && elem[0:l] == "Invoice" {
@@ -2612,11 +3287,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendInvoice
-								r.name = "SendInvoice"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SendInvoice
+									r.name = "SendInvoice"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'L': // Prefix: "Location"
 							if l := len("Location"); len(elem) >= l && elem[0:l] == "Location" {
@@ -2626,11 +3306,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendLocation
-								r.name = "SendLocation"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SendLocation
+									r.name = "SendLocation"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'M': // Prefix: "Me"
 							if l := len("Me"); len(elem) >= l && elem[0:l] == "Me" {
@@ -2651,11 +3336,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendMediaGroup
-									r.name = "SendMediaGroup"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendMediaGroup
+										r.name = "SendMediaGroup"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 's': // Prefix: "ssage"
 								if l := len("ssage"); len(elem) >= l && elem[0:l] == "ssage" {
@@ -2665,11 +3355,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendMessage
-									r.name = "SendMessage"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendMessage
+										r.name = "SendMessage"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'P': // Prefix: "P"
@@ -2691,11 +3386,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendPhoto
-									r.name = "SendPhoto"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendPhoto
+										r.name = "SendPhoto"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'o': // Prefix: "oll"
 								if l := len("oll"); len(elem) >= l && elem[0:l] == "oll" {
@@ -2705,11 +3405,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendPoll
-									r.name = "SendPoll"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendPoll
+										r.name = "SendPoll"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'S': // Prefix: "Sticker"
@@ -2720,11 +3425,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SendSticker
-								r.name = "SendSticker"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SendSticker
+									r.name = "SendSticker"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'V': // Prefix: "V"
 							if l := len("V"); len(elem) >= l && elem[0:l] == "V" {
@@ -2745,11 +3455,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendVenue
-									r.name = "SendVenue"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendVenue
+										r.name = "SendVenue"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'i': // Prefix: "ideo"
 								if l := len("ideo"); len(elem) >= l && elem[0:l] == "ideo" {
@@ -2759,10 +3474,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "SendVideo"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										r.name = "SendVideo"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 								switch elem[0] {
 								case 'N': // Prefix: "Note"
@@ -2773,11 +3493,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: SendVideoNote
-										r.name = "SendVideoNote"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "POST":
+											// Leaf: SendVideoNote
+											r.name = "SendVideoNote"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							case 'o': // Prefix: "oice"
@@ -2788,11 +3513,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SendVoice
-									r.name = "SendVoice"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SendVoice
+										r.name = "SendVoice"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						}
@@ -2826,11 +3556,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatAdministratorCustomTitle
-									r.name = "SetChatAdministratorCustomTitle"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SetChatAdministratorCustomTitle
+										r.name = "SetChatAdministratorCustomTitle"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'D': // Prefix: "Description"
 								if l := len("Description"); len(elem) >= l && elem[0:l] == "Description" {
@@ -2840,11 +3575,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatDescription
-									r.name = "SetChatDescription"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SetChatDescription
+										r.name = "SetChatDescription"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'P': // Prefix: "P"
 								if l := len("P"); len(elem) >= l && elem[0:l] == "P" {
@@ -2865,11 +3605,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: SetChatPermissions
-										r.name = "SetChatPermissions"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "POST":
+											// Leaf: SetChatPermissions
+											r.name = "SetChatPermissions"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								case 'h': // Prefix: "hoto"
 									if l := len("hoto"); len(elem) >= l && elem[0:l] == "hoto" {
@@ -2879,11 +3624,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: SetChatPhoto
-										r.name = "SetChatPhoto"
-										r.args = args
-										r.count = 0
-										return r, true
+										switch method {
+										case "POST":
+											// Leaf: SetChatPhoto
+											r.name = "SetChatPhoto"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 								}
 							case 'S': // Prefix: "StickerSet"
@@ -2894,11 +3644,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatStickerSet
-									r.name = "SetChatStickerSet"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SetChatStickerSet
+										r.name = "SetChatStickerSet"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'T': // Prefix: "Title"
 								if l := len("Title"); len(elem) >= l && elem[0:l] == "Title" {
@@ -2908,11 +3663,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetChatTitle
-									r.name = "SetChatTitle"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SetChatTitle
+										r.name = "SetChatTitle"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'G': // Prefix: "GameScore"
@@ -2923,11 +3683,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetGameScore
-								r.name = "SetGameScore"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SetGameScore
+									r.name = "SetGameScore"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'M': // Prefix: "MyCommands"
 							if l := len("MyCommands"); len(elem) >= l && elem[0:l] == "MyCommands" {
@@ -2937,11 +3702,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetMyCommands
-								r.name = "SetMyCommands"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SetMyCommands
+									r.name = "SetMyCommands"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'P': // Prefix: "PassportDataErrors"
 							if l := len("PassportDataErrors"); len(elem) >= l && elem[0:l] == "PassportDataErrors" {
@@ -2951,11 +3721,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetPassportDataErrors
-								r.name = "SetPassportDataErrors"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SetPassportDataErrors
+									r.name = "SetPassportDataErrors"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'S': // Prefix: "Sticker"
 							if l := len("Sticker"); len(elem) >= l && elem[0:l] == "Sticker" {
@@ -2976,11 +3751,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetStickerPositionInSet
-									r.name = "SetStickerPositionInSet"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SetStickerPositionInSet
+										r.name = "SetStickerPositionInSet"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							case 'S': // Prefix: "SetThumb"
 								if l := len("SetThumb"); len(elem) >= l && elem[0:l] == "SetThumb" {
@@ -2990,11 +3770,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									// Leaf: SetStickerSetThumb
-									r.name = "SetStickerSetThumb"
-									r.args = args
-									r.count = 0
-									return r, true
+									switch method {
+									case "POST":
+										// Leaf: SetStickerSetThumb
+										r.name = "SetStickerSetThumb"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
 								}
 							}
 						case 'W': // Prefix: "Webhook"
@@ -3005,11 +3790,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: SetWebhook
-								r.name = "SetWebhook"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: SetWebhook
+									r.name = "SetWebhook"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					}
@@ -3032,11 +3822,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: StopMessageLiveLocation
-							r.name = "StopMessageLiveLocation"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: StopMessageLiveLocation
+								r.name = "StopMessageLiveLocation"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					case 'P': // Prefix: "Poll"
 						if l := len("Poll"); len(elem) >= l && elem[0:l] == "Poll" {
@@ -3046,11 +3841,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: StopPoll
-							r.name = "StopPoll"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "POST":
+								// Leaf: StopPoll
+								r.name = "StopPoll"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				}
@@ -3095,11 +3895,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnbanChatMember
-								r.name = "UnbanChatMember"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: UnbanChatMember
+									r.name = "UnbanChatMember"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'S': // Prefix: "SenderChat"
 							if l := len("SenderChat"); len(elem) >= l && elem[0:l] == "SenderChat" {
@@ -3109,11 +3914,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnbanChatSenderChat
-								r.name = "UnbanChatSenderChat"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: UnbanChatSenderChat
+									r.name = "UnbanChatSenderChat"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					case 'p': // Prefix: "pin"
@@ -3135,11 +3945,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnpinAllChatMessages
-								r.name = "UnpinAllChatMessages"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: UnpinAllChatMessages
+									r.name = "UnpinAllChatMessages"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						case 'C': // Prefix: "ChatMessage"
 							if l := len("ChatMessage"); len(elem) >= l && elem[0:l] == "ChatMessage" {
@@ -3149,11 +3964,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								// Leaf: UnpinChatMessage
-								r.name = "UnpinChatMessage"
-								r.args = args
-								r.count = 0
-								return r, true
+								switch method {
+								case "POST":
+									// Leaf: UnpinChatMessage
+									r.name = "UnpinChatMessage"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
 							}
 						}
 					}
@@ -3165,11 +3985,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: UploadStickerFile
-						r.name = "UploadStickerFile"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: UploadStickerFile
+							r.name = "UploadStickerFile"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			}
