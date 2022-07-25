@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"sort"
+
 	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
 
@@ -120,8 +122,15 @@ func (p *parser) parsePathItems() error {
 		paths = map[string]struct{}{}
 
 		pathsLoc = p.rootLoc.Field("paths")
+		keys     = make([]string, 0, len(p.spec.Paths))
 	)
-	for path, item := range p.spec.Paths {
+	for k := range p.spec.Paths {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, path := range keys {
+		item := p.spec.Paths[path]
 		if err := func() error {
 			id, err := pathID(path)
 			if err != nil {
