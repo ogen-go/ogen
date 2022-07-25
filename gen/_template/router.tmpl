@@ -7,6 +7,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -19,13 +23,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	{{- if gt $router.MaxParametersCount 0 }}
 	args := [{{ $router.MaxParametersCount }}]string{}
 	{{- end }}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	{{- range $m := $router.Methods }}
-	case {{ quote $m.Method }}:
-		{{- template "route_edge" router_elem $m.Tree.Root 0 }}
-	{{- end }}
+	{{- with $n := $router.Tree.Root }}
+	switch {
+	default:
+		{{- template "route_edge" router_elem $n 0 }}
 	}
+	{{- end }}
 	s.notFound(w, r)
 }
 
@@ -58,24 +63,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	{{- range $m := $router.Methods }}
-	case {{ quote $m.Method }}:
-		{{- template "find_edge" router_elem $m.Tree.Root 0 }}
-	{{- end }}
+	{{- with $n := $router.Tree.Root }}
+	switch {
+	default:
+		{{- template "find_edge" router_elem $n 0 }}
 	}
+    {{- end }}
 	return r, false
 }
 
 {{ end }}
 
 {{ define "route_handle_request" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
-s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
-	{{- range $i, $_ := times $.PathParamsCount }}
-	args[{{ $i }}],
+{{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
+	switch r.Method {
+	{{- range $r := $.Routes }}
+	case {{ quote $r.Method }}:
+		{{- $op := $r.Operation }}
+		s.handle{{ $op.Name }}Request([{{ $op.PathParamsCount }}]string{
+		{{- range $i, $_ := times $op.PathParamsCount }}
+			args[{{ $i }}],
+		{{- end }}
+		}, w, r)
 	{{- end }}
-}, w, r)
+	default:
+		s.notAllowed(w, r, {{ quote $.AllowedMethods }})
+	}
 {{ end }}
 
 {{ define "route_edge" }}
@@ -83,15 +96,15 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 {{- $r := $.Route }}
 {{- if $r.IsLeaf }}
 	if len(elem) == 0 {
-		// Leaf: {{ $r.Operation.Name }}
-		{{ template "route_handle_request" $r.Operation }}
+		// Leaf node.
+		{{ template "route_handle_request" $r }}
 		return
 	}
 {{- else }}
 	{{- with $child := $r.StaticChildren }}
 		if len(elem) == 0 {
-			{{- with $op := $r.Operation }}
-			{{ template "route_handle_request" $op }}
+			{{- with $routes := $r.Routes }}
+			{{ template "route_handle_request" $r }}
 			return
 			{{- else }}
 			break
@@ -144,20 +157,34 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 {{- $r := $.Route }}
 {{- if $r.IsLeaf }}
 	if len(elem) == 0 {
-		// Leaf: {{ $r.Operation.Name }}
-		r.name = {{ quote $r.Operation.Name }}
-		r.args = args
-		r.count = {{ $.ParameterIndex }}
-		return r, true
-	}
-{{- else }}
-	{{- with $child := $r.StaticChildren }}
-		if len(elem) == 0 {
-			{{- with $op := $r.Operation }}
+		switch method {
+		{{- range $route := $r.Routes }}{{- $op := $route.Operation }}
+		case {{ quote $route.Method }}:
+			// Leaf: {{ $op.Name }}
 			r.name = {{ quote $op.Name }}
 			r.args = args
 			r.count = {{ $.ParameterIndex }}
 			return r, true
+		{{- end }}
+		default:
+			return
+		}
+	}
+{{- else }}
+	{{- with $child := $r.StaticChildren }}
+		if len(elem) == 0 {
+			{{- with $routes := $r.Routes }}
+			switch method {
+            {{- range $route := $routes }}{{- $op := $route.Operation }}
+			case {{ quote $route.Method }}:
+				r.name = {{ quote $op.Name }}
+				r.args = args
+				r.count = {{ $.ParameterIndex }}
+				return r, true
+			{{- end }}
+			default:
+				return
+			}
 			{{- else }}
 			break
 			{{- end }}

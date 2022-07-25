@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -33,27 +38,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				// Leaf: DataGet
-				s.handleDataGetRequest([0]string{}, w, r)
-
-				return
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/data"
-			if l := len("/data"); len(elem) >= l && elem[0:l] == "/data" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				// Leaf: DataCreate
-				s.handleDataCreateRequest([0]string{}, w, r)
+				// Leaf node.
+				switch r.Method {
+				case "GET":
+					s.handleDataGetRequest([0]string{}, w, r)
+				case "POST":
+					s.handleDataCreateRequest([0]string{}, w, r)
+				default:
+					s.notAllowed(w, r, "GET,POST")
+				}
 
 				return
 			}
@@ -91,8 +84,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -105,31 +98,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				// Leaf: DataGet
-				r.name = "DataGet"
-				r.args = args
-				r.count = 0
-				return r, true
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/data"
-			if l := len("/data"); len(elem) >= l && elem[0:l] == "/data" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				// Leaf: DataCreate
-				r.name = "DataCreate"
-				r.args = args
-				r.count = 0
-				return r, true
+				switch method {
+				case "GET":
+					// Leaf: DataGet
+					r.name = "DataGet"
+					r.args = args
+					r.count = 0
+					return r, true
+				case "POST":
+					// Leaf: DataCreate
+					r.name = "DataCreate"
+					r.args = args
+					r.count = 0
+					return r, true
+				default:
+					return
+				}
 			}
 		}
 	}

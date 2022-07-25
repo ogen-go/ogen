@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -19,9 +23,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	args := [1]string{}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -34,241 +39,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleDescribeInstanceRequest([0]string{}, w, r)
+				switch r.Method {
+				case "GET":
+					s.handleDescribeInstanceRequest([0]string{}, w, r)
+				default:
+					s.notAllowed(w, r, "GET")
+				}
 
 				return
-			}
-			switch elem[0] {
-			case 'b': // Prefix: "balloon"
-				if l := len("balloon"); len(elem) >= l && elem[0:l] == "balloon" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleDescribeBalloonConfigRequest([0]string{}, w, r)
-
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/statistics"
-					if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: DescribeBalloonStats
-						s.handleDescribeBalloonStatsRequest([0]string{}, w, r)
-
-						return
-					}
-				}
-			case 'm': // Prefix: "m"
-				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "achine-config"
-					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: GetMachineConfiguration
-						s.handleGetMachineConfigurationRequest([0]string{}, w, r)
-
-						return
-					}
-				case 'm': // Prefix: "mds"
-					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: MmdsGet
-						s.handleMmdsGetRequest([0]string{}, w, r)
-
-						return
-					}
-				}
-			case 'v': // Prefix: "vm/config"
-				if l := len("vm/config"); len(elem) >= l && elem[0:l] == "vm/config" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: GetExportVmConfig
-					s.handleGetExportVmConfigRequest([0]string{}, w, r)
-
-					return
-				}
-			}
-		}
-	case "PATCH":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
-			}
-			switch elem[0] {
-			case 'b': // Prefix: "balloon"
-				if l := len("balloon"); len(elem) >= l && elem[0:l] == "balloon" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handlePatchBalloonRequest([0]string{}, w, r)
-
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/statistics"
-					if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: PatchBalloonStatsInterval
-						s.handlePatchBalloonStatsIntervalRequest([0]string{}, w, r)
-
-						return
-					}
-				}
-			case 'd': // Prefix: "drives/"
-				if l := len("drives/"); len(elem) >= l && elem[0:l] == "drives/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				// Param: "drive_id"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					// Leaf: PatchGuestDriveByID
-					s.handlePatchGuestDriveByIDRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
-				}
-			case 'm': // Prefix: "m"
-				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "achine-config"
-					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: PatchMachineConfiguration
-						s.handlePatchMachineConfigurationRequest([0]string{}, w, r)
-
-						return
-					}
-				case 'm': // Prefix: "mds"
-					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: MmdsPatch
-						s.handleMmdsPatchRequest([0]string{}, w, r)
-
-						return
-					}
-				}
-			case 'n': // Prefix: "network-interfaces/"
-				if l := len("network-interfaces/"); len(elem) >= l && elem[0:l] == "network-interfaces/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				// Param: "iface_id"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					// Leaf: PatchGuestNetworkInterfaceByID
-					s.handlePatchGuestNetworkInterfaceByIDRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
-				}
-			case 'v': // Prefix: "vm"
-				if l := len("vm"); len(elem) >= l && elem[0:l] == "vm" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: PatchVm
-					s.handlePatchVmRequest([0]string{}, w, r)
-
-					return
-				}
-			}
-		}
-	case "PUT":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "actions"
@@ -279,8 +57,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: CreateSyncAction
-					s.handleCreateSyncActionRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "PUT":
+						s.handleCreateSyncActionRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "PUT")
+					}
 
 					return
 				}
@@ -303,10 +86,40 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutBalloon
-						s.handlePutBalloonRequest([0]string{}, w, r)
+						switch r.Method {
+						case "GET":
+							s.handleDescribeBalloonConfigRequest([0]string{}, w, r)
+						case "PATCH":
+							s.handlePatchBalloonRequest([0]string{}, w, r)
+						case "PUT":
+							s.handlePutBalloonRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET,PATCH,PUT")
+						}
 
 						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/statistics"
+						if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleDescribeBalloonStatsRequest([0]string{}, w, r)
+							case "PATCH":
+								s.handlePatchBalloonStatsIntervalRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET,PATCH")
+							}
+
+							return
+						}
 					}
 				case 'o': // Prefix: "oot-source"
 					if l := len("oot-source"); len(elem) >= l && elem[0:l] == "oot-source" {
@@ -316,8 +129,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutGuestBootSource
-						s.handlePutGuestBootSourceRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "PUT":
+							s.handlePutGuestBootSourceRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "PUT")
+						}
 
 						return
 					}
@@ -335,10 +153,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = ""
 
 				if len(elem) == 0 {
-					// Leaf: PutGuestDriveByID
-					s.handlePutGuestDriveByIDRequest([1]string{
-						args[0],
-					}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "PATCH":
+						s.handlePatchGuestDriveByIDRequest([1]string{
+							args[0],
+						}, w, r)
+					case "PUT":
+						s.handlePutGuestDriveByIDRequest([1]string{
+							args[0],
+						}, w, r)
+					default:
+						s.notAllowed(w, r, "PATCH,PUT")
+					}
 
 					return
 				}
@@ -350,8 +177,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: PutLogger
-					s.handlePutLoggerRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "PUT":
+						s.handlePutLoggerRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "PUT")
+					}
 
 					return
 				}
@@ -374,8 +206,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutMachineConfiguration
-						s.handlePutMachineConfigurationRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleGetMachineConfigurationRequest([0]string{}, w, r)
+						case "PATCH":
+							s.handlePatchMachineConfigurationRequest([0]string{}, w, r)
+						case "PUT":
+							s.handlePutMachineConfigurationRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET,PATCH,PUT")
+						}
 
 						return
 					}
@@ -387,8 +228,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutMetrics
-						s.handlePutMetricsRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "PUT":
+							s.handlePutMetricsRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "PUT")
+						}
 
 						return
 					}
@@ -400,7 +246,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleMmdsPutRequest([0]string{}, w, r)
+						switch r.Method {
+						case "GET":
+							s.handleMmdsGetRequest([0]string{}, w, r)
+						case "PATCH":
+							s.handleMmdsPatchRequest([0]string{}, w, r)
+						case "PUT":
+							s.handleMmdsPutRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET,PATCH,PUT")
+						}
 
 						return
 					}
@@ -413,8 +268,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MmdsConfigPut
-							s.handleMmdsConfigPutRequest([0]string{}, w, r)
+							// Leaf node.
+							switch r.Method {
+							case "PUT":
+								s.handleMmdsConfigPutRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "PUT")
+							}
 
 							return
 						}
@@ -433,10 +293,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				elem = ""
 
 				if len(elem) == 0 {
-					// Leaf: PutGuestNetworkInterfaceByID
-					s.handlePutGuestNetworkInterfaceByIDRequest([1]string{
-						args[0],
-					}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "PATCH":
+						s.handlePatchGuestNetworkInterfaceByIDRequest([1]string{
+							args[0],
+						}, w, r)
+					case "PUT":
+						s.handlePutGuestNetworkInterfaceByIDRequest([1]string{
+							args[0],
+						}, w, r)
+					default:
+						s.notAllowed(w, r, "PATCH,PUT")
+					}
 
 					return
 				}
@@ -459,8 +328,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: CreateSnapshot
-						s.handleCreateSnapshotRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "PUT":
+							s.handleCreateSnapshotRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "PUT")
+						}
 
 						return
 					}
@@ -472,24 +346,83 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: LoadSnapshot
-						s.handleLoadSnapshotRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "PUT":
+							s.handleLoadSnapshotRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "PUT")
+						}
 
 						return
 					}
 				}
-			case 'v': // Prefix: "vsock"
-				if l := len("vsock"); len(elem) >= l && elem[0:l] == "vsock" {
+			case 'v': // Prefix: "v"
+				if l := len("v"); len(elem) >= l && elem[0:l] == "v" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: PutGuestVsock
-					s.handlePutGuestVsockRequest([0]string{}, w, r)
+					break
+				}
+				switch elem[0] {
+				case 'm': // Prefix: "m"
+					if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+						elem = elem[l:]
+					} else {
+						break
+					}
 
-					return
+					if len(elem) == 0 {
+						switch r.Method {
+						case "PATCH":
+							s.handlePatchVmRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "PATCH")
+						}
+
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/config"
+						if l := len("/config"); len(elem) >= l && elem[0:l] == "/config" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleGetExportVmConfigRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+					}
+				case 's': // Prefix: "sock"
+					if l := len("sock"); len(elem) >= l && elem[0:l] == "sock" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "PUT":
+							s.handlePutGuestVsockRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "PUT")
+						}
+
+						return
+					}
 				}
 			}
 		}
@@ -526,8 +459,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "GET":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -540,250 +473,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "DescribeInstance"
-				r.args = args
-				r.count = 0
-				return r, true
-			}
-			switch elem[0] {
-			case 'b': // Prefix: "balloon"
-				if l := len("balloon"); len(elem) >= l && elem[0:l] == "balloon" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					r.name = "DescribeBalloonConfig"
+				switch method {
+				case "GET":
+					r.name = "DescribeInstance"
 					r.args = args
 					r.count = 0
 					return r, true
+				default:
+					return
 				}
-				switch elem[0] {
-				case '/': // Prefix: "/statistics"
-					if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: DescribeBalloonStats
-						r.name = "DescribeBalloonStats"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				}
-			case 'm': // Prefix: "m"
-				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "achine-config"
-					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: GetMachineConfiguration
-						r.name = "GetMachineConfiguration"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				case 'm': // Prefix: "mds"
-					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: MmdsGet
-						r.name = "MmdsGet"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				}
-			case 'v': // Prefix: "vm/config"
-				if l := len("vm/config"); len(elem) >= l && elem[0:l] == "vm/config" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: GetExportVmConfig
-					r.name = "GetExportVmConfig"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			}
-		}
-	case "PATCH":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
-			}
-			switch elem[0] {
-			case 'b': // Prefix: "balloon"
-				if l := len("balloon"); len(elem) >= l && elem[0:l] == "balloon" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					r.name = "PatchBalloon"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/statistics"
-					if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: PatchBalloonStatsInterval
-						r.name = "PatchBalloonStatsInterval"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				}
-			case 'd': // Prefix: "drives/"
-				if l := len("drives/"); len(elem) >= l && elem[0:l] == "drives/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				// Param: "drive_id"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					// Leaf: PatchGuestDriveByID
-					r.name = "PatchGuestDriveByID"
-					r.args = args
-					r.count = 1
-					return r, true
-				}
-			case 'm': // Prefix: "m"
-				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "achine-config"
-					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: PatchMachineConfiguration
-						r.name = "PatchMachineConfiguration"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				case 'm': // Prefix: "mds"
-					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf: MmdsPatch
-						r.name = "MmdsPatch"
-						r.args = args
-						r.count = 0
-						return r, true
-					}
-				}
-			case 'n': // Prefix: "network-interfaces/"
-				if l := len("network-interfaces/"); len(elem) >= l && elem[0:l] == "network-interfaces/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				// Param: "iface_id"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					// Leaf: PatchGuestNetworkInterfaceByID
-					r.name = "PatchGuestNetworkInterfaceByID"
-					r.args = args
-					r.count = 1
-					return r, true
-				}
-			case 'v': // Prefix: "vm"
-				if l := len("vm"); len(elem) >= l && elem[0:l] == "vm" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					// Leaf: PatchVm
-					r.name = "PatchVm"
-					r.args = args
-					r.count = 0
-					return r, true
-				}
-			}
-		}
-	case "PUT":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-				elem = elem[l:]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "actions"
@@ -794,11 +492,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: CreateSyncAction
-					r.name = "CreateSyncAction"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "PUT":
+						// Leaf: CreateSyncAction
+						r.name = "CreateSyncAction"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'b': // Prefix: "b"
 				if l := len("b"); len(elem) >= l && elem[0:l] == "b" {
@@ -819,11 +522,52 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutBalloon
-						r.name = "PutBalloon"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							r.name = "DescribeBalloonConfig"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "PATCH":
+							r.name = "PatchBalloon"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "PUT":
+							r.name = "PutBalloon"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/statistics"
+						if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: DescribeBalloonStats
+								r.name = "DescribeBalloonStats"
+								r.args = args
+								r.count = 0
+								return r, true
+							case "PATCH":
+								// Leaf: PatchBalloonStatsInterval
+								r.name = "PatchBalloonStatsInterval"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
 					}
 				case 'o': // Prefix: "oot-source"
 					if l := len("oot-source"); len(elem) >= l && elem[0:l] == "oot-source" {
@@ -833,11 +577,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutGuestBootSource
-						r.name = "PutGuestBootSource"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "PUT":
+							// Leaf: PutGuestBootSource
+							r.name = "PutGuestBootSource"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'd': // Prefix: "drives/"
@@ -853,11 +602,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				elem = ""
 
 				if len(elem) == 0 {
-					// Leaf: PutGuestDriveByID
-					r.name = "PutGuestDriveByID"
-					r.args = args
-					r.count = 1
-					return r, true
+					switch method {
+					case "PATCH":
+						// Leaf: PatchGuestDriveByID
+						r.name = "PatchGuestDriveByID"
+						r.args = args
+						r.count = 1
+						return r, true
+					case "PUT":
+						// Leaf: PutGuestDriveByID
+						r.name = "PutGuestDriveByID"
+						r.args = args
+						r.count = 1
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'l': // Prefix: "logger"
 				if l := len("logger"); len(elem) >= l && elem[0:l] == "logger" {
@@ -867,11 +627,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: PutLogger
-					r.name = "PutLogger"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "PUT":
+						// Leaf: PutLogger
+						r.name = "PutLogger"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'm': // Prefix: "m"
 				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
@@ -892,11 +657,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutMachineConfiguration
-						r.name = "PutMachineConfiguration"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							// Leaf: GetMachineConfiguration
+							r.name = "GetMachineConfiguration"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "PATCH":
+							// Leaf: PatchMachineConfiguration
+							r.name = "PatchMachineConfiguration"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "PUT":
+							// Leaf: PutMachineConfiguration
+							r.name = "PutMachineConfiguration"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'e': // Prefix: "etrics"
 					if l := len("etrics"); len(elem) >= l && elem[0:l] == "etrics" {
@@ -906,11 +688,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: PutMetrics
-						r.name = "PutMetrics"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "PUT":
+							// Leaf: PutMetrics
+							r.name = "PutMetrics"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'm': // Prefix: "mds"
 					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
@@ -920,10 +707,25 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "MmdsPut"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "GET":
+							r.name = "MmdsGet"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "PATCH":
+							r.name = "MmdsPatch"
+							r.args = args
+							r.count = 0
+							return r, true
+						case "PUT":
+							r.name = "MmdsPut"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/config"
@@ -934,11 +736,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							// Leaf: MmdsConfigPut
-							r.name = "MmdsConfigPut"
-							r.args = args
-							r.count = 0
-							return r, true
+							switch method {
+							case "PUT":
+								// Leaf: MmdsConfigPut
+								r.name = "MmdsConfigPut"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
 				}
@@ -955,11 +762,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				elem = ""
 
 				if len(elem) == 0 {
-					// Leaf: PutGuestNetworkInterfaceByID
-					r.name = "PutGuestNetworkInterfaceByID"
-					r.args = args
-					r.count = 1
-					return r, true
+					switch method {
+					case "PATCH":
+						// Leaf: PatchGuestNetworkInterfaceByID
+						r.name = "PatchGuestNetworkInterfaceByID"
+						r.args = args
+						r.count = 1
+						return r, true
+					case "PUT":
+						// Leaf: PutGuestNetworkInterfaceByID
+						r.name = "PutGuestNetworkInterfaceByID"
+						r.args = args
+						r.count = 1
+						return r, true
+					default:
+						return
+					}
 				}
 			case 's': // Prefix: "snapshot/"
 				if l := len("snapshot/"); len(elem) >= l && elem[0:l] == "snapshot/" {
@@ -980,11 +798,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: CreateSnapshot
-						r.name = "CreateSnapshot"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "PUT":
+							// Leaf: CreateSnapshot
+							r.name = "CreateSnapshot"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'l': // Prefix: "load"
 					if l := len("load"); len(elem) >= l && elem[0:l] == "load" {
@@ -994,26 +817,87 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: LoadSnapshot
-						r.name = "LoadSnapshot"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "PUT":
+							// Leaf: LoadSnapshot
+							r.name = "LoadSnapshot"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
-			case 'v': // Prefix: "vsock"
-				if l := len("vsock"); len(elem) >= l && elem[0:l] == "vsock" {
+			case 'v': // Prefix: "v"
+				if l := len("v"); len(elem) >= l && elem[0:l] == "v" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: PutGuestVsock
-					r.name = "PutGuestVsock"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
+				}
+				switch elem[0] {
+				case 'm': // Prefix: "m"
+					if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "PATCH":
+							r.name = "PatchVm"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/config"
+						if l := len("/config"); len(elem) >= l && elem[0:l] == "/config" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: GetExportVmConfig
+								r.name = "GetExportVmConfig"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					}
+				case 's': // Prefix: "sock"
+					if l := len("sock"); len(elem) >= l && elem[0:l] == "sock" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "PUT":
+							// Leaf: PutGuestVsock
+							r.name = "PutGuestVsock"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
 				}
 			}
 		}

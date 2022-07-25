@@ -85,6 +85,9 @@ issues:
         - gocognit
         - scopelint
         - lll
+    - path: _test\.go
+      linters: [ unparam ]
+      text: .*\$\d? # Do not warn about unused closure parameters in test files.
 
     # Ignore shadowing of err.
     - linters: [ govet ]

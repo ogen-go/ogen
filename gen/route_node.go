@@ -36,7 +36,12 @@ type RouteNode struct {
 	paramName string
 	param     *ir.Parameter // nil-able
 
-	op *ir.Operation
+	routes Routes
+}
+
+// AddRoute adds new method route to node.
+func (n *RouteNode) AddRoute(nr Route) error {
+	return n.routes.AddRoute(nr)
 }
 
 // Prefix returns common prefix.
@@ -113,9 +118,21 @@ func (n *RouteNode) Param() *ir.Parameter {
 	return n.param
 }
 
-// Operation returns associated operation.
-func (n *RouteNode) Operation() *ir.Operation {
-	return n.op
+// AllowedMethods returns list of allowed methods.
+func (n *RouteNode) AllowedMethods() string {
+	var s strings.Builder
+	for i, route := range n.routes {
+		if i != 0 {
+			s.WriteByte(',')
+		}
+		s.WriteString(route.Method)
+	}
+	return s.String()
+}
+
+// Routes returns list of associated MethodRoute.
+func (n *RouteNode) Routes() []Route {
+	return n.routes
 }
 
 func nextPathPart(s string) (hasParam bool, paramStart, paramEnd int, _ error) {

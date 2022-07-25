@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -44,8 +49,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: TestFormURLEncoded
-					s.handleTestFormURLEncodedRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleTestFormURLEncodedRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -57,7 +67,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleTestMultipartRequest([0]string{}, w, r)
+					switch r.Method {
+					case "POST":
+						s.handleTestMultipartRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -70,8 +85,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestMultipartUpload
-						s.handleTestMultipartUploadRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleTestMultipartUploadRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -84,8 +104,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: TestShareFormSchema
-					s.handleTestShareFormSchemaRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleTestShareFormSchemaRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -124,8 +149,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -149,11 +174,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: TestFormURLEncoded
-					r.name = "TestFormURLEncoded"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						// Leaf: TestFormURLEncoded
+						r.name = "TestFormURLEncoded"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'M': // Prefix: "Multipart"
 				if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
@@ -163,10 +193,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "TestMultipart"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						r.name = "TestMultipart"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 				switch elem[0] {
 				case 'U': // Prefix: "Upload"
@@ -177,11 +212,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestMultipartUpload
-						r.name = "TestMultipartUpload"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: TestMultipartUpload
+							r.name = "TestMultipartUpload"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'S': // Prefix: "ShareFormSchema"
@@ -192,11 +232,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: TestShareFormSchema
-					r.name = "TestShareFormSchema"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						// Leaf: TestShareFormSchema
+						r.name = "TestShareFormSchema"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			}
 		}

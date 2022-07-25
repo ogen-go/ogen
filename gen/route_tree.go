@@ -40,7 +40,8 @@ func longestPrefix(k1, k2 string) int {
 	return min
 }
 
-func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
+func (t *RouteTree) addRoute(m Route) error {
+	path := m.Path
 	if !utf8.ValidString(path) {
 		return errors.New("invalid path: path must be valid UTF-8 string")
 	}
@@ -52,8 +53,7 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 	}
 	for {
 		if path == "" {
-			n.op = operation
-			return nil
+			return n.AddRoute(m)
 		}
 		// Head is a first character of route.
 		head := path[0]
@@ -68,15 +68,14 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 		n = n.getChild(head)
 		if n == nil {
 			// If there is no child with such head, create a new one.
-			r, err := parent.addChild(path, operation, &RouteNode{
+			r, err := parent.addChild(path, m.Operation, &RouteNode{
 				prefix: path,
 				head:   head,
 			})
 			if err != nil {
 				return err
 			}
-			r.op = operation
-			return nil
+			return r.AddRoute(m)
 		}
 
 		// Skip common parameter node.
@@ -109,27 +108,25 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 		// Add existing node as child of replacer.
 		n.head = n.prefix[commonPrefix]
 		n.prefix = n.prefix[commonPrefix:]
-		if _, err := newChild.addChild(n.prefix, operation, n); err != nil {
+		if _, err := newChild.addChild(n.prefix, m.Operation, n); err != nil {
 			return err
 		}
 
 		// Special case: if new node has exactly same path, replace existing node.
 		path = path[commonPrefix:]
 		if path == "" {
-			newChild.op = operation
-			return nil
+			return newChild.AddRoute(m)
 		}
 
 		// Otherwise, we add new node as second child of replacer.
-		r, err := newChild.addChild(path, operation, &RouteNode{
+		r, err := newChild.addChild(path, m.Operation, &RouteNode{
 			prefix: path,
 			head:   path[0],
 		})
 		if err != nil {
 			return err
 		}
-		r.op = operation
-		return nil
+		return r.AddRoute(m)
 	}
 }
 

@@ -10,6 +10,10 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
+func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +22,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
+
 	// Static code generated router with unwrapped path search.
-	switch r.Method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -44,8 +49,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: NullableStrings
-					s.handleNullableStringsRequest([0]string{}, w, r)
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleNullableStringsRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -68,8 +78,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ObjectsWithConflictingArrayProperty
-						s.handleObjectsWithConflictingArrayPropertyRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleObjectsWithConflictingArrayPropertyRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -81,8 +96,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ObjectsWithConflictingProperties
-						s.handleObjectsWithConflictingPropertiesRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleObjectsWithConflictingPropertiesRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -95,7 +115,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleReferencedAllofRequest([0]string{}, w, r)
+					switch r.Method {
+					case "POST":
+						s.handleReferencedAllofRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
 
 					return
 				}
@@ -108,8 +133,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ReferencedAllofOptional
-						s.handleReferencedAllofOptionalRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleReferencedAllofOptionalRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -133,8 +163,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SimpleInteger
-						s.handleSimpleIntegerRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleSimpleIntegerRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -146,8 +181,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SimpleObjects
-						s.handleSimpleObjectsRequest([0]string{}, w, r)
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleSimpleObjectsRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
 
 						return
 					}
@@ -187,8 +227,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	}
 
 	// Static code generated router with unwrapped path search.
-	switch method {
-	case "POST":
+	switch {
+	default:
 		if len(elem) == 0 {
 			break
 		}
@@ -212,11 +252,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf: NullableStrings
-					r.name = "NullableStrings"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						// Leaf: NullableStrings
+						r.name = "NullableStrings"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 			case 'o': // Prefix: "objectsWithConflicting"
 				if l := len("objectsWithConflicting"); len(elem) >= l && elem[0:l] == "objectsWithConflicting" {
@@ -237,11 +282,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ObjectsWithConflictingArrayProperty
-						r.name = "ObjectsWithConflictingArrayProperty"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: ObjectsWithConflictingArrayProperty
+							r.name = "ObjectsWithConflictingArrayProperty"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'P': // Prefix: "Properties"
 					if l := len("Properties"); len(elem) >= l && elem[0:l] == "Properties" {
@@ -251,11 +301,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ObjectsWithConflictingProperties
-						r.name = "ObjectsWithConflictingProperties"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: ObjectsWithConflictingProperties
+							r.name = "ObjectsWithConflictingProperties"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 'r': // Prefix: "referencedAllof"
@@ -266,10 +321,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "ReferencedAllof"
-					r.args = args
-					r.count = 0
-					return r, true
+					switch method {
+					case "POST":
+						r.name = "ReferencedAllof"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
 				}
 				switch elem[0] {
 				case 'O': // Prefix: "Optional"
@@ -280,11 +340,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: ReferencedAllofOptional
-						r.name = "ReferencedAllofOptional"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: ReferencedAllofOptional
+							r.name = "ReferencedAllofOptional"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 's': // Prefix: "simple"
@@ -306,11 +371,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SimpleInteger
-						r.name = "SimpleInteger"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: SimpleInteger
+							r.name = "SimpleInteger"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				case 'O': // Prefix: "Objects"
 					if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
@@ -320,11 +390,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						// Leaf: SimpleObjects
-						r.name = "SimpleObjects"
-						r.args = args
-						r.count = 0
-						return r, true
+						switch method {
+						case "POST":
+							// Leaf: SimpleObjects
+							r.name = "SimpleObjects"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			}
