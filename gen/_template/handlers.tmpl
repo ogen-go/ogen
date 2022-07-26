@@ -22,12 +22,20 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+		{{- if or $op.Request $op.Params $op.Security }}
+		opErrContext = ogenerrors.OperationContext{
+			Name: {{ quote $op.Name }},
+			ID: {{ quote $op.Spec.OperationID }},
+		}
+		{{- end }}
+	)
 	{{- range $s := $op.Security }}
 	ctx, err = s.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: {{ quote $op.Name }},
+			OperationContext: opErrContext,
 			Security: {{ quote $s.Security.Type.Name }},
 			Err: err,
 		}
@@ -40,7 +48,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	params, err := decode{{ $op.Name }}Params(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: {{ quote $op.Name }},
+			OperationContext: opErrContext,
 			Err: err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
@@ -52,7 +60,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	request, close, err := s.decode{{ $op.Name }}Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: {{ quote $op.Name }},
+			OperationContext: opErrContext,
 			Err: err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
