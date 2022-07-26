@@ -299,8 +299,7 @@ func (p *Properties) UnmarshalYAML(node *yaml.Node) error {
 
 // MarshalJSON implements json.Marshaler.
 func (p Properties) MarshalJSON() ([]byte, error) {
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Encoder{}
 
 	e.ObjStart()
 	for _, prop := range p {
@@ -456,7 +455,8 @@ func (p *PatternProperties) UnmarshalYAML(node *yaml.Node) error {
 
 // MarshalJSON implements json.Marshaler.
 func (p PatternProperties) MarshalJSON() ([]byte, error) {
-	var e jx.Encoder
+	e := &jx.Encoder{}
+
 	e.ObjStart()
 	for _, prop := range p {
 		e.FieldStart(prop.Pattern)

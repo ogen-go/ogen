@@ -875,7 +875,7 @@ func (s *Schema) SetEnum(e []json.RawMessage) *Schema {
 func (s *Schema) SetMultipleOf(m *uint64) *Schema {
 	if m != nil {
 		val := *m
-		e := jx.GetEncoder()
+		e := &jx.Encoder{}
 		e.UInt64(val)
 		s.MultipleOf = e.Bytes()
 	}
@@ -886,7 +886,7 @@ func (s *Schema) SetMultipleOf(m *uint64) *Schema {
 func (s *Schema) SetMaximum(m *int64) *Schema {
 	if m != nil {
 		val := *m
-		e := jx.GetEncoder()
+		e := &jx.Encoder{}
 		e.Int64(val)
 		s.Maximum = e.Bytes()
 	}
@@ -903,7 +903,7 @@ func (s *Schema) SetExclusiveMaximum(e bool) *Schema {
 func (s *Schema) SetMinimum(m *int64) *Schema {
 	if m != nil {
 		val := *m
-		e := jx.GetEncoder()
+		e := &jx.Encoder{}
 		e.Int64(val)
 		s.Minimum = e.Bytes()
 	}
