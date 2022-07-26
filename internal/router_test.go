@@ -45,33 +45,33 @@ func FuzzRouter(f *testing.F) {
 }
 
 type routerTestCase struct {
-	Method    string
-	Path      string
-	Operation string
-	Args      []string
-	Defined   bool
+	Method  string
+	Path    string
+	Name    string
+	Args    []string
+	Defined bool
 }
 
 func (r routerTestCase) defined() routerTestCase {
 	return routerTestCase{
-		Method:    r.Method,
-		Path:      r.Path,
-		Operation: r.Operation,
-		Args:      r.Args,
-		Defined:   true,
+		Method:  r.Method,
+		Path:    r.Path,
+		Name:    r.Name,
+		Args:    r.Args,
+		Defined: true,
 	}
 }
 
 func routerTestCases() []routerTestCase {
-	test := func(method, route, op string, args ...string) routerTestCase {
+	test := func(method, route, opName string, args ...string) routerTestCase {
 		if len(args) == 0 {
 			args = []string{}
 		}
 		return routerTestCase{
-			Method:    method,
-			Path:      route,
-			Operation: op,
-			Args:      args,
+			Method: method,
+			Path:   route,
+			Name:   opName,
+			Args:   args,
 		}
 	}
 	get := func(p, op string, args ...string) routerTestCase {
@@ -128,16 +128,16 @@ func TestRouter(t *testing.T) {
 			t.Run("FindRoute", func(t *testing.T) {
 				a := require.New(t)
 				r, ok := s.FindRoute(tc.Method, tc.Path)
-				if tc.Operation == "" {
-					a.False(ok, r.OperationID())
+				if tc.Name == "" {
+					a.False(ok, r.Name())
 					return
 				}
-				a.True(ok, tc.Operation)
-				a.Equal(tc.Operation, r.OperationID())
+				a.True(ok, tc.Name)
+				a.Equal(tc.Name, r.Name())
 				a.Equal(tc.Args, r.Args())
 			})
 
-			if tc.Operation == "" {
+			if tc.Name == "" {
 				t.Run("ServeHTTP", func(t *testing.T) {
 					code := http.StatusNotFound
 					if tc.Defined {
