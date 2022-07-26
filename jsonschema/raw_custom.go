@@ -67,7 +67,6 @@ func (p *RawProperties) UnmarshalYAML(node *yaml.Node) error {
 // MarshalJSON implements json.Marshaler.
 func (p RawProperties) MarshalJSON() ([]byte, error) {
 	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
 
 	e.ObjStart()
 	for _, prop := range p {
