@@ -9,20 +9,35 @@
 //
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 	{{- if $op.Spec.OperationID }}
 		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
 	{{- end }}
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), {{ quote $op.Name }},
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err error
 		{{- if or $op.Request $op.Params $op.Security }}
 		opErrContext = ogenerrors.OperationContext{
@@ -32,14 +47,16 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		{{- end }}
 	)
 	{{- range $s := $op.Security }}
-	ctx, err = s.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r)
+	{{- $securityName := $s.Security.Type.Name }}
+	ctx, err = s.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
-			Security: {{ quote $s.Security.Type.Name }},
+			Security: {{ quote $securityName }},
 			Err: err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError({{ printf "Security:%s" $securityName | quote }}, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	{{- end }}
@@ -51,7 +68,8 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			OperationContext: opErrContext,
 			Err: err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	{{- end }}
@@ -63,7 +81,8 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			OperationContext: opErrContext,
 			Err: err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
@@ -72,9 +91,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	response, err := s.h.{{$op.Name}}(ctx{{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		{{- if $.Error }}
 		var errRes *{{ $.ErrorType.Go }}
 		if errors.As(err, &errRes) {
@@ -93,27 +110,11 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	}
 
 	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 {{ end }}
 
-func (s *Server) badRequest(
-	ctx context.Context,
-	w http.ResponseWriter,
-	r *http.Request,
-	span trace.Span,
-	otelAttrs []attribute.KeyValue,
-	err error,
-) {
-	span.RecordError(err)
-	span.SetStatus(codes.Error, "BadRequest")
-	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, err)
-}
 {{ end }}
