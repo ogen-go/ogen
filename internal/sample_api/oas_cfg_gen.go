@@ -3,19 +3,16 @@
 package api
 
 import (
-	"context"
 	"fmt"
 	"math/big"
 	"net/http"
 	"regexp"
 
-	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -44,30 +41,7 @@ var ratMap = map[string]*big.Rat{
 }
 
 // ErrorHandler is error handler.
-type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)
-
-func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
-	var (
-		code    = http.StatusInternalServerError
-		ogenErr ogenerrors.Error
-	)
-	switch {
-	case errors.Is(err, ht.ErrNotImplemented):
-		code = http.StatusNotImplemented
-	case errors.As(err, &ogenErr):
-		code = ogenErr.Code()
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
-}
+type ErrorHandler = ogenerrors.ErrorHandler
 
 type config struct {
 	TracerProvider     trace.TracerProvider
@@ -91,7 +65,7 @@ func newConfig(opts ...Option) config {
 			w.Header().Set("Allow", allowed)
 			w.WriteHeader(http.StatusMethodNotAllowed)
 		},
-		ErrorHandler:       respondError,
+		ErrorHandler:       ogenerrors.DefaultErrorHandler,
 		MaxMultipartMemory: 32 << 20, // 32 MB
 	}
 	for _, opt := range opts {
